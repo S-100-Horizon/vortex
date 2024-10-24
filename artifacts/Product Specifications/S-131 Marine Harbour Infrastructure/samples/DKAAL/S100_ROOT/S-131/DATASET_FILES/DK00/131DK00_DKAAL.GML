@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-model href="https://schemas.s100dev.net/schemas/S131/1.0.0/20221231/S131DS.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<S131:Dataset xmlns:S131="http://www.iho.int/S131/1.0"
+              xmlns:S100="http://www.iho.int/s100gml/5.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xmlns:xlink="http://www.w3.org/1999/xlink"
+              xmlns:gml="http://www.opengis.net/gml/3.2"
+              xsi:schemaLocation="http://www.iho.int/S131/1.0 https://schemas.s100dev.net/schemas/S131/1.0.0/20221231/S131.xsd"
+              gml:id="urn.mrn.iho.s131.1.0.DKAAL_16">
+	<gml:boundedBy>
+		<gml:Envelope srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
+			<gml:lowerCorner>90 180</gml:lowerCorner>
+			<gml:upperCorner>-90 -180</gml:upperCorner>
+		</gml:Envelope>
+	</gml:boundedBy>
+	<S100:DatasetIdentificationInformation>
+		<S100:encodingSpecification>S-100 Part 10b</S100:encodingSpecification>
+		<S100:encodingSpecificationEdition>1.0</S100:encodingSpecificationEdition>
+		<S100:productIdentifier>S-131</S100:productIdentifier>
+		<S100:productEdition>1.0</S100:productEdition>
+		<S100:applicationProfile>1</S100:applicationProfile>
+		<S100:datasetFileIdentifier>131DK00_DKAAL.GML</S100:datasetFileIdentifier>
+		<S100:datasetTitle>Aalborg</S100:datasetTitle>
+		<S100:datasetReferenceDate>2024-10-08</S100:datasetReferenceDate>
+		<S100:datasetLanguage>eng</S100:datasetLanguage>
+		<S100:datasetTopicCategory>transportation</S100:datasetTopicCategory>
+		<S100:datasetPurpose>base</S100:datasetPurpose>
+		<S100:updateNumber>0</S100:updateNumber>
+	</S100:DatasetIdentificationInformation>
+	<S131:members>
+		<S131:AvailablePortServices gml:id="DKAAL.AvailablePortServices.1">
+			<S131:featureName>
+				<S131:displayName>true</S131:displayName>
+				<S131:language>da</S131:language>
+				<S131:name>Honnørkajen</S131:name>
+			</S131:featureName>
+			<S131:berthingAssistance>1</S131:berthingAssistance>
+		</S131:AvailablePortServices>
+		<S131:HarbourAreaSection gml:id="DKAAL.HarbourAreaSection.1">
+			<S131:featureName>
+				<S131:displayName>true</S131:displayName>
+				<S131:language>da</S131:language>
+				<S131:name>Utzon Center</S131:name>
+			</S131:featureName>
+			<S131:geometry>
+				<S100:surfaceProperty>
+					<S100:Surface gml:id="DKAAL.HarbourAreaSection.1.S"
+					              srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
+						<gml:patches>
+							<gml:PolygonPatch>
+								<gml:exterior>
+									<gml:LinearRing>
+										<gml:posList>57.049466 9.9259101 57.0498278 9.9262033 57.0496099 9.9270616 57.0490808 9.9266325 57.0492559 9.9259744 57.0493804 9.9258815 57.049466 9.9259101 </gml:posList>
+									</gml:LinearRing>
+								</gml:exterior>
+							</gml:PolygonPatch>
+						</gml:patches>
+					</S100:Surface>
+				</S100:surfaceProperty>
+			</S131:geometry>
+		</S131:HarbourAreaSection>
+		<S131:Berth gml:id="DKAAL.Berth.1">
+			<S131:featureName>
+				<S131:displayName>true</S131:displayName>
+				<S131:language>da</S131:language>
+				<S131:name>Honnørkajen</S131:name>
+			</S131:featureName>
+			<S131:availableBerthingLength>100</S131:availableBerthingLength>
+			<S131:minimumBerthDepth>8</S131:minimumBerthDepth>
+			<S131:geometry>
+				<S100:curveProperty>
+					<S100:Curve srsName="http://www.opengis.net/def/crs/EPSG/0/4326"
+					            gml:id="Berth.geom.0">
+						<gml:segments>
+							<gml:LineStringSegment>
+								<gml:posList>57.0508457 9.9237067 57.0501046 9.9263919 </gml:posList>
+							</gml:LineStringSegment>
+						</gml:segments>
+					</S100:Curve>
+				</S100:curveProperty>
+			</S131:geometry>
+		</S131:Berth>
+		<S131:MooringWarpingFacility gml:id="DKAAL.MooringWarpingFacility.1">
+			<S131:geometry>
+				<S100:PointProperty>
+					<S100:Point gml:id="DKAAL.MooringWarpingFacility.1.P"
+					            srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
+						<gml:pos>57.0516111 9.921519</gml:pos>
+					</S100:Point>
+				</S100:PointProperty>
+			</S131:geometry>
+		</S131:MooringWarpingFacility>
+		<S131:MooringWarpingFacility gml:id="DKAAL.MooringWarpingFacility.2">
+			<S131:geometry>
+				<S100:PointProperty>
+					<S100:Point gml:id="DKAAL.MooringWarpingFacility.2.P"
+					            srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
+						<gml:pos>57.051717 9.9212561</gml:pos>
+					</S100:Point>
+				</S100:PointProperty>
+			</S131:geometry>
+		</S131:MooringWarpingFacility>
+		<S131:MooringWarpingFacility gml:id="DKAAL.MooringWarpingFacility.3">
+			<S131:categoryOfMooringWarpingFacility>1</S131:categoryOfMooringWarpingFacility>
+			<S131:geometry>
+				<S100:PointProperty>
+					<S100:Point gml:id="DKAAL.MooringWarpingFacility.3.P"
+					            srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
+						<gml:pos>57.0518261 9.9209863</gml:pos>
+					</S100:Point>
+				</S100:PointProperty>
+			</S131:geometry>
+		</S131:MooringWarpingFacility>
+		<S131:AnchorageArea gml:id="DKAAL.AnchorageArea.1">
+			<S131:featureName>
+				<S131:displayName>true</S131:displayName>
+				<S131:language>eng</S131:language>
+				<S131:name>Vestre Havnepromenade</S131:name>
+			</S131:featureName>
+			<S131:depthsDescription>
+				<S131:categoryOfDepthsDescription>1</S131:categoryOfDepthsDescription>
+			</S131:depthsDescription>
+			<S131:geometry>
+				<S100:surfaceProperty>
+					<S100:Surface gml:id="DKAAL.AnchorageArea.1.S"
+					              srsName="http://www.opengis.net/def/crs/EPSG/0/4326">
+						<gml:patches>
+							<gml:PolygonPatch>
+								<gml:exterior>
+									<gml:LinearRing>
+										<gml:posList>57.0515169 9.9217714 57.0520677 9.9224941 57.0527891 9.9205019 57.0522952 9.9198125 57.0515169 9.9217714 </gml:posList>
+									</gml:LinearRing>
+								</gml:exterior>
+							</gml:PolygonPatch>
+						</gml:patches>
+					</S100:Surface>
+				</S100:surfaceProperty>
+			</S131:geometry>
+		</S131:AnchorageArea>
+		<S131:AnchorBerth gml:id="DKAAL.AnchorBerth.1">
+			<S131:serviceDescriptionReference>#AvailablePortServices.1728508975979</S131:serviceDescriptionReference>
+		</S131:AnchorBerth>
+		<S131:DataCoverage gml:id="DKAAL.DataCoverage.1"/>
+		<S131:QualityOfNonBathymetricData gml:id="DKAAL.QualityOfNonBathymetricData.1">
+			<S131:geometry>
+				<S100:curveProperty>
+					<S100:Curve srsName="http://www.opengis.net/def/crs/EPSG/0/4326"
+					            gml:id="QualityOfNonBathymetricData.geom.0">
+						<gml:segments>
+							<gml:LineStringSegment>
+								<gml:posList>57.0508276 9.9237178 57.0501153 9.926429 </gml:posList>
+							</gml:LineStringSegment>
+						</gml:segments>
+					</S100:Curve>
+				</S100:curveProperty>
+			</S131:geometry>
+		</S131:QualityOfNonBathymetricData>
+		<S131:SoundingDatum gml:id="DKAAL.SoundingDatum.1">
+			<S131:geometry>
+				<S100:curveProperty>
+					<S100:Curve srsName="http://www.opengis.net/def/crs/EPSG/0/4326"
+					            gml:id="SoundingDatum.geom.0">
+						<gml:segments>
+							<gml:LineStringSegment>
+								<gml:posList>57.0508276 9.9237178 57.0501153 9.926429 </gml:posList>
+							</gml:LineStringSegment>
+						</gml:segments>
+					</S100:Curve>
+				</S100:curveProperty>
+			</S131:geometry>
+		</S131:SoundingDatum>
+		<S131:VerticalDatumOfData gml:id="DKAAL.VerticalDatumOfData.1">
+			<S131:geometry>
+				<S100:curveProperty>
+					<S100:Curve srsName="http://www.opengis.net/def/crs/EPSG/0/4326"
+					            gml:id="VerticalDatumOfData.geom.0">
+						<gml:segments>
+							<gml:LineStringSegment>
+								<gml:posList>57.0508276 9.9237178 57.0501153 9.926429 </gml:posList>
+							</gml:LineStringSegment>
+						</gml:segments>
+					</S100:Curve>
+				</S100:curveProperty>
+			</S131:geometry>
+		</S131:VerticalDatumOfData>
+	</S131:members>
+</S131:Dataset>

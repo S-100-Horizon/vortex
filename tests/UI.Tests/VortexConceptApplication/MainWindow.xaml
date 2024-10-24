@@ -1,0 +1,57 @@
+﻿<Window x:Class="VortexConceptApplication.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:local="clr-namespace:VortexConceptApplication"
+        mc:Ignorable="d"
+        d:DataContext="{x:Static local:MainWindow.MockValue}"
+        Title="MainWindow" Height="450" Width="800" Loaded="Window_Loaded">
+    <Window.Resources>
+        <ResourceDictionary>
+            <DataTemplate x:Key="MultiSelectComboBox.SelectedItems.ItemTemplate" DataType="S100Framework.DomainModel.S124.navwarnTypeDetails">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Path=label}"/>
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="MultiSelectComboBox.Dropdown.ListBox.ItemTemplate" DataType="S100Framework.DomainModel.S124.navwarnTypeDetails">
+                <TextBlock Text="{Binding Path=label}"/>
+            </DataTemplate>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <xctk:CheckComboBox Grid.Row="0" x:Name="_checkListBox"
+                            IsDropDownOpen="False"
+                            IsEditable="False"
+                            IsSelectAllActive="True"
+                            DisplayMemberPath="label"
+                           ItemsSource="{Binding Items}">
+        </xctk:CheckComboBox>
+        
+        <xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
+               SelectedObject="{Binding SelectedProperty}" 
+               AutoGenerateProperties="True"                           
+               UpdateTextBoxSourceOnEnterKey="True"
+               ShowAdvancedOptions="True" PreparePropertyItem="_propertyGrid_PreparePropertyItem">
+            <!--<xctk:PropertyGrid.EditorDefinitions>
+                <xctk:EditorTemplateDefinition TargetProperties="navwarnTypeDetails">
+                    <xctk:EditorTemplateDefinition.EditingTemplate>
+                        <DataTemplate>
+                            <xctk:PropertyGridEditorComboBox ItemsSource="{Binding Instance.navwarnTypeDetailsList}"
+                                               SelectedValue="{Binding Instance.navwarnTypeDetails}"
+                                               DisplayMemberPath="label" />
+
+                        </DataTemplate>
+                    </xctk:EditorTemplateDefinition.EditingTemplate>
+                </xctk:EditorTemplateDefinition>
+            </xctk:PropertyGrid.EditorDefinitions>-->
+        </xctk:PropertyGrid>
+    </Grid>
+</Window>

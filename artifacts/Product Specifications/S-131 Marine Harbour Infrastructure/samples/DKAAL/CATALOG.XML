@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<?xml-model href="https://schemas.s100dev.net/schemas/S100/5.0.0/S100Catalog/20230105/S100_XC.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+	<XC:S100_ExchangeCatalogue xmlns:XC="http://www.iho.int/s100/xc/5.0"
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	  xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
+	  xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0"
+	  xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
+	  xmlns:gml="http://www.opengis.net/gml/3.2"
+	  xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0"
+	  xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0"
+	  xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
+	  xmlns:S100SE="http://www.iho.int/s100/se/5.0"
+	  xsi:schemaLocation="http://www.iho.int/s100/xc/5.0 https://schemas.s100dev.net/schemas/S100/5.0.0/S100Catalog/20230105/S100_ExchangeCatalogue.xsd">
+	  <XC:identifier>
+		<XC:identifier></XC:identifier>
+		<XC:dateTime>2024-10-10T00:00:00Z</XC:dateTime>
+	  </XC:identifier>
+	  <XC:contact>
+		<XC:organization><gco:CharacterString>IHO</gco:CharacterString></XC:organization>
+	  </XC:contact>
+	  <XC:productSpecification>
+		<XC:name></XC:name>
+		<XC:version>1.0</XC:version>
+		<XC:date>2023-03-31</XC:date>
+		<XC:productIdentifier>S-131</XC:productIdentifier>
+		<XC:number>193</XC:number>
+		<XC:compliancyCategory>category4</XC:compliancyCategory>
+	  </XC:productSpecification>
+
+	  <XC:exchangeCatalogueDescription xsi:type="lan:PT_FreeText_PropertyType">
+		<gco:CharacterString>catalogue for S-131 1.0.0. Signatures and certificates are placeholders.</gco:CharacterString>
+	  </XC:exchangeCatalogueDescription>
+	  
+	  <XC:certificates>
+		<S100SE:schemeAdministrator id="root"/>
+		<S100SE:certificate id="DK00" issuer="root"></S100SE:certificate>
+	  </XC:certificates>
+	  
+	  <XC:dataServerIdentifier>IHO</XC:dataServerIdentifier>
+
+	  <XC:datasetDiscoveryMetadata>
+		<XC:S100_DatasetDiscoveryMetadata>
+		  <XC:fileName>file:/S-131/DK00/DATASET_FILES/131DK00_DKAAL.GML</XC:fileName>
+		  <XC:description><gco:CharacterString>Edition 3 of sample dataset for S-131 Edition 1.0.0.</gco:CharacterString></XC:description>
+		  <XC:datasetID>urn:mrn:iho:prod:s131:1:0:0:dk00:dkaal:2:0</XC:datasetID>
+		  <XC:compressionFlag>false</XC:compressionFlag>
+		  <XC:dataProtection>false</XC:dataProtection>
+		  <XC:digitalSignatureReference>DSA</XC:digitalSignatureReference>
+		  <XC:digitalSignatureValue>
+			<S100SE:S100_SE_DigitalSignature id="sig1" certificateRef="DK00"></S100SE:S100_SE_DigitalSignature></XC:digitalSignatureValue>
+		  <XC:copyright>true</XC:copyright>
+		  <XC:classification gco:isoType="mco:MD_ClassificationCode">
+			<mco:MD_ClassificationCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ClassificationCode" codeListValue="unclassified">unclassified</mco:MD_ClassificationCode>
+		  </XC:classification>
+		  <XC:purpose>newEdition</XC:purpose>
+		  <XC:notForNavigation>true</XC:notForNavigation>
+		  <XC:specificUsage>
+			<mri:MD_Usage>
+			  <mri:specificUsage>
+				<gco:CharacterString>Port Information</gco:CharacterString>
+			  </mri:specificUsage>
+			</mri:MD_Usage>
+		  </XC:specificUsage>
+		  <XC:editionNumber>3</XC:editionNumber>
+		  <XC:updateNumber>0</XC:updateNumber>
+		  <XC:issueDate>2024-10-10</XC:issueDate>
+		  
+		  <XC:boundingBox>
+			<gex:westBoundLongitude><gco:Decimal>9.919813</gco:Decimal></gex:westBoundLongitude>
+			<gex:eastBoundLongitude><gco:Decimal>9.927062</gco:Decimal></gex:eastBoundLongitude>
+			<gex:southBoundLatitude><gco:Decimal>57.049081</gco:Decimal></gex:southBoundLatitude>
+			<gex:northBoundLatitude><gco:Decimal>57.052789</gco:Decimal></gex:northBoundLatitude>
+		  </XC:boundingBox>
+		  
+		  <XC:productSpecification>
+			<XC:productIdentifier>S-131</XC:productIdentifier>
+			<XC:number>193</XC:number>
+			<XC:compliancyCategory>category4</XC:compliancyCategory>
+		  </XC:productSpecification>
+		  
+		  <XC:producingAgency>
+			<cit:CI_Responsibility>
+			  <cit:role>
+				<cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="owner">owner</cit:CI_RoleCode>
+			  </cit:role>
+			  <cit:party>
+				<cit:CI_Organisation>
+				  <cit:name>
+					<gco:CharacterString>IHO</gco:CharacterString>
+				  </cit:name>
+				</cit:CI_Organisation>
+			  </cit:party>
+			</cit:CI_Responsibility>
+		  </XC:producingAgency>
+		  
+		  <XC:producerCode>DK00</XC:producerCode>
+		  
+		  <XC:encodingFormat>GML</XC:encodingFormat>
+		  
+		  <XC:comment>
+			<gco:CharacterString>Structure of dataset ID MRN is not normative. Signature and certificate values are dummies. Structure of file URI for fileName elements is tentative pending S-100 clarification. The encoding of support file references in the dataset compared to the catalog and exchange sets is not normative and may be revised.</gco:CharacterString>
+		  </XC:comment>
+		  
+		  <XC:defaultLocale>
+			<lan:PT_Locale>
+			  <lan:language>
+				<lan:LanguageCode codeList="https://schemas.s100dev.net/schemas/S100/5.1.0/resources/Codelists/cat/codelists.xml#S100_MD_LanguageCode" codeListValue="eng">English</lan:LanguageCode>
+			  </lan:language>
+			  <lan:characterEncoding>
+				<lan:MD_CharacterSetCode codeList="https://schemas.s100dev.net/schemas/S100/5.0.0/resources/Codelists/cat/codelists.xml#S100_MD_CharacterSetCode" codeListValue="UTF-8">UTF-8</lan:MD_CharacterSetCode>
+			  </lan:characterEncoding>
+			</lan:PT_Locale>
+		  </XC:defaultLocale>
+		  
+		  <XC:metadataPointOfContact>
+			<cit:CI_Responsibility>
+			  <cit:role>
+				<cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="publisher">Publisher</cit:CI_RoleCode>
+			  </cit:role>
+			  <cit:party>
+				<cit:CI_Individual>
+				  <cit:name>
+					<gco:CharacterString>Raphael Malyankar</gco:CharacterString>
+				  </cit:name>
+				</cit:CI_Individual>
+			  </cit:party>
+			</cit:CI_Responsibility>
+		  </XC:metadataPointOfContact>
+		  <XC:metadataDateStamp>2024-10-10</XC:metadataDateStamp>
+		  
+		  <XC:navigationPurpose>port</XC:navigationPurpose>
+		  
+		</XC:S100_DatasetDiscoveryMetadata>
+	  </XC:datasetDiscoveryMetadata>
+
+	  <XC:supportFileDiscoveryMetadata>
+		
+	  </XC:supportFileDiscoveryMetadata>
+
+	  <XC:catalogueDiscoveryMetadata/>
+	</XC:S100_ExchangeCatalogue>
