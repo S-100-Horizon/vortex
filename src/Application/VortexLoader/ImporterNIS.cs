@@ -758,16 +758,16 @@ namespace S100Framework.Applications
                                 /*  SOUNDG with attribute QUAPOS = 4 (approximate) will also be converted to an instance of the S101 Information type Spatial Quality (see S-101 DCEG clause 24.5), attribute quality of horizontal
                                     measurement = 4 (approximate), associated to the geometry of the Sounding feature using the
                                     association Spatial Association. */
-                                using var b = informationtype.CreateRowBuffer();
+                                using var information = informationtype.CreateRowBuffer();
 
-                                b["ps"] = "S-101";
-                                b["code"] = "SpatialQuality";
+                                information["ps"] = "S-101";
+                                information["code"] = "SpatialQuality";
 
                                 var row = new S100Framework.DomainModel.S101.InformationTypes.SpatialQuality {
                                     qualityOfHorizontalMeasurement = DomainModel.S101.qualityOfHorizontalMeasurement.Approximate,
                                 };
-                                b["json"] = System.Text.Json.JsonSerializer.Serialize(row);
-                                using var _ = informationtype.CreateRow(b);
+                                information["json"] = System.Text.Json.JsonSerializer.Serialize(row);
+                                using var _ = informationtype.CreateRow(information);
                             }
                         }
                         else {

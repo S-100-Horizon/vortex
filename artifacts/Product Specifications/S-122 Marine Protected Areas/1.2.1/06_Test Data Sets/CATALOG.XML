@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="https://schemas.s100dev.net/schemas/S100/5.2.0/S100Catalog/20240415/S100_XC.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<XC:S100_ExchangeCatalogue xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:gml="http://www.opengis.net/gml/3.2"
+    xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:cit="http://standards.iso.org/iso/19115/-3/cit/2.0"
+    xmlns:gco="http://standards.iso.org/iso/19115/-3/gco/1.0"
+    xmlns:gcx="http://standards.iso.org/iso/19115/-3/gcx/1.0"
+    xmlns:mco="http://standards.iso.org/iso/19115/-3/mco/1.0"
+    xmlns:mri="http://standards.iso.org/iso/19115/-3/mri/1.0"
+    xmlns:gex="http://standards.iso.org/iso/19115/-3/gex/1.0"
+    xmlns:lan="http://standards.iso.org/iso/19115/-3/lan/1.0"
+    xmlns:XC="http://www.iho.int/s100/xc/5.2"
+    xmlns:S100SE="http://www.iho.int/s100/se/5.2"
+    xmlns:mmi="http://standards.iso.org/iso/19115/-3/mmi/1.0" xsi:schemaLocation="http://www.iho.int/s100/xc/5.2 https://schemas.s100dev.net/schemas/S100/5.2.0/S100Catalog/20240415/S100_ExchangeCatalogue.xsd">
+
+    <XC:identifier>
+        <XC:identifier>9d6cb6e5-4048-4d0b-a683-f745622db5bb</XC:identifier>
+        <XC:dateTime>2024-09-19T00:00:00Z</XC:dateTime>
+    </XC:identifier>
+    <XC:contact>
+        <XC:organization>
+            <gco:CharacterString>Bluemap</gco:CharacterString>
+        </XC:organization>
+        <XC:phone>
+            <cit:number>
+                <gco:CharacterString>+82-42-710-7022</gco:CharacterString>
+            </cit:number>
+        </XC:phone>
+        <XC:address>
+            <cit:deliveryPoint>
+                <gco:CharacterString>26, Eungubinam-ro 7beon-gil</gco:CharacterString>
+            </cit:deliveryPoint>
+            <cit:city>
+                <gco:CharacterString>Yuseong-gu</gco:CharacterString>
+            </cit:city>
+            <cit:administrativeArea>
+                <gco:CharacterString>Daejeon</gco:CharacterString>
+            </cit:administrativeArea>
+            <cit:postalCode>
+                <gco:CharacterString>34087</gco:CharacterString>
+            </cit:postalCode>
+            <cit:country>
+                <gco:CharacterString>Republic of Korea</gco:CharacterString>
+            </cit:country>
+        </XC:address>
+    </XC:contact>
+    <XC:productSpecification>
+        <XC:name>Marine Protected Areas</XC:name>
+        <XC:version>1.2.1</XC:version>
+        <XC:date>2024-09-19</XC:date>
+        <XC:productIdentifier>S-122</XC:productIdentifier>
+        <XC:number>01</XC:number>
+        <XC:compliancyCategory>category4</XC:compliancyCategory>
+    </XC:productSpecification>
+    <XC:defaultLocale>
+        <lan:PT_Locale>
+            <lan:language>
+                <lan:LanguageCode codeList="https://schemas.s100dev.net/schemas/S100/5.1.0/resources/Codelists/cat/codelists.xml#S100_MD_LanguageCode" codeListValue="eng">English</lan:LanguageCode>
+            </lan:language>
+            <lan:characterEncoding>
+                <lan:MD_CharacterSetCode codeList="https://schemas.s100dev.net/schemas/S100/5.1.0/resources/Codelists/cat/codelists.xml#S100_MD_CharacterSetCode" codeListValue="UTF-8">UTF-8</lan:MD_CharacterSetCode>
+            </lan:characterEncoding>
+        </lan:PT_Locale>
+    </XC:defaultLocale>
+
+    <XC:exchangeCatalogueDescription xsi:type="lan:PT_FreeText_PropertyType">
+        <gco:CharacterString>Sample exchange catalogue for S-122 1.2.1.</gco:CharacterString>
+    </XC:exchangeCatalogueDescription>
+
+    <XC:dataServerIdentifier>IHO</XC:dataServerIdentifier>
+    <XC:datasetDiscoveryMetadata>
+        <XC:S100_DatasetDiscoveryMetadata>
+            <XC:fileName>file:/S-101/DATASET_FILES/122TESTDATASET.gml</XC:fileName>
+            <XC:description>
+                <gco:CharacterString>Dataset 1</gco:CharacterString>
+            </XC:description>
+            <XC:compressionFlag>false</XC:compressionFlag>
+            <XC:dataProtection>false</XC:dataProtection>
+            <XC:copyright>true</XC:copyright>
+            <XC:classification gco:isoType="mco:MD_ClassificationCode">
+                <mco:MD_ClassificationCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#MD_ClassificationCode" codeListValue="unclassified">unclassified</mco:MD_ClassificationCode>
+            </XC:classification>
+            <XC:purpose>newDataset</XC:purpose>
+            <XC:notForNavigation>true</XC:notForNavigation>
+            <XC:editionNumber>1</XC:editionNumber>
+            <XC:updateNumber>0</XC:updateNumber>
+            <XC:updateApplicationDate>2024-09-19</XC:updateApplicationDate>
+            <XC:issueDate>2024-09-19</XC:issueDate>
+            <XC:boundingBox>
+                <gex:westBoundLongitude>
+                    <gco:Decimal>54.5001287</gco:Decimal>
+                </gex:westBoundLongitude>
+                <gex:eastBoundLongitude>
+                    <gco:Decimal>70.4610429</gco:Decimal>
+                </gex:eastBoundLongitude>
+                <gex:southBoundLatitude>
+                    <gco:Decimal>-30.5209190</gco:Decimal>
+                </gex:southBoundLatitude>
+                <gex:northBoundLatitude>
+                    <gco:Decimal>-20.9955811</gco:Decimal>
+                </gex:northBoundLatitude>
+            </XC:boundingBox>
+            <XC:temporalExtent>
+                <XC:timeInstantEnd>2024-09-19T00:00:00Z</XC:timeInstantEnd>
+            </XC:temporalExtent>
+            <XC:productSpecification>
+                <XC:productIdentifier>S-122</XC:productIdentifier>
+                <XC:number>01</XC:number>
+                <XC:compliancyCategory>category4</XC:compliancyCategory>
+            </XC:productSpecification>
+            <XC:producingAgency>
+                <cit:CI_Responsibility>
+                    <cit:role>
+                        <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="owner">owner</cit:CI_RoleCode>
+                    </cit:role>
+                    <cit:party>
+                        <cit:CI_Organisation>
+                            <cit:name>
+                                <gco:CharacterString>Bluemap</gco:CharacterString>
+                            </cit:name>
+                        </cit:CI_Organisation>
+                    </cit:party>
+                </cit:CI_Responsibility>
+            </XC:producingAgency>
+
+            <XC:encodingFormat>ISO/IEC 8211</XC:encodingFormat>
+
+            <XC:dataCoverage>
+                <XC:boundingPolygon>
+                    <gex:polygon>
+                        <gml:Polygon gml:id="p1">
+                            <gml:exterior>
+                                <gml:LinearRing>
+                                    <gml:posList srsName="http://www.opengis.net/def/crs/EPSG/0/4326">-30.5209190 54.5001287 -20.9955811 54.5001287 -20.9955811 70.4610429 -30.5209190 70.4610429 -30.5209190 54.5001287</gml:posList>
+                                </gml:LinearRing>
+                            </gml:exterior>
+                        </gml:Polygon>
+                    </gex:polygon>
+                </XC:boundingPolygon>
+                <XC:maximumDisplayScale>5000</XC:maximumDisplayScale>
+                <XC:minimumDisplayScale>100000000</XC:minimumDisplayScale>
+            </XC:dataCoverage>
+
+
+            <XC:defaultLocale>
+                <lan:PT_Locale>
+                    <lan:language>
+                        <lan:LanguageCode codeList="https://schemas.s100dev.net/schemas/S100/5.1.0/resources/Codelists/cat/codelists.xml#S100_MD_LanguageCode" codeListValue="eng">English</lan:LanguageCode>
+                    </lan:language>
+                    <lan:characterEncoding>
+                        <lan:MD_CharacterSetCode codeList="https://schemas.s100dev.net/schemas/S100/5.1.0/resources/Codelists/cat/codelists.xml#S100_MD_CharacterSetCode" codeListValue="UTF-8">UTF-8</lan:MD_CharacterSetCode>
+                    </lan:characterEncoding>
+                </lan:PT_Locale>
+            </XC:defaultLocale>
+
+            <XC:metadataPointOfContact>
+                <cit:CI_Responsibility>
+                    <cit:role>
+                        <cit:CI_RoleCode codeList="http://standards.iso.org/iso/19115/resources/Codelists/cat/codelists.xml#CI_RoleCode" codeListValue="publisher">Publisher</cit:CI_RoleCode>
+                    </cit:role>
+                    <cit:party>
+                        <cit:CI_Organisation>
+                            <cit:name>
+                                <gco:CharacterString>Bluemap</gco:CharacterString>
+                            </cit:name>
+                        </cit:CI_Organisation>
+                    </cit:party>
+                </cit:CI_Responsibility>
+            </XC:metadataPointOfContact>
+            <XC:metadataDateStamp>2024-09-19</XC:metadataDateStamp>
+
+            <XC:navigationPurpose>overview</XC:navigationPurpose>
+
+        </XC:S100_DatasetDiscoveryMetadata>
+
+    </XC:datasetDiscoveryMetadata>
+    
+    <XC:catalogueDiscoveryMetadata>
+        <XC:S100_CatalogueDiscoveryMetadata>
+            <XC:fileName>file:/S-101/CATALOGUES/S-122_FC_1.2.1.XML</XC:fileName>
+            <XC:purpose>newEdition</XC:purpose>
+            <XC:editionNumber>1</XC:editionNumber>
+            <XC:scope>featureCatalogue</XC:scope>
+            <XC:versionNumber>1.2.1</XC:versionNumber>
+            <XC:issueDate>2024-09-16</XC:issueDate>
+            <XC:productSpecification>
+                <XC:productIdentifier>S-122</XC:productIdentifier>
+                <XC:number>01</XC:number>
+                <XC:compliancyCategory>category4</XC:compliancyCategory>
+            </XC:productSpecification>
+            <XC:compressionFlag>false</XC:compressionFlag>
+            <XC:defaultLocale>
+                <lan:PT_Locale>
+                    <lan:language>
+                        <lan:LanguageCode codeList="https://schemas.s100dev.net/schemas/S100/5.1.0/resources/Codelists/cat/codelists.xml#S100_MD_LanguageCode" codeListValue="eng">English</lan:LanguageCode>
+                    </lan:language>
+                    <lan:characterEncoding>
+                        <lan:MD_CharacterSetCode codeList="https://schemas.s100dev.net/schemas/S100/5.1.0/resources/Codelists/cat/codelists.xml#S100_MD_CharacterSetCode" codeListValue="UTF-8">UTF-8</lan:MD_CharacterSetCode>
+                    </lan:characterEncoding>
+                </lan:PT_Locale>
+            </XC:defaultLocale>
+        </XC:S100_CatalogueDiscoveryMetadata>
+
+        <XC:S100_CatalogueDiscoveryMetadata>
+            <XC:fileName>file:/S-101/CATALOGUES/S-122PortrayalCatalogue</XC:fileName>
+            <XC:purpose>newEdition</XC:purpose>
+            <XC:editionNumber>1</XC:editionNumber>
+            <XC:scope>portrayalCatalogue</XC:scope>
+            <XC:versionNumber>1.2.1</XC:versionNumber>
+            <XC:issueDate>2024-09-19</XC:issueDate>
+            <XC:productSpecification>
+                <XC:productIdentifier>S-122</XC:productIdentifier>
+                <XC:number>01</XC:number>
+                <XC:compliancyCategory>category4</XC:compliancyCategory>
+            </XC:productSpecification>
+            <XC:compressionFlag>true</XC:compressionFlag>
+            <XC:defaultLocale>
+                <lan:PT_Locale>
+                    <lan:language>
+                        <lan:LanguageCode codeList="https://schemas.s100dev.net/schemas/S100/5.1.0/resources/Codelists/cat/codelists.xml#S100_MD_LanguageCode" codeListValue="eng">English</lan:LanguageCode>
+                    </lan:language>
+                    <lan:characterEncoding>
+                        <lan:MD_CharacterSetCode codeList="https://schemas.s100dev.net/schemas/S100/5.1.0/resources/Codelists/cat/codelists.xml#S100_MD_CharacterSetCode" codeListValue="UTF-8">UTF-8</lan:MD_CharacterSetCode>
+                    </lan:characterEncoding>
+                </lan:PT_Locale>
+            </XC:defaultLocale>
+        </XC:S100_CatalogueDiscoveryMetadata>
+    </XC:catalogueDiscoveryMetadata>
+</XC:S100_ExchangeCatalogue>

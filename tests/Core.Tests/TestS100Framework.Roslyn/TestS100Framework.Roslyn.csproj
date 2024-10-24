@@ -22,6 +22,9 @@
     <Content Include="..\..\..\artifacts\Product Specifications\S-101 Electronic Navigational Chart\1.5.0\S-101_FC_1.5.0.xml" Link="Artifacts\S-101_FC_1.5.0.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="..\..\..\artifacts\Product Specifications\S-122 Marine Protected Areas\1.2.1\jpS-122_FC_1.2.1.xml" Link="Artifacts\jpS-122_FC_1.2.1.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="..\..\..\artifacts\Product Specifications\S-124 Navigational Warnings\1.5.0\S-124FC_1.5_20240330.xml" Link="Artifacts\S-124FC_1.5_20240330.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -67,6 +67,11 @@ namespace S100Framework.Catalogues
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S101.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S101.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
             },
+            new FeatureCatalogue("S-122", DomainModel.S122.Information.Version) {
+                Assembly = typeof(DomainModel.S122.Information).Assembly,
+                FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S122.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
+                InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S122.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
+            },
             new FeatureCatalogue("S-124", DomainModel.S124.Information.Version) {
                 Assembly = typeof(DomainModel.S124.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S124.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
