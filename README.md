@@ -1,4 +1,4 @@
-# vortex
+# Vortex
 S-100: An Unexpected Journey
 
 ## Project Overview:
