@@ -60,7 +60,7 @@ BenchmarkDotNet.Artifacts/
 # .NET Core
 project.lock.json
 project.fragment.lock.json
-artifacts/
+# artifacts/
 
 # ASP.NET Scaffolding
 ScaffoldingReadMe.txt
@@ -396,3 +396,13 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+/tests/Core.Tests/TestS100Framework.Roslyn/S-101_FC.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/S-101_ViewModel.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/S-124_FC.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/S-124_ViewModel.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/S-128_FC.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/S-128_ViewModel.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/S-131_FC.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/S-131_ViewModel.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/S-122_FC.cs
+/tests/Core.Tests/TestS100Framework.Roslyn/S-122_ViewModel.cs

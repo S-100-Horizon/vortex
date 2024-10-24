@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ArcGIS defaultAssembly="VortexProAppModule.dll"
+        defaultNamespace="VortexProAppModule"
+        xmlns="http://schemas.esri.com/DADF/Registry"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://schemas.esri.com/DADF/Registry file:///C:/Program%20Files/ArcGIS/Pro/bin/ArcGIS.Desktop.Framework.xsd">
+
+  <AddInInfo id="{e88a79e5-f75d-4324-b52a-38eca2a1f9a1}" version="3.4.0" desktopVersion="3.3.54247">
+    <Name>VortexProAppModule</Name>   
+    <Description>VortexProAppModule description</Description>
+    <Image>Images\AddinDesktop32.png</Image>
+    <Author>Jens Søe</Author>
+    <Company>Acme</Company>
+    <Date>7/15/2024 3:51:54 PM</Date>
+    <Subject>Framework</Subject>
+    <!-- Note subject can be one or more of these topics:
+                    Content, Framework, Editing, Geodatabase, Geometry, Geoprocessing, Layouts, Map Authoring, Map Exploration -->
+  </AddInInfo>
+
+  <modules>
+    <insertModule id="VortexProAppModule_Module" className="Module" autoLoad="true" caption="Vortex">
+      <!-- uncomment to have the control hosted on a separate tab-->
+      <tabs>
+        <!--<tab id="VortexProAppModule_Tab1" caption="New Tab">
+          <group refID="VortexProAppModule_Group1"/>
+        </tab>-->
+      </tabs>
+              
+      <groups>
+      </groups>
+      
+      <controls>
+        <!-- add your controls here -->
+      </controls> 
+      
+    </insertModule>   
+  </modules>
+
+  <categories>
+    <updateCategory refID="esri_editing_AttributeTabs">
+      <insertComponent id="S100AttributeTab" className="S100AttributeTabViewModel">
+        <content guid="{6a5e0ba6-3da6-4c73-b7c0-e5434a4a100e}" className="Views.S100AttributeTabView"  L_name="S-100 Editor"/>
+      </insertComponent>
+    </updateCategory>
+  </categories>
+</ArcGIS>

@@ -1,0 +1,2769 @@
+﻿<html xmlns:S100FC="http://www.iho.int/S100FC/5.2" xmlns:S100Base="http://www.iho.int/S100Base/5.0" xmlns:S100CI="http://www.iho.int/S100CI/5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:S100CD="http://www.iho.int/S100CD/5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <head>
+    <META http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"><script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script><title>FeatureCatalogue</title>
+    <style>
+          .accordion {
+          background-color: #eee;
+          color: #444;
+          cursor: pointer;
+          padding: 18px;
+          width: 100%;
+          border: none;
+          text-align: left;
+          outline: none;
+          font-size: 15px;
+          transition: 0.4s;
+          }
+
+          .active, .accordion:hover {
+          background-color: #ccc;
+          }
+
+          .panel {
+          padding: 0 18px;
+          display: none;
+          background-color: white;
+          overflow: hidden;
+          }
+
+          details {
+          border: 1px solid #aaa;
+          border-radius: 4px;
+          padding: 0.5em 0.5em 0;
+          }
+
+          summary {
+          font-weight: bold;
+          margin: -0.5em -0.5em 0;
+          padding: 0.5em;
+          }
+          
+          details{
+          margin-bottom: 8px;
+          }
+          details[open] {
+          padding: 0.5em;
+          }
+
+          details[open] summary {
+          border-bottom: 1px solid #aaa;
+          margin-bottom: 0.5em;
+          }
+
+          table th{
+          padding-right: 8px;
+          }
+          table th,td{
+          vertical-align: top;
+          text-align: left;
+          }
+
+          code {
+          padding: 0px;
+          }
+          .listedValues{
+          border-spacing: 0px;
+          }
+          .listedValues td{
+          padding-left: 8px;
+          }
+
+        </style>
+  </head>
+  <body>
+    <div class="container">
+      <h2>FeatureCatalogue</h2>
+      <div class="row">
+        <div class="col-md-12">
+          <table>
+            <tr>
+              <th>name</th>
+              <td>S-124: Navigational Warnings</td>
+            </tr>
+            <tr>
+              <th>scope</th>
+              <td>Global</td>
+            </tr>
+            <tr>
+              <th>versionNumber</th>
+              <td>1.5</td>
+            </tr>
+            <tr>
+              <th>versionDate</th>
+              <td>2024-03-30</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6"><article class=""><hr>
+            <h3>Feature types</h3><a id="NAVWARNPart"></a><details open=""><summary><code>NAVWARNPart</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>NAVWARNPart</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>NAVWARN Part</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Navigational warning information that may be geo-located.</td>
+                </tr>
+                <tr>
+                  <th>
+                            permittedPrimitives
+                          </th>
+                  <td>noGeometry</td>
+                </tr>
+                <tr>
+                  <th>
+                            permittedPrimitives
+                          </th>
+                  <td>point</td>
+                </tr>
+                <tr>
+                  <th>
+                            permittedPrimitives
+                          </th>
+                  <td>curve</td>
+                </tr>
+                <tr>
+                  <th>
+                            permittedPrimitives
+                          </th>
+                  <td>surface</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#featureName">featureName</a>[0..*]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#featureReference">featureReference</a>[0..*]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#fixedDateRange">fixedDateRange</a>[0..*]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#warningInformation">warningInformation</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#restriction">restriction</a>
+                              permittedValues: [
+                              1,
+                              2,
+                              3,
+                              4,
+                              5,
+                              
+                              ]
+                            </td>
+                </tr>
+              </table></details><a id="NAVWARNAreaAffected"></a><details open=""><summary><code>NAVWARNAreaAffected</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>NAVWARNAreaAffected</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>NAVWARN Area Affected</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Used to enhance the user’s awareness of an affected area following some incident.</td>
+                </tr>
+                <tr>
+                  <th>
+                            permittedPrimitives
+                          </th>
+                  <td>point</td>
+                </tr>
+                <tr>
+                  <th>
+                            permittedPrimitives
+                          </th>
+                  <td>curve</td>
+                </tr>
+                <tr>
+                  <th>
+                            permittedPrimitives
+                          </th>
+                  <td>surface</td>
+                </tr>
+              </table></details><a id="TextPlacement"></a><details open=""><summary><code>TextPlacement</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>TextPlacement</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Text Placement</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The Text Placement feature is used in association with the Feature Name attribute or a light description to optimize text positioning in ECDIS.</td>
+                </tr>
+                <tr>
+                  <th>
+                            permittedPrimitives
+                          </th>
+                  <td>point</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#text">text</a>[0..1]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#textOffsetBearing">textOffsetBearing</a>[1..1]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#textOffsetDistance">textOffsetDistance</a>[1..1]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#textRotation">textRotation</a>[0..1]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#textType">textType</a>[0..1]
+                              permittedValues: [
+                              1,
+                              2,
+                              
+                              ]
+                            </td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#scaleMinimum">scaleMinimum</a>[0..1]</td>
+                </tr>
+              </table></details></article></div>
+        <div class="col-md-6"><article class=""><hr>
+            <h3>Information types</h3><a id="NAVWARNPreamble"></a><details open=""><summary><code>NAVWARNPreamble</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>NAVWARNPreamble</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>NAVWARN Preamble</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Preamble information for warnings, notices and other types of messages in a navigational warning scheme.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#affectedChartPublications">affectedChartPublications</a>[0..*]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#generalArea">generalArea</a>[1..*]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#locality">locality</a>[0..*]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#messageSeriesIdentifier">messageSeriesIdentifier</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#nAVWARNTitle">nAVWARNTitle</a>[0..*]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#cancellationDate">cancellationDate</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#intService">intService</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#navwarnTypeGeneral">navwarnTypeGeneral</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#publicationTime">publicationTime</a></td>
+                </tr>
+              </table></details><a id="References"></a><details open=""><summary><code>References</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>References</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>References</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>References to for example a navigational warning, nautical publication or chart.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#messageSeriesIdentifier">messageSeriesIdentifier</a>[0..*]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#noMessageOnHand">noMessageOnHand</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#referenceCategory">referenceCategory</a></td>
+                </tr>
+              </table></details></article></div>
+      </div>
+      <div class="row">
+        <div class="col-md-6"><article class=""><hr>
+            <h3>Complex attributes</h3><a id="featureName"></a><details open=""><summary><code>featureName</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>featureName</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Feature Name</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Provides the name of an entity, defines the national language of the name, and provides the option to display the name at various system display settings.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#language">language</a>[1..1]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#name">name</a>[1..1]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#nameUsage">nameUsage</a>[0..1]
+                              permittedValues: [
+                              1,
+                              2,
+                              3,
+                              
+                              ]
+                            </td>
+                </tr>
+              </table></details><a id="dateTimeRange"></a><details open=""><summary><code>dateTimeRange</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>dateTimeRange</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Date Time Range</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The range of time a feature is valid for.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#dateTimeEnd">dateTimeEnd</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#dateTimeStart">dateTimeStart</a></td>
+                </tr>
+              </table></details><a id="eNCFeatureReference"></a><details open=""><summary><code>eNCFeatureReference</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>eNCFeatureReference</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>ENC Feature Reference</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Reference to feature(s) in an ENC dataset.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#editionNumber">editionNumber</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#eNCName">eNCName</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#featureObjectIdentifier">featureObjectIdentifier</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#updateNumber">updateNumber</a></td>
+                </tr>
+              </table></details><a id="featureReference"></a><details open=""><summary><code>featureReference</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>featureReference</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Feature Reference</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Reference to an object or feature that is external to the dataset.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#featureIdentifier">featureIdentifier</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#dateTimeRange">dateTimeRange</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#atoNNumber">atoNNumber</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#eNCFeatureReference">eNCFeatureReference</a></td>
+                </tr>
+              </table></details><a id="fixedDateRange"></a><details open=""><summary><code>fixedDateRange</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>fixedDateRange</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Fixed Date Range</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>An active period of a single fixed event or occurrence, as the date range between discrete start and end dates.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#dateEnd">dateEnd</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#dateStart">dateStart</a></td>
+                </tr>
+              </table></details><a id="information"></a><details open=""><summary><code>information</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>information</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Information</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Textual information about the feature. The information may be provided as a string of text or as a file name of a single external text file that contains the text.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#fileLocator">fileLocator</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#fileReference">fileReference</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#headline">headline</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#language">language</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#text">text</a></td>
+                </tr>
+              </table></details><a id="warningInformation"></a><details open=""><summary><code>warningInformation</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>warningInformation</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Warning Information</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Detailed information about a warning.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#information">information</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#navwarnTypeDetails">navwarnTypeDetails</a></td>
+                </tr>
+              </table></details><a id="chartAffected"></a><details open=""><summary><code>chartAffected</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>chartAffected</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Chart Affected</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Name or number of affected national paper chart or ENC.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#chartNumber">chartNumber</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#chartPlanNumber">chartPlanNumber</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#editionDate">editionDate</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#lastNoticeDate">lastNoticeDate</a></td>
+                </tr>
+              </table></details><a id="affectedChartPublications"></a><details open=""><summary><code>affectedChartPublications</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>affectedChartPublications</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Affected Chart Publications</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Identifies paper charts, ENCs or publications that are affected by the information.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#chartAffected">chartAffected</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#chartPublicationIdentifier">chartPublicationIdentifier</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#internationalChartAffected">internationalChartAffected</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#language">language</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#publicationAffected">publicationAffected</a></td>
+                </tr>
+              </table></details><a id="locationName"></a><details open=""><summary><code>locationName</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>locationName</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Location Name</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Name of an area locality as defined by a competent authority.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#language">language</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#text">text</a></td>
+                </tr>
+              </table></details><a id="generalArea"></a><details open=""><summary><code>generalArea</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>generalArea</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>General Area</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The general area used to identify which broad geographic region the message affects. The geographical name which is selected for the general area should be one that can be found on charts and in nautical publications. (S-53, 6).</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#localityIdentifier">localityIdentifier</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#locationName">locationName</a></td>
+                </tr>
+              </table></details><a id="locality"></a><details open=""><summary><code>locality</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>locality</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Locality</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Name and/or identifier of an area locality.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#localityIdentifier">localityIdentifier</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#locationName">locationName</a></td>
+                </tr>
+              </table></details><a id="messageSeriesIdentifier"></a><details open=""><summary><code>messageSeriesIdentifier</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>messageSeriesIdentifier</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Message Series Identifier</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Message series identification of the warning or notice.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#agencyResponsibleForProduction">agencyResponsibleForProduction</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#countryName">countryName</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#nameOfSeries">nameOfSeries</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#warningIdentifier">warningIdentifier</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#warningNumber">warningNumber</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#warningType">warningType</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#year">year</a></td>
+                </tr>
+              </table></details><a id="nAVWARNTitle"></a><details open=""><summary><code>nAVWARNTitle</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>nAVWARNTitle</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>NAVWARN Title</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Title of the navigational warning.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#language">language</a></td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#text">text</a></td>
+                </tr>
+              </table></details></article></div>
+        <div class="col-md-6"><article class=""><hr>
+            <h3>Simple attributes</h3><a id="language"></a><details open=""><summary><code>language</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>language</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Language</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The method of human communication, either spoken or written, consisting of the use of words in a structured and conventional way.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="textOffsetBearing"></a><details open=""><summary><code>textOffsetBearing</code>: integer</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>textOffsetBearing</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Text Offset Bearing</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The angular distance measured from true north that text associated with a feature is positioned from the feature in an end-user system.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>integer</td>
+                </tr>
+              </table></details><a id="textOffsetDistance"></a><details open=""><summary><code>textOffsetDistance</code>: integer</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>textOffsetDistance</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Text Offset Distance</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The distance that text associated with a feature is positioned from the feature in an end-user system.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>integer</td>
+                </tr>
+              </table></details><a id="textRotation"></a><details open=""><summary><code>textRotation</code>: boolean</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>textRotation</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Text Rotation</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>A statement that expresses if text associated with a feature is to be rotated in the ECDIS display or not.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>boolean</td>
+                </tr>
+              </table></details><a id="textType"></a><details open=""><summary><code>textType</code>: enumeration</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>textType</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Text Type</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The attribute from which a text string is derived.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>enumeration</td>
+                </tr>
+                <tr>
+                  <th>
+                            listedValues
+                          </th>
+                  <td>
+                    <table class="listedValues">
+                      <tr>
+                        <th><code>Name</code></th>
+                        <td>1</td>
+                        <td>IHOREG</td>
+                        <td>The individual name of a feature.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Light Characteristic</code></th>
+                        <td>2</td>
+                        <td>IHOREG</td>
+                        <td>The distinct character, such as fixed, flashing, or occulting, which is given to each light to avoid confusion with neighbouring ones.</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table></details><a id="name"></a><details open=""><summary><code>name</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>name</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>OBJNAM</td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Name</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The individual name of a feature.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="nameUsage"></a><details open=""><summary><code>nameUsage</code>: enumeration</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>nameUsage</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Name Usage</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Classification of the type and display level of the name of a feature in an end-use system.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>enumeration</td>
+                </tr>
+                <tr>
+                  <th>
+                            listedValues
+                          </th>
+                  <td>
+                    <table class="listedValues">
+                      <tr>
+                        <th><code>Default Name Display</code></th>
+                        <td>1</td>
+                        <td>
+                        </td>
+                        <td>The name is intended to be displayed when the end-user system is set to the default name/text display setting.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Alternate Name Display</code></th>
+                        <td>2</td>
+                        <td>
+                        </td>
+                        <td>The name is intended to be displayed when the end-user system is set to an alternate name/text display setting, for example an alternate language.</td>
+                      </tr>
+                      <tr>
+                        <th><code>No Chart Display</code></th>
+                        <td>3</td>
+                        <td>
+                        </td>
+                        <td>The name or text is not intended to be displayed.</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table></details><a id="featureIdentifier"></a><details open=""><summary><code>featureIdentifier</code>: URN</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>featureIdentifier</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Feature Identifier</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>An identifier referencing an object or feature that is external to the dataset, expressed in Uniform Resource Name (URN) format.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>URN</td>
+                </tr>
+              </table></details><a id="dateTimeEnd"></a><details open=""><summary><code>dateTimeEnd</code>: dateTime</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>dateTimeEnd</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Date Time End</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The end of a time range, expressed in Universal Time Coordinated (UTC).</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>dateTime</td>
+                </tr>
+              </table></details><a id="dateTimeStart"></a><details open=""><summary><code>dateTimeStart</code>: dateTime</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>dateTimeStart</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Date Time Start</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The beginning of a time range, expressed in Universal Time Coordinated (UTC).</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>dateTime</td>
+                </tr>
+              </table></details><a id="atoNNumber"></a><details open=""><summary><code>atoNNumber</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>atoNNumber</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>AtoN Number</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Identifier from a list of Aids to Navigation publication, such as List of Lights.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="editionNumber"></a><details open=""><summary><code>editionNumber</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>editionNumber</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Edition Number</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Edition of the ENC being referenced.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="eNCName"></a><details open=""><summary><code>eNCName</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>eNCName</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>ENC Name</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The name of the ENC dataset. This is generally indicated in the dataset metadata (discovery or embedded) and will usually be the same as the name of the dataset file, possibly without the file extension component.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="featureObjectIdentifier"></a><details open=""><summary><code>featureObjectIdentifier</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>featureObjectIdentifier</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Feature Object Identifier</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>FOID of the referenced ENC object.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="updateNumber"></a><details open=""><summary><code>updateNumber</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>updateNumber</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Update Number</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Update number of the ENC being referenced.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="dateEnd"></a><details open=""><summary><code>dateEnd</code>: S100_TruncatedDate</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>dateEnd</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>DATEND</td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Date End</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The latest date on which an object (for example a buoy) will be present.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>S100_TruncatedDate</td>
+                </tr>
+              </table></details><a id="dateStart"></a><details open=""><summary><code>dateStart</code>: S100_TruncatedDate</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>dateStart</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>DATSTA</td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Date Start</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The earliest date on which an object (for example a buoy) will be present.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>S100_TruncatedDate</td>
+                </tr>
+              </table></details><a id="fileLocator"></a><details open=""><summary><code>fileLocator</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>fileLocator</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>File Locator</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The location of a fragment of text or other information in a support file.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="fileReference"></a><details open=""><summary><code>fileReference</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>fileReference</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>TXTDSC</td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>File Reference</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The file name of an externally referenced text file.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="headline"></a><details open=""><summary><code>headline</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>headline</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Headline</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Words set at the head of a passage or page to introduce or categorize.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="text"></a><details open=""><summary><code>text</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>text</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>INFORM; NINFOM</td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Text</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>A non-formatted digital text string.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="navwarnTypeDetails"></a><details open=""><summary><code>navwarnTypeDetails</code>: S100_CodeList</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>navwarnTypeDetails</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Navwarn Type Details</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Detailed type of a warning or hazard.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>S100_CodeList</td>
+                </tr>
+              </table></details><a id="restriction"></a><details open=""><summary><code>restriction</code>: enumeration</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>restriction</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>RESTRN</td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Restriction</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The official legal statute of each kind of restricted area.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>enumeration</td>
+                </tr>
+                <tr>
+                  <th>
+                            listedValues
+                          </th>
+                  <td>
+                    <table class="listedValues">
+                      <tr>
+                        <th><code>Anchoring Prohibited</code></th>
+                        <td>1</td>
+                        <td>
+                        </td>
+                        <td>An area within which anchoring is not permitted.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Anchoring Restricted</code></th>
+                        <td>2</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which anchoring is restricted in accordance with certain specified conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Fishing Prohibited</code></th>
+                        <td>3</td>
+                        <td>
+                        </td>
+                        <td>An area within which fishing is not permitted.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Fishing Restricted</code></th>
+                        <td>4</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which fishing is restricted in accordance with certain specified conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Trawling Prohibited</code></th>
+                        <td>5</td>
+                        <td>
+                        </td>
+                        <td>An area within which trawling is not permitted.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Trawling Restricted</code></th>
+                        <td>6</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which trawling is restricted in accordance with certain specified conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Entry Prohibited</code></th>
+                        <td>7</td>
+                        <td>
+                        </td>
+                        <td>An area within which navigation and/or anchoring is prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Entry Restricted</code></th>
+                        <td>8</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which navigation is restricted in accordance with certain specified conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Dredging Prohibited</code></th>
+                        <td>9</td>
+                        <td>
+                        </td>
+                        <td>An area within which dredging is not permitted.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Dredging Restricted</code></th>
+                        <td>10</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which dredging is restricted in accordance with certain specified conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Diving Prohibited</code></th>
+                        <td>11</td>
+                        <td>
+                        </td>
+                        <td>An area within which diving is not permitted.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Diving Restricted</code></th>
+                        <td>12</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which diving is restricted in accordance with certain specified conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>No Wake</code></th>
+                        <td>13</td>
+                        <td>
+                        </td>
+                        <td>Mariners must adjust the speed of their vessels to reduce the wave or wash which may cause erosion or disturb moored vessels.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Area To Be Avoided</code></th>
+                        <td>14</td>
+                        <td>
+                        </td>
+                        <td>An IMO declared routeing measure comprising an area within defined limits in which either navigation is particularly hazardous or it is exceptionally important to avoid casualties and which should be avoided by all ships, or certain classes of ships.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Construction Prohibited</code></th>
+                        <td>15</td>
+                        <td>
+                        </td>
+                        <td>The erection of permanent or temporary fixed structures or artificial islands is prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Discharging Prohibited</code></th>
+                        <td>16</td>
+                        <td>
+                        </td>
+                        <td>An area within which discharging or dumping is prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Discharging Restricted</code></th>
+                        <td>17</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by an appropriate authority, within which discharging or dumping is restricted in accordance with specified conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Industrial or Mineral Exploration/Development Prohibited</code></th>
+                        <td>18</td>
+                        <td>
+                        </td>
+                        <td>An area within which industrial or mineral exploration and development are prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Industrial or Mineral Exploration/Development Restricted</code></th>
+                        <td>19</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by an appropriate authority, within which industrial or mineral exploration and development is restricted in accordance with certain specified conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Drilling Prohibited</code></th>
+                        <td>20</td>
+                        <td>
+                        </td>
+                        <td>An area within which excavating a hole on the sea-bottom with a drill is prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Drilling Restricted</code></th>
+                        <td>21</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by an appropriate authority, within which excavating a hole on the sea-bottom with a drill is restricted in accordance with certain specified conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Removal of Historical Artefacts Prohibited</code></th>
+                        <td>22</td>
+                        <td>
+                        </td>
+                        <td>An area within which the removal of historical artefacts is prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Cargo Transhipment (Lightening) Prohibited</code></th>
+                        <td>23</td>
+                        <td>
+                        </td>
+                        <td>An area in which cargo transhipment (lightening) is prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Dragging Prohibited</code></th>
+                        <td>24</td>
+                        <td>
+                        </td>
+                        <td>An area in which the dragging of anything along the bottom, e.g. bottom trawling, is prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Stopping Prohibited</code></th>
+                        <td>25</td>
+                        <td>
+                        </td>
+                        <td>An area in which a vessel is prohibited from stopping.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Landing Prohibited</code></th>
+                        <td>26</td>
+                        <td>
+                        </td>
+                        <td>An area in which landing is prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Speed Restricted</code></th>
+                        <td>27</td>
+                        <td>
+                        </td>
+                        <td>An area within which speed is restricted.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Overtaking Prohibited</code></th>
+                        <td>28</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which overtaking is generally prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Overtaking of Convoys by Convoys Prohibited</code></th>
+                        <td>29</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which overtaking between convoys is prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Passing or Overtaking Prohibited</code></th>
+                        <td>30</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which passing or overtaking is generally prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Berthing Prohibited</code></th>
+                        <td>31</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which vessels, assemblies of floating material or floating establishments may not berth.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Berthing Restricted</code></th>
+                        <td>32</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which berthing is restricted.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Making Fast Prohibited</code></th>
+                        <td>33</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which vessels, assemblies of floating material or floating establishments may not make fast to the bank.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Making Fast Restricted</code></th>
+                        <td>34</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which making fast to the bank is restricted.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Turning Prohibited</code></th>
+                        <td>35</td>
+                        <td>
+                        </td>
+                        <td>A specified area designated by appropriate authority, within which all turning is generally prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Restricted Fairway Depth</code></th>
+                        <td>36</td>
+                        <td>
+                        </td>
+                        <td>An area within which the fairway depth is restricted.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Restricted Fairway Width</code></th>
+                        <td>37</td>
+                        <td>
+                        </td>
+                        <td>An area within which the fairway width is restricted.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Use of Spuds Prohibited</code></th>
+                        <td>38</td>
+                        <td>
+                        </td>
+                        <td>The use of anchoring spuds (telescopic piles) is prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Swimming Prohibited</code></th>
+                        <td>39</td>
+                        <td>
+                        </td>
+                        <td>An area in which swimming is prohibited.</td>
+                      </tr>
+                      <tr>
+                        <th><code>SOx Emission Restricted</code></th>
+                        <td>40</td>
+                        <td>
+                        </td>
+                        <td>An area within which the emission of SOx is restricted.</td>
+                      </tr>
+                      <tr>
+                        <th><code>NOx Emission Restricted</code></th>
+                        <td>41</td>
+                        <td>
+                        </td>
+                        <td>An area within which the emission of NOx is restricted.</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table></details><a id="scaleMinimum"></a><details open=""><summary><code>scaleMinimum</code>: integer</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>scaleMinimum</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>SCAMIN</td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Scale Minimum</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The minimum scale at which the feature may be used for example for ECDIS presentation.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>integer</td>
+                </tr>
+              </table></details><a id="chartNumber"></a><details open=""><summary><code>chartNumber</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>chartNumber</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Chart Number</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Chart number. Note, can be either paper chart number or ENC file name.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="chartPlanNumber"></a><details open=""><summary><code>chartPlanNumber</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>chartPlanNumber</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Chart Plan Number</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Plan number when a chart has more than one panel.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="editionDate"></a><details open=""><summary><code>editionDate</code>: date</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>editionDate</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Edition Date</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Date of publishing for example of a publication, chart, or product.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>date</td>
+                </tr>
+              </table></details><a id="lastNoticeDate"></a><details open=""><summary><code>lastNoticeDate</code>: date</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>lastNoticeDate</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Last Notice Date</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Date of the last notice to mariner, such as was applied to a chart or publication.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>date</td>
+                </tr>
+              </table></details><a id="chartPublicationIdentifier"></a><details open=""><summary><code>chartPublicationIdentifier</code>: URN</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>chartPublicationIdentifier</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Chart Publication Identifier</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Identifier for the chart or publication (using the MRN format).</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>URN</td>
+                </tr>
+              </table></details><a id="internationalChartAffected"></a><details open=""><summary><code>internationalChartAffected</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>internationalChartAffected</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>International Chart Affected</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>International paper chart number. (Not used if chartAffected carry an ENC name).</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="publicationAffected"></a><details open=""><summary><code>publicationAffected</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>publicationAffected</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Publication Affected</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Name of affected publication.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="localityIdentifier"></a><details open=""><summary><code>localityIdentifier</code>: URN</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>localityIdentifier</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Locality Identifier</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Globally unique identifier for the area or locality in the MRN format.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>URN</td>
+                </tr>
+              </table></details><a id="agencyResponsibleForProduction"></a><details open=""><summary><code>agencyResponsibleForProduction</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>agencyResponsibleForProduction</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>AGENCY</td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Agency Responsible for Production</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Identifies the agency which produced the data.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="countryName"></a><details open=""><summary><code>countryName</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>countryName</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Country Name</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The name of a nation.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="nameOfSeries"></a><details open=""><summary><code>nameOfSeries</code>: text</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>nameOfSeries</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Name of Series</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The NAVAREA or METAREA. Example: NAVAREA IV. Distinction: generalArea, locality</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>text</td>
+                </tr>
+              </table></details><a id="warningIdentifier"></a><details open=""><summary><code>warningIdentifier</code>: URN</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>warningIdentifier</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Warning Identifier</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Globally unique identifier of a navigational warning in the MRN format.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>URN</td>
+                </tr>
+              </table></details><a id="warningNumber"></a><details open=""><summary><code>warningNumber</code>: integer</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>warningNumber</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Warning Number</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The consecutive number re-starts each calendar year at 1 (Leading zeros are not mandatory).</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>integer</td>
+                </tr>
+              </table></details><a id="warningType"></a><details open=""><summary><code>warningType</code>: enumeration</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>warningType</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Warning Type</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The scope of the MSI warning - NAVAREA, sub-area, etc.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>enumeration</td>
+                </tr>
+                <tr>
+                  <th>
+                            listedValues
+                          </th>
+                  <td>
+                    <table class="listedValues">
+                      <tr>
+                        <th><code>Local Navigational Warning</code></th>
+                        <td>1</td>
+                        <td>
+                        </td>
+                        <td>Message containing urgent information relevant to safe navigation broadcast to ships in a local area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.(Adopted from S-53, 2.2.23)
+
+Local warning means a navigational warning which covers inshore waters, often within the limits of jurisdiction of a harbour or port authority. (Adopted from S-53, 2.2.10)</td>
+                      </tr>
+                      <tr>
+                        <th><code>Coastal Navigational Warning</code></th>
+                        <td>2</td>
+                        <td>
+                        </td>
+                        <td>Message containing urgent information relevant to safe navigation broadcast to ships in a coastal  area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.
+
+Coastal warning means a navigational warning promulgated as part of a numbered series by a National Coordinator.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Sub-Area Navigational Warning</code></th>
+                        <td>3</td>
+                        <td>
+                        </td>
+                        <td>Message containing urgent information relevant to safe navigation broadcast to ships in a sub-area, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.
+
+Sub-area warning means a navigational warning or in-force bulletin promulgated as part of a numbered series by a Sub-area Coordinator.</td>
+                      </tr>
+                      <tr>
+                        <th><code>NAVAREA Navigational Warning</code></th>
+                        <td>4</td>
+                        <td>
+                        </td>
+                        <td>Message containing urgent information relevant to safe navigation broadcast to ships in a NAVAREA, in accordance with the provisions of the International Convention for the Safety of Life at Sea, 1974, as amended.
+
+NAVAREA warning means a navigational warning promulgated as part of a numbered series by a NAVAREA Coordinator.</td>
+                      </tr>
+                      <tr>
+                        <th><code>NAVAREA No Warning</code></th>
+                        <td>5</td>
+                        <td>
+                        </td>
+                        <td>A message that indicates that there are no navigational warnings to be disseminated in the NAVAREA.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Sub-Area No Warning</code></th>
+                        <td>6</td>
+                        <td>
+                        </td>
+                        <td>A message that indicates that there are no navigational warnings to be disseminated in the sub-area.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Coastal No Warning</code></th>
+                        <td>7</td>
+                        <td>
+                        </td>
+                        <td>A message that indicates that there are no navigational warnings to be disseminated in the coastal area.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Local No Warning</code></th>
+                        <td>8</td>
+                        <td>
+                        </td>
+                        <td>A message that indicates that there are no navigational warnings to be disseminated in the local area.</td>
+                      </tr>
+                      <tr>
+                        <th><code>NAVAREA In-Force Bulletin</code></th>
+                        <td>9</td>
+                        <td>
+                        </td>
+                        <td>A list of serial numbers of NAVAREA warnings which are in- force.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Sub-Area In-Force Bulletin</code></th>
+                        <td>10</td>
+                        <td>
+                        </td>
+                        <td>A list of serial numbers of sub-area warnings which are in-force.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Coastal In-Force Bulletin</code></th>
+                        <td>11</td>
+                        <td>
+                        </td>
+                        <td>A list of serial numbers of coastal warnings which are in- force.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Local In-Force Bulletin</code></th>
+                        <td>12</td>
+                        <td>
+                        </td>
+                        <td>A list of serial numbers of local warnings which are in- force.</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table></details><a id="year"></a><details open=""><summary><code>year</code>: integer</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>year</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Year</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>A period of one revolution of the earth around the sun.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>integer</td>
+                </tr>
+              </table></details><a id="cancellationDate"></a><details open=""><summary><code>cancellationDate</code>: dateTime</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>cancellationDate</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Cancellation Date</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Date and time of cancelling a notice or warning.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>dateTime</td>
+                </tr>
+              </table></details><a id="intService"></a><details open=""><summary><code>intService</code>: boolean</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>intService</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Int Service</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>An indication of an international service, true = yes, false = no.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>boolean</td>
+                </tr>
+              </table></details><a id="navwarnTypeGeneral"></a><details open=""><summary><code>navwarnTypeGeneral</code>: S100_CodeList</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>navwarnTypeGeneral</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Navwarn Type General</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>General type of a navigational warning or navigational hazard.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>S100_CodeList</td>
+                </tr>
+              </table></details><a id="publicationTime"></a><details open=""><summary><code>publicationTime</code>: dateTime</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>publicationTime</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Publication Time</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Date and time of publication of the notice or warning.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>dateTime</td>
+                </tr>
+              </table></details><a id="noMessageOnHand"></a><details open=""><summary><code>noMessageOnHand</code>: boolean</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>noMessageOnHand</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>No Message On Hand</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>An indication of no active message.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>boolean</td>
+                </tr>
+              </table></details><a id="referenceCategory"></a><details open=""><summary><code>referenceCategory</code>: enumeration</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>referenceCategory</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Reference Category</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Category of reference.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>enumeration</td>
+                </tr>
+                <tr>
+                  <th>
+                            listedValues
+                          </th>
+                  <td>
+                    <table class="listedValues">
+                      <tr>
+                        <th><code>Warning Cancellation</code></th>
+                        <td>1</td>
+                        <td>
+                        </td>
+                        <td>Cancellation of warning which is no longer valid.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Warning Reference</code></th>
+                        <td>2</td>
+                        <td>
+                        </td>
+                        <td>Reference to relevant warning.</td>
+                      </tr>
+                      <tr>
+                        <th><code>In-Force</code></th>
+                        <td>3</td>
+                        <td>
+                        </td>
+                        <td>Reference to warnings or notices that are considered in-force.</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table></details></article></div>
+      </div>
+    </div><script>
+          
+   var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].addEventListener("click", function () {
+        this.classList.toggle("active");
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    });
+}
+          
+        </script></body>
+</html>

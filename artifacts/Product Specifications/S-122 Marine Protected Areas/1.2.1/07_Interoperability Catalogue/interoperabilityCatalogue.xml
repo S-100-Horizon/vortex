@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="S100_IC.sch" type="application/xml" schematypens="http://purl.oclc.org/dsdl/schematron"?>
+<S100IC:S100_IC_InteroperabilityCatalogue xmlns:S100IC="http://www.iho.int/S100/IC" xmlns:gmd="http://www.isotc211.org/2005/gmd" xmlns:gco="http://www.isotc211.org/2005/gco" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iho.int/S100/IC S100_IC.xsd">
+  <name>IC for S-122</name>
+  <scope>interoperability</scope>
+  <versionNumber>1</versionNumber>
+  <versionDate>2024-09-20</versionDate>
+  <language>eng</language>
+  <description>Interoperability catalogue for S-101, S-122</description>
+  <comment>This IC is a sample data to test S-122.</comment>
+  <digitalSignatureReference>none</digitalSignatureReference>
+  <digitalSignatureValue></digitalSignatureValue>
+  <requirementType>IHO</requirementType>
+  <productCovered>S-101</productCovered>
+  <productCovered>S-122</productCovered>
+  <S100_IC_SaturationOffset>
+    <offsetDusk>0.5</offsetDusk>
+    <offsetNight>0.3</offsetNight>
+  </S100_IC_SaturationOffset>
+  <displayPlanes>
+    <S100_IC_DisplayPlane>
+      <identifier>1</identifier>
+      <name>DP1 : S-101 with S-122</name>
+      <displayPriority>2</displayPriority>
+      <description>adjust S-101 layer for S-122</description>
+      <features>
+        <S100_IC_Feature id="urn:mrn:iho:s101:1.0:RestrictedArea">
+          <featureCode>RestrictedArea</featureCode>
+          <product>S-101</product>
+          <drawOrder>1</drawOrder>
+          <viewingGroup>26010</viewingGroup>
+          <significant>false</significant>
+        </S100_IC_Feature>
+        <S100_IC_Feature id="urn:mrn:iho:s101:1.0:VesselTrafficServiceArea">
+          <featureCode>VesselTrafficServiceArea</featureCode>
+          <product>S-101</product>
+          <drawOrder>3</drawOrder>
+          <viewingGroup>26010</viewingGroup>
+          <significant>false</significant>
+        </S100_IC_Feature>
+      </features>
+    </S100_IC_DisplayPlane>
+    <S100_IC_DisplayPlane>
+      <identifier>2</identifier>
+      <name>DP2 : S-101 with S-122</name>
+      <displayPriority>3</displayPriority>
+      <description>adjust S-101 layer for S-122</description>
+      <features>
+        <S100_IC_Feature id="urn:mrn:iho:s101:1.0:DEPCNT">
+          <featureCode>RestrictedArea</featureCode>
+          <product>S-122</product>
+          <drawOrder>2</drawOrder>
+          <viewingGroup>26010</viewingGroup>
+          <significant>false</significant>
+        </S100_IC_Feature>
+        <S100_IC_Feature id="urn:mrn:iho:s101:1.0:DEPCNT">
+          <featureCode>VesselTrafficServiceArea</featureCode>
+          <product>S-122</product>
+          <drawOrder>4</drawOrder>
+          <viewingGroup>26010</viewingGroup>
+          <significant>false</significant>
+        </S100_IC_Feature>
+      </features>
+    </S100_IC_DisplayPlane>
+  </displayPlanes>
+  <predefinedProductCombinations>
+    <S100_IC_PredefinedCombination>
+      <identifier>urn:mrn:iho:iop:0.1:pdc:1</identifier>
+      <name>ENCandCurrents</name>
+      <description>combined S-101 and S-111 - suppressing all ENC current info</description>
+      <useConditions>all conditions</useConditions>
+      <interoperabilityLevel>2</interoperabilityLevel>
+      <includedProduct>S-101</includedProduct>
+      <suppressedFeatureLayers>
+        <S100_IC_SuppressedFeatureLayer id="urn:mrn:iho:s101:1.0:RestrictedArea">
+          <featureCode>RestrictedArea</featureCode>
+          <product>S-101</product>
+          <featureRef>urn:mrn:iho:s101:1.0:RestrictedArea</featureRef>
+        </S100_IC_SuppressedFeatureLayer>
+        <S100_IC_SuppressedFeatureLayer id="urn:mrn:iho:s101:1.0:VesselTrafficServiceArea">
+          <featureCode>VesselTrafficServiceArea</featureCode>
+          <product>S-101</product>
+          <featureRef>urn:mrn:iho:s101:1.0:VesselTrafficServiceArea</featureRef>
+        </S100_IC_SuppressedFeatureLayer>
+      </suppressedFeatureLayers>
+    </S100_IC_PredefinedCombination>
+  </predefinedProductCombinations>
+</S100IC:S100_IC_InteroperabilityCatalogue>

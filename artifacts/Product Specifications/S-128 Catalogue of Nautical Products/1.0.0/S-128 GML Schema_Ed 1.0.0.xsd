@@ -1,0 +1,861 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:S100="http://www.iho.int/s100gml/1.0"
+	xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:S100EXT="http://www.iho.int/s100gml/1.0+EXT"
+	xmlns="http://www.iho.int/S128/gml/1.0"
+	xmlns:ns1="http://www.iho.int/S-100/profile/s100_gmlProfile"
+	targetNamespace="http://www.iho.int/S128/gml/1.0" elementFormDefault="unqualified"
+	version="1.0.0-20210630">
+	<!-- file -->
+	<!-- file -->
+	<!-- file -->
+	<!-- file -->
+	<!-- file -->
+	<!-- file -->
+	<!-- file -->
+	<xs:import namespace="http://www.iho.int/s100gml/1.0" schemaLocation="s100gmlbase.xsd"/>
+	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="S100_gmlProfile.xsd"/>
+	<xs:import namespace="http://www.iho.int/S-100/profile/s100_gmlProfile" schemaLocation="S100_gmlProfileLevels.xsd"/>
+	<xs:import namespace="http://www.iho.int/s100gml/1.0+EXT" schemaLocation="s100gmlbaseExt.xsd"/>
+	<!-- Type -->
+	<!-- Type -->
+	<!-- Type -->
+	<!-- Type -->
+	<!-- Type -->
+	<!-- Type -->
+	<xs:element name="FeatureType" type="FeatureType" abstract="true"
+		substitutionGroup="gml:AbstractFeature"/>
+	<xs:complexType name="FeatureType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Generalized feature type which carry all the common attributes</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="S100:AbstractFeatureType"/>
+		</xs:complexContent>
+	</xs:complexType>
+
+	<xs:element name="InformationType" type="InformationType" abstract="true"
+		substitutionGroup="gml:AbstractGML"/>
+	<xs:complexType name="InformationType" abstract="true">
+		<xs:annotation>
+			<xs:documentation>Generalized information type which carry all the common attributes</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="S100:AbstractInformationType"/>
+		</xs:complexContent>
+	</xs:complexType>
+	
+	<xs:simpleType name="ISO639-3">
+		<xs:annotation>
+			<xs:documentation>stub for ISO 639-3 language codes</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="\w{3}"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:complexType name="GM_Surface">
+		<xs:choice>
+			<xs:element ref="S100:surfaceProperty"/>
+		</xs:choice>
+	</xs:complexType>
+	
+	<!-- Enumeration (8) -->
+	<!-- Enumeration (8) -->
+	<!-- Enumeration (8) -->
+	<!-- Enumeration (8) -->
+	<!-- Enumeration (8) -->
+	<!-- Enumeration (8) -->
+	<xs:simpleType name="soundingDatumType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="mean low water springs"/>
+			<xs:enumeration value="mean lower low water springs"/>
+			<xs:enumeration value="mean sea level"/>
+			<xs:enumeration value="lowest low water"/>
+			<xs:enumeration value="mean low water"/>
+			<xs:enumeration value="lowest low water springs"/>
+			<xs:enumeration value="approximate mean low water springs"/>
+			<xs:enumeration value="indian spring low water"/>
+			<xs:enumeration value="low water springs"/>
+			<xs:enumeration value="approximate lowest astronomical tide"/>
+			<xs:enumeration value="nearly lowest low water"/>
+			<xs:enumeration value="mean lower low water"/>
+			<xs:enumeration value="low water"/>
+			<xs:enumeration value="approximate mean low water"/>
+			<xs:enumeration value="approximate mean lower low water"/>
+			<xs:enumeration value="mean high water"/>
+			<xs:enumeration value="mean high water springs"/>
+			<xs:enumeration value="high water"/>
+			<xs:enumeration value="approximate mean sea level"/>
+			<xs:enumeration value="high water springs"/>
+			<xs:enumeration value="mean higher high water"/>
+			<xs:enumeration value="equinoctial spring low water"/>
+			<xs:enumeration value="lowest astronomical tide"/>
+			<xs:enumeration value="local datum"/>
+			<xs:enumeration value="international Great Lakes Datum 1985"/>
+			<xs:enumeration value="mean water level"/>
+			<xs:enumeration value="lower low water large tide"/>
+			<xs:enumeration value="higher high water large tide"/>
+			<xs:enumeration value="nearly highest high water"/>
+			<xs:enumeration value="highest astronomical tide (HAT)"/>
+			<xs:enumeration value="baltic Sea Chart Datum 2000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="verticalDatumType">
+		<xs:restriction base="xs:string">
+      <xs:enumeration value="mean low water springs"/>
+      <xs:enumeration value="mean lower low water springs"/>
+      <xs:enumeration value="mean sea level"/>
+      <xs:enumeration value="lowest low water"/>
+      <xs:enumeration value="mean low water"/>
+      <xs:enumeration value="lowest low water springs"/>
+      <xs:enumeration value="approximate mean low water springs"/>
+      <xs:enumeration value="indian spring low water"/>
+      <xs:enumeration value="low water springs"/>
+      <xs:enumeration value="approximate lowest astronomical tide"/>
+      <xs:enumeration value="nearly lowest low water"/>
+      <xs:enumeration value="mean lower low water"/>
+      <xs:enumeration value="low water"/>
+      <xs:enumeration value="approximate mean low water"/>
+      <xs:enumeration value="approximate mean lower low water"/>
+      <xs:enumeration value="mean high water"/>
+      <xs:enumeration value="mean high water springs"/>
+      <xs:enumeration value="high water"/>
+      <xs:enumeration value="approximate mean sea level"/>
+      <xs:enumeration value="high water springs"/>
+      <xs:enumeration value="mean higher high water"/>
+      <xs:enumeration value="equinoctial spring low water"/>
+      <xs:enumeration value="lowest astronomical tide"/>
+      <xs:enumeration value="local datum"/>
+      <xs:enumeration value="international Great Lakes Datum 1985"/>
+      <xs:enumeration value="mean water level"/>
+      <xs:enumeration value="lower low water large tide"/>
+      <xs:enumeration value="higher high water large tide"/>
+      <xs:enumeration value="nearly highest high water"/>
+      <xs:enumeration value="highest astronomical tide (HAT)"/>
+      <xs:enumeration value="baltic Sea Chart Datum 2000"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="categoryOfAuthorityType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="customs"/>
+			<xs:enumeration value="border control"/>
+			<xs:enumeration value="police"/>
+			<xs:enumeration value="port"/>
+			<xs:enumeration value="immigration"/>
+			<xs:enumeration value="health"/>
+			<xs:enumeration value="coast guard"/>
+			<xs:enumeration value="agricultural"/>
+			<xs:enumeration value="military"/>
+			<xs:enumeration value="private company"/>
+			<xs:enumeration value="maritime police"/>
+			<xs:enumeration value="environmental"/>
+			<xs:enumeration value="fishery"/>
+			<xs:enumeration value="finance"/>
+			<xs:enumeration value="maritime"/>
+			<xs:enumeration value="hydrographic office"/>
+			<xs:enumeration value="RENC"/>
+			<xs:enumeration value="VARs"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="categoryOfCommPrefType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="preferred calling"/>
+			<xs:enumeration value="alternate calling"/>
+			<xs:enumeration value="preferred working"/>
+			<xs:enumeration value="alternate working"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="categoryOfScheduleType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="normal operation"/>
+			<xs:enumeration value="closure"/>
+			<xs:enumeration value="unmanned operation"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="telecommnunicationServiceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="voice"/>
+			<xs:enumeration value="facsimile"/>
+			<xs:enumeration value="sms"/>
+			<xs:enumeration value="data"/>
+			<xs:enumeration value="streamedData"/>
+			<xs:enumeration value="telex"/>
+			<xs:enumeration value="telegraph"/>
+			<xs:enumeration value="email"/>
+		</xs:restriction>
+	</xs:simpleType>
+  <xs:simpleType name="typeOfTimeIntervalUnitType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="time" />
+      <xs:enumeration value="day" />
+      <xs:enumeration value="month" />
+      <xs:enumeration value="year" />
+    </xs:restriction>
+  </xs:simpleType>
+	<xs:simpleType name="printSizeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="A0"/>
+			<xs:enumeration value="A1"/>
+			<xs:enumeration value="A2"/>
+			<xs:enumeration value="A3"/>
+			<xs:enumeration value="A4"/>
+			<xs:enumeration value="A5"/>
+			<xs:enumeration value="A6"/>
+			<xs:enumeration value="A7"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="specificUsageType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="general"/>
+			<xs:enumeration value="overview"/>
+			<xs:enumeration value="approach"/>
+			<xs:enumeration value="coastal"/>
+			<xs:enumeration value="harbour"/>
+			<xs:enumeration value="berthing"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="dayOfWeekType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="monday"/>
+			<xs:enumeration value="tuesday"/>
+			<xs:enumeration value="wednesday"/>
+			<xs:enumeration value="thursday"/>
+			<xs:enumeration value="friday"/>
+			<xs:enumeration value="saturday"/>
+			<xs:enumeration value="sunday"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="timeReferenceType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="localTime"/>
+			<xs:enumeration value="UTC"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="serviceStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="provisional"/>
+			<xs:enumeration value="released"/>
+			<xs:enumeration value="deprecated"/>
+			<xs:enumeration value="deleted"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="distributionStatusType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="production"/>
+			<xs:enumeration value="withdrawn"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="supportFileFormatType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="ASCII"/>
+			<xs:enumeration value="JPEG2000"/>
+			<xs:enumeration value="HTML"/>
+			<xs:enumeration value="XML"/>
+			<xs:enumeration value="XSLT"/>
+			<xs:enumeration value="VIDEO"/>
+			<xs:enumeration value="TIFF"/>
+			<xs:enumeration value="PDF/A or U/A"/>
+			<xs:enumeration value="LUA"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="typeOfProductFormatType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="GML"/>
+			<xs:enumeration value="ISO/IEC 8211"/>
+			<xs:enumeration value="PDF"/>
+			<xs:enumeration value="HTML"/>
+			<xs:enumeration value="ePub"/>
+			<xs:enumeration value="paper"/>
+			<xs:enumeration value="HDF-5"/>
+			<xs:enumeration value="other"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="supportFilePurposeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="new"/>
+			<xs:enumeration value="replacement"/>
+			<xs:enumeration value="deletion"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="digitalSignatureType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="dsa"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="productTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="paper nautical chart"/>
+			<xs:enumeration value="ENC"/>
+			<xs:enumeration value="raster nautical chart"/>
+			<xs:enumeration value="INT Chart"/>
+			<xs:enumeration value="nautical publication"/>
+			<xs:enumeration value="S-100 compliant product"/>
+			<xs:enumeration value="electronic application for safety navigation"/>
+			<xs:enumeration value="special purpose charts"/>
+			<xs:enumeration value="e-Navigation service"/>
+			<xs:enumeration value="others"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="categoryOfTextType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="abstract or summary"/>
+			<xs:enumeration value="extract"/>
+			<xs:enumeration value="full text"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="purposeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="new dataset"/>
+			<xs:enumeration value="new edition"/>
+			<xs:enumeration value="update"/>
+			<xs:enumeration value="re-issue"/>
+			<xs:enumeration value="cancellation"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="sourceTypeType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="low or regulation"/>
+			<xs:enumeration value="official publication"/>
+			<xs:enumeration value="mariner report, confirmed"/>
+			<xs:enumeration value="mariner report, not confirmed"/>
+			<xs:enumeration value="industry publications and reports"/>
+			<xs:enumeration value="remotely sensed images"/>
+			<xs:enumeration value="photographs"/>
+			<xs:enumeration value="products issued by HO service"/>
+			<xs:enumeration value="news media"/>
+			<xs:enumeration value="traffic data"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<!-- ComplexAttributeType (13) -->
+	<!-- ComplexAttributeType (13) -->
+	<!-- ComplexAttributeType (13) -->
+	<!-- ComplexAttributeType (13) -->
+	<!-- ComplexAttributeType (13) -->
+	<!-- ComplexAttributeType (13) -->
+	<xs:complexType name="telecommunicationsType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="categoryOfCommPref" type="categoryOfCommPrefType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="contactInstructions" type="xs:string"/>
+			<xs:element name="telcomCarrier" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="telecommunicationIdentifier" type="xs:string"/>
+			<xs:element name="telecommnunicationService" type="telecommnunicationServiceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="scheduleByDayOfWeek" type="scheduleByDayOfWeekType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="scheduleByDayOfWeekType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="categoryOfSchedule" type="categoryOfScheduleType"/>
+			<xs:element name="timeIntervalsByDayOfWeek" type="timeIntervalsByDayOfWeekType" minOccurs="1" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="featureNameType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="displayName" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="language" type="ISO639-3" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="name" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="onlineResourceType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="linkage" type="xs:string"/>
+			<xs:element name="protocol" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="applicationProfile" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="nameOfResource" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="onlineDescription" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="protocolRequest" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="productSpecificationType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="version" type="xs:string"/>
+			<xs:element name="ISSN" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="serviceSpecificationType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="version" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="graphicType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="pictorialRepresentation" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="pictureCaption" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="sourceDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="pictureInformation" type="xs:string" minOccurs="0" maxOccurs="1"/>			
+		</xs:sequence>
+	</xs:complexType>
+  <xs:complexType name="issuanceCycleType">
+    <xs:annotation>
+      <xs:documentation>none</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="1" name="timeIntervalOfCycle" />
+      <xs:element minOccurs="0" maxOccurs="1" name="periodicDateRange" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="periodicDateRangeType">
+    <xs:annotation>
+      <xs:documentation>none</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="startDate" type="xs:date" />
+      <xs:element name="endDate" type="xs:date" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="timeIntervalOfCycleType">
+    <xs:annotation>
+      <xs:documentation>none</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="typeOfTimeIntervalUnit" type="enumeration" />
+      <xs:element name="valueOfTime" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:complexType name="timeIntervalOfProductType">
+    <xs:annotation>
+      <xs:documentation>none</xs:documentation>
+    </xs:annotation>
+    <xs:sequence>
+      <xs:element name="issueDate" type="xs:date" />
+      <xs:element name="expirationDate" type="xs:date" />
+      <xs:element name="timeReference" type="enumeration" />
+      <xs:element minOccurs="0" maxOccurs="1" name="issuanceCycle" />
+    </xs:sequence>
+  </xs:complexType>
+	<xs:complexType name="timeIntervalsByDayOfWeekType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="dayOfWeek" type="dayOfWeekType" minOccurs="0" maxOccurs="7"/>
+			<xs:element name="dayOfWeekIsRange" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="timeReference" type="timeReferenceType"/>
+			<xs:element name="timeOfDayStart" type="xs:time" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="timeOfDayEnd" type="xs:time" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="textContentType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="categoryOfText" type="categoryOfTextType"/>
+			<xs:element name="information" type="informationType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="onlineResource" type="onlineResourceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="sourceIndication" type="sourceIndicationType" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="sourceIndicationType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="categoryOfAuthority" type="categoryOfAuthorityType" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="country" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="reportedDate" type="xs:date"/>
+			<xs:element name="source" type="xs:string"/>
+			<xs:element name="sourceTpye" type="sourceTypeType"/>
+			<xs:element name="featureName" type="featureNameType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="contactAddressType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="deliveryPoint" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="cityName" type="xs:string"/>
+			<xs:element name="administrativeDivision" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="country" type="xs:string"/>
+			<xs:element name="postalCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="printInformationType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="printAgency" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="printNation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="printSize" type="printSizeType"/>
+			<xs:element name="printWeek" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="printYear" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="rePrintEdition" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="rePrintNation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="informationType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="fileLocator" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="fileReference" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="headline" type="xs:string"/>
+			<xs:element name="language" type="ISO639-3"/>
+			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="paymentType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="price" type="xs:double"/>
+			<xs:element name="currency" type="xs:anyURI" default="http://www.fpml.org/ext/iso4217-2001-08-15"/>
+			<xs:element name="contractPeriod" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="referenceToNMType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="year" type="xs:int"/>
+			<xs:element name="week" type="xs:int"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="defaultLocaleType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="country" type="xs:string"/>
+			<xs:element name="language" type="ISO639-3" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="characterEncoding" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="supportFileSpecificationType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="name" type="xs:string"/>
+			<xs:element name="date" type="xs:date"/>
+			<xs:element name="version" type="xs:string"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="producingAgencyType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="IndividualName" type="xs:string"/>
+			<xs:element name="organizationName" type="xs:string"/>
+			<xs:element name="positionName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="contactAddress" type="contactAddressType" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="onlineResource" type="onlineResourceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="telecommunications" type="telecommunicationsType" minOccurs="0" maxOccurs="unbounded"/>
+		</xs:sequence>
+	</xs:complexType>
+	<xs:complexType name="supportFileType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:sequence>
+			<xs:element name="fileName" type="xs:string"/>
+			<xs:element name="fileLocation" type="xs:string"/>
+			<xs:element name="supportFilePurpose" type="supportFilePurposeType"/>
+			<xs:element name="editionNumber" type="xs:int" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="issueDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="supportFileFormat" type="supportFileFormatType"/>
+			<xs:element name="otherDataTypeDescription" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="comment" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="digitalSignature" type="digitalSignatureType"/>
+			<xs:element name="digitalSignatureValue" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="supportFileSpecification" type="supportFileSpecificationType"/>
+			<xs:element name="defaultLocale" type="defaultLocaleType"/>
+		</xs:sequence>
+	</xs:complexType>
+	<!-- infomationType (1) -->
+	<!-- infomationType (1) -->
+	<!-- infomationType (1) -->
+	<!-- infomationType (1) -->
+	<!-- infomationType (1) -->
+	<!-- infomationType (1) -->
+	<xs:complexType name="ContactDetailsType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="InformationType">
+				<xs:sequence>
+					<xs:element name="contactInstructions" type="xs:string"/>
+					<xs:element name="contactAddress" type="contactAddressType" minOccurs="1" maxOccurs="unbounded"/>
+					<xs:element name="information" type="informationType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="onlineResource" type="onlineResourceType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="telecommunications" type="telecommunicationsType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="sourceIndication" type="sourceIndicationType" minOccurs="0" maxOccurs="unbounded"/>
+					
+					<xs:element name="invadditionalinfo" type="gml:ReferenceType" minOccurs="0" maxOccurs="1">
+						<xs:annotation>
+							<xs:documentation>Encodes the association to Aggregation AND Association. In principle the role names for the two target classes should be different as should the names at the two ends of each, but they are all currently (September 2015) "peer" in the application schema.</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ProductionDetailsType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ContactDetailsType">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="DistributionDetailsType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="ContactDetailsType">
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PriceInformationType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="InformationType">
+				<xs:element name="payment" type="paymentType"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- FeatureType (6) -->
+	<!-- FeatureType (6) -->
+	<!-- FeatureType (6) -->
+	<!-- FeatureType (6) -->
+	<!-- FeatureType (6) -->
+	<xs:complexType name="CatalogueOfNauticalProductType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="FeatureType">
+				<xs:sequence>
+					<xs:element name="featureName" type="featureNameType" minOccurs="1" maxOccurs="unbounded"/>
+					<xs:element name="graphic" type="graphicType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="issueDate" type="xs:date"/>
+					<xs:element name="editionNumber" type="xs:string"/>
+					<xs:element name="marineResourceName" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
+					<!-- <xs:element name="additionalinfo" type="gml:ReferenceType" minOccurs="1" maxOccurs="1"/> -->
+					<!-- <xs:element name="elements" type="gml:ReferenceType" minOccurs="1" maxOccurs="unbounded"/> -->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="CatalogueElementsType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="FeatureType">
+				<xs:sequence>
+					<xs:element name="classification" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="copyright" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="maximumDisplayScale" type="xs:int" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="minimumDisplayScale" type="xs:int" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="horizontalDatumReference" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="verticalDatum" type="verticalDatumType" minOccurs="0" maxOccurs="1"/>					
+					<xs:element name="soundingDatum" type="soundingDatumType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="productType" type="productTypeType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="issueDate" type="xs:date"/>
+					<xs:element name="purpose" type="purposeType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="marineResourceName" type="xs:anyURI" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="updateDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="updateNumber" type="xs:int" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="editionDate" type="xs:date"/>
+					<xs:element name="editionNumber" type="xs:string"/>
+					<xs:element name="timeIntervalOfProduct" type="timeIntervalOfProductType" minOccurs="0" maxOccurs="1"/>
+          
+					<xs:element name="featureName" type="featureNameType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="information" type="informationType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="sourceIndication" type="sourceIndicationType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="payment" type="payment" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="producingAgency" type="producingAgencyType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="graphic" type="graphicType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="supportFile" type="supportFileType" minOccurs="0" maxOccurs="1"/>
+					
+					<!--<xs:element name="invelements" type="gml:ReferenceType" minOccurs="1" maxOccurs="1"/>-->
+					<xs:element name="geometry" type="GM_Surface" minOccurs="0" maxOccurs="unbounded"/>
+					<!-- 주석 ( spatial )       <xs:element name="geometry" type="surface" minOccurs="1" maxOccurs="unbounded"/> -->
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="NauticalProductType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CatalogueElementsType">
+				<xs:sequence>
+					<xs:element name="productSpecification" type="productSpecificationType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="textContent" type="textContentType" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="onlineResource" type="onlineResourceType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="serviceSpecification" type="serviceSpecificationType" minOccurs="0" maxOccurs="1"/>
+
+					<xs:element name="publicationNumber" type="xs:string"/>
+					<xs:element name="datasetName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="version" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="serviceStatus" type="serviceStatusType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="keyword" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="serviceDesign" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="ISBN" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="typeOfProductFormat" type="typeOfProductFormatType" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="AbstractChartProductType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="CatalogueElementsType">
+				<xs:sequence>
+					<xs:element name="chartNumber" type="xs:string"/>
+					<xs:element name="distributionStatus" type="distributionStatusType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="compilationScale" type="xs:string" minOccurs="1" maxOccurs="unbounded"/>
+					<xs:element name="specificUsage" type="specificUsageType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="producerCode" type="xs:string"/>
+					<xs:element name="originalChartNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="producerNation" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="ElectronicChartType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AbstractChartProductType">
+				<xs:sequence>
+					<xs:element name="productSpecification" type="productSpecificationType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="datasetName" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element name="tnpUpdate" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="typeOfProductFormat" type="typeOfProductFormatType" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="PaperChartType">
+		<xs:annotation>
+			<xs:documentation>none</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="AbstractChartProductType">
+				<xs:sequence>
+					<xs:element name="frameDimension" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="mainPanel" type="xs:boolean"/>
+					<xs:element name="typeOfPaper" type="xs:string" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="printInformation" type="printInformationType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="referenceToNM" type="referenceToNMType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="ISBN" type="xs:string" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- ============================================= -->
+	<!-- types and elements for the dataset definition -->
+	<!-- ============================================= -->
+	<xs:complexType name="DatasetType">
+		<xs:annotation>
+			<xs:documentation>Dataset element for MPA dataset as "GML document"</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureType">
+				<xs:sequence>
+					<xs:element name="DatasetIdentificationInformation"
+						type="S100:DataSetIdentificationType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Dataset identification information</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:element name="DatasetStructureInformation"
+						type="S100:DataSetStructureInformationType" minOccurs="0">
+						<xs:annotation>
+							<xs:documentation>Dataset structure information</xs:documentation>
+						</xs:annotation>
+					</xs:element>
+					<xs:group ref="S100:Geometry" minOccurs="0" maxOccurs="unbounded">
+						<xs:annotation>
+							<xs:documentation>Allows spatial objects to be located outside feature objects (for references, and compatibility with ISO 8211 encoding)</xs:documentation>
+						</xs:annotation>
+					</xs:group>
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element name="imember" type="IMemberType" minOccurs="0"
+							maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>intended for S100 information types. Extension of GML practice, not addressed by ISO 19136.</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+						<xs:element name="member" type="MemberType" minOccurs="0"
+							maxOccurs="unbounded">
+							<xs:annotation>
+								<xs:documentation>intended for technical GML 3.2 requirement for making the dataset a "GML document" and clause 21.3 of the OGC GML standard</xs:documentation>
+							</xs:annotation>
+						</xs:element>
+					</xs:choice>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<!-- treatment of S-100 Information types is provisional, because GML does not have the concept, and they must be modeled as AbstractGML -->
+	<xs:complexType name="MemberType">
+		<xs:annotation>
+			<xs:documentation>dataset member</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureMemberType">
+				<xs:sequence>
+					<xs:element ref="gml:AbstractFeature"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="gml:AssociationAttributeGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="IMemberType">
+		<xs:annotation>
+			<xs:documentation>dataset member S-100 information types</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="gml:AbstractFeatureMemberType">
+				<xs:sequence>
+					<xs:element ref="InformationType"/>
+				</xs:sequence>
+				<xs:attributeGroup ref="gml:AssociationAttributeGroup"/>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="Dataset" type="DatasetType"/>
+</xs:schema>

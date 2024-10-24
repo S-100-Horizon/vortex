@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Loader": {
+      "commandName": "Project",
+      "commandLineArgs": "--v --cmd NIS --target \"C:\\Users\\Jens Søe\\OneDrive\\ArcGIS\\Projects\\Vortex\\S100ed4.gdb\" --source \"C:\\Users\\Jens Søe\\OneDrive\\ArcGIS\\Projects\\Vortex\\replica.gdb\" --query \"PLTS_COMP_SCALE = 22000\""
+    }
+  }
+}
