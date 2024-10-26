@@ -78,6 +78,103 @@ namespace S100Framework
 
             var codelistTypes = new Dictionary<string, Type>();
 
+            //  Bindings
+            {
+                classBuilder.AppendLine($"\tnamespace Bindings");
+                classBuilder.AppendLine("\t{");
+
+                //  S100_FC_Roles
+                {
+                    classBuilder.AppendLine($"\tnamespace Roles");
+                    classBuilder.AppendLine("\t\t{");
+
+                    var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_Role", xmlNamespaceManager);
+
+                    foreach (var e in elements) {
+                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        if (code.ToLowerInvariant().Equals(code))
+                            classBuilder.AppendLine("#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.");
+                        classBuilder.AppendLine($"\t\tpublic class {code} : Role");
+                        if (code.ToLowerInvariant().Equals(code))
+                            classBuilder.AppendLine("#pragma warning restore CS8981");
+                        classBuilder.AppendLine("\t\t{");
+                        classBuilder.AppendLine("\t\t}");
+                        classBuilder.AppendLine();
+                    }
+
+                    classBuilder.AppendLine("\t\t}");
+                }
+
+                //  S100_FC_InformationAssociations
+                {
+                    classBuilder.AppendLine($"\tnamespace InformationAssociations");
+                    classBuilder.AppendLine("\t\t{");
+
+                    var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
+
+                    foreach (var e in elements) {
+                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        var attributes = TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout;
+
+                        //moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, dictionaryTypes[superType.Value]);
+                        var bindingTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes);
+
+                        var propertyBuilder = S100Framework.Roslyn.CreateProperty(bindingTypeBuilder, "role", typeof(string));
+
+                        var bindingType = bindingTypeBuilder.CreateType();
+
+                        classBuilder.AppendLine($"\t\tpublic class {code}<T> : InformationAssociation where T : Role");
+                        classBuilder.AppendLine($"\t\t{{");
+                        classBuilder.AppendLine($"\t\t\tpublic {code}(string foreignKey) : base(foreignKey) {{");
+                        classBuilder.AppendLine($"\t\t\t}}");
+                        classBuilder.AppendLine($"\t\t}}");
+                        classBuilder.AppendLine();
+                    }
+
+                    classBuilder.AppendLine("\t\t}");
+                }
+
+                //  S100_FC_FeatureAssociations
+                {
+                    classBuilder.AppendLine($"\tnamespace FeatureAssociations");
+                    classBuilder.AppendLine("\t\t{");
+
+                    var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
+
+                    foreach (var e in elements) {
+                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        var attributes = TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout;
+
+                        //moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, dictionaryTypes[superType.Value]);
+                        var bindingTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes);
+
+                        var propertyBuilder = S100Framework.Roslyn.CreateProperty(bindingTypeBuilder, "role", typeof(string));
+
+                        var bindingType = bindingTypeBuilder.CreateType();
+
+                        classBuilder.AppendLine($"\t\tpublic class {code}<T> : FeatureAssociation where T : Role");
+                        classBuilder.AppendLine($"\t\t{{");
+                        classBuilder.AppendLine($"\t\t\tpublic {code}(string foreignKey) : base(foreignKey) {{");
+                        classBuilder.AppendLine($"\t\t\t}}");
+                        classBuilder.AppendLine($"\t\t}}");
+                        classBuilder.AppendLine();
+                    }
+
+                    classBuilder.AppendLine("\t\t}");
+                }
+
+                classBuilder.AppendLine("\t}");
+            }
+
             //  S100_FC_SimpleAttributes
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_SimpleAttribute", xmlNamespaceManager);
@@ -115,9 +212,10 @@ namespace S100Framework
                         classBuilder.AppendLine("\t[System.SerializableAttribute()]");
                         if (code.ToLowerInvariant().Equals(code))
                             classBuilder.AppendLine("#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.");
-                        classBuilder.AppendLine($"\tpublic enum {code} : int {{");
+                        classBuilder.AppendLine($"\tpublic enum {code} : int");
                         if (code.ToLowerInvariant().Equals(code))
                             classBuilder.AppendLine("#pragma warning restore CS8981");
+                        classBuilder.AppendLine("\t{");
 
                         bool isFirst = true;
                         foreach (var e in enumType.GetEnumValues()) {
@@ -671,6 +769,31 @@ namespace S100Framework
             common.AppendLine("\t\t\t_propertyName = propertyName;");
             common.AppendLine("\t\t}");
             common.AppendLine("\t}");
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\tpublic abstract class Role {");
+            common.AppendLine("\t}");
+            common.AppendLine();
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\tpublic abstract class InformationAssociation {");
+            common.AppendLine("\t\tpublic InformationAssociation(string foreignKey) {");
+            common.AppendLine("\t\t\tthis.ForeignKey = foreignKey;");
+            common.AppendLine("\t\t}");
+            common.AppendLine();
+            common.AppendLine("\t\tpublic string ForeignKey { get; private set; }");
+            common.AppendLine("\t}");
+            common.AppendLine();
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\tpublic abstract class FeatureAssociation {");
+            common.AppendLine("\t\tpublic FeatureAssociation(string foreignKey) {");
+            common.AppendLine("\t\t\tthis.ForeignKey = foreignKey;");
+            common.AppendLine("\t\t}");
+            common.AppendLine();
+            common.AppendLine("\t\tpublic string ForeignKey { get; private set; }");
+            common.AppendLine("\t}");
+
             common.AppendLine("}");
 
             return (

@@ -15,4 +15,34 @@ namespace S100Framework.DomainModel
             _propertyName = propertyName;
         }
     }
+
+    [System.SerializableAttribute()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+    public abstract class Role
+    {
+    }
+
+    [System.SerializableAttribute()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+    public abstract class InformationAssociation
+    {
+        public InformationAssociation(string foreignKey)
+        {
+            this.ForeignKey = foreignKey;
+        }
+
+        public string ForeignKey { get; private set; }
+    }
+
+    [System.SerializableAttribute()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+    public abstract class FeatureAssociation
+    {
+        public FeatureAssociation(string foreignKey)
+        {
+            this.ForeignKey = foreignKey;
+        }
+
+        public string ForeignKey { get; private set; }
+    }
 }

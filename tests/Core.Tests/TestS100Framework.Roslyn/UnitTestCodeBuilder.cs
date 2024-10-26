@@ -175,3 +175,22 @@ namespace TestS100Framework
         }
     }
 }
+
+
+/*
+    public enum S100_FC_RoleType {
+        [System.Xml.Serialization.XmlEnum("association")]
+        association,
+
+        [System.Xml.Serialization.XmlEnum("aggregation")]
+        aggregation,
+
+        [System.Xml.Serialization.XmlEnum("composition")]
+        composition
+    }
+
+    public class informationBinding {
+        public S100_FC_RoleType roleType { get; set; }
+
+    }
+*/

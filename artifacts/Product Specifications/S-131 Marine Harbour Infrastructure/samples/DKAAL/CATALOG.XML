@@ -13,7 +13,7 @@
 	  xsi:schemaLocation="http://www.iho.int/s100/xc/5.0 https://schemas.s100dev.net/schemas/S100/5.0.0/S100Catalog/20230105/S100_ExchangeCatalogue.xsd">
 	  <XC:identifier>
 		<XC:identifier></XC:identifier>
-		<XC:dateTime>2024-10-10T00:00:00Z</XC:dateTime>
+		<XC:dateTime>2024-10-25T00:00:00Z</XC:dateTime>
 	  </XC:identifier>
 	  <XC:contact>
 		<XC:organization><gco:CharacterString>IHO</gco:CharacterString></XC:organization>
@@ -63,7 +63,7 @@
 		  </XC:specificUsage>
 		  <XC:editionNumber>3</XC:editionNumber>
 		  <XC:updateNumber>0</XC:updateNumber>
-		  <XC:issueDate>2024-10-10</XC:issueDate>
+		  <XC:issueDate>2024-10-25</XC:issueDate>
 		  
 		  <XC:boundingBox>
 			<gex:westBoundLongitude><gco:Decimal>9.919813</gco:Decimal></gex:westBoundLongitude>
@@ -126,7 +126,7 @@
 			  </cit:party>
 			</cit:CI_Responsibility>
 		  </XC:metadataPointOfContact>
-		  <XC:metadataDateStamp>2024-10-10</XC:metadataDateStamp>
+		  <XC:metadataDateStamp>2024-10-25</XC:metadataDateStamp>
 		  
 		  <XC:navigationPurpose>port</XC:navigationPurpose>
 		  
