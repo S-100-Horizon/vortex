@@ -4388,7 +4388,7 @@ namespace S100Framework.DomainModel.S101
             public required categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public fixedDateRange? fixedDateRange { get; set; }
+            public fixedDateRange? fixedDateRange { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public horizontalPositionUncertainty? horizontalPositionUncertainty { get; set; }
