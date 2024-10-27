@@ -746,6 +746,8 @@ namespace S100Framework
             classBuilder.AppendLine($"\tnamespace InformationTypes");
             classBuilder.AppendLine("\t{");
             classBuilder.AppendLine("\t\tusing ComplexAttributes;");
+            classBuilder.AppendLine("\t\tusing Bindings.InformationAssociations;");
+            classBuilder.AppendLine("\t\tusing Bindings.Roles;");
             classBuilder.AppendLine();
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager);
@@ -788,6 +790,7 @@ namespace S100Framework
                         else
                             informationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes);
 
+                        //  attributeBinding
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
                             var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
 
@@ -820,6 +823,80 @@ namespace S100Framework
                                 var expandableObjectAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
                                 propertyBuilder.SetCustomAttribute(expandableObjectAttributeBuilder);
                             }
+                        }
+
+                        //  informationBinding
+                        //foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
+                        //    var roleType = informationBinding.Attribute("roleType")!.Value;
+
+                        //    var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value!;
+                        //    var role = informationBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value!;
+
+                        //    var lower = int.Parse(informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                        //    var upper = informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+
+                        //    var isArray = false;
+                        //    if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true") || int.Parse(upper!.Value) > 1) {
+                        //        isArray = true;
+                        //    }
+
+                        //    var referenceType = isArray ? dictionaryTypes[$"List<{association}<{role}>>"] : dictionaryTypes[$"{association}<{role}>"];
+
+                        //    if (!isArray && lower == 0 /*&& !dictionaryTypesComplex.Contains(referenceCode)*/) {
+                        //        referenceType = dictionaryTypes[$"{association}<{role}>?"];
+                        //    }
+
+                        //    var propertyBuilder = S100Framework.Roslyn.CreateProperty(informationTypeBuilder, role, referenceType);
+
+                        //    if (lower > 0) {
+                        //        var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+
+                        //        var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                        //        propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
+                        //    }
+                        //}                        
+
+                        //  informationBinding
+                        if (e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager).Any()) {
+                            var bindingBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}InformationBindings", TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout);
+
+                            foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
+                                var roleType = informationBinding.Attribute("roleType")!.Value;
+
+                                var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value!;
+                                var role = informationBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value!;
+
+                                var lower = int.Parse(informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                                var upper = informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+
+                                var isArray = false;
+                                if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true") || int.Parse(upper!.Value) > 1) {
+                                    isArray = true;
+                                }
+
+                                var referenceType = isArray ? dictionaryTypes[$"List<{association}<{role}>>"] : dictionaryTypes[$"{association}<{role}>"];
+
+                                if (!isArray && lower == 0 /*&& !dictionaryTypesComplex.Contains(referenceCode)*/) {
+                                    referenceType = dictionaryTypes[$"{association}<{role}>?"];
+                                }
+
+                                var propertyBuilder = S100Framework.Roslyn.CreateProperty(bindingBuilder, role, referenceType);
+
+                                if (lower > 0) {
+                                    var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+
+                                    var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                    propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
+                                }
+                            }
+
+                            var bindingType = bindingBuilder.CreateType();
+
+                            classBuilder.AppendLine(BuildClass($"{code}InformationBindings", bindingType, xmlNamespace, "S100Framework.DomainModel.InformationType"));
+
+                            viewBuilder.AppendLine(BuildClassViewModel($"{code}InformationBindings", bindingType, $"DomainModel.{productId}.InformationTypes", codelistTypes.Keys, roleTypes.Keys));
+
+                            var propertyAssociationBuilder = S100Framework.Roslyn.CreateProperty(informationTypeBuilder, $"{code}InformationBindings", bindingType);
                         }
 
                         var informationType = informationTypeBuilder.CreateType();

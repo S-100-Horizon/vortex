@@ -1,6 +1,8 @@
 ﻿#define prop
 //#define propfull
 
+using S100Framework.DomainModel;
+
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -24,6 +26,47 @@ namespace TestS100Framework
     }
 }
 
+//namespace TestS100Framework.Bindings
+//{
+//    using S100Framework.DomainModel.S131;
+//    using S100Framework.DomainModel.S131.Bindings.InformationAssociations;
+//    using S100Framework.DomainModel.S131.Bindings.Roles;
+//    using S100Framework.DomainModel.S131.ComplexAttributes;
+//    using S100Framework.DomainModel.S131.InformationTypes;
+
+     
+//    public class AbstractRxNInformationAssociations {
+//        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+//        public List<InclusionType<isApplicableTo>> isApplicableTo { get; set; } = [];
+
+//        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+//        public List<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = [];
+//    }
+
+//    public abstract class AbstractRxN : InformationType
+//    {
+//        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+//        public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
+
+//        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+//        public List<rxNCode> rxNCode { get; set; } = [];
+
+//        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+//        public List<textContent> textContent { get; set; } = [];
+
+//        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+//        public List<InclusionType<isApplicableTo>> isApplicableTo { get; set; } = [];
+
+//        [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+//        public List<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = [];
+
+//        public AbstractRxNInformationAssociations InformationAssociations { get; set; } = new();
+
+//        public AbstractRxN() {
+//        }
+//    }
+//}
+
 namespace TestS100Framework
 {
     public class UnitTestCodeBuilder
@@ -44,6 +87,10 @@ namespace TestS100Framework
             var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
             File.WriteAllText(@"c:\temp\content.cs", content.fc, Encoding.UTF8);
+        }
+
+        [Fact]
+        public void Test_Bindings() { 
         }
 
         [Fact]

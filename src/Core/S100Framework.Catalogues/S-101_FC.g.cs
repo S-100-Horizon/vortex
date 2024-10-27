@@ -4924,6 +4924,8 @@ namespace S100Framework.DomainModel.S101
     namespace InformationTypes
     {
         using ComplexAttributes;
+        using Bindings.InformationAssociations;
+        using Bindings.Roles;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]

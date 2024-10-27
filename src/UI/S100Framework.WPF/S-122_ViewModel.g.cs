@@ -1987,6 +1987,43 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    public class AbstractRxNInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("AbstractRxNInformationBindings")]
+        public ObservableCollection<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = new();
+
+        public void Load(DomainModel.S122.InformationTypes.AbstractRxNInformationBindings instance)
+        {
+            theOrganisation.Clear();
+            if (instance.theOrganisation is not null)
+                foreach (var e in instance.theOrganisation)
+                    theOrganisation.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S122.InformationTypes.AbstractRxNInformationBindings
+            {
+                theOrganisation = this.theOrganisation.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S122.InformationTypes.AbstractRxNInformationBindings Model => new()
+        {
+            theOrganisation = this.theOrganisation.ToList(),
+        };
+
+        public AbstractRxNInformationBindingsViewModel()
+        {
+            theOrganisation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theOrganisation));
+            };
+        }
+    }
+
     public class AbstractRxNViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
@@ -2022,6 +2059,21 @@ namespace S100Framework.WPF.ViewModel.S122
 
         [Category("AbstractRxN")]
         public ObservableCollection<rxNCode> rxNCode { get; set; } = new();
+
+        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
+        [Category("AbstractRxN")]
+        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
+        {
+            get
+            {
+                return _AbstractRxNInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AbstractRxNInformationBindings, value);
+            }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -2107,6 +2159,13 @@ namespace S100Framework.WPF.ViewModel.S122
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
                     rxNCode.Add(e);
+            AbstractRxNInformationBindings = new();
+            if (instance.AbstractRxNInformationBindings != null)
+            {
+                AbstractRxNInformationBindings = new();
+                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -2138,6 +2197,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 categoryOfAuthority = this.categoryOfAuthority,
                 textContent = this.textContent?.Model,
                 rxNCode = this.rxNCode.ToList(),
+                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -2155,6 +2215,7 @@ namespace S100Framework.WPF.ViewModel.S122
             categoryOfAuthority = this._categoryOfAuthority,
             textContent = this._textContent?.Model,
             rxNCode = this.rxNCode.ToList(),
+            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -2185,8 +2246,60 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    public class NauticalInformationInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("NauticalInformationInformationBindings")]
+        public ObservableCollection<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = new();
+
+        public void Load(DomainModel.S122.InformationTypes.NauticalInformationInformationBindings instance)
+        {
+            theOrganisation.Clear();
+            if (instance.theOrganisation is not null)
+                foreach (var e in instance.theOrganisation)
+                    theOrganisation.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S122.InformationTypes.NauticalInformationInformationBindings
+            {
+                theOrganisation = this.theOrganisation.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S122.InformationTypes.NauticalInformationInformationBindings Model => new()
+        {
+            theOrganisation = this.theOrganisation.ToList(),
+        };
+
+        public NauticalInformationInformationBindingsViewModel()
+        {
+            theOrganisation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theOrganisation));
+            };
+        }
+    }
+
     public class NauticalInformationViewModel : ViewModelBase
     {
+        private NauticalInformationInformationBindingsViewModel? _NauticalInformationInformationBindings;
+        [Category("NauticalInformation")]
+        public NauticalInformationInformationBindingsViewModel? NauticalInformationInformationBindings
+        {
+            get
+            {
+                return _NauticalInformationInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _NauticalInformationInformationBindings, value);
+            }
+        }
+
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority
@@ -2220,6 +2333,21 @@ namespace S100Framework.WPF.ViewModel.S122
 
         [Category("AbstractRxN")]
         public ObservableCollection<rxNCode> rxNCode { get; set; } = new();
+
+        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
+        [Category("AbstractRxN")]
+        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
+        {
+            get
+            {
+                return _AbstractRxNInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AbstractRxNInformationBindings, value);
+            }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -2293,6 +2421,13 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public void Load(DomainModel.S122.InformationTypes.NauticalInformation instance)
         {
+            NauticalInformationInformationBindings = new();
+            if (instance.NauticalInformationInformationBindings != null)
+            {
+                NauticalInformationInformationBindings = new();
+                NauticalInformationInformationBindings.Load(instance.NauticalInformationInformationBindings);
+            }
+
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent = new();
             if (instance.textContent != null)
@@ -2305,6 +2440,13 @@ namespace S100Framework.WPF.ViewModel.S122
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
                     rxNCode.Add(e);
+            AbstractRxNInformationBindings = new();
+            if (instance.AbstractRxNInformationBindings != null)
+            {
+                AbstractRxNInformationBindings = new();
+                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -2333,9 +2475,11 @@ namespace S100Framework.WPF.ViewModel.S122
         {
             var instance = new DomainModel.S122.InformationTypes.NauticalInformation
             {
+                NauticalInformationInformationBindings = this.NauticalInformationInformationBindings?.Model,
                 categoryOfAuthority = this.categoryOfAuthority,
                 textContent = this.textContent?.Model,
                 rxNCode = this.rxNCode.ToList(),
+                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -2350,9 +2494,11 @@ namespace S100Framework.WPF.ViewModel.S122
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.NauticalInformation Model => new()
         {
+            NauticalInformationInformationBindings = this._NauticalInformationInformationBindings?.Model,
             categoryOfAuthority = this._categoryOfAuthority,
             textContent = this._textContent?.Model,
             rxNCode = this.rxNCode.ToList(),
+            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -2418,6 +2564,21 @@ namespace S100Framework.WPF.ViewModel.S122
 
         [Category("AbstractRxN")]
         public ObservableCollection<rxNCode> rxNCode { get; set; } = new();
+
+        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
+        [Category("AbstractRxN")]
+        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
+        {
+            get
+            {
+                return _AbstractRxNInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AbstractRxNInformationBindings, value);
+            }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -2503,6 +2664,13 @@ namespace S100Framework.WPF.ViewModel.S122
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
                     rxNCode.Add(e);
+            AbstractRxNInformationBindings = new();
+            if (instance.AbstractRxNInformationBindings != null)
+            {
+                AbstractRxNInformationBindings = new();
+                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -2534,6 +2702,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 categoryOfAuthority = this.categoryOfAuthority,
                 textContent = this.textContent?.Model,
                 rxNCode = this.rxNCode.ToList(),
+                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -2551,6 +2720,7 @@ namespace S100Framework.WPF.ViewModel.S122
             categoryOfAuthority = this._categoryOfAuthority,
             textContent = this._textContent?.Model,
             rxNCode = this.rxNCode.ToList(),
+            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -2616,6 +2786,21 @@ namespace S100Framework.WPF.ViewModel.S122
 
         [Category("AbstractRxN")]
         public ObservableCollection<rxNCode> rxNCode { get; set; } = new();
+
+        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
+        [Category("AbstractRxN")]
+        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
+        {
+            get
+            {
+                return _AbstractRxNInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AbstractRxNInformationBindings, value);
+            }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -2701,6 +2886,13 @@ namespace S100Framework.WPF.ViewModel.S122
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
                     rxNCode.Add(e);
+            AbstractRxNInformationBindings = new();
+            if (instance.AbstractRxNInformationBindings != null)
+            {
+                AbstractRxNInformationBindings = new();
+                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -2732,6 +2924,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 categoryOfAuthority = this.categoryOfAuthority,
                 textContent = this.textContent?.Model,
                 rxNCode = this.rxNCode.ToList(),
+                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -2749,6 +2942,7 @@ namespace S100Framework.WPF.ViewModel.S122
             categoryOfAuthority = this._categoryOfAuthority,
             textContent = this._textContent?.Model,
             rxNCode = this.rxNCode.ToList(),
+            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -2814,6 +3008,21 @@ namespace S100Framework.WPF.ViewModel.S122
 
         [Category("AbstractRxN")]
         public ObservableCollection<rxNCode> rxNCode { get; set; } = new();
+
+        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
+        [Category("AbstractRxN")]
+        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
+        {
+            get
+            {
+                return _AbstractRxNInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AbstractRxNInformationBindings, value);
+            }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -2899,6 +3108,13 @@ namespace S100Framework.WPF.ViewModel.S122
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
                     rxNCode.Add(e);
+            AbstractRxNInformationBindings = new();
+            if (instance.AbstractRxNInformationBindings != null)
+            {
+                AbstractRxNInformationBindings = new();
+                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -2930,6 +3146,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 categoryOfAuthority = this.categoryOfAuthority,
                 textContent = this.textContent?.Model,
                 rxNCode = this.rxNCode.ToList(),
+                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -2947,6 +3164,7 @@ namespace S100Framework.WPF.ViewModel.S122
             categoryOfAuthority = this._categoryOfAuthority,
             textContent = this._textContent?.Model,
             rxNCode = this.rxNCode.ToList(),
+            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -2977,6 +3195,69 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    public class AuthorityInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("AuthorityInformationBindings")]
+        public ObservableCollection<RelatedOrganisation<theInformation>> theInformation { get; set; } = new();
+
+        [Category("AuthorityInformationBindings")]
+        public ObservableCollection<AuthorityContact<theContactDetails>> theContactDetails { get; set; } = new();
+
+        [Category("AuthorityInformationBindings")]
+        public ObservableCollection<AuthorityHours<theServiceHours>> theServiceHours { get; set; } = new();
+
+        public void Load(DomainModel.S122.InformationTypes.AuthorityInformationBindings instance)
+        {
+            theInformation.Clear();
+            if (instance.theInformation is not null)
+                foreach (var e in instance.theInformation)
+                    theInformation.Add(e);
+            theContactDetails.Clear();
+            if (instance.theContactDetails is not null)
+                foreach (var e in instance.theContactDetails)
+                    theContactDetails.Add(e);
+            theServiceHours.Clear();
+            if (instance.theServiceHours is not null)
+                foreach (var e in instance.theServiceHours)
+                    theServiceHours.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S122.InformationTypes.AuthorityInformationBindings
+            {
+                theInformation = this.theInformation.ToList(),
+                theContactDetails = this.theContactDetails.ToList(),
+                theServiceHours = this.theServiceHours.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S122.InformationTypes.AuthorityInformationBindings Model => new()
+        {
+            theInformation = this.theInformation.ToList(),
+            theContactDetails = this.theContactDetails.ToList(),
+            theServiceHours = this.theServiceHours.ToList(),
+        };
+
+        public AuthorityInformationBindingsViewModel()
+        {
+            theInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theInformation));
+            };
+            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theContactDetails));
+            };
+            theServiceHours.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theServiceHours));
+            };
+        }
+    }
+
     public class AuthorityViewModel : ViewModelBase
     {
         private categoryOfAuthority _categoryOfAuthority;
@@ -2996,6 +3277,21 @@ namespace S100Framework.WPF.ViewModel.S122
 
         [Category("Authority")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        private AuthorityInformationBindingsViewModel? _AuthorityInformationBindings;
+        [Category("Authority")]
+        public AuthorityInformationBindingsViewModel? AuthorityInformationBindings
+        {
+            get
+            {
+                return _AuthorityInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AuthorityInformationBindings, value);
+            }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -3074,6 +3370,13 @@ namespace S100Framework.WPF.ViewModel.S122
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            AuthorityInformationBindings = new();
+            if (instance.AuthorityInformationBindings != null)
+            {
+                AuthorityInformationBindings = new();
+                AuthorityInformationBindings.Load(instance.AuthorityInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -3104,6 +3407,7 @@ namespace S100Framework.WPF.ViewModel.S122
             {
                 categoryOfAuthority = this.categoryOfAuthority,
                 textContent = this.textContent.ToList(),
+                AuthorityInformationBindings = this.AuthorityInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -3120,6 +3424,7 @@ namespace S100Framework.WPF.ViewModel.S122
         {
             categoryOfAuthority = this._categoryOfAuthority,
             textContent = this.textContent.ToList(),
+            AuthorityInformationBindings = this._AuthorityInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -3146,6 +3451,43 @@ namespace S100Framework.WPF.ViewModel.S122
             graphic.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(graphic));
+            };
+        }
+    }
+
+    public class ContactDetailsInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("ContactDetailsInformationBindings")]
+        public ObservableCollection<AuthorityContact<theAuthority>> theAuthority { get; set; } = new();
+
+        public void Load(DomainModel.S122.InformationTypes.ContactDetailsInformationBindings instance)
+        {
+            theAuthority.Clear();
+            if (instance.theAuthority is not null)
+                foreach (var e in instance.theAuthority)
+                    theAuthority.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S122.InformationTypes.ContactDetailsInformationBindings
+            {
+                theAuthority = this.theAuthority.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S122.InformationTypes.ContactDetailsInformationBindings Model => new()
+        {
+            theAuthority = this.theAuthority.ToList(),
+        };
+
+        public ContactDetailsInformationBindingsViewModel()
+        {
+            theAuthority.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theAuthority));
             };
         }
     }
@@ -3248,6 +3590,21 @@ namespace S100Framework.WPF.ViewModel.S122
         [Category("ContactDetails")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private ContactDetailsInformationBindingsViewModel? _ContactDetailsInformationBindings;
+        [Category("ContactDetails")]
+        public ContactDetailsInformationBindingsViewModel? ContactDetailsInformationBindings
+        {
+            get
+            {
+                return _ContactDetailsInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _ContactDetailsInformationBindings, value);
+            }
+        }
+
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority
@@ -3281,6 +3638,21 @@ namespace S100Framework.WPF.ViewModel.S122
 
         [Category("AbstractRxN")]
         public ObservableCollection<rxNCode> rxNCode { get; set; } = new();
+
+        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
+        [Category("AbstractRxN")]
+        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
+        {
+            get
+            {
+                return _AbstractRxNInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AbstractRxNInformationBindings, value);
+            }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -3387,6 +3759,13 @@ namespace S100Framework.WPF.ViewModel.S122
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            ContactDetailsInformationBindings = new();
+            if (instance.ContactDetailsInformationBindings != null)
+            {
+                ContactDetailsInformationBindings = new();
+                ContactDetailsInformationBindings.Load(instance.ContactDetailsInformationBindings);
+            }
+
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent = new();
             if (instance.textContent != null)
@@ -3399,6 +3778,13 @@ namespace S100Framework.WPF.ViewModel.S122
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
                     rxNCode.Add(e);
+            AbstractRxNInformationBindings = new();
+            if (instance.AbstractRxNInformationBindings != null)
+            {
+                AbstractRxNInformationBindings = new();
+                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -3439,9 +3825,11 @@ namespace S100Framework.WPF.ViewModel.S122
                 onlineResource = this.onlineResource.ToList(),
                 telecommunications = this.telecommunications.ToList(),
                 information = this.information.ToList(),
+                ContactDetailsInformationBindings = this.ContactDetailsInformationBindings?.Model,
                 categoryOfAuthority = this.categoryOfAuthority,
                 textContent = this.textContent?.Model,
                 rxNCode = this.rxNCode.ToList(),
+                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -3468,9 +3856,11 @@ namespace S100Framework.WPF.ViewModel.S122
             onlineResource = this.onlineResource.ToList(),
             telecommunications = this.telecommunications.ToList(),
             information = this.information.ToList(),
+            ContactDetailsInformationBindings = this._ContactDetailsInformationBindings?.Model,
             categoryOfAuthority = this._categoryOfAuthority,
             textContent = this._textContent?.Model,
             rxNCode = this.rxNCode.ToList(),
+            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -3529,6 +3919,43 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    public class NonStandardWorkingDayInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("NonStandardWorkingDayInformationBindings")]
+        public ObservableCollection<ExceptionalWorkday<theServiceHours_nsdy>> theServiceHours_nsdy { get; set; } = new();
+
+        public void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDayInformationBindings instance)
+        {
+            theServiceHours_nsdy.Clear();
+            if (instance.theServiceHours_nsdy is not null)
+                foreach (var e in instance.theServiceHours_nsdy)
+                    theServiceHours_nsdy.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S122.InformationTypes.NonStandardWorkingDayInformationBindings
+            {
+                theServiceHours_nsdy = this.theServiceHours_nsdy.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S122.InformationTypes.NonStandardWorkingDayInformationBindings Model => new()
+        {
+            theServiceHours_nsdy = this.theServiceHours_nsdy.ToList(),
+        };
+
+        public NonStandardWorkingDayInformationBindingsViewModel()
+        {
+            theServiceHours_nsdy.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theServiceHours_nsdy));
+            };
+        }
+    }
+
     public class NonStandardWorkingDayViewModel : ViewModelBase
     {
         [Category("NonStandardWorkingDay")]
@@ -3539,6 +3966,21 @@ namespace S100Framework.WPF.ViewModel.S122
 
         [Category("NonStandardWorkingDay")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        private NonStandardWorkingDayInformationBindingsViewModel? _NonStandardWorkingDayInformationBindings;
+        [Category("NonStandardWorkingDay")]
+        public NonStandardWorkingDayInformationBindingsViewModel? NonStandardWorkingDayInformationBindings
+        {
+            get
+            {
+                return _NonStandardWorkingDayInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _NonStandardWorkingDayInformationBindings, value);
+            }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -3624,6 +4066,13 @@ namespace S100Framework.WPF.ViewModel.S122
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            NonStandardWorkingDayInformationBindings = new();
+            if (instance.NonStandardWorkingDayInformationBindings != null)
+            {
+                NonStandardWorkingDayInformationBindings = new();
+                NonStandardWorkingDayInformationBindings.Load(instance.NonStandardWorkingDayInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -3655,6 +4104,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 dateFixed = this.dateFixed.ToList(),
                 dateVariable = this.dateVariable.ToList(),
                 information = this.information.ToList(),
+                NonStandardWorkingDayInformationBindings = this.NonStandardWorkingDayInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -3672,6 +4122,7 @@ namespace S100Framework.WPF.ViewModel.S122
             dateFixed = this.dateFixed.ToList(),
             dateVariable = this.dateVariable.ToList(),
             information = this.information.ToList(),
+            NonStandardWorkingDayInformationBindings = this._NonStandardWorkingDayInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -3710,6 +4161,56 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    public class ServiceHoursInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("ServiceHoursInformationBindings")]
+        public ObservableCollection<AuthorityHours<theAuthority_srvHrs>> theAuthority_srvHrs { get; set; } = new();
+
+        [Category("ServiceHoursInformationBindings")]
+        public ObservableCollection<ExceptionalWorkday<partialWorkingDay>> partialWorkingDay { get; set; } = new();
+
+        public void Load(DomainModel.S122.InformationTypes.ServiceHoursInformationBindings instance)
+        {
+            theAuthority_srvHrs.Clear();
+            if (instance.theAuthority_srvHrs is not null)
+                foreach (var e in instance.theAuthority_srvHrs)
+                    theAuthority_srvHrs.Add(e);
+            partialWorkingDay.Clear();
+            if (instance.partialWorkingDay is not null)
+                foreach (var e in instance.partialWorkingDay)
+                    partialWorkingDay.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S122.InformationTypes.ServiceHoursInformationBindings
+            {
+                theAuthority_srvHrs = this.theAuthority_srvHrs.ToList(),
+                partialWorkingDay = this.partialWorkingDay.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S122.InformationTypes.ServiceHoursInformationBindings Model => new()
+        {
+            theAuthority_srvHrs = this.theAuthority_srvHrs.ToList(),
+            partialWorkingDay = this.partialWorkingDay.ToList(),
+        };
+
+        public ServiceHoursInformationBindingsViewModel()
+        {
+            theAuthority_srvHrs.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theAuthority_srvHrs));
+            };
+            partialWorkingDay.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(partialWorkingDay));
+            };
+        }
+    }
+
     public class ServiceHoursViewModel : ViewModelBase
     {
         [Category("ServiceHours")]
@@ -3728,6 +4229,21 @@ namespace S100Framework.WPF.ViewModel.S122
             set
             {
                 SetValue(ref _information, value);
+            }
+        }
+
+        private ServiceHoursInformationBindingsViewModel? _ServiceHoursInformationBindings;
+        [Category("ServiceHours")]
+        public ServiceHoursInformationBindingsViewModel? ServiceHoursInformationBindings
+        {
+            get
+            {
+                return _ServiceHoursInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _ServiceHoursInformationBindings, value);
             }
         }
 
@@ -3814,6 +4330,13 @@ namespace S100Framework.WPF.ViewModel.S122
                 information.Load(instance.information);
             }
 
+            ServiceHoursInformationBindings = new();
+            if (instance.ServiceHoursInformationBindings != null)
+            {
+                ServiceHoursInformationBindings = new();
+                ServiceHoursInformationBindings.Load(instance.ServiceHoursInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -3844,6 +4367,7 @@ namespace S100Framework.WPF.ViewModel.S122
             {
                 scheduleByDayOfWeek = this.scheduleByDayOfWeek.ToList(),
                 information = this.information?.Model,
+                ServiceHoursInformationBindings = this.ServiceHoursInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -3860,6 +4384,7 @@ namespace S100Framework.WPF.ViewModel.S122
         {
             scheduleByDayOfWeek = this.scheduleByDayOfWeek.ToList(),
             information = this._information?.Model,
+            ServiceHoursInformationBindings = this._ServiceHoursInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),

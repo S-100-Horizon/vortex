@@ -669,6 +669,22 @@ namespace S100Framework.DomainModel.S124
     namespace InformationTypes
     {
         using ComplexAttributes;
+        using Bindings.InformationAssociations;
+        using Bindings.Roles;
+
+        [System.SerializableAttribute()]
+        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
+        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+        public class NAVWARNPreambleInformationBindings
+        {
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public List<NWReferences<theReferences>> theReferences { get; set; } = [];
+
+            public NAVWARNPreambleInformationBindings()
+            {
+            }
+        }
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -702,6 +718,9 @@ namespace S100Framework.DomainModel.S124
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required DateTime publicationTime { get; set; }
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public NAVWARNPreambleInformationBindings? NAVWARNPreambleInformationBindings { get; set; }
 
             public NAVWARNPreamble()
             {

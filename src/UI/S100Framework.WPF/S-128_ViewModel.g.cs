@@ -1893,6 +1893,74 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    public class CatalogueSectionHeaderInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("CatalogueSectionHeaderInformationBindings")]
+        public ObservableCollection<PriceOfNauticalProduct<thePriceInformation>> thePriceInformation { get; set; } = new();
+
+        private ProductionDetails<theProducer>? _theProducer = default;
+        [Category("CatalogueSectionHeaderInformationBindings")]
+        public ProductionDetails<theProducer>? theProducer
+        {
+            get
+            {
+                return _theProducer;
+            }
+
+            set
+            {
+                SetValue(ref _theProducer, value);
+            }
+        }
+
+        [Category("CatalogueSectionHeaderInformationBindings")]
+        public ObservableCollection<DistributionDetails<theDistributor>> theDistributor { get; set; } = new();
+
+        public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeaderInformationBindings instance)
+        {
+            thePriceInformation.Clear();
+            if (instance.thePriceInformation is not null)
+                foreach (var e in instance.thePriceInformation)
+                    thePriceInformation.Add(e);
+            theProducer = instance.theProducer;
+            theDistributor.Clear();
+            if (instance.theDistributor is not null)
+                foreach (var e in instance.theDistributor)
+                    theDistributor.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S128.InformationTypes.CatalogueSectionHeaderInformationBindings
+            {
+                thePriceInformation = this.thePriceInformation.ToList(),
+                theProducer = this.theProducer,
+                theDistributor = this.theDistributor.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S128.InformationTypes.CatalogueSectionHeaderInformationBindings Model => new()
+        {
+            thePriceInformation = this.thePriceInformation.ToList(),
+            theProducer = this._theProducer,
+            theDistributor = this.theDistributor.ToList(),
+        };
+
+        public CatalogueSectionHeaderInformationBindingsViewModel()
+        {
+            thePriceInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(thePriceInformation));
+            };
+            theDistributor.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theDistributor));
+            };
+        }
+    }
+
     public class CatalogueSectionHeaderViewModel : ViewModelBase
     {
         private Int32 _catalogueSectionNumber;
@@ -1941,6 +2009,21 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        private CatalogueSectionHeaderInformationBindingsViewModel? _CatalogueSectionHeaderInformationBindings;
+        [Category("CatalogueSectionHeader")]
+        public CatalogueSectionHeaderInformationBindingsViewModel? CatalogueSectionHeaderInformationBindings
+        {
+            get
+            {
+                return _CatalogueSectionHeaderInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _CatalogueSectionHeaderInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance)
         {
             catalogueSectionNumber = instance.catalogueSectionNumber;
@@ -1951,6 +2034,13 @@ namespace S100Framework.WPF.ViewModel.S128
                 information = new();
                 information.Load(instance.information);
             }
+
+            CatalogueSectionHeaderInformationBindings = new();
+            if (instance.CatalogueSectionHeaderInformationBindings != null)
+            {
+                CatalogueSectionHeaderInformationBindings = new();
+                CatalogueSectionHeaderInformationBindings.Load(instance.CatalogueSectionHeaderInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -1960,6 +2050,7 @@ namespace S100Framework.WPF.ViewModel.S128
                 catalogueSectionNumber = this.catalogueSectionNumber,
                 catalogueSectionTitle = this.catalogueSectionTitle,
                 information = this.information?.Model,
+                CatalogueSectionHeaderInformationBindings = this.CatalogueSectionHeaderInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -1970,9 +2061,70 @@ namespace S100Framework.WPF.ViewModel.S128
             catalogueSectionNumber = this._catalogueSectionNumber,
             catalogueSectionTitle = this._catalogueSectionTitle,
             information = this._information?.Model,
+            CatalogueSectionHeaderInformationBindings = this._CatalogueSectionHeaderInformationBindings?.Model,
         };
 
         public CatalogueSectionHeaderViewModel()
+        {
+        }
+    }
+
+    public class ContactDetailsInformationBindingsViewModel : ViewModelBase
+    {
+        private ProducerContact<theProducer> _theProducer;
+        [Category("ContactDetailsInformationBindings")]
+        public ProducerContact<theProducer> theProducer
+        {
+            get
+            {
+                return _theProducer;
+            }
+
+            set
+            {
+                SetValue(ref _theProducer, value);
+            }
+        }
+
+        private DistributorContact<theDistributor> _theDistributor;
+        [Category("ContactDetailsInformationBindings")]
+        public DistributorContact<theDistributor> theDistributor
+        {
+            get
+            {
+                return _theDistributor;
+            }
+
+            set
+            {
+                SetValue(ref _theDistributor, value);
+            }
+        }
+
+        public void Load(DomainModel.S128.InformationTypes.ContactDetailsInformationBindings instance)
+        {
+            theProducer = instance.theProducer;
+            theDistributor = instance.theDistributor;
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S128.InformationTypes.ContactDetailsInformationBindings
+            {
+                theProducer = this.theProducer,
+                theDistributor = this.theDistributor,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S128.InformationTypes.ContactDetailsInformationBindings Model => new()
+        {
+            theProducer = this._theProducer,
+            theDistributor = this._theDistributor,
+        };
+
+        public ContactDetailsInformationBindingsViewModel()
         {
         }
     }
@@ -2009,6 +2161,21 @@ namespace S100Framework.WPF.ViewModel.S128
         [Category("ContactDetails")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
 
+        private ContactDetailsInformationBindingsViewModel? _ContactDetailsInformationBindings;
+        [Category("ContactDetails")]
+        public ContactDetailsInformationBindingsViewModel? ContactDetailsInformationBindings
+        {
+            get
+            {
+                return _ContactDetailsInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _ContactDetailsInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S128.InformationTypes.ContactDetails instance)
         {
             contactInstructions = instance.contactInstructions;
@@ -2032,6 +2199,12 @@ namespace S100Framework.WPF.ViewModel.S128
             if (instance.sourceIndication is not null)
                 foreach (var e in instance.sourceIndication)
                     sourceIndication.Add(e);
+            ContactDetailsInformationBindings = new();
+            if (instance.ContactDetailsInformationBindings != null)
+            {
+                ContactDetailsInformationBindings = new();
+                ContactDetailsInformationBindings.Load(instance.ContactDetailsInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -2044,6 +2217,7 @@ namespace S100Framework.WPF.ViewModel.S128
                 onlineResource = this.onlineResource.ToList(),
                 telecommunications = this.telecommunications.ToList(),
                 sourceIndication = this.sourceIndication.ToList(),
+                ContactDetailsInformationBindings = this.ContactDetailsInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2057,6 +2231,7 @@ namespace S100Framework.WPF.ViewModel.S128
             onlineResource = this.onlineResource.ToList(),
             telecommunications = this.telecommunications.ToList(),
             sourceIndication = this.sourceIndication.ToList(),
+            ContactDetailsInformationBindings = this._ContactDetailsInformationBindings?.Model,
         };
 
         public ContactDetailsViewModel()
@@ -2157,6 +2332,48 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    public class PriceInformationInformationBindingsViewModel : ViewModelBase
+    {
+        private PriceOfNauticalProduct<theCatalogueOfNauticalProduct> _theCatalogueOfNauticalProduct;
+        [Category("PriceInformationInformationBindings")]
+        public PriceOfNauticalProduct<theCatalogueOfNauticalProduct> theCatalogueOfNauticalProduct
+        {
+            get
+            {
+                return _theCatalogueOfNauticalProduct;
+            }
+
+            set
+            {
+                SetValue(ref _theCatalogueOfNauticalProduct, value);
+            }
+        }
+
+        public void Load(DomainModel.S128.InformationTypes.PriceInformationInformationBindings instance)
+        {
+            theCatalogueOfNauticalProduct = instance.theCatalogueOfNauticalProduct;
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S128.InformationTypes.PriceInformationInformationBindings
+            {
+                theCatalogueOfNauticalProduct = this.theCatalogueOfNauticalProduct,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S128.InformationTypes.PriceInformationInformationBindings Model => new()
+        {
+            theCatalogueOfNauticalProduct = this._theCatalogueOfNauticalProduct,
+        };
+
+        public PriceInformationInformationBindingsViewModel()
+        {
+        }
+    }
+
     public class PriceInformationViewModel : ViewModelBase
     {
         [Category("PriceInformation")]
@@ -2170,6 +2387,21 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("PriceInformation")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
+
+        private PriceInformationInformationBindingsViewModel? _PriceInformationInformationBindings;
+        [Category("PriceInformation")]
+        public PriceInformationInformationBindingsViewModel? PriceInformationInformationBindings
+        {
+            get
+            {
+                return _PriceInformationInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _PriceInformationInformationBindings, value);
+            }
+        }
 
         public void Load(DomainModel.S128.InformationTypes.PriceInformation instance)
         {
@@ -2189,6 +2421,12 @@ namespace S100Framework.WPF.ViewModel.S128
             if (instance.sourceIndication is not null)
                 foreach (var e in instance.sourceIndication)
                     sourceIndication.Add(e);
+            PriceInformationInformationBindings = new();
+            if (instance.PriceInformationInformationBindings != null)
+            {
+                PriceInformationInformationBindings = new();
+                PriceInformationInformationBindings.Load(instance.PriceInformationInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -2199,6 +2437,7 @@ namespace S100Framework.WPF.ViewModel.S128
                 onlineResource = this.onlineResource.ToList(),
                 pricing = this.pricing.ToList(),
                 sourceIndication = this.sourceIndication.ToList(),
+                PriceInformationInformationBindings = this.PriceInformationInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2210,6 +2449,7 @@ namespace S100Framework.WPF.ViewModel.S128
             onlineResource = this.onlineResource.ToList(),
             pricing = this.pricing.ToList(),
             sourceIndication = this.sourceIndication.ToList(),
+            PriceInformationInformationBindings = this._PriceInformationInformationBindings?.Model,
         };
 
         public PriceInformationViewModel()
@@ -2229,6 +2469,61 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(sourceIndication));
+            };
+        }
+    }
+
+    public class ProducerInformationInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("ProducerInformationInformationBindings")]
+        public ObservableCollection<ProducerContact<theContactDetails>> theContactDetails { get; set; } = new();
+
+        private ProductionDetails<catalogueHeader> _catalogueHeader;
+        [Category("ProducerInformationInformationBindings")]
+        public ProductionDetails<catalogueHeader> catalogueHeader
+        {
+            get
+            {
+                return _catalogueHeader;
+            }
+
+            set
+            {
+                SetValue(ref _catalogueHeader, value);
+            }
+        }
+
+        public void Load(DomainModel.S128.InformationTypes.ProducerInformationInformationBindings instance)
+        {
+            theContactDetails.Clear();
+            if (instance.theContactDetails is not null)
+                foreach (var e in instance.theContactDetails)
+                    theContactDetails.Add(e);
+            catalogueHeader = instance.catalogueHeader;
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S128.InformationTypes.ProducerInformationInformationBindings
+            {
+                theContactDetails = this.theContactDetails.ToList(),
+                catalogueHeader = this.catalogueHeader,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S128.InformationTypes.ProducerInformationInformationBindings Model => new()
+        {
+            theContactDetails = this.theContactDetails.ToList(),
+            catalogueHeader = this._catalogueHeader,
+        };
+
+        public ProducerInformationInformationBindingsViewModel()
+        {
+            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theContactDetails));
             };
         }
     }
@@ -2265,10 +2560,31 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        private ProducerInformationInformationBindingsViewModel? _ProducerInformationInformationBindings;
+        [Category("ProducerInformation")]
+        public ProducerInformationInformationBindingsViewModel? ProducerInformationInformationBindings
+        {
+            get
+            {
+                return _ProducerInformationInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _ProducerInformationInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S128.InformationTypes.ProducerInformation instance)
         {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             agencyName = instance.agencyName;
+            ProducerInformationInformationBindings = new();
+            if (instance.ProducerInformationInformationBindings != null)
+            {
+                ProducerInformationInformationBindings = new();
+                ProducerInformationInformationBindings.Load(instance.ProducerInformationInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -2277,6 +2593,7 @@ namespace S100Framework.WPF.ViewModel.S128
             {
                 agencyResponsibleForProduction = this.agencyResponsibleForProduction,
                 agencyName = this.agencyName,
+                ProducerInformationInformationBindings = this.ProducerInformationInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2286,10 +2603,66 @@ namespace S100Framework.WPF.ViewModel.S128
         {
             agencyResponsibleForProduction = this._agencyResponsibleForProduction,
             agencyName = this._agencyName,
+            ProducerInformationInformationBindings = this._ProducerInformationInformationBindings?.Model,
         };
 
         public ProducerInformationViewModel()
         {
+        }
+    }
+
+    public class DistributorInformationInformationBindingsViewModel : ViewModelBase
+    {
+        private DistributionDetails<catalogueHeader> _catalogueHeader;
+        [Category("DistributorInformationInformationBindings")]
+        public DistributionDetails<catalogueHeader> catalogueHeader
+        {
+            get
+            {
+                return _catalogueHeader;
+            }
+
+            set
+            {
+                SetValue(ref _catalogueHeader, value);
+            }
+        }
+
+        [Category("DistributorInformationInformationBindings")]
+        public ObservableCollection<DistributorContact<theContactDetails>> theContactDetails { get; set; } = new();
+
+        public void Load(DomainModel.S128.InformationTypes.DistributorInformationInformationBindings instance)
+        {
+            catalogueHeader = instance.catalogueHeader;
+            theContactDetails.Clear();
+            if (instance.theContactDetails is not null)
+                foreach (var e in instance.theContactDetails)
+                    theContactDetails.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S128.InformationTypes.DistributorInformationInformationBindings
+            {
+                catalogueHeader = this.catalogueHeader,
+                theContactDetails = this.theContactDetails.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S128.InformationTypes.DistributorInformationInformationBindings Model => new()
+        {
+            catalogueHeader = this._catalogueHeader,
+            theContactDetails = this.theContactDetails.ToList(),
+        };
+
+        public DistributorInformationInformationBindingsViewModel()
+        {
+            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theContactDetails));
+            };
         }
     }
 
@@ -2310,9 +2683,30 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        private DistributorInformationInformationBindingsViewModel? _DistributorInformationInformationBindings;
+        [Category("DistributorInformation")]
+        public DistributorInformationInformationBindingsViewModel? DistributorInformationInformationBindings
+        {
+            get
+            {
+                return _DistributorInformationInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _DistributorInformationInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S128.InformationTypes.DistributorInformation instance)
         {
             distributorName = instance.distributorName;
+            DistributorInformationInformationBindings = new();
+            if (instance.DistributorInformationInformationBindings != null)
+            {
+                DistributorInformationInformationBindings = new();
+                DistributorInformationInformationBindings.Load(instance.DistributorInformationInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -2320,6 +2714,7 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new DomainModel.S128.InformationTypes.DistributorInformation
             {
                 distributorName = this.distributorName,
+                DistributorInformationInformationBindings = this.DistributorInformationInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2328,6 +2723,7 @@ namespace S100Framework.WPF.ViewModel.S128
         public DomainModel.S128.InformationTypes.DistributorInformation Model => new()
         {
             distributorName = this._distributorName,
+            DistributorInformationInformationBindings = this._DistributorInformationInformationBindings?.Model,
         };
 
         public DistributorInformationViewModel()

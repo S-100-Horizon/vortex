@@ -2673,6 +2673,143 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    public class InformationTypeInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("InformationTypeInformationBindings")]
+        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
+
+        public void Load(DomainModel.S131.InformationTypes.InformationTypeInformationBindings instance)
+        {
+            providesInformation.Clear();
+            if (instance.providesInformation is not null)
+                foreach (var e in instance.providesInformation)
+                    providesInformation.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S131.InformationTypes.InformationTypeInformationBindings
+            {
+                providesInformation = this.providesInformation.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.InformationTypes.InformationTypeInformationBindings Model => new()
+        {
+            providesInformation = this.providesInformation.ToList(),
+        };
+
+        public InformationTypeInformationBindingsViewModel()
+        {
+            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(providesInformation));
+            };
+        }
+    }
+
+    public class AbstractRxNInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("AbstractRxNInformationBindings")]
+        public ObservableCollection<InclusionType<isApplicableTo>> isApplicableTo { get; set; } = new();
+
+        [Category("AbstractRxNInformationBindings")]
+        public ObservableCollection<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = new();
+
+        public void Load(DomainModel.S131.InformationTypes.AbstractRxNInformationBindings instance)
+        {
+            isApplicableTo.Clear();
+            if (instance.isApplicableTo is not null)
+                foreach (var e in instance.isApplicableTo)
+                    isApplicableTo.Add(e);
+            theOrganisation.Clear();
+            if (instance.theOrganisation is not null)
+                foreach (var e in instance.theOrganisation)
+                    theOrganisation.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S131.InformationTypes.AbstractRxNInformationBindings
+            {
+                isApplicableTo = this.isApplicableTo.ToList(),
+                theOrganisation = this.theOrganisation.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.InformationTypes.AbstractRxNInformationBindings Model => new()
+        {
+            isApplicableTo = this.isApplicableTo.ToList(),
+            theOrganisation = this.theOrganisation.ToList(),
+        };
+
+        public AbstractRxNInformationBindingsViewModel()
+        {
+            isApplicableTo.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(isApplicableTo));
+            };
+            theOrganisation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theOrganisation));
+            };
+        }
+    }
+
+    public class ApplicabilityInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("ApplicabilityInformationBindings")]
+        public ObservableCollection<InclusionType<theApplicableRxN>> theApplicableRxN { get; set; } = new();
+
+        [Category("ApplicabilityInformationBindings")]
+        public ObservableCollection<PermissionType<vslLocation>> vslLocation { get; set; } = new();
+
+        public void Load(DomainModel.S131.InformationTypes.ApplicabilityInformationBindings instance)
+        {
+            theApplicableRxN.Clear();
+            if (instance.theApplicableRxN is not null)
+                foreach (var e in instance.theApplicableRxN)
+                    theApplicableRxN.Add(e);
+            vslLocation.Clear();
+            if (instance.vslLocation is not null)
+                foreach (var e in instance.vslLocation)
+                    vslLocation.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S131.InformationTypes.ApplicabilityInformationBindings
+            {
+                theApplicableRxN = this.theApplicableRxN.ToList(),
+                vslLocation = this.vslLocation.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.InformationTypes.ApplicabilityInformationBindings Model => new()
+        {
+            theApplicableRxN = this.theApplicableRxN.ToList(),
+            vslLocation = this.vslLocation.ToList(),
+        };
+
+        public ApplicabilityInformationBindingsViewModel()
+        {
+            theApplicableRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theApplicableRxN));
+            };
+            vslLocation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(vslLocation));
+            };
+        }
+    }
+
     public class ApplicabilityViewModel : ViewModelBase
     {
         private Boolean? _inBallast = default;
@@ -2779,6 +2916,21 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("Applicability")]
         public ObservableCollection<vesselsMeasurements> vesselsMeasurements { get; set; } = new();
 
+        private ApplicabilityInformationBindingsViewModel? _ApplicabilityInformationBindings;
+        [Category("Applicability")]
+        public ApplicabilityInformationBindingsViewModel? ApplicabilityInformationBindings
+        {
+            get
+            {
+                return _ApplicabilityInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _ApplicabilityInformationBindings, value);
+            }
+        }
+
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -2849,6 +3001,21 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
+        [Category("InformationType")]
+        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
+        {
+            get
+            {
+                return _InformationTypeInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _InformationTypeInformationBindings, value);
+            }
+        }
+
         [Browsable(false)]
         public categoryOfVessel[] categoryOfVesselList => CodeList.categoryOfVessels.ToArray();
 
@@ -2876,6 +3043,13 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.vesselsMeasurements is not null)
                 foreach (var e in instance.vesselsMeasurements)
                     vesselsMeasurements.Add(e);
+            ApplicabilityInformationBindings = new();
+            if (instance.ApplicabilityInformationBindings != null)
+            {
+                ApplicabilityInformationBindings = new();
+                ApplicabilityInformationBindings.Load(instance.ApplicabilityInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -2898,6 +3072,12 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            InformationTypeInformationBindings = new();
+            if (instance.InformationTypeInformationBindings != null)
+            {
+                InformationTypeInformationBindings = new();
+                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -2914,6 +3094,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 vesselPerformance = this.vesselPerformance,
                 information = this.information.ToList(),
                 vesselsMeasurements = this.vesselsMeasurements.ToList(),
+                ApplicabilityInformationBindings = this.ApplicabilityInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -2921,6 +3102,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2938,6 +3120,7 @@ namespace S100Framework.WPF.ViewModel.S131
             vesselPerformance = this._vesselPerformance,
             information = this.information.ToList(),
             vesselsMeasurements = this.vesselsMeasurements.ToList(),
+            ApplicabilityInformationBindings = this._ApplicabilityInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -2945,6 +3128,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public ApplicabilityViewModel()
@@ -2976,6 +3160,69 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(graphic));
+            };
+        }
+    }
+
+    public class AuthorityInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("AuthorityInformationBindings")]
+        public ObservableCollection<AuthorityContact<theContactDetails>> theContactDetails { get; set; } = new();
+
+        [Category("AuthorityInformationBindings")]
+        public ObservableCollection<RelatedOrganisation<theInformation>> theInformation { get; set; } = new();
+
+        [Category("AuthorityInformationBindings")]
+        public ObservableCollection<AuthorityHours<theServiceHours>> theServiceHours { get; set; } = new();
+
+        public void Load(DomainModel.S131.InformationTypes.AuthorityInformationBindings instance)
+        {
+            theContactDetails.Clear();
+            if (instance.theContactDetails is not null)
+                foreach (var e in instance.theContactDetails)
+                    theContactDetails.Add(e);
+            theInformation.Clear();
+            if (instance.theInformation is not null)
+                foreach (var e in instance.theInformation)
+                    theInformation.Add(e);
+            theServiceHours.Clear();
+            if (instance.theServiceHours is not null)
+                foreach (var e in instance.theServiceHours)
+                    theServiceHours.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S131.InformationTypes.AuthorityInformationBindings
+            {
+                theContactDetails = this.theContactDetails.ToList(),
+                theInformation = this.theInformation.ToList(),
+                theServiceHours = this.theServiceHours.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.InformationTypes.AuthorityInformationBindings Model => new()
+        {
+            theContactDetails = this.theContactDetails.ToList(),
+            theInformation = this.theInformation.ToList(),
+            theServiceHours = this.theServiceHours.ToList(),
+        };
+
+        public AuthorityInformationBindingsViewModel()
+        {
+            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theContactDetails));
+            };
+            theInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theInformation));
+            };
+            theServiceHours.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theServiceHours));
             };
         }
     }
@@ -3013,6 +3260,21 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private AuthorityInformationBindingsViewModel? _AuthorityInformationBindings;
+        [Category("Authority")]
+        public AuthorityInformationBindingsViewModel? AuthorityInformationBindings
+        {
+            get
+            {
+                return _AuthorityInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AuthorityInformationBindings, value);
+            }
+        }
+
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -3083,6 +3345,21 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
+        [Category("InformationType")]
+        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
+        {
+            get
+            {
+                return _InformationTypeInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _InformationTypeInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S131.InformationTypes.Authority instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -3091,6 +3368,13 @@ namespace S100Framework.WPF.ViewModel.S131
             {
                 textContent = new();
                 textContent.Load(instance.textContent);
+            }
+
+            AuthorityInformationBindings = new();
+            if (instance.AuthorityInformationBindings != null)
+            {
+                AuthorityInformationBindings = new();
+                AuthorityInformationBindings.Load(instance.AuthorityInformationBindings);
             }
 
             featureName.Clear();
@@ -3115,6 +3399,12 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            InformationTypeInformationBindings = new();
+            if (instance.InformationTypeInformationBindings != null)
+            {
+                InformationTypeInformationBindings = new();
+                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -3123,6 +3413,7 @@ namespace S100Framework.WPF.ViewModel.S131
             {
                 categoryOfAuthority = this.categoryOfAuthority,
                 textContent = this.textContent?.Model,
+                AuthorityInformationBindings = this.AuthorityInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -3130,6 +3421,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -3139,6 +3431,7 @@ namespace S100Framework.WPF.ViewModel.S131
         {
             categoryOfAuthority = this._categoryOfAuthority,
             textContent = this._textContent?.Model,
+            AuthorityInformationBindings = this._AuthorityInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -3146,6 +3439,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public AuthorityViewModel()
@@ -3292,6 +3586,21 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
+        [Category("InformationType")]
+        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
+        {
+            get
+            {
+                return _InformationTypeInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _InformationTypeInformationBindings, value);
+            }
+        }
+
         [Browsable(false)]
         public transportConnection[] transportConnectionList => CodeList.transportConnections.ToArray();
 
@@ -3371,6 +3680,12 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            InformationTypeInformationBindings = new();
+            if (instance.InformationTypeInformationBindings != null)
+            {
+                InformationTypeInformationBindings = new();
+                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -3397,6 +3712,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -3424,6 +3740,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public AvailablePortServicesViewModel()
@@ -3487,6 +3804,43 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(graphic));
+            };
+        }
+    }
+
+    public class ContactDetailsInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("ContactDetailsInformationBindings")]
+        public ObservableCollection<AuthorityContact<theAuthority>> theAuthority { get; set; } = new();
+
+        public void Load(DomainModel.S131.InformationTypes.ContactDetailsInformationBindings instance)
+        {
+            theAuthority.Clear();
+            if (instance.theAuthority is not null)
+                foreach (var e in instance.theAuthority)
+                    theAuthority.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S131.InformationTypes.ContactDetailsInformationBindings
+            {
+                theAuthority = this.theAuthority.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.InformationTypes.ContactDetailsInformationBindings Model => new()
+        {
+            theAuthority = this.theAuthority.ToList(),
+        };
+
+        public ContactDetailsInformationBindingsViewModel()
+        {
+            theAuthority.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theAuthority));
             };
         }
     }
@@ -3589,6 +3943,21 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("ContactDetails")]
         public ObservableCollection<telecommunications> telecommunications { get; set; } = new();
 
+        private ContactDetailsInformationBindingsViewModel? _ContactDetailsInformationBindings;
+        [Category("ContactDetails")]
+        public ContactDetailsInformationBindingsViewModel? ContactDetailsInformationBindings
+        {
+            get
+            {
+                return _ContactDetailsInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _ContactDetailsInformationBindings, value);
+            }
+        }
+
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -3659,6 +4028,21 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
+        [Category("InformationType")]
+        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
+        {
+            get
+            {
+                return _InformationTypeInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _InformationTypeInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S131.InformationTypes.ContactDetails instance)
         {
             callName = instance.callName;
@@ -3694,6 +4078,13 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.telecommunications is not null)
                 foreach (var e in instance.telecommunications)
                     telecommunications.Add(e);
+            ContactDetailsInformationBindings = new();
+            if (instance.ContactDetailsInformationBindings != null)
+            {
+                ContactDetailsInformationBindings = new();
+                ContactDetailsInformationBindings.Load(instance.ContactDetailsInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -3716,6 +4107,12 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            InformationTypeInformationBindings = new();
+            if (instance.InformationTypeInformationBindings != null)
+            {
+                InformationTypeInformationBindings = new();
+                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -3734,6 +4131,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 mMSICode = this.mMSICode,
                 onlineResource = this.onlineResource.ToList(),
                 telecommunications = this.telecommunications.ToList(),
+                ContactDetailsInformationBindings = this.ContactDetailsInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -3741,6 +4139,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -3760,6 +4159,7 @@ namespace S100Framework.WPF.ViewModel.S131
             mMSICode = this._mMSICode,
             onlineResource = this.onlineResource.ToList(),
             telecommunications = this.telecommunications.ToList(),
+            ContactDetailsInformationBindings = this._ContactDetailsInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -3767,6 +4167,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public ContactDetailsViewModel()
@@ -3952,6 +4353,21 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
+        [Category("InformationType")]
+        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
+        {
+            get
+            {
+                return _InformationTypeInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _InformationTypeInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S131.InformationTypes.Entrance instance)
         {
             entranceDescription = instance.entranceDescription;
@@ -4007,6 +4423,12 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            InformationTypeInformationBindings = new();
+            if (instance.InformationTypeInformationBindings != null)
+            {
+                InformationTypeInformationBindings = new();
+                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -4030,6 +4452,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4054,6 +4477,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public EntranceViewModel()
@@ -4101,8 +4525,60 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    public class NauticalInformationInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("NauticalInformationInformationBindings")]
+        public ObservableCollection<AdditionalInformation<informationProvidedFor>> informationProvidedFor { get; set; } = new();
+
+        public void Load(DomainModel.S131.InformationTypes.NauticalInformationInformationBindings instance)
+        {
+            informationProvidedFor.Clear();
+            if (instance.informationProvidedFor is not null)
+                foreach (var e in instance.informationProvidedFor)
+                    informationProvidedFor.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S131.InformationTypes.NauticalInformationInformationBindings
+            {
+                informationProvidedFor = this.informationProvidedFor.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.InformationTypes.NauticalInformationInformationBindings Model => new()
+        {
+            informationProvidedFor = this.informationProvidedFor.ToList(),
+        };
+
+        public NauticalInformationInformationBindingsViewModel()
+        {
+            informationProvidedFor.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(informationProvidedFor));
+            };
+        }
+    }
+
     public class NauticalInformationViewModel : ViewModelBase
     {
+        private NauticalInformationInformationBindingsViewModel? _NauticalInformationInformationBindings;
+        [Category("NauticalInformation")]
+        public NauticalInformationInformationBindingsViewModel? NauticalInformationInformationBindings
+        {
+            get
+            {
+                return _NauticalInformationInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _NauticalInformationInformationBindings, value);
+            }
+        }
+
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority
@@ -4123,6 +4599,21 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("AbstractRxN")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
+        [Category("AbstractRxN")]
+        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
+        {
+            get
+            {
+                return _AbstractRxNInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AbstractRxNInformationBindings, value);
+            }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -4194,8 +4685,30 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
+        [Category("InformationType")]
+        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
+        {
+            get
+            {
+                return _InformationTypeInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _InformationTypeInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S131.InformationTypes.NauticalInformation instance)
         {
+            NauticalInformationInformationBindings = new();
+            if (instance.NauticalInformationInformationBindings != null)
+            {
+                NauticalInformationInformationBindings = new();
+                NauticalInformationInformationBindings.Load(instance.NauticalInformationInformationBindings);
+            }
+
             categoryOfAuthority = instance.categoryOfAuthority;
             rxNCode.Clear();
             if (instance.rxNCode is not null)
@@ -4205,6 +4718,13 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            AbstractRxNInformationBindings = new();
+            if (instance.AbstractRxNInformationBindings != null)
+            {
+                AbstractRxNInformationBindings = new();
+                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -4227,15 +4747,23 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            InformationTypeInformationBindings = new();
+            if (instance.InformationTypeInformationBindings != null)
+            {
+                InformationTypeInformationBindings = new();
+                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
+            }
         }
 
         public override string Serialize()
         {
             var instance = new DomainModel.S131.InformationTypes.NauticalInformation
             {
+                NauticalInformationInformationBindings = this.NauticalInformationInformationBindings?.Model,
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
+                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -4243,6 +4771,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4250,9 +4779,11 @@ namespace S100Framework.WPF.ViewModel.S131
         [Browsable(false)]
         public DomainModel.S131.InformationTypes.NauticalInformation Model => new()
         {
+            NauticalInformationInformationBindings = this._NauticalInformationInformationBindings?.Model,
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
+            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -4260,6 +4791,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public NauticalInformationViewModel()
@@ -4368,6 +4900,21 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
+        [Category("InformationType")]
+        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
+        {
+            get
+            {
+                return _InformationTypeInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _InformationTypeInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S131.InformationTypes.NonStandardWorkingDay instance)
         {
             dateFixed.Clear();
@@ -4404,6 +4951,12 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            InformationTypeInformationBindings = new();
+            if (instance.InformationTypeInformationBindings != null)
+            {
+                InformationTypeInformationBindings = new();
+                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -4420,6 +4973,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4437,6 +4991,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public NonStandardWorkingDayViewModel()
@@ -4491,6 +5046,21 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AbstractRxN")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
+        [Category("AbstractRxN")]
+        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
+        {
+            get
+            {
+                return _AbstractRxNInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AbstractRxNInformationBindings, value);
+            }
+        }
+
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -4561,6 +5131,21 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
+        [Category("InformationType")]
+        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
+        {
+            get
+            {
+                return _InformationTypeInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _InformationTypeInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S131.InformationTypes.Recommendations instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -4572,6 +5157,13 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            AbstractRxNInformationBindings = new();
+            if (instance.AbstractRxNInformationBindings != null)
+            {
+                AbstractRxNInformationBindings = new();
+                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -4594,6 +5186,12 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            InformationTypeInformationBindings = new();
+            if (instance.InformationTypeInformationBindings != null)
+            {
+                InformationTypeInformationBindings = new();
+                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -4603,6 +5201,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
+                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -4610,6 +5209,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4620,6 +5220,7 @@ namespace S100Framework.WPF.ViewModel.S131
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
+            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -4627,6 +5228,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public RecommendationsViewModel()
@@ -4677,6 +5279,21 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AbstractRxN")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
+        [Category("AbstractRxN")]
+        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
+        {
+            get
+            {
+                return _AbstractRxNInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AbstractRxNInformationBindings, value);
+            }
+        }
+
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -4747,6 +5364,21 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
+        [Category("InformationType")]
+        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
+        {
+            get
+            {
+                return _InformationTypeInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _InformationTypeInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S131.InformationTypes.Regulations instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -4758,6 +5390,13 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            AbstractRxNInformationBindings = new();
+            if (instance.AbstractRxNInformationBindings != null)
+            {
+                AbstractRxNInformationBindings = new();
+                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -4780,6 +5419,12 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            InformationTypeInformationBindings = new();
+            if (instance.InformationTypeInformationBindings != null)
+            {
+                InformationTypeInformationBindings = new();
+                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -4789,6 +5434,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
+                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -4796,6 +5442,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4806,6 +5453,7 @@ namespace S100Framework.WPF.ViewModel.S131
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
+            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -4813,6 +5461,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public RegulationsViewModel()
@@ -4863,6 +5512,21 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AbstractRxN")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
+        [Category("AbstractRxN")]
+        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
+        {
+            get
+            {
+                return _AbstractRxNInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _AbstractRxNInformationBindings, value);
+            }
+        }
+
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -4933,6 +5597,21 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
+        [Category("InformationType")]
+        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
+        {
+            get
+            {
+                return _InformationTypeInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _InformationTypeInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S131.InformationTypes.Restrictions instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -4944,6 +5623,13 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
+            AbstractRxNInformationBindings = new();
+            if (instance.AbstractRxNInformationBindings != null)
+            {
+                AbstractRxNInformationBindings = new();
+                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -4966,6 +5652,12 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            InformationTypeInformationBindings = new();
+            if (instance.InformationTypeInformationBindings != null)
+            {
+                InformationTypeInformationBindings = new();
+                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -4975,6 +5667,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
+                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -4982,6 +5675,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4992,6 +5686,7 @@ namespace S100Framework.WPF.ViewModel.S131
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
+            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -4999,6 +5694,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public RestrictionsViewModel()
@@ -5026,6 +5722,56 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    public class ServiceHoursInformationBindingsViewModel : ViewModelBase
+    {
+        [Category("ServiceHoursInformationBindings")]
+        public ObservableCollection<ExceptionalWorkday<partialWorkingDay>> partialWorkingDay { get; set; } = new();
+
+        [Category("ServiceHoursInformationBindings")]
+        public ObservableCollection<AuthorityHours<theAuthority_srvHrs>> theAuthority_srvHrs { get; set; } = new();
+
+        public void Load(DomainModel.S131.InformationTypes.ServiceHoursInformationBindings instance)
+        {
+            partialWorkingDay.Clear();
+            if (instance.partialWorkingDay is not null)
+                foreach (var e in instance.partialWorkingDay)
+                    partialWorkingDay.Add(e);
+            theAuthority_srvHrs.Clear();
+            if (instance.theAuthority_srvHrs is not null)
+                foreach (var e in instance.theAuthority_srvHrs)
+                    theAuthority_srvHrs.Add(e);
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S131.InformationTypes.ServiceHoursInformationBindings
+            {
+                partialWorkingDay = this.partialWorkingDay.ToList(),
+                theAuthority_srvHrs = this.theAuthority_srvHrs.ToList(),
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S131.InformationTypes.ServiceHoursInformationBindings Model => new()
+        {
+            partialWorkingDay = this.partialWorkingDay.ToList(),
+            theAuthority_srvHrs = this.theAuthority_srvHrs.ToList(),
+        };
+
+        public ServiceHoursInformationBindingsViewModel()
+        {
+            partialWorkingDay.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(partialWorkingDay));
+            };
+            theAuthority_srvHrs.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theAuthority_srvHrs));
+            };
+        }
+    }
+
     public class ServiceHoursViewModel : ViewModelBase
     {
         [Category("ServiceHours")]
@@ -5033,6 +5779,21 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("ServiceHours")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        private ServiceHoursInformationBindingsViewModel? _ServiceHoursInformationBindings;
+        [Category("ServiceHours")]
+        public ServiceHoursInformationBindingsViewModel? ServiceHoursInformationBindings
+        {
+            get
+            {
+                return _ServiceHoursInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _ServiceHoursInformationBindings, value);
+            }
+        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -5104,6 +5865,21 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
+        [Category("InformationType")]
+        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
+        {
+            get
+            {
+                return _InformationTypeInformationBindings;
+            }
+
+            set
+            {
+                SetValue(ref _InformationTypeInformationBindings, value);
+            }
+        }
+
         public void Load(DomainModel.S131.InformationTypes.ServiceHours instance)
         {
             scheduleByDayOfWeek.Clear();
@@ -5114,6 +5890,13 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            ServiceHoursInformationBindings = new();
+            if (instance.ServiceHoursInformationBindings != null)
+            {
+                ServiceHoursInformationBindings = new();
+                ServiceHoursInformationBindings.Load(instance.ServiceHoursInformationBindings);
+            }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -5136,6 +5919,12 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            InformationTypeInformationBindings = new();
+            if (instance.InformationTypeInformationBindings != null)
+            {
+                InformationTypeInformationBindings = new();
+                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
+            }
         }
 
         public override string Serialize()
@@ -5144,6 +5933,7 @@ namespace S100Framework.WPF.ViewModel.S131
             {
                 scheduleByDayOfWeek = this.scheduleByDayOfWeek.ToList(),
                 information = this.information.ToList(),
+                ServiceHoursInformationBindings = this.ServiceHoursInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -5151,6 +5941,7 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -5160,6 +5951,7 @@ namespace S100Framework.WPF.ViewModel.S131
         {
             scheduleByDayOfWeek = this.scheduleByDayOfWeek.ToList(),
             information = this.information.ToList(),
+            ServiceHoursInformationBindings = this._ServiceHoursInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -5167,6 +5959,7 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public ServiceHoursViewModel()
