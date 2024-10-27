@@ -542,8 +542,8 @@ namespace S100Framework.DomainModel.S131
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum condition : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("Being built but not yet capable of function.")]
         [System.Xml.Serialization.XmlEnum("1")]
         UnderConstruction = 1,
@@ -671,8 +671,8 @@ namespace S100Framework.DomainModel.S131
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum membership : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("Vessels with these characteristics are included in the regulation/restriction/recommendation/nautical information.")]
         [System.Xml.Serialization.XmlEnum("1")]
         Included = 1,
@@ -758,8 +758,8 @@ namespace S100Framework.DomainModel.S131
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum product : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("A thick, slippery liquid that will not dissolve in water, usually petroleum based in the context of storage tanks.")]
         [System.Xml.Serialization.XmlEnum("1")]
         Oil = 1,
@@ -1350,7 +1350,7 @@ namespace S100Framework.DomainModel.S131
         public class contactAddress
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> deliveryPoint { get; set; } = new();
+            public List<String> deliveryPoint { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String cityName { get; set; } = string.Empty;
@@ -1414,13 +1414,13 @@ namespace S100Framework.DomainModel.S131
         public class frequencyPair
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<Int32> frequencyShoreStationTransmits { get; set; } = new();
+            public List<Int32> frequencyShoreStationTransmits { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<Int32> frequencyShoreStationReceives { get; set; } = new();
+            public List<Int32> frequencyShoreStationReceives { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> contactInstructions { get; set; } = new();
+            public List<String> contactInstructions { get; set; } = [];
 
             public frequencyPair()
             {
@@ -1460,7 +1460,7 @@ namespace S100Framework.DomainModel.S131
             public String fileReference { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> headline { get; set; } = new();
+            public List<String> headline { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String language { get; set; } = string.Empty;
@@ -1556,7 +1556,7 @@ namespace S100Framework.DomainModel.S131
             public actionOrActivity? actionOrActivity { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> headline { get; set; } = new();
+            public List<String> headline { get; set; } = [];
 
             public rxNCode()
             {
@@ -1590,7 +1590,7 @@ namespace S100Framework.DomainModel.S131
             public categoryOfText? categoryOfText { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public onlineResource? onlineResource { get; set; }
@@ -1616,16 +1616,16 @@ namespace S100Framework.DomainModel.S131
         public class timeIntervalsByDayOfWeek
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<dayOfWeek> dayOfWeek { get; set; } = new();
+            public List<dayOfWeek> dayOfWeek { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public Boolean? dayOfWeekIsRange { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<TimeOnly> timeOfDayStart { get; set; } = new();
+            public List<TimeOnly> timeOfDayStart { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<TimeOnly> timeOfDayEnd { get; set; } = new();
+            public List<TimeOnly> timeOfDayEnd { get; set; } = [];
 
             public timeIntervalsByDayOfWeek()
             {
@@ -1720,10 +1720,10 @@ namespace S100Framework.DomainModel.S131
             public Decimal? distance { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<Decimal> sectorBearing { get; set; } = new();
+            public List<Decimal> sectorBearing { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public orientation? orientation { get; set; }
@@ -1767,7 +1767,7 @@ namespace S100Framework.DomainModel.S131
             public String locationByText { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<textContent> textContent { get; set; } = new();
+            public List<textContent> textContent { get; set; } = [];
 
             public constructionInformation()
             {
@@ -1988,7 +1988,7 @@ namespace S100Framework.DomainModel.S131
             public String contactInstructions { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<telecommunicationService> telecommunicationService { get; set; } = new();
+            public List<telecommunicationService> telecommunicationService { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public scheduleByDayOfWeek? scheduleByDayOfWeek { get; set; }
@@ -2021,10 +2021,392 @@ namespace S100Framework.DomainModel.S131
             public cargoServicesDescription? cargoServicesDescription { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<weatherResource> weatherResource { get; set; } = new();
+            public List<weatherResource> weatherResource { get; set; } = [];
 
             public generalHarbourInformation()
             {
+            }
+        }
+    }
+
+    namespace Bindings
+    {
+        namespace Roles
+        {
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+            public class positions : Role
+#pragma warning restore CS8981
+            {
+            }
+
+            public class componentOf : Role
+            {
+            }
+
+            public class informationProvidedFor : Role
+            {
+            }
+
+            public class providesInformation : Role
+            {
+            }
+
+            public class theApplicableRxN : Role
+            {
+            }
+
+            public class appliesInLocation : Role
+            {
+            }
+
+            public class theAuthority : Role
+            {
+            }
+
+            public class theAuthority_srvHrs : Role
+            {
+            }
+
+            public class theContactDetails : Role
+            {
+            }
+
+            public class controlAuthority : Role
+            {
+            }
+
+            public class controlledService : Role
+            {
+            }
+
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+            public class identifies : Role
+#pragma warning restore CS8981
+            {
+            }
+
+            public class isApplicableTo : Role
+            {
+            }
+
+            public class theServiceHours : Role
+            {
+            }
+
+            public class theRxN : Role
+            {
+            }
+
+            public class theServiceHours_nsdy : Role
+            {
+            }
+
+            public class vslLocation : Role
+            {
+            }
+
+            public class partialWorkingDay : Role
+            {
+            }
+
+            public class servicePlace : Role
+            {
+            }
+
+            public class location_srvHrs : Role
+            {
+            }
+
+            public class theOrganisation : Role
+            {
+            }
+
+            public class theInformation : Role
+            {
+            }
+
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+            public class permission : Role
+#pragma warning restore CS8981
+            {
+            }
+
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+            public class constitute : Role
+#pragma warning restore CS8981
+            {
+            }
+
+            public class auxiliaryFacility : Role
+            {
+            }
+
+            public class demarcatedFeature : Role
+            {
+            }
+
+            public class demarcationIndicator : Role
+            {
+            }
+
+            public class entranceReference : Role
+            {
+            }
+
+            public class entranceTo : Role
+            {
+            }
+
+            public class hasInfrastructure : Role
+            {
+            }
+
+            public class infrastructureLocation : Role
+            {
+            }
+
+            public class limitExtent : Role
+            {
+            }
+
+            public class limitReference : Role
+            {
+            }
+
+            public class layoutUnit : Role
+            {
+            }
+
+            public class locationServed : Role
+            {
+            }
+
+            public class facilityOperatingHours : Role
+            {
+            }
+
+            public class primaryFacility : Role
+            {
+            }
+
+            public class serviceDescriptionReference : Role
+            {
+            }
+
+            public class subUnit : Role
+            {
+            }
+
+            public class definedFor : Role
+            {
+            }
+
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+            public class defines : Role
+#pragma warning restore CS8981
+            {
+            }
+        }
+
+        namespace InformationAssociations
+        {
+            public class AdditionalInformation<T> : InformationAssociation where T : Role
+            {
+                public AdditionalInformation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class AuthorityContact<T> : InformationAssociation where T : Role
+            {
+                public AuthorityContact(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class AuthorityHours<T> : InformationAssociation where T : Role
+            {
+                public AuthorityHours(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class AssociatedRxN<T> : InformationAssociation where T : Role
+            {
+                public AssociatedRxN(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class ExceptionalWorkday<T> : InformationAssociation where T : Role
+            {
+                public ExceptionalWorkday(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class ServiceControl<T> : InformationAssociation where T : Role
+            {
+                public ServiceControl(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class ServiceContact<T> : InformationAssociation where T : Role
+            {
+                public ServiceContact(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class LocationHours<T> : InformationAssociation where T : Role
+            {
+                public LocationHours(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class RelatedOrganisation<T> : InformationAssociation where T : Role
+            {
+                public RelatedOrganisation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class InclusionType<T> : InformationAssociation where T : Role
+            {
+                public InclusionType(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public required membership membership { get; set; }
+                public string role => typeof(T).Name;
+            }
+
+            public class PermissionType<T> : InformationAssociation where T : Role
+            {
+                public PermissionType(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public required categoryOfRelationship categoryOfRelationship { get; set; }
+                public string role => typeof(T).Name;
+            }
+
+            public class SpatialAssociation<T> : InformationAssociation where T : Role
+            {
+                public SpatialAssociation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class LimitEntrance<T> : InformationAssociation where T : Role
+            {
+                public LimitEntrance(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class ServiceAvailability<T> : InformationAssociation where T : Role
+            {
+                public ServiceAvailability(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+        }
+
+        namespace FeatureAssociations
+        {
+            public class TextAssociation<T> : FeatureAssociation where T : Role
+            {
+                public TextAssociation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class Subsection<T> : FeatureAssociation where T : Role
+            {
+                public Subsection(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class Infrastructure<T> : FeatureAssociation where T : Role
+            {
+                public Infrastructure(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class PrimaryAuxiliaryFacility<T> : FeatureAssociation where T : Role
+            {
+                public PrimaryAuxiliaryFacility(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class Demarcation<T> : FeatureAssociation where T : Role
+            {
+                public Demarcation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class JurisdictionalLimit<T> : FeatureAssociation where T : Role
+            {
+                public JurisdictionalLimit(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class LayoutDivision<T> : FeatureAssociation where T : Role
+            {
+                public LayoutDivision(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
             }
         }
     }
@@ -2040,16 +2422,16 @@ namespace S100Framework.DomainModel.S131
         public abstract class InformationType
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public fixedDateRange? fixedDateRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<graphic> graphic { get; set; } = new();
+            public List<graphic> graphic { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String source { get; set; } = string.Empty;
@@ -2075,10 +2457,10 @@ namespace S100Framework.DomainModel.S131
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<rxNCode> rxNCode { get; set; } = new();
+            public List<rxNCode> rxNCode { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<textContent> textContent { get; set; } = new();
+            public List<textContent> textContent { get; set; } = [];
 
             public AbstractRxN()
             {
@@ -2095,10 +2477,10 @@ namespace S100Framework.DomainModel.S131
             public Boolean? inBallast { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<categoryOfCargo> categoryOfCargo { get; set; } = new();
+            public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = new();
+            public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfVessel? categoryOfVessel { get; set; }
@@ -2116,10 +2498,10 @@ namespace S100Framework.DomainModel.S131
             public String vesselPerformance { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<vesselsMeasurements> vesselsMeasurements { get; set; } = new();
+            public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
 
             public Applicability()
             {
@@ -2150,43 +2532,43 @@ namespace S100Framework.DomainModel.S131
         public class AvailablePortServices : InformationType
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<firefightingService> firefightingService { get; set; } = new();
+            public List<firefightingService> firefightingService { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<medicalService> medicalService { get; set; } = new();
+            public List<medicalService> medicalService { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<repairService> repairService { get; set; } = new();
+            public List<repairService> repairService { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<technicalPortService> technicalPortService { get; set; } = new();
+            public List<technicalPortService> technicalPortService { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<shipSanitationControl> shipSanitationControl { get; set; } = new();
+            public List<shipSanitationControl> shipSanitationControl { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<transportConnection> transportConnection { get; set; } = new();
+            public List<transportConnection> transportConnection { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<berthingAssistance> berthingAssistance { get; set; } = new();
+            public List<berthingAssistance> berthingAssistance { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<cargoService> cargoService { get; set; } = new();
+            public List<cargoService> cargoService { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<securitySafetyEmergencyService> securitySafetyEmergencyService { get; set; } = new();
+            public List<securitySafetyEmergencyService> securitySafetyEmergencyService { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<wasteDisposalService> wasteDisposalService { get; set; } = new();
+            public List<wasteDisposalService> wasteDisposalService { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<supplyService> supplyService { get; set; } = new();
+            public List<supplyService> supplyService { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String tugInformation { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<textContent> textContent { get; set; } = new();
+            public List<textContent> textContent { get; set; } = [];
 
             public AvailablePortServices()
             {
@@ -2209,31 +2591,31 @@ namespace S100Framework.DomainModel.S131
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<contactAddress> contactAddress { get; set; } = new();
+            public List<contactAddress> contactAddress { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String contactInstructions { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<Int32> signalFrequency { get; set; } = new();
+            public List<Int32> signalFrequency { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<frequencyPair> frequencyPair { get; set; } = new();
+            public List<frequencyPair> frequencyPair { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String mMSICode { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<onlineResource> onlineResource { get; set; } = new();
+            public List<onlineResource> onlineResource { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<telecommunications> telecommunications { get; set; } = new();
+            public List<telecommunications> telecommunications { get; set; } = [];
 
             public ContactDetails()
             {
@@ -2250,7 +2632,7 @@ namespace S100Framework.DomainModel.S131
             public String entranceDescription { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> associatedFeatureName { get; set; } = new();
+            public List<String> associatedFeatureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String localKnowledgeDescription { get; set; } = string.Empty;
@@ -2259,22 +2641,22 @@ namespace S100Framework.DomainModel.S131
             public String approachDescription { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<markedBy> markedBy { get; set; } = new();
+            public List<markedBy> markedBy { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<landmarkDescription> landmarkDescription { get; set; } = new();
+            public List<landmarkDescription> landmarkDescription { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<offshoreMarkDescription> offshoreMarkDescription { get; set; } = new();
+            public List<offshoreMarkDescription> offshoreMarkDescription { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<majorLightDescription> majorLightDescription { get; set; } = new();
+            public List<majorLightDescription> majorLightDescription { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<usefulMarkDescription> usefulMarkDescription { get; set; } = new();
+            public List<usefulMarkDescription> usefulMarkDescription { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<textContent> textContent { get; set; } = new();
+            public List<textContent> textContent { get; set; } = [];
 
             public Entrance()
             {
@@ -2299,13 +2681,13 @@ namespace S100Framework.DomainModel.S131
         public class NonStandardWorkingDay : InformationType
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<DateOnly> dateFixed { get; set; } = new();
+            public List<DateOnly> dateFixed { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> dateVariable { get; set; } = new();
+            public List<String> dateVariable { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public NonStandardWorkingDay()
             {
@@ -2355,7 +2737,7 @@ namespace S100Framework.DomainModel.S131
             public required List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public ServiceHours()
             {
@@ -2373,7 +2755,7 @@ namespace S100Framework.DomainModel.S131
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<spatialAccuracy> spatialAccuracy { get; set; } = new();
+            public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
 
             public SpatialQuality()
             {
@@ -2385,6 +2767,9 @@ namespace S100Framework.DomainModel.S131
     {
         using ComplexAttributes;
         using InformationTypes;
+        using Bindings.InformationAssociations;
+        using Bindings.FeatureAssociations;
+        using Bindings.Roles;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
@@ -2399,19 +2784,19 @@ namespace S100Framework.DomainModel.S131
             public String globalLocationNumber { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public fixedDateRange? fixedDateRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<rxNCode> rxNCode { get; set; } = new();
+            public List<rxNCode> rxNCode { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<graphic> graphic { get; set; } = new();
+            public List<graphic> graphic { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String source { get; set; } = string.Empty;
@@ -2423,7 +2808,16 @@ namespace S100Framework.DomainModel.S131
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<textContent> textContent { get; set; } = new();
+            public List<textContent> textContent { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public List<PermissionType<permission>> permission { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public List<AssociatedRxN<theRxN>> theRxN { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public List<AdditionalInformation<providesInformation>> providesInformation { get; set; } = [];
 
             public FeatureType()
             {
@@ -2436,6 +2830,9 @@ namespace S100Framework.DomainModel.S131
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract class OrganizationContactArea : FeatureType
         {
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public List<ServiceContact<theContactDetails>> theContactDetails { get; set; } = [];
+
             public OrganizationContactArea()
             {
             }
@@ -2447,6 +2844,9 @@ namespace S100Framework.DomainModel.S131
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract class SupervisedArea : OrganizationContactArea
         {
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public ServiceControl<controlAuthority>? controlAuthority { get; set; } = default;
+
             public SupervisedArea()
             {
             }
@@ -2483,6 +2883,12 @@ namespace S100Framework.DomainModel.S131
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public class AnchorBerth : Layout
         {
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
+
             public AnchorBerth()
             {
             }
@@ -2505,6 +2911,9 @@ namespace S100Framework.DomainModel.S131
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
 
             public AnchorageArea()
             {
@@ -2542,16 +2951,16 @@ namespace S100Framework.DomainModel.S131
             public String portFacilityNumber { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> bollardNumber { get; set; } = new();
+            public List<String> bollardNumber { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String gLNExtension { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> metreMarkNumber { get; set; } = new();
+            public List<String> metreMarkNumber { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> manifoldNumber { get; set; } = new();
+            public List<String> manifoldNumber { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String rampNumber { get; set; } = string.Empty;
@@ -2567,6 +2976,12 @@ namespace S100Framework.DomainModel.S131
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String terminalIdentifier { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
 
             public Berth()
             {
@@ -2590,16 +3005,16 @@ namespace S100Framework.DomainModel.S131
             public Decimal? bollardPull { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> bollardNumber { get; set; } = new();
+            public List<String> bollardNumber { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String gLNExtension { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> metreMarkNumber { get; set; } = new();
+            public List<String> metreMarkNumber { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<String> manifoldNumber { get; set; } = new();
+            public List<String> manifoldNumber { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String rampNumber { get; set; } = string.Empty;
@@ -2630,6 +3045,12 @@ namespace S100Framework.DomainModel.S131
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
+
             public DockArea()
             {
             }
@@ -2643,6 +3064,9 @@ namespace S100Framework.DomainModel.S131
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? sillDepth { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
 
             public DryDock()
             {
@@ -2667,6 +3091,9 @@ namespace S100Framework.DomainModel.S131
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
+
             public DumpingGround()
             {
             }
@@ -2681,6 +3108,9 @@ namespace S100Framework.DomainModel.S131
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? sillDepth { get; set; } = default;
 
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
+
             public FloatingDock()
             {
             }
@@ -2694,6 +3124,9 @@ namespace S100Framework.DomainModel.S131
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? sillDepth { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
 
             public Gridiron()
             {
@@ -2719,10 +3152,16 @@ namespace S100Framework.DomainModel.S131
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = new();
+            public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public generalHarbourInformation? generalHarbourInformation { get; set; }
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
 
             public HarbourAreaAdministrative()
             {
@@ -2739,13 +3178,19 @@ namespace S100Framework.DomainModel.S131
             public categoryOfPortSection? categoryOfPortSection { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = new();
+            public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public facilitiesLayoutDescription? facilitiesLayoutDescription { get; set; }
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
 
             public HarbourAreaSection()
             {
@@ -2770,6 +3215,9 @@ namespace S100Framework.DomainModel.S131
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
+
             public HarbourBasin()
             {
             }
@@ -2783,6 +3231,9 @@ namespace S100Framework.DomainModel.S131
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public required List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
 
             public HarbourFacility()
             {
@@ -2811,6 +3262,12 @@ namespace S100Framework.DomainModel.S131
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public Boolean? heavingLinesFromShore { get; set; } = default;
 
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
+
             public MooringWarpingFacility()
             {
                 iDCode = string.Empty;
@@ -2827,19 +3284,22 @@ namespace S100Framework.DomainModel.S131
             public limitsDescription? limitsDescription { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<markedBy> markedBy { get; set; } = new();
+            public List<markedBy> markedBy { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<landmarkDescription> landmarkDescription { get; set; } = new();
+            public List<landmarkDescription> landmarkDescription { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<offshoreMarkDescription> offshoreMarkDescription { get; set; } = new();
+            public List<offshoreMarkDescription> offshoreMarkDescription { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<majorLightDescription> majorLightDescription { get; set; } = new();
+            public List<majorLightDescription> majorLightDescription { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<usefulMarkDescription> usefulMarkDescription { get; set; } = new();
+            public List<usefulMarkDescription> usefulMarkDescription { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LimitEntrance<entranceReference>? entranceReference { get; set; } = default;
 
             public OuterLimit()
             {
@@ -2864,6 +3324,9 @@ namespace S100Framework.DomainModel.S131
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
+
             public PilotBoardingPlace()
             {
             }
@@ -2887,6 +3350,9 @@ namespace S100Framework.DomainModel.S131
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
+
             public SeaplaneLandingArea()
             {
             }
@@ -2905,10 +3371,10 @@ namespace S100Framework.DomainModel.S131
             public categoryOfHarbourFacility? categoryOfHarbourFacility { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<categoryOfCargo> categoryOfCargo { get; set; } = new();
+            public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<product> product { get; set; } = new();
+            public List<product> product { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String terminalIdentifier { get; set; } = string.Empty;
@@ -2918,6 +3384,12 @@ namespace S100Framework.DomainModel.S131
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public String uNLocationCode { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
 
             public Terminal()
             {
@@ -2942,6 +3414,9 @@ namespace S100Framework.DomainModel.S131
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
+
             public TurningBasin()
             {
             }
@@ -2964,6 +3439,9 @@ namespace S100Framework.DomainModel.S131
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
             public markedBy? markedBy { get; set; }
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            public LocationHours<location_srvHrs>? location_srvHrs { get; set; } = default;
 
             public WaterwayArea()
             {
@@ -3012,7 +3490,7 @@ namespace S100Framework.DomainModel.S131
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public QualityOfNonBathymetricData()
             {
@@ -3033,7 +3511,7 @@ namespace S100Framework.DomainModel.S131
             public required verticalDatum verticalDatum { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public SoundingDatum()
             {
@@ -3050,7 +3528,7 @@ namespace S100Framework.DomainModel.S131
             public required verticalDatum verticalDatum { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public VerticalDatumOfData()
             {

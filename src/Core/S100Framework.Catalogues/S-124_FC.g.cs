@@ -44,8 +44,8 @@ namespace S100Framework.DomainModel.S124
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum restriction : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("An area within which anchoring is not permitted.")]
         [System.Xml.Serialization.XmlEnum("1")]
         AnchoringProhibited = 1,
@@ -327,16 +327,16 @@ namespace S100Framework.DomainModel.S124
         public class featureReference
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> featureIdentifier { get; set; } = new();
+            public List<String> featureIdentifier { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required dateTimeRange dateTimeRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> atoNNumber { get; set; } = new();
+            public List<String> atoNNumber { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<eNCFeatureReference> eNCFeatureReference { get; set; } = new();
+            public List<eNCFeatureReference> eNCFeatureReference { get; set; } = [];
 
             public featureReference()
             {
@@ -404,7 +404,7 @@ namespace S100Framework.DomainModel.S124
             public information? information { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<navwarnTypeDetails> navwarnTypeDetails { get; set; } = new();
+            public List<navwarnTypeDetails> navwarnTypeDetails { get; set; } = [];
 
             public warningInformation()
             {
@@ -571,6 +571,101 @@ namespace S100Framework.DomainModel.S124
         }
     }
 
+    namespace Bindings
+    {
+        namespace Roles
+        {
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+            public class affects : Role
+#pragma warning restore CS8981
+            {
+            }
+
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+            public class impacts : Role
+#pragma warning restore CS8981
+            {
+            }
+
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+            public class identifies : Role
+#pragma warning restore CS8981
+            {
+            }
+
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+            public class positions : Role
+#pragma warning restore CS8981
+            {
+            }
+
+            public class theWarningPart : Role
+            {
+            }
+
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+            public class header : Role
+#pragma warning restore CS8981
+            {
+            }
+
+            public class theWarning : Role
+            {
+            }
+
+            public class theReferences : Role
+            {
+            }
+        }
+
+        namespace InformationAssociations
+        {
+            public class NWPreambleContent<T> : InformationAssociation where T : Role
+            {
+                public NWPreambleContent(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class NWReferences<T> : InformationAssociation where T : Role
+            {
+                public NWReferences(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+        }
+
+        namespace FeatureAssociations
+        {
+            public class AreaAffected<T> : FeatureAssociation where T : Role
+            {
+                public AreaAffected(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class TextAssociation<T> : FeatureAssociation where T : Role
+            {
+                public TextAssociation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+        }
+    }
+
     namespace InformationTypes
     {
         using ComplexAttributes;
@@ -582,19 +677,19 @@ namespace S100Framework.DomainModel.S124
         public class NAVWARNPreamble
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<affectedChartPublications> affectedChartPublications { get; set; } = new();
+            public List<affectedChartPublications> affectedChartPublications { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<generalArea> generalArea { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<locality> locality { get; set; } = new();
+            public List<locality> locality { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required messageSeriesIdentifier messageSeriesIdentifier { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<nAVWARNTitle> nAVWARNTitle { get; set; } = new();
+            public List<nAVWARNTitle> nAVWARNTitle { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateTime? cancellationDate { get; set; } = default;
@@ -632,7 +727,7 @@ namespace S100Framework.DomainModel.S124
         public class References
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = new();
+            public List<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean noMessageOnHand { get; set; }
@@ -650,6 +745,9 @@ namespace S100Framework.DomainModel.S124
     {
         using ComplexAttributes;
         using InformationTypes;
+        using Bindings.InformationAssociations;
+        using Bindings.FeatureAssociations;
+        using Bindings.Roles;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -658,13 +756,13 @@ namespace S100Framework.DomainModel.S124
         public class NAVWARNPart
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureReference> featureReference { get; set; } = new();
+            public List<featureReference> featureReference { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<fixedDateRange> fixedDateRange { get; set; } = new();
+            public List<fixedDateRange> fixedDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required warningInformation warningInformation { get; set; }
@@ -672,9 +770,15 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public restriction? restriction { get; set; } = default;
 
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public required NWPreambleContent<header> header { get; set; }
+
             public NAVWARNPart()
             {
                 warningInformation = new warningInformation()
+                {
+                };
+                header = new NWPreambleContent<header>()
                 {
                 };
             }

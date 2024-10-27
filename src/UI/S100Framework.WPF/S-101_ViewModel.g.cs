@@ -8,6 +8,9 @@ using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S101.Bindings.InformationAssociations;
+using S100Framework.DomainModel.S101.Bindings.FeatureAssociations;
+using S100Framework.DomainModel.S101.Bindings.Roles;
 
 namespace S100Framework.WPF.ViewModel.S101
 {
@@ -4833,6 +4836,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("QualityOfBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private QualityOfBathymetricDataComposition<theQualityInformation>? _theQualityInformation = default;
+        [Category("QualityOfBathymetricData")]
+        public QualityOfBathymetricDataComposition<theQualityInformation>? theQualityInformation
+        {
+            get
+            {
+                return _theQualityInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theQualityInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.QualityOfBathymetricData instance)
         {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
@@ -4863,6 +4881,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theQualityInformation = instance.theQualityInformation;
         }
 
         public override string Serialize()
@@ -4879,6 +4898,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 surveyDateRange = this.surveyDateRange?.Model,
                 zoneOfConfidence = this.zoneOfConfidence.ToList(),
                 information = this.information.ToList(),
+                theQualityInformation = this.theQualityInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4896,6 +4916,7 @@ namespace S100Framework.WPF.ViewModel.S101
             surveyDateRange = this._surveyDateRange?.Model,
             zoneOfConfidence = this.zoneOfConfidence.ToList(),
             information = this.information.ToList(),
+            theQualityInformation = this._theQualityInformation,
         };
 
         public QualityOfBathymetricDataViewModel()
@@ -5631,6 +5652,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MagneticVariation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("MagneticVariation")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.MagneticVariation instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5642,6 +5678,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -5654,6 +5691,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 valueOfMagneticVariation = this.valueOfMagneticVariation,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -5667,6 +5705,7 @@ namespace S100Framework.WPF.ViewModel.S101
             valueOfMagneticVariation = this._valueOfMagneticVariation,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public MagneticVariationViewModel()
@@ -5734,6 +5773,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LocalMagneticAnomaly")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LocalMagneticAnomaly")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LocalMagneticAnomaly instance)
         {
             featureName.Clear();
@@ -5751,6 +5805,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -5763,6 +5818,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 valueOfLocalMagneticAnomaly = this.valueOfLocalMagneticAnomaly.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -5776,6 +5832,7 @@ namespace S100Framework.WPF.ViewModel.S101
             valueOfLocalMagneticAnomaly = this.valueOfLocalMagneticAnomaly.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public LocalMagneticAnomalyViewModel()
@@ -5899,6 +5956,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Coastline")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Coastline instance)
         {
             categoryOfCoastline = instance.categoryOfCoastline;
@@ -5923,6 +5995,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -5939,6 +6012,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 visualProminence = this.visualProminence,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -5956,6 +6030,7 @@ namespace S100Framework.WPF.ViewModel.S101
             visualProminence = this._visualProminence,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public CoastlineViewModel()
@@ -6062,6 +6137,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LandArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LandArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LandArea instance)
         {
             condition = instance.condition;
@@ -6077,6 +6167,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -6090,6 +6181,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -6104,6 +6196,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this._status,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public LandAreaViewModel()
@@ -6157,6 +6250,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("IslandGroup")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("IslandGroup")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.IslandGroup instance)
         {
             featureName.Clear();
@@ -6169,6 +6277,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -6179,6 +6288,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -6190,6 +6300,7 @@ namespace S100Framework.WPF.ViewModel.S101
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public IslandGroupViewModel()
@@ -6273,6 +6384,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LandElevation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LandElevation")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LandElevation instance)
         {
             elevation = instance.elevation;
@@ -6287,6 +6413,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -6299,6 +6426,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 visualProminence = this.visualProminence,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -6312,6 +6440,7 @@ namespace S100Framework.WPF.ViewModel.S101
             visualProminence = this._visualProminence,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public LandElevationViewModel()
@@ -6380,6 +6509,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("River")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("River")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.River instance)
         {
             featureName.Clear();
@@ -6393,6 +6537,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -6404,6 +6549,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -6416,6 +6562,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this._status,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RiverViewModel()
@@ -6484,6 +6631,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Rapids")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Rapids")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Rapids instance)
         {
             featureName.Clear();
@@ -6497,6 +6659,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -6508,6 +6671,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalLength = this.verticalLength,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -6520,6 +6684,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalLength = this._verticalLength,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RapidsViewModel()
@@ -6603,6 +6768,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Waterfall")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Waterfall")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Waterfall instance)
         {
             featureName.Clear();
@@ -6617,6 +6797,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -6629,6 +6810,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 visualProminence = this.visualProminence,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -6642,6 +6824,7 @@ namespace S100Framework.WPF.ViewModel.S101
             visualProminence = this._visualProminence,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public WaterfallViewModel()
@@ -6725,6 +6908,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Lake")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Lake")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Lake instance)
         {
             elevation = instance.elevation;
@@ -6739,6 +6937,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -6751,6 +6950,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -6764,6 +6964,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this._status,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public LakeViewModel()
@@ -6838,6 +7039,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LandRegion")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LandRegion")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LandRegion instance)
         {
             categoryOfLandRegion.Clear();
@@ -6859,6 +7075,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -6872,6 +7089,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 waterLevelEffect = this.waterLevelEffect,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -6886,6 +7104,7 @@ namespace S100Framework.WPF.ViewModel.S101
             waterLevelEffect = this._waterLevelEffect,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public LandRegionViewModel()
@@ -7022,6 +7241,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Vegetation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Vegetation")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Vegetation instance)
         {
             categoryOfVegetation = instance.categoryOfVegetation;
@@ -7039,6 +7273,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -7054,6 +7289,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 visualProminence = this.visualProminence,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -7070,6 +7306,7 @@ namespace S100Framework.WPF.ViewModel.S101
             visualProminence = this._visualProminence,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public VegetationViewModel()
@@ -7219,6 +7456,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("IceArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("IceArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.IceArea instance)
         {
             categoryOfIce = instance.categoryOfIce;
@@ -7245,6 +7497,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -7263,6 +7516,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 visualProminence = this.visualProminence,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -7282,6 +7536,7 @@ namespace S100Framework.WPF.ViewModel.S101
             visualProminence = this._visualProminence,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public IceAreaViewModel()
@@ -7394,6 +7649,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SlopingGround")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SlopingGround")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SlopingGround instance)
         {
             categoryOfSlope = instance.categoryOfSlope;
@@ -7417,6 +7687,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -7432,6 +7703,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 visualProminence = this.visualProminence,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -7448,6 +7720,7 @@ namespace S100Framework.WPF.ViewModel.S101
             visualProminence = this._visualProminence,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SlopingGroundViewModel()
@@ -7575,6 +7848,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SlopeTopline")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SlopeTopline")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SlopeTopline instance)
         {
             categoryOfSlope = instance.categoryOfSlope;
@@ -7599,6 +7887,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -7615,6 +7904,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 visualProminence = this.visualProminence,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -7632,6 +7922,7 @@ namespace S100Framework.WPF.ViewModel.S101
             visualProminence = this._visualProminence,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SlopeToplineViewModel()
@@ -7693,6 +7984,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Tideway")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Tideway")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Tideway instance)
         {
             featureName.Clear();
@@ -7705,6 +8011,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -7715,6 +8022,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -7726,6 +8034,7 @@ namespace S100Framework.WPF.ViewModel.S101
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public TidewayViewModel()
@@ -7899,6 +8208,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("BuiltUpArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.BuiltUpArea instance)
         {
             categoryOfBuiltUpArea = instance.categoryOfBuiltUpArea;
@@ -7919,6 +8243,7 @@ namespace S100Framework.WPF.ViewModel.S101
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -7937,6 +8262,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
                 inTheWater = this.inTheWater,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -7956,6 +8282,7 @@ namespace S100Framework.WPF.ViewModel.S101
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
             inTheWater = this._inTheWater,
+            theInformation = this._theInformation,
         };
 
         public BuiltUpAreaViewModel()
@@ -8202,6 +8529,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Building")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Building instance)
         {
             buildingShape = instance.buildingShape;
@@ -8248,6 +8590,7 @@ namespace S100Framework.WPF.ViewModel.S101
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -8274,6 +8617,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
                 inTheWater = this.inTheWater,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -8301,6 +8645,7 @@ namespace S100Framework.WPF.ViewModel.S101
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
             inTheWater = this._inTheWater,
+            theInformation = this._theInformation,
         };
 
         public BuildingViewModel()
@@ -8421,6 +8766,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("AirportAirfield")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.AirportAirfield instance)
         {
             categoryOfAirportAirfield.Clear();
@@ -8444,6 +8804,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -8459,6 +8820,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -8475,6 +8837,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public AirportAirfieldViewModel()
@@ -8575,6 +8938,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Runway")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Runway")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Runway instance)
         {
             condition = instance.condition;
@@ -8601,6 +8979,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -8616,6 +8995,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -8632,6 +9012,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RunwayViewModel()
@@ -8736,6 +9117,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Helipad")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Helipad")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Helipad instance)
         {
             condition = instance.condition;
@@ -8762,6 +9158,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -8777,6 +9174,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -8793,6 +9191,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public HelipadViewModel()
@@ -9036,6 +9435,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Bridge")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Bridge instance)
         {
             bridgeConstruction = instance.bridgeConstruction;
@@ -9081,6 +9495,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -9106,6 +9521,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -9132,6 +9548,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public BridgeViewModel()
@@ -9276,6 +9693,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SpanFixed")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SpanFixed instance)
         {
             fixedDateRange = new();
@@ -9307,6 +9739,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -9321,6 +9754,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -9336,6 +9770,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public SpanFixedViewModel()
@@ -9476,6 +9911,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SpanOpening")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SpanOpening instance)
         {
             fixedDateRange = new();
@@ -9514,6 +9964,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -9529,6 +9980,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -9545,6 +9997,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public SpanOpeningViewModel()
@@ -9816,6 +10269,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Conveyor")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Conveyor instance)
         {
             categoryOfConveyor = instance.categoryOfConveyor;
@@ -9872,6 +10340,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -9899,6 +10368,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -9927,6 +10397,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public ConveyorViewModel()
@@ -10164,6 +10635,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CableOverhead")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("CableOverhead")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.CableOverhead instance)
         {
             categoryOfCable = instance.categoryOfCable;
@@ -10215,6 +10701,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -10237,6 +10724,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 visualProminence = this.visualProminence,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -10260,6 +10748,7 @@ namespace S100Framework.WPF.ViewModel.S101
             visualProminence = this._visualProminence,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public CableOverheadViewModel()
@@ -10461,6 +10950,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PipelineOverhead")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("PipelineOverhead")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.PipelineOverhead instance)
         {
             categoryOfPipelinePipe = instance.categoryOfPipelinePipe;
@@ -10508,6 +11012,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -10529,6 +11034,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 visualProminence = this.visualProminence,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -10551,6 +11057,7 @@ namespace S100Framework.WPF.ViewModel.S101
             visualProminence = this._visualProminence,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public PipelineOverheadViewModel()
@@ -10803,6 +11310,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("PylonBridgeSupport")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.PylonBridgeSupport instance)
         {
             categoryOfPylon = instance.categoryOfPylon;
@@ -10851,6 +11373,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -10876,6 +11399,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -10902,6 +11426,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public PylonBridgeSupportViewModel()
@@ -11111,6 +11636,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FenceWall")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("FenceWall")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.FenceWall instance)
         {
             categoryOfFence = instance.categoryOfFence;
@@ -11144,6 +11684,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -11166,6 +11707,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 visualProminence = this.visualProminence,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -11189,6 +11731,7 @@ namespace S100Framework.WPF.ViewModel.S101
             visualProminence = this._visualProminence,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public FenceWallViewModel()
@@ -11302,6 +11845,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Railway")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Railway")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Railway instance)
         {
             condition = instance.condition;
@@ -11321,6 +11879,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -11335,6 +11894,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -11350,6 +11910,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RailwayViewModel()
@@ -11458,6 +12019,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Road")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Road")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Road instance)
         {
             categoryOfRoad = instance.categoryOfRoad;
@@ -11481,6 +12057,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -11496,6 +12073,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -11512,6 +12090,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RoadViewModel()
@@ -11668,6 +12247,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Tunnel")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Tunnel instance)
         {
             condition = instance.condition;
@@ -11702,6 +12296,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -11719,6 +12314,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -11737,6 +12333,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public TunnelViewModel()
@@ -11978,6 +12575,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Landmark")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Landmark instance)
         {
             categoryOfLandmark.Clear();
@@ -12031,6 +12643,7 @@ namespace S100Framework.WPF.ViewModel.S101
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -12058,6 +12671,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
                 inTheWater = this.inTheWater,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -12086,6 +12700,7 @@ namespace S100Framework.WPF.ViewModel.S101
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
             inTheWater = this._inTheWater,
+            theInformation = this._theInformation,
         };
 
         public LandmarkViewModel()
@@ -12371,6 +12986,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SiloTank")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SiloTank instance)
         {
             buildingShape = instance.buildingShape;
@@ -12418,6 +13048,7 @@ namespace S100Framework.WPF.ViewModel.S101
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -12445,6 +13076,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
                 inTheWater = this.inTheWater,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -12473,6 +13105,7 @@ namespace S100Framework.WPF.ViewModel.S101
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
             inTheWater = this._inTheWater,
+            theInformation = this._theInformation,
         };
 
         public SiloTankViewModel()
@@ -12779,6 +13412,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("WindTurbine")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.WindTurbine instance)
         {
             colour.Clear();
@@ -12836,6 +13484,7 @@ namespace S100Framework.WPF.ViewModel.S101
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -12864,6 +13513,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
                 inTheWater = this.inTheWater,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -12893,6 +13543,7 @@ namespace S100Framework.WPF.ViewModel.S101
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
             inTheWater = this._inTheWater,
+            theInformation = this._theInformation,
         };
 
         public WindTurbineViewModel()
@@ -13099,6 +13750,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("FortifiedStructure")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.FortifiedStructure instance)
         {
             categoryOfFortifiedStructure = instance.categoryOfFortifiedStructure;
@@ -13128,6 +13794,7 @@ namespace S100Framework.WPF.ViewModel.S101
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -13149,6 +13816,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
                 inTheWater = this.inTheWater,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -13171,6 +13839,7 @@ namespace S100Framework.WPF.ViewModel.S101
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
             inTheWater = this._inTheWater,
+            theInformation = this._theInformation,
         };
 
         public FortifiedStructureViewModel()
@@ -13389,6 +14058,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("ProductionStorageArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.ProductionStorageArea instance)
         {
             categoryOfProductionArea = instance.categoryOfProductionArea;
@@ -13425,6 +14109,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -13447,6 +14132,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -13470,6 +14156,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public ProductionStorageAreaViewModel()
@@ -13549,6 +14236,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Checkpoint")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Checkpoint")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Checkpoint instance)
         {
             categoryOfCheckpoint = instance.categoryOfCheckpoint;
@@ -13566,6 +14268,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -13578,6 +14281,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -13591,6 +14295,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public CheckpointViewModel()
@@ -13808,6 +14513,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Hulk")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Hulk instance)
         {
             categoryOfHulk.Clear();
@@ -13848,6 +14568,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -13871,6 +14592,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -13895,6 +14617,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public HulkViewModel()
@@ -14117,6 +14840,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Pile")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Pile instance)
         {
             categoryOfPile = instance.categoryOfPile;
@@ -14153,6 +14891,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -14175,6 +14914,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -14198,6 +14938,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public PileViewModel()
@@ -14368,6 +15109,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Dyke")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Dyke")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Dyke instance)
         {
             condition = instance.condition;
@@ -14397,6 +15153,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -14415,6 +15172,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 visualProminence = this.visualProminence,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -14434,6 +15192,7 @@ namespace S100Framework.WPF.ViewModel.S101
             visualProminence = this._visualProminence,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DykeViewModel()
@@ -14697,6 +15456,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ShorelineConstruction")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("ShorelineConstruction")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.ShorelineConstruction instance)
         {
             categoryOfShorelineConstruction = instance.categoryOfShorelineConstruction;
@@ -14746,6 +15520,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -14772,6 +15547,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 waterLevelEffect = this.waterLevelEffect,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -14799,6 +15575,7 @@ namespace S100Framework.WPF.ViewModel.S101
             waterLevelEffect = this._waterLevelEffect,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public ShorelineConstructionViewModel()
@@ -15107,6 +15884,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("StructureOverNavigableWater")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.StructureOverNavigableWater instance)
         {
             categoryOfStructure.Clear();
@@ -15172,6 +15964,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -15202,6 +15995,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -15233,6 +16027,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public StructureOverNavigableWaterViewModel()
@@ -15357,6 +16152,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Causeway")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Causeway")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Causeway instance)
         {
             condition = instance.condition;
@@ -15380,6 +16190,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -15395,6 +16206,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 waterLevelEffect = this.waterLevelEffect,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -15411,6 +16223,7 @@ namespace S100Framework.WPF.ViewModel.S101
             waterLevelEffect = this._waterLevelEffect,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public CausewayViewModel()
@@ -15567,6 +16380,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Canal")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Canal")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Canal instance)
         {
             categoryOfCanal = instance.categoryOfCanal;
@@ -15601,6 +16429,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -15618,6 +16447,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -15636,6 +16466,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public CanalViewModel()
@@ -15740,6 +16571,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DistanceMark")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DistanceMark")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DistanceMark instance)
         {
             distanceMarkVisible = instance.distanceMarkVisible;
@@ -15767,6 +16613,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -15780,6 +16627,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 measuredDistanceValue = this.measuredDistanceValue?.Model,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -15794,6 +16642,7 @@ namespace S100Framework.WPF.ViewModel.S101
             measuredDistanceValue = this._measuredDistanceValue?.Model,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DistanceMarkViewModel()
@@ -15964,6 +16813,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Gate")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Gate")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Gate instance)
         {
             categoryOfGate = instance.categoryOfGate;
@@ -16013,6 +16877,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -16033,6 +16898,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalUncertainty = this.verticalUncertainty?.Model,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -16054,6 +16920,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalUncertainty = this._verticalUncertainty?.Model,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public GateViewModel()
@@ -16264,6 +17131,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Dam")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Dam")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Dam instance)
         {
             categoryOfDam = instance.categoryOfDam;
@@ -16303,6 +17185,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -16325,6 +17208,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 waterLevelEffect = this.waterLevelEffect,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -16348,6 +17232,7 @@ namespace S100Framework.WPF.ViewModel.S101
             waterLevelEffect = this._waterLevelEffect,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DamViewModel()
@@ -16631,6 +17516,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Crane")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Crane instance)
         {
             categoryOfCrane = instance.categoryOfCrane;
@@ -16677,6 +17577,7 @@ namespace S100Framework.WPF.ViewModel.S101
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
             inTheWater = instance.inTheWater;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -16703,6 +17604,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
                 inTheWater = this.inTheWater,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -16730,6 +17632,7 @@ namespace S100Framework.WPF.ViewModel.S101
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
             inTheWater = this._inTheWater,
+            theInformation = this._theInformation,
         };
 
         public CraneViewModel()
@@ -16895,6 +17798,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Berth")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Berth")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Berth instance)
         {
             categoryOfCargo.Clear();
@@ -16941,6 +17859,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -16961,6 +17880,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalUncertainty = this.verticalUncertainty?.Model,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -16982,6 +17902,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalUncertainty = this._verticalUncertainty?.Model,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public BerthViewModel()
@@ -17217,6 +18138,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Dolphin")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Dolphin instance)
         {
             categoryOfDolphin.Clear();
@@ -17265,6 +18201,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -17290,6 +18227,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -17316,6 +18254,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public DolphinViewModel()
@@ -17456,6 +18395,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Bollard")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Bollard instance)
         {
             condition = instance.condition;
@@ -17486,6 +18440,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -17502,6 +18457,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -17519,6 +18475,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public BollardViewModel()
@@ -17738,6 +18695,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DryDock")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DryDock")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DryDock instance)
         {
             condition = instance.condition;
@@ -17780,6 +18752,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -17802,6 +18775,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalUncertainty = this.verticalUncertainty?.Model,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -17825,6 +18799,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalUncertainty = this._verticalUncertainty?.Model,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DryDockViewModel()
@@ -18103,6 +19078,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("FloatingDock")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.FloatingDock instance)
         {
             colour.Clear();
@@ -18143,6 +19133,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -18169,6 +19160,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -18196,6 +19188,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public FloatingDockViewModel()
@@ -18354,6 +19347,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Pontoon")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Pontoon instance)
         {
             condition = instance.condition;
@@ -18386,6 +19394,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -18404,6 +19413,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -18423,6 +19433,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public PontoonViewModel()
@@ -18597,6 +19608,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DockArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DockArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DockArea instance)
         {
             categoryOfDock = instance.categoryOfDock;
@@ -18636,6 +19662,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -18655,6 +19682,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -18675,6 +19703,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DockAreaViewModel()
@@ -18802,6 +19831,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Gridiron")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Gridiron")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Gridiron instance)
         {
             featureName.Clear();
@@ -18826,6 +19870,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -18842,6 +19887,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 waterLevelEffect = this.waterLevelEffect,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -18859,6 +19905,7 @@ namespace S100Framework.WPF.ViewModel.S101
             waterLevelEffect = this._waterLevelEffect,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public GridironViewModel()
@@ -18988,6 +20035,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LockBasin")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LockBasin")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LockBasin instance)
         {
             featureName.Clear();
@@ -19024,6 +20086,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -19040,6 +20103,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -19057,6 +20121,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public LockBasinViewModel()
@@ -19134,6 +20199,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MooringTrot")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("MooringTrot")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.MooringTrot instance)
         {
             featureName.Clear();
@@ -19153,6 +20233,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -19164,6 +20245,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -19176,6 +20258,7 @@ namespace S100Framework.WPF.ViewModel.S101
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public MooringTrotViewModel()
@@ -19244,6 +20327,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SeaAreaNamedWaterArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SeaAreaNamedWaterArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea instance)
         {
             categoryOfSeaArea = instance.categoryOfSeaArea;
@@ -19257,6 +20355,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -19268,6 +20367,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -19280,6 +20380,7 @@ namespace S100Framework.WPF.ViewModel.S101
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SeaAreaNamedWaterAreaViewModel()
@@ -19396,6 +20497,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TidalStreamFloodEbb")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("TidalStreamFloodEbb")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.TidalStreamFloodEbb instance)
         {
             categoryOfTidalStream = instance.categoryOfTidalStream;
@@ -19430,6 +20546,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -19444,6 +20561,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 speed = this.speed?.Model,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -19459,6 +20577,7 @@ namespace S100Framework.WPF.ViewModel.S101
             speed = this._speed?.Model,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public TidalStreamFloodEbbViewModel()
@@ -19578,6 +20697,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CurrentNonGravitational")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("CurrentNonGravitational")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.CurrentNonGravitational instance)
         {
             featureName.Clear();
@@ -19616,6 +20750,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -19631,6 +20766,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -19647,6 +20783,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this._status,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public CurrentNonGravitationalViewModel()
@@ -19719,6 +20856,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("WaterTurbulence")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("WaterTurbulence")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.WaterTurbulence instance)
         {
             categoryOfWaterTurbulence = instance.categoryOfWaterTurbulence;
@@ -19732,6 +20884,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -19743,6 +20896,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -19755,6 +20909,7 @@ namespace S100Framework.WPF.ViewModel.S101
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public WaterTurbulenceViewModel()
@@ -19841,6 +20996,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TidalStreamPanelData")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("TidalStreamPanelData")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.TidalStreamPanelData instance)
         {
             featureName.Clear();
@@ -19859,6 +21029,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -19872,6 +21043,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 tidalStreamPanelValues = this.tidalStreamPanelValues.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -19886,6 +21058,7 @@ namespace S100Framework.WPF.ViewModel.S101
             tidalStreamPanelValues = this.tidalStreamPanelValues.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public TidalStreamPanelDataViewModel()
@@ -19979,6 +21152,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Sounding")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Sounding")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Sounding instance)
         {
             featureName.Clear();
@@ -20001,6 +21189,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -20015,6 +21204,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 techniqueOfVerticalMeasurement = this.techniqueOfVerticalMeasurement.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -20030,6 +21220,7 @@ namespace S100Framework.WPF.ViewModel.S101
             techniqueOfVerticalMeasurement = this.techniqueOfVerticalMeasurement.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SoundingViewModel()
@@ -20176,6 +21367,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DredgedArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DredgedArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DredgedArea instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -20211,6 +21417,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -20229,6 +21436,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalUncertainty = this.verticalUncertainty?.Model,
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -20248,6 +21456,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalUncertainty = this._verticalUncertainty?.Model,
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DredgedAreaViewModel()
@@ -20340,6 +21549,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SweptArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SweptArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SweptArea instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -20350,6 +21574,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -20361,6 +21586,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 sweptDate = this.sweptDate,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -20373,6 +21599,7 @@ namespace S100Framework.WPF.ViewModel.S101
             sweptDate = this._sweptDate,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SweptAreaViewModel()
@@ -20434,6 +21661,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthContour")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DepthContour")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DepthContour instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -20443,6 +21685,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -20453,6 +21696,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 valueOfDepthContour = this.valueOfDepthContour,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -20464,6 +21708,7 @@ namespace S100Framework.WPF.ViewModel.S101
             valueOfDepthContour = this._valueOfDepthContour,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DepthContourViewModel()
@@ -20525,6 +21770,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DepthArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DepthArea instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -20534,6 +21794,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -20544,6 +21805,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 depthRangeMaximumValue = this.depthRangeMaximumValue,
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -20555,6 +21817,7 @@ namespace S100Framework.WPF.ViewModel.S101
             depthRangeMaximumValue = this._depthRangeMaximumValue,
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DepthAreaViewModel()
@@ -20604,6 +21867,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthNoBottomFound")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DepthNoBottomFound")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DepthNoBottomFound instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -20616,6 +21894,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -20626,6 +21905,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 techniqueOfVerticalMeasurement = this.techniqueOfVerticalMeasurement.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -20637,6 +21917,7 @@ namespace S100Framework.WPF.ViewModel.S101
             techniqueOfVerticalMeasurement = this.techniqueOfVerticalMeasurement.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DepthNoBottomFoundViewModel()
@@ -20672,6 +21953,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("UnsurveyedArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("UnsurveyedArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.UnsurveyedArea instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -20679,6 +21975,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -20687,6 +21984,7 @@ namespace S100Framework.WPF.ViewModel.S101
             {
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -20696,6 +21994,7 @@ namespace S100Framework.WPF.ViewModel.S101
         {
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public UnsurveyedAreaViewModel()
@@ -20763,6 +22062,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SeabedArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SeabedArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SeabedArea instance)
         {
             featureName.Clear();
@@ -20780,6 +22094,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -20792,6 +22107,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 waterLevelEffect = this.waterLevelEffect,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -20805,6 +22121,7 @@ namespace S100Framework.WPF.ViewModel.S101
             waterLevelEffect = this._waterLevelEffect,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SeabedAreaViewModel()
@@ -20877,6 +22194,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("WeedKelp")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("WeedKelp")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.WeedKelp instance)
         {
             categoryOfWeedKelp = instance.categoryOfWeedKelp;
@@ -20890,6 +22222,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -20901,6 +22234,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -20913,6 +22247,7 @@ namespace S100Framework.WPF.ViewModel.S101
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public WeedKelpViewModel()
@@ -20966,6 +22301,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Seagrass")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Seagrass")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Seagrass instance)
         {
             featureName.Clear();
@@ -20978,6 +22328,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -20988,6 +22339,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -20999,6 +22351,7 @@ namespace S100Framework.WPF.ViewModel.S101
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SeagrassViewModel()
@@ -21064,6 +22417,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Sandwave")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Sandwave")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Sandwave instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -21073,6 +22441,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -21083,6 +22452,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalLength = this.verticalLength,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -21094,6 +22464,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalLength = this._verticalLength,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SandwaveViewModel()
@@ -21143,6 +22514,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Spring")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Spring")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Spring instance)
         {
             featureName.Clear();
@@ -21155,6 +22541,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -21165,6 +22552,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -21176,6 +22564,7 @@ namespace S100Framework.WPF.ViewModel.S101
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SpringViewModel()
@@ -21355,6 +22744,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("UnderwaterAwashRock")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.UnderwaterAwashRock instance)
         {
             expositionOfSounding = instance.expositionOfSounding;
@@ -21383,6 +22787,7 @@ namespace S100Framework.WPF.ViewModel.S101
                     information.Add(e);
             defaultClearanceDepth = instance.defaultClearanceDepth;
             surroundingDepth = instance.surroundingDepth;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -21403,6 +22808,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 information = this.information.ToList(),
                 defaultClearanceDepth = this.defaultClearanceDepth,
                 surroundingDepth = this.surroundingDepth,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -21424,6 +22830,7 @@ namespace S100Framework.WPF.ViewModel.S101
             information = this.information.ToList(),
             defaultClearanceDepth = this._defaultClearanceDepth,
             surroundingDepth = this._surroundingDepth,
+            theInformation = this._theInformation,
         };
 
         public UnderwaterAwashRockViewModel()
@@ -21659,6 +23066,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Wreck")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Wreck instance)
         {
             categoryOfWreck = instance.categoryOfWreck;
@@ -21694,6 +23116,7 @@ namespace S100Framework.WPF.ViewModel.S101
             pictorialRepresentation = instance.pictorialRepresentation;
             defaultClearanceDepth = instance.defaultClearanceDepth;
             surroundingDepth = instance.surroundingDepth;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -21718,6 +23141,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 pictorialRepresentation = this.pictorialRepresentation,
                 defaultClearanceDepth = this.defaultClearanceDepth,
                 surroundingDepth = this.surroundingDepth,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -21743,6 +23167,7 @@ namespace S100Framework.WPF.ViewModel.S101
             pictorialRepresentation = this._pictorialRepresentation,
             defaultClearanceDepth = this._defaultClearanceDepth,
             surroundingDepth = this._surroundingDepth,
+            theInformation = this._theInformation,
         };
 
         public WreckViewModel()
@@ -21988,6 +23413,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Obstruction")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Obstruction instance)
         {
             categoryOfObstruction = instance.categoryOfObstruction;
@@ -22031,6 +23471,7 @@ namespace S100Framework.WPF.ViewModel.S101
                     information.Add(e);
             defaultClearanceDepth = instance.defaultClearanceDepth;
             surroundingDepth = instance.surroundingDepth;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -22057,6 +23498,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 information = this.information.ToList(),
                 defaultClearanceDepth = this.defaultClearanceDepth,
                 surroundingDepth = this.surroundingDepth,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -22084,6 +23526,7 @@ namespace S100Framework.WPF.ViewModel.S101
             information = this.information.ToList(),
             defaultClearanceDepth = this._defaultClearanceDepth,
             surroundingDepth = this._surroundingDepth,
+            theInformation = this._theInformation,
         };
 
         public ObstructionViewModel()
@@ -22212,6 +23655,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FoulGround")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("FoulGround")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.FoulGround instance)
         {
             featureName.Clear();
@@ -22245,6 +23703,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -22261,6 +23720,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalUncertainty = this.verticalUncertainty?.Model,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -22278,6 +23738,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalUncertainty = this._verticalUncertainty?.Model,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public FoulGroundViewModel()
@@ -22355,6 +23816,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DiscolouredWater")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DiscolouredWater")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DiscolouredWater instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -22364,6 +23840,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -22374,6 +23851,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 reportedDate = this.reportedDate,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -22385,6 +23863,7 @@ namespace S100Framework.WPF.ViewModel.S101
             reportedDate = this._reportedDate,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DiscolouredWaterViewModel()
@@ -22500,6 +23979,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FishingFacility")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("FishingFacility")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.FishingFacility instance)
         {
             categoryOfFishingFacility = instance.categoryOfFishingFacility;
@@ -22524,6 +24018,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -22540,6 +24035,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalLength = this.verticalLength,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -22557,6 +24053,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalLength = this._verticalLength,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public FishingFacilityViewModel()
@@ -22755,6 +24252,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MarineFarmCulture")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("MarineFarmCulture")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.MarineFarmCulture instance)
         {
             categoryOfMarineFarmCulture = instance.categoryOfMarineFarmCulture;
@@ -22807,6 +24319,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -22830,6 +24343,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 waterLevelEffect = this.waterLevelEffect,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -22854,6 +24368,7 @@ namespace S100Framework.WPF.ViewModel.S101
             waterLevelEffect = this._waterLevelEffect,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public MarineFarmCultureViewModel()
@@ -23102,6 +24617,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("OffshorePlatform")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.OffshorePlatform instance)
         {
             categoryOfOffshorePlatform = instance.categoryOfOffshorePlatform;
@@ -23143,6 +24673,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -23167,6 +24698,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -23192,6 +24724,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public OffshorePlatformViewModel()
@@ -23321,6 +24854,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CableSubmarine")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("CableSubmarine")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.CableSubmarine instance)
         {
             buriedDepth = instance.buriedDepth;
@@ -23347,6 +24895,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -23362,6 +24911,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -23378,6 +24928,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public CableSubmarineViewModel()
@@ -23463,6 +25014,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CableArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("CableArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.CableArea instance)
         {
             categoryOfCable.Clear();
@@ -23498,6 +25064,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -23513,6 +25080,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -23529,6 +25097,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public CableAreaViewModel()
@@ -23732,6 +25301,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("PipelineSubmarineOnLand")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.PipelineSubmarineOnLand instance)
         {
             buriedDepth = instance.buriedDepth;
@@ -23780,6 +25364,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -23802,6 +25387,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -23825,6 +25411,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public PipelineSubmarineOnLandViewModel()
@@ -23925,6 +25512,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SubmarinePipelineArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SubmarinePipelineArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SubmarinePipelineArea instance)
         {
             categoryOfPipelinePipe.Clear();
@@ -23964,6 +25566,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -23980,6 +25583,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -23997,6 +25601,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SubmarinePipelineAreaViewModel()
@@ -24218,6 +25823,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("OffshoreProductionArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("OffshoreProductionArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.OffshoreProductionArea instance)
         {
             categoryOfOffshoreProductionArea = instance.categoryOfOffshoreProductionArea;
@@ -24261,6 +25881,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -24284,6 +25905,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 waterLevelEffect = this.waterLevelEffect,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -24308,6 +25930,7 @@ namespace S100Framework.WPF.ViewModel.S101
             waterLevelEffect = this._waterLevelEffect,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public OffshoreProductionAreaViewModel()
@@ -24442,6 +26065,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("NavigationLine")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("NavigationLine")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.NavigationLine instance)
         {
             categoryOfNavigationLine = instance.categoryOfNavigationLine;
@@ -24474,6 +26112,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -24489,6 +26128,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -24505,6 +26145,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public NavigationLineViewModel()
@@ -24681,6 +26322,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RecommendedTrack")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RecommendedTrack")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RecommendedTrack instance)
         {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -24728,6 +26384,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -24749,6 +26406,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalUncertainty = this.verticalUncertainty?.Model,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -24771,6 +26429,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalUncertainty = this._verticalUncertainty?.Model,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RecommendedTrackViewModel()
@@ -24871,6 +26530,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RangeSystem")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RangeSystem")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RangeSystem instance)
         {
             featureName.Clear();
@@ -24891,6 +26565,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -24903,6 +26578,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 maximumPermittedDraught = this.maximumPermittedDraught,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -24916,6 +26592,7 @@ namespace S100Framework.WPF.ViewModel.S101
             maximumPermittedDraught = this._maximumPermittedDraught,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RangeSystemViewModel()
@@ -25073,6 +26750,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Fairway")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Fairway")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Fairway instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -25119,6 +26811,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -25139,6 +26832,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -25160,6 +26854,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public FairwayViewModel()
@@ -25263,6 +26958,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FairwaySystem")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("FairwaySystem")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.FairwaySystem instance)
         {
             featureName.Clear();
@@ -25287,6 +26997,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -25300,6 +27011,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 periodicDateRange = this.periodicDateRange.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -25314,6 +27026,7 @@ namespace S100Framework.WPF.ViewModel.S101
             periodicDateRange = this.periodicDateRange.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public FairwaySystemViewModel()
@@ -25475,6 +27188,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RecommendedRouteCentreline")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RecommendedRouteCentreline")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RecommendedRouteCentreline instance)
         {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -25521,6 +27249,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -25541,6 +27270,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalUncertainty = this.verticalUncertainty?.Model,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -25562,6 +27292,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalUncertainty = this._verticalUncertainty?.Model,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RecommendedRouteCentrelineViewModel()
@@ -25729,6 +27460,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TwoWayRoutePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("TwoWayRoutePart")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.TwoWayRoutePart instance)
         {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -25767,6 +27513,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -25785,6 +27532,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalUncertainty = this.verticalUncertainty?.Model,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -25804,6 +27552,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalUncertainty = this._verticalUncertainty?.Model,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public TwoWayRoutePartViewModel()
@@ -25896,6 +27645,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TwoWayRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("TwoWayRoute")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.TwoWayRoute instance)
         {
             featureName.Clear();
@@ -25916,6 +27680,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -25928,6 +27693,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 maximumPermittedDraught = this.maximumPermittedDraught,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -25941,6 +27707,7 @@ namespace S100Framework.WPF.ViewModel.S101
             maximumPermittedDraught = this._maximumPermittedDraught,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public TwoWayRouteViewModel()
@@ -26025,6 +27792,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RecommendedTrafficLanePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RecommendedTrafficLanePart")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RecommendedTrafficLanePart instance)
         {
             fixedDateRange = new();
@@ -26045,6 +27827,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -26057,6 +27840,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -26070,6 +27854,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RecommendedTrafficLanePartViewModel()
@@ -26239,6 +28024,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DeepWaterRouteCentreline")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DeepWaterRouteCentreline")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRouteCentreline instance)
         {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -26282,6 +28082,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -26302,6 +28103,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalUncertainty = this.verticalUncertainty?.Model,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -26323,6 +28125,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalUncertainty = this._verticalUncertainty?.Model,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DeepWaterRouteCentrelineViewModel()
@@ -26495,6 +28298,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DeepWaterRoutePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DeepWaterRoutePart")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRoutePart instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -26545,6 +28363,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -26566,6 +28385,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -26588,6 +28408,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DeepWaterRoutePartViewModel()
@@ -26692,6 +28513,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DeepWaterRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DeepWaterRoute")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRoute instance)
         {
             featureName.Clear();
@@ -26712,6 +28548,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -26724,6 +28561,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -26737,6 +28575,7 @@ namespace S100Framework.WPF.ViewModel.S101
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DeepWaterRouteViewModel()
@@ -26812,6 +28651,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("InshoreTrafficZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("InshoreTrafficZone")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.InshoreTrafficZone instance)
         {
             fixedDateRange = new();
@@ -26839,6 +28693,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -26852,6 +28707,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -26866,6 +28722,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public InshoreTrafficZoneViewModel()
@@ -26967,6 +28824,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PrecautionaryArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("PrecautionaryArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.PrecautionaryArea instance)
         {
             featureName.Clear();
@@ -26999,6 +28871,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -27014,6 +28887,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -27030,6 +28904,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public PrecautionaryAreaViewModel()
@@ -27132,6 +29007,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationSchemeLanePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("TrafficSeparationSchemeLanePart")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeLanePart instance)
         {
             fixedDateRange = new();
@@ -27160,6 +29050,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -27174,6 +29065,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -27189,6 +29081,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public TrafficSeparationSchemeLanePartViewModel()
@@ -27266,6 +29159,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SeparationZoneOrLine")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SeparationZoneOrLine")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SeparationZoneOrLine instance)
         {
             fixedDateRange = new();
@@ -27285,6 +29193,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -27296,6 +29205,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -27308,6 +29218,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SeparationZoneOrLineViewModel()
@@ -27377,6 +29288,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationSchemeBoundary")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("TrafficSeparationSchemeBoundary")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeBoundary instance)
         {
             fixedDateRange = new();
@@ -27396,6 +29322,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -27407,6 +29334,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -27419,6 +29347,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public TrafficSeparationSchemeBoundaryViewModel()
@@ -27494,6 +29423,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationSchemeCrossing")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("TrafficSeparationSchemeCrossing")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeCrossing instance)
         {
             fixedDateRange = new();
@@ -27521,6 +29465,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -27534,6 +29479,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -27548,6 +29494,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public TrafficSeparationSchemeCrossingViewModel()
@@ -27631,6 +29578,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationSchemeRoundabout")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("TrafficSeparationSchemeRoundabout")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeRoundabout instance)
         {
             fixedDateRange = new();
@@ -27658,6 +29620,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -27671,6 +29634,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -27685,6 +29649,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public TrafficSeparationSchemeRoundaboutViewModel()
@@ -27792,6 +29757,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationScheme")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("TrafficSeparationScheme")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationScheme instance)
         {
             featureName.Clear();
@@ -27813,6 +29793,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -27826,6 +29807,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 maximumPermittedDraught = this.maximumPermittedDraught,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -27840,6 +29822,7 @@ namespace S100Framework.WPF.ViewModel.S101
             maximumPermittedDraught = this._maximumPermittedDraught,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public TrafficSeparationSchemeViewModel()
@@ -27924,6 +29907,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ArchipelagicSeaLaneArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("ArchipelagicSeaLaneArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneArea instance)
         {
             featureName.Clear();
@@ -27944,6 +29942,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -27956,6 +29955,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 nationality = this.nationality,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -27969,6 +29969,7 @@ namespace S100Framework.WPF.ViewModel.S101
             nationality = this._nationality,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public ArchipelagicSeaLaneAreaViewModel()
@@ -28053,6 +30054,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ArchipelagicSeaLaneAxis")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("ArchipelagicSeaLaneAxis")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneAxis instance)
         {
             featureName.Clear();
@@ -28073,6 +30089,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -28085,6 +30102,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 nationality = this.nationality,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -28098,6 +30116,7 @@ namespace S100Framework.WPF.ViewModel.S101
             nationality = this._nationality,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public ArchipelagicSeaLaneAxisViewModel()
@@ -28182,6 +30201,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ArchipelagicSeaLane")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("ArchipelagicSeaLane")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLane instance)
         {
             featureName.Clear();
@@ -28202,6 +30236,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -28214,6 +30249,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 nationality = this.nationality,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -28227,6 +30263,7 @@ namespace S100Framework.WPF.ViewModel.S101
             nationality = this._nationality,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public ArchipelagicSeaLaneViewModel()
@@ -28323,6 +30360,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadioCallingInPoint")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RadioCallingInPoint")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RadioCallingInPoint instance)
         {
             communicationChannel.Clear();
@@ -28359,6 +30411,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -28375,6 +30428,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 trafficFlow = this.trafficFlow,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -28392,6 +30446,7 @@ namespace S100Framework.WPF.ViewModel.S101
             trafficFlow = this._trafficFlow,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RadioCallingInPointViewModel()
@@ -28486,6 +30541,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FerryRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("FerryRoute")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.FerryRoute instance)
         {
             categoryOfFerry.Clear();
@@ -28517,6 +30587,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -28531,6 +30602,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -28546,6 +30618,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public FerryRouteViewModel()
@@ -28629,6 +30702,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarLine")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RadarLine")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RadarLine instance)
         {
             featureName.Clear();
@@ -28646,6 +30734,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -28658,6 +30747,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -28671,6 +30761,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RadarLineViewModel()
@@ -28750,6 +30841,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarRange")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RadarRange")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RadarRange instance)
         {
             communicationChannel.Clear();
@@ -28777,6 +30883,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -28790,6 +30897,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -28804,6 +30912,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RadarRangeViewModel()
@@ -28922,6 +31031,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarStation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RadarStation")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RadarStation instance)
         {
             callSign = instance.callSign;
@@ -28953,6 +31077,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -28970,6 +31095,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 valueOfMaximumRange = this.valueOfMaximumRange,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -28988,6 +31114,7 @@ namespace S100Framework.WPF.ViewModel.S101
             valueOfMaximumRange = this._valueOfMaximumRange,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RadarStationViewModel()
@@ -29091,6 +31218,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("AnchorageArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("AnchorageArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.AnchorageArea instance)
         {
             categoryOfAnchorage.Clear();
@@ -29134,6 +31276,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -29151,6 +31294,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -29169,6 +31313,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public AnchorageAreaViewModel()
@@ -29307,6 +31452,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MooringArea")]
         public ObservableCollection<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("MooringArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.MooringArea instance)
         {
             categoryOfMooringArea.Clear();
@@ -29348,6 +31508,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.vesselSpeedLimit is not null)
                 foreach (var e in instance.vesselSpeedLimit)
                     vesselSpeedLimit.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -29366,6 +31527,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -29385,6 +31547,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
+            theInformation = this._theInformation,
         };
 
         public MooringAreaViewModel()
@@ -29501,6 +31664,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("AnchorBerth")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("AnchorBerth")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.AnchorBerth instance)
         {
             categoryOfAnchorage.Clear();
@@ -29537,6 +31715,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -29553,6 +31732,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -29570,6 +31750,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public AnchorBerthViewModel()
@@ -29651,6 +31832,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SeaplaneLandingArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SeaplaneLandingArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SeaplaneLandingArea instance)
         {
             featureName.Clear();
@@ -29679,6 +31875,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -29693,6 +31890,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -29708,6 +31906,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SeaplaneLandingAreaViewModel()
@@ -29804,6 +32003,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DumpingGround")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("DumpingGround")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.DumpingGround instance)
         {
             categoryOfDumpingGround.Clear();
@@ -29833,6 +32047,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -29848,6 +32063,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -29864,6 +32080,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public DumpingGroundViewModel()
@@ -29979,6 +32196,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MilitaryPracticeArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("MilitaryPracticeArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.MilitaryPracticeArea instance)
         {
             categoryOfMilitaryPracticeArea.Clear();
@@ -30019,6 +32251,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -30036,6 +32269,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -30054,6 +32288,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public MilitaryPracticeAreaViewModel()
@@ -30175,6 +32410,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("AdministrationArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.AdministrationArea instance)
         {
             inDispute = instance.inDispute;
@@ -30194,6 +32444,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -30208,6 +32459,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -30223,6 +32475,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public AdministrationAreaViewModel()
@@ -30308,6 +32561,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CargoTranshipmentArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("CargoTranshipmentArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.CargoTranshipmentArea instance)
         {
             featureName.Clear();
@@ -30343,6 +32611,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -30358,6 +32627,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -30374,6 +32644,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public CargoTranshipmentAreaViewModel()
@@ -30519,6 +32790,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("CautionArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.CautionArea instance)
         {
             condition = instance.condition;
@@ -30542,6 +32828,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -30557,6 +32844,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -30573,6 +32861,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public CautionAreaViewModel()
@@ -30675,6 +32964,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("InformationArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.InformationArea instance)
         {
             featureName.Clear();
@@ -30700,6 +33004,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -30714,6 +33019,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -30729,6 +33035,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public InformationAreaViewModel()
@@ -30817,6 +33124,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ContiguousZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("ContiguousZone")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.ContiguousZone instance)
         {
             fixedDateRange = new();
@@ -30837,6 +33159,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -30849,6 +33172,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 nationality = this.nationality.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -30862,6 +33186,7 @@ namespace S100Framework.WPF.ViewModel.S101
             nationality = this.nationality.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public ContiguousZoneViewModel()
@@ -30918,6 +33243,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ContinentalShelfArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("ContinentalShelfArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.ContinentalShelfArea instance)
         {
             featureName.Clear();
@@ -30934,6 +33274,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -30945,6 +33286,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 nationality = this.nationality.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -30957,6 +33299,7 @@ namespace S100Framework.WPF.ViewModel.S101
             nationality = this.nationality.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public ContinentalShelfAreaViewModel()
@@ -31026,6 +33369,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CustomZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("CustomZone")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.CustomZone instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -31035,6 +33393,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -31045,6 +33404,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 nationality = this.nationality,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -31056,6 +33416,7 @@ namespace S100Framework.WPF.ViewModel.S101
             nationality = this._nationality,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public CustomZoneViewModel()
@@ -31120,6 +33481,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ExclusiveEconomicZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("ExclusiveEconomicZone")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.ExclusiveEconomicZone instance)
         {
             inDispute = instance.inDispute;
@@ -31133,6 +33509,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -31144,6 +33521,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 nationality = this.nationality.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -31156,6 +33534,7 @@ namespace S100Framework.WPF.ViewModel.S101
             nationality = this.nationality.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public ExclusiveEconomicZoneViewModel()
@@ -31227,6 +33606,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FisheryZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("FisheryZone")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.FisheryZone instance)
         {
             featureName.Clear();
@@ -31244,6 +33638,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -31256,6 +33651,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -31269,6 +33665,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public FisheryZoneViewModel()
@@ -31338,6 +33735,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FishingGround")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("FishingGround")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.FishingGround instance)
         {
             featureName.Clear();
@@ -31366,6 +33778,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -31380,6 +33793,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -31395,6 +33809,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public FishingGroundViewModel()
@@ -31467,6 +33882,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FreePortArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("FreePortArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.FreePortArea instance)
         {
             featureName.Clear();
@@ -31483,6 +33913,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -31494,6 +33925,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -31506,6 +33938,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public FreePortAreaViewModel()
@@ -31566,6 +33999,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("HarbourAreaAdministrative")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("HarbourAreaAdministrative")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.HarbourAreaAdministrative instance)
         {
             featureName.Clear();
@@ -31582,6 +34030,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -31593,6 +34042,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -31605,6 +34055,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public HarbourAreaAdministrativeViewModel()
@@ -31668,6 +34119,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LogPond")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LogPond")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LogPond instance)
         {
             featureName.Clear();
@@ -31688,6 +34154,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -31700,6 +34167,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -31713,6 +34181,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public LogPondViewModel()
@@ -31838,6 +34307,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("OilBarrier")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("OilBarrier")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.OilBarrier instance)
         {
             categoryOfOilBarrier = instance.categoryOfOilBarrier;
@@ -31864,6 +34348,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -31879,6 +34364,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -31895,6 +34381,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public OilBarrierViewModel()
@@ -31964,6 +34451,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("StraightTerritorialSeaBaseline")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("StraightTerritorialSeaBaseline")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.StraightTerritorialSeaBaseline instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -31973,6 +34475,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -31983,6 +34486,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 nationality = this.nationality,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -31994,6 +34498,7 @@ namespace S100Framework.WPF.ViewModel.S101
             nationality = this._nationality,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public StraightTerritorialSeaBaselineViewModel()
@@ -32064,6 +34569,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TerritorialSeaArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("TerritorialSeaArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.TerritorialSeaArea instance)
         {
             inDispute = instance.inDispute;
@@ -32085,6 +34605,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -32098,6 +34619,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -32112,6 +34634,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public TerritorialSeaAreaViewModel()
@@ -32194,6 +34717,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SubmarineTransitLane")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SubmarineTransitLane")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SubmarineTransitLane instance)
         {
             featureName.Clear();
@@ -32215,6 +34753,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -32228,6 +34767,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -32242,6 +34782,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SubmarineTransitLaneViewModel()
@@ -32306,6 +34847,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PilotageDistrict")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("PilotageDistrict")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.PilotageDistrict instance)
         {
             communicationChannel.Clear();
@@ -32322,6 +34878,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -32333,6 +34890,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -32345,6 +34903,7 @@ namespace S100Framework.WPF.ViewModel.S101
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public PilotageDistrictViewModel()
@@ -32436,6 +34995,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CollisionRegulationsLimit")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("CollisionRegulationsLimit")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.CollisionRegulationsLimit instance)
         {
             featureName.Clear();
@@ -32460,6 +35034,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -32473,6 +35048,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 regulationCitation = this.regulationCitation,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -32487,6 +35063,7 @@ namespace S100Framework.WPF.ViewModel.S101
             regulationCitation = this._regulationCitation,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public CollisionRegulationsLimitViewModel()
@@ -32559,6 +35136,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MarinePollutionRegulationsArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("MarinePollutionRegulationsArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.MarinePollutionRegulationsArea instance)
         {
             featureName.Clear();
@@ -32572,6 +35164,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -32583,6 +35176,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 regulationCitation = this.regulationCitation,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -32595,6 +35189,7 @@ namespace S100Framework.WPF.ViewModel.S101
             regulationCitation = this._regulationCitation,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public MarinePollutionRegulationsAreaViewModel()
@@ -32679,6 +35274,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RestrictedArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RestrictedArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RestrictedArea instance)
         {
             categoryOfRestrictedArea.Clear();
@@ -32718,6 +35328,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -32734,6 +35345,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -32751,6 +35363,7 @@ namespace S100Framework.WPF.ViewModel.S101
             vesselSpeedLimit = this.vesselSpeedLimit.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RestrictedAreaViewModel()
@@ -33034,6 +35647,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightAllAround")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LightAllAround")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LightAllAround instance)
         {
             categoryOfLight.Clear();
@@ -33093,6 +35721,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -33120,6 +35749,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalLength = this.verticalLength,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -33148,6 +35778,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalLength = this._verticalLength,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public LightAllAroundViewModel()
@@ -33336,6 +35967,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightSectored")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LightSectored")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LightSectored instance)
         {
             categoryOfLight.Clear();
@@ -33383,6 +36029,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -33404,6 +36051,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalDatum = this.verticalDatum,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -33426,6 +36074,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalDatum = this._verticalDatum,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public LightSectoredViewModel()
@@ -33611,6 +36260,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightFogDetector")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LightFogDetector")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LightFogDetector instance)
         {
             colour.Clear();
@@ -33654,6 +36318,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -33674,6 +36339,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalLength = this.verticalLength,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -33695,6 +36361,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalLength = this._verticalLength,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public LightFogDetectorViewModel()
@@ -33895,6 +36562,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightAirObstruction")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LightAirObstruction")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LightAirObstruction instance)
         {
             colour.Clear();
@@ -33949,6 +36631,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -33971,6 +36654,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 verticalDatum = this.verticalDatum,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -33994,6 +36678,7 @@ namespace S100Framework.WPF.ViewModel.S101
             verticalDatum = this._verticalDatum,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public LightAirObstructionViewModel()
@@ -34212,6 +36897,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LateralBuoy")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LateralBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -34261,6 +36961,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -34284,6 +36985,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -34308,6 +37010,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public LateralBuoyViewModel()
@@ -34526,6 +37229,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("CardinalBuoy")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.CardinalBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -34575,6 +37293,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -34598,6 +37317,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -34622,6 +37342,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public CardinalBuoyViewModel()
@@ -34825,6 +37546,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("IsolatedDangerBuoy")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -34873,6 +37609,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -34895,6 +37632,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -34918,6 +37656,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public IsolatedDangerBuoyViewModel()
@@ -35121,6 +37860,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SafeWaterBuoy")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SafeWaterBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -35169,6 +37923,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -35191,6 +37946,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -35214,6 +37970,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public SafeWaterBuoyViewModel()
@@ -35420,6 +38177,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SpecialPurposeGeneralBuoy")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -35472,6 +38244,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -35495,6 +38268,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -35519,6 +38293,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public SpecialPurposeGeneralBuoyViewModel()
@@ -35720,6 +38495,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("EmergencyWreckMarkingBuoy")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.EmergencyWreckMarkingBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -35760,6 +38550,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -35780,6 +38571,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -35801,6 +38593,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public EmergencyWreckMarkingBuoyViewModel()
@@ -35983,6 +38776,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("InstallationBuoy")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.InstallationBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -36028,6 +38836,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -36050,6 +38859,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -36073,6 +38883,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public InstallationBuoyViewModel()
@@ -36279,6 +39090,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("MooringBuoy")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.MooringBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -36321,6 +39147,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -36343,6 +39170,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -36366,6 +39194,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public MooringBuoyViewModel()
@@ -36659,6 +39488,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LateralBeacon")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LateralBeacon instance)
         {
             beaconShape = instance.beaconShape;
@@ -36713,6 +39557,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -36741,6 +39586,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -36770,6 +39616,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public LateralBeaconViewModel()
@@ -37063,6 +39910,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("CardinalBeacon")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.CardinalBeacon instance)
         {
             beaconShape = instance.beaconShape;
@@ -37117,6 +39979,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -37145,6 +40008,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -37174,6 +40038,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public CardinalBeaconViewModel()
@@ -37452,6 +40317,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("IsolatedDangerBeacon")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBeacon instance)
         {
             beaconShape = instance.beaconShape;
@@ -37505,6 +40385,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -37532,6 +40413,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -37560,6 +40442,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public IsolatedDangerBeaconViewModel()
@@ -37838,6 +40721,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SafeWaterBeacon")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SafeWaterBeacon instance)
         {
             beaconShape = instance.beaconShape;
@@ -37891,6 +40789,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -37918,6 +40817,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -37946,6 +40846,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public SafeWaterBeaconViewModel()
@@ -38227,6 +41128,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SpecialPurposeGeneralBeacon")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBeacon instance)
         {
             beaconShape = instance.beaconShape;
@@ -38284,6 +41200,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -38312,6 +41229,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -38341,6 +41259,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public SpecialPurposeGeneralBeaconViewModel()
@@ -38553,6 +41472,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Daymark")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Daymark instance)
         {
             categoryOfSpecialPurposeMark.Clear();
@@ -38603,6 +41537,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -38627,6 +41562,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -38652,6 +41588,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public DaymarkViewModel()
@@ -38878,6 +41815,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LightFloat")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LightFloat instance)
         {
             colour.Clear();
@@ -38927,6 +41879,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -38950,6 +41903,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -38974,6 +41928,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public LightFloatViewModel()
@@ -39176,6 +42131,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("LightVessel")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.LightVessel instance)
         {
             colour.Clear();
@@ -39218,6 +42188,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -39240,6 +42211,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -39263,6 +42235,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public LightVesselViewModel()
@@ -39384,6 +42357,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Retroreflector")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("Retroreflector")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.Retroreflector instance)
         {
             colour.Clear();
@@ -39413,6 +42401,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -39428,6 +42417,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -39444,6 +42434,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RetroreflectorViewModel()
@@ -39539,6 +42530,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarReflector")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RadarReflector")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RadarReflector instance)
         {
             fixedDateRange = new();
@@ -39563,6 +42569,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -39576,6 +42583,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -39590,6 +42598,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RadarReflectorViewModel()
@@ -39762,6 +42771,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FogSignal")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("FogSignal")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.FogSignal instance)
         {
             categoryOfFogSignal = instance.categoryOfFogSignal;
@@ -39799,6 +42823,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -39819,6 +42844,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 valueOfMaximumRange = this.valueOfMaximumRange,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -39840,6 +42866,7 @@ namespace S100Framework.WPF.ViewModel.S101
             valueOfMaximumRange = this._valueOfMaximumRange,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public FogSignalViewModel()
@@ -39969,6 +42996,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PhysicalAISAidToNavigation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("PhysicalAISAidToNavigation")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.PhysicalAISAidToNavigation instance)
         {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
@@ -39995,6 +43037,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -40010,6 +43053,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -40026,6 +43070,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this._status,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public PhysicalAISAidToNavigationViewModel()
@@ -40162,6 +43207,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("VirtualAISAidToNavigation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("VirtualAISAidToNavigation")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.VirtualAISAidToNavigation instance)
         {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
@@ -40189,6 +43249,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -40205,6 +43266,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 virtualAISAidToNavigationType = this.virtualAISAidToNavigationType,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -40222,6 +43284,7 @@ namespace S100Framework.WPF.ViewModel.S101
             virtualAISAidToNavigationType = this._virtualAISAidToNavigationType,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public VirtualAISAidToNavigationViewModel()
@@ -40353,6 +43416,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadioStation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RadioStation")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RadioStation instance)
         {
             callSign = instance.callSign;
@@ -40397,6 +43475,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -40415,6 +43494,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -40434,6 +43514,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RadioStationViewModel()
@@ -40592,6 +43673,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarTransponderBeacon")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RadarTransponderBeacon")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RadarTransponderBeacon instance)
         {
             categoryOfRadarTransponderBeacon = instance.categoryOfRadarTransponderBeacon;
@@ -40637,6 +43733,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -40656,6 +43753,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 valueOfMaximumRange = this.valueOfMaximumRange,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -40676,6 +43774,7 @@ namespace S100Framework.WPF.ViewModel.S101
             valueOfMaximumRange = this._valueOfMaximumRange,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RadarTransponderBeaconViewModel()
@@ -40806,6 +43905,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PilotBoardingPlace")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("PilotBoardingPlace")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.PilotBoardingPlace instance)
         {
             categoryOfPilotBoardingPlace = instance.categoryOfPilotBoardingPlace;
@@ -40847,6 +43961,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -40865,6 +43980,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -40884,6 +44000,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public PilotBoardingPlaceViewModel()
@@ -40957,6 +44074,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("VesselTrafficServiceArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("VesselTrafficServiceArea")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.VesselTrafficServiceArea instance)
         {
             featureName.Clear();
@@ -40969,6 +44101,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -40979,6 +44112,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 interoperabilityIdentifier = this.interoperabilityIdentifier,
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -40990,6 +44124,7 @@ namespace S100Framework.WPF.ViewModel.S101
             interoperabilityIdentifier = this._interoperabilityIdentifier,
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public VesselTrafficServiceAreaViewModel()
@@ -41083,6 +44218,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CoastGuardStation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("CoastGuardStation")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.CoastGuardStation instance)
         {
             communicationChannel.Clear();
@@ -41115,6 +44265,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -41130,6 +44281,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -41146,6 +44298,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public CoastGuardStationViewModel()
@@ -41239,6 +44392,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SignalStationWarning")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SignalStationWarning")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SignalStationWarning instance)
         {
             categoryOfSignalStationWarning.Clear();
@@ -41274,6 +44442,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -41289,6 +44458,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -41305,6 +44475,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SignalStationWarningViewModel()
@@ -41402,6 +44573,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SignalStationTraffic")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SignalStationTraffic")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SignalStationTraffic instance)
         {
             categoryOfSignalStationTraffic.Clear();
@@ -41437,6 +44623,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -41452,6 +44639,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -41468,6 +44656,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public SignalStationTrafficViewModel()
@@ -41565,6 +44754,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RescueStation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("RescueStation")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.RescueStation instance)
         {
             categoryOfRescueStation.Clear();
@@ -41600,6 +44804,7 @@ namespace S100Framework.WPF.ViewModel.S101
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -41615,6 +44820,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 status = this.status.ToList(),
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -41631,6 +44837,7 @@ namespace S100Framework.WPF.ViewModel.S101
             status = this.status.ToList(),
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
+            theInformation = this._theInformation,
         };
 
         public RescueStationViewModel()
@@ -41797,6 +45004,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("HarbourFacility")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.HarbourFacility instance)
         {
             categoryOfHarbourFacility.Clear();
@@ -41848,6 +45070,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -41870,6 +45093,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -41893,6 +45117,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public HarbourFacilityViewModel()
@@ -41998,6 +45223,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        private AdditionalInformation<theInformation>? _theInformation = default;
+        [Category("SmallCraftFacility")]
+        public AdditionalInformation<theInformation>? theInformation
+        {
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                SetValue(ref _theInformation, value);
+            }
+        }
+
         public void Load(DomainModel.S101.FeatureTypes.SmallCraftFacility instance)
         {
             categoryOfSmallCraftFacility.Clear();
@@ -42023,6 +45263,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 foreach (var e in instance.information)
                     information.Add(e);
             pictorialRepresentation = instance.pictorialRepresentation;
+            theInformation = instance.theInformation;
         }
 
         public override string Serialize()
@@ -42037,6 +45278,7 @@ namespace S100Framework.WPF.ViewModel.S101
                 scaleMinimum = this.scaleMinimum,
                 information = this.information.ToList(),
                 pictorialRepresentation = this.pictorialRepresentation,
+                theInformation = this.theInformation,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -42052,6 +45294,7 @@ namespace S100Framework.WPF.ViewModel.S101
             scaleMinimum = this._scaleMinimum,
             information = this.information.ToList(),
             pictorialRepresentation = this._pictorialRepresentation,
+            theInformation = this._theInformation,
         };
 
         public SmallCraftFacilityViewModel()

@@ -275,8 +275,8 @@ namespace S100Framework.DomainModel.S122
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum membership : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("Vessels with these characteristics are included in the regulation/restriction/recommendation/nautical information.")]
         [System.Xml.Serialization.XmlEnum("1")]
         Included = 1,
@@ -527,8 +527,8 @@ namespace S100Framework.DomainModel.S122
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum status : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("Intended to last or function indefinitely.")]
         [System.Xml.Serialization.XmlEnum("1")]
         Permanent = 1,
@@ -659,8 +659,8 @@ namespace S100Framework.DomainModel.S122
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum restriction : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("An area within which anchoring is not permitted.")]
         [System.Xml.Serialization.XmlEnum("1")]
         AnchoringProhibited = 1,
@@ -791,8 +791,8 @@ namespace S100Framework.DomainModel.S122
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum jurisdiction : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("Involving more than one country; covering more than one national area.")]
         [System.Xml.Serialization.XmlEnum("1")]
         International = 1,
@@ -1274,16 +1274,16 @@ namespace S100Framework.DomainModel.S122
         public class timeIntervalsByDayOfWeek
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<dayOfWeek> dayOfWeek { get; set; } = new();
+            public List<dayOfWeek> dayOfWeek { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? dayOfWeekIsRange { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<TimeOnly> timeOfDayEnd { get; set; } = new();
+            public List<TimeOnly> timeOfDayEnd { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<TimeOnly> timeOfDayStart { get; set; } = new();
+            public List<TimeOnly> timeOfDayStart { get; set; } = [];
 
             public timeIntervalsByDayOfWeek()
             {
@@ -1352,10 +1352,10 @@ namespace S100Framework.DomainModel.S122
             public Decimal? distance { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<Decimal> sectorBearing { get; set; } = new();
+            public List<Decimal> sectorBearing { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public orientation? orientation { get; set; }
@@ -1472,6 +1472,194 @@ namespace S100Framework.DomainModel.S122
         }
     }
 
+    namespace Bindings
+    {
+        namespace Roles
+        {
+            public class appliesInLocation : Role
+            {
+            }
+
+            public class controlAuthority : Role
+            {
+            }
+
+            public class controlledService : Role
+            {
+            }
+
+            public class theRxN : Role
+            {
+            }
+
+            public class theServiceHours_nsdy : Role
+            {
+            }
+
+            public class partialWorkingDay : Role
+            {
+            }
+
+            public class responsibleAuthority : Role
+            {
+            }
+
+            public class theMarineProtectedArea : Role
+            {
+            }
+
+            public class theOrganisation : Role
+            {
+            }
+
+            public class theInformation : Role
+            {
+            }
+
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
+            public class permission : Role
+#pragma warning restore CS8981
+            {
+            }
+
+            public class vslLocation : Role
+            {
+            }
+
+            public class theApplicationRXN : Role
+            {
+            }
+
+            public class isApplicableTo : Role
+            {
+            }
+
+            public class theAuthority : Role
+            {
+            }
+
+            public class theContactDetails : Role
+            {
+            }
+
+            public class theAuthority_srvHrs : Role
+            {
+            }
+
+            public class theServiceHours : Role
+            {
+            }
+
+            public class informationProvidedFor : Role
+            {
+            }
+
+            public class providesInformation : Role
+            {
+            }
+        }
+
+        namespace InformationAssociations
+        {
+            public class AssociatedRxN<T> : InformationAssociation where T : Role
+            {
+                public AssociatedRxN(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class ExceptionalWorkday<T> : InformationAssociation where T : Role
+            {
+                public ExceptionalWorkday(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class ProtectedAreaAuthority<T> : InformationAssociation where T : Role
+            {
+                public ProtectedAreaAuthority(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class ServiceControl<T> : InformationAssociation where T : Role
+            {
+                public ServiceControl(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class RelatedOrganisation<T> : InformationAssociation where T : Role
+            {
+                public RelatedOrganisation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class PermissionType<T> : InformationAssociation where T : Role
+            {
+                public PermissionType(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public required categoryOfRelationship categoryOfRelationship { get; set; }
+                public string role => typeof(T).Name;
+            }
+
+            public class InclusionType<T> : InformationAssociation where T : Role
+            {
+                public InclusionType(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public required membership membership { get; set; }
+                public string role => typeof(T).Name;
+            }
+
+            public class AuthorityContact<T> : InformationAssociation where T : Role
+            {
+                public AuthorityContact(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class AuthorityHours<T> : InformationAssociation where T : Role
+            {
+                public AuthorityHours(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class additionalInformation<T> : InformationAssociation where T : Role
+            {
+                public additionalInformation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+        }
+
+        namespace FeatureAssociations
+        {
+        }
+    }
+
     namespace InformationTypes
     {
         using ComplexAttributes;
@@ -1483,16 +1671,16 @@ namespace S100Framework.DomainModel.S122
         public class InformationType
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<graphic> graphic { get; set; } = new();
+            public List<graphic> graphic { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String source { get; set; } = string.Empty;
@@ -1521,7 +1709,7 @@ namespace S100Framework.DomainModel.S122
             public textContent? textContent { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<rxNCode> rxNCode { get; set; } = new();
+            public List<rxNCode> rxNCode { get; set; } = [];
 
             public AbstractRxN()
             {
@@ -1582,7 +1770,7 @@ namespace S100Framework.DomainModel.S122
             public required categoryOfAuthority categoryOfAuthority { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<textContent> textContent { get; set; } = new();
+            public List<textContent> textContent { get; set; } = [];
 
             public Authority()
             {
@@ -1605,7 +1793,7 @@ namespace S100Framework.DomainModel.S122
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String contactInstructions { get; set; } = string.Empty;
@@ -1614,22 +1802,22 @@ namespace S100Framework.DomainModel.S122
             public String mMSICode { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<Int32> signalFrequency { get; set; } = new();
+            public List<Int32> signalFrequency { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<contactAddress> contactAddress { get; set; } = new();
+            public List<contactAddress> contactAddress { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<frequencyPair> frequencyPair { get; set; } = new();
+            public List<frequencyPair> frequencyPair { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<onlineResource> onlineResource { get; set; } = new();
+            public List<onlineResource> onlineResource { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<telecommunications> telecommunications { get; set; } = new();
+            public List<telecommunications> telecommunications { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public ContactDetails()
             {
@@ -1643,13 +1831,13 @@ namespace S100Framework.DomainModel.S122
         public class NonStandardWorkingDay : InformationType
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<DateOnly> dateFixed { get; set; } = new();
+            public List<DateOnly> dateFixed { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> dateVariable { get; set; } = new();
+            public List<String> dateVariable { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public NonStandardWorkingDay()
             {
@@ -1687,10 +1875,10 @@ namespace S100Framework.DomainModel.S122
             public Boolean? inBallast { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfCargo> categoryOfCargo { get; set; } = new();
+            public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = new();
+            public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfVessel? categoryOfVessel { get; set; }
@@ -1708,10 +1896,10 @@ namespace S100Framework.DomainModel.S122
             public String vesselPerformance { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselsMeasurements> vesselsMeasurements { get; set; } = new();
+            public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
 
             public Applicability()
             {
@@ -1723,6 +1911,9 @@ namespace S100Framework.DomainModel.S122
     {
         using ComplexAttributes;
         using InformationTypes;
+        using Bindings.InformationAssociations;
+        using Bindings.FeatureAssociations;
+        using Bindings.Roles;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -1731,16 +1922,16 @@ namespace S100Framework.DomainModel.S122
         public abstract class FeatureType
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<textContent> textContent { get; set; } = new();
+            public List<textContent> textContent { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -1753,6 +1944,12 @@ namespace S100Framework.DomainModel.S122
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public List<AssociatedRxN<theRxN>> theRxN { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public List<additionalInformation<providesInformation>> providesInformation { get; set; } = [];
 
             public FeatureType()
             {
@@ -1767,13 +1964,13 @@ namespace S100Framework.DomainModel.S122
         public class RestrictedArea : FeatureType
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = new();
+            public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<restriction> restriction { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             public RestrictedArea()
             {
@@ -1791,19 +1988,22 @@ namespace S100Framework.DomainModel.S122
             public required categoryOfMarineProtectedArea categoryOfMarineProtectedArea { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = new();
+            public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required jurisdiction jurisdiction { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<designation> designation { get; set; } = new();
+            public List<designation> designation { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public List<ProtectedAreaAuthority<responsibleAuthority>> responsibleAuthority { get; set; } = [];
 
             public MarineProtectedArea()
             {
@@ -1821,6 +2021,9 @@ namespace S100Framework.DomainModel.S122
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfVesselTrafficService categoryOfVesselTrafficService { get; set; }
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public ServiceControl<controlAuthority>? controlAuthority { get; set; } = default;
 
             public VesselTrafficServiceArea()
             {

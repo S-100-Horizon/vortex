@@ -2300,8 +2300,8 @@ namespace S100Framework.DomainModel.S101
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum colour : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("")]
         [System.Xml.Serialization.XmlEnum("1")]
         White = 1,
@@ -2372,8 +2372,8 @@ namespace S100Framework.DomainModel.S101
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum condition : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("Being built but not yet capable of function.")]
         [System.Xml.Serialization.XmlEnum("1")]
         UnderConstruction = 1,
@@ -2492,8 +2492,8 @@ namespace S100Framework.DomainModel.S101
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum function : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("A local official who has charge of mooring and berthing of vessels, collecting harbour fees, etc.")]
         [System.Xml.Serialization.XmlEnum("2")]
         HarbourMastersOffice = 2,
@@ -2639,8 +2639,8 @@ namespace S100Framework.DomainModel.S101
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum jurisdiction : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("Involving more than one country; covering more than one national area.")]
         [System.Xml.Serialization.XmlEnum("1")]
         International = 1,
@@ -2936,8 +2936,8 @@ namespace S100Framework.DomainModel.S101
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum product : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("A thick, slippery liquid that will not dissolve in water, usually petroleum based in the context of storage tanks.")]
         [System.Xml.Serialization.XmlEnum("1")]
         Oil = 1,
@@ -3092,8 +3092,8 @@ namespace S100Framework.DomainModel.S101
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum restriction : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("An area within which anchoring is not permitted.")]
         [System.Xml.Serialization.XmlEnum("1")]
         AnchoringProhibited = 1,
@@ -3239,8 +3239,8 @@ namespace S100Framework.DomainModel.S101
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum status : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("Intended to last or function indefinitely.")]
         [System.Xml.Serialization.XmlEnum("1")]
         Permanent = 1,
@@ -4200,7 +4200,7 @@ namespace S100Framework.DomainModel.S101
             public natureOfSurface? natureOfSurface { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms { get; set; } = new();
+            public List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? underlyingLayer { get; set; } = default;
@@ -4282,16 +4282,16 @@ namespace S100Framework.DomainModel.S101
         public class timeIntervalsByDayOfWeek
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<dayOfWeek> dayOfWeek { get; set; } = new();
+            public List<dayOfWeek> dayOfWeek { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? dayOfWeekIsRange { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<TimeOnly> timeOfDayStart { get; set; } = new();
+            public List<TimeOnly> timeOfDayStart { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<TimeOnly> timeOfDayEnd { get; set; } = new();
+            public List<TimeOnly> timeOfDayEnd { get; set; } = [];
 
             public timeIntervalsByDayOfWeek()
             {
@@ -4308,7 +4308,7 @@ namespace S100Framework.DomainModel.S101
 #pragma warning restore CS8981
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -4317,7 +4317,7 @@ namespace S100Framework.DomainModel.S101
             public required topmarkDaymarkShape topmarkDaymarkShape { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<shapeInformation> shapeInformation { get; set; } = new();
+            public List<shapeInformation> shapeInformation { get; set; } = [];
 
             public topmark()
             {
@@ -4388,7 +4388,7 @@ namespace S100Framework.DomainModel.S101
             public required categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public fixedDateRange? fixedDateRange { get; set; } = default;
+            public fixedDateRange? fixedDateRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public horizontalPositionUncertainty? horizontalPositionUncertainty { get; set; }
@@ -4432,13 +4432,13 @@ namespace S100Framework.DomainModel.S101
             public required lightCharacteristic lightCharacteristic { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> signalGroup { get; set; } = new();
+            public List<String> signalGroup { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? signalPeriod { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<signalSequence> signalSequence { get; set; } = new();
+            public List<signalSequence> signalSequence { get; set; } = [];
 
             public rhythmOfLight()
             {
@@ -4616,7 +4616,7 @@ namespace S100Framework.DomainModel.S101
             public directionalCharacter? directionalCharacter { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<lightVisibility> lightVisibility { get; set; } = new();
+            public List<lightVisibility> lightVisibility { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public sectorLimit? sectorLimit { get; set; }
@@ -4625,7 +4625,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? valueOfNominalRange { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<sectorInformation> sectorInformation { get; set; } = new();
+            public List<sectorInformation> sectorInformation { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? sectorArcExtension { get; set; } = default;
@@ -4649,17 +4649,274 @@ namespace S100Framework.DomainModel.S101
             public required List<lightSector> lightSector { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> signalGroup { get; set; } = new();
+            public List<String> signalGroup { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? signalPeriod { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<signalSequence> signalSequence { get; set; } = new();
+            public List<signalSequence> signalSequence { get; set; } = [];
 
             public sectorCharacteristics()
             {
                 lightSector = new();
+            }
+        }
+    }
+
+    namespace Bindings
+    {
+        namespace Roles
+        {
+            public class theAuxiliaryFeature : Role
+            {
+            }
+
+            public class theCartographicText : Role
+            {
+            }
+
+            public class theCollection : Role
+            {
+            }
+
+            public class theComponent : Role
+            {
+            }
+
+            public class theEquipment : Role
+            {
+            }
+
+            public class theInformation : Role
+            {
+            }
+
+            public class thePositionProvider : Role
+            {
+            }
+
+            public class thePrimaryFeature : Role
+            {
+            }
+
+            public class theQualityInformation : Role
+            {
+            }
+
+            public class theRoofedStructure : Role
+            {
+            }
+
+            public class theStructure : Role
+            {
+            }
+
+            public class theSupport : Role
+            {
+            }
+
+            public class theUpdate : Role
+            {
+            }
+
+            public class theUpdatedObject : Role
+            {
+            }
+        }
+
+        namespace InformationAssociations
+        {
+            public class AdditionalInformation<T> : InformationAssociation where T : Role
+            {
+                public AdditionalInformation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class QualityOfBathymetricDataComposition<T> : InformationAssociation where T : Role
+            {
+                public QualityOfBathymetricDataComposition(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class SpatialAssociation<T> : InformationAssociation where T : Role
+            {
+                public SpatialAssociation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+        }
+
+        namespace FeatureAssociations
+        {
+            public class AidsToNavigationAssociation<T> : FeatureAssociation where T : Role
+            {
+                public AidsToNavigationAssociation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class ASLAggregation<T> : FeatureAssociation where T : Role
+            {
+                public ASLAggregation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class BridgeAggregation<T> : FeatureAssociation where T : Role
+            {
+                public BridgeAggregation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class CautionAreaAssociation<T> : FeatureAssociation where T : Role
+            {
+                public CautionAreaAssociation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class DeepWaterRouteAggregation<T> : FeatureAssociation where T : Role
+            {
+                public DeepWaterRouteAggregation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class FairwayAggregation<T> : FeatureAssociation where T : Role
+            {
+                public FairwayAggregation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class FairwayAuxiliary<T> : FeatureAssociation where T : Role
+            {
+                public FairwayAuxiliary(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class IslandAggregation<T> : FeatureAssociation where T : Role
+            {
+                public IslandAggregation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class MooringTrotAggregation<T> : FeatureAssociation where T : Role
+            {
+                public MooringTrotAggregation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class PilotageDistrictAssociation<T> : FeatureAssociation where T : Role
+            {
+                public PilotageDistrictAssociation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class RangeSystemAggregation<T> : FeatureAssociation where T : Role
+            {
+                public RangeSystemAggregation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class RoofedStructureAggregation<T> : FeatureAssociation where T : Role
+            {
+                public RoofedStructureAggregation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class StructureEquipment<T> : FeatureAssociation where T : Role
+            {
+                public StructureEquipment(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class TextAssociation<T> : FeatureAssociation where T : Role
+            {
+                public TextAssociation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class TrafficSeparationSchemeAggregation<T> : FeatureAssociation where T : Role
+            {
+                public TrafficSeparationSchemeAggregation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class TwoWayRouteAggregation<T> : FeatureAssociation where T : Role
+            {
+                public TwoWayRouteAggregation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class UpdateAggregation<T> : FeatureAssociation where T : Role
+            {
+                public UpdateAggregation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class UpdatedInformation<T> : FeatureAssociation where T : Role
+            {
+                public UpdatedInformation(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
             }
         }
     }
@@ -4678,7 +4935,7 @@ namespace S100Framework.DomainModel.S101
             public String callSign { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String contactInstructions { get; set; } = string.Empty;
@@ -4687,16 +4944,16 @@ namespace S100Framework.DomainModel.S101
             public fixedDateRange? fixedDateRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<frequencyPair> frequencyPair { get; set; } = new();
+            public List<frequencyPair> frequencyPair { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String mMSICode { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<onlineResource> onlineResource { get; set; } = new();
+            public List<onlineResource> onlineResource { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<telecommunications> telecommunications { get; set; } = new();
+            public List<telecommunications> telecommunications { get; set; } = [];
 
             public ContactDetails()
             {
@@ -4713,13 +4970,13 @@ namespace S100Framework.DomainModel.S101
             public fixedDateRange? fixedDateRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public ServiceHours()
             {
@@ -4734,19 +4991,19 @@ namespace S100Framework.DomainModel.S101
         public class NonStandardWorkingDay
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<DateOnly> dateFixed { get; set; } = new();
+            public List<DateOnly> dateFixed { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> dateVariable { get; set; } = new();
+            public List<String> dateVariable { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public NonStandardWorkingDay()
             {
@@ -4763,10 +5020,10 @@ namespace S100Framework.DomainModel.S101
             public fixedDateRange? fixedDateRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
@@ -4786,7 +5043,7 @@ namespace S100Framework.DomainModel.S101
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<spatialAccuracy> spatialAccuracy { get; set; } = new();
+            public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
 
             public SpatialQuality()
             {
@@ -4798,6 +5055,9 @@ namespace S100Framework.DomainModel.S101
     {
         using ComplexAttributes;
         using InformationTypes;
+        using Bindings.InformationAssociations;
+        using Bindings.FeatureAssociations;
+        using Bindings.Roles;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -4827,7 +5087,7 @@ namespace S100Framework.DomainModel.S101
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public QualityOfNonBathymetricData()
             {
@@ -4860,7 +5120,7 @@ namespace S100Framework.DomainModel.S101
             public required Int32 optimumDisplayScale { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public DataCoverage()
             {
@@ -4880,7 +5140,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public NavigationalSystemOfMarks()
             {
@@ -4906,7 +5166,7 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public LocalDirectionOfBuoyage()
             {
@@ -4947,7 +5207,10 @@ namespace S100Framework.DomainModel.S101
             public required List<zoneOfConfidence> zoneOfConfidence { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public QualityOfBathymetricDataComposition<theQualityInformation>? theQualityInformation { get; set; } = default;
 
             public QualityOfBathymetricData()
             {
@@ -4973,7 +5236,7 @@ namespace S100Framework.DomainModel.S101
             public required verticalDatum verticalDatum { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public SoundingDatum()
             {
@@ -4993,7 +5256,7 @@ namespace S100Framework.DomainModel.S101
             public required verticalDatum verticalDatum { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public VerticalDatumOfData()
             {
@@ -5037,7 +5300,7 @@ namespace S100Framework.DomainModel.S101
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleValueMaximum { get; set; } = default;
@@ -5055,10 +5318,10 @@ namespace S100Framework.DomainModel.S101
             public required List<surveyType> surveyType { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public QualityOfSurvey()
             {
@@ -5096,7 +5359,7 @@ namespace S100Framework.DomainModel.S101
             public String source { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             public UpdateInformation()
             {
@@ -5125,7 +5388,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public MagneticVariation()
             {
@@ -5139,7 +5405,7 @@ namespace S100Framework.DomainModel.S101
         public class LocalMagneticAnomaly
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5154,7 +5420,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LocalMagneticAnomaly()
             {
@@ -5172,19 +5441,19 @@ namespace S100Framework.DomainModel.S101
             public categoryOfCoastline? categoryOfCoastline { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfSurface> natureOfSurface { get; set; } = new();
+            public List<natureOfSurface> natureOfSurface { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -5193,10 +5462,13 @@ namespace S100Framework.DomainModel.S101
             public visualProminence? visualProminence { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Coastline()
             {
@@ -5213,7 +5485,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5228,7 +5500,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LandArea()
             {
@@ -5251,7 +5526,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public IslandGroup()
             {
@@ -5269,7 +5547,7 @@ namespace S100Framework.DomainModel.S101
             public required Decimal elevation { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5281,7 +5559,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LandElevation()
             {
@@ -5295,7 +5576,7 @@ namespace S100Framework.DomainModel.S101
         public class River
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5307,7 +5588,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public River()
             {
@@ -5321,7 +5605,7 @@ namespace S100Framework.DomainModel.S101
         public class Rapids
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5333,7 +5617,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Rapids()
             {
@@ -5347,7 +5634,7 @@ namespace S100Framework.DomainModel.S101
         public class Waterfall
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5362,7 +5649,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Waterfall()
             {
@@ -5379,7 +5669,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5391,7 +5681,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Lake()
             {
@@ -5405,16 +5698,16 @@ namespace S100Framework.DomainModel.S101
         public class LandRegion
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfLandRegion> categoryOfLandRegion { get; set; } = new();
+            public List<categoryOfLandRegion> categoryOfLandRegion { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfSurface> natureOfSurface { get; set; } = new();
+            public List<natureOfSurface> natureOfSurface { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
@@ -5423,7 +5716,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LandRegion()
             {
@@ -5443,7 +5739,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -5461,7 +5757,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Vegetation()
             {
@@ -5481,7 +5780,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -5490,13 +5789,13 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -5508,7 +5807,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public IceArea()
             {
@@ -5525,16 +5827,16 @@ namespace S100Framework.DomainModel.S101
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfSurface> natureOfSurface { get; set; } = new();
+            public List<natureOfSurface> natureOfSurface { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -5546,7 +5848,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SlopingGround()
             {
@@ -5563,19 +5868,19 @@ namespace S100Framework.DomainModel.S101
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfSurface> natureOfSurface { get; set; } = new();
+            public List<natureOfSurface> natureOfSurface { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -5587,7 +5892,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SlopeTopline()
             {
@@ -5601,7 +5909,7 @@ namespace S100Framework.DomainModel.S101
         public class Tideway
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5610,7 +5918,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Tideway()
             {
@@ -5630,7 +5941,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -5651,13 +5962,16 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public BuiltUpArea()
             {
@@ -5674,7 +5988,7 @@ namespace S100Framework.DomainModel.S101
             public buildingShape? buildingShape { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -5686,10 +6000,10 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<function> function { get; set; } = new();
+            public List<function> function { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -5701,7 +6015,7 @@ namespace S100Framework.DomainModel.S101
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -5710,7 +6024,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -5722,13 +6036,16 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Building()
             {
@@ -5742,13 +6059,13 @@ namespace S100Framework.DomainModel.S101
         public class AirportAirfield
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfAirportAirfield> categoryOfAirportAirfield { get; set; } = new();
+            public List<categoryOfAirportAirfield> categoryOfAirportAirfield { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5757,16 +6074,19 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public AirportAirfield()
             {
@@ -5783,28 +6103,31 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Runway()
             {
@@ -5821,28 +6144,31 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Helipad()
             {
@@ -5859,13 +6185,13 @@ namespace S100Framework.DomainModel.S101
             public bridgeConstruction? bridgeConstruction { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<bridgeFunction> bridgeFunction { get; set; } = new();
+            public List<bridgeFunction> bridgeFunction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfOpeningBridge? categoryOfOpeningBridge { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -5874,7 +6200,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -5886,7 +6212,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? openingBridge { get; set; } = default;
@@ -5898,7 +6224,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public visualProminence? visualProminence { get; set; } = default;
@@ -5907,10 +6233,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Bridge()
             {
@@ -5942,10 +6271,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SpanFixed()
             {
@@ -5984,10 +6316,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SpanOpening()
             {
@@ -6012,7 +6347,7 @@ namespace S100Framework.DomainModel.S101
             public categoryOfConveyor? categoryOfConveyor { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -6021,7 +6356,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6039,7 +6374,7 @@ namespace S100Framework.DomainModel.S101
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<product> product { get; set; } = new();
+            public List<product> product { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -6048,7 +6383,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
@@ -6066,10 +6401,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Conveyor()
             {
@@ -6095,7 +6433,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? iceFactor { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -6110,7 +6448,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
@@ -6128,7 +6466,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public CableOverhead()
             {
@@ -6148,7 +6489,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6160,7 +6501,7 @@ namespace S100Framework.DomainModel.S101
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<product> product { get; set; } = new();
+            public List<product> product { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -6169,7 +6510,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
@@ -6184,7 +6525,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public PipelineOverhead()
             {
@@ -6201,7 +6545,7 @@ namespace S100Framework.DomainModel.S101
             public required categoryOfPylon categoryOfPylon { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -6210,7 +6554,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6225,7 +6569,7 @@ namespace S100Framework.DomainModel.S101
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -6234,7 +6578,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -6249,10 +6593,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public PylonBridgeSupport()
             {
@@ -6269,7 +6616,7 @@ namespace S100Framework.DomainModel.S101
             public categoryOfFence? categoryOfFence { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -6281,7 +6628,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -6290,7 +6637,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -6299,7 +6646,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -6311,7 +6658,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public FenceWall()
             {
@@ -6328,7 +6678,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -6340,13 +6690,16 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Railway()
             {
@@ -6366,25 +6719,28 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Road()
             {
@@ -6401,7 +6757,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
@@ -6413,7 +6769,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
@@ -6425,10 +6781,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Tunnel()
             {
@@ -6445,10 +6804,10 @@ namespace S100Framework.DomainModel.S101
             public required List<categoryOfLandmark> categoryOfLandmark { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = new();
+            public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -6460,10 +6819,10 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<function> function { get; set; } = new();
+            public List<function> function { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -6475,7 +6834,7 @@ namespace S100Framework.DomainModel.S101
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -6484,7 +6843,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -6496,13 +6855,16 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Landmark()
             {
@@ -6523,7 +6885,7 @@ namespace S100Framework.DomainModel.S101
             public categoryOfSiloTank? categoryOfSiloTank { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -6535,7 +6897,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -6547,10 +6909,10 @@ namespace S100Framework.DomainModel.S101
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<product> product { get; set; } = new();
+            public List<product> product { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -6559,7 +6921,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -6571,13 +6933,16 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SiloTank()
             {
@@ -6591,7 +6956,7 @@ namespace S100Framework.DomainModel.S101
         public class WindTurbine
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -6603,7 +6968,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6618,7 +6983,7 @@ namespace S100Framework.DomainModel.S101
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -6627,7 +6992,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
@@ -6648,13 +7013,16 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public WindTurbine()
             {
@@ -6674,7 +7042,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -6683,7 +7051,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -6692,7 +7060,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -6704,13 +7072,16 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public FortifiedStructure()
             {
@@ -6733,7 +7104,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6745,7 +7116,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<product> product { get; set; } = new();
+            public List<product> product { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -6754,7 +7125,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -6766,10 +7137,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public ProductionStorageArea()
             {
@@ -6786,19 +7160,22 @@ namespace S100Framework.DomainModel.S101
             public categoryOfCheckpoint? categoryOfCheckpoint { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Checkpoint()
             {
@@ -6812,10 +7189,10 @@ namespace S100Framework.DomainModel.S101
         public class Hulk
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfHulk> categoryOfHulk { get; set; } = new();
+            public List<categoryOfHulk> categoryOfHulk { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -6824,7 +7201,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6839,7 +7216,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -6857,10 +7234,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Hulk()
             {
@@ -6877,7 +7257,7 @@ namespace S100Framework.DomainModel.S101
             public categoryOfPile? categoryOfPile { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -6886,7 +7266,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6904,7 +7284,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -6916,10 +7296,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Pile()
             {
@@ -6936,7 +7319,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6948,7 +7331,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -6966,7 +7349,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Dyke()
             {
@@ -6983,7 +7369,7 @@ namespace S100Framework.DomainModel.S101
             public categoryOfShorelineConstruction? categoryOfShorelineConstruction { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -6992,7 +7378,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7013,7 +7399,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -7022,7 +7408,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -7037,7 +7423,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public ShorelineConstruction()
             {
@@ -7051,10 +7440,10 @@ namespace S100Framework.DomainModel.S101
         public class StructureOverNavigableWater
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfStructure> categoryOfStructure { get; set; } = new();
+            public List<categoryOfStructure> categoryOfStructure { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -7063,7 +7452,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7084,10 +7473,10 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public product? product { get; set; } = default;
@@ -7099,7 +7488,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required verticalClearanceFixed verticalClearanceFixed { get; set; }
@@ -7117,10 +7506,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public StructureOverNavigableWater()
             {
@@ -7145,19 +7537,19 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
@@ -7166,7 +7558,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Causeway()
             {
@@ -7186,7 +7581,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7204,13 +7599,16 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Canal()
             {
@@ -7227,7 +7625,7 @@ namespace S100Framework.DomainModel.S101
             public required Boolean distanceMarkVisible { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7242,7 +7640,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DistanceMark()
             {
@@ -7270,7 +7671,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? depthRangeMinimumValue { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public horizontalClearanceOpen? horizontalClearanceOpen { get; set; }
@@ -7279,13 +7680,13 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalClearanceOpen? verticalClearanceOpen { get; set; }
@@ -7300,7 +7701,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Gate()
             {
@@ -7317,7 +7721,7 @@ namespace S100Framework.DomainModel.S101
             public categoryOfDam? categoryOfDam { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -7326,7 +7730,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7338,13 +7742,13 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -7359,7 +7763,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Dam()
             {
@@ -7376,7 +7783,7 @@ namespace S100Framework.DomainModel.S101
             public categoryOfCrane? categoryOfCrane { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -7385,7 +7792,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -7406,7 +7813,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? radius { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
@@ -7424,13 +7831,16 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Crane()
             {
@@ -7444,7 +7854,7 @@ namespace S100Framework.DomainModel.S101
         public class Berth
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfCargo> categoryOfCargo { get; set; } = new();
+            public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<featureName> featureName { get; set; }
@@ -7468,13 +7878,13 @@ namespace S100Framework.DomainModel.S101
             public Decimal? minimumBerthDepth { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalUncertainty? verticalUncertainty { get; set; }
@@ -7483,7 +7893,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Berth()
             {
@@ -7501,7 +7914,7 @@ namespace S100Framework.DomainModel.S101
             public required List<categoryOfDolphin> categoryOfDolphin { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -7513,7 +7926,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7525,10 +7938,10 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -7537,7 +7950,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -7549,10 +7962,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Dolphin()
             {
@@ -7570,7 +7986,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7579,22 +7995,25 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Bollard()
             {
@@ -7617,7 +8036,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7641,10 +8060,10 @@ namespace S100Framework.DomainModel.S101
             public Decimal? maximumPermittedDraught { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalUncertainty? verticalUncertainty { get; set; }
@@ -7653,7 +8072,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DryDock()
             {
@@ -7667,7 +8089,7 @@ namespace S100Framework.DomainModel.S101
         public class FloatingDock
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -7679,7 +8101,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? depthRangeMinimumValue { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7709,7 +8131,7 @@ namespace S100Framework.DomainModel.S101
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -7721,10 +8143,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public FloatingDock()
             {
@@ -7741,7 +8166,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7750,13 +8175,13 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -7768,10 +8193,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Pontoon()
             {
@@ -7791,13 +8219,13 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
@@ -7815,13 +8243,16 @@ namespace S100Framework.DomainModel.S101
             public Decimal? maximumPermittedDraught { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DockArea()
             {
@@ -7835,7 +8266,7 @@ namespace S100Framework.DomainModel.S101
         public class Gridiron
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? horizontalLength { get; set; } = default;
@@ -7847,10 +8278,10 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -7862,7 +8293,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Gridiron()
             {
@@ -7876,13 +8310,13 @@ namespace S100Framework.DomainModel.S101
         public class LockBasin
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
@@ -7897,13 +8331,16 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LockBasin()
             {
@@ -7917,7 +8354,7 @@ namespace S100Framework.DomainModel.S101
         public class MooringTrot
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7929,7 +8366,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public MooringTrot()
             {
@@ -7946,7 +8386,7 @@ namespace S100Framework.DomainModel.S101
             public categoryOfSeaArea? categoryOfSeaArea { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -7955,7 +8395,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SeaAreaNamedWaterArea()
             {
@@ -7972,7 +8415,7 @@ namespace S100Framework.DomainModel.S101
             public required categoryOfTidalStream categoryOfTidalStream { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7990,7 +8433,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public TidalStreamFloodEbb()
             {
@@ -8012,7 +8458,7 @@ namespace S100Framework.DomainModel.S101
         public class CurrentNonGravitational
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -8024,7 +8470,7 @@ namespace S100Framework.DomainModel.S101
             public required orientation orientation { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required speed speed { get; set; }
@@ -8036,7 +8482,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public CurrentNonGravitational()
             {
@@ -8061,7 +8510,7 @@ namespace S100Framework.DomainModel.S101
             public required categoryOfWaterTurbulence categoryOfWaterTurbulence { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8070,7 +8519,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public WaterTurbulence()
             {
@@ -8084,7 +8536,7 @@ namespace S100Framework.DomainModel.S101
         public class TidalStreamPanelData
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8102,7 +8554,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public TidalStreamPanelData()
             {
@@ -8118,13 +8573,13 @@ namespace S100Framework.DomainModel.S101
         public class Sounding
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
@@ -8133,13 +8588,16 @@ namespace S100Framework.DomainModel.S101
             public status? status { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Sounding()
             {
@@ -8162,7 +8620,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? dredgedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8174,19 +8632,22 @@ namespace S100Framework.DomainModel.S101
             public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DredgedArea()
             {
@@ -8212,7 +8673,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SweptArea()
             {
@@ -8235,7 +8699,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DepthContour()
             {
@@ -8258,7 +8725,10 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DepthArea()
             {
@@ -8275,13 +8745,16 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DepthNoBottomFound()
             {
@@ -8298,7 +8771,10 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public UnsurveyedArea()
             {
@@ -8312,7 +8788,7 @@ namespace S100Framework.DomainModel.S101
         public class SeabedArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8327,7 +8803,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SeabedArea()
             {
@@ -8345,7 +8824,7 @@ namespace S100Framework.DomainModel.S101
             public categoryOfWeedKelp? categoryOfWeedKelp { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8354,7 +8833,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public WeedKelp()
             {
@@ -8368,7 +8850,7 @@ namespace S100Framework.DomainModel.S101
         public class Seagrass
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8377,7 +8859,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Seagrass()
             {
@@ -8400,7 +8885,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Sandwave()
             {
@@ -8414,7 +8902,7 @@ namespace S100Framework.DomainModel.S101
         public class Spring
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8423,7 +8911,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Spring()
             {
@@ -8440,7 +8931,7 @@ namespace S100Framework.DomainModel.S101
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8449,7 +8940,7 @@ namespace S100Framework.DomainModel.S101
             public natureOfSurface? natureOfSurface { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
@@ -8458,7 +8949,7 @@ namespace S100Framework.DomainModel.S101
             public status? status { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal valueOfSounding { get; set; }
@@ -8470,13 +8961,16 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? defaultClearanceDepth { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal surroundingDepth { get; set; }
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public UnderwaterAwashRock()
             {
@@ -8496,7 +8990,7 @@ namespace S100Framework.DomainModel.S101
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -8505,7 +8999,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -8514,10 +9008,10 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? valueOfSounding { get; set; } = default;
@@ -8532,7 +9026,7 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
@@ -8542,6 +9036,9 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal surroundingDepth { get; set; }
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Wreck()
             {
@@ -8564,7 +9061,7 @@ namespace S100Framework.DomainModel.S101
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -8576,22 +9073,22 @@ namespace S100Framework.DomainModel.S101
             public Decimal? maximumPermittedDraught { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfSurface> natureOfSurface { get; set; } = new();
+            public List<natureOfSurface> natureOfSurface { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<product> product { get; set; } = new();
+            public List<product> product { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? valueOfSounding { get; set; } = default;
@@ -8606,13 +9103,16 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? defaultClearanceDepth { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal surroundingDepth { get; set; }
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Obstruction()
             {
@@ -8626,22 +9126,22 @@ namespace S100Framework.DomainModel.S101
         public class FoulGround
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? valueOfSounding { get; set; } = default;
@@ -8653,7 +9153,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public FoulGround()
             {
@@ -8676,7 +9179,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DiscolouredWater()
             {
@@ -8696,19 +9202,19 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -8717,7 +9223,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public FishingFacility()
             {
@@ -8737,7 +9246,7 @@ namespace S100Framework.DomainModel.S101
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -8749,16 +9258,16 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? valueOfSounding { get; set; } = default;
@@ -8770,7 +9279,7 @@ namespace S100Framework.DomainModel.S101
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required waterLevelEffect waterLevelEffect { get; set; }
@@ -8779,7 +9288,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public MarineFarmCulture()
             {
@@ -8796,7 +9308,7 @@ namespace S100Framework.DomainModel.S101
             public categoryOfOffshorePlatform? categoryOfOffshorePlatform { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -8805,7 +9317,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -8820,7 +9332,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<product> product { get; set; } = new();
+            public List<product> product { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -8829,7 +9341,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -8841,10 +9353,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public OffshorePlatform()
             {
@@ -8867,7 +9382,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -8876,13 +9391,16 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public CableSubmarine()
             {
@@ -8896,10 +9414,10 @@ namespace S100Framework.DomainModel.S101
         public class CableArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfCable> categoryOfCable { get; set; } = new();
+            public List<categoryOfCable> categoryOfCable { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -8908,19 +9426,22 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public CableArea()
             {
@@ -8937,7 +9458,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? buriedDepth { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = new();
+            public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -8949,7 +9470,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? depthRangeMaximumValue { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -8961,25 +9482,28 @@ namespace S100Framework.DomainModel.S101
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<product> product { get; set; } = new();
+            public List<product> product { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public PipelineSubmarineOnLand()
             {
@@ -8993,10 +9517,10 @@ namespace S100Framework.DomainModel.S101
         public class SubmarinePipelineArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = new();
+            public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9005,22 +9529,25 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<product> product { get; set; } = new();
+            public List<product> product { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SubmarinePipelineArea()
             {
@@ -9040,7 +9567,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9052,7 +9579,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<product> product { get; set; } = new();
+            public List<product> product { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -9061,16 +9588,16 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public visualProminence? visualProminence { get; set; } = default;
@@ -9082,7 +9609,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public OffshoreProductionArea()
             {
@@ -9111,16 +9641,19 @@ namespace S100Framework.DomainModel.S101
             public required orientation orientation { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public NavigationLine()
             {
@@ -9144,7 +9677,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? depthRangeMinimumValue { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9159,16 +9692,16 @@ namespace S100Framework.DomainModel.S101
             public required Decimal orientationValue { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required trafficFlow trafficFlow { get; set; }
@@ -9180,7 +9713,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RecommendedTrack()
             {
@@ -9194,7 +9730,7 @@ namespace S100Framework.DomainModel.S101
         public class RangeSystem
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9209,7 +9745,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RangeSystem()
             {
@@ -9226,7 +9765,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? depthRangeMinimumValue { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9241,13 +9780,13 @@ namespace S100Framework.DomainModel.S101
             public Decimal? orientationValue { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public trafficFlow? trafficFlow { get; set; } = default;
@@ -9256,13 +9795,16 @@ namespace S100Framework.DomainModel.S101
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Fairway()
             {
@@ -9276,7 +9818,7 @@ namespace S100Framework.DomainModel.S101
         public class FairwaySystem
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9288,13 +9830,16 @@ namespace S100Framework.DomainModel.S101
             public Decimal? maximumPermittedDraught { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public FairwaySystem()
             {
@@ -9314,7 +9859,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? depthRangeMinimumValue { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9326,16 +9871,16 @@ namespace S100Framework.DomainModel.S101
             public Decimal? orientationValue { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public trafficFlow? trafficFlow { get; set; } = default;
@@ -9347,7 +9892,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RecommendedRouteCentreline()
             {
@@ -9376,13 +9924,13 @@ namespace S100Framework.DomainModel.S101
             public required Decimal orientationValue { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required trafficFlow trafficFlow { get; set; }
@@ -9394,7 +9942,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public TwoWayRoutePart()
             {
@@ -9408,7 +9959,7 @@ namespace S100Framework.DomainModel.S101
         public class TwoWayRoute
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9423,7 +9974,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public TwoWayRoute()
             {
@@ -9446,13 +10000,16 @@ namespace S100Framework.DomainModel.S101
             public required Decimal orientationValue { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RecommendedTrafficLanePart()
             {
@@ -9472,7 +10029,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? depthRangeMinimumValue { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9487,13 +10044,13 @@ namespace S100Framework.DomainModel.S101
             public required Decimal orientationValue { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required trafficFlow trafficFlow { get; set; }
@@ -9505,7 +10062,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DeepWaterRouteCentreline()
             {
@@ -9522,7 +10082,7 @@ namespace S100Framework.DomainModel.S101
             public required Decimal depthRangeMinimumValue { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9537,16 +10097,16 @@ namespace S100Framework.DomainModel.S101
             public required Decimal orientationValue { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = new();
+            public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = new();
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required trafficFlow trafficFlow { get; set; }
@@ -9555,13 +10115,16 @@ namespace S100Framework.DomainModel.S101
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DeepWaterRoutePart()
             {
@@ -9575,7 +10138,7 @@ namespace S100Framework.DomainModel.S101
         public class DeepWaterRoute
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9590,7 +10153,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DeepWaterRoute()
             {
@@ -9610,19 +10176,22 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public InshoreTrafficZone()
             {
@@ -9636,7 +10205,7 @@ namespace S100Framework.DomainModel.S101
         public class PrecautionaryArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9648,19 +10217,22 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<information> information { get; set; }
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public PrecautionaryArea()
             {
@@ -9684,19 +10256,22 @@ namespace S100Framework.DomainModel.S101
             public Decimal? orientationValue { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public TrafficSeparationSchemeLanePart()
             {
@@ -9716,13 +10291,16 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SeparationZoneOrLine()
             {
@@ -9742,13 +10320,16 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public TrafficSeparationSchemeBoundary()
             {
@@ -9768,19 +10349,22 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public TrafficSeparationSchemeCrossing()
             {
@@ -9800,19 +10384,22 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public TrafficSeparationSchemeRoundabout()
             {
@@ -9826,7 +10413,7 @@ namespace S100Framework.DomainModel.S101
         public class TrafficSeparationScheme
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9844,7 +10431,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public TrafficSeparationScheme()
             {
@@ -9858,7 +10448,7 @@ namespace S100Framework.DomainModel.S101
         public class ArchipelagicSeaLaneArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9873,7 +10463,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public ArchipelagicSeaLaneArea()
             {
@@ -9887,7 +10480,7 @@ namespace S100Framework.DomainModel.S101
         public class ArchipelagicSeaLaneAxis
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9902,7 +10495,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public ArchipelagicSeaLaneAxis()
             {
@@ -9916,7 +10512,7 @@ namespace S100Framework.DomainModel.S101
         public class ArchipelagicSeaLane
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9931,7 +10527,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public ArchipelagicSeaLane()
             {
@@ -9946,10 +10545,10 @@ namespace S100Framework.DomainModel.S101
         public class RadioCallingInPoint
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9958,13 +10557,13 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<Decimal> orientationValue { get; set; } = new();
+            public List<Decimal> orientationValue { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required trafficFlow trafficFlow { get; set; }
@@ -9973,7 +10572,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RadioCallingInPoint()
             {
@@ -9990,7 +10592,7 @@ namespace S100Framework.DomainModel.S101
             public required List<categoryOfFerry> categoryOfFerry { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -9999,16 +10601,19 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public FerryRoute()
             {
@@ -10023,7 +10628,7 @@ namespace S100Framework.DomainModel.S101
         public class RadarLine
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -10032,13 +10637,16 @@ namespace S100Framework.DomainModel.S101
             public required Decimal orientationValue { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RadarLine()
             {
@@ -10052,10 +10660,10 @@ namespace S100Framework.DomainModel.S101
         public class RadarRange
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -10064,13 +10672,16 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RadarRange()
             {
@@ -10087,13 +10698,13 @@ namespace S100Framework.DomainModel.S101
             public String callSign { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfRadarStation> categoryOfRadarStation { get; set; } = new();
+            public List<categoryOfRadarStation> categoryOfRadarStation { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? height { get; set; } = default;
@@ -10102,10 +10713,10 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? valueOfMaximumRange { get; set; } = default;
@@ -10114,7 +10725,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RadarStation()
             {
@@ -10128,13 +10742,13 @@ namespace S100Framework.DomainModel.S101
         public class AnchorageArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = new();
+            public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfCargo> categoryOfCargo { get; set; } = new();
+            public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -10143,22 +10757,25 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public AnchorageArea()
             {
@@ -10172,10 +10789,10 @@ namespace S100Framework.DomainModel.S101
         public class MooringArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfMooringArea> categoryOfMooringArea { get; set; } = new();
+            public List<categoryOfMooringArea> categoryOfMooringArea { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -10190,22 +10807,25 @@ namespace S100Framework.DomainModel.S101
             public Decimal? maximumPermittedVesselLength { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public MooringArea()
             {
@@ -10219,13 +10839,13 @@ namespace S100Framework.DomainModel.S101
         public class AnchorBerth
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = new();
+            public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfCargo> categoryOfCargo { get; set; } = new();
+            public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -10234,19 +10854,22 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? radius { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public AnchorBerth()
             {
@@ -10260,28 +10883,31 @@ namespace S100Framework.DomainModel.S101
         public class SeaplaneLandingArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SeaplaneLandingArea()
             {
@@ -10295,31 +10921,34 @@ namespace S100Framework.DomainModel.S101
         public class DumpingGround
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfDumpingGround> categoryOfDumpingGround { get; set; } = new();
+            public List<categoryOfDumpingGround> categoryOfDumpingGround { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? dateDisused { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public DumpingGround()
             {
@@ -10333,10 +10962,10 @@ namespace S100Framework.DomainModel.S101
         public class MilitaryPracticeArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea { get; set; } = new();
+            public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -10348,22 +10977,25 @@ namespace S100Framework.DomainModel.S101
             public String nationality { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public MilitaryPracticeArea()
             {
@@ -10383,22 +11015,25 @@ namespace S100Framework.DomainModel.S101
             public required jurisdiction jurisdiction { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> nationality { get; set; } = new();
+            public List<String> nationality { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public AdministrationArea()
             {
@@ -10412,7 +11047,7 @@ namespace S100Framework.DomainModel.S101
         public class CargoTranshipmentArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -10421,22 +11056,25 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public CargoTranshipmentArea()
             {
@@ -10459,7 +11097,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
@@ -10471,10 +11109,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public CautionArea()
             {
@@ -10488,7 +11129,7 @@ namespace S100Framework.DomainModel.S101
         public class InformationArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -10497,7 +11138,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
@@ -10506,10 +11147,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public InformationArea()
             {
@@ -10538,7 +11182,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public ContiguousZone()
             {
@@ -10553,7 +11200,7 @@ namespace S100Framework.DomainModel.S101
         public class ContinentalShelfArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -10565,7 +11212,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public ContinentalShelfArea()
             {
@@ -10589,7 +11239,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public CustomZone()
             {
@@ -10616,7 +11269,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public ExclusiveEconomicZone()
             {
@@ -10631,7 +11287,7 @@ namespace S100Framework.DomainModel.S101
         public class FisheryZone
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -10640,13 +11296,16 @@ namespace S100Framework.DomainModel.S101
             public String nationality { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public FisheryZone()
             {
@@ -10661,28 +11320,31 @@ namespace S100Framework.DomainModel.S101
         public class FishingGround
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public FishingGround()
             {
@@ -10696,19 +11358,22 @@ namespace S100Framework.DomainModel.S101
         public class FreePortArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public FreePortArea()
             {
@@ -10722,19 +11387,22 @@ namespace S100Framework.DomainModel.S101
         public class HarbourAreaAdministrative
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public HarbourAreaAdministrative()
             {
@@ -10748,22 +11416,25 @@ namespace S100Framework.DomainModel.S101
         public class LogPond
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LogPond()
             {
@@ -10783,7 +11454,7 @@ namespace S100Framework.DomainModel.S101
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -10795,13 +11466,16 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public OilBarrier()
             {
@@ -10824,7 +11498,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public StraightTerritorialSeaBaseline()
             {
@@ -10848,16 +11525,19 @@ namespace S100Framework.DomainModel.S101
             public required List<String> nationality { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public TerritorialSeaArea()
             {
@@ -10872,7 +11552,7 @@ namespace S100Framework.DomainModel.S101
         public class SubmarineTransitLane
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -10881,16 +11561,19 @@ namespace S100Framework.DomainModel.S101
             public String nationality { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SubmarineTransitLane()
             {
@@ -10904,10 +11587,10 @@ namespace S100Framework.DomainModel.S101
         public class PilotageDistrict
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -10916,7 +11599,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public PilotageDistrict()
             {
@@ -10930,7 +11616,7 @@ namespace S100Framework.DomainModel.S101
         public class CollisionRegulationsLimit
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -10939,7 +11625,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String regulationCitation { get; set; } = string.Empty;
@@ -10948,7 +11634,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public CollisionRegulationsLimit()
             {
@@ -10962,7 +11651,7 @@ namespace S100Framework.DomainModel.S101
         public class MarinePollutionRegulationsArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -10974,7 +11663,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public MarinePollutionRegulationsArea()
             {
@@ -10988,10 +11680,10 @@ namespace S100Framework.DomainModel.S101
         public class RestrictedArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = new();
+            public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11000,22 +11692,25 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<restriction> restriction { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RestrictedArea()
             {
@@ -11030,7 +11725,7 @@ namespace S100Framework.DomainModel.S101
         public class LightAllAround
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfLight> categoryOfLight { get; set; } = new();
+            public List<categoryOfLight> categoryOfLight { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<colour> colour { get; set; }
@@ -11039,7 +11734,7 @@ namespace S100Framework.DomainModel.S101
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11066,7 +11761,7 @@ namespace S100Framework.DomainModel.S101
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required rhythmOfLight rhythmOfLight { get; set; }
@@ -11075,7 +11770,7 @@ namespace S100Framework.DomainModel.S101
             public signalGeneration? signalGeneration { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? valueOfNominalRange { get; set; } = default;
@@ -11090,7 +11785,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LightAllAround()
             {
@@ -11109,13 +11807,13 @@ namespace S100Framework.DomainModel.S101
         public class LightSectored
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfLight> categoryOfLight { get; set; } = new();
+            public List<categoryOfLight> categoryOfLight { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11133,7 +11831,7 @@ namespace S100Framework.DomainModel.S101
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<sectorCharacteristics> sectorCharacteristics { get; set; }
@@ -11142,7 +11840,7 @@ namespace S100Framework.DomainModel.S101
             public signalGeneration? signalGeneration { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalDatum? verticalDatum { get; set; } = default;
@@ -11151,7 +11849,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LightSectored()
             {
@@ -11166,10 +11867,10 @@ namespace S100Framework.DomainModel.S101
         public class LightFogDetector
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11184,7 +11885,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public rhythmOfLight? rhythmOfLight { get; set; }
@@ -11193,7 +11894,7 @@ namespace S100Framework.DomainModel.S101
             public signalGeneration? signalGeneration { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public verticalDatum? verticalDatum { get; set; } = default;
@@ -11205,7 +11906,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LightFogDetector()
             {
@@ -11219,13 +11923,13 @@ namespace S100Framework.DomainModel.S101
         public class LightAirObstruction
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11240,19 +11944,19 @@ namespace S100Framework.DomainModel.S101
             public Decimal? height { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<lightVisibility> lightVisibility { get; set; } = new();
+            public List<lightVisibility> lightVisibility { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public rhythmOfLight? rhythmOfLight { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? valueOfNominalRange { get; set; } = default;
@@ -11264,7 +11968,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LightAirObstruction()
             {
@@ -11290,7 +11997,7 @@ namespace S100Framework.DomainModel.S101
             public colourPattern? colourPattern { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11302,16 +12009,16 @@ namespace S100Framework.DomainModel.S101
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public topmark? topmark { get; set; }
@@ -11323,10 +12030,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LateralBuoy()
             {
@@ -11353,7 +12063,7 @@ namespace S100Framework.DomainModel.S101
             public colourPattern? colourPattern { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11365,16 +12075,16 @@ namespace S100Framework.DomainModel.S101
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public topmark? topmark { get; set; }
@@ -11386,10 +12096,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public CardinalBuoy()
             {
@@ -11413,7 +12126,7 @@ namespace S100Framework.DomainModel.S101
             public colourPattern? colourPattern { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11425,16 +12138,16 @@ namespace S100Framework.DomainModel.S101
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public topmark? topmark { get; set; }
@@ -11446,10 +12159,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public IsolatedDangerBuoy()
             {
@@ -11473,7 +12189,7 @@ namespace S100Framework.DomainModel.S101
             public colourPattern? colourPattern { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11485,16 +12201,16 @@ namespace S100Framework.DomainModel.S101
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public topmark? topmark { get; set; }
@@ -11506,10 +12222,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SafeWaterBuoy()
             {
@@ -11536,7 +12255,7 @@ namespace S100Framework.DomainModel.S101
             public colourPattern? colourPattern { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11548,16 +12267,16 @@ namespace S100Framework.DomainModel.S101
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public topmark? topmark { get; set; }
@@ -11569,10 +12288,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SpecialPurposeGeneralBuoy()
             {
@@ -11597,7 +12319,7 @@ namespace S100Framework.DomainModel.S101
             public colourPattern? colourPattern { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11609,7 +12331,7 @@ namespace S100Framework.DomainModel.S101
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -11624,10 +12346,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public EmergencyWreckMarkingBuoy()
             {
@@ -11654,7 +12379,7 @@ namespace S100Framework.DomainModel.S101
             public colourPattern? colourPattern { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11663,19 +12388,19 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<product> product { get; set; } = new();
+            public List<product> product { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public visualProminence? visualProminence { get; set; } = default;
@@ -11684,10 +12409,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public InstallationBuoy()
             {
@@ -11705,13 +12433,13 @@ namespace S100Framework.DomainModel.S101
             public required buoyShape buoyShape { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11726,13 +12454,13 @@ namespace S100Framework.DomainModel.S101
             public Decimal? maximumPermittedVesselLength { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -11744,10 +12472,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public MooringBuoy()
             {
@@ -11779,7 +12510,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11794,10 +12525,10 @@ namespace S100Framework.DomainModel.S101
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -11806,7 +12537,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public topmark? topmark { get; set; }
@@ -11821,10 +12552,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LateralBeacon()
             {
@@ -11857,7 +12591,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11872,10 +12606,10 @@ namespace S100Framework.DomainModel.S101
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -11884,7 +12618,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public topmark? topmark { get; set; }
@@ -11899,10 +12633,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public CardinalBeacon()
             {
@@ -11932,7 +12669,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -11947,10 +12684,10 @@ namespace S100Framework.DomainModel.S101
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -11959,7 +12696,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public topmark? topmark { get; set; }
@@ -11974,10 +12711,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public IsolatedDangerBeacon()
             {
@@ -12007,7 +12747,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12022,10 +12762,10 @@ namespace S100Framework.DomainModel.S101
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -12034,7 +12774,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public topmark? topmark { get; set; }
@@ -12049,10 +12789,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SafeWaterBeacon()
             {
@@ -12085,7 +12828,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12100,10 +12843,10 @@ namespace S100Framework.DomainModel.S101
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
@@ -12112,7 +12855,7 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public topmark? topmark { get; set; }
@@ -12127,10 +12870,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SpecialPurposeGeneralBeacon()
             {
@@ -12146,7 +12892,7 @@ namespace S100Framework.DomainModel.S101
         public class Daymark
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = new();
+            public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<colour> colour { get; set; }
@@ -12158,7 +12904,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? elevation { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12170,16 +12916,16 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required topmarkDaymarkShape topmarkDaymarkShape { get; set; }
@@ -12188,16 +12934,19 @@ namespace S100Framework.DomainModel.S101
             public Decimal? verticalLength { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<shapeInformation> shapeInformation { get; set; } = new();
+            public List<shapeInformation> shapeInformation { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Daymark()
             {
@@ -12218,7 +12967,7 @@ namespace S100Framework.DomainModel.S101
             public colourPattern? colourPattern { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12233,16 +12982,16 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public topmark? topmark { get; set; }
@@ -12257,10 +13006,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LightFloat()
             {
@@ -12281,7 +13033,7 @@ namespace S100Framework.DomainModel.S101
             public colourPattern? colourPattern { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12296,16 +13048,16 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? radarConspicuous { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? verticalLength { get; set; } = default;
@@ -12317,10 +13069,13 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public LightVessel()
             {
@@ -12335,7 +13090,7 @@ namespace S100Framework.DomainModel.S101
         public class Retroreflector
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<colour> colour { get; set; } = new();
+            public List<colour> colour { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public colourPattern? colourPattern { get; set; } = default;
@@ -12350,16 +13105,19 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public Retroreflector()
             {
@@ -12382,16 +13140,19 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RadarReflector()
             {
@@ -12408,7 +13169,7 @@ namespace S100Framework.DomainModel.S101
             public required categoryOfFogSignal categoryOfFogSignal { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12417,7 +13178,7 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? signalFrequency { get; set; } = default;
@@ -12432,10 +13193,10 @@ namespace S100Framework.DomainModel.S101
             public Decimal? signalPeriod { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<signalSequence> signalSequence { get; set; } = new();
+            public List<signalSequence> signalSequence { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? valueOfMaximumRange { get; set; } = default;
@@ -12444,7 +13205,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public FogSignal()
             {
@@ -12461,7 +13225,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12473,7 +13237,7 @@ namespace S100Framework.DomainModel.S101
             public String mMSICode { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public status? status { get; set; } = default;
@@ -12482,7 +13246,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public PhysicalAISAidToNavigation()
             {
@@ -12499,7 +13266,7 @@ namespace S100Framework.DomainModel.S101
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12511,7 +13278,7 @@ namespace S100Framework.DomainModel.S101
             public String mMSICode { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public status? status { get; set; } = default;
@@ -12523,7 +13290,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public VirtualAISAidToNavigation()
             {
@@ -12540,16 +13310,16 @@ namespace S100Framework.DomainModel.S101
             public String callSign { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfRadioStation> categoryOfRadioStation { get; set; } = new();
+            public List<categoryOfRadioStation> categoryOfRadioStation { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12561,16 +13331,19 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RadioStation()
             {
@@ -12587,7 +13360,7 @@ namespace S100Framework.DomainModel.S101
             public required categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12596,10 +13369,10 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<radarWaveLength> radarWaveLength { get; set; } = new();
+            public List<radarWaveLength> radarWaveLength { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public sectorLimit? sectorLimit { get; set; }
@@ -12608,10 +13381,10 @@ namespace S100Framework.DomainModel.S101
             public String signalGroup { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<signalSequence> signalSequence { get; set; } = new();
+            public List<signalSequence> signalSequence { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? valueOfMaximumRange { get; set; } = default;
@@ -12620,7 +13393,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RadarTransponderBeacon()
             {
@@ -12640,13 +13416,13 @@ namespace S100Framework.DomainModel.S101
             public categoryOfPreference? categoryOfPreference { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> destination { get; set; } = new();
+            public List<String> destination { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12655,19 +13431,22 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<pilotMovement> pilotMovement { get; set; } = new();
+            public List<pilotMovement> pilotMovement { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public PilotBoardingPlace()
             {
@@ -12681,7 +13460,7 @@ namespace S100Framework.DomainModel.S101
         public class VesselTrafficServiceArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -12690,7 +13469,10 @@ namespace S100Framework.DomainModel.S101
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public VesselTrafficServiceArea()
             {
@@ -12704,10 +13486,10 @@ namespace S100Framework.DomainModel.S101
         public class CoastGuardStation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12719,16 +13501,19 @@ namespace S100Framework.DomainModel.S101
             public Boolean? isMRCC { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public CoastGuardStation()
             {
@@ -12745,10 +13530,10 @@ namespace S100Framework.DomainModel.S101
             public required List<categoryOfSignalStationWarning> categoryOfSignalStationWarning { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12757,16 +13542,19 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SignalStationWarning()
             {
@@ -12784,10 +13572,10 @@ namespace S100Framework.DomainModel.S101
             public required List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12796,16 +13584,19 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SignalStationTraffic()
             {
@@ -12820,13 +13611,13 @@ namespace S100Framework.DomainModel.S101
         public class RescueStation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<categoryOfRescueStation> categoryOfRescueStation { get; set; } = new();
+            public List<categoryOfRescueStation> categoryOfRescueStation { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12835,16 +13626,19 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public RescueStation()
             {
@@ -12861,13 +13655,13 @@ namespace S100Framework.DomainModel.S101
             public required List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> communicationChannel { get; set; } = new();
+            public List<String> communicationChannel { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -12876,10 +13670,10 @@ namespace S100Framework.DomainModel.S101
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<natureOfConstruction> natureOfConstruction { get; set; } = new();
+            public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public product? product { get; set; } = default;
@@ -12888,22 +13682,25 @@ namespace S100Framework.DomainModel.S101
             public DateOnly? reportedDate { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<restriction> restriction { get; set; } = new();
+            public List<restriction> restriction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
+            public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public HarbourFacility()
             {
@@ -12921,25 +13718,28 @@ namespace S100Framework.DomainModel.S101
             public required List<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<periodicDateRange> periodicDateRange { get; set; } = new();
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<status> status { get; set; } = new();
+            public List<status> status { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
+            public AdditionalInformation<theInformation>? theInformation { get; set; } = default;
 
             public SmallCraftFacility()
             {
@@ -12981,10 +13781,10 @@ namespace S100Framework.DomainModel.S101
         public class Chart1Feature
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<String> drawingInstruction { get; set; } = new();
+            public List<String> drawingInstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             public Chart1Feature()
             {

@@ -8,6 +8,8 @@ using S100Framework.DomainModel.S122;
 using S100Framework.DomainModel.S122.ComplexAttributes;
 using S100Framework.DomainModel.S122.InformationTypes;
 using S100Framework.DomainModel.S122.FeatureTypes;
+using S100Framework.DomainModel.S122.Bindings.InformationAssociations;
+using S100Framework.DomainModel.S122.Bindings.Roles;
 
 namespace S100Framework.WPF.ViewModel.S122
 {
@@ -4291,6 +4293,12 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        [Category("FeatureType")]
+        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
+
+        [Category("FeatureType")]
+        public ObservableCollection<additionalInformation<providesInformation>> providesInformation { get; set; } = new();
+
         public void Load(DomainModel.S122.FeatureTypes.RestrictedArea instance)
         {
             categoryOfRestrictedArea.Clear();
@@ -4328,6 +4336,14 @@ namespace S100Framework.WPF.ViewModel.S122
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            theRxN.Clear();
+            if (instance.theRxN is not null)
+                foreach (var e in instance.theRxN)
+                    theRxN.Add(e);
+            providesInformation.Clear();
+            if (instance.providesInformation is not null)
+                foreach (var e in instance.providesInformation)
+                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -4345,6 +4361,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                theRxN = this.theRxN.ToList(),
+                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4363,6 +4381,8 @@ namespace S100Framework.WPF.ViewModel.S122
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            theRxN = this.theRxN.ToList(),
+            providesInformation = this.providesInformation.ToList(),
         };
 
         public RestrictedAreaViewModel()
@@ -4390,6 +4410,14 @@ namespace S100Framework.WPF.ViewModel.S122
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
+            };
+            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theRxN));
+            };
+            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -4440,6 +4468,9 @@ namespace S100Framework.WPF.ViewModel.S122
         [Category("MarineProtectedArea")]
         public ObservableCollection<designation> designation { get; set; } = new();
 
+        [Category("MarineProtectedArea")]
+        public ObservableCollection<ProtectedAreaAuthority<responsibleAuthority>> responsibleAuthority { get; set; } = new();
+
         [Category("FeatureType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -4524,6 +4555,12 @@ namespace S100Framework.WPF.ViewModel.S122
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("FeatureType")]
+        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
+
+        [Category("FeatureType")]
+        public ObservableCollection<additionalInformation<providesInformation>> providesInformation { get; set; } = new();
 
         [Browsable(false)]
         public categoryOfMarineProtectedArea[] categoryOfMarineProtectedAreaList => CodeList.categoryOfMarineProtectedAreas.ToArray();
@@ -4548,6 +4585,10 @@ namespace S100Framework.WPF.ViewModel.S122
             if (instance.designation is not null)
                 foreach (var e in instance.designation)
                     designation.Add(e);
+            responsibleAuthority.Clear();
+            if (instance.responsibleAuthority is not null)
+                foreach (var e in instance.responsibleAuthority)
+                    responsibleAuthority.Add(e);
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -4571,6 +4612,14 @@ namespace S100Framework.WPF.ViewModel.S122
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            theRxN.Clear();
+            if (instance.theRxN is not null)
+                foreach (var e in instance.theRxN)
+                    theRxN.Add(e);
+            providesInformation.Clear();
+            if (instance.providesInformation is not null)
+                foreach (var e in instance.providesInformation)
+                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -4583,6 +4632,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 restriction = this.restriction.ToList(),
                 status = this.status.ToList(),
                 designation = this.designation.ToList(),
+                responsibleAuthority = this.responsibleAuthority.ToList(),
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -4591,6 +4641,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                theRxN = this.theRxN.ToList(),
+                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4604,6 +4656,7 @@ namespace S100Framework.WPF.ViewModel.S122
             restriction = this.restriction.ToList(),
             status = this.status.ToList(),
             designation = this.designation.ToList(),
+            responsibleAuthority = this.responsibleAuthority.ToList(),
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -4612,6 +4665,8 @@ namespace S100Framework.WPF.ViewModel.S122
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            theRxN = this.theRxN.ToList(),
+            providesInformation = this.providesInformation.ToList(),
         };
 
         public MarineProtectedAreaViewModel()
@@ -4632,6 +4687,10 @@ namespace S100Framework.WPF.ViewModel.S122
             {
                 OnPropertyChanged(nameof(designation));
             };
+            responsibleAuthority.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(responsibleAuthority));
+            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -4643,6 +4702,14 @@ namespace S100Framework.WPF.ViewModel.S122
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
+            };
+            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theRxN));
+            };
+            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -4661,6 +4728,21 @@ namespace S100Framework.WPF.ViewModel.S122
             set
             {
                 SetValue(ref _categoryOfVesselTrafficService, value);
+            }
+        }
+
+        private ServiceControl<controlAuthority>? _controlAuthority = default;
+        [Category("VesselTrafficServiceArea")]
+        public ServiceControl<controlAuthority>? controlAuthority
+        {
+            get
+            {
+                return _controlAuthority;
+            }
+
+            set
+            {
+                SetValue(ref _controlAuthority, value);
             }
         }
 
@@ -4749,9 +4831,16 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        [Category("FeatureType")]
+        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
+
+        [Category("FeatureType")]
+        public ObservableCollection<additionalInformation<providesInformation>> providesInformation { get; set; } = new();
+
         public void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance)
         {
             categoryOfVesselTrafficService = instance.categoryOfVesselTrafficService;
+            controlAuthority = instance.controlAuthority;
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -4775,6 +4864,14 @@ namespace S100Framework.WPF.ViewModel.S122
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
+            theRxN.Clear();
+            if (instance.theRxN is not null)
+                foreach (var e in instance.theRxN)
+                    theRxN.Add(e);
+            providesInformation.Clear();
+            if (instance.providesInformation is not null)
+                foreach (var e in instance.providesInformation)
+                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -4782,6 +4879,7 @@ namespace S100Framework.WPF.ViewModel.S122
             var instance = new DomainModel.S122.FeatureTypes.VesselTrafficServiceArea
             {
                 categoryOfVesselTrafficService = this.categoryOfVesselTrafficService,
+                controlAuthority = this.controlAuthority,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -4790,6 +4888,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
+                theRxN = this.theRxN.ToList(),
+                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4798,6 +4898,7 @@ namespace S100Framework.WPF.ViewModel.S122
         public DomainModel.S122.FeatureTypes.VesselTrafficServiceArea Model => new()
         {
             categoryOfVesselTrafficService = this._categoryOfVesselTrafficService,
+            controlAuthority = this._controlAuthority,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -4806,6 +4907,8 @@ namespace S100Framework.WPF.ViewModel.S122
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
+            theRxN = this.theRxN.ToList(),
+            providesInformation = this.providesInformation.ToList(),
         };
 
         public VesselTrafficServiceAreaViewModel()
@@ -4821,6 +4924,14 @@ namespace S100Framework.WPF.ViewModel.S122
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
+            };
+            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theRxN));
+            };
+            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }

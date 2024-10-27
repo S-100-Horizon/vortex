@@ -82,6 +82,7 @@ namespace VortexConceptApplication
             viewModel.Load(new S100Framework.DomainModel.S124.FeatureTypes.NAVWARNPart {
                 warningInformation = new S100Framework.DomainModel.S124.ComplexAttributes.warningInformation {
                 },
+                header = new S100Framework.DomainModel.S124.Bindings.InformationAssociations.NWPreambleContent<S100Framework.DomainModel.S124.Bindings.Roles.header>(),
             });
 
             //this._propertyGrid.EditorDefinitions.Clear();

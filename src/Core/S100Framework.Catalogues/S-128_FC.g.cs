@@ -203,8 +203,8 @@ namespace S100Framework.DomainModel.S128
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum iso216 : int
-    {
 #pragma warning restore CS8981
+    {
         [System.ComponentModel.Description("The first size as output size on nautical paper chart.")]
         [System.Xml.Serialization.XmlEnum("1")]
         A0 = 1,
@@ -535,7 +535,7 @@ namespace S100Framework.DomainModel.S128
             public String countryName { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<String> deliveryPoint { get; set; } = new();
+            public List<String> deliveryPoint { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String postalCode { get; set; } = string.Empty;
@@ -629,7 +629,7 @@ namespace S100Framework.DomainModel.S128
             public String language { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<String> text { get; set; } = new();
+            public List<String> text { get; set; } = [];
 
             public information()
             {
@@ -818,7 +818,7 @@ namespace S100Framework.DomainModel.S128
             public required sourceType sourceType { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             public sourceIndication()
             {
@@ -844,7 +844,7 @@ namespace S100Framework.DomainModel.S128
             public String telecommunicationIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<telecommunicationService> telecommunicationService { get; set; } = new();
+            public List<telecommunicationService> telecommunicationService { get; set; } = [];
 
             public telecommunications()
             {
@@ -1004,6 +1004,148 @@ namespace S100Framework.DomainModel.S128
         }
     }
 
+    namespace Bindings
+    {
+        namespace Roles
+        {
+            public class catalogueHeader : Role
+            {
+            }
+
+            public class elementContainer : Role
+            {
+            }
+
+            public class theCatalogueElement : Role
+            {
+            }
+
+            public class theCatalogueOfNauticalProduct : Role
+            {
+            }
+
+            public class theContactDetails : Role
+            {
+            }
+
+            public class theDistributor : Role
+            {
+            }
+
+            public class theElement : Role
+            {
+            }
+
+            public class thePriceInformation : Role
+            {
+            }
+
+            public class theProducer : Role
+            {
+            }
+
+            public class theReference : Role
+            {
+            }
+
+            public class theRequirement : Role
+            {
+            }
+
+            public class theSource : Role
+            {
+            }
+        }
+
+        namespace InformationAssociations
+        {
+            public class CarriageRequirement<T> : InformationAssociation where T : Role
+            {
+                public CarriageRequirement(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class DistributionDetails<T> : InformationAssociation where T : Role
+            {
+                public DistributionDetails(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class DistributorContact<T> : InformationAssociation where T : Role
+            {
+                public DistributorContact(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class PriceOfElement<T> : InformationAssociation where T : Role
+            {
+                public PriceOfElement(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class PriceOfNauticalProduct<T> : InformationAssociation where T : Role
+            {
+                public PriceOfNauticalProduct(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class ProducerContact<T> : InformationAssociation where T : Role
+            {
+                public ProducerContact(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class ProductionDetails<T> : InformationAssociation where T : Role
+            {
+                public ProductionDetails(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+
+            public class ProductPackage<T> : InformationAssociation where T : Role
+            {
+                public ProductPackage(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public string role => typeof(T).Name;
+            }
+        }
+
+        namespace FeatureAssociations
+        {
+            public class ProductMapping<T> : FeatureAssociation where T : Role
+            {
+                public ProductMapping(string foreignKey = "") : base(foreignKey)
+                {
+                }
+
+                public required categoryOfProductMapping categoryOfProductMapping { get; set; }
+                public string role => typeof(T).Name;
+            }
+        }
+    }
+
     namespace InformationTypes
     {
         using ComplexAttributes;
@@ -1038,19 +1180,19 @@ namespace S100Framework.DomainModel.S128
             public String contactInstructions { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<contactAddress> contactAddress { get; set; } = new();
+            public List<contactAddress> contactAddress { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<onlineResource> onlineResource { get; set; } = new();
+            public List<onlineResource> onlineResource { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<telecommunications> telecommunications { get; set; } = new();
+            public List<telecommunications> telecommunications { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<sourceIndication> sourceIndication { get; set; } = new();
+            public List<sourceIndication> sourceIndication { get; set; } = [];
 
             public ContactDetails()
             {
@@ -1071,7 +1213,7 @@ namespace S100Framework.DomainModel.S128
             public String internationalCarriageRequirements { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             public IndicationOfCarriageRequirement()
             {
@@ -1085,16 +1227,16 @@ namespace S100Framework.DomainModel.S128
         public class PriceInformation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<onlineResource> onlineResource { get; set; } = new();
+            public List<onlineResource> onlineResource { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<pricing> pricing { get; set; } = new();
+            public List<pricing> pricing { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<sourceIndication> sourceIndication { get; set; } = new();
+            public List<sourceIndication> sourceIndication { get; set; } = [];
 
             public PriceInformation()
             {
@@ -1139,6 +1281,9 @@ namespace S100Framework.DomainModel.S128
     {
         using ComplexAttributes;
         using InformationTypes;
+        using Bindings.InformationAssociations;
+        using Bindings.FeatureAssociations;
+        using Bindings.Roles;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
@@ -1159,7 +1304,7 @@ namespace S100Framework.DomainModel.S128
             public String classification { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<IMOMaritimeService> IMOMaritimeService { get; set; } = new();
+            public List<IMOMaritimeService> IMOMaritimeService { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String keywords { get; set; } = string.Empty;
@@ -1168,10 +1313,10 @@ namespace S100Framework.DomainModel.S128
             public required Boolean notForNavigation { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<featureName> featureName { get; set; } = new();
+            public List<featureName> featureName { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<information> information { get; set; } = new();
+            public List<information> information { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public onlineResource? onlineResource { get; set; }
@@ -1180,14 +1325,24 @@ namespace S100Framework.DomainModel.S128
             public sourceIndication? sourceIndication { get; set; }
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<supportFile> supportFile { get; set; } = new();
+            public List<supportFile> supportFile { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public timeIntervalOfProduct? timeIntervalOfProduct { get; set; }
 
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
+            public List<CarriageRequirement<theRequirement>> theRequirement { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
+            public List<PriceOfElement<thePriceInformation>> thePriceInformation { get; set; } = [];
+
+            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
+            public required List<ProductPackage<elementContainer>> elementContainer { get; set; }
+
             public CatalogueElement()
             {
                 catalogueElementClassification = new();
+                elementContainer = new();
             }
         }
 
@@ -1201,7 +1356,7 @@ namespace S100Framework.DomainModel.S128
             public Int32? approximateGridResolution { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<Int32> compilationScale { get; set; } = new();
+            public List<Int32> compilationScale { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public distributionStatus? distributionStatus { get; set; } = default;
@@ -1216,7 +1371,7 @@ namespace S100Framework.DomainModel.S128
             public Int32? minimumDisplayScale { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
-            public List<navigationPurpose> navigationPurpose { get; set; } = new();
+            public List<navigationPurpose> navigationPurpose { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String optimumDisplayScale { get; set; } = string.Empty;

@@ -9,6 +9,8 @@ using S100Framework.DomainModel.S124.ComplexAttributes;
 using S100Framework.DomainModel.S124.InformationTypes;
 using S100Framework.DomainModel.S124.FeatureTypes;
 using S100Framework.WPF.Editors;
+using S100Framework.DomainModel.S124.Bindings.InformationAssociations;
+using S100Framework.DomainModel.S124.Bindings.Roles;
 
 namespace S100Framework.WPF.S924
 {
@@ -1262,6 +1264,18 @@ namespace S100Framework.WPF.S924
         [Browsable(false)]
         public navwarnTypeDetails[] navwarnTypeDetailsList => CodeList.navwarnTypeDetails.ToArray();
 
+        private NWPreambleContent<header> _header;
+        [Category("NAVWARNPart")]
+        public NWPreambleContent<header> header {
+            get {
+                return _header;
+            }
+
+            set {
+                SetValue(ref _header, value);
+            }
+        }
+
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance) {
             featureName.Clear();
             foreach (var e in instance.featureName)
@@ -1288,6 +1302,7 @@ namespace S100Framework.WPF.S924
                 fixedDateRange = this.fixedDateRange.ToList(),
                 warningInformation = this.warningInformation?.Model,
                 restriction = this.restriction,
+                header = this.header,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -1299,6 +1314,7 @@ namespace S100Framework.WPF.S924
             fixedDateRange = this.fixedDateRange.ToList(),
             warningInformation = this._warningInformation?.Model,
             restriction = this._restriction,
+            header = this.header,
         };
 
         public NAVWARNPartViewModel() {

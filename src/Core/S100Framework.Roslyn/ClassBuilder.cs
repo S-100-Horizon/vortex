@@ -84,140 +84,6 @@ namespace S100Framework
 
             var roleTypes = new Dictionary<string, Type>();
 
-            //  Bindings
-            {
-                classBuilder.AppendLine($"\tnamespace Bindings");
-                classBuilder.AppendLine("\t{");                
-
-                //  S100_FC_Roles
-                {
-                    var attributes = TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout;
-
-                    var role = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Role", attributes);
-                    dictionaryTypes.Add("Role", role.CreateType());
-
-                    classBuilder.AppendLine($"\tnamespace Roles");
-                    classBuilder.AppendLine("\t\t{");
-
-                    var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_Role", xmlNamespaceManager);
-
-                    foreach (var e in elements) {
-                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
-                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
-                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
-
-                        if (code.ToLowerInvariant().Equals(code))
-                            classBuilder.AppendLine("#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.");
-                        classBuilder.AppendLine($"\t\tpublic class {code} : Role");
-                        if (code.ToLowerInvariant().Equals(code))
-                            classBuilder.AppendLine("#pragma warning restore CS8981");
-                        classBuilder.AppendLine("\t\t{");
-                        classBuilder.AppendLine("\t\t}");
-                        classBuilder.AppendLine();                        
-
-                        var roleTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, dictionaryTypes["Role"]);
-
-                        var roleType = roleTypeBuilder.CreateType();
-
-                        roleTypes.Add(code, roleType);
-                    }
-
-                    classBuilder.AppendLine("\t\t}");
-                }
-
-                //  S100_FC_InformationAssociations
-                {
-                    classBuilder.AppendLine($"\tnamespace InformationAssociations");
-                    classBuilder.AppendLine("\t\t{");
-
-                    var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
-
-                    foreach (var e in elements) {
-                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
-                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
-                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
-
-                        var attributes = TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout;
-
-                        var bindingTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes);
-
-                        var propertyBuilder = S100Framework.Roslyn.CreateProperty(bindingTypeBuilder, "role", typeof(string));
-
-                        GenericTypeParameterBuilder[] genericParams = bindingTypeBuilder.DefineGenericParameters("T");
-                        Type genericParamT = genericParams[0];
-
-                        var bindingType = bindingTypeBuilder.CreateType();
-
-                        classBuilder.AppendLine($"\t\tpublic class {code}<T> : InformationAssociation where T : Role");
-                        classBuilder.AppendLine($"\t\t{{");
-                        classBuilder.AppendLine($"\t\t\tpublic {code}(string foreignKey = \"\") : base(foreignKey) {{");
-                        classBuilder.AppendLine($"\t\t\t}}");
-                        classBuilder.AppendLine($"\t\t}}");
-                        classBuilder.AppendLine();
-
-                        foreach (var role in e.XPathSelectElements("S100FC:role", xmlNamespaceManager)) {
-                            var reference = role.Attribute("ref")!.Value;
-                            var roleType = bindingType.MakeGenericType(roleTypes[reference]);
-
-                            dictionaryTypes.Add($"{code}<{reference}>", roleType);
-
-                            dictionaryTypes.Add($"{code}<{reference}>?", GetNullableType(roleType));
-
-                            dictionaryTypes.Add($"List<{code}<{reference}>>", typeof(List<>).MakeGenericType(roleType));
-                        }
-                    }
-
-                    classBuilder.AppendLine("\t\t}");
-                }
-
-                //  S100_FC_FeatureAssociations
-                {
-                    classBuilder.AppendLine($"\tnamespace FeatureAssociations");
-                    classBuilder.AppendLine("\t\t{");
-
-                    var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
-
-                    foreach (var e in elements) {
-                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
-                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
-                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
-
-                        var attributes = TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout;
-
-                        var bindingTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes);
-
-                        var propertyBuilder = S100Framework.Roslyn.CreateProperty(bindingTypeBuilder, "role", typeof(string));
-
-                        GenericTypeParameterBuilder[] genericParams = bindingTypeBuilder.DefineGenericParameters("T");
-                        Type genericParamT = genericParams[0];
-
-                        var bindingType = bindingTypeBuilder.CreateType();
-
-                        classBuilder.AppendLine($"\t\tpublic class {code}<T> : FeatureAssociation where T : Role");
-                        classBuilder.AppendLine($"\t\t{{");
-                        classBuilder.AppendLine($"\t\t\tpublic {code}(string foreignKey) : base(foreignKey) {{");
-                        classBuilder.AppendLine($"\t\t\t}}");
-                        classBuilder.AppendLine($"\t\t}}");
-                        classBuilder.AppendLine();
-
-                        foreach (var role in e.XPathSelectElements("S100FC:role", xmlNamespaceManager)) {
-                            var reference = role.Attribute("ref")!.Value;
-                            var roleType = bindingType.MakeGenericType(roleTypes[reference]);
-
-                            dictionaryTypes.Add($"{code}<{reference}>", roleType);
-
-                            dictionaryTypes.Add($"{code}<{reference}>?", GetNullableType(roleType));
-
-                            dictionaryTypes.Add($"List<{code}<{reference}>>", typeof(List<>).MakeGenericType(roleType));
-                        }
-                    }
-
-                    classBuilder.AppendLine("\t\t}");
-                }
-
-                classBuilder.AppendLine("\t}");
-            }
-
             //  S100_FC_SimpleAttributes
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_SimpleAttribute", xmlNamespaceManager);
@@ -564,6 +430,317 @@ namespace S100Framework
 
             creatorBuilder.AppendLine("\tinternal static class Preamble {");
             creatorBuilder.AppendLine("\t\tpublic static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {");
+
+            //  Bindings
+            {
+                classBuilder.AppendLine($"\tnamespace Bindings");
+                classBuilder.AppendLine("\t{");
+
+                //  S100_FC_Roles
+                {
+                    var attributes = TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout;
+
+                    var role = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Role", attributes);
+                    dictionaryTypes.Add("Role", role.CreateType());
+
+                    classBuilder.AppendLine($"\tnamespace Roles");
+                    classBuilder.AppendLine("\t\t{");
+
+                    var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_Role", xmlNamespaceManager);
+
+                    foreach (var e in elements) {
+                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        if (code.ToLowerInvariant().Equals(code))
+                            classBuilder.AppendLine("#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.");
+                        classBuilder.AppendLine($"\t\tpublic class {code} : Role");
+                        if (code.ToLowerInvariant().Equals(code))
+                            classBuilder.AppendLine("#pragma warning restore CS8981");
+                        classBuilder.AppendLine("\t\t{");
+                        classBuilder.AppendLine("\t\t}");
+                        classBuilder.AppendLine();
+
+                        var roleTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, dictionaryTypes["Role"]);
+
+                        var roleType = roleTypeBuilder.CreateType();
+
+                        roleTypes.Add(code, roleType);
+                    }
+
+                    classBuilder.AppendLine("\t\t}");
+                }
+
+                //  S100_FC_InformationAssociations
+                {
+                    classBuilder.AppendLine($"\tnamespace InformationAssociations");
+                    classBuilder.AppendLine("\t\t{");
+
+                    var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
+
+                    foreach (var e in elements) {
+                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        var attributes = TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout;
+
+                        var bindingTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes);
+
+                        foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
+
+                            var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                            var upper = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+
+                            var isArray = false;
+                            if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true") || int.Parse(upper!.Value) > 1) {
+                                isArray = true;
+                            }
+
+                            var referenceType = isArray ? dictionaryTypes[$"List<{referenceCode}>"] : dictionaryTypes[referenceCode];
+
+                            if (!isArray && lower == 0 /*&& !dictionaryTypesComplex.Contains(referenceCode)*/) {
+                                referenceType = dictionaryTypes[$"{referenceCode}?"];
+                            }
+
+                            var propertyBuilder = S100Framework.Roslyn.CreateProperty(bindingTypeBuilder, referenceCode, referenceType);
+
+                            if (lower > 0) {
+                                var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+
+                                var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
+                            }
+
+                            if (!isArray && dictionaryTypesComplex.Contains(referenceCode)) {
+                                var constructorInfo = typeof(Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObjectAttribute).GetConstructors().First();
+
+                                var expandableObjectAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                propertyBuilder.SetCustomAttribute(expandableObjectAttributeBuilder);
+                            }
+                        }
+
+                        {
+                            //var propertyBuilder = S100Framework.Roslyn.CreateProperty(bindingTypeBuilder, "role", typeof(string));
+
+                            GenericTypeParameterBuilder[] genericParams = bindingTypeBuilder.DefineGenericParameters("T");
+                            Type genericParamT = genericParams[0];
+                        }
+
+                        var bindingType = bindingTypeBuilder.CreateType();
+
+                        classBuilder.AppendLine($"\t\tpublic class {code}<T> : InformationAssociation where T : Role");
+                        classBuilder.AppendLine($"\t\t{{");
+                        classBuilder.AppendLine($"\t\t\tpublic {code}(string foreignKey = \"\") : base(foreignKey) {{");
+                        var constructor = classBuilder.Length;
+                        classBuilder.AppendLine($"\t\t\t}}");
+
+                        var constructorBuilder = new StringBuilder();
+
+                        foreach (var p in bindingType.GetProperties()) {
+                            var attribute = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
+
+                            if (attribute != null && !p.PropertyType.IsValueType) {
+                                if (p.PropertyType == typeof(string))
+                                    constructorBuilder.AppendLine($"\t\t\t\t{p.Name} = string.Empty;");
+                                else {
+                                    constructorBuilder.AppendLine($"\t\t\t\t{p.Name} = {BuildConstructor(p.PropertyType)}");
+                                }
+                            }
+
+                            if (!p.PropertyType.IsGenericType && p.PropertyType != typeof(String)) {
+                                var prop_prefix = attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                                var prop_type = attribute != null ? $"{p.PropertyType.Name}" : $"{p.PropertyType.Name}?";
+
+                                if ("System.Collections.Generic".Equals(p.PropertyType.Namespace))
+                                    prop_type = $"List<{p.Name}>";
+
+                                classBuilder.AppendLine($"{prop_prefix} {prop_type} {p.Name} {{ get; set; }}");
+                            }
+                            else if (p.PropertyType == typeof(String)) {
+                                var prop_type = p.PropertyType.Name;
+                                if ("System.Collections.Generic".Equals(p.PropertyType.Namespace))
+                                    prop_type = $"List<{p.Name}>";
+
+                                classBuilder.AppendLine($"\t\t\tpublic {prop_type} {p.Name} {{ get; set; }} = string.Empty;");
+                            }
+                            else {
+                                var prop_prefix = attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                                var prop_type = GetPropertyType(p.PropertyType);
+
+                                var prop_postfix = attribute != null ? "" : " = default;";
+
+                                if ("System.Collections.Generic".Equals(p.PropertyType.Namespace)) {
+                                    prop_type = $"List<{prop_type}>";
+                                    prop_postfix = attribute != null ? "" : " = [];";
+                                }
+                                else if (attribute is null)
+                                    prop_type += "?";
+
+                                classBuilder.AppendLine($"{prop_prefix} {prop_type} {p.Name} {{ get; set; }}{prop_postfix}");
+                            }
+                        }
+
+                        classBuilder.AppendLine("\t\t\t\tpublic string role => typeof(T).Name;");
+
+                        classBuilder.AppendLine($"\t\t}}");
+                        classBuilder.AppendLine();
+
+                        classBuilder.Insert(constructor, constructorBuilder.ToString());
+
+                        foreach (var role in e.XPathSelectElements("S100FC:role", xmlNamespaceManager)) {
+                            var reference = role.Attribute("ref")!.Value;
+                            var roleType = bindingType.MakeGenericType(roleTypes[reference]);
+
+                            dictionaryTypes.Add($"{code}<{reference}>", roleType);
+
+                            dictionaryTypes.Add($"{code}<{reference}>?", GetNullableType(roleType));
+
+                            dictionaryTypes.Add($"List<{code}<{reference}>>", typeof(List<>).MakeGenericType(roleType));
+                        }
+                    }
+
+                    classBuilder.AppendLine("\t\t}");
+                }
+
+                //  S100_FC_FeatureAssociations
+                {
+                    classBuilder.AppendLine($"\tnamespace FeatureAssociations");
+                    classBuilder.AppendLine("\t\t{");
+
+                    var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
+
+                    foreach (var e in elements) {
+                        var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                        var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        var attributes = TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout;
+
+                        var bindingTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes);
+
+                        foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
+                            var referenceCode = attributeBinding.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!;
+
+                            var lower = int.Parse(attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                            var upper = attributeBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+
+                            var isArray = false;
+                            if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true") || int.Parse(upper!.Value) > 1) {
+                                isArray = true;
+                            }
+
+                            var referenceType = isArray ? dictionaryTypes[$"List<{referenceCode}>"] : dictionaryTypes[referenceCode];
+
+                            if (!isArray && lower == 0 /*&& !dictionaryTypesComplex.Contains(referenceCode)*/) {
+                                referenceType = dictionaryTypes[$"{referenceCode}?"];
+                            }
+
+                            var propertyBuilder = S100Framework.Roslyn.CreateProperty(bindingTypeBuilder, referenceCode, referenceType);
+
+                            if (lower > 0) {
+                                var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+
+                                var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
+                            }
+
+                            if (!isArray && dictionaryTypesComplex.Contains(referenceCode)) {
+                                var constructorInfo = typeof(Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObjectAttribute).GetConstructors().First();
+
+                                var expandableObjectAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                propertyBuilder.SetCustomAttribute(expandableObjectAttributeBuilder);
+                            }
+                        }
+
+                        {
+                            //var propertyBuilder = S100Framework.Roslyn.CreateProperty(bindingTypeBuilder, "role", typeof(string));
+
+                            GenericTypeParameterBuilder[] genericParams = bindingTypeBuilder.DefineGenericParameters("T");
+                            Type genericParamT = genericParams[0];
+                        }
+
+                        var bindingType = bindingTypeBuilder.CreateType();
+
+                        classBuilder.AppendLine($"\t\tpublic class {code}<T> : FeatureAssociation where T : Role");
+                        classBuilder.AppendLine($"\t\t{{");
+                        classBuilder.AppendLine($"\t\t\tpublic {code}(string foreignKey = \"\") : base(foreignKey) {{");
+                        var constructor = classBuilder.Length;
+                        classBuilder.AppendLine($"\t\t\t}}");
+
+                        var constructorBuilder = new StringBuilder();
+
+                        foreach (var p in bindingType.GetProperties()) {
+                            var attribute = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
+
+                            if (attribute != null && !p.PropertyType.IsValueType) {
+                                if (p.PropertyType == typeof(string))
+                                    constructorBuilder.AppendLine($"\t\t\t\t{p.Name} = string.Empty;");
+                                else {
+                                    constructorBuilder.AppendLine($"\t\t\t\t{p.Name} = {BuildConstructor(p.PropertyType)}");
+                                }
+                            }
+
+                            if (!p.PropertyType.IsGenericType && p.PropertyType != typeof(String)) {
+                                var prop_prefix = attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                                var prop_type = attribute != null ? $"{p.PropertyType.Name}" : $"{p.PropertyType.Name}?";
+
+                                if ("System.Collections.Generic".Equals(p.PropertyType.Namespace))
+                                    prop_type = $"List<{p.Name}>";
+
+                                classBuilder.AppendLine($"{prop_prefix} {prop_type} {p.Name} {{ get; set; }}");
+                            }
+                            else if (p.PropertyType == typeof(String)) {
+                                var prop_type = p.PropertyType.Name;
+                                if ("System.Collections.Generic".Equals(p.PropertyType.Namespace))
+                                    prop_type = $"List<{p.Name}>";
+
+                                classBuilder.AppendLine($"\t\t\tpublic {prop_type} {p.Name} {{ get; set; }} = string.Empty;");
+                            }
+                            else {
+                                var prop_prefix = attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                                var prop_type = GetPropertyType(p.PropertyType);
+
+                                var prop_postfix = attribute != null ? "" : " = default;";
+
+                                if ("System.Collections.Generic".Equals(p.PropertyType.Namespace)) {
+                                    prop_type = $"List<{prop_type}>";
+                                    prop_postfix = attribute != null ? "" : " = [];";
+                                }
+                                else if (attribute is null)
+                                    prop_type += "?";
+
+                                classBuilder.AppendLine($"{prop_prefix} {prop_type} {p.Name} {{ get; set; }}{prop_postfix}");
+                            }
+                        }
+
+                        classBuilder.AppendLine("\t\t\t\tpublic string role => typeof(T).Name;");
+
+                        classBuilder.AppendLine($"\t\t}}");
+                        classBuilder.AppendLine();
+
+                        classBuilder.Insert(constructor, constructorBuilder.ToString());
+
+                        foreach (var role in e.XPathSelectElements("S100FC:role", xmlNamespaceManager)) {
+                            var reference = role.Attribute("ref")!.Value;
+                            var roleType = bindingType.MakeGenericType(roleTypes[reference]);
+
+                            dictionaryTypes.Add($"{code}<{reference}>", roleType);
+
+                            dictionaryTypes.Add($"{code}<{reference}>?", GetNullableType(roleType));
+
+                            dictionaryTypes.Add($"List<{code}<{reference}>>", typeof(List<>).MakeGenericType(roleType));
+                        }
+                    }
+
+                    classBuilder.AppendLine("\t\t}");
+                }
+
+                classBuilder.AppendLine("\t}");
+            }
+
 
             //  S100_FC_InformationType
             classBuilder.AppendLine($"\tnamespace InformationTypes");
@@ -962,7 +1139,8 @@ namespace S100Framework
                     if ("System.Collections.Generic".Equals(p.PropertyType.Namespace)) {
                         prop_type = $"List<{prop_type}>";
                         prop_postfix = attribute != null ? "" : " = [];";
-                    }else if (attribute is null)
+                    }
+                    else if (attribute is null)
                         prop_type += "?";
 
                     classBuilder.AppendLine($"{prop_prefix} {prop_type} {p.Name} {{ get; set; }}{prop_postfix}");
@@ -1179,7 +1357,7 @@ namespace S100Framework
 
             return CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd(Environment.NewLine.ToCharArray())).GetRoot().NormalizeWhitespace().ToFullString();
         }
-        
+
         private static string GetPropertyType(Type p) {
             if (!S100Framework.Roslyn.Namespace.Equals(p.Namespace))
                 p = p.GenericTypeArguments[0];

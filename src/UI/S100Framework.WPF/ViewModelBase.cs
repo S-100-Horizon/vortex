@@ -14,6 +14,8 @@ namespace S100Framework.WPF.ViewModel
         }
 
         protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            if (string.IsNullOrWhiteSpace(propertyName)) return;
+
             if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
             if (backingFiled is ViewModelBase viewModel) {   // if old value is ViewModel, than we assume that it was subscribed, so - unsubscribe it
                 viewModel.PropertyChanged -= ChildViewModelChanged;

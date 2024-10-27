@@ -889,6 +889,7 @@ namespace S100Framework.Applications
                             notForNavigation = true,
                             typeOfProductFormat = S100Framework.DomainModel.S128.typeOfProductFormat.IsoIec8211,
                             datasetName = dsnm,
+                            elementContainer = new List<DomainModel.S128.Bindings.InformationAssociations.ProductPackage<DomainModel.S128.Bindings.Roles.elementContainer>>(),
                         };
                         if(updn>0)
                             electronicproduct.updateNumber=updn;

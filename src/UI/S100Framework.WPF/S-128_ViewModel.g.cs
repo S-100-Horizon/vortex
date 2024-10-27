@@ -8,6 +8,9 @@ using S100Framework.DomainModel.S128;
 using S100Framework.DomainModel.S128.ComplexAttributes;
 using S100Framework.DomainModel.S128.InformationTypes;
 using S100Framework.DomainModel.S128.FeatureTypes;
+using S100Framework.DomainModel.S128.Bindings.InformationAssociations;
+using S100Framework.DomainModel.S128.Bindings.FeatureAssociations;
+using S100Framework.DomainModel.S128.Bindings.Roles;
 
 namespace S100Framework.WPF.ViewModel.S128
 {
@@ -2764,6 +2767,15 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        [Category("CatalogueElement")]
+        public ObservableCollection<CarriageRequirement<theRequirement>> theRequirement { get; set; } = new();
+
+        [Category("CatalogueElement")]
+        public ObservableCollection<PriceOfElement<thePriceInformation>> thePriceInformation { get; set; } = new();
+
+        [Category("CatalogueElement")]
+        public ObservableCollection<ProductPackage<elementContainer>> elementContainer { get; set; } = new();
+
         public void Load(DomainModel.S128.FeatureTypes.ElectronicProduct instance)
         {
             compressionFlag = instance.compressionFlag;
@@ -2844,6 +2856,19 @@ namespace S100Framework.WPF.ViewModel.S128
                 timeIntervalOfProduct = new();
                 timeIntervalOfProduct.Load(instance.timeIntervalOfProduct);
             }
+
+            theRequirement.Clear();
+            if (instance.theRequirement is not null)
+                foreach (var e in instance.theRequirement)
+                    theRequirement.Add(e);
+            thePriceInformation.Clear();
+            if (instance.thePriceInformation is not null)
+                foreach (var e in instance.thePriceInformation)
+                    thePriceInformation.Add(e);
+            elementContainer.Clear();
+            if (instance.elementContainer is not null)
+                foreach (var e in instance.elementContainer)
+                    elementContainer.Add(e);
         }
 
         public override string Serialize()
@@ -2884,6 +2909,9 @@ namespace S100Framework.WPF.ViewModel.S128
                 sourceIndication = this.sourceIndication?.Model,
                 supportFile = this.supportFile.ToList(),
                 timeIntervalOfProduct = this.timeIntervalOfProduct?.Model,
+                theRequirement = this.theRequirement.ToList(),
+                thePriceInformation = this.thePriceInformation.ToList(),
+                elementContainer = this.elementContainer.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2925,6 +2953,9 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication = this._sourceIndication?.Model,
             supportFile = this.supportFile.ToList(),
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
+            theRequirement = this.theRequirement.ToList(),
+            thePriceInformation = this.thePriceInformation.ToList(),
+            elementContainer = this.elementContainer.ToList(),
         };
 
         public ElectronicProductViewModel()
@@ -2956,6 +2987,18 @@ namespace S100Framework.WPF.ViewModel.S128
             supportFile.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(supportFile));
+            };
+            theRequirement.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theRequirement));
+            };
+            thePriceInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(thePriceInformation));
+            };
+            elementContainer.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(elementContainer));
             };
         }
     }
@@ -3377,6 +3420,15 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        [Category("CatalogueElement")]
+        public ObservableCollection<CarriageRequirement<theRequirement>> theRequirement { get; set; } = new();
+
+        [Category("CatalogueElement")]
+        public ObservableCollection<PriceOfElement<thePriceInformation>> thePriceInformation { get; set; } = new();
+
+        [Category("CatalogueElement")]
+        public ObservableCollection<ProductPackage<elementContainer>> elementContainer { get; set; } = new();
+
         public void Load(DomainModel.S128.FeatureTypes.PhysicalProduct instance)
         {
             editionDate = instance.editionDate;
@@ -3456,6 +3508,19 @@ namespace S100Framework.WPF.ViewModel.S128
                 timeIntervalOfProduct = new();
                 timeIntervalOfProduct.Load(instance.timeIntervalOfProduct);
             }
+
+            theRequirement.Clear();
+            if (instance.theRequirement is not null)
+                foreach (var e in instance.theRequirement)
+                    theRequirement.Add(e);
+            thePriceInformation.Clear();
+            if (instance.thePriceInformation is not null)
+                foreach (var e in instance.thePriceInformation)
+                    thePriceInformation.Add(e);
+            elementContainer.Clear();
+            if (instance.elementContainer is not null)
+                foreach (var e in instance.elementContainer)
+                    elementContainer.Add(e);
         }
 
         public override string Serialize()
@@ -3495,6 +3560,9 @@ namespace S100Framework.WPF.ViewModel.S128
                 sourceIndication = this.sourceIndication?.Model,
                 supportFile = this.supportFile.ToList(),
                 timeIntervalOfProduct = this.timeIntervalOfProduct?.Model,
+                theRequirement = this.theRequirement.ToList(),
+                thePriceInformation = this.thePriceInformation.ToList(),
+                elementContainer = this.elementContainer.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -3535,6 +3603,9 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication = this._sourceIndication?.Model,
             supportFile = this.supportFile.ToList(),
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
+            theRequirement = this.theRequirement.ToList(),
+            thePriceInformation = this.thePriceInformation.ToList(),
+            elementContainer = this.elementContainer.ToList(),
         };
 
         public PhysicalProductViewModel()
@@ -3566,6 +3637,18 @@ namespace S100Framework.WPF.ViewModel.S128
             supportFile.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(supportFile));
+            };
+            theRequirement.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theRequirement));
+            };
+            thePriceInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(thePriceInformation));
+            };
+            elementContainer.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(elementContainer));
             };
         }
     }
@@ -3817,6 +3900,15 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        [Category("CatalogueElement")]
+        public ObservableCollection<CarriageRequirement<theRequirement>> theRequirement { get; set; } = new();
+
+        [Category("CatalogueElement")]
+        public ObservableCollection<PriceOfElement<thePriceInformation>> thePriceInformation { get; set; } = new();
+
+        [Category("CatalogueElement")]
+        public ObservableCollection<ProductPackage<elementContainer>> elementContainer { get; set; } = new();
+
         public void Load(DomainModel.S128.FeatureTypes.S100Service instance)
         {
             compressionFlag = instance.compressionFlag;
@@ -3883,6 +3975,19 @@ namespace S100Framework.WPF.ViewModel.S128
                 timeIntervalOfProduct = new();
                 timeIntervalOfProduct.Load(instance.timeIntervalOfProduct);
             }
+
+            theRequirement.Clear();
+            if (instance.theRequirement is not null)
+                foreach (var e in instance.theRequirement)
+                    theRequirement.Add(e);
+            thePriceInformation.Clear();
+            if (instance.thePriceInformation is not null)
+                foreach (var e in instance.thePriceInformation)
+                    thePriceInformation.Add(e);
+            elementContainer.Clear();
+            if (instance.elementContainer is not null)
+                foreach (var e in instance.elementContainer)
+                    elementContainer.Add(e);
         }
 
         public override string Serialize()
@@ -3909,6 +4014,9 @@ namespace S100Framework.WPF.ViewModel.S128
                 sourceIndication = this.sourceIndication?.Model,
                 supportFile = this.supportFile.ToList(),
                 timeIntervalOfProduct = this.timeIntervalOfProduct?.Model,
+                theRequirement = this.theRequirement.ToList(),
+                thePriceInformation = this.thePriceInformation.ToList(),
+                elementContainer = this.elementContainer.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -3936,6 +4044,9 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication = this._sourceIndication?.Model,
             supportFile = this.supportFile.ToList(),
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
+            theRequirement = this.theRequirement.ToList(),
+            thePriceInformation = this.thePriceInformation.ToList(),
+            elementContainer = this.elementContainer.ToList(),
         };
 
         public S100ServiceViewModel()
@@ -3959,6 +4070,18 @@ namespace S100Framework.WPF.ViewModel.S128
             supportFile.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(supportFile));
+            };
+            theRequirement.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(theRequirement));
+            };
+            thePriceInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(thePriceInformation));
+            };
+            elementContainer.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(elementContainer));
             };
         }
     }
