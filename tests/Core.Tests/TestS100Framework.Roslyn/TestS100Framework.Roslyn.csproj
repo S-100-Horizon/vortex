@@ -31,9 +31,6 @@
     <Content Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S-128_FC_Ed2.0.0.xml" Link="Artifacts\S-128_FC_Ed2.0.0.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S-128_FC_Ed2.0.0_SE_ALT.xml" Link="Artifacts\S-128_FC_Ed2.0.0_SE_ALT.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\..\..\artifacts\Product Specifications\S-131 Marine Harbour Infrastructure\1.0.0\131_1_0_0_20230315_FC.xml" Link="Artifacts\131_1_0_0_20230315_FC.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -67,10 +64,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S-128_TDS_sample_Ed 2.0.0.gml" Link="Artifacts\S-128_TDS_sample_Ed 2.0.0.gml">
+    <None Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S-128.xsd" Link="Artifacts\S-128.xsd">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S128.xsd" Link="Artifacts\S128.xsd">
+    <None Include="..\..\..\artifacts\Product Specifications\S-128 Catalogue of Nautical Products\2.0.0\S-128_TDS_sample_Ed 2.0.0.gml" Link="Artifacts\S-128_TDS_sample_Ed 2.0.0.gml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="..\..\..\artifacts\Product Specifications\S-131 Marine Harbour Infrastructure\samples\DKAAL\S100_ROOT\S-131\DATASET_FILES\DK00\131DK00_DKAAL.GML" Link="Samples\S131\131DK00_DKAAL.GML">

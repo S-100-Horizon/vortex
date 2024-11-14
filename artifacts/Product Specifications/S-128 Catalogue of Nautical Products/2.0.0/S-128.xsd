@@ -1,11 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns="http://www.iho.int/S128/2.0" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:S100="http://www.iho.int/s100gml/5.0" xmlns:gml="http://www.opengis.net/gml/3.2" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.iho.int/S128/2.0" elementFormDefault="qualified" version="2.0.0">
 	
-	<!--
-	<xs:import namespace="http://www.iho.int/s100gml/5.0" schemaLocation="../../../S100/5.0.0/S100GML/20220620/s100gmlbase.xsd"/>
-	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="../../../S100/5.0.0/S100GML/20220620/S100_gmlProfile.xsd"/>
-	-->
-	
 	<xs:import namespace="http://www.opengis.net/gml/3.2" schemaLocation="https://schemas.s100dev.net/schemas/S100/5.0.0/S100GML/20220620/S100_gmlProfile.xsd"/>
 	<xs:import namespace="http://www.iho.int/s100gml/5.0" schemaLocation="https://schemas.s100dev.net/schemas/S100/5.0.0/S100GML/20220620/s100gmlbase.xsd"/>
 	
@@ -113,14 +108,6 @@
 			<xs:enumeration value="ECDSA-384-SHA2"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="S100_EncodingFormatType">
-		<xs:restriction base="xs:string">
-			<xs:enumeration value="ISO/IEC 8211"/>
-			<xs:enumeration value="GML"/>
-			<xs:enumeration value="HDF5"/>
-			<xs:enumeration value="undefined"/>
-		</xs:restriction>
-	</xs:simpleType>
 	<xs:simpleType name="S100_NavigationPurposeType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="port"/>
@@ -182,7 +169,7 @@
 			<xs:enumeration value="Navigational Purpose Berthing"/>
 		</xs:restriction>
 	</xs:simpleType>
-	<xs:simpleType name="teleCommunicationServiceType">
+	<xs:simpleType name="telecommunicationServiceType">
 		<xs:restriction base="xs:string">
 			<xs:enumeration value="voice"/>
 			<xs:enumeration value="facsimile"/>
@@ -233,6 +220,63 @@
 			<xs:enumeration value="no chart display"/>
 		</xs:restriction>
 	</xs:simpleType>
+    <xs:simpleType name="horizontalDatumEpsgType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="EPSG4326 (WGS84)"/>
+			<xs:enumeration value="EPSG3395 (World Mercator)"/>
+			<xs:enumeration value="EPSG3857 (Pseudo-Mercator)"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="verticalDatumType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="Mean Low Water Springs"/>
+			<xs:enumeration value="Mean Lower Low Water Springs"/>
+			<xs:enumeration value="Mean Sea Level"/>
+			<xs:enumeration value="Lowest Low Water"/>
+			<xs:enumeration value="Mean Low Water"/>
+			<xs:enumeration value="Lowest Low Water Springs"/>
+			<xs:enumeration value="Approximate Mean Low Water Springs"/>
+			<xs:enumeration value="Indian Spring Low Water"/>
+			<xs:enumeration value="Low Water Springs"/>
+			<xs:enumeration value="Approximate Lowest Astronomical Tide"/>
+			<xs:enumeration value="Nearly Lowest Low Water"/>
+			<xs:enumeration value="Mean Lower Low Water"/>
+			<xs:enumeration value="Low Water"/>
+			<xs:enumeration value="Approximate Mean Low Water"/>
+			<xs:enumeration value="Approximate Mean Lower Low Water"/>
+			<xs:enumeration value="Mean High Water"/>
+			<xs:enumeration value="Mean High Water Springs"/>
+			<xs:enumeration value="High Water"/>
+			<xs:enumeration value="Approximate Mean Sea Level"/>
+			<xs:enumeration value="High Water Springs"/>
+			<xs:enumeration value="Mean Higher High Water"/>
+			<xs:enumeration value="Equinoctial Spring Low Water"/>
+			<xs:enumeration value="Lowest Astronomical Tide"/>
+			<xs:enumeration value="Local Datum"/>
+			<xs:enumeration value="International Great Lakes Datum 1985"/>
+			<xs:enumeration value="Mean Water Level"/>
+			<xs:enumeration value="Lower Low Water Large Tide"/>
+			<xs:enumeration value="Higher High Water Large Tide"/>
+			<xs:enumeration value="Nearly Highest High Water"/>
+			<xs:enumeration value="Highest Astronomical Tide"/>
+			<xs:enumeration value="Local Low Water Reference Level"/>
+			<xs:enumeration value="Local High Water Reference Level"/>
+			<xs:enumeration value="Local Mean Water Reference Level"/>
+			<xs:enumeration value="Equivalent Height of Water (German GlW)"/>
+			<xs:enumeration value="Highest Shipping Height of Water (German HSW)"/>
+			<xs:enumeration value="Reference Low Water Level According to Danube Commission"/>
+			<xs:enumeration value="Highest Shipping Height of Water According to Danube Commission"/>
+			<xs:enumeration value="Dutch River Low Water Reference Level (OLR)"/>
+			<xs:enumeration value="Russian Project Water Level"/>
+			<xs:enumeration value="Russian Normal Backwater Level"/>
+			<xs:enumeration value="Ohio River Datum"/>
+			<xs:enumeration value="Dutch High Water Reference Level"/>
+			<xs:enumeration value="Baltic Sea Chart Datum 2000"/>
+			<xs:enumeration value="Dutch Estuary Low Water Reference Level (OLW)"/>
+			<xs:enumeration value="Sea Floor"/>
+		</xs:restriction>
+	</xs:simpleType>
+	
 	<!-- ComplexAttributeType -->
 	<xs:complexType name="contactAddressType">
 		<xs:annotation>
@@ -240,15 +284,15 @@
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="administrativeDivision" type="xs:string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="cityName" type="xs:string"/>
-			<xs:element name="countryName" type="xs:string"/>
+			<xs:element name="cityName" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="countryName" type="xs:string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="deliveryPoint" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="postalCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="customPaperSizeType">
 		<xs:annotation>
-			<xs:documentation>user specified paper size</xs:documentation>
+			<xs:documentation>user specified paper size width x, height y</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
 			<xs:element name="x" type="xs:int"/>
@@ -282,8 +326,8 @@
 		<xs:sequence>
 			<xs:element name="fileLocator" type="xs:string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="fileReference" type="xs:string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="headline" type="xs:string"/>
-			<xs:element name="language" type="ISO639-3"/>
+			<xs:element name="headline" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="language" type="ISO639-3" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="text" type="xs:string" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -323,9 +367,9 @@
 			<xs:documentation>A sum of money paid or a claim discharged</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="contractPeriod" type="xs:string"/>
+			<xs:element name="contractPeriod" type="xs:string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="currency" type="xs:string"/>
-			<xs:element name="price" type="xs:int"/>
+			<xs:element name="price" type="xs:decimal"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="printInformationType">
@@ -335,8 +379,6 @@
 		<xs:sequence>
 			<xs:element name="printAgency" type="xs:string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="printNation" type="xs:string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="printWeek" type="xs:date" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="printYear" type="xs:date" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="rePrintEdition" type="xs:string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="rePrintNation" type="xs:string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="printSize" type="printSizeType"/>
@@ -406,11 +448,11 @@
 			<xs:documentation>Information about the source document, publication, or reference from which object data or textual material included or referenced in a dataset are derived.</xs:documentation>
 		</xs:annotation>
 		<xs:sequence>
-			<xs:element name="categoryOfAuthority" type="categoryOfAuthorityType" minOccurs="1" maxOccurs="unbounded"/>
+			<xs:element name="categoryOfAuthority" type="categoryOfAuthorityType" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="countryName" type="xs:string" minOccurs="0" maxOccurs="1"/>
-			<xs:element name="reportedDate" type="xs:date"/>
-			<xs:element name="source" type="xs:string"/>
-			<xs:element name="sourceType" type="sourceTypeType"/>
+			<xs:element name="reportedDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="source" type="xs:string" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="sourceType" type="sourceTypeType" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="featureName" type="featureNameType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
@@ -421,7 +463,7 @@
 		<xs:sequence>
 			<xs:element name="contactInstruction" type="xs:string"/>
 			<xs:element name="telecommunicationIdentifier" type="xs:string"/>
-			<xs:element name="telecommunicationService" type="teleCommunicationServiceType" minOccurs="0" maxOccurs="unbounded"/>
+			<xs:element name="telecommunicationService" type="telecommunicationServiceType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="timeIntervalOfCycleType">
@@ -455,6 +497,31 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="referenceToNMType">
+		<xs:annotation>
+			<xs:documentation>Reference information of notice to mariners.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+			<xs:extension base="gml:ReferenceType">
+				<xs:sequence>
+					<xs:element name="publicationDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="weekOfYear" type="weekOfYearType" minOccurs="0" maxOccurs="1"/>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:complexType name="weekOfYearType">
+		<xs:annotation>
+			<xs:documentation>Week of the year.</xs:documentation>
+		</xs:annotation>
+		<xs:complexContent>
+				<xs:sequence>
+					<xs:element name="weekNumber" type="xs:int" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="yearNumber" type="xs:int" minOccurs="1" maxOccurs="1"/>
+				</xs:sequence>
+		</xs:complexContent>
+	</xs:complexType>
+	
 	<!-- InformationType -->
 	<xs:complexType name="DistributorInformationType">
 		<xs:annotation>
@@ -464,12 +531,12 @@
 			<xs:extension base="S100:AbstractInformationType">
 				<xs:sequence>
 					<xs:element name="distributorName" type="xs:string"/>
-					<xs:element name="catalogueHeader" type="gml:ReferenceType" minOccurs="1" maxOccurs="1"/>
+					<xs:element name="catalogueHeader" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="theContactDetails" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>
-	</xs:complexType>
+	</xs:complexType>	
 	<xs:complexType name="CatalogueSectionHeaderType">
 		<xs:annotation>
 			<xs:documentation>catalogue section header</xs:documentation>
@@ -498,8 +565,8 @@
 			<xs:element name="onlineResource" type="onlineResourceType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="telecommunications" type="telecommunicationsType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="sourceIndication" type="sourceIndicationType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="theProducer" type="gml:ReferenceType" minOccurs="1" maxOccurs="1"/>
-			<xs:element name="theDistributor" type="gml:ReferenceType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="theProducer" type="gml:ReferenceType" minOccurs="0" maxOccurs="1"/>
+			<xs:element name="theDistributor" type="gml:ReferenceType" minOccurs="0" maxOccurs="1"/>
 		</xs:sequence>
 	</xs:complexType>
 	<xs:complexType name="IndicationOfCarriageRequirementType">
@@ -522,8 +589,9 @@
 			<xs:element name="onlineResource" type="onlineResourceType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="pricing" type="pricingType" minOccurs="0" maxOccurs="unbounded"/>
 			<xs:element name="sourceIndication" type="sourceIndicationType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="theCatalogueOfNauticalProduct" type="gml:ReferenceType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="theCatalogueOfNauticalProduct" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
+		<xs:attribute ref="gml:id" use="optional"/>
 	</xs:complexType>
 	<xs:complexType name="ProducerInformationType">
 		<xs:annotation>
@@ -533,8 +601,9 @@
 			<xs:element name="agencyResponsibleForProduction" type="xs:string"/>
 			<xs:element name="agencyName" type="xs:string" minOccurs="0" maxOccurs="1"/>
 			<xs:element name="theContactDetails" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded"/>
-			<xs:element name="catalogueHeader" type="gml:ReferenceType" minOccurs="1" maxOccurs="1"/>
+			<xs:element name="catalogueHeader" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded"/>
 		</xs:sequence>
+		<xs:attribute ref="gml:id" use="optional"/>
 	</xs:complexType>
 	<!-- FeatureType -->
 	<xs:complexType name="CatalogueElementType">
@@ -549,7 +618,6 @@
 					<xs:element name="catalogueElementIdentifier" type="xs:string" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="classification" type="xs:string" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="IMOMaritimeService" type="IMOMaritimeServiceType" minOccurs="0" maxOccurs="unbounded"/>
-					<xs:element name="keywords" type="xs:string" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="notForNavigation" type="xs:boolean"/>
 					<xs:element name="featureName" type="featureNameType" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="information" type="informationType" minOccurs="0" maxOccurs="unbounded"/>
@@ -574,7 +642,6 @@
 				<xs:sequence>
 					<xs:element name="compressionFlag" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="datasetName" type="xs:string" minOccurs="0" maxOccurs="1"/>
-					<xs:element name="encodingFormat" type="S100_EncodingFormatType" minOccurs="1" maxOccurs="1"/>
 					<xs:element name="issueDate" type="xs:date" minOccurs="1" maxOccurs="1"/>
 					<xs:element name="issueTime" type="xs:time" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="typeOfProductFormat" type="typeOfProductFormatType" minOccurs="1" maxOccurs="1"/>
@@ -596,7 +663,7 @@
 					<xs:element name="publicationNumber" type="xs:string" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="typeOfPaper" type="xs:string" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="printInformation" type="printInformationType" minOccurs="0" maxOccurs="1"/>
-					<xs:element name="referenceToNM" type="xs:date" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="referenceToNM" type="referenceToNMType" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="geometry" type="GM_Surface" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
@@ -610,7 +677,6 @@
 			<xs:extension base="CatalogueElementType">
 				<xs:sequence>
 					<xs:element name="compressionFlag" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
-					<xs:element name="encodingFormat" type="S100_EncodingFormatType" minOccurs="1" maxOccurs="1"/>
 					<xs:element name="serviceName" type="xs:string" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="serviceStatus" type="serviceStatusType" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="typeOfProductFormat" type="typeOfProductFormatType" minOccurs="1" maxOccurs="1"/>
@@ -628,10 +694,10 @@
 		<xs:complexContent>
 			<xs:extension base="CatalogueElementType">
 				<xs:sequence>
-					<xs:element name="approximateGridResolution" type="xs:int" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="approximateGridResolution" type="xs:decimal" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="compilationScale" type="xs:int" minOccurs="0" maxOccurs="unbounded"/>
 					<xs:element name="distributionStatus" type="distributionStatusType" minOccurs="0" maxOccurs="1"/>
-					<xs:element name="editionNumber" type="xs:int"/>
+					<xs:element name="editionNumber" type="xs:int" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="maximumDisplayScale" type="xs:int" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="minimumDisplayScale" type="xs:int" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="navigationPurpose" type="S100_NavigationPurposeType" minOccurs="0" maxOccurs="3"/>
@@ -642,6 +708,9 @@
 					<xs:element name="specificUsage" type="specificUsageType" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="updateDate" type="xs:date" minOccurs="0" maxOccurs="1"/>
 					<xs:element name="updateNumber" type="xs:int" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="horizontalDatumEpsg" type="horizontalDatumEpsgType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="verticalDatum" type="verticalDatumType" minOccurs="0" maxOccurs="1"/>
+					<xs:element name="panel" type="gml:ReferenceType" minOccurs="0" maxOccurs="unbounded"/>
 				</xs:sequence>
 			</xs:extension>
 		</xs:complexContent>

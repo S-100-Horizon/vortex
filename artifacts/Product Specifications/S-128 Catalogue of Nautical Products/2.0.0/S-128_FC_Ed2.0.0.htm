@@ -93,7 +93,7 @@
             </tr>
             <tr>
               <th>versionDate</th>
-              <td>2024-08-06</td>
+              <td>2024-10-21</td>
             </tr>
           </table>
         </div>
@@ -151,10 +151,6 @@
                 <tr>
                   <th></th>
                   <td><a href="#IMOMaritimeService">IMOMaritimeService</a>[0..*]</td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <td><a href="#keywords">keywords</a>[0..1]</td>
                 </tr>
                 <tr>
                   <th></th>
@@ -218,7 +214,7 @@
                 </tr>
                 <tr>
                   <th></th>
-                  <td><a href="#approximateGridResolution">approximateGridResolution</a>[0..1]</td>
+                  <td><a href="#approximateGridResolution">approximateGridResolution</a>[0..*]</td>
                 </tr>
                 <tr>
                   <th></th>
@@ -236,7 +232,7 @@
                 </tr>
                 <tr>
                   <th></th>
-                  <td><a href="#editionNumber">editionNumber</a>[1..1]</td>
+                  <td><a href="#editionNumber">editionNumber</a>[0..1]</td>
                 </tr>
                 <tr>
                   <th></th>
@@ -295,6 +291,63 @@
                   <th></th>
                   <td><a href="#updateNumber">updateNumber</a>[0..1]</td>
                 </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#horizontalDatumEpsg">horizontalDatumEpsg</a>[0..1]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#verticalDatum">verticalDatum</a>[0..1]
+                              permittedValues: [
+                              1,
+                              2,
+                              3,
+                              4,
+                              5,
+                              6,
+                              7,
+                              8,
+                              9,
+                              10,
+                              11,
+                              12,
+                              13,
+                              14,
+                              15,
+                              16,
+                              17,
+                              18,
+                              19,
+                              20,
+                              21,
+                              22,
+                              23,
+                              24,
+                              25,
+                              26,
+                              27,
+                              28,
+                              29,
+                              30,
+                              31,
+                              32,
+                              33,
+                              34,
+                              35,
+                              36,
+                              37,
+                              38,
+                              39,
+                              40,
+                              41,
+                              42,
+                              43,
+                              44,
+                              45,
+                              
+                              ]
+                            </td>
+                </tr>
               </table></details><a id="ElectronicProduct"></a><details open=""><summary><code>ElectronicProduct</code></summary><table>
                 <tr>
                   <th>
@@ -334,10 +387,6 @@
                 <tr>
                   <th></th>
                   <td><a href="#datasetName">datasetName</a>[0..1]</td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <td><a href="#encodingFormat">encodingFormat</a>[1..1]</td>
                 </tr>
                 <tr>
                   <th></th>
@@ -462,10 +511,6 @@
                 <tr>
                   <th></th>
                   <td><a href="#compressionFlag">compressionFlag</a>[0..1]</td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <td><a href="#encodingFormat">encodingFormat</a>[1..1]</td>
                 </tr>
                 <tr>
                   <th></th>
@@ -732,11 +777,11 @@
                 </tr>
                 <tr>
                   <th></th>
-                  <td><a href="#cityName">cityName</a>[1..1]</td>
+                  <td><a href="#cityName">cityName</a>[0..1]</td>
                 </tr>
                 <tr>
                   <th></th>
-                  <td><a href="#countryName">countryName</a>[1..1]</td>
+                  <td><a href="#countryName">countryName</a>[0..1]</td>
                 </tr>
                 <tr>
                   <th></th>
@@ -763,7 +808,7 @@
                   <th>
                           definition
                         </th>
-                  <td>user specified paper size.</td>
+                  <td>user specified paper size width x, height y</td>
                 </tr>
                 <tr>
                   <th></th>
@@ -864,11 +909,11 @@
                 </tr>
                 <tr>
                   <th></th>
-                  <td><a href="#headline">headline</a>[1..1]</td>
+                  <td><a href="#headline">headline</a>[0..1]</td>
                 </tr>
                 <tr>
                   <th></th>
-                  <td><a href="#language">language</a>[1..1]</td>
+                  <td><a href="#language">language</a>[0..1]</td>
                 </tr>
                 <tr>
                   <th></th>
@@ -992,7 +1037,7 @@
                 </tr>
                 <tr>
                   <th></th>
-                  <td><a href="#contractPeriod">contractPeriod</a>[1..1]</td>
+                  <td><a href="#contractPeriod">contractPeriod</a>[0..1]</td>
                 </tr>
                 <tr>
                   <th></th>
@@ -1028,14 +1073,6 @@
                 <tr>
                   <th></th>
                   <td><a href="#printNation">printNation</a>[0..1]</td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <td><a href="#printWeek">printWeek</a>[0..1]</td>
-                </tr>
-                <tr>
-                  <th></th>
-                  <td><a href="#printYear">printYear</a>[0..1]</td>
                 </tr>
                 <tr>
                   <th></th>
@@ -1299,7 +1336,7 @@
                 </tr>
                 <tr>
                   <th></th>
-                  <td><a href="#categoryOfAuthority">categoryOfAuthority</a>[1..*]
+                  <td><a href="#categoryOfAuthority">categoryOfAuthority</a>[0..1]
                               permittedValues: [
                               1,
                               2,
@@ -1329,15 +1366,15 @@
                 </tr>
                 <tr>
                   <th></th>
-                  <td><a href="#reportedDate">reportedDate</a>[1..1]</td>
+                  <td><a href="#reportedDate">reportedDate</a>[0..1]</td>
                 </tr>
                 <tr>
                   <th></th>
-                  <td><a href="#source">source</a>[1..1]</td>
+                  <td><a href="#source">source</a>[0..1]</td>
                 </tr>
                 <tr>
                   <th></th>
-                  <td><a href="#sourceType">sourceType</a>[1..1]
+                  <td><a href="#sourceType">sourceType</a>[0..1]
                               permittedValues: [
                               1,
                               2,
@@ -1467,6 +1504,60 @@
                 <tr>
                   <th></th>
                   <td><a href="#valueOfTime">valueOfTime</a>[1..1]</td>
+                </tr>
+              </table></details><a id="referenceToNM"></a><details open=""><summary><code>referenceToNM</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>referenceToNM</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Reference To NM</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Reference information of notice to mariners.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#publicationDate">publicationDate</a>[1..1]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#weekOfYear">weekOfYear</a>[0..1]</td>
+                </tr>
+              </table></details><a id="weekOfYear"></a><details open=""><summary><code>weekOfYear</code></summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>weekOfYear</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Week Of Year</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Week of the year.</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#weekNumber">weekNumber</a>[1..1]</td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <td><a href="#yearNumber">yearNumber</a>[1..1]</td>
                 </tr>
               </table></details></article></div>
         <div class="col-md-6"><article class=""><hr>
@@ -1598,7 +1689,7 @@
                         </th>
                   <td>text</td>
                 </tr>
-              </table></details><a id="approximateGridResolution"></a><details open=""><summary><code>approximateGridResolution</code>: integer</summary><table>
+              </table></details><a id="approximateGridResolution"></a><details open=""><summary><code>approximateGridResolution</code>: real</summary><table>
                 <tr>
                   <th>
                           code
@@ -1628,7 +1719,7 @@
                   <th>
                           valueType
                         </th>
-                  <td>integer</td>
+                  <td>real</td>
                 </tr>
               </table></details><a id="catalogueElementClassification"></a><details open=""><summary><code>catalogueElementClassification</code>: enumeration</summary><table>
                 <tr>
@@ -3352,38 +3443,6 @@
                         </th>
                   <td>time</td>
                 </tr>
-              </table></details><a id="keywords"></a><details open=""><summary><code>keywords</code>: text</summary><table>
-                <tr>
-                  <th>
-                          code
-                        </th>
-                  <td><code>keywords</code></td>
-                </tr>
-                <tr>
-                  <th>
-                          alias
-                        </th>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                          name
-                        </th>
-                  <td>Keywords</td>
-                </tr>
-                <tr>
-                  <th>
-                          definition
-                        </th>
-                  <td>A list of keywords associated with the service.</td>
-                </tr>
-                <tr>
-                  <th>
-                          valueType
-                        </th>
-                  <td>text</td>
-                </tr>
               </table></details><a id="language"></a><details open=""><summary><code>language</code>: text</summary><table>
                 <tr>
                   <th>
@@ -3805,102 +3864,6 @@
                         </th>
                   <td>text</td>
                 </tr>
-              </table></details><a id="pictorialRepresentation"></a><details open=""><summary><code>pictorialRepresentation</code>: text</summary><table>
-                <tr>
-                  <th>
-                          code
-                        </th>
-                  <td><code>pictorialRepresentation</code></td>
-                </tr>
-                <tr>
-                  <th>
-                          alias
-                        </th>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                          name
-                        </th>
-                  <td>Pictorial Representaion</td>
-                </tr>
-                <tr>
-                  <th>
-                          definition
-                        </th>
-                  <td>Indicates whether a pictorial representation of the feature is available.</td>
-                </tr>
-                <tr>
-                  <th>
-                          valueType
-                        </th>
-                  <td>text</td>
-                </tr>
-              </table></details><a id="pictureCaption"></a><details open=""><summary><code>pictureCaption</code>: text</summary><table>
-                <tr>
-                  <th>
-                          code
-                        </th>
-                  <td><code>pictureCaption</code></td>
-                </tr>
-                <tr>
-                  <th>
-                          alias
-                        </th>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                          name
-                        </th>
-                  <td>Picture Caption</td>
-                </tr>
-                <tr>
-                  <th>
-                          definition
-                        </th>
-                  <td>Short description of the purpose of the image.</td>
-                </tr>
-                <tr>
-                  <th>
-                          valueType
-                        </th>
-                  <td>text</td>
-                </tr>
-              </table></details><a id="pictureInformation"></a><details open=""><summary><code>pictureInformation</code>: text</summary><table>
-                <tr>
-                  <th>
-                          code
-                        </th>
-                  <td><code>pictureInformation</code></td>
-                </tr>
-                <tr>
-                  <th>
-                          alias
-                        </th>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                          name
-                        </th>
-                  <td>Picture Information</td>
-                </tr>
-                <tr>
-                  <th>
-                          definition
-                        </th>
-                  <td>A set of information to provide credits to picture creator, copyright owner etc.</td>
-                </tr>
-                <tr>
-                  <th>
-                          valueType
-                        </th>
-                  <td>text</td>
-                </tr>
               </table></details><a id="postalCode"></a><details open=""><summary><code>postalCode</code>: text</summary><table>
                 <tr>
                   <th>
@@ -4028,70 +3991,6 @@
                           valueType
                         </th>
                   <td>text</td>
-                </tr>
-              </table></details><a id="printWeek"></a><details open=""><summary><code>printWeek</code>: date</summary><table>
-                <tr>
-                  <th>
-                          code
-                        </th>
-                  <td><code>printWeek</code></td>
-                </tr>
-                <tr>
-                  <th>
-                          alias
-                        </th>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                          name
-                        </th>
-                  <td>Print Week</td>
-                </tr>
-                <tr>
-                  <th>
-                          definition
-                        </th>
-                  <td>The week in which nautical paper charts were published.</td>
-                </tr>
-                <tr>
-                  <th>
-                          valueType
-                        </th>
-                  <td>date</td>
-                </tr>
-              </table></details><a id="printYear"></a><details open=""><summary><code>printYear</code>: date</summary><table>
-                <tr>
-                  <th>
-                          code
-                        </th>
-                  <td><code>printYear</code></td>
-                </tr>
-                <tr>
-                  <th>
-                          alias
-                        </th>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                          name
-                        </th>
-                  <td>Print Year</td>
-                </tr>
-                <tr>
-                  <th>
-                          definition
-                        </th>
-                  <td>Publication year of the nautical paper chart.</td>
-                </tr>
-                <tr>
-                  <th>
-                          valueType
-                        </th>
-                  <td>date</td>
                 </tr>
               </table></details><a id="producerNation"></a><details open=""><summary><code>producerNation</code>: URN</summary><table>
                 <tr>
@@ -4349,39 +4248,7 @@
                         </th>
                   <td>text</td>
                 </tr>
-              </table></details><a id="referenceToNM"></a><details open=""><summary><code>referenceToNM</code>: date</summary><table>
-                <tr>
-                  <th>
-                          code
-                        </th>
-                  <td><code>referenceToNM</code></td>
-                </tr>
-                <tr>
-                  <th>
-                          alias
-                        </th>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                          name
-                        </th>
-                  <td>Reference To NM</td>
-                </tr>
-                <tr>
-                  <th>
-                          definition
-                        </th>
-                  <td>The date that the item was observed, done, or investigated.</td>
-                </tr>
-                <tr>
-                  <th>
-                          valueType
-                        </th>
-                  <td>date</td>
-                </tr>
-              </table></details><a id="reportedDate"></a><details open=""><summary><code>reportedDate</code>: text</summary><table>
+              </table></details><a id="reportedDate"></a><details open=""><summary><code>reportedDate</code>: date</summary><table>
                 <tr>
                   <th>
                           code
@@ -4411,7 +4278,7 @@
                   <th>
                           valueType
                         </th>
-                  <td>text</td>
+                  <td>date</td>
                 </tr>
               </table></details><a id="digitalSignatureReference"></a><details open=""><summary><code>digitalSignatureReference</code>: enumeration</summary><table>
                 <tr>
@@ -4457,75 +4324,6 @@
                         <td>
                         </td>
                         <td>Elliptic Curve Digital Signature Algorithm (ECDSA) that based upon the issuing certificate. It's signed with the issuer's key P-384.</td>
-                      </tr>
-                    </table>
-                  </td>
-                </tr>
-              </table></details><a id="encodingFormat"></a><details open=""><summary><code>encodingFormat</code>: enumeration</summary><table>
-                <tr>
-                  <th>
-                          code
-                        </th>
-                  <td><code>encodingFormat</code></td>
-                </tr>
-                <tr>
-                  <th>
-                          alias
-                        </th>
-                  <td>
-                  </td>
-                </tr>
-                <tr>
-                  <th>
-                          name
-                        </th>
-                  <td>S100_Encoding Format</td>
-                </tr>
-                <tr>
-                  <th>
-                          definition
-                        </th>
-                  <td>The encoding format of the dataset.</td>
-                </tr>
-                <tr>
-                  <th>
-                          valueType
-                        </th>
-                  <td>enumeration</td>
-                </tr>
-                <tr>
-                  <th>
-                            listedValues
-                          </th>
-                  <td>
-                    <table class="listedValues">
-                      <tr>
-                        <th><code>ISO/IEC 8211</code></th>
-                        <td>1</td>
-                        <td>
-                        </td>
-                        <td>Specification for a data descriptive file for information interchange.</td>
-                      </tr>
-                      <tr>
-                        <th><code>GML</code></th>
-                        <td>2</td>
-                        <td>
-                        </td>
-                        <td>Geography Markup Language. An XML-based geographic information encoding language developed by the Open GIS Consortium (OGC) to enhance the interoperability of geographic information.</td>
-                      </tr>
-                      <tr>
-                        <th><code>HDF5</code></th>
-                        <td>3</td>
-                        <td>
-                        </td>
-                        <td>Grid file format.</td>
-                      </tr>
-                      <tr>
-                        <th><code>undefined</code></th>
-                        <td>100</td>
-                        <td>
-                        </td>
-                        <td>The encoding is defined in the Product Specification.</td>
                       </tr>
                     </table>
                   </td>
@@ -5671,7 +5469,7 @@
                   <th>
                           definition
                         </th>
-                  <td>The horizontal length of the paper to be printed.</td>
+                  <td>The horizontal length(cm) of the paper to be printed.</td>
                 </tr>
                 <tr>
                   <th>
@@ -5703,13 +5501,497 @@
                   <th>
                           definition
                         </th>
-                  <td>The vertical length of the paper to be printed.</td>
+                  <td>The vertical length(cm) of the paper to be printed.</td>
                 </tr>
                 <tr>
                   <th>
                           valueType
                         </th>
                   <td>integer</td>
+                </tr>
+              </table></details><a id="publicationDate"></a><details open=""><summary><code>publicationDate</code>: date</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>publicationDate</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Publication Date</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The date when the notice was officially published</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>date</td>
+                </tr>
+              </table></details><a id="weekNumber"></a><details open=""><summary><code>weekNumber</code>: integer</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>weekNumber</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Week Number</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>This is the number that represents which week of the year it is</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>integer</td>
+                </tr>
+              </table></details><a id="yearNumber"></a><details open=""><summary><code>yearNumber</code>: integer</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>yearNumber</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Year Number</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>This is the number that indicates the year to which the week belongs</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>integer</td>
+                </tr>
+              </table></details><a id="horizontalDatumEpsg"></a><details open=""><summary><code>horizontalDatumEpsg</code>: S100_CodeList</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>horizontalDatumEpsg</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Horizontal Datum EPSG</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>Horizontal reference as  an EPSG code representing a valid entry in the EPSG Geodetic Parameter Dataset, as maintained by the Geodesy Subcommittee of the IOGP Geomatics Committee, and provided online at epsg.org. </td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>S100_CodeList</td>
+                </tr>
+              </table></details><a id="verticalDatum"></a><details open=""><summary><code>verticalDatum</code>: enumeration</summary><table>
+                <tr>
+                  <th>
+                          code
+                        </th>
+                  <td><code>verticalDatum</code></td>
+                </tr>
+                <tr>
+                  <th>
+                          alias
+                        </th>
+                  <td>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                          name
+                        </th>
+                  <td>Vertical Datum</td>
+                </tr>
+                <tr>
+                  <th>
+                          definition
+                        </th>
+                  <td>The reference level used for expressing the vertical measurements of points on the earth's surface. Also called datum level, reference plane, levelling datum, datum for sounding reduction, datum for heights.</td>
+                </tr>
+                <tr>
+                  <th>
+                          valueType
+                        </th>
+                  <td>enumeration</td>
+                </tr>
+                <tr>
+                  <th>
+                            listedValues
+                          </th>
+                  <td>
+                    <table class="listedValues">
+                      <tr>
+                        <th><code>Mean Low Water Springs</code></th>
+                        <td>1</td>
+                        <td>
+                        </td>
+                        <td>The average height of the low waters of spring tides. This level is used as a tidal datum in some areas.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Mean Lower Low Water Springs</code></th>
+                        <td>2</td>
+                        <td>
+                        </td>
+                        <td>The average height of lower low water springs at a place.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Mean Sea Level</code></th>
+                        <td>3</td>
+                        <td>
+                        </td>
+                        <td>The average height of the surface of the sea at a tide station for all stages of the tide over a 19-year period, usually determined from hourly height readings measured from a fixed predetermined reference level.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Lowest Low Water</code></th>
+                        <td>4</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary level conforming to the lowest tide observed at a place, or somewhat lower.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Mean Low Water</code></th>
+                        <td>5</td>
+                        <td>
+                        </td>
+                        <td>The average height of all low waters at a place over a 19-year period.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Lowest Low Water Springs</code></th>
+                        <td>6</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary level conforming to the lowest water level observed at a place at spring tides during a period of time shorter than 19 years.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Approximate Mean Low Water Springs</code></th>
+                        <td>7</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary level, usually within 0.3m from that of Mean Low Water Springs (MLWS).</td>
+                      </tr>
+                      <tr>
+                        <th><code>Indian Spring Low Water</code></th>
+                        <td>8</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary tidal datum approximating the level of the mean of the lower low water at spring tides. It was first used in waters surrounding India.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Low Water Springs</code></th>
+                        <td>9</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary level, approximating that of mean low water springs (MLWS).</td>
+                      </tr>
+                      <tr>
+                        <th><code>Approximate Lowest Astronomical Tide</code></th>
+                        <td>10</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary level, usually within 0.3m from that of Lowest Astronomical Tide (LAT).</td>
+                      </tr>
+                      <tr>
+                        <th><code>Nearly Lowest Low Water</code></th>
+                        <td>11</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary level approximating the lowest water level observed at a place, usually equivalent to the Indian Spring Low Water (ISLW).</td>
+                      </tr>
+                      <tr>
+                        <th><code>Mean Lower Low Water</code></th>
+                        <td>12</td>
+                        <td>
+                        </td>
+                        <td>The average height of the lower low waters at a place over a 19-year period.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Low Water</code></th>
+                        <td>13</td>
+                        <td>
+                        </td>
+                        <td>The lowest level reached at a place by the water surface in one oscillation.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Approximate Mean Low Water</code></th>
+                        <td>14</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary level, usually within 0.3m from that of Mean Low Water (MLW).</td>
+                      </tr>
+                      <tr>
+                        <th><code>Approximate Mean Lower Low Water</code></th>
+                        <td>15</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary level, usually within 0.3m from that of Mean Lower Low Water (MLLW).</td>
+                      </tr>
+                      <tr>
+                        <th><code>Mean High Water</code></th>
+                        <td>16</td>
+                        <td>
+                        </td>
+                        <td>The average height of all high waters at a place over a 19-year period.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Mean High Water Springs</code></th>
+                        <td>17</td>
+                        <td>
+                        </td>
+                        <td>The average height of the high waters of spring tides.</td>
+                      </tr>
+                      <tr>
+                        <th><code>High Water</code></th>
+                        <td>18</td>
+                        <td>
+                        </td>
+                        <td>The highest level reached at a place by the water surface in one oscillation.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Approximate Mean Sea Level</code></th>
+                        <td>19</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary level, usually within 0.3m from that of Mean Sea Level (MSL).</td>
+                      </tr>
+                      <tr>
+                        <th><code>High Water Springs</code></th>
+                        <td>20</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary level, approximating that of mean high water springs (MHWS).</td>
+                      </tr>
+                      <tr>
+                        <th><code>Mean Higher High Water</code></th>
+                        <td>21</td>
+                        <td>
+                        </td>
+                        <td>The average height of higher high waters at a place over a 19-year period.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Equinoctial Spring Low Water</code></th>
+                        <td>22</td>
+                        <td>
+                        </td>
+                        <td>The level of low water springs near the time of an equinox.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Lowest Astronomical Tide</code></th>
+                        <td>23</td>
+                        <td>
+                        </td>
+                        <td>The lowest tide level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Local Datum</code></th>
+                        <td>24</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.</td>
+                      </tr>
+                      <tr>
+                        <th><code>International Great Lakes Datum 1985</code></th>
+                        <td>25</td>
+                        <td>
+                        </td>
+                        <td>A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Pere, Quebec, over the period 1970 to 1988.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Mean Water Level</code></th>
+                        <td>26</td>
+                        <td>
+                        </td>
+                        <td>The average of all hourly water levels over the available period of record.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Lower Low Water Large Tide</code></th>
+                        <td>27</td>
+                        <td>
+                        </td>
+                        <td>The average of the lowest low waters, one from each of 19 years of observations.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Higher High Water Large Tide</code></th>
+                        <td>28</td>
+                        <td>
+                        </td>
+                        <td>The average of the highest high waters, one from each of 19 years of observations.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Nearly Highest High Water</code></th>
+                        <td>29</td>
+                        <td>
+                        </td>
+                        <td>An arbitrary level approximating the highest water level observed at a place, usually equivalent to the high water springs.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Highest Astronomical Tide</code></th>
+                        <td>30</td>
+                        <td>
+                        </td>
+                        <td>The highest tidal level which can be predicted to occur under average meteorological conditions and under any combination of astronomical conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Local Low Water Reference Level</code></th>
+                        <td>31</td>
+                        <td>
+                        </td>
+                        <td>Low water reference level of the local area.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Local High Water Reference Level</code></th>
+                        <td>32</td>
+                        <td>
+                        </td>
+                        <td>High water reference level of the local area.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Local Mean Water Reference Level</code></th>
+                        <td>33</td>
+                        <td>
+                        </td>
+                        <td>Mean water reference level of the local area.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Equivalent Height of Water (German GlW)</code></th>
+                        <td>34</td>
+                        <td>
+                        </td>
+                        <td>A low water level which is the result of a defined low water discharge - called "equivalent discharge".</td>
+                      </tr>
+                      <tr>
+                        <th><code>Highest Shipping Height of Water (German HSW)</code></th>
+                        <td>35</td>
+                        <td>
+                        </td>
+                        <td>Upper limit of water levels where navigation is allowed.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Reference Low Water Level According to Danube Commission</code></th>
+                        <td>36</td>
+                        <td>
+                        </td>
+                        <td>The water level at a discharge, which is exceeded 94 % of the year within a period of 30 years.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Highest Shipping Height of Water According to Danube Commission</code></th>
+                        <td>37</td>
+                        <td>
+                        </td>
+                        <td>The water level at a discharge, which is exceeded 1% of the year within a period of 30 years.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Dutch River Low Water Reference Level (OLR)</code></th>
+                        <td>38</td>
+                        <td>
+                        </td>
+                        <td>The water level at a discharge, which is exceeded 95% of the year within a period of 20 years.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Russian Project Water Level</code></th>
+                        <td>39</td>
+                        <td>
+                        </td>
+                        <td>Conditional low water level with established probability.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Russian Normal Backwater Level</code></th>
+                        <td>40</td>
+                        <td>
+                        </td>
+                        <td>Highest water level derived from the upper backwater stream in watercourse or reservoir under the normal operational conditions.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Ohio River Datum</code></th>
+                        <td>41</td>
+                        <td>
+                        </td>
+                        <td>The Ohio River datum.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Dutch High Water Reference Level</code></th>
+                        <td>42</td>
+                        <td>
+                        </td>
+                        <td>Dutch High Water Reference Level.</td>
+                      </tr>
+                      <tr>
+                        <th><code>Baltic Sea Chart Datum 2000</code></th>
+                        <td>43</td>
+                        <td>
+                        </td>
+                        <td>The datum refers to each Baltic country's realization of the European Vertical Reference System (EVRS) with land-uplift epoch 2000, which is connected to the Normaal Amsterdams Peil (NAP).</td>
+                      </tr>
+                      <tr>
+                        <th><code>Dutch Estuary Low Water Reference Level (OLW)</code></th>
+                        <td>44</td>
+                        <td>
+                        </td>
+                        <td>Dutch Estuary Low Water Reference Level (OLW)</td>
+                      </tr>
+                      <tr>
+                        <th><code>Sea Floor</code></th>
+                        <td>45</td>
+                        <td>
+                        </td>
+                        <td>The bottom of the ocean and seas where there is a generally smooth gentle gradient. Also referred to as sea bed (sometimes seabed or sea-bed), and sea bottom.</td>
+                      </tr>
+                    </table>
+                  </td>
                 </tr>
               </table></details></article></div>
       </div>

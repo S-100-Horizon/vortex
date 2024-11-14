@@ -18,31 +18,19 @@ namespace S100Framework.DomainModel
 
     [System.SerializableAttribute()]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    public abstract class Role
-    {
-    }
-
-    [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationAssociation
     {
-        public InformationAssociation(string foreignKey)
+        public InformationAssociation()
         {
-            this.ForeignKey = foreignKey;
         }
-
-        public string ForeignKey { get; private set; }
     }
 
     [System.SerializableAttribute()]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureAssociation
     {
-        public FeatureAssociation(string foreignKey)
+        public FeatureAssociation()
         {
-            this.ForeignKey = foreignKey;
         }
-
-        public string ForeignKey { get; private set; }
     }
 }
