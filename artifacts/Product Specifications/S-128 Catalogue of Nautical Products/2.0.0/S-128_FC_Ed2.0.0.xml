@@ -2324,6 +2324,16 @@
 			<S100FC:definition>Source of information or data.</S100FC:definition>
 			<S100FC:code>theSource</S100FC:code>
 		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>main</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>main</S100FC:code>
+		</S100FC:S100_FC_Role>
+				<S100FC:S100_FC_Role>
+			<S100FC:name>panel</S100FC:name>
+			<S100FC:definition></S100FC:definition>
+			<S100FC:code>panel</S100FC:code>
+		</S100FC:S100_FC_Role>
 	</S100FC:S100_FC_Roles>
 	<S100FC:S100_FC_InformationAssociations>
 		<S100FC:S100_FC_InformationAssociation isAbstract="false">
