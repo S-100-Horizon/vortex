@@ -7,10 +7,7 @@ using System.Collections.ObjectModel;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.S122;
 using S100Framework.DomainModel.S122.ComplexAttributes;
-using S100Framework.DomainModel.S122.InformationTypes;
-using S100Framework.DomainModel.S122.FeatureTypes;
-using S100Framework.DomainModel.S122.Associations.InformationAssociations;
-using S100Framework.DomainModel.S122.Associations.FeatureAssociations;
+
 
 namespace S100Framework.WPF.ViewModel.S122
 {
