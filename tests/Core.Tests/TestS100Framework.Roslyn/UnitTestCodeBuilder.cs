@@ -147,7 +147,7 @@ namespace TestS100Framework
                 var type1 = typeof(Test.NullableTest);
                 var type2 = typeof(bool?);
 
-                var s100 = XDocument.Load(@".\Artifacts\S-101_FC_1.5.0.xml");
+                var s100 = XDocument.Load(@".\Artifacts\S-101_FC_2.0.0.20241016.xml");
 
                 var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 

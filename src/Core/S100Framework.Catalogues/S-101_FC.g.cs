@@ -6,7 +6,7 @@ namespace S100Framework.DomainModel.S101
 {
     public static class Information
     {
-        public static Version Version => new Version("1.5.0");
+        public static Version Version => new Version("2.0.0");
         public static string[] ComplexTypes => ["featureName", "featuresDetected", "fixedDateRange", "frequencyPair", "horizontalClearanceFixed", "horizontalClearanceOpen", "horizontalPositionUncertainty", "information", "measuredDistanceValue", "multiplicityOfFeatures", "onlineResource", "orientation", "periodicDateRange", "radarWaveLength", "sectorInformation", "sectorLimitOne", "sectorLimitTwo", "shapeInformation", "signalSequence", "speed", "surfaceCharacteristics", "surveyDateRange", "telecommunications", "tidalStreamValue", "timeIntervalsByDayOfWeek", "topmark", "valueOfLocalMagneticAnomaly", "verticalUncertainty", "vesselSpeedLimit", "zoneOfConfidence", "directionalCharacter", "rhythmOfLight", "scheduleByDayOfWeek", "sectorLimit", "spatialAccuracy", "tidalStreamPanelValues", "verticalClearanceClosed", "verticalClearanceFixed", "verticalClearanceOpen", "verticalClearanceSafe", "lightSector", "sectorCharacteristics", ];
         public static string[] InformationTypes => ["ContactDetails", "ServiceHours", "NonStandardWorkingDay", "NauticalInformation", "SpatialQuality", ];
         public static string[] FeatureTypes => ["QualityOfNonBathymetricData", "DataCoverage", "NavigationalSystemOfMarks", "LocalDirectionOfBuoyage", "QualityOfBathymetricData", "SoundingDatum", "VerticalDatumOfData", "QualityOfSurvey", "UpdateInformation", "MagneticVariation", "LocalMagneticAnomaly", "Coastline", "LandArea", "IslandGroup", "LandElevation", "River", "Rapids", "Waterfall", "Lake", "LandRegion", "Vegetation", "IceArea", "SlopingGround", "SlopeTopline", "Tideway", "BuiltUpArea", "Building", "AirportAirfield", "Runway", "Helipad", "Bridge", "SpanFixed", "SpanOpening", "Conveyor", "CableOverhead", "PipelineOverhead", "PylonBridgeSupport", "FenceWall", "Railway", "Road", "Tunnel", "Landmark", "SiloTank", "WindTurbine", "FortifiedStructure", "ProductionStorageArea", "Checkpoint", "Hulk", "Pile", "Dyke", "ShorelineConstruction", "StructureOverNavigableWater", "Causeway", "Canal", "DistanceMark", "Gate", "Dam", "Crane", "Berth", "Dolphin", "Bollard", "DryDock", "FloatingDock", "Pontoon", "DockArea", "Gridiron", "LockBasin", "MooringTrot", "SeaAreaNamedWaterArea", "TidalStreamFloodEbb", "CurrentNonGravitational", "WaterTurbulence", "TidalStreamPanelData", "Sounding", "DredgedArea", "SweptArea", "DepthContour", "DepthArea", "DepthNoBottomFound", "UnsurveyedArea", "SeabedArea", "WeedKelp", "Seagrass", "Sandwave", "Spring", "UnderwaterAwashRock", "Wreck", "Obstruction", "FoulGround", "DiscolouredWater", "FishingFacility", "MarineFarmCulture", "OffshorePlatform", "CableSubmarine", "CableArea", "PipelineSubmarineOnLand", "SubmarinePipelineArea", "OffshoreProductionArea", "NavigationLine", "RecommendedTrack", "RangeSystem", "Fairway", "FairwaySystem", "RecommendedRouteCentreline", "TwoWayRoutePart", "TwoWayRoute", "RecommendedTrafficLanePart", "DeepWaterRouteCentreline", "DeepWaterRoutePart", "DeepWaterRoute", "InshoreTrafficZone", "PrecautionaryArea", "TrafficSeparationSchemeLanePart", "SeparationZoneOrLine", "TrafficSeparationSchemeBoundary", "TrafficSeparationSchemeCrossing", "TrafficSeparationSchemeRoundabout", "TrafficSeparationScheme", "ArchipelagicSeaLaneArea", "ArchipelagicSeaLaneAxis", "ArchipelagicSeaLane", "RadioCallingInPoint", "FerryRoute", "RadarLine", "RadarRange", "RadarStation", "AnchorageArea", "MooringArea", "AnchorBerth", "SeaplaneLandingArea", "DumpingGround", "MilitaryPracticeArea", "AdministrationArea", "CargoTranshipmentArea", "CautionArea", "InformationArea", "ContiguousZone", "ContinentalShelfArea", "CustomZone", "ExclusiveEconomicZone", "FisheryZone", "FishingGround", "FreePortArea", "HarbourAreaAdministrative", "LogPond", "OilBarrier", "StraightTerritorialSeaBaseline", "TerritorialSeaArea", "SubmarineTransitLane", "PilotageDistrict", "CollisionRegulationsLimit", "MarinePollutionRegulationsArea", "RestrictedArea", "LightAllAround", "LightSectored", "LightFogDetector", "LightAirObstruction", "LateralBuoy", "CardinalBuoy", "IsolatedDangerBuoy", "SafeWaterBuoy", "SpecialPurposeGeneralBuoy", "EmergencyWreckMarkingBuoy", "InstallationBuoy", "MooringBuoy", "LateralBeacon", "CardinalBeacon", "IsolatedDangerBeacon", "SafeWaterBeacon", "SpecialPurposeGeneralBeacon", "Daymark", "LightFloat", "LightVessel", "Retroreflector", "RadarReflector", "FogSignal", "PhysicalAISAidToNavigation", "VirtualAISAidToNavigation", "RadioStation", "RadarTransponderBeacon", "PilotBoardingPlace", "VesselTrafficServiceArea", "CoastGuardStation", "SignalStationWarning", "SignalStationTraffic", "RescueStation", "HarbourFacility", "SmallCraftFacility", "TextPlacement", "Chart1Feature", ];
@@ -799,7 +799,7 @@ namespace S100Framework.DomainModel.S101
         [System.ComponentModel.Description("A form of decorative gateway or portal, consisting of two upright wooden posts connected at the top by two horizontal crosspieces, commonly found at the entrance to Shinto temples.")]
         [System.Xml.Serialization.XmlEnum("25")]
         Torii = 25,
-        [System.ComponentModel.Description("A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians")]
+        [System.ComponentModel.Description("A structure erected over a depression or an obstacle such as a body of water, railroad, etc., to provide a roadway for vehicles or pedestrians.")]
         [System.Xml.Serialization.XmlEnum("26")]
         Bridge = 26,
         [System.ComponentModel.Description("A barrier to check or confine anything in motion; particularly one constructed to hold back water and raise its level to form a reservoir, or to prevent flooding.")]
@@ -3454,7 +3454,7 @@ namespace S100Framework.DomainModel.S101
     [System.SerializableAttribute()]
     public enum topmarkDaymarkShape : int
     {
-        [System.ComponentModel.Description("Is where the vertex points up. A cone is a solid figure generated by straight lines drawn from a fixed point (the vertex) to a circle in a plane not containing the vertex. Cones are commonly used as International Association of Lighthouse Authorities - IALA topmarks, lateral.")]
+        [System.ComponentModel.Description("Is where the vertex points up.")]
         [System.Xml.Serialization.XmlEnum("1")]
         ConePointUp = 1,
         [System.ComponentModel.Description("Is where the vertex points down.")]
@@ -3472,7 +3472,7 @@ namespace S100Framework.DomainModel.S101
         [System.ComponentModel.Description("Usually of rectangular shape, made from timber or metal and used to provide a contrast with the natural background of a daymark. The actual daymark is often painted on to this board.")]
         [System.Xml.Serialization.XmlEnum("6")]
         Board = 6,
-        [System.ComponentModel.Description("Having a shape or a cross-section like the capital letter X. An x-shape as an International Association of Lighthouse Authorities - IALA topmark should be 3 dimensional in shape. It is made of at least three crossed bars.")]
+        [System.ComponentModel.Description("Having a shape or a cross-section like the capital letter X.")]
         [System.Xml.Serialization.XmlEnum("7")]
         XShaped = 7,
         [System.ComponentModel.Description("A cross with one vertical member and one horizontal member; that is, similar in shape to the character '+'.")]
@@ -3649,7 +3649,7 @@ namespace S100Framework.DomainModel.S101
         [System.ComponentModel.Description("An arbitrary datum defined by a local harbour authority, from which levels and tidal heights are measured by this authority.")]
         [System.Xml.Serialization.XmlEnum("24")]
         LocalDatum = 24,
-        [System.ComponentModel.Description("A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Pere, Quebec, over the period 1970 to 1988.")]
+        [System.ComponentModel.Description("A vertical reference system with its zero based on the mean water level at Rimouski/Pointe-au-Père, Quebec, over the period 1970 to 1988.")]
         [System.Xml.Serialization.XmlEnum("25")]
         InternationalGreatLakesDatum1985 = 25,
         [System.ComponentModel.Description("The average of all hourly water levels over the available period of record.")]
@@ -3760,7 +3760,7 @@ namespace S100Framework.DomainModel.S101
     [System.SerializableAttribute()]
     public enum categoryOfCargo : int
     {
-        [System.ComponentModel.Description("Unpacked homogenous cargo poured loose in a certain space of a vessel e.g. oil or grain.")]
+        [System.ComponentModel.Description("Unpacked homogenous cargo poured loose in a certain space of a vessel, for example oil or grain.")]
         [System.Xml.Serialization.XmlEnum("1")]
         Bulk = 1,
         [System.ComponentModel.Description("One of a number of standard sized cargo carrying units, secured using standard corner attachments and bar.")]
