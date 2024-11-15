@@ -4,12 +4,13 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S124.ComplexAttributes;
 using S100Framework.DomainModel.S124.InformationTypes;
 using S100Framework.DomainModel.S124.FeatureTypes;
-using S100Framework.DomainModel.S124.Bindings.InformationAssociations;
-using S100Framework.DomainModel.S124.Bindings.Roles;
+using S100Framework.DomainModel.S124.Associations.InformationAssociations;
+using S100Framework.DomainModel.S124.Associations.FeatureAssociations;
 
 namespace S100Framework.WPF.ViewModel.S124
 {
@@ -1194,43 +1195,6 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
-    public class NAVWARNPreambleInformationBindingsViewModel : ViewModelBase
-    {
-        [Category("NAVWARNPreambleInformationBindings")]
-        public ObservableCollection<NWReferences<theReferences>> theReferences { get; set; } = new();
-
-        public void Load(DomainModel.S124.InformationTypes.NAVWARNPreambleInformationBindings instance)
-        {
-            theReferences.Clear();
-            if (instance.theReferences is not null)
-                foreach (var e in instance.theReferences)
-                    theReferences.Add(e);
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S124.InformationTypes.NAVWARNPreambleInformationBindings
-            {
-                theReferences = this.theReferences.ToList(),
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S124.InformationTypes.NAVWARNPreambleInformationBindings Model => new()
-        {
-            theReferences = this.theReferences.ToList(),
-        };
-
-        public NAVWARNPreambleInformationBindingsViewModel()
-        {
-            theReferences.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theReferences));
-            };
-        }
-    }
-
     public class NAVWARNPreambleViewModel : ViewModelBase
     {
         [Category("NAVWARNPreamble")]
@@ -1323,21 +1287,6 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        private NAVWARNPreambleInformationBindingsViewModel? _NAVWARNPreambleInformationBindings;
-        [Category("NAVWARNPreamble")]
-        public NAVWARNPreambleInformationBindingsViewModel? NAVWARNPreambleInformationBindings
-        {
-            get
-            {
-                return _NAVWARNPreambleInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _NAVWARNPreambleInformationBindings, value);
-            }
-        }
-
         [Browsable(false)]
         public navwarnTypeGeneral[] navwarnTypeGeneralList => CodeList.navwarnTypeGenerals.ToArray();
 
@@ -1370,12 +1319,6 @@ namespace S100Framework.WPF.ViewModel.S124
             intService = instance.intService;
             navwarnTypeGeneral = instance.navwarnTypeGeneral;
             publicationTime = instance.publicationTime;
-            NAVWARNPreambleInformationBindings = new();
-            if (instance.NAVWARNPreambleInformationBindings != null)
-            {
-                NAVWARNPreambleInformationBindings = new();
-                NAVWARNPreambleInformationBindings.Load(instance.NAVWARNPreambleInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -1391,7 +1334,6 @@ namespace S100Framework.WPF.ViewModel.S124
                 intService = this.intService,
                 navwarnTypeGeneral = this.navwarnTypeGeneral,
                 publicationTime = this.publicationTime,
-                NAVWARNPreambleInformationBindings = this.NAVWARNPreambleInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -1408,7 +1350,6 @@ namespace S100Framework.WPF.ViewModel.S124
             intService = this._intService,
             navwarnTypeGeneral = this._navwarnTypeGeneral,
             publicationTime = this._publicationTime,
-            NAVWARNPreambleInformationBindings = this._NAVWARNPreambleInformationBindings?.Model,
         };
 
         public NAVWARNPreambleViewModel()
@@ -1547,21 +1488,6 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        private NWPreambleContent<header> _header;
-        [Category("NAVWARNPart")]
-        public NWPreambleContent<header> header
-        {
-            get
-            {
-                return _header;
-            }
-
-            set
-            {
-                SetValue(ref _header, value);
-            }
-        }
-
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance)
         {
             featureName.Clear();
@@ -1584,7 +1510,6 @@ namespace S100Framework.WPF.ViewModel.S124
             }
 
             restriction = instance.restriction;
-            header = instance.header;
         }
 
         public override string Serialize()
@@ -1596,7 +1521,6 @@ namespace S100Framework.WPF.ViewModel.S124
                 fixedDateRange = this.fixedDateRange.ToList(),
                 warningInformation = this.warningInformation?.Model,
                 restriction = this.restriction,
-                header = this.header,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -1609,7 +1533,6 @@ namespace S100Framework.WPF.ViewModel.S124
             fixedDateRange = this.fixedDateRange.ToList(),
             warningInformation = this._warningInformation?.Model,
             restriction = this._restriction,
-            header = this._header,
         };
 
         public NAVWARNPartViewModel()

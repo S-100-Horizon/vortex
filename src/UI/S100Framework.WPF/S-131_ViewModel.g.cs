@@ -4,13 +4,13 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S131;
 using S100Framework.DomainModel.S131.ComplexAttributes;
 using S100Framework.DomainModel.S131.InformationTypes;
 using S100Framework.DomainModel.S131.FeatureTypes;
-using S100Framework.DomainModel.S131.Bindings.InformationAssociations;
-using S100Framework.DomainModel.S131.Bindings.FeatureAssociations;
-using S100Framework.DomainModel.S131.Bindings.Roles;
+using S100Framework.DomainModel.S131.Associations.InformationAssociations;
+using S100Framework.DomainModel.S131.Associations.FeatureAssociations;
 
 namespace S100Framework.WPF.ViewModel.S131
 {
@@ -2673,143 +2673,6 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class InformationTypeInformationBindingsViewModel : ViewModelBase
-    {
-        [Category("InformationTypeInformationBindings")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
-        public void Load(DomainModel.S131.InformationTypes.InformationTypeInformationBindings instance)
-        {
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S131.InformationTypes.InformationTypeInformationBindings
-            {
-                providesInformation = this.providesInformation.ToList(),
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S131.InformationTypes.InformationTypeInformationBindings Model => new()
-        {
-            providesInformation = this.providesInformation.ToList(),
-        };
-
-        public InformationTypeInformationBindingsViewModel()
-        {
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
-            };
-        }
-    }
-
-    public class AbstractRxNInformationBindingsViewModel : ViewModelBase
-    {
-        [Category("AbstractRxNInformationBindings")]
-        public ObservableCollection<InclusionType<isApplicableTo>> isApplicableTo { get; set; } = new();
-
-        [Category("AbstractRxNInformationBindings")]
-        public ObservableCollection<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = new();
-
-        public void Load(DomainModel.S131.InformationTypes.AbstractRxNInformationBindings instance)
-        {
-            isApplicableTo.Clear();
-            if (instance.isApplicableTo is not null)
-                foreach (var e in instance.isApplicableTo)
-                    isApplicableTo.Add(e);
-            theOrganisation.Clear();
-            if (instance.theOrganisation is not null)
-                foreach (var e in instance.theOrganisation)
-                    theOrganisation.Add(e);
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S131.InformationTypes.AbstractRxNInformationBindings
-            {
-                isApplicableTo = this.isApplicableTo.ToList(),
-                theOrganisation = this.theOrganisation.ToList(),
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S131.InformationTypes.AbstractRxNInformationBindings Model => new()
-        {
-            isApplicableTo = this.isApplicableTo.ToList(),
-            theOrganisation = this.theOrganisation.ToList(),
-        };
-
-        public AbstractRxNInformationBindingsViewModel()
-        {
-            isApplicableTo.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(isApplicableTo));
-            };
-            theOrganisation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theOrganisation));
-            };
-        }
-    }
-
-    public class ApplicabilityInformationBindingsViewModel : ViewModelBase
-    {
-        [Category("ApplicabilityInformationBindings")]
-        public ObservableCollection<InclusionType<theApplicableRxN>> theApplicableRxN { get; set; } = new();
-
-        [Category("ApplicabilityInformationBindings")]
-        public ObservableCollection<PermissionType<vslLocation>> vslLocation { get; set; } = new();
-
-        public void Load(DomainModel.S131.InformationTypes.ApplicabilityInformationBindings instance)
-        {
-            theApplicableRxN.Clear();
-            if (instance.theApplicableRxN is not null)
-                foreach (var e in instance.theApplicableRxN)
-                    theApplicableRxN.Add(e);
-            vslLocation.Clear();
-            if (instance.vslLocation is not null)
-                foreach (var e in instance.vslLocation)
-                    vslLocation.Add(e);
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S131.InformationTypes.ApplicabilityInformationBindings
-            {
-                theApplicableRxN = this.theApplicableRxN.ToList(),
-                vslLocation = this.vslLocation.ToList(),
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S131.InformationTypes.ApplicabilityInformationBindings Model => new()
-        {
-            theApplicableRxN = this.theApplicableRxN.ToList(),
-            vslLocation = this.vslLocation.ToList(),
-        };
-
-        public ApplicabilityInformationBindingsViewModel()
-        {
-            theApplicableRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theApplicableRxN));
-            };
-            vslLocation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(vslLocation));
-            };
-        }
-    }
-
     public class ApplicabilityViewModel : ViewModelBase
     {
         private Boolean? _inBallast = default;
@@ -2916,21 +2779,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("Applicability")]
         public ObservableCollection<vesselsMeasurements> vesselsMeasurements { get; set; } = new();
 
-        private ApplicabilityInformationBindingsViewModel? _ApplicabilityInformationBindings;
-        [Category("Applicability")]
-        public ApplicabilityInformationBindingsViewModel? ApplicabilityInformationBindings
-        {
-            get
-            {
-                return _ApplicabilityInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _ApplicabilityInformationBindings, value);
-            }
-        }
-
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -3001,21 +2849,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
-        [Category("InformationType")]
-        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
-        {
-            get
-            {
-                return _InformationTypeInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _InformationTypeInformationBindings, value);
-            }
-        }
-
         [Browsable(false)]
         public categoryOfVessel[] categoryOfVesselList => CodeList.categoryOfVessels.ToArray();
 
@@ -3043,13 +2876,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.vesselsMeasurements is not null)
                 foreach (var e in instance.vesselsMeasurements)
                     vesselsMeasurements.Add(e);
-            ApplicabilityInformationBindings = new();
-            if (instance.ApplicabilityInformationBindings != null)
-            {
-                ApplicabilityInformationBindings = new();
-                ApplicabilityInformationBindings.Load(instance.ApplicabilityInformationBindings);
-            }
-
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -3072,12 +2898,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            InformationTypeInformationBindings = new();
-            if (instance.InformationTypeInformationBindings != null)
-            {
-                InformationTypeInformationBindings = new();
-                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -3094,7 +2914,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 vesselPerformance = this.vesselPerformance,
                 information = this.information.ToList(),
                 vesselsMeasurements = this.vesselsMeasurements.ToList(),
-                ApplicabilityInformationBindings = this.ApplicabilityInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -3102,7 +2921,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -3120,7 +2938,6 @@ namespace S100Framework.WPF.ViewModel.S131
             vesselPerformance = this._vesselPerformance,
             information = this.information.ToList(),
             vesselsMeasurements = this.vesselsMeasurements.ToList(),
-            ApplicabilityInformationBindings = this._ApplicabilityInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -3128,7 +2945,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public ApplicabilityViewModel()
@@ -3160,69 +2976,6 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(graphic));
-            };
-        }
-    }
-
-    public class AuthorityInformationBindingsViewModel : ViewModelBase
-    {
-        [Category("AuthorityInformationBindings")]
-        public ObservableCollection<AuthorityContact<theContactDetails>> theContactDetails { get; set; } = new();
-
-        [Category("AuthorityInformationBindings")]
-        public ObservableCollection<RelatedOrganisation<theInformation>> theInformation { get; set; } = new();
-
-        [Category("AuthorityInformationBindings")]
-        public ObservableCollection<AuthorityHours<theServiceHours>> theServiceHours { get; set; } = new();
-
-        public void Load(DomainModel.S131.InformationTypes.AuthorityInformationBindings instance)
-        {
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
-            theInformation.Clear();
-            if (instance.theInformation is not null)
-                foreach (var e in instance.theInformation)
-                    theInformation.Add(e);
-            theServiceHours.Clear();
-            if (instance.theServiceHours is not null)
-                foreach (var e in instance.theServiceHours)
-                    theServiceHours.Add(e);
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S131.InformationTypes.AuthorityInformationBindings
-            {
-                theContactDetails = this.theContactDetails.ToList(),
-                theInformation = this.theInformation.ToList(),
-                theServiceHours = this.theServiceHours.ToList(),
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S131.InformationTypes.AuthorityInformationBindings Model => new()
-        {
-            theContactDetails = this.theContactDetails.ToList(),
-            theInformation = this.theInformation.ToList(),
-            theServiceHours = this.theServiceHours.ToList(),
-        };
-
-        public AuthorityInformationBindingsViewModel()
-        {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
-            theInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theInformation));
-            };
-            theServiceHours.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theServiceHours));
             };
         }
     }
@@ -3260,21 +3013,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private AuthorityInformationBindingsViewModel? _AuthorityInformationBindings;
-        [Category("Authority")]
-        public AuthorityInformationBindingsViewModel? AuthorityInformationBindings
-        {
-            get
-            {
-                return _AuthorityInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _AuthorityInformationBindings, value);
-            }
-        }
-
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -3345,21 +3083,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
-        [Category("InformationType")]
-        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
-        {
-            get
-            {
-                return _InformationTypeInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _InformationTypeInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.Authority instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -3368,13 +3091,6 @@ namespace S100Framework.WPF.ViewModel.S131
             {
                 textContent = new();
                 textContent.Load(instance.textContent);
-            }
-
-            AuthorityInformationBindings = new();
-            if (instance.AuthorityInformationBindings != null)
-            {
-                AuthorityInformationBindings = new();
-                AuthorityInformationBindings.Load(instance.AuthorityInformationBindings);
             }
 
             featureName.Clear();
@@ -3399,12 +3115,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            InformationTypeInformationBindings = new();
-            if (instance.InformationTypeInformationBindings != null)
-            {
-                InformationTypeInformationBindings = new();
-                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -3413,7 +3123,6 @@ namespace S100Framework.WPF.ViewModel.S131
             {
                 categoryOfAuthority = this.categoryOfAuthority,
                 textContent = this.textContent?.Model,
-                AuthorityInformationBindings = this.AuthorityInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -3421,7 +3130,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -3431,7 +3139,6 @@ namespace S100Framework.WPF.ViewModel.S131
         {
             categoryOfAuthority = this._categoryOfAuthority,
             textContent = this._textContent?.Model,
-            AuthorityInformationBindings = this._AuthorityInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -3439,7 +3146,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public AuthorityViewModel()
@@ -3586,21 +3292,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
-        [Category("InformationType")]
-        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
-        {
-            get
-            {
-                return _InformationTypeInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _InformationTypeInformationBindings, value);
-            }
-        }
-
         [Browsable(false)]
         public transportConnection[] transportConnectionList => CodeList.transportConnections.ToArray();
 
@@ -3680,12 +3371,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            InformationTypeInformationBindings = new();
-            if (instance.InformationTypeInformationBindings != null)
-            {
-                InformationTypeInformationBindings = new();
-                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -3712,7 +3397,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -3740,7 +3424,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public AvailablePortServicesViewModel()
@@ -3804,43 +3487,6 @@ namespace S100Framework.WPF.ViewModel.S131
             graphic.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(graphic));
-            };
-        }
-    }
-
-    public class ContactDetailsInformationBindingsViewModel : ViewModelBase
-    {
-        [Category("ContactDetailsInformationBindings")]
-        public ObservableCollection<AuthorityContact<theAuthority>> theAuthority { get; set; } = new();
-
-        public void Load(DomainModel.S131.InformationTypes.ContactDetailsInformationBindings instance)
-        {
-            theAuthority.Clear();
-            if (instance.theAuthority is not null)
-                foreach (var e in instance.theAuthority)
-                    theAuthority.Add(e);
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S131.InformationTypes.ContactDetailsInformationBindings
-            {
-                theAuthority = this.theAuthority.ToList(),
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S131.InformationTypes.ContactDetailsInformationBindings Model => new()
-        {
-            theAuthority = this.theAuthority.ToList(),
-        };
-
-        public ContactDetailsInformationBindingsViewModel()
-        {
-            theAuthority.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theAuthority));
             };
         }
     }
@@ -3943,21 +3589,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("ContactDetails")]
         public ObservableCollection<telecommunications> telecommunications { get; set; } = new();
 
-        private ContactDetailsInformationBindingsViewModel? _ContactDetailsInformationBindings;
-        [Category("ContactDetails")]
-        public ContactDetailsInformationBindingsViewModel? ContactDetailsInformationBindings
-        {
-            get
-            {
-                return _ContactDetailsInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _ContactDetailsInformationBindings, value);
-            }
-        }
-
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -4028,21 +3659,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
-        [Category("InformationType")]
-        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
-        {
-            get
-            {
-                return _InformationTypeInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _InformationTypeInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.ContactDetails instance)
         {
             callName = instance.callName;
@@ -4078,13 +3694,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.telecommunications is not null)
                 foreach (var e in instance.telecommunications)
                     telecommunications.Add(e);
-            ContactDetailsInformationBindings = new();
-            if (instance.ContactDetailsInformationBindings != null)
-            {
-                ContactDetailsInformationBindings = new();
-                ContactDetailsInformationBindings.Load(instance.ContactDetailsInformationBindings);
-            }
-
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -4107,12 +3716,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            InformationTypeInformationBindings = new();
-            if (instance.InformationTypeInformationBindings != null)
-            {
-                InformationTypeInformationBindings = new();
-                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -4131,7 +3734,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 mMSICode = this.mMSICode,
                 onlineResource = this.onlineResource.ToList(),
                 telecommunications = this.telecommunications.ToList(),
-                ContactDetailsInformationBindings = this.ContactDetailsInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -4139,7 +3741,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4159,7 +3760,6 @@ namespace S100Framework.WPF.ViewModel.S131
             mMSICode = this._mMSICode,
             onlineResource = this.onlineResource.ToList(),
             telecommunications = this.telecommunications.ToList(),
-            ContactDetailsInformationBindings = this._ContactDetailsInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -4167,7 +3767,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public ContactDetailsViewModel()
@@ -4353,21 +3952,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
-        [Category("InformationType")]
-        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
-        {
-            get
-            {
-                return _InformationTypeInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _InformationTypeInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.Entrance instance)
         {
             entranceDescription = instance.entranceDescription;
@@ -4423,12 +4007,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            InformationTypeInformationBindings = new();
-            if (instance.InformationTypeInformationBindings != null)
-            {
-                InformationTypeInformationBindings = new();
-                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -4452,7 +4030,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4477,7 +4054,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public EntranceViewModel()
@@ -4525,60 +4101,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class NauticalInformationInformationBindingsViewModel : ViewModelBase
-    {
-        [Category("NauticalInformationInformationBindings")]
-        public ObservableCollection<AdditionalInformation<informationProvidedFor>> informationProvidedFor { get; set; } = new();
-
-        public void Load(DomainModel.S131.InformationTypes.NauticalInformationInformationBindings instance)
-        {
-            informationProvidedFor.Clear();
-            if (instance.informationProvidedFor is not null)
-                foreach (var e in instance.informationProvidedFor)
-                    informationProvidedFor.Add(e);
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S131.InformationTypes.NauticalInformationInformationBindings
-            {
-                informationProvidedFor = this.informationProvidedFor.ToList(),
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S131.InformationTypes.NauticalInformationInformationBindings Model => new()
-        {
-            informationProvidedFor = this.informationProvidedFor.ToList(),
-        };
-
-        public NauticalInformationInformationBindingsViewModel()
-        {
-            informationProvidedFor.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(informationProvidedFor));
-            };
-        }
-    }
-
     public class NauticalInformationViewModel : ViewModelBase
     {
-        private NauticalInformationInformationBindingsViewModel? _NauticalInformationInformationBindings;
-        [Category("NauticalInformation")]
-        public NauticalInformationInformationBindingsViewModel? NauticalInformationInformationBindings
-        {
-            get
-            {
-                return _NauticalInformationInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _NauticalInformationInformationBindings, value);
-            }
-        }
-
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority
@@ -4599,21 +4123,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("AbstractRxN")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
-        [Category("AbstractRxN")]
-        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
-        {
-            get
-            {
-                return _AbstractRxNInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _AbstractRxNInformationBindings, value);
-            }
-        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -4685,30 +4194,8 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
-        [Category("InformationType")]
-        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
-        {
-            get
-            {
-                return _InformationTypeInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _InformationTypeInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.NauticalInformation instance)
         {
-            NauticalInformationInformationBindings = new();
-            if (instance.NauticalInformationInformationBindings != null)
-            {
-                NauticalInformationInformationBindings = new();
-                NauticalInformationInformationBindings.Load(instance.NauticalInformationInformationBindings);
-            }
-
             categoryOfAuthority = instance.categoryOfAuthority;
             rxNCode.Clear();
             if (instance.rxNCode is not null)
@@ -4718,13 +4205,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            AbstractRxNInformationBindings = new();
-            if (instance.AbstractRxNInformationBindings != null)
-            {
-                AbstractRxNInformationBindings = new();
-                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
-            }
-
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -4747,23 +4227,15 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            InformationTypeInformationBindings = new();
-            if (instance.InformationTypeInformationBindings != null)
-            {
-                InformationTypeInformationBindings = new();
-                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
-            }
         }
 
         public override string Serialize()
         {
             var instance = new DomainModel.S131.InformationTypes.NauticalInformation
             {
-                NauticalInformationInformationBindings = this.NauticalInformationInformationBindings?.Model,
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
-                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -4771,7 +4243,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4779,11 +4250,9 @@ namespace S100Framework.WPF.ViewModel.S131
         [Browsable(false)]
         public DomainModel.S131.InformationTypes.NauticalInformation Model => new()
         {
-            NauticalInformationInformationBindings = this._NauticalInformationInformationBindings?.Model,
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
-            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -4791,7 +4260,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public NauticalInformationViewModel()
@@ -4900,21 +4368,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
-        [Category("InformationType")]
-        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
-        {
-            get
-            {
-                return _InformationTypeInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _InformationTypeInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.NonStandardWorkingDay instance)
         {
             dateFixed.Clear();
@@ -4951,12 +4404,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            InformationTypeInformationBindings = new();
-            if (instance.InformationTypeInformationBindings != null)
-            {
-                InformationTypeInformationBindings = new();
-                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -4973,7 +4420,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4991,7 +4437,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public NonStandardWorkingDayViewModel()
@@ -5046,21 +4491,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AbstractRxN")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
-        [Category("AbstractRxN")]
-        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
-        {
-            get
-            {
-                return _AbstractRxNInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _AbstractRxNInformationBindings, value);
-            }
-        }
-
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -5131,21 +4561,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
-        [Category("InformationType")]
-        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
-        {
-            get
-            {
-                return _InformationTypeInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _InformationTypeInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.Recommendations instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -5157,13 +4572,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            AbstractRxNInformationBindings = new();
-            if (instance.AbstractRxNInformationBindings != null)
-            {
-                AbstractRxNInformationBindings = new();
-                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
-            }
-
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -5186,12 +4594,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            InformationTypeInformationBindings = new();
-            if (instance.InformationTypeInformationBindings != null)
-            {
-                InformationTypeInformationBindings = new();
-                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -5201,7 +4603,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
-                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -5209,7 +4610,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -5220,7 +4620,6 @@ namespace S100Framework.WPF.ViewModel.S131
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
-            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -5228,7 +4627,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public RecommendationsViewModel()
@@ -5279,21 +4677,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AbstractRxN")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
-        [Category("AbstractRxN")]
-        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
-        {
-            get
-            {
-                return _AbstractRxNInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _AbstractRxNInformationBindings, value);
-            }
-        }
-
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -5364,21 +4747,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
-        [Category("InformationType")]
-        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
-        {
-            get
-            {
-                return _InformationTypeInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _InformationTypeInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.Regulations instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -5390,13 +4758,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            AbstractRxNInformationBindings = new();
-            if (instance.AbstractRxNInformationBindings != null)
-            {
-                AbstractRxNInformationBindings = new();
-                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
-            }
-
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -5419,12 +4780,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            InformationTypeInformationBindings = new();
-            if (instance.InformationTypeInformationBindings != null)
-            {
-                InformationTypeInformationBindings = new();
-                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -5434,7 +4789,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
-                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -5442,7 +4796,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -5453,7 +4806,6 @@ namespace S100Framework.WPF.ViewModel.S131
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
-            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -5461,7 +4813,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public RegulationsViewModel()
@@ -5512,21 +4863,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AbstractRxN")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private AbstractRxNInformationBindingsViewModel? _AbstractRxNInformationBindings;
-        [Category("AbstractRxN")]
-        public AbstractRxNInformationBindingsViewModel? AbstractRxNInformationBindings
-        {
-            get
-            {
-                return _AbstractRxNInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _AbstractRxNInformationBindings, value);
-            }
-        }
-
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -5597,21 +4933,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
-        [Category("InformationType")]
-        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
-        {
-            get
-            {
-                return _InformationTypeInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _InformationTypeInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.Restrictions instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -5623,13 +4944,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            AbstractRxNInformationBindings = new();
-            if (instance.AbstractRxNInformationBindings != null)
-            {
-                AbstractRxNInformationBindings = new();
-                AbstractRxNInformationBindings.Load(instance.AbstractRxNInformationBindings);
-            }
-
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -5652,12 +4966,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            InformationTypeInformationBindings = new();
-            if (instance.InformationTypeInformationBindings != null)
-            {
-                InformationTypeInformationBindings = new();
-                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -5667,7 +4975,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
-                AbstractRxNInformationBindings = this.AbstractRxNInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -5675,7 +4982,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -5686,7 +4992,6 @@ namespace S100Framework.WPF.ViewModel.S131
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
-            AbstractRxNInformationBindings = this._AbstractRxNInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -5694,7 +4999,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public RestrictionsViewModel()
@@ -5722,56 +5026,6 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class ServiceHoursInformationBindingsViewModel : ViewModelBase
-    {
-        [Category("ServiceHoursInformationBindings")]
-        public ObservableCollection<ExceptionalWorkday<partialWorkingDay>> partialWorkingDay { get; set; } = new();
-
-        [Category("ServiceHoursInformationBindings")]
-        public ObservableCollection<AuthorityHours<theAuthority_srvHrs>> theAuthority_srvHrs { get; set; } = new();
-
-        public void Load(DomainModel.S131.InformationTypes.ServiceHoursInformationBindings instance)
-        {
-            partialWorkingDay.Clear();
-            if (instance.partialWorkingDay is not null)
-                foreach (var e in instance.partialWorkingDay)
-                    partialWorkingDay.Add(e);
-            theAuthority_srvHrs.Clear();
-            if (instance.theAuthority_srvHrs is not null)
-                foreach (var e in instance.theAuthority_srvHrs)
-                    theAuthority_srvHrs.Add(e);
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S131.InformationTypes.ServiceHoursInformationBindings
-            {
-                partialWorkingDay = this.partialWorkingDay.ToList(),
-                theAuthority_srvHrs = this.theAuthority_srvHrs.ToList(),
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S131.InformationTypes.ServiceHoursInformationBindings Model => new()
-        {
-            partialWorkingDay = this.partialWorkingDay.ToList(),
-            theAuthority_srvHrs = this.theAuthority_srvHrs.ToList(),
-        };
-
-        public ServiceHoursInformationBindingsViewModel()
-        {
-            partialWorkingDay.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(partialWorkingDay));
-            };
-            theAuthority_srvHrs.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theAuthority_srvHrs));
-            };
-        }
-    }
-
     public class ServiceHoursViewModel : ViewModelBase
     {
         [Category("ServiceHours")]
@@ -5779,21 +5033,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("ServiceHours")]
         public ObservableCollection<information> information { get; set; } = new();
-
-        private ServiceHoursInformationBindingsViewModel? _ServiceHoursInformationBindings;
-        [Category("ServiceHours")]
-        public ServiceHoursInformationBindingsViewModel? ServiceHoursInformationBindings
-        {
-            get
-            {
-                return _ServiceHoursInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _ServiceHoursInformationBindings, value);
-            }
-        }
 
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -5865,21 +5104,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationTypeInformationBindingsViewModel? _InformationTypeInformationBindings;
-        [Category("InformationType")]
-        public InformationTypeInformationBindingsViewModel? InformationTypeInformationBindings
-        {
-            get
-            {
-                return _InformationTypeInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _InformationTypeInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.ServiceHours instance)
         {
             scheduleByDayOfWeek.Clear();
@@ -5890,13 +5114,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.information is not null)
                 foreach (var e in instance.information)
                     information.Add(e);
-            ServiceHoursInformationBindings = new();
-            if (instance.ServiceHoursInformationBindings != null)
-            {
-                ServiceHoursInformationBindings = new();
-                ServiceHoursInformationBindings.Load(instance.ServiceHoursInformationBindings);
-            }
-
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -5919,12 +5136,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = instance.source;
             sourceType = instance.sourceType;
             reportedDate = instance.reportedDate;
-            InformationTypeInformationBindings = new();
-            if (instance.InformationTypeInformationBindings != null)
-            {
-                InformationTypeInformationBindings = new();
-                InformationTypeInformationBindings.Load(instance.InformationTypeInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -5933,7 +5144,6 @@ namespace S100Framework.WPF.ViewModel.S131
             {
                 scheduleByDayOfWeek = this.scheduleByDayOfWeek.ToList(),
                 information = this.information.ToList(),
-                ServiceHoursInformationBindings = this.ServiceHoursInformationBindings?.Model,
                 featureName = this.featureName.ToList(),
                 fixedDateRange = this.fixedDateRange?.Model,
                 periodicDateRange = this.periodicDateRange.ToList(),
@@ -5941,7 +5151,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 source = this.source,
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
-                InformationTypeInformationBindings = this.InformationTypeInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -5951,7 +5160,6 @@ namespace S100Framework.WPF.ViewModel.S131
         {
             scheduleByDayOfWeek = this.scheduleByDayOfWeek.ToList(),
             information = this.information.ToList(),
-            ServiceHoursInformationBindings = this._ServiceHoursInformationBindings?.Model,
             featureName = this.featureName.ToList(),
             fixedDateRange = this._fixedDateRange?.Model,
             periodicDateRange = this.periodicDateRange.ToList(),
@@ -5959,7 +5167,6 @@ namespace S100Framework.WPF.ViewModel.S131
             source = this._source,
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
-            InformationTypeInformationBindings = this._InformationTypeInformationBindings?.Model,
         };
 
         public ServiceHoursViewModel()
@@ -6044,54 +5251,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
     public class AnchorBerthViewModel : ViewModelBase
     {
-        private ServiceAvailability<serviceDescriptionReference>? _serviceDescriptionReference = default;
-        [Category("AnchorBerth")]
-        public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference
-        {
-            get
-            {
-                return _serviceDescriptionReference;
-            }
-
-            set
-            {
-                SetValue(ref _serviceDescriptionReference, value);
-            }
-        }
-
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("AnchorBerth")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -6198,24 +5357,8 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.AnchorBerth instance)
         {
-            serviceDescriptionReference = instance.serviceDescriptionReference;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -6248,28 +5391,12 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
         {
             var instance = new DomainModel.S131.FeatureTypes.AnchorBerth
             {
-                serviceDescriptionReference = this.serviceDescriptionReference,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -6281,9 +5408,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -6291,10 +5415,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Browsable(false)]
         public DomainModel.S131.FeatureTypes.AnchorBerth Model => new()
         {
-            serviceDescriptionReference = this._serviceDescriptionReference,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -6306,17 +5426,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public AnchorBerthViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -6336,18 +5449,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -6416,39 +5517,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("AnchorageArea")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -6555,15 +5623,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.AnchorageArea instance)
         {
             depthsDescription = new();
@@ -6582,12 +5641,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
 
             iSPSLevel = instance.iSPSLevel;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -6620,18 +5673,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -6642,9 +5683,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
                 iSPSLevel = this.iSPSLevel,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -6656,9 +5694,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -6670,9 +5705,6 @@ namespace S100Framework.WPF.ViewModel.S131
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
             iSPSLevel = this._iSPSLevel,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -6684,17 +5716,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public AnchorageAreaViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -6714,18 +5739,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -6951,54 +5964,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private ServiceAvailability<serviceDescriptionReference>? _serviceDescriptionReference = default;
-        [Category("Berth")]
-        public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference
-        {
-            get
-            {
-                return _serviceDescriptionReference;
-            }
-
-            set
-            {
-                SetValue(ref _serviceDescriptionReference, value);
-            }
-        }
-
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("Berth")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -7105,15 +6070,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.Berth instance)
         {
             availableBerthingLength = instance.availableBerthingLength;
@@ -7142,13 +6098,6 @@ namespace S100Framework.WPF.ViewModel.S131
             methodOfSecuring = instance.methodOfSecuring;
             uNLocationCode = instance.uNLocationCode;
             terminalIdentifier = instance.terminalIdentifier;
-            serviceDescriptionReference = instance.serviceDescriptionReference;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -7181,18 +6130,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -7216,10 +6153,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 methodOfSecuring = this.methodOfSecuring,
                 uNLocationCode = this.uNLocationCode,
                 terminalIdentifier = this.terminalIdentifier,
-                serviceDescriptionReference = this.serviceDescriptionReference,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -7231,9 +6164,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -7258,10 +6188,6 @@ namespace S100Framework.WPF.ViewModel.S131
             methodOfSecuring = this._methodOfSecuring,
             uNLocationCode = this._uNLocationCode,
             terminalIdentifier = this._terminalIdentifier,
-            serviceDescriptionReference = this._serviceDescriptionReference,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -7273,9 +6199,6 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public BerthViewModel()
@@ -7291,10 +6214,6 @@ namespace S100Framework.WPF.ViewModel.S131
             manifoldNumber.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(manifoldNumber));
-            };
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
             };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -7315,18 +6234,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -7432,24 +6339,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -7556,15 +6445,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.BerthPosition instance)
         {
             availableBerthingLength = instance.availableBerthingLength;
@@ -7585,11 +6465,6 @@ namespace S100Framework.WPF.ViewModel.S131
                     manifoldNumber.Add(e);
             rampNumber = instance.rampNumber;
             locationByText = instance.locationByText;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -7622,18 +6497,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -7649,8 +6512,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 manifoldNumber = this.manifoldNumber.ToList(),
                 rampNumber = this.rampNumber,
                 locationByText = this.locationByText,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -7662,9 +6523,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -7681,8 +6539,6 @@ namespace S100Framework.WPF.ViewModel.S131
             manifoldNumber = this.manifoldNumber.ToList(),
             rampNumber = this._rampNumber,
             locationByText = this._locationByText,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -7694,9 +6550,6 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public BerthPositionViewModel()
@@ -7712,10 +6565,6 @@ namespace S100Framework.WPF.ViewModel.S131
             manifoldNumber.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(manifoldNumber));
-            };
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
             };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -7736,18 +6585,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -7816,54 +6653,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private ServiceAvailability<serviceDescriptionReference>? _serviceDescriptionReference = default;
-        [Category("DockArea")]
-        public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference
-        {
-            get
-            {
-                return _serviceDescriptionReference;
-            }
-
-            set
-            {
-                SetValue(ref _serviceDescriptionReference, value);
-            }
-        }
-
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("DockArea")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -7970,15 +6759,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.DockArea instance)
         {
             depthsDescription = new();
@@ -7997,13 +6777,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
 
             iSPSLevel = instance.iSPSLevel;
-            serviceDescriptionReference = instance.serviceDescriptionReference;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -8036,18 +6809,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -8058,10 +6819,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
                 iSPSLevel = this.iSPSLevel,
-                serviceDescriptionReference = this.serviceDescriptionReference,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -8073,9 +6830,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -8087,10 +6841,6 @@ namespace S100Framework.WPF.ViewModel.S131
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
             iSPSLevel = this._iSPSLevel,
-            serviceDescriptionReference = this._serviceDescriptionReference,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -8102,17 +6852,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public DockAreaViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -8132,18 +6875,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -8165,21 +6896,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("DryDock")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
         private Decimal? _verticalClearanceValue = default;
         [Category("HarbourPhysicalInfrastructure")]
         public Decimal? verticalClearanceValue
@@ -8194,24 +6910,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _verticalClearanceValue, value);
             }
         }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
@@ -8319,25 +7017,10 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.DryDock instance)
         {
             sillDepth = instance.sillDepth;
-            location_srvHrs = instance.location_srvHrs;
             verticalClearanceValue = instance.verticalClearanceValue;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -8370,18 +7053,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -8389,10 +7060,7 @@ namespace S100Framework.WPF.ViewModel.S131
             var instance = new DomainModel.S131.FeatureTypes.DryDock
             {
                 sillDepth = this.sillDepth,
-                location_srvHrs = this.location_srvHrs,
                 verticalClearanceValue = this.verticalClearanceValue,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -8404,9 +7072,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -8415,10 +7080,7 @@ namespace S100Framework.WPF.ViewModel.S131
         public DomainModel.S131.FeatureTypes.DryDock Model => new()
         {
             sillDepth = this._sillDepth,
-            location_srvHrs = this._location_srvHrs,
             verticalClearanceValue = this._verticalClearanceValue,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -8430,17 +7092,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public DryDockViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -8460,18 +7115,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -8540,39 +7183,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("DumpingGround")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -8679,15 +7289,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.DumpingGround instance)
         {
             depthsDescription = new();
@@ -8706,12 +7307,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
 
             iSPSLevel = instance.iSPSLevel;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -8744,18 +7339,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -8766,9 +7349,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
                 iSPSLevel = this.iSPSLevel,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -8780,9 +7360,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -8794,9 +7371,6 @@ namespace S100Framework.WPF.ViewModel.S131
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
             iSPSLevel = this._iSPSLevel,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -8808,17 +7382,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public DumpingGroundViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -8838,18 +7405,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -8871,21 +7426,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("FloatingDock")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
         private Decimal? _verticalClearanceValue = default;
         [Category("HarbourPhysicalInfrastructure")]
         public Decimal? verticalClearanceValue
@@ -8900,24 +7440,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _verticalClearanceValue, value);
             }
         }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
@@ -9025,25 +7547,10 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.FloatingDock instance)
         {
             sillDepth = instance.sillDepth;
-            location_srvHrs = instance.location_srvHrs;
             verticalClearanceValue = instance.verticalClearanceValue;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -9076,18 +7583,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -9095,10 +7590,7 @@ namespace S100Framework.WPF.ViewModel.S131
             var instance = new DomainModel.S131.FeatureTypes.FloatingDock
             {
                 sillDepth = this.sillDepth,
-                location_srvHrs = this.location_srvHrs,
                 verticalClearanceValue = this.verticalClearanceValue,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -9110,9 +7602,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -9121,10 +7610,7 @@ namespace S100Framework.WPF.ViewModel.S131
         public DomainModel.S131.FeatureTypes.FloatingDock Model => new()
         {
             sillDepth = this._sillDepth,
-            location_srvHrs = this._location_srvHrs,
             verticalClearanceValue = this._verticalClearanceValue,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -9136,17 +7622,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public FloatingDockViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -9166,18 +7645,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -9199,21 +7666,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("Gridiron")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
         private Decimal? _verticalClearanceValue = default;
         [Category("HarbourPhysicalInfrastructure")]
         public Decimal? verticalClearanceValue
@@ -9228,24 +7680,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _verticalClearanceValue, value);
             }
         }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
@@ -9353,25 +7787,10 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.Gridiron instance)
         {
             sillDepth = instance.sillDepth;
-            location_srvHrs = instance.location_srvHrs;
             verticalClearanceValue = instance.verticalClearanceValue;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -9404,18 +7823,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -9423,10 +7830,7 @@ namespace S100Framework.WPF.ViewModel.S131
             var instance = new DomainModel.S131.FeatureTypes.Gridiron
             {
                 sillDepth = this.sillDepth,
-                location_srvHrs = this.location_srvHrs,
                 verticalClearanceValue = this.verticalClearanceValue,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -9438,9 +7842,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -9449,10 +7850,7 @@ namespace S100Framework.WPF.ViewModel.S131
         public DomainModel.S131.FeatureTypes.Gridiron Model => new()
         {
             sillDepth = this._sillDepth,
-            location_srvHrs = this._location_srvHrs,
             verticalClearanceValue = this._verticalClearanceValue,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -9464,17 +7862,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public GridironViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -9494,18 +7885,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -9591,54 +7970,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private ServiceAvailability<serviceDescriptionReference>? _serviceDescriptionReference = default;
-        [Category("HarbourAreaAdministrative")]
-        public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference
-        {
-            get
-            {
-                return _serviceDescriptionReference;
-            }
-
-            set
-            {
-                SetValue(ref _serviceDescriptionReference, value);
-            }
-        }
-
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("HarbourAreaAdministrative")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -9745,15 +8076,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative instance)
         {
             uNLocationCode = instance.uNLocationCode;
@@ -9771,13 +8093,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 generalHarbourInformation.Load(instance.generalHarbourInformation);
             }
 
-            serviceDescriptionReference = instance.serviceDescriptionReference;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -9810,18 +8125,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -9834,10 +8137,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 iSPSLevel = this.iSPSLevel,
                 categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
                 generalHarbourInformation = this.generalHarbourInformation?.Model,
-                serviceDescriptionReference = this.serviceDescriptionReference,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -9849,9 +8148,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -9865,10 +8161,6 @@ namespace S100Framework.WPF.ViewModel.S131
             iSPSLevel = this._iSPSLevel,
             categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
             generalHarbourInformation = this._generalHarbourInformation?.Model,
-            serviceDescriptionReference = this._serviceDescriptionReference,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -9880,9 +8172,6 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public HarbourAreaAdministrativeViewModel()
@@ -9890,10 +8179,6 @@ namespace S100Framework.WPF.ViewModel.S131
             categoryOfHarbourFacility.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(categoryOfHarbourFacility));
-            };
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
             };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -9914,18 +8199,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -9981,54 +8254,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private ServiceAvailability<serviceDescriptionReference>? _serviceDescriptionReference = default;
-        [Category("HarbourAreaSection")]
-        public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference
-        {
-            get
-            {
-                return _serviceDescriptionReference;
-            }
-
-            set
-            {
-                SetValue(ref _serviceDescriptionReference, value);
-            }
-        }
-
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("HarbourAreaSection")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -10135,15 +8360,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaSection instance)
         {
             categoryOfPortSection = instance.categoryOfPortSection;
@@ -10159,13 +8375,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 facilitiesLayoutDescription.Load(instance.facilitiesLayoutDescription);
             }
 
-            serviceDescriptionReference = instance.serviceDescriptionReference;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -10198,18 +8407,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -10220,10 +8417,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
                 iSPSLevel = this.iSPSLevel,
                 facilitiesLayoutDescription = this.facilitiesLayoutDescription?.Model,
-                serviceDescriptionReference = this.serviceDescriptionReference,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -10235,9 +8428,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -10249,10 +8439,6 @@ namespace S100Framework.WPF.ViewModel.S131
             categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
             iSPSLevel = this._iSPSLevel,
             facilitiesLayoutDescription = this._facilitiesLayoutDescription?.Model,
-            serviceDescriptionReference = this._serviceDescriptionReference,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -10264,9 +8450,6 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public HarbourAreaSectionViewModel()
@@ -10274,10 +8457,6 @@ namespace S100Framework.WPF.ViewModel.S131
             categoryOfHarbourFacility.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(categoryOfHarbourFacility));
-            };
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
             };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -10298,18 +8477,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -10378,39 +8545,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("HarbourBasin")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -10516,15 +8650,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourBasin instance)
         {
@@ -10544,12 +8669,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
 
             iSPSLevel = instance.iSPSLevel;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -10582,18 +8701,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -10604,9 +8711,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
                 iSPSLevel = this.iSPSLevel,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -10618,9 +8722,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -10632,9 +8733,6 @@ namespace S100Framework.WPF.ViewModel.S131
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
             iSPSLevel = this._iSPSLevel,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -10646,17 +8744,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public HarbourBasinViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -10677,18 +8768,6 @@ namespace S100Framework.WPF.ViewModel.S131
             {
                 OnPropertyChanged(nameof(textContent));
             };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
-            };
         }
     }
 
@@ -10696,21 +8775,6 @@ namespace S100Framework.WPF.ViewModel.S131
     {
         [Category("HarbourFacility")]
         public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = new();
-
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("HarbourFacility")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
 
         private Decimal? _verticalClearanceValue = default;
         [Category("HarbourPhysicalInfrastructure")]
@@ -10726,24 +8790,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _verticalClearanceValue, value);
             }
         }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
 
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
@@ -10851,28 +8897,13 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.HarbourFacility instance)
         {
             categoryOfHarbourFacility.Clear();
             if (instance.categoryOfHarbourFacility is not null)
                 foreach (var e in instance.categoryOfHarbourFacility)
                     categoryOfHarbourFacility.Add(e);
-            location_srvHrs = instance.location_srvHrs;
             verticalClearanceValue = instance.verticalClearanceValue;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -10905,18 +8936,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -10924,10 +8943,7 @@ namespace S100Framework.WPF.ViewModel.S131
             var instance = new DomainModel.S131.FeatureTypes.HarbourFacility
             {
                 categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
-                location_srvHrs = this.location_srvHrs,
                 verticalClearanceValue = this.verticalClearanceValue,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -10939,9 +8955,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -10950,10 +8963,7 @@ namespace S100Framework.WPF.ViewModel.S131
         public DomainModel.S131.FeatureTypes.HarbourFacility Model => new()
         {
             categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
-            location_srvHrs = this._location_srvHrs,
             verticalClearanceValue = this._verticalClearanceValue,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -10965,9 +8975,6 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public HarbourFacilityViewModel()
@@ -10975,10 +8982,6 @@ namespace S100Framework.WPF.ViewModel.S131
             categoryOfHarbourFacility.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(categoryOfHarbourFacility));
-            };
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
             };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -10999,18 +9002,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -11092,54 +9083,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private ServiceAvailability<serviceDescriptionReference>? _serviceDescriptionReference = default;
-        [Category("MooringWarpingFacility")]
-        public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference
-        {
-            get
-            {
-                return _serviceDescriptionReference;
-            }
-
-            set
-            {
-                SetValue(ref _serviceDescriptionReference, value);
-            }
-        }
-
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("MooringWarpingFacility")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -11246,15 +9189,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.MooringWarpingFacility instance)
         {
             categoryOfMooringWarpingFacility = instance.categoryOfMooringWarpingFacility;
@@ -11262,13 +9196,6 @@ namespace S100Framework.WPF.ViewModel.S131
             bollardDescription = instance.bollardDescription;
             bollardPull = instance.bollardPull;
             heavingLinesFromShore = instance.heavingLinesFromShore;
-            serviceDescriptionReference = instance.serviceDescriptionReference;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -11301,18 +9228,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -11324,10 +9239,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 bollardDescription = this.bollardDescription,
                 bollardPull = this.bollardPull,
                 heavingLinesFromShore = this.heavingLinesFromShore,
-                serviceDescriptionReference = this.serviceDescriptionReference,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -11339,9 +9250,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -11354,10 +9262,6 @@ namespace S100Framework.WPF.ViewModel.S131
             bollardDescription = this._bollardDescription,
             bollardPull = this._bollardPull,
             heavingLinesFromShore = this._heavingLinesFromShore,
-            serviceDescriptionReference = this._serviceDescriptionReference,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -11369,17 +9273,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public MooringWarpingFacilityViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -11399,18 +9296,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -11448,39 +9333,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("OuterLimit")]
         public ObservableCollection<usefulMarkDescription> usefulMarkDescription { get; set; } = new();
 
-        private LimitEntrance<entranceReference>? _entranceReference = default;
-        [Category("OuterLimit")]
-        public LimitEntrance<entranceReference>? entranceReference
-        {
-            get
-            {
-                return _entranceReference;
-            }
-
-            set
-            {
-                SetValue(ref _entranceReference, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -11587,15 +9439,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.OuterLimit instance)
         {
             limitsDescription = new();
@@ -11625,12 +9468,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.usefulMarkDescription is not null)
                 foreach (var e in instance.usefulMarkDescription)
                     usefulMarkDescription.Add(e);
-            entranceReference = instance.entranceReference;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -11663,18 +9500,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -11687,9 +9512,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 offshoreMarkDescription = this.offshoreMarkDescription.ToList(),
                 majorLightDescription = this.majorLightDescription.ToList(),
                 usefulMarkDescription = this.usefulMarkDescription.ToList(),
-                entranceReference = this.entranceReference,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -11701,9 +9523,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -11717,9 +9536,6 @@ namespace S100Framework.WPF.ViewModel.S131
             offshoreMarkDescription = this.offshoreMarkDescription.ToList(),
             majorLightDescription = this.majorLightDescription.ToList(),
             usefulMarkDescription = this.usefulMarkDescription.ToList(),
-            entranceReference = this._entranceReference,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -11731,9 +9547,6 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public OuterLimitViewModel()
@@ -11758,10 +9571,6 @@ namespace S100Framework.WPF.ViewModel.S131
             {
                 OnPropertyChanged(nameof(usefulMarkDescription));
             };
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -11781,18 +9590,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -11861,39 +9658,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("PilotBoardingPlace")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -12000,15 +9764,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.PilotBoardingPlace instance)
         {
             depthsDescription = new();
@@ -12027,12 +9782,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
 
             iSPSLevel = instance.iSPSLevel;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -12065,18 +9814,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -12087,9 +9824,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
                 iSPSLevel = this.iSPSLevel,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -12101,9 +9835,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -12115,9 +9846,6 @@ namespace S100Framework.WPF.ViewModel.S131
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
             iSPSLevel = this._iSPSLevel,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -12129,17 +9857,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public PilotBoardingPlaceViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -12159,18 +9880,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -12239,39 +9948,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("SeaplaneLandingArea")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -12378,15 +10054,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.SeaplaneLandingArea instance)
         {
             depthsDescription = new();
@@ -12405,12 +10072,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
 
             iSPSLevel = instance.iSPSLevel;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -12443,18 +10104,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -12465,9 +10114,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
                 iSPSLevel = this.iSPSLevel,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -12479,9 +10125,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -12493,9 +10136,6 @@ namespace S100Framework.WPF.ViewModel.S131
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
             iSPSLevel = this._iSPSLevel,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -12507,17 +10147,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public SeaplaneLandingAreaViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -12537,18 +10170,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -12636,54 +10257,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private ServiceAvailability<serviceDescriptionReference>? _serviceDescriptionReference = default;
-        [Category("Terminal")]
-        public ServiceAvailability<serviceDescriptionReference>? serviceDescriptionReference
-        {
-            get
-            {
-                return _serviceDescriptionReference;
-            }
-
-            set
-            {
-                SetValue(ref _serviceDescriptionReference, value);
-            }
-        }
-
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("Terminal")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -12790,15 +10363,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.Terminal instance)
         {
             portFacilityNumber = instance.portFacilityNumber;
@@ -12814,13 +10378,6 @@ namespace S100Framework.WPF.ViewModel.S131
             terminalIdentifier = instance.terminalIdentifier;
             sMDGTerminalCode = instance.sMDGTerminalCode;
             uNLocationCode = instance.uNLocationCode;
-            serviceDescriptionReference = instance.serviceDescriptionReference;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -12853,18 +10410,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -12878,10 +10423,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 terminalIdentifier = this.terminalIdentifier,
                 sMDGTerminalCode = this.sMDGTerminalCode,
                 uNLocationCode = this.uNLocationCode,
-                serviceDescriptionReference = this.serviceDescriptionReference,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -12893,9 +10434,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -12910,10 +10448,6 @@ namespace S100Framework.WPF.ViewModel.S131
             terminalIdentifier = this._terminalIdentifier,
             sMDGTerminalCode = this._sMDGTerminalCode,
             uNLocationCode = this._uNLocationCode,
-            serviceDescriptionReference = this._serviceDescriptionReference,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -12925,9 +10459,6 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public TerminalViewModel()
@@ -12939,10 +10470,6 @@ namespace S100Framework.WPF.ViewModel.S131
             product.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(product));
-            };
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
             };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -12963,18 +10490,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -13043,39 +10558,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("TurningBasin")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -13182,15 +10664,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.TurningBasin instance)
         {
             depthsDescription = new();
@@ -13209,12 +10682,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
 
             iSPSLevel = instance.iSPSLevel;
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -13247,18 +10714,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -13269,9 +10724,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
                 iSPSLevel = this.iSPSLevel,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -13283,9 +10735,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -13297,9 +10746,6 @@ namespace S100Framework.WPF.ViewModel.S131
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
             iSPSLevel = this._iSPSLevel,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -13311,17 +10757,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public TurningBasinViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -13341,18 +10780,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }
@@ -13421,39 +10848,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private LocationHours<location_srvHrs>? _location_srvHrs = default;
-        [Category("WaterwayArea")]
-        public LocationHours<location_srvHrs>? location_srvHrs
-        {
-            get
-            {
-                return _location_srvHrs;
-            }
-
-            set
-            {
-                SetValue(ref _location_srvHrs, value);
-            }
-        }
-
-        private ServiceControl<controlAuthority>? _controlAuthority = default;
-        [Category("SupervisedArea")]
-        public ServiceControl<controlAuthority>? controlAuthority
-        {
-            get
-            {
-                return _controlAuthority;
-            }
-
-            set
-            {
-                SetValue(ref _controlAuthority, value);
-            }
-        }
-
-        [Category("OrganizationContactArea")]
-        public ObservableCollection<ServiceContact<theContactDetails>> theContactDetails { get; set; } = new();
-
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN
@@ -13560,15 +10954,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        [Category("FeatureType")]
-        public ObservableCollection<PermissionType<permission>> permission { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AssociatedRxN<theRxN>> theRxN { get; set; } = new();
-
-        [Category("FeatureType")]
-        public ObservableCollection<AdditionalInformation<providesInformation>> providesInformation { get; set; } = new();
-
         public void Load(DomainModel.S131.FeatureTypes.WaterwayArea instance)
         {
             categoryOfPortSection = instance.categoryOfPortSection;
@@ -13587,12 +10972,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 markedBy.Load(instance.markedBy);
             }
 
-            location_srvHrs = instance.location_srvHrs;
-            controlAuthority = instance.controlAuthority;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
             locationMRN = instance.locationMRN;
             globalLocationNumber = instance.globalLocationNumber;
             featureName.Clear();
@@ -13625,18 +11004,6 @@ namespace S100Framework.WPF.ViewModel.S131
             if (instance.textContent is not null)
                 foreach (var e in instance.textContent)
                     textContent.Add(e);
-            permission.Clear();
-            if (instance.permission is not null)
-                foreach (var e in instance.permission)
-                    permission.Add(e);
-            theRxN.Clear();
-            if (instance.theRxN is not null)
-                foreach (var e in instance.theRxN)
-                    theRxN.Add(e);
-            providesInformation.Clear();
-            if (instance.providesInformation is not null)
-                foreach (var e in instance.providesInformation)
-                    providesInformation.Add(e);
         }
 
         public override string Serialize()
@@ -13647,9 +11014,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
-                location_srvHrs = this.location_srvHrs,
-                controlAuthority = this.controlAuthority,
-                theContactDetails = this.theContactDetails.ToList(),
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -13661,9 +11025,6 @@ namespace S100Framework.WPF.ViewModel.S131
                 sourceType = this.sourceType,
                 reportedDate = this.reportedDate,
                 textContent = this.textContent.ToList(),
-                permission = this.permission.ToList(),
-                theRxN = this.theRxN.ToList(),
-                providesInformation = this.providesInformation.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -13675,9 +11036,6 @@ namespace S100Framework.WPF.ViewModel.S131
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
-            location_srvHrs = this._location_srvHrs,
-            controlAuthority = this._controlAuthority,
-            theContactDetails = this.theContactDetails.ToList(),
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -13689,17 +11047,10 @@ namespace S100Framework.WPF.ViewModel.S131
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
             textContent = this.textContent.ToList(),
-            permission = this.permission.ToList(),
-            theRxN = this.theRxN.ToList(),
-            providesInformation = this.providesInformation.ToList(),
         };
 
         public WaterwayAreaViewModel()
         {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -13719,18 +11070,6 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(textContent));
-            };
-            permission.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(permission));
-            };
-            theRxN.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRxN));
-            };
-            providesInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(providesInformation));
             };
         }
     }

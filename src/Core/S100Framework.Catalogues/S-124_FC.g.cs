@@ -571,97 +571,110 @@ namespace S100Framework.DomainModel.S124
         }
     }
 
-    namespace Bindings
+    public enum Role
     {
-        namespace Roles
-        {
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+        [System.ComponentModel.Description("TBD")]
+        [System.Xml.Serialization.XmlEnum("affects")]
+        affects,
+        [System.ComponentModel.Description("TBD")]
+        [System.Xml.Serialization.XmlEnum("impacts")]
+        impacts,
+        [System.ComponentModel.Description("A pointer to a specific feature(s).")]
+        [System.Xml.Serialization.XmlEnum("identifies")]
+        identifies,
+        [System.ComponentModel.Description("A pointer to a specific cartographically positioned location for text.")]
+        [System.Xml.Serialization.XmlEnum("positions")]
+        positions,
+        [System.ComponentModel.Description("TBD")]
+        [System.Xml.Serialization.XmlEnum("theWarningPart")]
+        theWarningPart,
+        [System.ComponentModel.Description("TBD")]
+        [System.Xml.Serialization.XmlEnum("header")]
+        header,
+        [System.ComponentModel.Description("TBD")]
+        [System.Xml.Serialization.XmlEnum("theWarning")]
+        theWarning,
+        [System.ComponentModel.Description("TBD")]
+        [System.Xml.Serialization.XmlEnum("theReferences")]
+        theReferences,
+    }
 
-            public class affects : Role
-#pragma warning restore CS8981
-            {
-            }
-
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
-            public class impacts : Role
-#pragma warning restore CS8981
-            {
-            }
-
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
-            public class identifies : Role
-#pragma warning restore CS8981
-            {
-            }
-
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
-            public class positions : Role
-#pragma warning restore CS8981
-            {
-            }
-
-            public class theWarningPart : Role
-            {
-            }
-
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
-            public class header : Role
-#pragma warning restore CS8981
-            {
-            }
-
-            public class theWarning : Role
-            {
-            }
-
-            public class theReferences : Role
-            {
-            }
-        }
-
+    namespace Associations
+    {
         namespace InformationAssociations
         {
-            public class NWPreambleContent<T> : InformationAssociation where T : Role
+            public class NWPreambleContent : InformationAssociation
             {
-                public NWPreambleContent(string foreignKey = "") : base(foreignKey)
+                public NWPreambleContent()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.theWarningPart,
+                    Role.header
+                };
             }
 
-            public class NWReferences<T> : InformationAssociation where T : Role
+            public class NWReferences : InformationAssociation
             {
-                public NWReferences(string foreignKey = "") : base(foreignKey)
+                public NWReferences()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.theWarning,
+                    Role.theReferences
+                };
             }
         }
 
         namespace FeatureAssociations
         {
-            public class AreaAffected<T> : FeatureAssociation where T : Role
+            public class AreaAffected : FeatureAssociation
             {
-                public AreaAffected(string foreignKey = "") : base(foreignKey)
+                public AreaAffected()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.affects,
+                    Role.impacts
+                };
             }
 
-            public class TextAssociation<T> : FeatureAssociation where T : Role
+            public class TextAssociation : FeatureAssociation
             {
-                public TextAssociation(string foreignKey = "") : base(foreignKey)
+                public TextAssociation()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.identifies,
+                    Role.positions
+                };
+            }
+        }
+    }
+
+    namespace Bindings
+    {
+        public class informationBinding<Tassociation, TinformationType> : DomainModel.Bindings.informationBinding<Tassociation, TinformationType> where Tassociation : InformationAssociation where TinformationType : class
+        {
+            public informationBinding(Role role)
+            {
+                base.Role = Enum.GetName(role);
+            }
+        }
+
+        public class featureBinding<Tassociation, TfeatureType> : DomainModel.Bindings.featureBinding<Tassociation, TfeatureType> where Tassociation : FeatureAssociation where TfeatureType : class
+        {
+            public featureBinding(Role role)
+            {
+                base.Role = Enum.GetName(role);
             }
         }
     }
@@ -669,22 +682,7 @@ namespace S100Framework.DomainModel.S124
     namespace InformationTypes
     {
         using ComplexAttributes;
-        using Bindings.InformationAssociations;
-        using Bindings.Roles;
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class NAVWARNPreambleInformationBindings
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<NWReferences<theReferences>> theReferences { get; set; } = [];
-
-            public NAVWARNPreambleInformationBindings()
-            {
-            }
-        }
+        using DomainModel;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -719,8 +717,13 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required DateTime publicationTime { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public NAVWARNPreambleInformationBindings? NAVWARNPreambleInformationBindings { get; set; }
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.NWReferences, References> theReferencesReferences => new(Role.theReferences)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
             public NAVWARNPreamble()
             {
@@ -764,9 +767,7 @@ namespace S100Framework.DomainModel.S124
     {
         using ComplexAttributes;
         using InformationTypes;
-        using Bindings.InformationAssociations;
-        using Bindings.FeatureAssociations;
-        using Bindings.Roles;
+        using DomainModel;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -789,15 +790,34 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public restriction? restriction { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public required NWPreambleContent<header> header { get; set; }
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.NWPreambleContent, NAVWARNPreamble> headerNAVWARNPreamble => new(Role.header)
+            {
+                Lower = 1,
+                Upper = 1,
+                roleType = DomainModel.Bindings.roleType.association
+            };
+
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.featureBinding<Associations.FeatureAssociations.AreaAffected, NAVWARNAreaAffected> affectsNAVWARNAreaAffected => new(Role.affects)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
+
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> positionsTextPlacement => new(Role.positions)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
             public NAVWARNPart()
             {
                 warningInformation = new warningInformation()
-                {
-                };
-                header = new NWPreambleContent<header>()
                 {
                 };
             }
@@ -809,6 +829,15 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public class NAVWARNAreaAffected
         {
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.featureBinding<Associations.FeatureAssociations.AreaAffected, NAVWARNPart> impactsNAVWARNPart => new(Role.impacts)
+            {
+                Lower = 1,
+                Upper = 1,
+                roleType = DomainModel.Bindings.roleType.association
+            };
+
             public NAVWARNAreaAffected()
             {
             }
@@ -837,6 +866,15 @@ namespace S100Framework.DomainModel.S124
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
+
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, NAVWARNPart> identifiesNAVWARNPart => new(Role.identifies)
+            {
+                Lower = 0,
+                Upper = 1,
+                roleType = DomainModel.Bindings.roleType.composition
+            };
 
             public TextPlacement()
             {

@@ -4,13 +4,13 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S128;
 using S100Framework.DomainModel.S128.ComplexAttributes;
 using S100Framework.DomainModel.S128.InformationTypes;
 using S100Framework.DomainModel.S128.FeatureTypes;
-using S100Framework.DomainModel.S128.Bindings.InformationAssociations;
-using S100Framework.DomainModel.S128.Bindings.FeatureAssociations;
-using S100Framework.DomainModel.S128.Bindings.Roles;
+using S100Framework.DomainModel.S128.Associations.InformationAssociations;
+using S100Framework.DomainModel.S128.Associations.FeatureAssociations;
 
 namespace S100Framework.WPF.ViewModel.S128
 {
@@ -1076,8 +1076,20 @@ namespace S100Framework.WPF.ViewModel.S128
 
     public class sourceIndicationViewModel : ViewModelBase
     {
+        private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("sourceIndication")]
-        public ObservableCollection<categoryOfAuthority> categoryOfAuthority { get; set; } = new();
+        public categoryOfAuthority? categoryOfAuthority
+        {
+            get
+            {
+                return _categoryOfAuthority;
+            }
+
+            set
+            {
+                SetValue(ref _categoryOfAuthority, value);
+            }
+        }
 
         private String _countryName = string.Empty;
         [Category("sourceIndication")]
@@ -1094,9 +1106,9 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private String _reportedDate = string.Empty;
+        private DateTime? _reportedDate = default;
         [Category("sourceIndication")]
-        public String reportedDate
+        public DateTime? reportedDate
         {
             get
             {
@@ -1124,9 +1136,9 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private sourceType _sourceType;
+        private sourceType? _sourceType = default;
         [Category("sourceIndication")]
-        public sourceType sourceType
+        public sourceType? sourceType
         {
             get
             {
@@ -1144,10 +1156,7 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public void Load(DomainModel.S128.ComplexAttributes.sourceIndication instance)
         {
-            categoryOfAuthority.Clear();
-            if (instance.categoryOfAuthority is not null)
-                foreach (var e in instance.categoryOfAuthority)
-                    categoryOfAuthority.Add(e);
+            categoryOfAuthority = instance.categoryOfAuthority;
             countryName = instance.countryName;
             reportedDate = instance.reportedDate;
             source = instance.source;
@@ -1162,7 +1171,7 @@ namespace S100Framework.WPF.ViewModel.S128
         {
             var instance = new DomainModel.S128.ComplexAttributes.sourceIndication
             {
-                categoryOfAuthority = this.categoryOfAuthority.ToList(),
+                categoryOfAuthority = this.categoryOfAuthority,
                 countryName = this.countryName,
                 reportedDate = this.reportedDate,
                 source = this.source,
@@ -1175,7 +1184,7 @@ namespace S100Framework.WPF.ViewModel.S128
         [Browsable(false)]
         public DomainModel.S128.ComplexAttributes.sourceIndication Model => new()
         {
-            categoryOfAuthority = this.categoryOfAuthority.ToList(),
+            categoryOfAuthority = this._categoryOfAuthority,
             countryName = this._countryName,
             reportedDate = this._reportedDate,
             source = this._source,
@@ -1185,10 +1194,6 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public sourceIndicationViewModel()
         {
-            categoryOfAuthority.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(categoryOfAuthority));
-            };
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
@@ -1327,6 +1332,66 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    public class weekOfYearViewModel : ViewModelBase
+    {
+        private Int32 _weekNumber;
+        [Category("weekOfYear")]
+        public Int32 weekNumber
+        {
+            get
+            {
+                return _weekNumber;
+            }
+
+            set
+            {
+                SetValue(ref _weekNumber, value);
+            }
+        }
+
+        private Int32 _yearNumber;
+        [Category("weekOfYear")]
+        public Int32 yearNumber
+        {
+            get
+            {
+                return _yearNumber;
+            }
+
+            set
+            {
+                SetValue(ref _yearNumber, value);
+            }
+        }
+
+        public void Load(DomainModel.S128.ComplexAttributes.weekOfYear instance)
+        {
+            weekNumber = instance.weekNumber;
+            yearNumber = instance.yearNumber;
+        }
+
+        public override string Serialize()
+        {
+            var instance = new DomainModel.S128.ComplexAttributes.weekOfYear
+            {
+                weekNumber = this.weekNumber,
+                yearNumber = this.yearNumber,
+            };
+            return System.Text.Json.JsonSerializer.Serialize(instance);
+        }
+
+        [Browsable(false)]
+        public DomainModel.S128.ComplexAttributes.weekOfYear Model => new()
+        {
+            weekNumber = this._weekNumber,
+            yearNumber = this._yearNumber,
+        };
+
+        public weekOfYearViewModel()
+        {
+        }
+    }
+
     public class issuanceCycleViewModel : ViewModelBase
     {
         private periodicDateRangeViewModel? _periodicDateRange;
@@ -1432,36 +1497,6 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private DateTime? _printWeek = default;
-        [Category("printInformation")]
-        public DateTime? printWeek
-        {
-            get
-            {
-                return _printWeek;
-            }
-
-            set
-            {
-                SetValue(ref _printWeek, value);
-            }
-        }
-
-        private DateTime? _printYear = default;
-        [Category("printInformation")]
-        public DateTime? printYear
-        {
-            get
-            {
-                return _printYear;
-            }
-
-            set
-            {
-                SetValue(ref _printYear, value);
-            }
-        }
-
         private String _rePrintEdition = string.Empty;
         [Category("printInformation")]
         public String rePrintEdition
@@ -1512,8 +1547,6 @@ namespace S100Framework.WPF.ViewModel.S128
         {
             printAgency = instance.printAgency;
             printNation = instance.printNation;
-            printWeek = instance.printWeek;
-            printYear = instance.printYear;
             rePrintEdition = instance.rePrintEdition;
             rePrintNation = instance.rePrintNation;
             printSize = new();
@@ -1530,8 +1563,6 @@ namespace S100Framework.WPF.ViewModel.S128
             {
                 printAgency = this.printAgency,
                 printNation = this.printNation,
-                printWeek = this.printWeek,
-                printYear = this.printYear,
                 rePrintEdition = this.rePrintEdition,
                 rePrintNation = this.rePrintNation,
                 printSize = this.printSize?.Model,
@@ -1544,8 +1575,6 @@ namespace S100Framework.WPF.ViewModel.S128
         {
             printAgency = this._printAgency,
             printNation = this._printNation,
-            printWeek = this._printWeek,
-            printYear = this._printYear,
             rePrintEdition = this._rePrintEdition,
             rePrintNation = this._rePrintNation,
             printSize = this._printSize?.Model,
@@ -1893,71 +1922,69 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
-    public class CatalogueSectionHeaderInformationBindingsViewModel : ViewModelBase
+    public class referenceToNMViewModel : ViewModelBase
     {
-        [Category("CatalogueSectionHeaderInformationBindings")]
-        public ObservableCollection<PriceOfNauticalProduct<thePriceInformation>> thePriceInformation { get; set; } = new();
-
-        private ProductionDetails<theProducer>? _theProducer = default;
-        [Category("CatalogueSectionHeaderInformationBindings")]
-        public ProductionDetails<theProducer>? theProducer
+        private DateTime _publicationDate;
+        [Category("referenceToNM")]
+        public DateTime publicationDate
         {
             get
             {
-                return _theProducer;
+                return _publicationDate;
             }
 
             set
             {
-                SetValue(ref _theProducer, value);
+                SetValue(ref _publicationDate, value);
             }
         }
 
-        [Category("CatalogueSectionHeaderInformationBindings")]
-        public ObservableCollection<DistributionDetails<theDistributor>> theDistributor { get; set; } = new();
-
-        public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeaderInformationBindings instance)
+        private weekOfYearViewModel? _weekOfYear;
+        [Category("referenceToNM")]
+        [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
+        public weekOfYearViewModel? weekOfYear
         {
-            thePriceInformation.Clear();
-            if (instance.thePriceInformation is not null)
-                foreach (var e in instance.thePriceInformation)
-                    thePriceInformation.Add(e);
-            theProducer = instance.theProducer;
-            theDistributor.Clear();
-            if (instance.theDistributor is not null)
-                foreach (var e in instance.theDistributor)
-                    theDistributor.Add(e);
+            get
+            {
+                return _weekOfYear;
+            }
+
+            set
+            {
+                SetValue(ref _weekOfYear, value);
+            }
+        }
+
+        public void Load(DomainModel.S128.ComplexAttributes.referenceToNM instance)
+        {
+            publicationDate = instance.publicationDate;
+            weekOfYear = new();
+            if (instance.weekOfYear != null)
+            {
+                weekOfYear = new();
+                weekOfYear.Load(instance.weekOfYear);
+            }
         }
 
         public override string Serialize()
         {
-            var instance = new DomainModel.S128.InformationTypes.CatalogueSectionHeaderInformationBindings
+            var instance = new DomainModel.S128.ComplexAttributes.referenceToNM
             {
-                thePriceInformation = this.thePriceInformation.ToList(),
-                theProducer = this.theProducer,
-                theDistributor = this.theDistributor.ToList(),
+                publicationDate = this.publicationDate,
+                weekOfYear = this.weekOfYear?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         [Browsable(false)]
-        public DomainModel.S128.InformationTypes.CatalogueSectionHeaderInformationBindings Model => new()
+        public DomainModel.S128.ComplexAttributes.referenceToNM Model => new()
         {
-            thePriceInformation = this.thePriceInformation.ToList(),
-            theProducer = this._theProducer,
-            theDistributor = this.theDistributor.ToList(),
+            publicationDate = this._publicationDate,
+            weekOfYear = this._weekOfYear?.Model,
         };
 
-        public CatalogueSectionHeaderInformationBindingsViewModel()
+        public referenceToNMViewModel()
         {
-            thePriceInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(thePriceInformation));
-            };
-            theDistributor.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theDistributor));
-            };
         }
     }
 
@@ -2009,21 +2036,6 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private CatalogueSectionHeaderInformationBindingsViewModel? _CatalogueSectionHeaderInformationBindings;
-        [Category("CatalogueSectionHeader")]
-        public CatalogueSectionHeaderInformationBindingsViewModel? CatalogueSectionHeaderInformationBindings
-        {
-            get
-            {
-                return _CatalogueSectionHeaderInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _CatalogueSectionHeaderInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance)
         {
             catalogueSectionNumber = instance.catalogueSectionNumber;
@@ -2034,13 +2046,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 information = new();
                 information.Load(instance.information);
             }
-
-            CatalogueSectionHeaderInformationBindings = new();
-            if (instance.CatalogueSectionHeaderInformationBindings != null)
-            {
-                CatalogueSectionHeaderInformationBindings = new();
-                CatalogueSectionHeaderInformationBindings.Load(instance.CatalogueSectionHeaderInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -2050,7 +2055,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 catalogueSectionNumber = this.catalogueSectionNumber,
                 catalogueSectionTitle = this.catalogueSectionTitle,
                 information = this.information?.Model,
-                CatalogueSectionHeaderInformationBindings = this.CatalogueSectionHeaderInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2061,70 +2065,9 @@ namespace S100Framework.WPF.ViewModel.S128
             catalogueSectionNumber = this._catalogueSectionNumber,
             catalogueSectionTitle = this._catalogueSectionTitle,
             information = this._information?.Model,
-            CatalogueSectionHeaderInformationBindings = this._CatalogueSectionHeaderInformationBindings?.Model,
         };
 
         public CatalogueSectionHeaderViewModel()
-        {
-        }
-    }
-
-    public class ContactDetailsInformationBindingsViewModel : ViewModelBase
-    {
-        private ProducerContact<theProducer> _theProducer;
-        [Category("ContactDetailsInformationBindings")]
-        public ProducerContact<theProducer> theProducer
-        {
-            get
-            {
-                return _theProducer;
-            }
-
-            set
-            {
-                SetValue(ref _theProducer, value);
-            }
-        }
-
-        private DistributorContact<theDistributor> _theDistributor;
-        [Category("ContactDetailsInformationBindings")]
-        public DistributorContact<theDistributor> theDistributor
-        {
-            get
-            {
-                return _theDistributor;
-            }
-
-            set
-            {
-                SetValue(ref _theDistributor, value);
-            }
-        }
-
-        public void Load(DomainModel.S128.InformationTypes.ContactDetailsInformationBindings instance)
-        {
-            theProducer = instance.theProducer;
-            theDistributor = instance.theDistributor;
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S128.InformationTypes.ContactDetailsInformationBindings
-            {
-                theProducer = this.theProducer,
-                theDistributor = this.theDistributor,
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S128.InformationTypes.ContactDetailsInformationBindings Model => new()
-        {
-            theProducer = this._theProducer,
-            theDistributor = this._theDistributor,
-        };
-
-        public ContactDetailsInformationBindingsViewModel()
         {
         }
     }
@@ -2161,21 +2104,6 @@ namespace S100Framework.WPF.ViewModel.S128
         [Category("ContactDetails")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
 
-        private ContactDetailsInformationBindingsViewModel? _ContactDetailsInformationBindings;
-        [Category("ContactDetails")]
-        public ContactDetailsInformationBindingsViewModel? ContactDetailsInformationBindings
-        {
-            get
-            {
-                return _ContactDetailsInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _ContactDetailsInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S128.InformationTypes.ContactDetails instance)
         {
             contactInstructions = instance.contactInstructions;
@@ -2199,12 +2127,6 @@ namespace S100Framework.WPF.ViewModel.S128
             if (instance.sourceIndication is not null)
                 foreach (var e in instance.sourceIndication)
                     sourceIndication.Add(e);
-            ContactDetailsInformationBindings = new();
-            if (instance.ContactDetailsInformationBindings != null)
-            {
-                ContactDetailsInformationBindings = new();
-                ContactDetailsInformationBindings.Load(instance.ContactDetailsInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -2217,7 +2139,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 onlineResource = this.onlineResource.ToList(),
                 telecommunications = this.telecommunications.ToList(),
                 sourceIndication = this.sourceIndication.ToList(),
-                ContactDetailsInformationBindings = this.ContactDetailsInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2231,7 +2152,6 @@ namespace S100Framework.WPF.ViewModel.S128
             onlineResource = this.onlineResource.ToList(),
             telecommunications = this.telecommunications.ToList(),
             sourceIndication = this.sourceIndication.ToList(),
-            ContactDetailsInformationBindings = this._ContactDetailsInformationBindings?.Model,
         };
 
         public ContactDetailsViewModel()
@@ -2332,48 +2252,6 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
-    public class PriceInformationInformationBindingsViewModel : ViewModelBase
-    {
-        private PriceOfNauticalProduct<theCatalogueOfNauticalProduct> _theCatalogueOfNauticalProduct;
-        [Category("PriceInformationInformationBindings")]
-        public PriceOfNauticalProduct<theCatalogueOfNauticalProduct> theCatalogueOfNauticalProduct
-        {
-            get
-            {
-                return _theCatalogueOfNauticalProduct;
-            }
-
-            set
-            {
-                SetValue(ref _theCatalogueOfNauticalProduct, value);
-            }
-        }
-
-        public void Load(DomainModel.S128.InformationTypes.PriceInformationInformationBindings instance)
-        {
-            theCatalogueOfNauticalProduct = instance.theCatalogueOfNauticalProduct;
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S128.InformationTypes.PriceInformationInformationBindings
-            {
-                theCatalogueOfNauticalProduct = this.theCatalogueOfNauticalProduct,
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S128.InformationTypes.PriceInformationInformationBindings Model => new()
-        {
-            theCatalogueOfNauticalProduct = this._theCatalogueOfNauticalProduct,
-        };
-
-        public PriceInformationInformationBindingsViewModel()
-        {
-        }
-    }
-
     public class PriceInformationViewModel : ViewModelBase
     {
         [Category("PriceInformation")]
@@ -2387,21 +2265,6 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("PriceInformation")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
-
-        private PriceInformationInformationBindingsViewModel? _PriceInformationInformationBindings;
-        [Category("PriceInformation")]
-        public PriceInformationInformationBindingsViewModel? PriceInformationInformationBindings
-        {
-            get
-            {
-                return _PriceInformationInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _PriceInformationInformationBindings, value);
-            }
-        }
 
         public void Load(DomainModel.S128.InformationTypes.PriceInformation instance)
         {
@@ -2421,12 +2284,6 @@ namespace S100Framework.WPF.ViewModel.S128
             if (instance.sourceIndication is not null)
                 foreach (var e in instance.sourceIndication)
                     sourceIndication.Add(e);
-            PriceInformationInformationBindings = new();
-            if (instance.PriceInformationInformationBindings != null)
-            {
-                PriceInformationInformationBindings = new();
-                PriceInformationInformationBindings.Load(instance.PriceInformationInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -2437,7 +2294,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 onlineResource = this.onlineResource.ToList(),
                 pricing = this.pricing.ToList(),
                 sourceIndication = this.sourceIndication.ToList(),
-                PriceInformationInformationBindings = this.PriceInformationInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2449,7 +2305,6 @@ namespace S100Framework.WPF.ViewModel.S128
             onlineResource = this.onlineResource.ToList(),
             pricing = this.pricing.ToList(),
             sourceIndication = this.sourceIndication.ToList(),
-            PriceInformationInformationBindings = this._PriceInformationInformationBindings?.Model,
         };
 
         public PriceInformationViewModel()
@@ -2469,61 +2324,6 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(sourceIndication));
-            };
-        }
-    }
-
-    public class ProducerInformationInformationBindingsViewModel : ViewModelBase
-    {
-        [Category("ProducerInformationInformationBindings")]
-        public ObservableCollection<ProducerContact<theContactDetails>> theContactDetails { get; set; } = new();
-
-        private ProductionDetails<catalogueHeader> _catalogueHeader;
-        [Category("ProducerInformationInformationBindings")]
-        public ProductionDetails<catalogueHeader> catalogueHeader
-        {
-            get
-            {
-                return _catalogueHeader;
-            }
-
-            set
-            {
-                SetValue(ref _catalogueHeader, value);
-            }
-        }
-
-        public void Load(DomainModel.S128.InformationTypes.ProducerInformationInformationBindings instance)
-        {
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
-            catalogueHeader = instance.catalogueHeader;
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S128.InformationTypes.ProducerInformationInformationBindings
-            {
-                theContactDetails = this.theContactDetails.ToList(),
-                catalogueHeader = this.catalogueHeader,
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S128.InformationTypes.ProducerInformationInformationBindings Model => new()
-        {
-            theContactDetails = this.theContactDetails.ToList(),
-            catalogueHeader = this._catalogueHeader,
-        };
-
-        public ProducerInformationInformationBindingsViewModel()
-        {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
             };
         }
     }
@@ -2560,31 +2360,10 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private ProducerInformationInformationBindingsViewModel? _ProducerInformationInformationBindings;
-        [Category("ProducerInformation")]
-        public ProducerInformationInformationBindingsViewModel? ProducerInformationInformationBindings
-        {
-            get
-            {
-                return _ProducerInformationInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _ProducerInformationInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S128.InformationTypes.ProducerInformation instance)
         {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             agencyName = instance.agencyName;
-            ProducerInformationInformationBindings = new();
-            if (instance.ProducerInformationInformationBindings != null)
-            {
-                ProducerInformationInformationBindings = new();
-                ProducerInformationInformationBindings.Load(instance.ProducerInformationInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -2593,7 +2372,6 @@ namespace S100Framework.WPF.ViewModel.S128
             {
                 agencyResponsibleForProduction = this.agencyResponsibleForProduction,
                 agencyName = this.agencyName,
-                ProducerInformationInformationBindings = this.ProducerInformationInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2603,66 +2381,10 @@ namespace S100Framework.WPF.ViewModel.S128
         {
             agencyResponsibleForProduction = this._agencyResponsibleForProduction,
             agencyName = this._agencyName,
-            ProducerInformationInformationBindings = this._ProducerInformationInformationBindings?.Model,
         };
 
         public ProducerInformationViewModel()
         {
-        }
-    }
-
-    public class DistributorInformationInformationBindingsViewModel : ViewModelBase
-    {
-        private DistributionDetails<catalogueHeader> _catalogueHeader;
-        [Category("DistributorInformationInformationBindings")]
-        public DistributionDetails<catalogueHeader> catalogueHeader
-        {
-            get
-            {
-                return _catalogueHeader;
-            }
-
-            set
-            {
-                SetValue(ref _catalogueHeader, value);
-            }
-        }
-
-        [Category("DistributorInformationInformationBindings")]
-        public ObservableCollection<DistributorContact<theContactDetails>> theContactDetails { get; set; } = new();
-
-        public void Load(DomainModel.S128.InformationTypes.DistributorInformationInformationBindings instance)
-        {
-            catalogueHeader = instance.catalogueHeader;
-            theContactDetails.Clear();
-            if (instance.theContactDetails is not null)
-                foreach (var e in instance.theContactDetails)
-                    theContactDetails.Add(e);
-        }
-
-        public override string Serialize()
-        {
-            var instance = new DomainModel.S128.InformationTypes.DistributorInformationInformationBindings
-            {
-                catalogueHeader = this.catalogueHeader,
-                theContactDetails = this.theContactDetails.ToList(),
-            };
-            return System.Text.Json.JsonSerializer.Serialize(instance);
-        }
-
-        [Browsable(false)]
-        public DomainModel.S128.InformationTypes.DistributorInformationInformationBindings Model => new()
-        {
-            catalogueHeader = this._catalogueHeader,
-            theContactDetails = this.theContactDetails.ToList(),
-        };
-
-        public DistributorInformationInformationBindingsViewModel()
-        {
-            theContactDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theContactDetails));
-            };
         }
     }
 
@@ -2683,30 +2405,9 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private DistributorInformationInformationBindingsViewModel? _DistributorInformationInformationBindings;
-        [Category("DistributorInformation")]
-        public DistributorInformationInformationBindingsViewModel? DistributorInformationInformationBindings
-        {
-            get
-            {
-                return _DistributorInformationInformationBindings;
-            }
-
-            set
-            {
-                SetValue(ref _DistributorInformationInformationBindings, value);
-            }
-        }
-
         public void Load(DomainModel.S128.InformationTypes.DistributorInformation instance)
         {
             distributorName = instance.distributorName;
-            DistributorInformationInformationBindings = new();
-            if (instance.DistributorInformationInformationBindings != null)
-            {
-                DistributorInformationInformationBindings = new();
-                DistributorInformationInformationBindings.Load(instance.DistributorInformationInformationBindings);
-            }
         }
 
         public override string Serialize()
@@ -2714,7 +2415,6 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new DomainModel.S128.InformationTypes.DistributorInformation
             {
                 distributorName = this.distributorName,
-                DistributorInformationInformationBindings = this.DistributorInformationInformationBindings?.Model,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -2723,7 +2423,6 @@ namespace S100Framework.WPF.ViewModel.S128
         public DomainModel.S128.InformationTypes.DistributorInformation Model => new()
         {
             distributorName = this._distributorName,
-            DistributorInformationInformationBindings = this._DistributorInformationInformationBindings?.Model,
         };
 
         public DistributorInformationViewModel()
@@ -2760,21 +2459,6 @@ namespace S100Framework.WPF.ViewModel.S128
             set
             {
                 SetValue(ref _datasetName, value);
-            }
-        }
-
-        private encodingFormat _encodingFormat;
-        [Category("ElectronicProduct")]
-        public encodingFormat encodingFormat
-        {
-            get
-            {
-                return _encodingFormat;
-            }
-
-            set
-            {
-                SetValue(ref _encodingFormat, value);
             }
         }
 
@@ -2839,20 +2523,8 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private Int32? _approximateGridResolution = default;
         [Category("NavigationalProduct")]
-        public Int32? approximateGridResolution
-        {
-            get
-            {
-                return _approximateGridResolution;
-            }
-
-            set
-            {
-                SetValue(ref _approximateGridResolution, value);
-            }
-        }
+        public ObservableCollection<Decimal> approximateGridResolution { get; set; } = new();
 
         [Category("NavigationalProduct")]
         public ObservableCollection<Int32> compilationScale { get; set; } = new();
@@ -2872,9 +2544,9 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private Int32 _editionNumber;
+        private Int32? _editionNumber = default;
         [Category("NavigationalProduct")]
-        public Int32 editionNumber
+        public Int32? editionNumber
         {
             get
             {
@@ -3025,6 +2697,38 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        private horizontalDatumEpsg? _horizontalDatumEpsg;
+        [DomainModel.CodeListAttribute(nameof(horizontalDatumEpsgList))]
+        [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
+        [Category("NavigationalProduct")]
+        public horizontalDatumEpsg? horizontalDatumEpsg
+        {
+            get
+            {
+                return _horizontalDatumEpsg;
+            }
+
+            set
+            {
+                SetValue(ref _horizontalDatumEpsg, value);
+            }
+        }
+
+        private verticalDatum? _verticalDatum = default;
+        [Category("NavigationalProduct")]
+        public verticalDatum? verticalDatum
+        {
+            get
+            {
+                return _verticalDatum;
+            }
+
+            set
+            {
+                SetValue(ref _verticalDatum, value);
+            }
+        }
+
         private String _agencyResponsibleForProduction = string.Empty;
         [Category("CatalogueElement")]
         public String agencyResponsibleForProduction
@@ -3075,21 +2779,6 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("CatalogueElement")]
         public ObservableCollection<IMOMaritimeService> IMOMaritimeService { get; set; } = new();
-
-        private String _keywords = string.Empty;
-        [Category("CatalogueElement")]
-        public String keywords
-        {
-            get
-            {
-                return _keywords;
-            }
-
-            set
-            {
-                SetValue(ref _keywords, value);
-            }
-        }
 
         private Boolean _notForNavigation;
         [Category("CatalogueElement")]
@@ -3163,20 +2852,13 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        [Category("CatalogueElement")]
-        public ObservableCollection<CarriageRequirement<theRequirement>> theRequirement { get; set; } = new();
-
-        [Category("CatalogueElement")]
-        public ObservableCollection<PriceOfElement<thePriceInformation>> thePriceInformation { get; set; } = new();
-
-        [Category("CatalogueElement")]
-        public ObservableCollection<ProductPackage<elementContainer>> elementContainer { get; set; } = new();
+        [Browsable(false)]
+        public horizontalDatumEpsg[] horizontalDatumEpsgList => CodeList.horizontalDatumEpsgs.ToArray();
 
         public void Load(DomainModel.S128.FeatureTypes.ElectronicProduct instance)
         {
             compressionFlag = instance.compressionFlag;
             datasetName = instance.datasetName;
-            encodingFormat = instance.encodingFormat;
             issueDate = instance.issueDate;
             issueTime = instance.issueTime;
             typeOfProductFormat = instance.typeOfProductFormat;
@@ -3187,7 +2869,10 @@ namespace S100Framework.WPF.ViewModel.S128
                 productSpecification.Load(instance.productSpecification);
             }
 
-            approximateGridResolution = instance.approximateGridResolution;
+            approximateGridResolution.Clear();
+            if (instance.approximateGridResolution is not null)
+                foreach (var e in instance.approximateGridResolution)
+                    approximateGridResolution.Add(e);
             compilationScale.Clear();
             if (instance.compilationScale is not null)
                 foreach (var e in instance.compilationScale)
@@ -3207,6 +2892,8 @@ namespace S100Framework.WPF.ViewModel.S128
             specificUsage = instance.specificUsage;
             updateDate = instance.updateDate;
             updateNumber = instance.updateNumber;
+            horizontalDatumEpsg = instance.horizontalDatumEpsg;
+            verticalDatum = instance.verticalDatum;
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             catalogueElementClassification.Clear();
             if (instance.catalogueElementClassification is not null)
@@ -3218,7 +2905,6 @@ namespace S100Framework.WPF.ViewModel.S128
             if (instance.IMOMaritimeService is not null)
                 foreach (var e in instance.IMOMaritimeService)
                     IMOMaritimeService.Add(e);
-            keywords = instance.keywords;
             notForNavigation = instance.notForNavigation;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -3252,19 +2938,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 timeIntervalOfProduct = new();
                 timeIntervalOfProduct.Load(instance.timeIntervalOfProduct);
             }
-
-            theRequirement.Clear();
-            if (instance.theRequirement is not null)
-                foreach (var e in instance.theRequirement)
-                    theRequirement.Add(e);
-            thePriceInformation.Clear();
-            if (instance.thePriceInformation is not null)
-                foreach (var e in instance.thePriceInformation)
-                    thePriceInformation.Add(e);
-            elementContainer.Clear();
-            if (instance.elementContainer is not null)
-                foreach (var e in instance.elementContainer)
-                    elementContainer.Add(e);
         }
 
         public override string Serialize()
@@ -3273,12 +2946,11 @@ namespace S100Framework.WPF.ViewModel.S128
             {
                 compressionFlag = this.compressionFlag,
                 datasetName = this.datasetName,
-                encodingFormat = this.encodingFormat,
                 issueDate = this.issueDate,
                 issueTime = this.issueTime,
                 typeOfProductFormat = this.typeOfProductFormat,
                 productSpecification = this.productSpecification?.Model,
-                approximateGridResolution = this.approximateGridResolution,
+                approximateGridResolution = this.approximateGridResolution.ToList(),
                 compilationScale = this.compilationScale.ToList(),
                 distributionStatus = this.distributionStatus,
                 editionNumber = this.editionNumber,
@@ -3292,12 +2964,13 @@ namespace S100Framework.WPF.ViewModel.S128
                 specificUsage = this.specificUsage,
                 updateDate = this.updateDate,
                 updateNumber = this.updateNumber,
+                horizontalDatumEpsg = this.horizontalDatumEpsg,
+                verticalDatum = this.verticalDatum,
                 agencyResponsibleForProduction = this.agencyResponsibleForProduction,
                 catalogueElementClassification = this.catalogueElementClassification.ToList(),
                 catalogueElementIdentifier = this.catalogueElementIdentifier,
                 classification = this.classification,
                 IMOMaritimeService = this.IMOMaritimeService.ToList(),
-                keywords = this.keywords,
                 notForNavigation = this.notForNavigation,
                 featureName = this.featureName.ToList(),
                 information = this.information.ToList(),
@@ -3305,9 +2978,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 sourceIndication = this.sourceIndication?.Model,
                 supportFile = this.supportFile.ToList(),
                 timeIntervalOfProduct = this.timeIntervalOfProduct?.Model,
-                theRequirement = this.theRequirement.ToList(),
-                thePriceInformation = this.thePriceInformation.ToList(),
-                elementContainer = this.elementContainer.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -3317,12 +2987,11 @@ namespace S100Framework.WPF.ViewModel.S128
         {
             compressionFlag = this._compressionFlag,
             datasetName = this._datasetName,
-            encodingFormat = this._encodingFormat,
             issueDate = this._issueDate,
             issueTime = this._issueTime,
             typeOfProductFormat = this._typeOfProductFormat,
             productSpecification = this._productSpecification?.Model,
-            approximateGridResolution = this._approximateGridResolution,
+            approximateGridResolution = this.approximateGridResolution.ToList(),
             compilationScale = this.compilationScale.ToList(),
             distributionStatus = this._distributionStatus,
             editionNumber = this._editionNumber,
@@ -3336,12 +3005,13 @@ namespace S100Framework.WPF.ViewModel.S128
             specificUsage = this._specificUsage,
             updateDate = this._updateDate,
             updateNumber = this._updateNumber,
+            horizontalDatumEpsg = this._horizontalDatumEpsg,
+            verticalDatum = this._verticalDatum,
             agencyResponsibleForProduction = this._agencyResponsibleForProduction,
             catalogueElementClassification = this.catalogueElementClassification.ToList(),
             catalogueElementIdentifier = this._catalogueElementIdentifier,
             classification = this._classification,
             IMOMaritimeService = this.IMOMaritimeService.ToList(),
-            keywords = this._keywords,
             notForNavigation = this._notForNavigation,
             featureName = this.featureName.ToList(),
             information = this.information.ToList(),
@@ -3349,13 +3019,14 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication = this._sourceIndication?.Model,
             supportFile = this.supportFile.ToList(),
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
-            theRequirement = this.theRequirement.ToList(),
-            thePriceInformation = this.thePriceInformation.ToList(),
-            elementContainer = this.elementContainer.ToList(),
         };
 
         public ElectronicProductViewModel()
         {
+            approximateGridResolution.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(approximateGridResolution));
+            };
             compilationScale.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(compilationScale));
@@ -3383,18 +3054,6 @@ namespace S100Framework.WPF.ViewModel.S128
             supportFile.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(supportFile));
-            };
-            theRequirement.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRequirement));
-            };
-            thePriceInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(thePriceInformation));
-            };
-            elementContainer.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(elementContainer));
             };
         }
     }
@@ -3477,9 +3136,10 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private DateTime? _referenceToNM = default;
+        private referenceToNMViewModel? _referenceToNM;
         [Category("PhysicalProduct")]
-        public DateTime? referenceToNM
+        [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
+        public referenceToNMViewModel? referenceToNM
         {
             get
             {
@@ -3492,20 +3152,8 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private Int32? _approximateGridResolution = default;
         [Category("NavigationalProduct")]
-        public Int32? approximateGridResolution
-        {
-            get
-            {
-                return _approximateGridResolution;
-            }
-
-            set
-            {
-                SetValue(ref _approximateGridResolution, value);
-            }
-        }
+        public ObservableCollection<Decimal> approximateGridResolution { get; set; } = new();
 
         [Category("NavigationalProduct")]
         public ObservableCollection<Int32> compilationScale { get; set; } = new();
@@ -3525,9 +3173,9 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private Int32 _editionNumber;
+        private Int32? _editionNumber = default;
         [Category("NavigationalProduct")]
-        public Int32 editionNumber
+        public Int32? editionNumber
         {
             get
             {
@@ -3678,6 +3326,38 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        private horizontalDatumEpsg? _horizontalDatumEpsg;
+        [DomainModel.CodeListAttribute(nameof(horizontalDatumEpsgList))]
+        [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
+        [Category("NavigationalProduct")]
+        public horizontalDatumEpsg? horizontalDatumEpsg
+        {
+            get
+            {
+                return _horizontalDatumEpsg;
+            }
+
+            set
+            {
+                SetValue(ref _horizontalDatumEpsg, value);
+            }
+        }
+
+        private verticalDatum? _verticalDatum = default;
+        [Category("NavigationalProduct")]
+        public verticalDatum? verticalDatum
+        {
+            get
+            {
+                return _verticalDatum;
+            }
+
+            set
+            {
+                SetValue(ref _verticalDatum, value);
+            }
+        }
+
         private String _agencyResponsibleForProduction = string.Empty;
         [Category("CatalogueElement")]
         public String agencyResponsibleForProduction
@@ -3728,21 +3408,6 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("CatalogueElement")]
         public ObservableCollection<IMOMaritimeService> IMOMaritimeService { get; set; } = new();
-
-        private String _keywords = string.Empty;
-        [Category("CatalogueElement")]
-        public String keywords
-        {
-            get
-            {
-                return _keywords;
-            }
-
-            set
-            {
-                SetValue(ref _keywords, value);
-            }
-        }
 
         private Boolean _notForNavigation;
         [Category("CatalogueElement")]
@@ -3816,14 +3481,8 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        [Category("CatalogueElement")]
-        public ObservableCollection<CarriageRequirement<theRequirement>> theRequirement { get; set; } = new();
-
-        [Category("CatalogueElement")]
-        public ObservableCollection<PriceOfElement<thePriceInformation>> thePriceInformation { get; set; } = new();
-
-        [Category("CatalogueElement")]
-        public ObservableCollection<ProductPackage<elementContainer>> elementContainer { get; set; } = new();
+        [Browsable(false)]
+        public horizontalDatumEpsg[] horizontalDatumEpsgList => CodeList.horizontalDatumEpsgs.ToArray();
 
         public void Load(DomainModel.S128.FeatureTypes.PhysicalProduct instance)
         {
@@ -3838,8 +3497,17 @@ namespace S100Framework.WPF.ViewModel.S128
                 printInformation.Load(instance.printInformation);
             }
 
-            referenceToNM = instance.referenceToNM;
-            approximateGridResolution = instance.approximateGridResolution;
+            referenceToNM = new();
+            if (instance.referenceToNM != null)
+            {
+                referenceToNM = new();
+                referenceToNM.Load(instance.referenceToNM);
+            }
+
+            approximateGridResolution.Clear();
+            if (instance.approximateGridResolution is not null)
+                foreach (var e in instance.approximateGridResolution)
+                    approximateGridResolution.Add(e);
             compilationScale.Clear();
             if (instance.compilationScale is not null)
                 foreach (var e in instance.compilationScale)
@@ -3859,6 +3527,8 @@ namespace S100Framework.WPF.ViewModel.S128
             specificUsage = instance.specificUsage;
             updateDate = instance.updateDate;
             updateNumber = instance.updateNumber;
+            horizontalDatumEpsg = instance.horizontalDatumEpsg;
+            verticalDatum = instance.verticalDatum;
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
             catalogueElementClassification.Clear();
             if (instance.catalogueElementClassification is not null)
@@ -3870,7 +3540,6 @@ namespace S100Framework.WPF.ViewModel.S128
             if (instance.IMOMaritimeService is not null)
                 foreach (var e in instance.IMOMaritimeService)
                     IMOMaritimeService.Add(e);
-            keywords = instance.keywords;
             notForNavigation = instance.notForNavigation;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -3904,19 +3573,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 timeIntervalOfProduct = new();
                 timeIntervalOfProduct.Load(instance.timeIntervalOfProduct);
             }
-
-            theRequirement.Clear();
-            if (instance.theRequirement is not null)
-                foreach (var e in instance.theRequirement)
-                    theRequirement.Add(e);
-            thePriceInformation.Clear();
-            if (instance.thePriceInformation is not null)
-                foreach (var e in instance.thePriceInformation)
-                    thePriceInformation.Add(e);
-            elementContainer.Clear();
-            if (instance.elementContainer is not null)
-                foreach (var e in instance.elementContainer)
-                    elementContainer.Add(e);
         }
 
         public override string Serialize()
@@ -3928,8 +3584,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 publicationNumber = this.publicationNumber,
                 typeOfPaper = this.typeOfPaper,
                 printInformation = this.printInformation?.Model,
-                referenceToNM = this.referenceToNM,
-                approximateGridResolution = this.approximateGridResolution,
+                referenceToNM = this.referenceToNM?.Model,
+                approximateGridResolution = this.approximateGridResolution.ToList(),
                 compilationScale = this.compilationScale.ToList(),
                 distributionStatus = this.distributionStatus,
                 editionNumber = this.editionNumber,
@@ -3943,12 +3599,13 @@ namespace S100Framework.WPF.ViewModel.S128
                 specificUsage = this.specificUsage,
                 updateDate = this.updateDate,
                 updateNumber = this.updateNumber,
+                horizontalDatumEpsg = this.horizontalDatumEpsg,
+                verticalDatum = this.verticalDatum,
                 agencyResponsibleForProduction = this.agencyResponsibleForProduction,
                 catalogueElementClassification = this.catalogueElementClassification.ToList(),
                 catalogueElementIdentifier = this.catalogueElementIdentifier,
                 classification = this.classification,
                 IMOMaritimeService = this.IMOMaritimeService.ToList(),
-                keywords = this.keywords,
                 notForNavigation = this.notForNavigation,
                 featureName = this.featureName.ToList(),
                 information = this.information.ToList(),
@@ -3956,9 +3613,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 sourceIndication = this.sourceIndication?.Model,
                 supportFile = this.supportFile.ToList(),
                 timeIntervalOfProduct = this.timeIntervalOfProduct?.Model,
-                theRequirement = this.theRequirement.ToList(),
-                thePriceInformation = this.thePriceInformation.ToList(),
-                elementContainer = this.elementContainer.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -3971,8 +3625,8 @@ namespace S100Framework.WPF.ViewModel.S128
             publicationNumber = this._publicationNumber,
             typeOfPaper = this._typeOfPaper,
             printInformation = this._printInformation?.Model,
-            referenceToNM = this._referenceToNM,
-            approximateGridResolution = this._approximateGridResolution,
+            referenceToNM = this._referenceToNM?.Model,
+            approximateGridResolution = this.approximateGridResolution.ToList(),
             compilationScale = this.compilationScale.ToList(),
             distributionStatus = this._distributionStatus,
             editionNumber = this._editionNumber,
@@ -3986,12 +3640,13 @@ namespace S100Framework.WPF.ViewModel.S128
             specificUsage = this._specificUsage,
             updateDate = this._updateDate,
             updateNumber = this._updateNumber,
+            horizontalDatumEpsg = this._horizontalDatumEpsg,
+            verticalDatum = this._verticalDatum,
             agencyResponsibleForProduction = this._agencyResponsibleForProduction,
             catalogueElementClassification = this.catalogueElementClassification.ToList(),
             catalogueElementIdentifier = this._catalogueElementIdentifier,
             classification = this._classification,
             IMOMaritimeService = this.IMOMaritimeService.ToList(),
-            keywords = this._keywords,
             notForNavigation = this._notForNavigation,
             featureName = this.featureName.ToList(),
             information = this.information.ToList(),
@@ -3999,13 +3654,14 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication = this._sourceIndication?.Model,
             supportFile = this.supportFile.ToList(),
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
-            theRequirement = this.theRequirement.ToList(),
-            thePriceInformation = this.thePriceInformation.ToList(),
-            elementContainer = this.elementContainer.ToList(),
         };
 
         public PhysicalProductViewModel()
         {
+            approximateGridResolution.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            {
+                OnPropertyChanged(nameof(approximateGridResolution));
+            };
             compilationScale.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(compilationScale));
@@ -4034,18 +3690,6 @@ namespace S100Framework.WPF.ViewModel.S128
             {
                 OnPropertyChanged(nameof(supportFile));
             };
-            theRequirement.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRequirement));
-            };
-            thePriceInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(thePriceInformation));
-            };
-            elementContainer.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(elementContainer));
-            };
         }
     }
 
@@ -4063,21 +3707,6 @@ namespace S100Framework.WPF.ViewModel.S128
             set
             {
                 SetValue(ref _compressionFlag, value);
-            }
-        }
-
-        private encodingFormat _encodingFormat;
-        [Category("S100Service")]
-        public encodingFormat encodingFormat
-        {
-            get
-            {
-                return _encodingFormat;
-            }
-
-            set
-            {
-                SetValue(ref _encodingFormat, value);
             }
         }
 
@@ -4209,21 +3838,6 @@ namespace S100Framework.WPF.ViewModel.S128
         [Category("CatalogueElement")]
         public ObservableCollection<IMOMaritimeService> IMOMaritimeService { get; set; } = new();
 
-        private String _keywords = string.Empty;
-        [Category("CatalogueElement")]
-        public String keywords
-        {
-            get
-            {
-                return _keywords;
-            }
-
-            set
-            {
-                SetValue(ref _keywords, value);
-            }
-        }
-
         private Boolean _notForNavigation;
         [Category("CatalogueElement")]
         public Boolean notForNavigation
@@ -4296,19 +3910,9 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        [Category("CatalogueElement")]
-        public ObservableCollection<CarriageRequirement<theRequirement>> theRequirement { get; set; } = new();
-
-        [Category("CatalogueElement")]
-        public ObservableCollection<PriceOfElement<thePriceInformation>> thePriceInformation { get; set; } = new();
-
-        [Category("CatalogueElement")]
-        public ObservableCollection<ProductPackage<elementContainer>> elementContainer { get; set; } = new();
-
         public void Load(DomainModel.S128.FeatureTypes.S100Service instance)
         {
             compressionFlag = instance.compressionFlag;
-            encodingFormat = instance.encodingFormat;
             serviceName = instance.serviceName;
             serviceStatus = instance.serviceStatus;
             typeOfProductFormat = instance.typeOfProductFormat;
@@ -4337,7 +3941,6 @@ namespace S100Framework.WPF.ViewModel.S128
             if (instance.IMOMaritimeService is not null)
                 foreach (var e in instance.IMOMaritimeService)
                     IMOMaritimeService.Add(e);
-            keywords = instance.keywords;
             notForNavigation = instance.notForNavigation;
             featureName.Clear();
             if (instance.featureName is not null)
@@ -4371,19 +3974,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 timeIntervalOfProduct = new();
                 timeIntervalOfProduct.Load(instance.timeIntervalOfProduct);
             }
-
-            theRequirement.Clear();
-            if (instance.theRequirement is not null)
-                foreach (var e in instance.theRequirement)
-                    theRequirement.Add(e);
-            thePriceInformation.Clear();
-            if (instance.thePriceInformation is not null)
-                foreach (var e in instance.thePriceInformation)
-                    thePriceInformation.Add(e);
-            elementContainer.Clear();
-            if (instance.elementContainer is not null)
-                foreach (var e in instance.elementContainer)
-                    elementContainer.Add(e);
         }
 
         public override string Serialize()
@@ -4391,7 +3981,6 @@ namespace S100Framework.WPF.ViewModel.S128
             var instance = new DomainModel.S128.FeatureTypes.S100Service
             {
                 compressionFlag = this.compressionFlag,
-                encodingFormat = this.encodingFormat,
                 serviceName = this.serviceName,
                 serviceStatus = this.serviceStatus,
                 typeOfProductFormat = this.typeOfProductFormat,
@@ -4402,7 +3991,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 catalogueElementIdentifier = this.catalogueElementIdentifier,
                 classification = this.classification,
                 IMOMaritimeService = this.IMOMaritimeService.ToList(),
-                keywords = this.keywords,
                 notForNavigation = this.notForNavigation,
                 featureName = this.featureName.ToList(),
                 information = this.information.ToList(),
@@ -4410,9 +3998,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 sourceIndication = this.sourceIndication?.Model,
                 supportFile = this.supportFile.ToList(),
                 timeIntervalOfProduct = this.timeIntervalOfProduct?.Model,
-                theRequirement = this.theRequirement.ToList(),
-                thePriceInformation = this.thePriceInformation.ToList(),
-                elementContainer = this.elementContainer.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -4421,7 +4006,6 @@ namespace S100Framework.WPF.ViewModel.S128
         public DomainModel.S128.FeatureTypes.S100Service Model => new()
         {
             compressionFlag = this._compressionFlag,
-            encodingFormat = this._encodingFormat,
             serviceName = this._serviceName,
             serviceStatus = this._serviceStatus,
             typeOfProductFormat = this._typeOfProductFormat,
@@ -4432,7 +4016,6 @@ namespace S100Framework.WPF.ViewModel.S128
             catalogueElementIdentifier = this._catalogueElementIdentifier,
             classification = this._classification,
             IMOMaritimeService = this.IMOMaritimeService.ToList(),
-            keywords = this._keywords,
             notForNavigation = this._notForNavigation,
             featureName = this.featureName.ToList(),
             information = this.information.ToList(),
@@ -4440,9 +4023,6 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication = this._sourceIndication?.Model,
             supportFile = this.supportFile.ToList(),
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
-            theRequirement = this.theRequirement.ToList(),
-            thePriceInformation = this.thePriceInformation.ToList(),
-            elementContainer = this.elementContainer.ToList(),
         };
 
         public S100ServiceViewModel()
@@ -4466,18 +4046,6 @@ namespace S100Framework.WPF.ViewModel.S128
             supportFile.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(supportFile));
-            };
-            theRequirement.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(theRequirement));
-            };
-            thePriceInformation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(thePriceInformation));
-            };
-            elementContainer.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
-            {
-                OnPropertyChanged(nameof(elementContainer));
             };
         }
     }

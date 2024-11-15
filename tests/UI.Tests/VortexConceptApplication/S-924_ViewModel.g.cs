@@ -4,15 +4,15 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S124.ComplexAttributes;
 using S100Framework.DomainModel.S124.InformationTypes;
 using S100Framework.DomainModel.S124.FeatureTypes;
-using S100Framework.WPF.Editors;
-using S100Framework.DomainModel.S124.Bindings.InformationAssociations;
-using S100Framework.DomainModel.S124.Bindings.Roles;
+using S100Framework.DomainModel.S124.Associations.InformationAssociations;
+using S100Framework.DomainModel.S124.Associations.FeatureAssociations;
 
-namespace S100Framework.WPF.S924
+namespace S100Framework.WPF.ViewModel.S924
 {
     internal static class Preamble
     {
@@ -192,8 +192,9 @@ namespace S100Framework.WPF.S924
             editionNumber = instance.editionNumber;
             eNCName = instance.eNCName;
             featureObjectIdentifier.Clear();
-            foreach (var e in instance.featureObjectIdentifier)
-                featureObjectIdentifier.Add(e);
+            if (instance.featureObjectIdentifier is not null)
+                foreach (var e in instance.featureObjectIdentifier)
+                    featureObjectIdentifier.Add(e);
             updateNumber = instance.updateNumber;
         }
 
@@ -248,8 +249,9 @@ namespace S100Framework.WPF.S924
 
         public void Load(DomainModel.S124.ComplexAttributes.featureReference instance) {
             featureIdentifier.Clear();
-            foreach (var e in instance.featureIdentifier)
-                featureIdentifier.Add(e);
+            if (instance.featureIdentifier is not null)
+                foreach (var e in instance.featureIdentifier)
+                    featureIdentifier.Add(e);
             dateTimeRange = new();
             if (instance.dateTimeRange != null) {
                 dateTimeRange = new();
@@ -257,11 +259,13 @@ namespace S100Framework.WPF.S924
             }
 
             atoNNumber.Clear();
-            foreach (var e in instance.atoNNumber)
-                atoNNumber.Add(e);
+            if (instance.atoNNumber is not null)
+                foreach (var e in instance.atoNNumber)
+                    atoNNumber.Add(e);
             eNCFeatureReference.Clear();
-            foreach (var e in instance.eNCFeatureReference)
-                eNCFeatureReference.Add(e);
+            if (instance.eNCFeatureReference is not null)
+                foreach (var e in instance.eNCFeatureReference)
+                    eNCFeatureReference.Add(e);
         }
 
         public override string Serialize() {
@@ -456,9 +460,9 @@ namespace S100Framework.WPF.S924
             }
         }
 
+        [DomainModel.CodeListAttribute(nameof(navwarnTypeDetailsList))]
+        [Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]
         [Category("warningInformation")]
-        [Editor(typeof(CodeListCheckComboEditor), typeof(CodeListCheckComboEditor))]
-        [S100Framework.DomainModel.CodeList(nameof(navwarnTypeDetailsList))]
         public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails { get; set; } = new();
 
         [Browsable(false)]
@@ -472,8 +476,9 @@ namespace S100Framework.WPF.S924
             }
 
             navwarnTypeDetails.Clear();
-            foreach (var e in instance.navwarnTypeDetails)
-                navwarnTypeDetails.Add(e);
+            if (instance.navwarnTypeDetails is not null)
+                foreach (var e in instance.navwarnTypeDetails)
+                    navwarnTypeDetails.Add(e);
         }
 
         public override string Serialize() {
@@ -745,8 +750,9 @@ namespace S100Framework.WPF.S924
         public void Load(DomainModel.S124.ComplexAttributes.generalArea instance) {
             localityIdentifier = instance.localityIdentifier;
             locationName.Clear();
-            foreach (var e in instance.locationName)
-                locationName.Add(e);
+            if (instance.locationName is not null)
+                foreach (var e in instance.locationName)
+                    locationName.Add(e);
         }
 
         public override string Serialize() {
@@ -793,8 +799,9 @@ namespace S100Framework.WPF.S924
         public void Load(DomainModel.S124.ComplexAttributes.locality instance) {
             localityIdentifier = instance.localityIdentifier;
             locationName.Clear();
-            foreach (var e in instance.locationName)
-                locationName.Add(e);
+            if (instance.locationName is not null)
+                foreach (var e in instance.locationName)
+                    locationName.Add(e);
         }
 
         public override string Serialize() {
@@ -1043,6 +1050,8 @@ namespace S100Framework.WPF.S924
         }
 
         private navwarnTypeGeneral _navwarnTypeGeneral;
+        [DomainModel.CodeListAttribute(nameof(navwarnTypeGeneralList))]
+        [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("NAVWARNPreamble")]
         public navwarnTypeGeneral navwarnTypeGeneral {
             get {
@@ -1053,9 +1062,6 @@ namespace S100Framework.WPF.S924
                 SetValue(ref _navwarnTypeGeneral, value);
             }
         }
-
-        [Browsable(false)]
-        public navwarnTypeGeneral[] navwarnTypeGeneralList => CodeList.navwarnTypeGenerals.ToArray();
 
         private DateTime _publicationTime;
         [Category("NAVWARNPreamble")]
@@ -1069,16 +1075,22 @@ namespace S100Framework.WPF.S924
             }
         }
 
+        [Browsable(false)]
+        public navwarnTypeGeneral[] navwarnTypeGeneralList => CodeList.navwarnTypeGenerals.ToArray();
+
         public void Load(DomainModel.S124.InformationTypes.NAVWARNPreamble instance) {
             affectedChartPublications.Clear();
-            foreach (var e in instance.affectedChartPublications)
-                affectedChartPublications.Add(e);
+            if (instance.affectedChartPublications is not null)
+                foreach (var e in instance.affectedChartPublications)
+                    affectedChartPublications.Add(e);
             generalArea.Clear();
-            foreach (var e in instance.generalArea)
-                generalArea.Add(e);
+            if (instance.generalArea is not null)
+                foreach (var e in instance.generalArea)
+                    generalArea.Add(e);
             locality.Clear();
-            foreach (var e in instance.locality)
-                locality.Add(e);
+            if (instance.locality is not null)
+                foreach (var e in instance.locality)
+                    locality.Add(e);
             messageSeriesIdentifier = new();
             if (instance.messageSeriesIdentifier != null) {
                 messageSeriesIdentifier = new();
@@ -1086,8 +1098,9 @@ namespace S100Framework.WPF.S924
             }
 
             nAVWARNTitle.Clear();
-            foreach (var e in instance.nAVWARNTitle)
-                nAVWARNTitle.Add(e);
+            if (instance.nAVWARNTitle is not null)
+                foreach (var e in instance.nAVWARNTitle)
+                    nAVWARNTitle.Add(e);
             cancellationDate = instance.cancellationDate;
             intService = instance.intService;
             navwarnTypeGeneral = instance.navwarnTypeGeneral;
@@ -1169,8 +1182,9 @@ namespace S100Framework.WPF.S924
 
         public void Load(DomainModel.S124.InformationTypes.References instance) {
             messageSeriesIdentifier.Clear();
-            foreach (var e in instance.messageSeriesIdentifier)
-                messageSeriesIdentifier.Add(e);
+            if (instance.messageSeriesIdentifier is not null)
+                foreach (var e in instance.messageSeriesIdentifier)
+                    messageSeriesIdentifier.Add(e);
             noMessageOnHand = instance.noMessageOnHand;
             referenceCategory = instance.referenceCategory;
         }
@@ -1234,58 +1248,19 @@ namespace S100Framework.WPF.S924
             }
         }
 
-        private navwarnTypeDetails _navwarnTypeDetails;
-        [Category("Editor")]
-        public navwarnTypeDetails navwarnTypeDetails {
-            get {
-                return _navwarnTypeDetails;
-            }
-
-            set {
-                SetValue(ref _navwarnTypeDetails, value);
-            }
-        }
-
-        private navwarnTypeDetails _navwarnTypeDetailsCodeBehind;
-        [Category("Editor")]
-        [Editor(typeof(CodeListComboEditor), typeof(CodeListComboEditor))]
-        [S100Framework.DomainModel.CodeList(nameof(navwarnTypeDetailsList))]
-        public navwarnTypeDetails navwarnTypeDetailsCodeBehind {
-            get {
-                return _navwarnTypeDetailsCodeBehind;
-            }
-
-            set {
-                SetValue(ref _navwarnTypeDetailsCodeBehind, value);
-            }
-        }
-
-        
-        [Browsable(false)]
-        public navwarnTypeDetails[] navwarnTypeDetailsList => CodeList.navwarnTypeDetails.ToArray();
-
-        private NWPreambleContent<header> _header;
-        [Category("NAVWARNPart")]
-        public NWPreambleContent<header> header {
-            get {
-                return _header;
-            }
-
-            set {
-                SetValue(ref _header, value);
-            }
-        }
-
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance) {
             featureName.Clear();
-            foreach (var e in instance.featureName)
-                featureName.Add(e);
+            if (instance.featureName is not null)
+                foreach (var e in instance.featureName)
+                    featureName.Add(e);
             featureReference.Clear();
-            foreach (var e in instance.featureReference)
-                featureReference.Add(e);
+            if (instance.featureReference is not null)
+                foreach (var e in instance.featureReference)
+                    featureReference.Add(e);
             fixedDateRange.Clear();
-            foreach (var e in instance.fixedDateRange)
-                fixedDateRange.Add(e);
+            if (instance.fixedDateRange is not null)
+                foreach (var e in instance.fixedDateRange)
+                    fixedDateRange.Add(e);
             warningInformation = new();
             if (instance.warningInformation != null) {
                 warningInformation = new();
@@ -1302,7 +1277,6 @@ namespace S100Framework.WPF.S924
                 fixedDateRange = this.fixedDateRange.ToList(),
                 warningInformation = this.warningInformation?.Model,
                 restriction = this.restriction,
-                header = this.header,
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
@@ -1314,7 +1288,6 @@ namespace S100Framework.WPF.S924
             fixedDateRange = this.fixedDateRange.ToList(),
             warningInformation = this._warningInformation?.Model,
             restriction = this._restriction,
-            header = this.header,
         };
 
         public NAVWARNPartViewModel() {

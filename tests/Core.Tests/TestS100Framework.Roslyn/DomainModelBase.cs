@@ -40,23 +40,43 @@ namespace S100Framework.DomainModel
     {
     }
 
-    [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    public class informationBinding<T>
-        where T : InformationAssociation
+    namespace Bindings
     {
-        public string roleType { get; set; } = string.Empty;
-        public string role { get; set; } = string.Empty;
-        public Type? informationType { get; set; } = default;
-    }
+        public enum roleType
+        {
+            association,
+            aggregation,
+            composition,
+        }
 
-    [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    public class featureBinding<T>
-        where T : FeatureAssociation
-    {
-        public string roleType { get; set; } = string.Empty;
-        public string role { get; set; } = string.Empty;
-        public Type? featureType { get; set; } = default;
+        public abstract class informationBinding
+        {
+        }
+
+        public abstract class informationBinding<Tassociation, TinformationType> : informationBinding where Tassociation : InformationAssociation where TinformationType : class
+        {
+            public int Lower { get; set; } = 0;
+            public int? Upper { get; set; } = default;
+            public bool IsIfinite => !Upper.HasValue;
+            public roleType roleType { get; set; }
+            public Type association => typeof(Tassociation);
+            public string? Role { get; protected set; }
+            public Type informationType => typeof(TinformationType);
+        }
+
+        public abstract class featureBinding
+        {
+        }
+
+        public abstract class featureBinding<Tassociation, TfeatureType> : featureBinding where Tassociation : FeatureAssociation where TfeatureType : class
+        {
+            public int Lower { get; set; } = 0;
+            public int? Upper { get; set; } = default;
+            public bool IsIfinite => !Upper.HasValue;
+            public roleType roleType { get; set; }
+            public Type association => typeof(Tassociation);
+            public string? Role { get; protected set; }
+            public Type featureType => typeof(TfeatureType);
+        }
     }
 }

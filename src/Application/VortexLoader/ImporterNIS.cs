@@ -884,12 +884,10 @@ namespace S100Framework.Applications
                                 S100Framework.DomainModel.S128.catalogueElementClassification.Enc,
                             },
                             editionNumber = edtn,
-                            encodingFormat = S100Framework.DomainModel.S128.encodingFormat.Gml,
                             issueDate = isdt,
                             notForNavigation = true,
                             typeOfProductFormat = S100Framework.DomainModel.S128.typeOfProductFormat.IsoIec8211,
-                            datasetName = dsnm,
-                            elementContainer = new List<DomainModel.S128.Bindings.InformationAssociations.ProductPackage<DomainModel.S128.Bindings.Roles.elementContainer>>(),
+                            datasetName = dsnm,                            
                         };
                         if(updn>0)
                             electronicproduct.updateNumber=updn;

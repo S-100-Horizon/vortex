@@ -1472,186 +1472,204 @@ namespace S100Framework.DomainModel.S122
         }
     }
 
-    namespace Bindings
+    public enum Role
     {
-        namespace Roles
-        {
-            public class appliesInLocation : Role
-            {
-            }
+        [System.ComponentModel.Description("The location in which the information item applies")]
+        [System.Xml.Serialization.XmlEnum("appliesInLocation")]
+        appliesInLocation,
+        [System.ComponentModel.Description("The controlling organization or authority for a geographically located service")]
+        [System.Xml.Serialization.XmlEnum("controlAuthority")]
+        controlAuthority,
+        [System.ComponentModel.Description("The service controlled by an organisation or authority")]
+        [System.Xml.Serialization.XmlEnum("controlledService")]
+        controlledService,
+        [System.ComponentModel.Description("The regulation, restriction, recommendation, or nautical information")]
+        [System.Xml.Serialization.XmlEnum("theRxN")]
+        theRxN,
+        [System.ComponentModel.Description("The usual service hours to which an exception applies")]
+        [System.Xml.Serialization.XmlEnum("theServiceHours_nsdy")]
+        theServiceHours_nsdy,
+        [System.ComponentModel.Description("The work hours for a non-standard workday")]
+        [System.Xml.Serialization.XmlEnum("partialWorkingDay")]
+        partialWorkingDay,
+        [System.ComponentModel.Description("The responsible authority")]
+        [System.Xml.Serialization.XmlEnum("responsibleAuthority")]
+        responsibleAuthority,
+        [System.ComponentModel.Description("The marine protected area for which the authority is responsible")]
+        [System.Xml.Serialization.XmlEnum("theMarineProtectedArea")]
+        theMarineProtectedArea,
+        [System.ComponentModel.Description("The organisation to which information relates")]
+        [System.Xml.Serialization.XmlEnum("theOrganisation")]
+        theOrganisation,
+        [System.ComponentModel.Description("The information")]
+        [System.Xml.Serialization.XmlEnum("theInformation")]
+        theInformation,
+        [System.ComponentModel.Description("-")]
+        [System.Xml.Serialization.XmlEnum("permission")]
+        permission,
+        [System.ComponentModel.Description("-")]
+        [System.Xml.Serialization.XmlEnum("vslLocation")]
+        vslLocation,
+        [System.ComponentModel.Description("-")]
+        [System.Xml.Serialization.XmlEnum("theApplicationRXN")]
+        theApplicationRXN,
+        [System.ComponentModel.Description("-")]
+        [System.Xml.Serialization.XmlEnum("isApplicableTo")]
+        isApplicableTo,
+        [System.ComponentModel.Description("-")]
+        [System.Xml.Serialization.XmlEnum("theAuthority")]
+        theAuthority,
+        [System.ComponentModel.Description("-")]
+        [System.Xml.Serialization.XmlEnum("theContactDetails")]
+        theContactDetails,
+        [System.ComponentModel.Description("-")]
+        [System.Xml.Serialization.XmlEnum("theAuthority_srvHrs")]
+        theAuthority_srvHrs,
+        [System.ComponentModel.Description("-")]
+        [System.Xml.Serialization.XmlEnum("theServiceHours")]
+        theServiceHours,
+        [System.ComponentModel.Description("-")]
+        [System.Xml.Serialization.XmlEnum("informationProvidedFor")]
+        informationProvidedFor,
+        [System.ComponentModel.Description("-")]
+        [System.Xml.Serialization.XmlEnum("providesInformation")]
+        providesInformation,
+    }
 
-            public class controlAuthority : Role
-            {
-            }
-
-            public class controlledService : Role
-            {
-            }
-
-            public class theRxN : Role
-            {
-            }
-
-            public class theServiceHours_nsdy : Role
-            {
-            }
-
-            public class partialWorkingDay : Role
-            {
-            }
-
-            public class responsibleAuthority : Role
-            {
-            }
-
-            public class theMarineProtectedArea : Role
-            {
-            }
-
-            public class theOrganisation : Role
-            {
-            }
-
-            public class theInformation : Role
-            {
-            }
-
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
-            public class permission : Role
-#pragma warning restore CS8981
-            {
-            }
-
-            public class vslLocation : Role
-            {
-            }
-
-            public class theApplicationRXN : Role
-            {
-            }
-
-            public class isApplicableTo : Role
-            {
-            }
-
-            public class theAuthority : Role
-            {
-            }
-
-            public class theContactDetails : Role
-            {
-            }
-
-            public class theAuthority_srvHrs : Role
-            {
-            }
-
-            public class theServiceHours : Role
-            {
-            }
-
-            public class informationProvidedFor : Role
-            {
-            }
-
-            public class providesInformation : Role
-            {
-            }
-        }
-
+    namespace Associations
+    {
         namespace InformationAssociations
         {
-            public class AssociatedRxN<T> : InformationAssociation where T : Role
+            public class AssociatedRxN : InformationAssociation
             {
-                public AssociatedRxN(string foreignKey = "") : base(foreignKey)
+                public AssociatedRxN()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.theRxN,
+                    Role.appliesInLocation
+                };
             }
 
-            public class ExceptionalWorkday<T> : InformationAssociation where T : Role
+            public class ExceptionalWorkday : InformationAssociation
             {
-                public ExceptionalWorkday(string foreignKey = "") : base(foreignKey)
+                public ExceptionalWorkday()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.partialWorkingDay,
+                    Role.theServiceHours_nsdy
+                };
             }
 
-            public class ProtectedAreaAuthority<T> : InformationAssociation where T : Role
+            public class ProtectedAreaAuthority : InformationAssociation
             {
-                public ProtectedAreaAuthority(string foreignKey = "") : base(foreignKey)
+                public ProtectedAreaAuthority()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.responsibleAuthority,
+                    Role.theMarineProtectedArea
+                };
             }
 
-            public class ServiceControl<T> : InformationAssociation where T : Role
+            public class ServiceControl : InformationAssociation
             {
-                public ServiceControl(string foreignKey = "") : base(foreignKey)
+                public ServiceControl()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.controlAuthority,
+                    Role.controlledService
+                };
             }
 
-            public class RelatedOrganisation<T> : InformationAssociation where T : Role
+            public class RelatedOrganisation : InformationAssociation
             {
-                public RelatedOrganisation(string foreignKey = "") : base(foreignKey)
+                public RelatedOrganisation()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.theOrganisation,
+                    Role.theInformation
+                };
             }
 
-            public class PermissionType<T> : InformationAssociation where T : Role
+            public class PermissionType : InformationAssociation
             {
-                public PermissionType(string foreignKey = "") : base(foreignKey)
+                public PermissionType()
                 {
                 }
 
+                public Role[] Roles => new[]
+                {
+                    Role.vslLocation,
+                    Role.permission
+                };
                 public required categoryOfRelationship categoryOfRelationship { get; set; }
-                public string role => typeof(T).Name;
             }
 
-            public class InclusionType<T> : InformationAssociation where T : Role
+            public class InclusionType : InformationAssociation
             {
-                public InclusionType(string foreignKey = "") : base(foreignKey)
+                public InclusionType()
                 {
                 }
 
+                public Role[] Roles => new[]
+                {
+                    Role.theApplicationRXN,
+                    Role.isApplicableTo
+                };
                 public required membership membership { get; set; }
-                public string role => typeof(T).Name;
             }
 
-            public class AuthorityContact<T> : InformationAssociation where T : Role
+            public class AuthorityContact : InformationAssociation
             {
-                public AuthorityContact(string foreignKey = "") : base(foreignKey)
+                public AuthorityContact()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.theAuthority,
+                    Role.theContactDetails
+                };
             }
 
-            public class AuthorityHours<T> : InformationAssociation where T : Role
+            public class AuthorityHours : InformationAssociation
             {
-                public AuthorityHours(string foreignKey = "") : base(foreignKey)
+                public AuthorityHours()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.theAuthority_srvHrs,
+                    Role.theServiceHours
+                };
             }
 
-            public class additionalInformation<T> : InformationAssociation where T : Role
+            public class additionalInformation : InformationAssociation
             {
-                public additionalInformation(string foreignKey = "") : base(foreignKey)
+                public additionalInformation()
                 {
                 }
 
-                public string role => typeof(T).Name;
+                public Role[] Roles => new[]
+                {
+                    Role.informationProvidedFor,
+                    Role.providesInformation
+                };
             }
         }
 
@@ -1660,11 +1678,29 @@ namespace S100Framework.DomainModel.S122
         }
     }
 
+    namespace Bindings
+    {
+        public class informationBinding<Tassociation, TinformationType> : DomainModel.Bindings.informationBinding<Tassociation, TinformationType> where Tassociation : InformationAssociation where TinformationType : class
+        {
+            public informationBinding(Role role)
+            {
+                base.Role = Enum.GetName(role);
+            }
+        }
+
+        public class featureBinding<Tassociation, TfeatureType> : DomainModel.Bindings.featureBinding<Tassociation, TfeatureType> where Tassociation : FeatureAssociation where TfeatureType : class
+        {
+            public featureBinding(Role role)
+            {
+                base.Role = Enum.GetName(role);
+            }
+        }
+    }
+
     namespace InformationTypes
     {
         using ComplexAttributes;
-        using Bindings.InformationAssociations;
-        using Bindings.Roles;
+        using DomainModel;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -1702,20 +1738,6 @@ namespace S100Framework.DomainModel.S122
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class AbstractRxNInformationBindings
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = [];
-
-            public AbstractRxNInformationBindings()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public class AbstractRxN : InformationType
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -1727,8 +1749,13 @@ namespace S100Framework.DomainModel.S122
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<rxNCode> rxNCode { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public AbstractRxNInformationBindings? AbstractRxNInformationBindings { get; set; }
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.RelatedOrganisation, Authority> theOrganisationAuthority => new(Role.theOrganisation)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
             public AbstractRxN()
             {
@@ -1739,24 +1766,15 @@ namespace S100Framework.DomainModel.S122
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class NauticalInformationInformationBindings
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<RelatedOrganisation<theOrganisation>> theOrganisation { get; set; } = [];
-
-            public NauticalInformationInformationBindings()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public class NauticalInformation : AbstractRxN
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public NauticalInformationInformationBindings? NauticalInformationInformationBindings { get; set; }
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.RelatedOrganisation, Authority> theOrganisationAuthority => new(Role.theOrganisation)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
             public NauticalInformation()
             {
@@ -1800,26 +1818,6 @@ namespace S100Framework.DomainModel.S122
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class AuthorityInformationBindings
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<RelatedOrganisation<theInformation>> theInformation { get; set; } = [];
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<AuthorityContact<theContactDetails>> theContactDetails { get; set; } = [];
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<AuthorityHours<theServiceHours>> theServiceHours { get; set; } = [];
-
-            public AuthorityInformationBindings()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public class Authority : InformationType
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -1828,24 +1826,31 @@ namespace S100Framework.DomainModel.S122
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<textContent> textContent { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public AuthorityInformationBindings? AuthorityInformationBindings { get; set; }
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.RelatedOrganisation, AbstractRxN> theInformationAbstractRxN => new(Role.theInformation)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
+
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.AuthorityContact, ContactDetails> theContactDetailsContactDetails => new(Role.theContactDetails)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
+
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.AuthorityHours, ServiceHours> theServiceHoursServiceHours => new(Role.theServiceHours)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
             public Authority()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ContactDetailsInformationBindings
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<AuthorityContact<theAuthority>> theAuthority { get; set; } = [];
-
-            public ContactDetailsInformationBindings()
             {
             }
         }
@@ -1892,24 +1897,15 @@ namespace S100Framework.DomainModel.S122
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public ContactDetailsInformationBindings? ContactDetailsInformationBindings { get; set; }
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.AuthorityContact, Authority> theAuthorityAuthority => new(Role.theAuthority)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
             public ContactDetails()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class NonStandardWorkingDayInformationBindings
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<ExceptionalWorkday<theServiceHours_nsdy>> theServiceHours_nsdy { get; set; } = [];
-
-            public NonStandardWorkingDayInformationBindings()
             {
             }
         }
@@ -1929,27 +1925,15 @@ namespace S100Framework.DomainModel.S122
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public NonStandardWorkingDayInformationBindings? NonStandardWorkingDayInformationBindings { get; set; }
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.ExceptionalWorkday, ServiceHours> theServiceHours_nsdyServiceHours => new(Role.theServiceHours_nsdy)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
             public NonStandardWorkingDay()
-            {
-            }
-        }
-
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ServiceHoursInformationBindings
-        {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<AuthorityHours<theAuthority_srvHrs>> theAuthority_srvHrs { get; set; } = [];
-
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<ExceptionalWorkday<partialWorkingDay>> partialWorkingDay { get; set; } = [];
-
-            public ServiceHoursInformationBindings()
             {
             }
         }
@@ -1966,8 +1950,21 @@ namespace S100Framework.DomainModel.S122
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required information information { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public ServiceHoursInformationBindings? ServiceHoursInformationBindings { get; set; }
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.AuthorityHours, Authority> theAuthority_srvHrsAuthority => new(Role.theAuthority_srvHrs)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
+
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.ExceptionalWorkday, NonStandardWorkingDay> partialWorkingDayNonStandardWorkingDay => new(Role.partialWorkingDay)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
             public ServiceHours()
             {
@@ -2024,9 +2021,7 @@ namespace S100Framework.DomainModel.S122
     {
         using ComplexAttributes;
         using InformationTypes;
-        using Bindings.InformationAssociations;
-        using Bindings.FeatureAssociations;
-        using Bindings.Roles;
+        using DomainModel;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -2058,11 +2053,21 @@ namespace S100Framework.DomainModel.S122
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<AssociatedRxN<theRxN>> theRxN { get; set; } = [];
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.AssociatedRxN, AbstractRxN> theRxNAbstractRxN => new(Role.theRxN)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<additionalInformation<providesInformation>> providesInformation { get; set; } = [];
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.additionalInformation, NauticalInformation> providesInformationNauticalInformation => new(Role.providesInformation)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
             public FeatureType()
             {
@@ -2115,8 +2120,13 @@ namespace S100Framework.DomainModel.S122
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<designation> designation { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public List<ProtectedAreaAuthority<responsibleAuthority>> responsibleAuthority { get; set; } = [];
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.ProtectedAreaAuthority, Authority> responsibleAuthorityAuthority => new(Role.responsibleAuthority)
+            {
+                Lower = 0,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
             public MarineProtectedArea()
             {
@@ -2135,8 +2145,14 @@ namespace S100Framework.DomainModel.S122
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfVesselTrafficService categoryOfVesselTrafficService { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
-            public ServiceControl<controlAuthority>? controlAuthority { get; set; } = default;
+            [System.Xml.Serialization.XmlIgnore]
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
+            public Bindings.informationBinding<Associations.InformationAssociations.ServiceControl, Authority> controlAuthorityAuthority => new(Role.controlAuthority)
+            {
+                Lower = 0,
+                Upper = 1,
+                roleType = DomainModel.Bindings.roleType.association
+            };
 
             public VesselTrafficServiceArea()
             {
