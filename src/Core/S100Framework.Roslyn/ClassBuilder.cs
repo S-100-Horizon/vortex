@@ -12,6 +12,20 @@ using System.Xml.XPath;
 
 namespace S100Framework
 {
+    namespace DomainModel
+    {
+        [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+        public class RoleAttribute : System.Attribute
+        {
+            private string _roleName;
+            public string RoleName => _roleName;
+
+            public RoleAttribute(string roleName) {
+                _roleName = roleName;
+            }
+        }
+    }
+
     public static class ClassBuilder
     {
         public const string S100FC_52 = "http://www.iho.int/S100FC/5.2";
@@ -56,6 +70,7 @@ namespace S100Framework
             viewBuilder.AppendLine("using System.Runtime.CompilerServices;");
             viewBuilder.AppendLine("using System.Collections.Immutable;");
             viewBuilder.AppendLine("using System.Collections.ObjectModel;");
+            viewBuilder.AppendLine($"using S100Framework.DomainModel;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId};");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.ComplexAttributes;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.InformationTypes;");
@@ -439,14 +454,6 @@ namespace S100Framework
                 {
                     var enumBuilder = moduleBuilder.DefineEnum("Role", TypeAttributes.Public, typeof(int));
 
-                    //var attributes = TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout;
-
-                    //var role = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.Role", attributes);
-                    //dictionaryTypes.Add("Role", role.CreateType());
-
-                    //classBuilder.AppendLine($"\tnamespace Roles");
-                    //classBuilder.AppendLine("\t\t{");
-
                     var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_Role", xmlNamespaceManager);
                     var definitions = new Dictionary<string, string>();
                     int index = 1;
@@ -458,24 +465,11 @@ namespace S100Framework
                         definitions.Add(code, definition);
 
                         enumBuilder.DefineLiteral(code, index++);
-
-                        //if (code.ToLowerInvariant().Equals(code))
-                        //    classBuilder.AppendLine("#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.");
-                        //classBuilder.AppendLine($"\t\tpublic class {code} : Role");
-                        //if (code.ToLowerInvariant().Equals(code))
-                        //    classBuilder.AppendLine("#pragma warning restore CS8981");
-                        //classBuilder.AppendLine("\t\t{");
-                        //classBuilder.AppendLine("\t\t}");
-                        //classBuilder.AppendLine();
-
-                        //var roleTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, dictionaryTypes["Role"]);
-
-                        //var roleType = roleTypeBuilder.CreateType();
-
-                        //roleTypes.Add(code, roleType);
                     }
 
                     var enumType = enumBuilder.CreateType();
+
+                    dictionaryTypes.Add("Role", enumType);
 
                     classBuilder.AppendLine($"\tpublic enum Role");
                     classBuilder.AppendLine("\t{");
@@ -545,17 +539,10 @@ namespace S100Framework
                             }
                         }
 
-                        {
-                            //var propertyBuilder = S100Framework.Roslyn.CreateProperty(bindingTypeBuilder, "role", typeof(string));
-
-                            GenericTypeParameterBuilder[] genericParams = bindingTypeBuilder.DefineGenericParameters("T");
-                            Type genericParamT = genericParams[0];
-                        }
-
                         var bindingType = bindingTypeBuilder.CreateType();
 
                         var roles = string.Join(",", e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => $"Role.{e.Attribute("ref")!.Value}"));
-                        classBuilder.AppendLine($"\t\tpublic class {code}<T> : InformationAssociation");// where T : InformationType");
+                        classBuilder.AppendLine($"\t\tpublic class {code} : InformationAssociation");// where T : InformationType");
                         classBuilder.AppendLine($"\t\t{{");
                         classBuilder.AppendLine($"\t\t\tpublic {code}(){{");
                         var constructor = classBuilder.Length;
@@ -616,20 +603,9 @@ namespace S100Framework
 
                         dictionaryTypes.Add($"{code}", bindingType);
 
-                        dictionaryTypes.Add($"{code}?", GetNullableType(bindingType));
+                        //dictionaryTypes.Add($"{code}?", GetNullableType(bindingType));
 
-                        dictionaryTypes.Add($"List<{code}>", typeof(List<>).MakeGenericType(bindingType));
-
-                        //foreach (var role in e.XPathSelectElements("S100FC:role", xmlNamespaceManager)) {
-                        //    var reference = role.Attribute("ref")!.Value;
-                        //    var roleType = bindingType.MakeGenericType(roleTypes[reference]);
-
-                        //    dictionaryTypes.Add($"{code}<{reference}>", roleType);
-
-                        //    dictionaryTypes.Add($"{code}<{reference}>?", GetNullableType(roleType));
-
-                        //    dictionaryTypes.Add($"List<{code}<{reference}>>", typeof(List<>).MakeGenericType(roleType));
-                        //}
+                        //dictionaryTypes.Add($"List<{code}>", typeof(List<>).MakeGenericType(bindingType));
                     }
 
                     classBuilder.AppendLine("\t\t}");
@@ -685,17 +661,10 @@ namespace S100Framework
                             }
                         }
 
-                        {
-                            //var propertyBuilder = S100Framework.Roslyn.CreateProperty(bindingTypeBuilder, "role", typeof(string));
-
-                            GenericTypeParameterBuilder[] genericParams = bindingTypeBuilder.DefineGenericParameters("T");
-                            Type genericParamT = genericParams[0];
-                        }
-
                         var bindingType = bindingTypeBuilder.CreateType();
 
                         var roles = string.Join(",", e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => $"Role.{e.Attribute("ref")!.Value}"));
-                        classBuilder.AppendLine($"\t\tpublic class {code}<T> : FeatureAssociation"); ;// where T : FeatureType");
+                        classBuilder.AppendLine($"\t\tpublic class {code} : FeatureAssociation"); ;// where T : FeatureType");
                         classBuilder.AppendLine($"\t\t{{");
                         classBuilder.AppendLine($"\t\t\tpublic {code}(){{");
                         var constructor = classBuilder.Length;
@@ -756,20 +725,9 @@ namespace S100Framework
 
                         dictionaryTypes.Add($"{code}", bindingType);
 
-                        dictionaryTypes.Add($"{code}?", GetNullableType(bindingType));
+                        //dictionaryTypes.Add($"{code}?", GetNullableType(bindingType));
 
-                        dictionaryTypes.Add($"List<{code}>", typeof(List<>).MakeGenericType(bindingType));
-
-                        //foreach (var role in e.XPathSelectElements("S100FC:role", xmlNamespaceManager)) {
-                        //    var reference = role.Attribute("ref")!.Value;
-                        //    var roleType = bindingType.MakeGenericType(roleTypes[reference]);
-
-                        //    dictionaryTypes.Add($"{code}<{reference}>", roleType);
-
-                        //    dictionaryTypes.Add($"{code}<{reference}>?", GetNullableType(roleType));
-
-                        //    dictionaryTypes.Add($"List<{code}<{reference}>>", typeof(List<>).MakeGenericType(roleType));
-                        //}
+                        //dictionaryTypes.Add($"List<{code}>", typeof(List<>).MakeGenericType(bindingType));
                     }
 
                     classBuilder.AppendLine("\t\t}");
@@ -778,11 +736,38 @@ namespace S100Framework
                 classBuilder.AppendLine("\t}");
             }
 
+            var informationBindingTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.informationBinding", TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout);
+            {
+                var propertyBuilder1 = S100Framework.Roslyn.CreateProperty(informationBindingTypeBuilder, "role", typeof(string));
+
+                var propertyBuilder2 = S100Framework.Roslyn.CreateProperty(informationBindingTypeBuilder, "informationType", GetNullableType(typeof(Type)));
+
+                var propertyBuilder3 = S100Framework.Roslyn.CreateProperty(informationBindingTypeBuilder, "roleType", typeof(string));
+
+                GenericTypeParameterBuilder[] genericParams = informationBindingTypeBuilder.DefineGenericParameters("T");
+                Type genericParamT = genericParams[0];
+            }
+            Type informationBindingType = informationBindingTypeBuilder.CreateType();
+
+            var featureBindingTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.featureBinding", TypeAttributes.Public | TypeAttributes.Class | TypeAttributes.AutoLayout);
+            {
+                var propertyBuilder1 = S100Framework.Roslyn.CreateProperty(featureBindingTypeBuilder, "role", typeof(string));
+
+                var propertyBuilder2 = S100Framework.Roslyn.CreateProperty(featureBindingTypeBuilder, "featureType", GetNullableType(typeof(Type)));
+
+                var propertyBuilder3 = S100Framework.Roslyn.CreateProperty(featureBindingTypeBuilder, "roleType", typeof(string));
+
+                GenericTypeParameterBuilder[] genericParams = featureBindingTypeBuilder.DefineGenericParameters("T");
+                Type genericParamT = genericParams[0];
+            }
+            Type featureBindingType = featureBindingTypeBuilder.CreateType();
+
 
             //  S100_FC_InformationType
             classBuilder.AppendLine($"\tnamespace InformationTypes");
             classBuilder.AppendLine("\t{");
             classBuilder.AppendLine("\t\tusing ComplexAttributes;");
+            classBuilder.AppendLine("\t\tusing DomainModel;");
             classBuilder.AppendLine("\t\tusing Bindings.InformationAssociations;");
             classBuilder.AppendLine();
             {
@@ -877,24 +862,50 @@ namespace S100Framework
                                 isArray = true;
                             }
 
-                            var referenceType = isArray ? dictionaryTypes[$"List<{association}>"] : dictionaryTypes[$"{association}"];
+                            var referenceType = informationBindingType;
 
-                            if (!isArray && lower == 0 /*&& !dictionaryTypesComplex.Contains(referenceCode)*/) {
-                                referenceType = dictionaryTypes[$"{association}<{role}>?"];
+                            referenceType = referenceType.MakeGenericType(dictionaryTypes[$"{association}"]);
+
+                            if (!isArray && lower == 0) {
+                                referenceType = GetNullableType(referenceType);
+                            }
+                            else if (isArray) {
+                                referenceType = typeof(List<>).MakeGenericType(referenceType);
                             }
 
-                            if (!isArray) {
-                                referenceType = referenceType.MakeGenericType(dictionaryTypes[$"{informationTypeRef}"]);
+                            var propertyBuilder = S100Framework.Roslyn.CreateProperty(informationTypeBuilder, role, referenceType);
 
-                                var propertyBuilder = S100Framework.Roslyn.CreateProperty(informationTypeBuilder, role, referenceType);
+                            var roleAttributeBuilder = new CustomAttributeBuilder(typeof(S100Framework.DomainModel.RoleAttribute).GetConstructors().First(), new string[] { $"nameof(Bindings.Role.{role})" });
+                            propertyBuilder.SetCustomAttribute(roleAttributeBuilder);
 
-                                if (lower > 0) {
-                                    var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+                            if (lower > 0) {
+                                var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
 
-                                    var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                    propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
-                                }
+                                var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
                             }
+
+
+                            //var referenceType = isArray ? dictionaryTypes[$"List<{association}>"] : dictionaryTypes[$"{association}"];
+
+                            //if (!isArray && lower == 0 /*&& !dictionaryTypesComplex.Contains(referenceCode)*/) {
+                            //    //referenceType = dictionaryTypes[$"{association}<{role}>?"];
+                            //}
+
+                            //if (!isArray) {
+                            //    referenceType = informationBindingType;
+
+                            //    referenceType = referenceType.MakeGenericType(dictionaryTypes[$"{association}"]);
+
+                            //    var propertyBuilder = S100Framework.Roslyn.CreateProperty(informationTypeBuilder, role, referenceType);
+
+                            //    if (lower > 0) {
+                            //        var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+
+                            //        var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                            //        propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
+                            //    }
+                            //}
                         }
 
                         var informationType = informationTypeBuilder.CreateType();
@@ -932,6 +943,7 @@ namespace S100Framework
             classBuilder.AppendLine("\t{");
             classBuilder.AppendLine("\t\tusing ComplexAttributes;");
             classBuilder.AppendLine("\t\tusing InformationTypes;");
+            classBuilder.AppendLine("\t\tusing DomainModel;");
             classBuilder.AppendLine("\t\tusing Bindings.InformationAssociations;");
             classBuilder.AppendLine("\t\tusing Bindings.FeatureAssociations;");
             classBuilder.AppendLine();
@@ -952,10 +964,6 @@ namespace S100Framework
                             continue;
 
                         if (e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager).Any(b => !dictionaryTypes.ContainsKey(b.Element(XName.Get("attribute", scope_S100))!.Attribute("ref")!.Value!))) {
-                            notFinished = true;
-                            continue;
-                        }
-                        if (e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager).Any(b => !dictionaryTypes.ContainsKey(b.Element(XName.Get("featureType", scope_S100))!.Attribute("ref")!.Value!))) {
                             notFinished = true;
                             continue;
                         }
@@ -1031,22 +1039,27 @@ namespace S100Framework
                                 isArray = true;
                             }
 
-                            var referenceType = isArray ? dictionaryTypes[$"List<{association}>"] : dictionaryTypes[$"{association}"];
+                            var referenceType = informationBindingType;
 
-                            if (!isArray && lower == 0 /*&& !dictionaryTypesComplex.Contains(referenceCode)*/) {
-                                referenceType = dictionaryTypes[$"{association}?"];
+                            referenceType = referenceType.MakeGenericType(dictionaryTypes[$"{association}"]);
+
+                            if (!isArray && lower == 0) {
+                                referenceType = GetNullableType(referenceType);
                             }
-                            if (!isArray) {
-                                referenceType = referenceType.MakeGenericType(dictionaryTypes[$"{informationTypeRef}"]);
+                            else if (isArray) {
+                                referenceType = typeof(List<>).MakeGenericType(referenceType);
+                            }
 
-                                var propertyBuilder = S100Framework.Roslyn.CreateProperty(featureTypeBuilder, role, referenceType);
+                            var propertyBuilder = S100Framework.Roslyn.CreateProperty(featureTypeBuilder, role, referenceType);
 
-                                if (lower > 0) {
-                                    var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+                            var roleAttributeBuilder = new CustomAttributeBuilder(typeof(S100Framework.DomainModel.RoleAttribute).GetConstructors().First(), new string[] { $"nameof(Bindings.Role.{role})" });
+                            propertyBuilder.SetCustomAttribute(roleAttributeBuilder);
 
-                                    var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                    propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
-                                }
+                            if (lower > 0) {
+                                var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+
+                                var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
                             }
                         }
 
@@ -1066,22 +1079,29 @@ namespace S100Framework
                                 isArray = true;
                             }
 
-                            var referenceType = isArray ? dictionaryTypes[$"List<{association}>"] : dictionaryTypes[$"{association}"];
+                            var referenceType = featureBindingType;
 
-                            if (!isArray && lower == 0 /*&& !dictionaryTypesComplex.Contains(referenceCode)*/) {
-                                referenceType = dictionaryTypes[$"{association}?"];
+                            referenceType = referenceType.MakeGenericType(dictionaryTypes[$"{association}"]);
+
+                            if (!isArray && lower == 0) {
+                                referenceType = GetNullableType(referenceType);
                             }
-                            if (!isArray) {
-                                referenceType = referenceType.MakeGenericType(dictionaryTypes[$"{featureTypeRef}"]);
+                            else if (isArray) {                                
+                                referenceType = typeof(List<>).MakeGenericType(referenceType);
 
-                                var propertyBuilder = S100Framework.Roslyn.CreateProperty(featureTypeBuilder, role, referenceType);
+                                continue;
+                            }
 
-                                if (lower > 0) {
-                                    var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+                            var propertyBuilder = S100Framework.Roslyn.CreateProperty(featureTypeBuilder, role, referenceType);
 
-                                    var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
-                                    propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
-                                }
+                            var roleAttributeBuilder = new CustomAttributeBuilder(typeof(S100Framework.DomainModel.RoleAttribute).GetConstructors().First(), new string[] { $"nameof(Bindings.Role.{role})" });
+                            propertyBuilder.SetCustomAttribute(roleAttributeBuilder);
+
+                            if (lower > 0) {
+                                var constructorInfo = typeof(System.Runtime.CompilerServices.RequiredMemberAttribute).GetConstructors().First();
+
+                                var requiredMemberAttributeBuilder = new CustomAttributeBuilder(constructorInfo, new object[0]);
+                                propertyBuilder.SetCustomAttribute(requiredMemberAttributeBuilder);
                             }
                         }
 
@@ -1141,6 +1161,19 @@ namespace S100Framework
             common.AppendLine("\t\t\t_propertyName = propertyName;");
             common.AppendLine("\t\t}");
             common.AppendLine("\t}");
+            common.AppendLine();
+            common.AppendLine("\t[System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]");
+            common.AppendLine("\tpublic class RoleAttribute : System.Attribute");
+            common.AppendLine("\t{");
+            common.AppendLine("\t\tprivate string _roleName;");
+            common.AppendLine();
+            common.AppendLine("\t\tpublic string RoleName => _roleName;");
+            common.AppendLine();
+            common.AppendLine("\t\tpublic RoleAttribute(string roleName) { ");
+            common.AppendLine("\t\t\t_roleName = roleName;");
+            common.AppendLine("\t\t}");
+            common.AppendLine("\t}");
+
             //common.AppendLine("\t[System.SerializableAttribute()]");
             //common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
             //common.AppendLine("\tpublic abstract class Role {");
@@ -1149,21 +1182,34 @@ namespace S100Framework
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
             common.AppendLine("\tpublic abstract class InformationAssociation {");
-            common.AppendLine("\t\tpublic InformationAssociation() {");
-            common.AppendLine("\t\t}");
             common.AppendLine("\t}");
             common.AppendLine();
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
             common.AppendLine("\tpublic abstract class FeatureAssociation {");
-            common.AppendLine("\t\tpublic FeatureAssociation() {");
-            common.AppendLine("\t\t}");
             common.AppendLine("\t}");
+            common.AppendLine();
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\tpublic class informationBinding<T> where T : InformationAssociation {");
+            common.AppendLine("\t\tpublic string roleType {get;set;} = string.Empty;");
+            common.AppendLine("\t\tpublic string role {get;set;} = string.Empty;");
+            common.AppendLine("\t\tpublic Type? informationType {get;set;} = default;");
+            common.AppendLine("\t}");
+            common.AppendLine();
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\tpublic class featureBinding<T> where T : FeatureAssociation {");
+            common.AppendLine("\t\tpublic string roleType {get;set;} = string.Empty;");
+            common.AppendLine("\t\tpublic string role {get;set;} = string.Empty;");
+            common.AppendLine("\t\tpublic Type? featureType {get;set;} = default;");
+            common.AppendLine("\t}");
+
             common.AppendLine("}");
 
             return (
-                CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd()).GetRoot().NormalizeWhitespace(elasticTrivia: true).ToFullString(),
-                CSharpSyntaxTree.ParseText(viewBuilder.ToString().TrimEnd()).GetRoot().NormalizeWhitespace(elasticTrivia: true).ToFullString(),
+                CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd()).GetRoot()/*.NormalizeWhitespace(elasticTrivia: true)*/.ToFullString(),
+                CSharpSyntaxTree.ParseText(viewBuilder.ToString().TrimEnd()).GetRoot()/*.NormalizeWhitespace(elasticTrivia: true)*/.ToFullString(),
                 CSharpSyntaxTree.ParseText(common.ToString().TrimEnd()).GetRoot().NormalizeWhitespace(elasticTrivia: true).ToFullString()
             );
         }
@@ -1212,9 +1258,9 @@ namespace S100Framework
                     classBuilder.AppendLine("");
                 }
 
-                var attribute = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
+                var attribute1 = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
 
-                if (attribute != null && !p.PropertyType.IsValueType) {
+                if (attribute1 != null && !p.PropertyType.IsValueType) {
                     if (p.PropertyType == typeof(string))
                         constructorBuilder.AppendLine($"\t\t\t\t{p.Name} = string.Empty;");
                     else {
@@ -1222,11 +1268,17 @@ namespace S100Framework
                     }
                 }
 
+                var attribute2 = p.GetCustomAttribute<S100Framework.DomainModel.RoleAttribute>();                
+
+                if(attribute2 is not null) {
+                    classBuilder.AppendLine($"\t\t\t[S100Framework.DomainModel.RoleAttribute({attribute2.RoleName})]");
+                }
+
                 classBuilder.AppendLine($"\t\t\t[System.Xml.Serialization.XmlElementAttribute(Namespace = \"{S100FC}\")]");
 
                 if (!p.PropertyType.IsGenericType && p.PropertyType != typeof(String)) {
-                    var prop_prefix = attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
-                    var prop_type = attribute != null ? $"{p.PropertyType.Name}" : $"{p.PropertyType.Name}?";
+                    var prop_prefix = attribute1 != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                    var prop_type = attribute1 != null ? $"{p.PropertyType.Name}" : $"{p.PropertyType.Name}?";
 
                     if ("System.Collections.Generic".Equals(p.PropertyType.Namespace))
                         prop_type = $"List<{p.Name}>";
@@ -1241,16 +1293,16 @@ namespace S100Framework
                     classBuilder.AppendLine($"\t\t\tpublic {prop_type} {p.Name} {{ get; set; }} = string.Empty;");
                 }
                 else {
-                    var prop_prefix = attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                    var prop_prefix = attribute1 != null ? "\t\t\tpublic required" : "\t\t\tpublic";
                     var prop_type = GetPropertyType(p.PropertyType);
 
-                    var prop_postfix = attribute != null ? "" : " = default;";
+                    var prop_postfix = attribute1 != null ? "" : " = default;";
 
                     if ("System.Collections.Generic".Equals(p.PropertyType.Namespace)) {
                         prop_type = $"List<{prop_type}>";
-                        prop_postfix = attribute != null ? "" : " = [];";
+                        prop_postfix = attribute1 != null ? "" : " = [];";
                     }
-                    else if (attribute is null)
+                    else if (attribute1 is null)
                         prop_type += "?";
 
                     classBuilder.AppendLine($"{prop_prefix} {prop_type} {p.Name} {{ get; set; }}{prop_postfix}");
@@ -1303,13 +1355,19 @@ namespace S100Framework
             var insertCodeLists = new Dictionary<string, Action<StringBuilder>>();
 
             foreach (var p in type.GetProperties()) {
+                var attribute2 = p.GetCustomAttribute<S100Framework.DomainModel.RoleAttribute>();
+
+                if (attribute2 is not null) {
+                    continue;
+                }
+
                 if (!first) {
                     classBuilder.AppendLine("");
                 }
 
-                var attribute = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
+                var attribute1 = p.GetCustomAttribute<System.Runtime.CompilerServices.RequiredMemberAttribute>();
 
-                var viewModel = !p.PropertyType.IsValueType && !codeLists.Contains(p.Name) && !roles.Contains(p.Name) ? "ViewModel" : string.Empty;
+                var viewModel = !p.PropertyType.IsValueType && !codeLists.Contains(p.Name) /*&& !roles.Contains(p.Name) */? "ViewModel" : string.Empty;
 
                 if (!p.PropertyType.IsGenericType) {
                     if (p.PropertyType == typeof(String)) {
@@ -1330,7 +1388,7 @@ namespace S100Framework
                         classBuilder.AppendLine($"\t\t}}");
                     }
                     else {
-                        var prop_type = attribute != null ? $"{p.PropertyType.Name}{viewModel}" : $"{p.PropertyType.Name}{viewModel}?";
+                        var prop_type = attribute1 != null ? $"{p.PropertyType.Name}{viewModel}" : $"{p.PropertyType.Name}{viewModel}?";
 
                         if (!p.PropertyType.IsValueType && !codeLists.Contains(p.Name)) {
                             loadBuilder.AppendLine($"\t\t\t{p.Name} = new ();");
@@ -1377,8 +1435,8 @@ namespace S100Framework
                 else {
                     var prop_name = GetPropertyType(p.PropertyType);
 
-                    var prop_type = attribute != null ? $"{prop_name}{viewModel}" : $"{prop_name}?";
-                    var prop_postfix = attribute != null ? "" : " = default";
+                    var prop_type = attribute1 != null ? $"{prop_name}{viewModel}" : $"{prop_name}?";
+                    var prop_postfix = attribute1 != null ? "" : " = default";
 
                     if ("System.Collections.Generic".Equals(p.PropertyType.Namespace)) {
                         loadBuilder.AppendLine($"\t\t\t{p.Name}.Clear();");

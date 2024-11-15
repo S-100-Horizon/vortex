@@ -1,8 +1,6 @@
 ﻿#define prop
 //#define propfull
 
-using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101.Bindings;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -25,13 +23,13 @@ namespace TestS100Framework
         }
     }
 
-    public class informationBinding<T>
-    {
-        public Type? Association { get; set; }
-        public Role? Role { get; set; }
+    //public class informationBinding<T>
+    //{
+    //    public Type? Association { get; set; }
+    //    public Role? Role { get; set; }
 
-        public Type? informationType { get; set; }
-    }
+    //    public Type? informationType { get; set; }
+    //}
 
     //namespace TestS100Framework.Bindings
     //{
@@ -229,7 +227,7 @@ namespace TestS100Framework
             }
         }
     }
-
+}
 
 /*
     public enum S100_FC_RoleType {
