@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using S100Framework.DomainModel.Bindings;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace S100Framework.WPF.ViewModel
@@ -52,9 +53,95 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-
     public abstract class ViewModelBase<T> : ViewModelBase
     {
         public abstract void Load(T instance);
     }
+
+    public class InformationBindingConnector : INotifyPropertyChanged 
+    {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            if (string.IsNullOrWhiteSpace(propertyName)) return;
+
+            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;            
+            backingFiled = value;
+            OnPropertyChanged(propertyName);
+        }
+
+        private Guid? _globalId;
+
+        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public Guid? Uuid {
+            get {
+                return _globalId;
+            }
+
+            set {
+                SetValue(ref _globalId, value);
+            }
+        }
+
+        private informationBinding? _informationBinding;
+
+        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public informationBinding? informationBinding {
+            get {
+                return _informationBinding;
+            }
+
+            set {
+                SetValue(ref _informationBinding, value);
+            }
+        }
+    }
+
+    public class FeatureBindingConnector : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            if (string.IsNullOrWhiteSpace(propertyName)) return;
+
+            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
+            backingFiled = value;
+            OnPropertyChanged(propertyName);
+        }
+
+        private Guid? _globalId;
+
+        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public Guid? Uuid {
+            get {
+                return _globalId;
+            }
+
+            set {
+                SetValue(ref _globalId, value);
+            }
+        }
+
+        private informationBinding? _informationBinding;
+
+        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public informationBinding? informationBinding {
+            get {
+                return _informationBinding;
+            }
+
+            set {
+                SetValue(ref _informationBinding, value);
+            }
+        }
+    }
+
 }

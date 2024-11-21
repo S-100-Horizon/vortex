@@ -1382,26 +1382,23 @@ namespace S100Framework.DomainModel.S128
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public information? information { get; set; }
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.PriceOfNauticalProduct, PriceInformation> thePriceInformationPriceInformation => new(Role.thePriceInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.PriceOfNauticalProduct, PriceInformation> thePriceInformationPriceInformation => new(Role.thePriceInformation)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.ProductionDetails, ProducerInformation> theProducerProducerInformation => new(Role.theProducer)
+            public static Bindings.informationBinding<Associations.InformationAssociations.ProductionDetails, ProducerInformation> theProducerProducerInformation => new(Role.theProducer)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.DistributionDetails, DistributorInformation> theDistributorDistributorInformation => new(Role.theDistributor)
+            public static Bindings.informationBinding<Associations.InformationAssociations.DistributionDetails, DistributorInformation> theDistributorDistributorInformation => new(Role.theDistributor)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -1436,18 +1433,16 @@ namespace S100Framework.DomainModel.S128
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public List<sourceIndication> sourceIndication { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.ProducerContact, ProducerInformation> theProducerProducerInformation => new(Role.theProducer)
+            public static Bindings.informationBinding<Associations.InformationAssociations.ProducerContact, ProducerInformation> theProducerProducerInformation => new(Role.theProducer)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.DistributorContact, DistributorInformation> theDistributorDistributorInformation => new(Role.theDistributor)
+            public static Bindings.informationBinding<Associations.InformationAssociations.DistributorContact, DistributorInformation> theDistributorDistributorInformation => new(Role.theDistributor)
             {
                 Lower = 0,
                 Upper = 1,
@@ -1498,9 +1493,8 @@ namespace S100Framework.DomainModel.S128
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public List<sourceIndication> sourceIndication { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.PriceOfNauticalProduct, CatalogueSectionHeader> theCatalogueOfNauticalProductCatalogueSectionHeader => new(Role.theCatalogueOfNauticalProduct)
+            public static Bindings.informationBinding<Associations.InformationAssociations.PriceOfNauticalProduct, CatalogueSectionHeader> theCatalogueOfNauticalProductCatalogueSectionHeader => new(Role.theCatalogueOfNauticalProduct)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -1523,17 +1517,15 @@ namespace S100Framework.DomainModel.S128
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String agencyName { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.ProducerContact, ContactDetails> theContactDetailsContactDetails => new(Role.theContactDetails)
+            public static Bindings.informationBinding<Associations.InformationAssociations.ProducerContact, ContactDetails> theContactDetailsContactDetails => new(Role.theContactDetails)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.ProductionDetails, CatalogueSectionHeader> catalogueHeaderCatalogueSectionHeader => new(Role.catalogueHeader)
+            public static Bindings.informationBinding<Associations.InformationAssociations.ProductionDetails, CatalogueSectionHeader> catalogueHeaderCatalogueSectionHeader => new(Role.catalogueHeader)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -1554,17 +1546,15 @@ namespace S100Framework.DomainModel.S128
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String distributorName { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.DistributionDetails, CatalogueSectionHeader> catalogueHeaderCatalogueSectionHeader => new(Role.catalogueHeader)
+            public static Bindings.informationBinding<Associations.InformationAssociations.DistributionDetails, CatalogueSectionHeader> catalogueHeaderCatalogueSectionHeader => new(Role.catalogueHeader)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.DistributorContact, ContactDetails> theContactDetailsContactDetails => new(Role.theContactDetails)
+            public static Bindings.informationBinding<Associations.InformationAssociations.DistributorContact, ContactDetails> theContactDetailsContactDetails => new(Role.theContactDetails)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -1625,33 +1615,29 @@ namespace S100Framework.DomainModel.S128
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public timeIntervalOfProduct? timeIntervalOfProduct { get; set; }
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.CarriageRequirement, IndicationOfCarriageRequirement> theRequirementIndicationOfCarriageRequirement => new(Role.theRequirement)
+            public static Bindings.informationBinding<Associations.InformationAssociations.CarriageRequirement, IndicationOfCarriageRequirement> theRequirementIndicationOfCarriageRequirement => new(Role.theRequirement)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.PriceOfElement, PriceInformation> thePriceInformationPriceInformation => new(Role.thePriceInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.PriceOfElement, PriceInformation> thePriceInformationPriceInformation => new(Role.thePriceInformation)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.ProductPackage, CatalogueSectionHeader> elementContainerCatalogueSectionHeader => new(Role.elementContainer)
+            public static Bindings.informationBinding<Associations.InformationAssociations.ProductPackage, CatalogueSectionHeader> elementContainerCatalogueSectionHeader => new(Role.elementContainer)
             {
                 Lower = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.ProductMapping, CatalogueElement> theReferenceCatalogueElement => new(Role.theReference)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.ProductMapping, CatalogueElement> theReferenceCatalogueElement => new(Role.theReference)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -1717,9 +1703,8 @@ namespace S100Framework.DomainModel.S128
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public verticalDatum? verticalDatum { get; set; } = default;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.Correlated, NavigationalProduct> mainNavigationalProduct => new(Role.main)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.Correlated, NavigationalProduct> mainNavigationalProduct => new(Role.main)
             {
                 Lower = 1,
                 Upper = 1,

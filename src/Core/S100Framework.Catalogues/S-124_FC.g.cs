@@ -717,9 +717,8 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required DateTime publicationTime { get; set; }
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.NWReferences, References> theReferencesReferences => new(Role.theReferences)
+            public static Bindings.informationBinding<Associations.InformationAssociations.NWReferences, References> theReferencesReferences => new(Role.theReferences)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -790,26 +789,23 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public restriction? restriction { get; set; } = default;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.NWPreambleContent, NAVWARNPreamble> headerNAVWARNPreamble => new(Role.header)
+            public static Bindings.informationBinding<Associations.InformationAssociations.NWPreambleContent, NAVWARNPreamble> headerNAVWARNPreamble => new(Role.header)
             {
                 Lower = 1,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AreaAffected, NAVWARNAreaAffected> affectsNAVWARNAreaAffected => new(Role.affects)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AreaAffected, NAVWARNAreaAffected> affectsNAVWARNAreaAffected => new(Role.affects)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> positionsTextPlacement => new(Role.positions)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> positionsTextPlacement => new(Role.positions)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -829,9 +825,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public class NAVWARNAreaAffected
         {
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AreaAffected, NAVWARNPart> impactsNAVWARNPart => new(Role.impacts)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AreaAffected, NAVWARNPart> impactsNAVWARNPart => new(Role.impacts)
             {
                 Lower = 1,
                 Upper = 1,
@@ -867,9 +862,8 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, NAVWARNPart> identifiesNAVWARNPart => new(Role.identifies)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, NAVWARNPart> identifiesNAVWARNPart => new(Role.identifies)
             {
                 Lower = 0,
                 Upper = 1,

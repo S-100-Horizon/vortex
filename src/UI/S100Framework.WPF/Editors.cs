@@ -1,4 +1,7 @@
-﻿using System.Windows;
+﻿using S100Framework.DomainModel.S124.FeatureTypes;
+using System;
+using System.Collections.Immutable;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Xceed.Wpf.Toolkit;
@@ -45,6 +48,26 @@ namespace S100Framework.WPF.Editors
             BindingOperations.SetBinding(checkComboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
             return checkComboBox;
+        }
+    }
+
+    public sealed class BindingConnectorEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+            var comboBox = new ComboBox {
+                Name = $"_comboBox{Guid.NewGuid():N}",
+                DisplayMemberPath = "label",
+            };
+
+            var informationBindingsItems = ImmutableArray.Create<DomainModel.Bindings.informationBinding>(new DomainModel.Bindings.informationBinding[] {
+                NAVWARNPart.headerNAVWARNPreamble,
+            });
+
+            var bindingItemsSourceProperty = new Binding("association.Name") { Source = informationBindingsItems, Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+
+            return comboBox;
         }
     }
 }
