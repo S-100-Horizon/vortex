@@ -1,6 +1,8 @@
-﻿using S100Framework.DomainModel.S124.FeatureTypes;
+﻿using S100Framework.DomainModel.S124;
+using S100Framework.DomainModel.S124.FeatureTypes;
 using System;
 using System.Collections.Immutable;
+using System.Collections.ObjectModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -53,21 +55,33 @@ namespace S100Framework.WPF.Editors
 
     public sealed class BindingConnectorEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
-        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
-            var comboBox = new ComboBox {
-                Name = $"_comboBox{Guid.NewGuid():N}",
-                DisplayMemberPath = "label",
+        public DomainModel.Bindings.informationBinding[] informationBindingsItems => new DomainModel.Bindings.informationBinding[] {
+                NAVWARNPart.headerNAVWARNPreamble,
             };
 
-            var informationBindingsItems = ImmutableArray.Create<DomainModel.Bindings.informationBinding>(new DomainModel.Bindings.informationBinding[] {
-                NAVWARNPart.headerNAVWARNPreamble,
-            });
+        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {            
+            if (propertyItem.DisplayName.EndsWith("Binding")) {
+                var comboBox = new ComboBox {
+                    Name = $"_comboBox{Guid.NewGuid():N}",
+                    DisplayMemberPath = "association.Name",
+                };
 
-            var bindingItemsSourceProperty = new Binding("association.Name") { Source = informationBindingsItems, Mode = BindingMode.OneWay };
-            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+                var bindingItemsSourceProperty = new Binding() { Source = informationBindingsItems, Mode = BindingMode.OneWay };
+                BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
+                return comboBox;
+            }
 
-            return comboBox;
+            var text = propertyItem.DisplayName;
+
+            var connector = (dynamic)propertyItem.Instance;
+
+            if (connector.informationBinding is null)
+                text += " null";
+            return new Label {
+                Content = text,
+                IsEnabled = true,
+            };
         }
     }
 }

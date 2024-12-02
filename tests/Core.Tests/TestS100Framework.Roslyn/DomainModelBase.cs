@@ -56,6 +56,8 @@ namespace S100Framework.DomainModel
         public class InformationBindingConnector
         {
             public Guid Uuid { get; set; }
+
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public informationBinding informationBinding { get; set; }
         }
 
@@ -77,6 +79,8 @@ namespace S100Framework.DomainModel
         public class FeatureBindingConnector
         {
             public Guid Uuid { get; set; }
+
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
             public featureBinding featureBinding { get; set; }
         }
 

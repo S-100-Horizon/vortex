@@ -53,6 +53,14 @@ namespace S100Framework.DomainModel
         {
         }
 
+        public class InformationBindingConnector
+        {
+            public Guid Uuid { get; set; }
+
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public informationBinding informationBinding { get; set; }
+        }
+
         public abstract class informationBinding<Tassociation, TinformationType> : informationBinding where Tassociation : InformationAssociation where TinformationType : class
         {
             public int Lower { get; set; } = 0;
@@ -66,6 +74,14 @@ namespace S100Framework.DomainModel
 
         public abstract class featureBinding
         {
+        }
+
+        public class FeatureBindingConnector
+        {
+            public Guid Uuid { get; set; }
+
+            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+            public featureBinding featureBinding { get; set; }
         }
 
         public abstract class featureBinding<Tassociation, TfeatureType> : featureBinding where Tassociation : FeatureAssociation where TfeatureType : class

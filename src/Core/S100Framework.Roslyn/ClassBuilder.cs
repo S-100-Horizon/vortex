@@ -553,7 +553,7 @@ namespace S100Framework
                         var constructor = classBuilder.Length;
                         classBuilder.AppendLine($"\t\t\t}}");
 
-                        classBuilder.AppendLine($"\t\t\tpublic Role[] Roles => new[]{{{roles}}};");
+                        classBuilder.AppendLine($"\t\t\tpublic static Role[] Roles => new[]{{{roles}}};");
 
                         var constructorBuilder = new StringBuilder();
 
@@ -675,7 +675,7 @@ namespace S100Framework
                         var constructor = classBuilder.Length;
                         classBuilder.AppendLine($"\t\t\t}}");
 
-                        classBuilder.AppendLine($"\t\t\tpublic Role[] Roles => new[]{{{roles}}};");
+                        classBuilder.AppendLine($"\t\t\tpublic static Role[] Roles => new[]{{{roles}}};");
 
                         var constructorBuilder = new StringBuilder();
 
@@ -1230,13 +1230,13 @@ namespace S100Framework
                 prefix += " abstract";
 
             if (type.BaseType != null && !type.BaseType.IsValueType && type.BaseType != typeof(Object)) {
-                classBuilder.AppendLine($"{prefix} class {code} : {type.BaseType.Name}");
+                classBuilder.AppendLine($"{prefix} partial class {code} : {type.BaseType.Name}");
             }
             else {
                 if (string.IsNullOrEmpty(parent))
-                    classBuilder.AppendLine($"{prefix} class {code}");
+                    classBuilder.AppendLine($"{prefix} partial class {code}");
                 else
-                    classBuilder.AppendLine($"{prefix} class {code}");
+                    classBuilder.AppendLine($"{prefix} partial class {code}");
             }
             if (code.ToLowerInvariant().Equals(code))
                 classBuilder.AppendLine("#pragma warning restore CS8981");

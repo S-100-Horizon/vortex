@@ -12,6 +12,7 @@ using S100Framework.DomainModel.S124.FeatureTypes;
 using S100Framework.DomainModel.S124.Associations.InformationAssociations;
 using S100Framework.DomainModel.S124.Associations.FeatureAssociations;
 using S100Framework.DomainModel.Bindings;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel.S924
 {
