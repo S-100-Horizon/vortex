@@ -28,7 +28,6 @@ namespace VortexConceptApplication
                     IsDropDownOpen = false,
                     DisplayMemberPath = "Label",
                     SelectedValuePath = "GlobalId",
-                    sel
                 };
             }
             else {
