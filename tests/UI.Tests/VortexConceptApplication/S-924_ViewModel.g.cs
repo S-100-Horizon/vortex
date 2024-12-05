@@ -11,6 +11,8 @@ using S100Framework.DomainModel.S124.InformationTypes;
 using S100Framework.DomainModel.S124.FeatureTypes;
 using S100Framework.DomainModel.S124.Associations.InformationAssociations;
 using S100Framework.DomainModel.S124.Associations.FeatureAssociations;
+using S100Framework.DomainModel.Bindings;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel.S924
 {
@@ -1247,6 +1249,22 @@ namespace S100Framework.WPF.ViewModel.S924
                 SetValue(ref _restriction, value);
             }
         }
+
+        //  CUSTOM
+        [Category("Development")]
+        public ObservableCollection<InformationBindingConnector> informationBindings { get; set; } = new();
+
+        public ImmutableArray<informationBinding> informationBindingsItems => ImmutableArray.Create<informationBinding>(new informationBinding[] {
+            NAVWARNPart.headerNAVWARNPreamble,
+        });
+
+        [Category("Development")]
+        public ObservableCollection<FeatureBindingConnector> featureBindings { get; set; } = new();
+
+        public ImmutableArray<featureBinding> featureBindingsItems => ImmutableArray.Create<featureBinding>(new featureBinding[] {
+            NAVWARNPart.affectsNAVWARNAreaAffected,
+            NAVWARNPart.positionsTextPlacement,
+        });
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance) {
             featureName.Clear();

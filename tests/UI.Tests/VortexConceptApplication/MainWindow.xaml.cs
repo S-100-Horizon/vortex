@@ -1,4 +1,6 @@
-﻿using S100Framework.DomainModel.S124;
+﻿using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S124;
+using S100Framework.DomainModel.S901.FeatureTypes;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -74,7 +76,7 @@ namespace VortexConceptApplication
 
             //this._propertyGrid.EditorDefinitions.Add(new edit)
 
-
+#if S124
             var viewModel = new S100Framework.WPF.ViewModel.S924.NAVWARNPartViewModel {
 
             };
@@ -83,6 +85,26 @@ namespace VortexConceptApplication
                 warningInformation = new S100Framework.DomainModel.S124.ComplexAttributes.warningInformation {
                 },                
             });
+#endif
+            var domailModel = new S100Framework.DomainModel.S901.FeatureTypes.QualityOfBathymetricDataCustom() {
+                categoryOfTemporalVariation = S100Framework.DomainModel.S101.categoryOfTemporalVariation.LikelyToChangeButSignificantShoalingNotExpected,
+                dataAssessment = S100Framework.DomainModel.S101.dataAssessment.Assessed,
+                featuresDetected = new S100Framework.DomainModel.S101.ComplexAttributes.featuresDetected {
+                    leastDepthOfDetectedFeaturesMeasured = true,
+                    significantFeaturesDetected = true,
+                },
+                fullSeafloorCoverageAchieved = true,
+                zoneOfConfidence = new List<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence> {
+                    new S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence {
+                        categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1                     
+                    }
+                },
+            };
+
+            var viewModel = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel {                
+            };
+
+            viewModel.Load(domailModel);
 
             //this._propertyGrid.EditorDefinitions.Clear();
 

@@ -553,7 +553,7 @@ namespace S100Framework
                         var constructor = classBuilder.Length;
                         classBuilder.AppendLine($"\t\t\t}}");
 
-                        classBuilder.AppendLine($"\t\t\tpublic Role[] Roles => new[]{{{roles}}};");
+                        classBuilder.AppendLine($"\t\t\tpublic static Role[] Roles => new[]{{{roles}}};");
 
                         var constructorBuilder = new StringBuilder();
 
@@ -675,7 +675,7 @@ namespace S100Framework
                         var constructor = classBuilder.Length;
                         classBuilder.AppendLine($"\t\t\t}}");
 
-                        classBuilder.AppendLine($"\t\t\tpublic Role[] Roles => new[]{{{roles}}};");
+                        classBuilder.AppendLine($"\t\t\tpublic static Role[] Roles => new[]{{{roles}}};");
 
                         var constructorBuilder = new StringBuilder();
 
@@ -868,9 +868,9 @@ namespace S100Framework
                                 initializer += $", roleType = DomainModel.Bindings.roleType.{roleType}";
 
                                 builder.AppendLine();
-                                builder.AppendLine("\t\t\t[System.Xml.Serialization.XmlIgnore]");
+                                //builder.AppendLine("\t\t\t[System.Xml.Serialization.XmlIgnore]");
                                 builder.AppendLine("\t\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Performance\", \"CA1822: Mark members as static\", Justification = \"<Pending>\")]");
-                                builder.AppendLine($"\t\t\tpublic Bindings.informationBinding<Associations.InformationAssociations.{association}, {informationTypeRef}> {name} => new (Role.{role}) {{ {initializer} }};");
+                                builder.AppendLine($"\t\t\tpublic static Bindings.informationBinding<Associations.InformationAssociations.{association}, {informationTypeRef}> {name} => new (Role.{role}) {{ {initializer} }};");
                                 builder.AppendLine("\t\t\t");
                             }
                         }));
@@ -1009,9 +1009,9 @@ namespace S100Framework
                                 initializer += $", roleType = DomainModel.Bindings.roleType.{roleType}";
 
                                 builder.AppendLine();
-                                builder.AppendLine("\t\t\t[System.Xml.Serialization.XmlIgnore]");
+                                //builder.AppendLine("\t\t\t[System.Xml.Serialization.XmlIgnore]");
                                 builder.AppendLine("\t\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Performance\", \"CA1822: Mark members as static\", Justification = \"<Pending>\")]");
-                                builder.AppendLine($"\t\t\tpublic Bindings.informationBinding<Associations.InformationAssociations.{association}, {informationTypeRef}> {name} => new (Role.{role}) {{ {initializer} }};");
+                                builder.AppendLine($"\t\t\tpublic static Bindings.informationBinding<Associations.InformationAssociations.{association}, {informationTypeRef}> {name} => new (Role.{role}) {{ {initializer} }};");
                                 builder.AppendLine("\t\t\t");
                             }
 
@@ -1037,9 +1037,9 @@ namespace S100Framework
                                 initializer += $", roleType = DomainModel.Bindings.roleType.{roleType}";
 
                                 builder.AppendLine();
-                                builder.AppendLine("\t\t\t[System.Xml.Serialization.XmlIgnore]");
+                                //builder.AppendLine("\t\t\t[System.Xml.Serialization.XmlIgnore]");
                                 builder.AppendLine("\t\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Performance\", \"CA1822: Mark members as static\", Justification = \"<Pending>\")]");
-                                builder.AppendLine($"\t\t\tpublic Bindings.featureBinding<Associations.FeatureAssociations.{association}, {featureTypeRef}> {name} => new (Role.{role}) {{ {initializer} }};");
+                                builder.AppendLine($"\t\t\tpublic static Bindings.featureBinding<Associations.FeatureAssociations.{association}, {featureTypeRef}> {name} => new (Role.{role}) {{ {initializer} }};");
                                 builder.AppendLine("\t\t\t");
                             }
                         }));
@@ -1131,10 +1131,18 @@ namespace S100Framework
             common.AppendLine("\t\t\tcomposition,");
             common.AppendLine("\t\t}");
 
-            common.AppendLine("\t\tpublic abstract class informationBinding");
-            common.AppendLine("\t\t{");
+            common.AppendLine("\t\tpublic abstract class informationBinding {");
             common.AppendLine("\t\t}");
             common.AppendLine();
+
+            common.AppendLine("\t\tpublic class InformationBindingConnector {");
+            common.AppendLine("\t\t\tpublic Guid Uuid { get; set; }");
+            common.AppendLine();
+            common.AppendLine("\t\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\t\t\tpublic informationBinding informationBinding { get; set; }");
+            common.AppendLine("\t\t}");
+            common.AppendLine();
+
             common.AppendLine("\t\tpublic abstract class informationBinding<Tassociation, TinformationType> : informationBinding");
             common.AppendLine("\t\t\twhere Tassociation : InformationAssociation");
             common.AppendLine("\t\t\twhere TinformationType : class");
@@ -1154,10 +1162,20 @@ namespace S100Framework
             common.AppendLine("\t\t\tpublic Type informationType => typeof(TinformationType);");
             common.AppendLine("\t\t}");
             common.AppendLine();
+
             common.AppendLine("\t\tpublic abstract class featureBinding");
             common.AppendLine("\t\t{");
             common.AppendLine("\t\t}");
             common.AppendLine();
+
+            common.AppendLine("\t\tpublic class FeatureBindingConnector {");
+            common.AppendLine("\t\t\tpublic Guid Uuid { get; set; }");
+            common.AppendLine();
+            common.AppendLine("\t\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\t\t\tpublic featureBinding featureBinding { get; set; }");
+            common.AppendLine("\t\t}");
+            common.AppendLine();
+
             common.AppendLine("\t\tpublic abstract class featureBinding<Tassociation, TfeatureType> : featureBinding");
             common.AppendLine("\t\t\twhere Tassociation : FeatureAssociation");
             common.AppendLine("\t\t\twhere TfeatureType : class");
@@ -1212,13 +1230,13 @@ namespace S100Framework
                 prefix += " abstract";
 
             if (type.BaseType != null && !type.BaseType.IsValueType && type.BaseType != typeof(Object)) {
-                classBuilder.AppendLine($"{prefix} class {code} : {type.BaseType.Name}");
+                classBuilder.AppendLine($"{prefix} partial class {code} : {type.BaseType.Name}");
             }
             else {
                 if (string.IsNullOrEmpty(parent))
-                    classBuilder.AppendLine($"{prefix} class {code}");
+                    classBuilder.AppendLine($"{prefix} partial class {code}");
                 else
-                    classBuilder.AppendLine($"{prefix} class {code}");
+                    classBuilder.AppendLine($"{prefix} partial class {code}");
             }
             if (code.ToLowerInvariant().Equals(code))
                 classBuilder.AppendLine("#pragma warning restore CS8981");

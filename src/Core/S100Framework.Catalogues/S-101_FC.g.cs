@@ -3817,7 +3817,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class featureName
+        public partial class featureName
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
@@ -3839,7 +3839,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class featuresDetected
+        public partial class featuresDetected
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean leastDepthOfDetectedFeaturesMeasured { get; set; }
@@ -3859,7 +3859,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class fixedDateRange
+        public partial class fixedDateRange
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? dateEnd { get; set; } = default;
@@ -3876,7 +3876,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class frequencyPair
+        public partial class frequencyPair
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? frequencyShoreStationReceives { get; set; } = default;
@@ -3893,7 +3893,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class horizontalClearanceFixed
+        public partial class horizontalClearanceFixed
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal horizontalClearanceValue { get; set; }
@@ -3910,7 +3910,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class horizontalClearanceOpen
+        public partial class horizontalClearanceOpen
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal horizontalClearanceValue { get; set; }
@@ -3927,7 +3927,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class horizontalPositionUncertainty
+        public partial class horizontalPositionUncertainty
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal uncertaintyFixed { get; set; }
@@ -3946,7 +3946,7 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-        public class information
+        public partial class information
 #pragma warning restore CS8981
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -3974,7 +3974,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class measuredDistanceValue
+        public partial class measuredDistanceValue
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required distanceUnitOfMeasurement distanceUnitOfMeasurement { get; set; }
@@ -3994,7 +3994,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class multiplicityOfFeatures
+        public partial class multiplicityOfFeatures
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean multiplicityKnown { get; set; }
@@ -4011,7 +4011,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class onlineResource
+        public partial class onlineResource
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String headline { get; set; } = string.Empty;
@@ -4034,7 +4034,7 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-        public class orientation
+        public partial class orientation
 #pragma warning restore CS8981
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -4052,7 +4052,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class periodicDateRange
+        public partial class periodicDateRange
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required DateOnly dateEnd { get; set; }
@@ -4069,7 +4069,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class radarWaveLength
+        public partial class radarWaveLength
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String radarBand { get; set; } = string.Empty;
@@ -4087,7 +4087,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class sectorInformation
+        public partial class sectorInformation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
@@ -4105,7 +4105,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class sectorLimitOne
+        public partial class sectorLimitOne
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal sectorBearing { get; set; }
@@ -4122,7 +4122,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class sectorLimitTwo
+        public partial class sectorLimitTwo
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal sectorBearing { get; set; }
@@ -4139,7 +4139,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class shapeInformation
+        public partial class shapeInformation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
@@ -4157,7 +4157,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class signalSequence
+        public partial class signalSequence
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal signalDuration { get; set; }
@@ -4176,7 +4176,7 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-        public class speed
+        public partial class speed
 #pragma warning restore CS8981
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -4194,7 +4194,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class surfaceCharacteristics
+        public partial class surfaceCharacteristics
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public natureOfSurface? natureOfSurface { get; set; } = default;
@@ -4214,7 +4214,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class surveyDateRange
+        public partial class surveyDateRange
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required DateOnly dateEnd { get; set; }
@@ -4233,7 +4233,7 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-        public class telecommunications
+        public partial class telecommunications
 #pragma warning restore CS8981
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -4255,7 +4255,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class tidalStreamValue
+        public partial class tidalStreamValue
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required orientation orientation { get; set; }
@@ -4279,7 +4279,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class timeIntervalsByDayOfWeek
+        public partial class timeIntervalsByDayOfWeek
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<dayOfWeek> dayOfWeek { get; set; } = [];
@@ -4304,7 +4304,7 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-        public class topmark
+        public partial class topmark
 #pragma warning restore CS8981
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -4328,7 +4328,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class valueOfLocalMagneticAnomaly
+        public partial class valueOfLocalMagneticAnomaly
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal magneticAnomalyValue { get; set; }
@@ -4345,7 +4345,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class verticalUncertainty
+        public partial class verticalUncertainty
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal uncertaintyFixed { get; set; }
@@ -4362,7 +4362,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class vesselSpeedLimit
+        public partial class vesselSpeedLimit
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal speedLimit { get; set; }
@@ -4382,7 +4382,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class zoneOfConfidence
+        public partial class zoneOfConfidence
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData { get; set; }
@@ -4405,7 +4405,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class directionalCharacter
+        public partial class directionalCharacter
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? moireEffect { get; set; } = default;
@@ -4426,7 +4426,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class rhythmOfLight
+        public partial class rhythmOfLight
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required lightCharacteristic lightCharacteristic { get; set; }
@@ -4449,7 +4449,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class scheduleByDayOfWeek
+        public partial class scheduleByDayOfWeek
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfSchedule? categoryOfSchedule { get; set; } = default;
@@ -4467,7 +4467,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class sectorLimit
+        public partial class sectorLimit
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required sectorLimitOne sectorLimitOne { get; set; }
@@ -4492,7 +4492,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class spatialAccuracy
+        public partial class spatialAccuracy
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -4512,7 +4512,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class tidalStreamPanelValues
+        public partial class tidalStreamPanelValues
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required referenceTide referenceTide { get; set; }
@@ -4536,7 +4536,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class verticalClearanceClosed
+        public partial class verticalClearanceClosed
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal verticalClearanceValue { get; set; }
@@ -4553,7 +4553,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class verticalClearanceFixed
+        public partial class verticalClearanceFixed
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal verticalClearanceValue { get; set; }
@@ -4570,7 +4570,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class verticalClearanceOpen
+        public partial class verticalClearanceOpen
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean verticalClearanceUnlimited { get; set; }
@@ -4590,7 +4590,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class verticalClearanceSafe
+        public partial class verticalClearanceSafe
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal verticalClearanceValue { get; set; }
@@ -4607,7 +4607,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class lightSector
+        public partial class lightSector
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<colour> colour { get; set; }
@@ -4640,7 +4640,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class sectorCharacteristics
+        public partial class sectorCharacteristics
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required lightCharacteristic lightCharacteristic { get; set; }
@@ -4720,7 +4720,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theInformation
                 };
@@ -4732,7 +4732,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theQualityInformation
                 };
@@ -4744,7 +4744,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theQualityInformation
                 };
@@ -4759,7 +4759,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4772,7 +4772,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4785,7 +4785,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4798,7 +4798,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4811,7 +4811,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4824,7 +4824,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4837,7 +4837,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.thePrimaryFeature,
                     Role.theAuxiliaryFeature
@@ -4850,7 +4850,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4863,7 +4863,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4876,7 +4876,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4889,7 +4889,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4902,7 +4902,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theRoofedStructure,
                     Role.theSupport
@@ -4915,7 +4915,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theStructure,
                     Role.theEquipment
@@ -4928,7 +4928,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCartographicText,
                     Role.thePositionProvider
@@ -4941,7 +4941,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4954,7 +4954,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4967,7 +4967,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theCollection,
                     Role.theComponent
@@ -4980,7 +4980,7 @@ namespace S100Framework.DomainModel.S101
                 {
                 }
 
-                public Role[] Roles => new[]
+                public static Role[] Roles => new[]
                 {
                     Role.theUpdate,
                     Role.theUpdatedObject
@@ -5017,7 +5017,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ContactDetails
+        public partial class ContactDetails
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String callSign { get; set; } = string.Empty;
@@ -5052,7 +5052,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ServiceHours
+        public partial class ServiceHours
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -5076,7 +5076,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class NonStandardWorkingDay
+        public partial class NonStandardWorkingDay
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<DateOnly> dateFixed { get; set; } = [];
@@ -5102,7 +5102,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class NauticalInformation
+        public partial class NauticalInformation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -5125,7 +5125,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SpatialQuality
+        public partial class SpatialQuality
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
@@ -5149,7 +5149,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class QualityOfNonBathymetricData
+        public partial class QualityOfNonBathymetricData
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfTemporalVariation? categoryOfTemporalVariation { get; set; } = default;
@@ -5175,9 +5175,8 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -5196,7 +5195,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DataCoverage
+        public partial class DataCoverage
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? drawingIndex { get; set; } = default;
@@ -5225,7 +5224,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class NavigationalSystemOfMarks
+        public partial class NavigationalSystemOfMarks
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required marksNavigationalSystemOf marksNavigationalSystemOf { get; set; }
@@ -5236,9 +5235,8 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -5253,7 +5251,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LocalDirectionOfBuoyage
+        public partial class LocalDirectionOfBuoyage
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5270,9 +5268,8 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -5287,7 +5284,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class QualityOfBathymetricData
+        public partial class QualityOfBathymetricData
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfTemporalVariation categoryOfTemporalVariation { get; set; }
@@ -5319,18 +5316,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.QualityOfBathymetricDataComposition, SpatialQuality> theQualityInformationSpatialQuality => new(Role.theQualityInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.QualityOfBathymetricDataComposition, SpatialQuality> theQualityInformationSpatialQuality => new(Role.theQualityInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -5351,7 +5346,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SoundingDatum
+        public partial class SoundingDatum
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5362,9 +5357,8 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -5379,7 +5373,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class VerticalDatumOfData
+        public partial class VerticalDatumOfData
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5390,9 +5384,8 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -5407,7 +5400,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class QualityOfSurvey
+        public partial class QualityOfSurvey
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? depthRangeMaximumValue { get; set; } = default;
@@ -5463,9 +5456,8 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -5486,7 +5478,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class UpdateInformation
+        public partial class UpdateInformation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -5509,34 +5501,30 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdateAggregation, UpdateInformation> theComponentUpdateInformation => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdateAggregation, UpdateInformation> theComponentUpdateInformation => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdateAggregation, UpdateInformation> theCollectionUpdateInformation => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdateAggregation, UpdateInformation> theCollectionUpdateInformation => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, AdministrationArea> theUpdatedObjectAdministrationArea => new(Role.theUpdatedObject)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, AdministrationArea> theUpdatedObjectAdministrationArea => new(Role.theUpdatedObject)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -5551,7 +5539,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class MagneticVariation
+        public partial class MagneticVariation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5571,18 +5559,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -5597,7 +5583,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LocalMagneticAnomaly
+        public partial class LocalMagneticAnomaly
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -5617,26 +5603,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -5653,7 +5636,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Coastline
+        public partial class Coastline
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfCoastline? categoryOfCoastline { get; set; } = default;
@@ -5685,26 +5668,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -5720,7 +5700,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LandArea
+        public partial class LandArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -5743,35 +5723,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.IslandAggregation, IslandGroup> theCollectionIslandGroup => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.IslandAggregation, IslandGroup> theCollectionIslandGroup => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -5787,7 +5763,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class IslandGroup
+        public partial class IslandGroup
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<featureName> featureName { get; set; }
@@ -5801,43 +5777,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.IslandAggregation, LandArea> theComponentLandArea => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.IslandAggregation, LandArea> theComponentLandArea => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.IslandAggregation, IslandGroup> theCollectionIslandGroup => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.IslandAggregation, IslandGroup> theCollectionIslandGroup => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -5854,7 +5825,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LandElevation
+        public partial class LandElevation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal elevation { get; set; }
@@ -5874,26 +5845,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -5909,7 +5877,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class River
+        public partial class River
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -5926,26 +5894,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -5961,7 +5926,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Rapids
+        public partial class Rapids
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -5978,26 +5943,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6013,7 +5975,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Waterfall
+        public partial class Waterfall
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -6033,26 +5995,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6068,7 +6027,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Lake
+        public partial class Lake
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? elevation { get; set; } = default;
@@ -6088,26 +6047,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6123,7 +6079,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LandRegion
+        public partial class LandRegion
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfLandRegion> categoryOfLandRegion { get; set; } = [];
@@ -6146,26 +6102,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6181,7 +6134,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Vegetation
+        public partial class Vegetation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfVegetation categoryOfVegetation { get; set; }
@@ -6210,26 +6163,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6245,7 +6195,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class IceArea
+        public partial class IceArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfIce categoryOfIce { get; set; }
@@ -6283,26 +6233,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6318,7 +6265,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SlopingGround
+        public partial class SlopingGround
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
@@ -6347,26 +6294,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6382,7 +6326,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SlopeTopline
+        public partial class SlopeTopline
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
@@ -6414,26 +6358,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6449,7 +6390,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Tideway
+        public partial class Tideway
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -6463,26 +6404,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6498,7 +6436,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class BuiltUpArea
+        public partial class BuiltUpArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfBuiltUpArea? categoryOfBuiltUpArea { get; set; } = default;
@@ -6536,26 +6474,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6571,7 +6506,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Building
+        public partial class Building
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public buildingShape? buildingShape { get; set; } = default;
@@ -6633,52 +6568,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6694,7 +6623,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class AirportAirfield
+        public partial class AirportAirfield
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfAirportAirfield> categoryOfAirportAirfield { get; set; } = [];
@@ -6723,26 +6652,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6758,7 +6684,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Runway
+        public partial class Runway
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -6787,26 +6713,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6822,7 +6745,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Helipad
+        public partial class Helipad
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -6851,35 +6774,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Building> theStructureBuilding => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Building> theStructureBuilding => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -6895,7 +6814,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Bridge
+        public partial class Bridge
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public bridgeConstruction? bridgeConstruction { get; set; } = default;
@@ -6954,51 +6873,45 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.BridgeAggregation, SpanFixed> theComponentSpanFixed => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.BridgeAggregation, SpanFixed> theComponentSpanFixed => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -7014,7 +6927,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SpanFixed
+        public partial class SpanFixed
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7040,53 +6953,47 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.BridgeAggregation, Bridge> theCollectionBridge => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.BridgeAggregation, Bridge> theCollectionBridge => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -7105,7 +7012,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SpanOpening
+        public partial class SpanOpening
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7134,53 +7041,47 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.BridgeAggregation, Bridge> theCollectionBridge => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.BridgeAggregation, Bridge> theCollectionBridge => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -7203,7 +7104,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Conveyor
+        public partial class Conveyor
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfConveyor? categoryOfConveyor { get; set; } = default;
@@ -7268,43 +7169,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -7320,7 +7216,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class CableOverhead
+        public partial class CableOverhead
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfCable? categoryOfCable { get; set; } = default;
@@ -7370,34 +7266,30 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, RadarReflector> theEquipmentRadarReflector => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, RadarReflector> theEquipmentRadarReflector => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -7413,7 +7305,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class PipelineOverhead
+        public partial class PipelineOverhead
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfPipelinePipe? categoryOfPipelinePipe { get; set; } = default;
@@ -7460,43 +7352,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -7512,7 +7399,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class PylonBridgeSupport
+        public partial class PylonBridgeSupport
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfPylon categoryOfPylon { get; set; }
@@ -7571,62 +7458,55 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.BridgeAggregation, Bridge> theCollectionBridge => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.BridgeAggregation, Bridge> theCollectionBridge => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RoofedStructureAggregation, StructureOverNavigableWater> theRoofedStructureStructureOverNavigableWater => new(Role.theRoofedStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RoofedStructureAggregation, StructureOverNavigableWater> theRoofedStructureStructureOverNavigableWater => new(Role.theRoofedStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -7641,7 +7521,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class FenceWall
+        public partial class FenceWall
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfFence? categoryOfFence { get; set; } = default;
@@ -7691,26 +7571,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -7726,7 +7603,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Railway
+        public partial class Railway
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -7752,26 +7629,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -7787,7 +7661,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Road
+        public partial class Road
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfRoad? categoryOfRoad { get; set; } = default;
@@ -7816,26 +7690,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -7851,7 +7722,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Tunnel
+        public partial class Tunnel
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -7886,26 +7757,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -7921,7 +7789,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Landmark
+        public partial class Landmark
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfLandmark> categoryOfLandmark { get; set; }
@@ -7986,61 +7854,54 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -8057,7 +7918,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SiloTank
+        public partial class SiloTank
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public buildingShape? buildingShape { get; set; } = default;
@@ -8122,52 +7983,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -8183,7 +8038,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class WindTurbine
+        public partial class WindTurbine
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<colour> colour { get; set; } = [];
@@ -8251,43 +8106,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -8303,7 +8153,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class FortifiedStructure
+        public partial class FortifiedStructure
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfFortifiedStructure? categoryOfFortifiedStructure { get; set; } = default;
@@ -8350,52 +8200,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -8411,7 +8255,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ProductionStorageArea
+        public partial class ProductionStorageArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfProductionArea categoryOfProductionArea { get; set; }
@@ -8461,26 +8305,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -8496,7 +8337,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Checkpoint
+        public partial class Checkpoint
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfCheckpoint? categoryOfCheckpoint { get; set; } = default;
@@ -8516,26 +8357,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -8551,7 +8389,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Hulk
+        public partial class Hulk
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfHulk> categoryOfHulk { get; set; } = [];
@@ -8604,43 +8442,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -8656,7 +8489,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Pile
+        public partial class Pile
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfPile? categoryOfPile { get; set; } = default;
@@ -8706,61 +8539,54 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -8776,7 +8602,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Dyke
+        public partial class Dyke
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -8814,26 +8640,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -8849,7 +8672,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ShorelineConstruction
+        public partial class ShorelineConstruction
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfShorelineConstruction? categoryOfShorelineConstruction { get; set; } = default;
@@ -8911,43 +8734,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -8963,7 +8781,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class StructureOverNavigableWater
+        public partial class StructureOverNavigableWater
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfStructure> categoryOfStructure { get; set; } = [];
@@ -9037,52 +8855,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RoofedStructureAggregation, PylonBridgeSupport> theSupportPylonBridgeSupport => new(Role.theSupport)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RoofedStructureAggregation, PylonBridgeSupport> theSupportPylonBridgeSupport => new(Role.theSupport)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -9105,7 +8917,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Causeway
+        public partial class Causeway
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -9134,26 +8946,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -9169,7 +8978,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Canal
+        public partial class Canal
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfCanal? categoryOfCanal { get; set; } = default;
@@ -9204,26 +9013,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -9239,7 +9045,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DistanceMark
+        public partial class DistanceMark
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean distanceMarkVisible { get; set; }
@@ -9262,35 +9068,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -9311,7 +9113,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Gate
+        public partial class Gate
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfGate? categoryOfGate { get; set; } = default;
@@ -9355,26 +9157,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -9390,7 +9189,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Dam
+        public partial class Dam
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfDam? categoryOfDam { get; set; } = default;
@@ -9440,26 +9239,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -9475,7 +9271,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Crane
+        public partial class Crane
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfCrane? categoryOfCrane { get; set; } = default;
@@ -9537,43 +9333,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -9589,7 +9380,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Berth
+        public partial class Berth
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
@@ -9633,35 +9424,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.MooringTrotAggregation, MooringTrot> theCollectionMooringTrot => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.MooringTrotAggregation, MooringTrot> theCollectionMooringTrot => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -9678,7 +9465,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Dolphin
+        public partial class Dolphin
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfDolphin> categoryOfDolphin { get; set; }
@@ -9737,52 +9524,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -9799,7 +9580,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Bollard
+        public partial class Bollard
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -9831,35 +9612,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Dolphin> theStructureDolphin => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Dolphin> theStructureDolphin => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -9875,7 +9652,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DryDock
+        public partial class DryDock
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -9925,26 +9702,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -9960,7 +9734,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class FloatingDock
+        public partial class FloatingDock
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<colour> colour { get; set; } = [];
@@ -10022,43 +9796,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10074,7 +9843,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Pontoon
+        public partial class Pontoon
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -10112,52 +9881,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.BridgeAggregation, Bridge> theCollectionBridge => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.BridgeAggregation, Bridge> theCollectionBridge => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10173,7 +9936,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DockArea
+        public partial class DockArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfDock? categoryOfDock { get; set; } = default;
@@ -10214,26 +9977,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10249,7 +10009,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Gridiron
+        public partial class Gridiron
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -10281,26 +10041,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10316,7 +10073,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LockBasin
+        public partial class LockBasin
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -10348,26 +10105,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10383,7 +10137,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class MooringTrot
+        public partial class MooringTrot
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -10400,34 +10154,30 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.MooringTrotAggregation, Berth> theComponentBerth => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.MooringTrotAggregation, Berth> theComponentBerth => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10443,7 +10193,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SeaAreaNamedWaterArea
+        public partial class SeaAreaNamedWaterArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfSeaArea? categoryOfSeaArea { get; set; } = default;
@@ -10460,26 +10210,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10495,7 +10242,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class TidalStreamFloodEbb
+        public partial class TidalStreamFloodEbb
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfTidalStream categoryOfTidalStream { get; set; }
@@ -10521,26 +10268,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10564,7 +10308,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class CurrentNonGravitational
+        public partial class CurrentNonGravitational
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -10593,26 +10337,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10636,7 +10377,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class WaterTurbulence
+        public partial class WaterTurbulence
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfWaterTurbulence categoryOfWaterTurbulence { get; set; }
@@ -10653,26 +10394,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10688,7 +10426,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class TidalStreamPanelData
+        public partial class TidalStreamPanelData
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -10711,26 +10449,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10748,7 +10483,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Sounding
+        public partial class Sounding
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -10774,26 +10509,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10809,7 +10541,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DredgedArea
+        public partial class DredgedArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal depthRangeMinimumValue { get; set; }
@@ -10847,35 +10579,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10891,7 +10619,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SweptArea
+        public partial class SweptArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal depthRangeMinimumValue { get; set; }
@@ -10908,35 +10636,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -10952,7 +10676,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DepthContour
+        public partial class DepthContour
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -10966,18 +10690,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -10992,7 +10714,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DepthArea
+        public partial class DepthArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal depthRangeMinimumValue { get; set; }
@@ -11006,18 +10728,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -11032,7 +10752,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DepthNoBottomFound
+        public partial class DepthNoBottomFound
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -11046,18 +10766,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -11072,7 +10790,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class UnsurveyedArea
+        public partial class UnsurveyedArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -11080,18 +10798,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -11106,7 +10822,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SeabedArea
+        public partial class SeabedArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -11126,26 +10842,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -11162,7 +10875,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class WeedKelp
+        public partial class WeedKelp
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfWeedKelp? categoryOfWeedKelp { get; set; } = default;
@@ -11179,26 +10892,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -11214,7 +10924,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Seagrass
+        public partial class Seagrass
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -11228,26 +10938,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -11263,7 +10970,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Sandwave
+        public partial class Sandwave
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -11277,18 +10984,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -11303,7 +11008,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Spring
+        public partial class Spring
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -11317,26 +11022,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -11352,7 +11054,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class UnderwaterAwashRock
+        public partial class UnderwaterAwashRock
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
@@ -11396,26 +11098,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal surroundingDepth { get; set; }
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -11431,7 +11130,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Wreck
+        public partial class Wreck
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfWreck? categoryOfWreck { get; set; } = default;
@@ -11487,34 +11186,30 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal surroundingDepth { get; set; }
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -11530,7 +11225,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Obstruction
+        public partial class Obstruction
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfObstruction? categoryOfObstruction { get; set; } = default;
@@ -11592,35 +11287,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal surroundingDepth { get; set; }
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.MooringTrotAggregation, MooringTrot> theCollectionMooringTrot => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.MooringTrotAggregation, MooringTrot> theCollectionMooringTrot => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -11636,7 +11327,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class FoulGround
+        public partial class FoulGround
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -11668,26 +11359,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -11703,7 +11391,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DiscolouredWater
+        public partial class DiscolouredWater
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -11717,18 +11405,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -11743,7 +11429,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class FishingFacility
+        public partial class FishingFacility
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfFishingFacility? categoryOfFishingFacility { get; set; } = default;
@@ -11775,43 +11461,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -11827,7 +11508,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class MarineFarmCulture
+        public partial class MarineFarmCulture
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfMarineFarmCulture? categoryOfMarineFarmCulture { get; set; } = default;
@@ -11880,26 +11561,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -11915,7 +11593,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class OffshorePlatform
+        public partial class OffshorePlatform
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfOffshorePlatform? categoryOfOffshorePlatform { get; set; } = default;
@@ -11971,43 +11649,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -12023,7 +11696,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class CableSubmarine
+        public partial class CableSubmarine
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? buriedDepth { get; set; } = default;
@@ -12052,35 +11725,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.MooringTrotAggregation, MooringTrot> theCollectionMooringTrot => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.MooringTrotAggregation, MooringTrot> theCollectionMooringTrot => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -12096,7 +11765,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class CableArea
+        public partial class CableArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfCable> categoryOfCable { get; set; } = [];
@@ -12125,26 +11794,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -12160,7 +11826,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class PipelineSubmarineOnLand
+        public partial class PipelineSubmarineOnLand
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? buriedDepth { get; set; } = default;
@@ -12210,26 +11876,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -12245,7 +11908,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SubmarinePipelineArea
+        public partial class SubmarinePipelineArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
@@ -12277,26 +11940,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -12312,7 +11972,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class OffshoreProductionArea
+        public partial class OffshoreProductionArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfOffshoreProductionArea? categoryOfOffshoreProductionArea { get; set; } = default;
@@ -12365,26 +12025,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -12400,7 +12057,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class NavigationLine
+        public partial class NavigationLine
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfNavigationLine categoryOfNavigationLine { get; set; }
@@ -12429,27 +12086,24 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -12468,7 +12122,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RecommendedTrack
+        public partial class RecommendedTrack
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean basedOnFixedMarks { get; set; }
@@ -12515,44 +12169,39 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
@@ -12568,7 +12217,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RangeSystem
+        public partial class RangeSystem
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -12588,52 +12237,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -12649,7 +12292,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Fairway
+        public partial class Fairway
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? depthRangeMinimumValue { get; set; } = default;
@@ -12693,43 +12336,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAggregation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAggregation, FairwaySystem> theCollectionFairwaySystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, CardinalBeacon> theAuxiliaryFeatureCardinalBeacon => new(Role.theAuxiliaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, CardinalBeacon> theAuxiliaryFeatureCardinalBeacon => new(Role.theAuxiliaryFeature)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -12745,7 +12383,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class FairwaySystem
+        public partial class FairwaySystem
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -12768,42 +12406,37 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAggregation, Fairway> theComponentFairway => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAggregation, Fairway> theComponentFairway => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -12819,7 +12452,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RecommendedRouteCentreline
+        public partial class RecommendedRouteCentreline
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean basedOnFixedMarks { get; set; }
@@ -12863,44 +12496,39 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -12916,7 +12544,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class TwoWayRoutePart
+        public partial class TwoWayRoutePart
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? basedOnFixedMarks { get; set; } = default;
@@ -12954,36 +12582,32 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TwoWayRouteAggregation, TwoWayRoute> theCollectionTwoWayRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TwoWayRouteAggregation, TwoWayRoute> theCollectionTwoWayRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -12998,7 +12622,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class TwoWayRoute
+        public partial class TwoWayRoute
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -13018,51 +12642,45 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TwoWayRouteAggregation, TwoWayRoutePart> theComponentTwoWayRoutePart => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TwoWayRouteAggregation, TwoWayRoutePart> theComponentTwoWayRoutePart => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -13078,7 +12696,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RecommendedTrafficLanePart
+        public partial class RecommendedTrafficLanePart
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -13098,18 +12716,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -13124,7 +12740,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DeepWaterRouteCentreline
+        public partial class DeepWaterRouteCentreline
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean basedOnFixedMarks { get; set; }
@@ -13168,44 +12784,39 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.DeepWaterRouteAggregation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.DeepWaterRouteAggregation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -13221,7 +12832,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DeepWaterRoutePart
+        public partial class DeepWaterRoutePart
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal depthRangeMinimumValue { get; set; }
@@ -13268,44 +12879,39 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.DeepWaterRouteAggregation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.DeepWaterRouteAggregation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -13321,7 +12927,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DeepWaterRoute
+        public partial class DeepWaterRoute
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -13341,51 +12947,45 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.DeepWaterRouteAggregation, DeepWaterRouteCentreline> theComponentDeepWaterRouteCentreline => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.DeepWaterRouteAggregation, DeepWaterRouteCentreline> theComponentDeepWaterRouteCentreline => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -13401,7 +13001,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class InshoreTrafficZone
+        public partial class InshoreTrafficZone
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -13424,27 +13024,24 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -13459,7 +13056,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class PrecautionaryArea
+        public partial class PrecautionaryArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -13488,35 +13085,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<information> information { get; set; }
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -13533,7 +13126,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class TrafficSeparationSchemeLanePart
+        public partial class TrafficSeparationSchemeLanePart
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -13559,27 +13152,24 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -13594,7 +13184,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SeparationZoneOrLine
+        public partial class SeparationZoneOrLine
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -13611,27 +13201,24 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -13646,7 +13233,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class TrafficSeparationSchemeBoundary
+        public partial class TrafficSeparationSchemeBoundary
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -13663,27 +13250,24 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -13698,7 +13282,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class TrafficSeparationSchemeCrossing
+        public partial class TrafficSeparationSchemeCrossing
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -13721,27 +13305,24 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -13756,7 +13337,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class TrafficSeparationSchemeRoundabout
+        public partial class TrafficSeparationSchemeRoundabout
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -13779,27 +13360,24 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -13814,7 +13392,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class TrafficSeparationScheme
+        public partial class TrafficSeparationScheme
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -13837,60 +13415,53 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, DeepWaterRoute> theComponentDeepWaterRoute => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, DeepWaterRoute> theComponentDeepWaterRoute => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.CautionAreaAssociation, CautionArea> theCollectionCautionArea => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.CautionAreaAssociation, CautionArea> theCollectionCautionArea => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -13906,7 +13477,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ArchipelagicSeaLaneArea
+        public partial class ArchipelagicSeaLaneArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -13926,35 +13497,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.ASLAggregation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.ASLAggregation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -13970,7 +13537,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ArchipelagicSeaLaneAxis
+        public partial class ArchipelagicSeaLaneAxis
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -13990,35 +13557,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.ASLAggregation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.ASLAggregation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14034,7 +13597,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ArchipelagicSeaLane
+        public partial class ArchipelagicSeaLane
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -14054,51 +13617,45 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, CardinalBeacon> theComponentCardinalBeacon => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.ASLAggregation, ArchipelagicSeaLaneArea> theComponentArchipelagicSeaLaneArea => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.ASLAggregation, ArchipelagicSeaLaneArea> theComponentArchipelagicSeaLaneArea => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.CautionAreaAssociation, CautionArea> theCollectionCautionArea => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.CautionAreaAssociation, CautionArea> theCollectionCautionArea => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14115,7 +13672,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RadioCallingInPoint
+        public partial class RadioCallingInPoint
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> communicationChannel { get; set; } = [];
@@ -14147,26 +13704,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14182,7 +13736,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class FerryRoute
+        public partial class FerryRoute
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfFerry> categoryOfFerry { get; set; }
@@ -14208,26 +13762,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14244,7 +13795,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RadarLine
+        public partial class RadarLine
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -14264,26 +13815,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14299,7 +13847,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RadarRange
+        public partial class RadarRange
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> communicationChannel { get; set; } = [];
@@ -14322,26 +13870,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14357,7 +13902,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RadarStation
+        public partial class RadarStation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String callSign { get; set; } = string.Empty;
@@ -14392,26 +13937,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14427,7 +13969,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class AnchorageArea
+        public partial class AnchorageArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
@@ -14462,26 +14004,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14497,7 +14036,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class MooringArea
+        public partial class MooringArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfMooringArea> categoryOfMooringArea { get; set; } = [];
@@ -14535,26 +14074,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14570,7 +14106,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class AnchorBerth
+        public partial class AnchorBerth
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
@@ -14602,26 +14138,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14637,7 +14170,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SeaplaneLandingArea
+        public partial class SeaplaneLandingArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -14663,26 +14196,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14698,7 +14228,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class DumpingGround
+        public partial class DumpingGround
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfDumpingGround> categoryOfDumpingGround { get; set; } = [];
@@ -14727,26 +14257,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14762,7 +14289,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class MilitaryPracticeArea
+        public partial class MilitaryPracticeArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea { get; set; } = [];
@@ -14797,26 +14324,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14832,7 +14356,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class AdministrationArea
+        public partial class AdministrationArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inDispute { get; set; } = default;
@@ -14858,26 +14382,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14893,7 +14414,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class CargoTranshipmentArea
+        public partial class CargoTranshipmentArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -14922,26 +14443,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -14957,7 +14475,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class CautionArea
+        public partial class CautionArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
@@ -14986,35 +14504,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.CautionAreaAssociation, ArchipelagicSeaLane> theComponentArchipelagicSeaLane => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.CautionAreaAssociation, ArchipelagicSeaLane> theComponentArchipelagicSeaLane => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -15029,7 +14543,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class InformationArea
+        public partial class InformationArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -15055,26 +14569,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15090,7 +14601,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ContiguousZone
+        public partial class ContiguousZone
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -15110,18 +14621,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -15137,7 +14646,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ContinentalShelfArea
+        public partial class ContinentalShelfArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -15154,26 +14663,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15190,7 +14696,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class CustomZone
+        public partial class CustomZone
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -15204,18 +14710,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -15231,7 +14735,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class ExclusiveEconomicZone
+        public partial class ExclusiveEconomicZone
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inDispute { get; set; } = default;
@@ -15248,18 +14752,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -15275,7 +14777,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class FisheryZone
+        public partial class FisheryZone
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -15295,26 +14797,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15331,7 +14830,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class FishingGround
+        public partial class FishingGround
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -15357,26 +14856,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15392,7 +14888,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class FreePortArea
+        public partial class FreePortArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -15409,26 +14905,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15444,7 +14937,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class HarbourAreaAdministrative
+        public partial class HarbourAreaAdministrative
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -15461,26 +14954,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15496,7 +14986,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LogPond
+        public partial class LogPond
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -15516,26 +15006,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15551,7 +15038,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class OilBarrier
+        public partial class OilBarrier
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfOilBarrier? categoryOfOilBarrier { get; set; } = default;
@@ -15580,26 +15067,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15615,7 +15099,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class StraightTerritorialSeaBaseline
+        public partial class StraightTerritorialSeaBaseline
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -15629,18 +15113,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -15656,7 +15138,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class TerritorialSeaArea
+        public partial class TerritorialSeaArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inDispute { get; set; } = default;
@@ -15679,18 +15161,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -15706,7 +15186,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SubmarineTransitLane
+        public partial class SubmarineTransitLane
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -15729,26 +15209,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15764,7 +15241,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class PilotageDistrict
+        public partial class PilotageDistrict
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> communicationChannel { get; set; } = [];
@@ -15781,34 +15258,30 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.PilotageDistrictAssociation, PilotBoardingPlace> theComponentPilotBoardingPlace => new(Role.theComponent)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.PilotageDistrictAssociation, PilotBoardingPlace> theComponentPilotBoardingPlace => new(Role.theComponent)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15824,7 +15297,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class CollisionRegulationsLimit
+        public partial class CollisionRegulationsLimit
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -15847,26 +15320,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15882,7 +15352,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class MarinePollutionRegulationsArea
+        public partial class MarinePollutionRegulationsArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -15899,26 +15369,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -15934,7 +15401,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RestrictedArea
+        public partial class RestrictedArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
@@ -15966,44 +15433,39 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation, TrafficSeparationScheme> theCollectionTrafficSeparationScheme => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -16020,7 +15482,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LightAllAround
+        public partial class LightAllAround
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfLight> categoryOfLight { get; set; } = [];
@@ -16085,52 +15547,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, FogSignal> theEquipmentFogSignal => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, FogSignal> theEquipmentFogSignal => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -16151,7 +15607,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LightSectored
+        public partial class LightSectored
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfLight> categoryOfLight { get; set; } = [];
@@ -16198,52 +15654,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, FogSignal> theEquipmentFogSignal => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, FogSignal> theEquipmentFogSignal => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -16260,7 +15710,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LightFogDetector
+        public partial class LightFogDetector
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<colour> colour { get; set; } = [];
@@ -16304,35 +15754,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -16348,7 +15794,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LightAirObstruction
+        public partial class LightAirObstruction
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<colour> colour { get; set; } = [];
@@ -16398,35 +15844,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -16442,7 +15884,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LateralBuoy
+        public partial class LateralBuoy
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
@@ -16495,52 +15937,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -16557,7 +15993,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class CardinalBuoy
+        public partial class CardinalBuoy
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
@@ -16610,52 +16046,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -16672,7 +16102,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class IsolatedDangerBuoy
+        public partial class IsolatedDangerBuoy
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
@@ -16722,52 +16152,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -16784,7 +16208,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SafeWaterBuoy
+        public partial class SafeWaterBuoy
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
@@ -16834,52 +16258,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -16896,7 +16314,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SpecialPurposeGeneralBuoy
+        public partial class SpecialPurposeGeneralBuoy
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
@@ -16949,52 +16367,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -17012,7 +16424,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class EmergencyWreckMarkingBuoy
+        public partial class EmergencyWreckMarkingBuoy
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
@@ -17056,43 +16468,38 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -17109,7 +16516,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class InstallationBuoy
+        public partial class InstallationBuoy
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
@@ -17159,34 +16566,30 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -17203,7 +16606,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class MooringBuoy
+        public partial class MooringBuoy
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
@@ -17253,52 +16656,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, DeepWaterRoute> theCollectionDeepWaterRoute => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.MooringTrotAggregation, MooringTrot> theCollectionMooringTrot => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.MooringTrotAggregation, MooringTrot> theCollectionMooringTrot => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -17314,7 +16711,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LateralBeacon
+        public partial class LateralBeacon
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required beaconShape beaconShape { get; set; }
@@ -17382,61 +16779,54 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -17453,7 +16843,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class CardinalBeacon
+        public partial class CardinalBeacon
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required beaconShape beaconShape { get; set; }
@@ -17521,61 +16911,54 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -17592,7 +16975,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class IsolatedDangerBeacon
+        public partial class IsolatedDangerBeacon
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required beaconShape beaconShape { get; set; }
@@ -17657,61 +17040,54 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -17728,7 +17104,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SafeWaterBeacon
+        public partial class SafeWaterBeacon
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required beaconShape beaconShape { get; set; }
@@ -17793,61 +17169,54 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -17864,7 +17233,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SpecialPurposeGeneralBeacon
+        public partial class SpecialPurposeGeneralBeacon
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required beaconShape beaconShape { get; set; }
@@ -17932,61 +17301,54 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -18004,7 +17366,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Daymark
+        public partial class Daymark
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = [];
@@ -18060,70 +17422,62 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, DistanceMark> theEquipmentDistanceMark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, DistanceMark> theEquipmentDistanceMark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -18140,7 +17494,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LightFloat
+        public partial class LightFloat
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<colour> colour { get; set; }
@@ -18193,52 +17547,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -18255,7 +17603,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class LightVessel
+        public partial class LightVessel
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<colour> colour { get; set; }
@@ -18305,52 +17653,46 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Daymark> theEquipmentDaymark => new(Role.theEquipment)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation, ArchipelagicSeaLane> theCollectionArchipelagicSeaLane => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.FairwayAuxiliary, Fairway> thePrimaryFeatureFairway => new(Role.thePrimaryFeature)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -18367,7 +17709,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Retroreflector
+        public partial class Retroreflector
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<colour> colour { get; set; } = [];
@@ -18396,27 +17738,24 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -18431,7 +17770,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RadarReflector
+        public partial class RadarReflector
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
@@ -18454,27 +17793,24 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, CableOverhead> theStructureCableOverhead => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, CableOverhead> theStructureCableOverhead => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
@@ -18489,7 +17825,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class FogSignal
+        public partial class FogSignal
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfFogSignal categoryOfFogSignal { get; set; }
@@ -18533,35 +17869,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -18577,7 +17909,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class PhysicalAISAidToNavigation
+        public partial class PhysicalAISAidToNavigation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
@@ -18606,35 +17938,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -18650,7 +17978,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class VirtualAISAidToNavigation
+        public partial class VirtualAISAidToNavigation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
@@ -18682,26 +18010,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -18717,7 +18042,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RadioStation
+        public partial class RadioStation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String callSign { get; set; } = string.Empty;
@@ -18755,26 +18080,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -18790,7 +18112,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RadarTransponderBeacon
+        public partial class RadarTransponderBeacon
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; set; }
@@ -18831,44 +18153,39 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, NauticalInformation> theInformationNauticalInformation => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.RangeSystemAggregation, RangeSystem> theCollectionRangeSystem => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
@@ -18884,7 +18201,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class PilotBoardingPlace
+        public partial class PilotBoardingPlace
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace { get; set; } = default;
@@ -18922,35 +18239,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.PilotageDistrictAssociation, PilotageDistrict> theCollectionPilotageDistrict => new(Role.theCollection)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.PilotageDistrictAssociation, PilotageDistrict> theCollectionPilotageDistrict => new(Role.theCollection)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.aggregation
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -18966,7 +18279,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class VesselTrafficServiceArea
+        public partial class VesselTrafficServiceArea
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
@@ -18980,26 +18293,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -19015,7 +18325,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class CoastGuardStation
+        public partial class CoastGuardStation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> communicationChannel { get; set; } = [];
@@ -19044,26 +18354,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -19079,7 +18386,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SignalStationWarning
+        public partial class SignalStationWarning
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfSignalStationWarning> categoryOfSignalStationWarning { get; set; }
@@ -19108,35 +18415,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -19153,7 +18456,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SignalStationTraffic
+        public partial class SignalStationTraffic
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic { get; set; }
@@ -19182,35 +18485,31 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.StructureEquipment, Bridge> theStructureBridge => new(Role.theStructure)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.composition
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -19227,7 +18526,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class RescueStation
+        public partial class RescueStation
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfRescueStation> categoryOfRescueStation { get; set; } = [];
@@ -19256,26 +18555,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -19291,7 +18587,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class HarbourFacility
+        public partial class HarbourFacility
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
@@ -19341,26 +18637,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -19377,7 +18670,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class SmallCraftFacility
+        public partial class SmallCraftFacility
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility { get; set; }
@@ -19403,26 +18696,23 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
+            public static Bindings.informationBinding<Associations.InformationAssociations.AdditionalInformation, ContactDetails> theInformationContactDetails => new(Role.theInformation)
             {
                 Lower = 0,
                 Upper = 1,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.UpdatedInformation, UpdateInformation> theUpdateUpdateInformation => new(Role.theUpdate)
             {
                 Lower = 0,
                 roleType = DomainModel.Bindings.roleType.association
             };
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
@@ -19439,7 +18729,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class TextPlacement
+        public partial class TextPlacement
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Int32 textOffsetBearing { get; set; }
@@ -19456,9 +18746,8 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, AdministrationArea> thePositionProviderAdministrationArea => new(Role.thePositionProvider)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, AdministrationArea> thePositionProviderAdministrationArea => new(Role.thePositionProvider)
             {
                 Lower = 0,
                 Upper = 1,
@@ -19475,7 +18764,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public class Chart1Feature
+        public partial class Chart1Feature
         {
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> drawingInstruction { get; set; } = [];
@@ -19483,9 +18772,8 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
-            [System.Xml.Serialization.XmlIgnore]
             [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
+            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> theCartographicTextTextPlacement => new(Role.theCartographicText)
             {
                 Lower = 0,
                 Upper = 2,
