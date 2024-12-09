@@ -55,22 +55,22 @@ namespace S100Framework.WPF.Editors
 
     public sealed class BindingConnectorEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
-        public DomainModel.Bindings.informationBinding[] informationBindingsItems => new DomainModel.Bindings.informationBinding[] {
-                NAVWARNPart.headerNAVWARNPreamble,
-            };
+        //public DomainModel.Bindings.informationBinding[] informationBindingsItems => new DomainModel.Bindings.informationBinding[] {
+        //        NAVWARNPart.headerNAVWARNPreamble,
+        //    };
 
         public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {            
-            if (propertyItem.DisplayName.EndsWith("Binding")) {
-                var comboBox = new ComboBox {
-                    Name = $"_comboBox{Guid.NewGuid():N}",
-                    DisplayMemberPath = "association.Name",
-                };
+            //if (propertyItem.DisplayName.EndsWith("Binding")) {
+            //    var comboBox = new ComboBox {
+            //        Name = $"_comboBox{Guid.NewGuid():N}",
+            //        DisplayMemberPath = "association.Name",
+            //    };
 
-                var bindingItemsSourceProperty = new Binding() { Source = informationBindingsItems, Mode = BindingMode.OneWay };
-                BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+            //    var bindingItemsSourceProperty = new Binding() { Source = informationBindingsItems, Mode = BindingMode.OneWay };
+            //    BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
-                return comboBox;
-            }
+            //    return comboBox;
+            //}
 
             var text = propertyItem.DisplayName;
 

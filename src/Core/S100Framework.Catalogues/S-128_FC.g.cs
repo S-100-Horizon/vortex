@@ -658,6 +658,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class contactAddress
         {
+            public string Code => nameof(contactAddress);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String administrativeDivision { get; set; } = string.Empty;
 
@@ -684,6 +686,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class customPaperSize
         {
+            public string Code => nameof(customPaperSize);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required Int32 x { get; set; }
 
@@ -701,6 +705,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class defaultLocale
         {
+            public string Code => nameof(defaultLocale);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String characterEncoding { get; set; } = string.Empty;
 
@@ -723,6 +729,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureName
         {
+            public string Code => nameof(featureName);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String language { get; set; } = string.Empty;
 
@@ -747,6 +755,8 @@ namespace S100Framework.DomainModel.S128
         public partial class information
 #pragma warning restore CS8981
         {
+            public string Code => nameof(information);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String fileLocator { get; set; } = string.Empty;
 
@@ -773,6 +783,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource
         {
+            public string Code => nameof(onlineResource);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String applicationProfile { get; set; } = string.Empty;
 
@@ -803,6 +815,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class periodicDateRange
         {
+            public string Code => nameof(periodicDateRange);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateOnly dateEnd { get; set; }
 
@@ -823,6 +837,8 @@ namespace S100Framework.DomainModel.S128
         public partial class pricing
 #pragma warning restore CS8981
         {
+            public string Code => nameof(pricing);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String contractPeriod { get; set; } = string.Empty;
 
@@ -844,6 +860,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class printSize
         {
+            public string Code => nameof(printSize);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public iso216? iso216 { get; set; } = default;
 
@@ -861,6 +879,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class productSpecification
         {
+            public string Code => nameof(productSpecification);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime date { get; set; }
 
@@ -886,6 +906,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class supportFileSpecification
         {
+            public string Code => nameof(supportFileSpecification);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime date { get; set; }
 
@@ -908,6 +930,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class serviceSpecification
         {
+            public string Code => nameof(serviceSpecification);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime date { get; set; }
 
@@ -930,6 +954,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sourceIndication
         {
+            public string Code => nameof(sourceIndication);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
 
@@ -962,6 +988,8 @@ namespace S100Framework.DomainModel.S128
         public partial class telecommunications
 #pragma warning restore CS8981
         {
+            public string Code => nameof(telecommunications);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String contactInstructions { get; set; } = string.Empty;
 
@@ -984,6 +1012,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalOfCycle
         {
+            public string Code => nameof(timeIntervalOfCycle);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required List<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit { get; set; }
 
@@ -1002,6 +1032,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class weekOfYear
         {
+            public string Code => nameof(weekOfYear);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required Int32 weekNumber { get; set; }
 
@@ -1019,6 +1051,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class issuanceCycle
         {
+            public string Code => nameof(issuanceCycle);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public periodicDateRange? periodicDateRange { get; set; }
 
@@ -1036,6 +1070,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class printInformation
         {
+            public string Code => nameof(printInformation);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String printAgency { get; set; } = string.Empty;
 
@@ -1065,6 +1101,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class supportFile
         {
+            public string Code => nameof(supportFile);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String comment { get; set; } = string.Empty;
 
@@ -1125,6 +1163,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalOfProduct
         {
+            public string Code => nameof(timeIntervalOfProduct);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime issueDate { get; set; }
 
@@ -1145,6 +1185,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class referenceToNM
         {
+            public string Code => nameof(referenceToNM);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime publicationDate { get; set; }
 
@@ -1345,27 +1387,13 @@ namespace S100Framework.DomainModel.S128
 
     namespace Bindings
     {
-        public class informationBinding<Tassociation, TinformationType> : DomainModel.Bindings.informationBinding<Tassociation, TinformationType> where Tassociation : InformationAssociation where TinformationType : class
-        {
-            public informationBinding(Role role)
-            {
-                base.Role = Enum.GetName(role);
-            }
-        }
-
-        public class featureBinding<Tassociation, TfeatureType> : DomainModel.Bindings.featureBinding<Tassociation, TfeatureType> where Tassociation : FeatureAssociation where TfeatureType : class
-        {
-            public featureBinding(Role role)
-            {
-                base.Role = Enum.GetName(role);
-            }
-        }
     }
 
     namespace InformationTypes
     {
         using ComplexAttributes;
         using DomainModel;
+        using S100Framework.DomainModel.Bindings;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
@@ -1373,6 +1401,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CatalogueSectionHeader
         {
+            public string Code => nameof(CatalogueSectionHeader);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required Int32 catalogueSectionNumber { get; set; }
 
@@ -1381,28 +1411,9 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public information? information { get; set; }
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.PriceOfNauticalProduct, PriceInformation> thePriceInformationPriceInformation => new(Role.thePriceInformation)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.ProductionDetails, ProducerInformation> theProducerProducerInformation => new(Role.theProducer)
-            {
-                Lower = 0,
-                Upper = 1,
-                roleType = DomainModel.Bindings.roleType.association
-            };
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.DistributionDetails, DistributorInformation> theDistributorDistributorInformation => new(Role.theDistributor)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
+            public List<informationBinding> thePriceInformationPriceInformation { get; set; } = [];
+            public informationBinding? theProducerProducerInformation { get; set; }
+            public List<informationBinding> theDistributorDistributorInformation { get; set; } = [];
 
             public CatalogueSectionHeader()
             {
@@ -1415,6 +1426,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContactDetails
         {
+            public string Code => nameof(ContactDetails);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String contactInstructions { get; set; } = string.Empty;
 
@@ -1432,22 +1445,8 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public List<sourceIndication> sourceIndication { get; set; } = [];
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.ProducerContact, ProducerInformation> theProducerProducerInformation => new(Role.theProducer)
-            {
-                Lower = 0,
-                Upper = 1,
-                roleType = DomainModel.Bindings.roleType.association
-            };
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.DistributorContact, DistributorInformation> theDistributorDistributorInformation => new(Role.theDistributor)
-            {
-                Lower = 0,
-                Upper = 1,
-                roleType = DomainModel.Bindings.roleType.association
-            };
+            public informationBinding? theProducerProducerInformation { get; set; }
+            public informationBinding? theDistributorDistributorInformation { get; set; }
 
             public ContactDetails()
             {
@@ -1461,6 +1460,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IndicationOfCarriageRequirement
         {
+            public string Code => nameof(IndicationOfCarriageRequirement);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String domesticCarriageRequirements { get; set; } = string.Empty;
 
@@ -1481,6 +1482,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PriceInformation
         {
+            public string Code => nameof(PriceInformation);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public List<information> information { get; set; } = [];
 
@@ -1492,13 +1495,7 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public List<sourceIndication> sourceIndication { get; set; } = [];
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.PriceOfNauticalProduct, CatalogueSectionHeader> theCatalogueOfNauticalProductCatalogueSectionHeader => new(Role.theCatalogueOfNauticalProduct)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
+            public List<informationBinding> theCatalogueOfNauticalProductCatalogueSectionHeader { get; set; } = [];
 
             public PriceInformation()
             {
@@ -1511,25 +1508,15 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ProducerInformation
         {
+            public string Code => nameof(ProducerInformation);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String agencyName { get; set; } = string.Empty;
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.ProducerContact, ContactDetails> theContactDetailsContactDetails => new(Role.theContactDetails)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.ProductionDetails, CatalogueSectionHeader> catalogueHeaderCatalogueSectionHeader => new(Role.catalogueHeader)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
+            public List<informationBinding> theContactDetailsContactDetails { get; set; } = [];
+            public List<informationBinding> catalogueHeaderCatalogueSectionHeader { get; set; } = [];
 
             public ProducerInformation()
             {
@@ -1543,22 +1530,12 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DistributorInformation
         {
+            public string Code => nameof(DistributorInformation);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String distributorName { get; set; } = string.Empty;
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.DistributionDetails, CatalogueSectionHeader> catalogueHeaderCatalogueSectionHeader => new(Role.catalogueHeader)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.DistributorContact, ContactDetails> theContactDetailsContactDetails => new(Role.theContactDetails)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
+            public List<informationBinding> catalogueHeaderCatalogueSectionHeader { get; set; } = [];
+            public List<informationBinding> theContactDetailsContactDetails { get; set; } = [];
 
             public DistributorInformation()
             {
@@ -1572,6 +1549,7 @@ namespace S100Framework.DomainModel.S128
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
+        using S100Framework.DomainModel.Bindings;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
@@ -1579,6 +1557,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class CatalogueElement
         {
+            public string Code => nameof(CatalogueElement);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
 
@@ -1614,34 +1594,9 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public timeIntervalOfProduct? timeIntervalOfProduct { get; set; }
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.CarriageRequirement, IndicationOfCarriageRequirement> theRequirementIndicationOfCarriageRequirement => new(Role.theRequirement)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.PriceOfElement, PriceInformation> thePriceInformationPriceInformation => new(Role.thePriceInformation)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.ProductPackage, CatalogueSectionHeader> elementContainerCatalogueSectionHeader => new(Role.elementContainer)
-            {
-                Lower = 1,
-                roleType = DomainModel.Bindings.roleType.association
-            };
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.featureBinding<Associations.FeatureAssociations.ProductMapping, CatalogueElement> theReferenceCatalogueElement => new(Role.theReference)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
+            public List<informationBinding> theRequirementIndicationOfCarriageRequirement { get; set; } = [];
+            public List<informationBinding> thePriceInformationPriceInformation { get; set; } = [];
+            public List<informationBinding> elementContainerCatalogueSectionHeader { get; set; } = [];
 
             public CatalogueElement()
             {
@@ -1655,6 +1610,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class NavigationalProduct : CatalogueElement
         {
+            public string Code => nameof(NavigationalProduct);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public List<Decimal> approximateGridResolution { get; set; } = [];
 
@@ -1703,14 +1660,6 @@ namespace S100Framework.DomainModel.S128
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public verticalDatum? verticalDatum { get; set; } = default;
 
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.featureBinding<Associations.FeatureAssociations.Correlated, NavigationalProduct> mainNavigationalProduct => new(Role.main)
-            {
-                Lower = 1,
-                Upper = 1,
-                roleType = DomainModel.Bindings.roleType.association
-            };
-
             public NavigationalProduct()
             {
             }
@@ -1722,6 +1671,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ElectronicProduct : NavigationalProduct
         {
+            public string Code => nameof(ElectronicProduct);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public Boolean? compressionFlag { get; set; } = default;
 
@@ -1751,6 +1702,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PhysicalProduct : NavigationalProduct
         {
+            public string Code => nameof(PhysicalProduct);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime editionDate { get; set; }
 
@@ -1780,6 +1733,8 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class S100Service : CatalogueElement
         {
+            public string Code => nameof(S100Service);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public Boolean? compressionFlag { get; set; } = default;
 

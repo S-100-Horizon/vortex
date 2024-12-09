@@ -1254,17 +1254,17 @@ namespace S100Framework.WPF.ViewModel.S924
         [Category("Development")]
         public ObservableCollection<InformationBindingConnector> informationBindings { get; set; } = new();
 
-        public ImmutableArray<informationBinding> informationBindingsItems => ImmutableArray.Create<informationBinding>(new informationBinding[] {
-            NAVWARNPart.headerNAVWARNPreamble,
-        });
+        //public ImmutableArray<informationBinding> informationBindingsItems => ImmutableArray.Create<informationBinding>(new informationBinding[] {
+        //    NAVWARNPart.headerNAVWARNPreamble,
+        //});
 
         [Category("Development")]
         public ObservableCollection<FeatureBindingConnector> featureBindings { get; set; } = new();
 
-        public ImmutableArray<featureBinding> featureBindingsItems => ImmutableArray.Create<featureBinding>(new featureBinding[] {
-            NAVWARNPart.affectsNAVWARNAreaAffected,
-            NAVWARNPart.positionsTextPlacement,
-        });
+        //public ImmutableArray<featureBinding> featureBindingsItems => ImmutableArray.Create<featureBinding>(new featureBinding[] {
+        //    NAVWARNPart.affectsNAVWARNAreaAffected,
+        //    NAVWARNPart.positionsTextPlacement,
+        //});
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance) {
             featureName.Clear();
