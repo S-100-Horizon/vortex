@@ -40,6 +40,18 @@ namespace S100Framework.DomainModel
     {
     }
 
+    [System.SerializableAttribute()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+    public abstract class InformationTypeBase
+    {
+    }
+
+    [System.SerializableAttribute()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
+    public abstract class FeatureTypeBase
+    {
+    }
+
     namespace Bindings
     {
         public enum roleType

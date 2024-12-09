@@ -5087,7 +5087,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContactDetails
+        public partial class ContactDetails : InformationTypeBase
         {
             public string Code => nameof(ContactDetails);
 
@@ -5124,7 +5124,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ServiceHours
+        public partial class ServiceHours : InformationTypeBase
         {
             public string Code => nameof(ServiceHours);
 
@@ -5150,7 +5150,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NonStandardWorkingDay
+        public partial class NonStandardWorkingDay : InformationTypeBase
         {
             public string Code => nameof(NonStandardWorkingDay);
 
@@ -5178,7 +5178,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NauticalInformation
+        public partial class NauticalInformation : InformationTypeBase
         {
             public string Code => nameof(NauticalInformation);
 
@@ -5203,7 +5203,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpatialQuality
+        public partial class SpatialQuality : InformationTypeBase
         {
             public string Code => nameof(SpatialQuality);
 
@@ -5230,7 +5230,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfNonBathymetricData
+        public partial class QualityOfNonBathymetricData : FeatureTypeBase
         {
             public string Code => nameof(QualityOfNonBathymetricData);
 
@@ -5271,7 +5271,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DataCoverage
+        public partial class DataCoverage : FeatureTypeBase
         {
             public string Code => nameof(DataCoverage);
 
@@ -5302,7 +5302,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NavigationalSystemOfMarks
+        public partial class NavigationalSystemOfMarks : FeatureTypeBase
         {
             public string Code => nameof(NavigationalSystemOfMarks);
 
@@ -5324,7 +5324,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LocalDirectionOfBuoyage
+        public partial class LocalDirectionOfBuoyage : FeatureTypeBase
         {
             public string Code => nameof(LocalDirectionOfBuoyage);
 
@@ -5352,7 +5352,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfBathymetricData
+        public partial class QualityOfBathymetricData : FeatureTypeBase
         {
             public string Code => nameof(QualityOfBathymetricData);
 
@@ -5402,7 +5402,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SoundingDatum
+        public partial class SoundingDatum : FeatureTypeBase
         {
             public string Code => nameof(SoundingDatum);
 
@@ -5424,7 +5424,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VerticalDatumOfData
+        public partial class VerticalDatumOfData : FeatureTypeBase
         {
             public string Code => nameof(VerticalDatumOfData);
 
@@ -5446,7 +5446,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfSurvey
+        public partial class QualityOfSurvey : FeatureTypeBase
         {
             public string Code => nameof(QualityOfSurvey);
 
@@ -5519,7 +5519,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UpdateInformation
+        public partial class UpdateInformation : FeatureTypeBase
         {
             public string Code => nameof(UpdateInformation);
 
@@ -5553,7 +5553,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MagneticVariation
+        public partial class MagneticVariation : FeatureTypeBase
         {
             public string Code => nameof(MagneticVariation);
 
@@ -5585,7 +5585,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LocalMagneticAnomaly
+        public partial class LocalMagneticAnomaly : FeatureTypeBase
         {
             public string Code => nameof(LocalMagneticAnomaly);
 
@@ -5618,7 +5618,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Coastline
+        public partial class Coastline : FeatureTypeBase
         {
             public string Code => nameof(Coastline);
 
@@ -5662,7 +5662,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandArea
+        public partial class LandArea : FeatureTypeBase
         {
             public string Code => nameof(LandArea);
 
@@ -5697,7 +5697,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IslandGroup
+        public partial class IslandGroup : FeatureTypeBase
         {
             public string Code => nameof(IslandGroup);
 
@@ -5724,7 +5724,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandElevation
+        public partial class LandElevation : FeatureTypeBase
         {
             public string Code => nameof(LandElevation);
 
@@ -5756,7 +5756,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class River
+        public partial class River : FeatureTypeBase
         {
             public string Code => nameof(River);
 
@@ -5785,7 +5785,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Rapids
+        public partial class Rapids : FeatureTypeBase
         {
             public string Code => nameof(Rapids);
 
@@ -5814,7 +5814,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Waterfall
+        public partial class Waterfall : FeatureTypeBase
         {
             public string Code => nameof(Waterfall);
 
@@ -5846,7 +5846,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Lake
+        public partial class Lake : FeatureTypeBase
         {
             public string Code => nameof(Lake);
 
@@ -5878,7 +5878,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandRegion
+        public partial class LandRegion : FeatureTypeBase
         {
             public string Code => nameof(LandRegion);
 
@@ -5913,7 +5913,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Vegetation
+        public partial class Vegetation : FeatureTypeBase
         {
             public string Code => nameof(Vegetation);
 
@@ -5954,7 +5954,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IceArea
+        public partial class IceArea : FeatureTypeBase
         {
             public string Code => nameof(IceArea);
 
@@ -6004,7 +6004,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SlopingGround
+        public partial class SlopingGround : FeatureTypeBase
         {
             public string Code => nameof(SlopingGround);
 
@@ -6045,7 +6045,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SlopeTopline
+        public partial class SlopeTopline : FeatureTypeBase
         {
             public string Code => nameof(SlopeTopline);
 
@@ -6089,7 +6089,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Tideway
+        public partial class Tideway : FeatureTypeBase
         {
             public string Code => nameof(Tideway);
 
@@ -6115,7 +6115,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class BuiltUpArea
+        public partial class BuiltUpArea : FeatureTypeBase
         {
             public string Code => nameof(BuiltUpArea);
 
@@ -6165,7 +6165,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Building
+        public partial class Building : FeatureTypeBase
         {
             public string Code => nameof(Building);
 
@@ -6239,7 +6239,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AirportAirfield
+        public partial class AirportAirfield : FeatureTypeBase
         {
             public string Code => nameof(AirportAirfield);
 
@@ -6280,7 +6280,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Runway
+        public partial class Runway : FeatureTypeBase
         {
             public string Code => nameof(Runway);
 
@@ -6321,7 +6321,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Helipad
+        public partial class Helipad : FeatureTypeBase
         {
             public string Code => nameof(Helipad);
 
@@ -6362,7 +6362,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Bridge
+        public partial class Bridge : FeatureTypeBase
         {
             public string Code => nameof(Bridge);
 
@@ -6433,7 +6433,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpanFixed
+        public partial class SpanFixed : FeatureTypeBase
         {
             public string Code => nameof(SpanFixed);
 
@@ -6475,7 +6475,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpanOpening
+        public partial class SpanOpening : FeatureTypeBase
         {
             public string Code => nameof(SpanOpening);
 
@@ -6524,7 +6524,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Conveyor
+        public partial class Conveyor : FeatureTypeBase
         {
             public string Code => nameof(Conveyor);
 
@@ -6601,7 +6601,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableOverhead
+        public partial class CableOverhead : FeatureTypeBase
         {
             public string Code => nameof(CableOverhead);
 
@@ -6663,7 +6663,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PipelineOverhead
+        public partial class PipelineOverhead : FeatureTypeBase
         {
             public string Code => nameof(PipelineOverhead);
 
@@ -6722,7 +6722,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PylonBridgeSupport
+        public partial class PylonBridgeSupport : FeatureTypeBase
         {
             public string Code => nameof(PylonBridgeSupport);
 
@@ -6793,7 +6793,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FenceWall
+        public partial class FenceWall : FeatureTypeBase
         {
             public string Code => nameof(FenceWall);
 
@@ -6855,7 +6855,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Railway
+        public partial class Railway : FeatureTypeBase
         {
             public string Code => nameof(Railway);
 
@@ -6893,7 +6893,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Road
+        public partial class Road : FeatureTypeBase
         {
             public string Code => nameof(Road);
 
@@ -6934,7 +6934,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Tunnel
+        public partial class Tunnel : FeatureTypeBase
         {
             public string Code => nameof(Tunnel);
 
@@ -6981,7 +6981,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Landmark
+        public partial class Landmark : FeatureTypeBase
         {
             public string Code => nameof(Landmark);
 
@@ -7059,7 +7059,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SiloTank
+        public partial class SiloTank : FeatureTypeBase
         {
             public string Code => nameof(SiloTank);
 
@@ -7136,7 +7136,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WindTurbine
+        public partial class WindTurbine : FeatureTypeBase
         {
             public string Code => nameof(WindTurbine);
 
@@ -7216,7 +7216,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FortifiedStructure
+        public partial class FortifiedStructure : FeatureTypeBase
         {
             public string Code => nameof(FortifiedStructure);
 
@@ -7275,7 +7275,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ProductionStorageArea
+        public partial class ProductionStorageArea : FeatureTypeBase
         {
             public string Code => nameof(ProductionStorageArea);
 
@@ -7337,7 +7337,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Checkpoint
+        public partial class Checkpoint : FeatureTypeBase
         {
             public string Code => nameof(Checkpoint);
 
@@ -7369,7 +7369,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Hulk
+        public partial class Hulk : FeatureTypeBase
         {
             public string Code => nameof(Hulk);
 
@@ -7434,7 +7434,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Pile
+        public partial class Pile : FeatureTypeBase
         {
             public string Code => nameof(Pile);
 
@@ -7496,7 +7496,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dyke
+        public partial class Dyke : FeatureTypeBase
         {
             public string Code => nameof(Dyke);
 
@@ -7546,7 +7546,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ShorelineConstruction
+        public partial class ShorelineConstruction : FeatureTypeBase
         {
             public string Code => nameof(ShorelineConstruction);
 
@@ -7620,7 +7620,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class StructureOverNavigableWater
+        public partial class StructureOverNavigableWater : FeatureTypeBase
         {
             public string Code => nameof(StructureOverNavigableWater);
 
@@ -7714,7 +7714,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Causeway
+        public partial class Causeway : FeatureTypeBase
         {
             public string Code => nameof(Causeway);
 
@@ -7755,7 +7755,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Canal
+        public partial class Canal : FeatureTypeBase
         {
             public string Code => nameof(Canal);
 
@@ -7802,7 +7802,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DistanceMark
+        public partial class DistanceMark : FeatureTypeBase
         {
             public string Code => nameof(DistanceMark);
 
@@ -7842,7 +7842,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Gate
+        public partial class Gate : FeatureTypeBase
         {
             public string Code => nameof(Gate);
 
@@ -7898,7 +7898,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dam
+        public partial class Dam : FeatureTypeBase
         {
             public string Code => nameof(Dam);
 
@@ -7960,7 +7960,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Crane
+        public partial class Crane : FeatureTypeBase
         {
             public string Code => nameof(Crane);
 
@@ -8034,7 +8034,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Berth
+        public partial class Berth : FeatureTypeBase
         {
             public string Code => nameof(Berth);
 
@@ -8091,7 +8091,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dolphin
+        public partial class Dolphin : FeatureTypeBase
         {
             public string Code => nameof(Dolphin);
 
@@ -8163,7 +8163,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Bollard
+        public partial class Bollard : FeatureTypeBase
         {
             public string Code => nameof(Bollard);
 
@@ -8207,7 +8207,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DryDock
+        public partial class DryDock : FeatureTypeBase
         {
             public string Code => nameof(DryDock);
 
@@ -8269,7 +8269,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FloatingDock
+        public partial class FloatingDock : FeatureTypeBase
         {
             public string Code => nameof(FloatingDock);
 
@@ -8343,7 +8343,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Pontoon
+        public partial class Pontoon : FeatureTypeBase
         {
             public string Code => nameof(Pontoon);
 
@@ -8393,7 +8393,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DockArea
+        public partial class DockArea : FeatureTypeBase
         {
             public string Code => nameof(DockArea);
 
@@ -8446,7 +8446,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Gridiron
+        public partial class Gridiron : FeatureTypeBase
         {
             public string Code => nameof(Gridiron);
 
@@ -8490,7 +8490,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LockBasin
+        public partial class LockBasin : FeatureTypeBase
         {
             public string Code => nameof(LockBasin);
 
@@ -8534,7 +8534,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringTrot
+        public partial class MooringTrot : FeatureTypeBase
         {
             public string Code => nameof(MooringTrot);
 
@@ -8563,7 +8563,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeaAreaNamedWaterArea
+        public partial class SeaAreaNamedWaterArea : FeatureTypeBase
         {
             public string Code => nameof(SeaAreaNamedWaterArea);
 
@@ -8592,7 +8592,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TidalStreamFloodEbb
+        public partial class TidalStreamFloodEbb : FeatureTypeBase
         {
             public string Code => nameof(TidalStreamFloodEbb);
 
@@ -8638,7 +8638,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CurrentNonGravitational
+        public partial class CurrentNonGravitational : FeatureTypeBase
         {
             public string Code => nameof(CurrentNonGravitational);
 
@@ -8687,7 +8687,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WaterTurbulence
+        public partial class WaterTurbulence : FeatureTypeBase
         {
             public string Code => nameof(WaterTurbulence);
 
@@ -8716,7 +8716,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TidalStreamPanelData
+        public partial class TidalStreamPanelData : FeatureTypeBase
         {
             public string Code => nameof(TidalStreamPanelData);
 
@@ -8753,7 +8753,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Sounding
+        public partial class Sounding : FeatureTypeBase
         {
             public string Code => nameof(Sounding);
 
@@ -8791,7 +8791,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DredgedArea
+        public partial class DredgedArea : FeatureTypeBase
         {
             public string Code => nameof(DredgedArea);
 
@@ -8841,7 +8841,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SweptArea
+        public partial class SweptArea : FeatureTypeBase
         {
             public string Code => nameof(SweptArea);
 
@@ -8870,7 +8870,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthContour
+        public partial class DepthContour : FeatureTypeBase
         {
             public string Code => nameof(DepthContour);
 
@@ -8896,7 +8896,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthArea
+        public partial class DepthArea : FeatureTypeBase
         {
             public string Code => nameof(DepthArea);
 
@@ -8922,7 +8922,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthNoBottomFound
+        public partial class DepthNoBottomFound : FeatureTypeBase
         {
             public string Code => nameof(DepthNoBottomFound);
 
@@ -8948,7 +8948,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UnsurveyedArea
+        public partial class UnsurveyedArea : FeatureTypeBase
         {
             public string Code => nameof(UnsurveyedArea);
 
@@ -8968,7 +8968,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeabedArea
+        public partial class SeabedArea : FeatureTypeBase
         {
             public string Code => nameof(SeabedArea);
 
@@ -9001,7 +9001,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WeedKelp
+        public partial class WeedKelp : FeatureTypeBase
         {
             public string Code => nameof(WeedKelp);
 
@@ -9030,7 +9030,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Seagrass
+        public partial class Seagrass : FeatureTypeBase
         {
             public string Code => nameof(Seagrass);
 
@@ -9056,7 +9056,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Sandwave
+        public partial class Sandwave : FeatureTypeBase
         {
             public string Code => nameof(Sandwave);
 
@@ -9082,7 +9082,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Spring
+        public partial class Spring : FeatureTypeBase
         {
             public string Code => nameof(Spring);
 
@@ -9108,7 +9108,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UnderwaterAwashRock
+        public partial class UnderwaterAwashRock : FeatureTypeBase
         {
             public string Code => nameof(UnderwaterAwashRock);
 
@@ -9164,7 +9164,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Wreck
+        public partial class Wreck : FeatureTypeBase
         {
             public string Code => nameof(Wreck);
 
@@ -9232,7 +9232,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Obstruction
+        public partial class Obstruction : FeatureTypeBase
         {
             public string Code => nameof(Obstruction);
 
@@ -9306,7 +9306,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FoulGround
+        public partial class FoulGround : FeatureTypeBase
         {
             public string Code => nameof(FoulGround);
 
@@ -9350,7 +9350,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DiscolouredWater
+        public partial class DiscolouredWater : FeatureTypeBase
         {
             public string Code => nameof(DiscolouredWater);
 
@@ -9376,7 +9376,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FishingFacility
+        public partial class FishingFacility : FeatureTypeBase
         {
             public string Code => nameof(FishingFacility);
 
@@ -9420,7 +9420,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MarineFarmCulture
+        public partial class MarineFarmCulture : FeatureTypeBase
         {
             public string Code => nameof(MarineFarmCulture);
 
@@ -9485,7 +9485,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OffshorePlatform
+        public partial class OffshorePlatform : FeatureTypeBase
         {
             public string Code => nameof(OffshorePlatform);
 
@@ -9553,7 +9553,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableSubmarine
+        public partial class CableSubmarine : FeatureTypeBase
         {
             public string Code => nameof(CableSubmarine);
 
@@ -9594,7 +9594,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableArea
+        public partial class CableArea : FeatureTypeBase
         {
             public string Code => nameof(CableArea);
 
@@ -9635,7 +9635,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PipelineSubmarineOnLand
+        public partial class PipelineSubmarineOnLand : FeatureTypeBase
         {
             public string Code => nameof(PipelineSubmarineOnLand);
 
@@ -9697,7 +9697,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SubmarinePipelineArea
+        public partial class SubmarinePipelineArea : FeatureTypeBase
         {
             public string Code => nameof(SubmarinePipelineArea);
 
@@ -9741,7 +9741,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OffshoreProductionArea
+        public partial class OffshoreProductionArea : FeatureTypeBase
         {
             public string Code => nameof(OffshoreProductionArea);
 
@@ -9806,7 +9806,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NavigationLine
+        public partial class NavigationLine : FeatureTypeBase
         {
             public string Code => nameof(NavigationLine);
 
@@ -9851,7 +9851,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedTrack
+        public partial class RecommendedTrack : FeatureTypeBase
         {
             public string Code => nameof(RecommendedTrack);
 
@@ -9910,7 +9910,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RangeSystem
+        public partial class RangeSystem : FeatureTypeBase
         {
             public string Code => nameof(RangeSystem);
 
@@ -9942,7 +9942,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Fairway
+        public partial class Fairway : FeatureTypeBase
         {
             public string Code => nameof(Fairway);
 
@@ -9998,7 +9998,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FairwaySystem
+        public partial class FairwaySystem : FeatureTypeBase
         {
             public string Code => nameof(FairwaySystem);
 
@@ -10033,7 +10033,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedRouteCentreline
+        public partial class RecommendedRouteCentreline : FeatureTypeBase
         {
             public string Code => nameof(RecommendedRouteCentreline);
 
@@ -10089,7 +10089,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TwoWayRoutePart
+        public partial class TwoWayRoutePart : FeatureTypeBase
         {
             public string Code => nameof(TwoWayRoutePart);
 
@@ -10139,7 +10139,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TwoWayRoute
+        public partial class TwoWayRoute : FeatureTypeBase
         {
             public string Code => nameof(TwoWayRoute);
 
@@ -10171,7 +10171,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedTrafficLanePart
+        public partial class RecommendedTrafficLanePart : FeatureTypeBase
         {
             public string Code => nameof(RecommendedTrafficLanePart);
 
@@ -10203,7 +10203,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRouteCentreline
+        public partial class DeepWaterRouteCentreline : FeatureTypeBase
         {
             public string Code => nameof(DeepWaterRouteCentreline);
 
@@ -10259,7 +10259,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRoutePart
+        public partial class DeepWaterRoutePart : FeatureTypeBase
         {
             public string Code => nameof(DeepWaterRoutePart);
 
@@ -10318,7 +10318,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRoute
+        public partial class DeepWaterRoute : FeatureTypeBase
         {
             public string Code => nameof(DeepWaterRoute);
 
@@ -10350,7 +10350,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InshoreTrafficZone
+        public partial class InshoreTrafficZone : FeatureTypeBase
         {
             public string Code => nameof(InshoreTrafficZone);
 
@@ -10385,7 +10385,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PrecautionaryArea
+        public partial class PrecautionaryArea : FeatureTypeBase
         {
             public string Code => nameof(PrecautionaryArea);
 
@@ -10427,7 +10427,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeLanePart
+        public partial class TrafficSeparationSchemeLanePart : FeatureTypeBase
         {
             public string Code => nameof(TrafficSeparationSchemeLanePart);
 
@@ -10465,7 +10465,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeparationZoneOrLine
+        public partial class SeparationZoneOrLine : FeatureTypeBase
         {
             public string Code => nameof(SeparationZoneOrLine);
 
@@ -10494,7 +10494,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeBoundary
+        public partial class TrafficSeparationSchemeBoundary : FeatureTypeBase
         {
             public string Code => nameof(TrafficSeparationSchemeBoundary);
 
@@ -10523,7 +10523,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeCrossing
+        public partial class TrafficSeparationSchemeCrossing : FeatureTypeBase
         {
             public string Code => nameof(TrafficSeparationSchemeCrossing);
 
@@ -10558,7 +10558,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeRoundabout
+        public partial class TrafficSeparationSchemeRoundabout : FeatureTypeBase
         {
             public string Code => nameof(TrafficSeparationSchemeRoundabout);
 
@@ -10593,7 +10593,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationScheme
+        public partial class TrafficSeparationScheme : FeatureTypeBase
         {
             public string Code => nameof(TrafficSeparationScheme);
 
@@ -10628,7 +10628,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLaneArea
+        public partial class ArchipelagicSeaLaneArea : FeatureTypeBase
         {
             public string Code => nameof(ArchipelagicSeaLaneArea);
 
@@ -10660,7 +10660,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLaneAxis
+        public partial class ArchipelagicSeaLaneAxis : FeatureTypeBase
         {
             public string Code => nameof(ArchipelagicSeaLaneAxis);
 
@@ -10692,7 +10692,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLane
+        public partial class ArchipelagicSeaLane : FeatureTypeBase
         {
             public string Code => nameof(ArchipelagicSeaLane);
 
@@ -10725,7 +10725,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadioCallingInPoint
+        public partial class RadioCallingInPoint : FeatureTypeBase
         {
             public string Code => nameof(RadioCallingInPoint);
 
@@ -10769,7 +10769,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FerryRoute
+        public partial class FerryRoute : FeatureTypeBase
         {
             public string Code => nameof(FerryRoute);
 
@@ -10808,7 +10808,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarLine
+        public partial class RadarLine : FeatureTypeBase
         {
             public string Code => nameof(RadarLine);
 
@@ -10840,7 +10840,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarRange
+        public partial class RadarRange : FeatureTypeBase
         {
             public string Code => nameof(RadarRange);
 
@@ -10875,7 +10875,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarStation
+        public partial class RadarStation : FeatureTypeBase
         {
             public string Code => nameof(RadarStation);
 
@@ -10922,7 +10922,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AnchorageArea
+        public partial class AnchorageArea : FeatureTypeBase
         {
             public string Code => nameof(AnchorageArea);
 
@@ -10969,7 +10969,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringArea
+        public partial class MooringArea : FeatureTypeBase
         {
             public string Code => nameof(MooringArea);
 
@@ -11019,7 +11019,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AnchorBerth
+        public partial class AnchorBerth : FeatureTypeBase
         {
             public string Code => nameof(AnchorBerth);
 
@@ -11063,7 +11063,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeaplaneLandingArea
+        public partial class SeaplaneLandingArea : FeatureTypeBase
         {
             public string Code => nameof(SeaplaneLandingArea);
 
@@ -11101,7 +11101,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DumpingGround
+        public partial class DumpingGround : FeatureTypeBase
         {
             public string Code => nameof(DumpingGround);
 
@@ -11142,7 +11142,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MilitaryPracticeArea
+        public partial class MilitaryPracticeArea : FeatureTypeBase
         {
             public string Code => nameof(MilitaryPracticeArea);
 
@@ -11189,7 +11189,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AdministrationArea
+        public partial class AdministrationArea : FeatureTypeBase
         {
             public string Code => nameof(AdministrationArea);
 
@@ -11227,7 +11227,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CargoTranshipmentArea
+        public partial class CargoTranshipmentArea : FeatureTypeBase
         {
             public string Code => nameof(CargoTranshipmentArea);
 
@@ -11268,7 +11268,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CautionArea
+        public partial class CautionArea : FeatureTypeBase
         {
             public string Code => nameof(CautionArea);
 
@@ -11309,7 +11309,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InformationArea
+        public partial class InformationArea : FeatureTypeBase
         {
             public string Code => nameof(InformationArea);
 
@@ -11347,7 +11347,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContiguousZone
+        public partial class ContiguousZone : FeatureTypeBase
         {
             public string Code => nameof(ContiguousZone);
 
@@ -11380,7 +11380,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContinentalShelfArea
+        public partial class ContinentalShelfArea : FeatureTypeBase
         {
             public string Code => nameof(ContinentalShelfArea);
 
@@ -11410,7 +11410,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CustomZone
+        public partial class CustomZone : FeatureTypeBase
         {
             public string Code => nameof(CustomZone);
 
@@ -11437,7 +11437,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ExclusiveEconomicZone
+        public partial class ExclusiveEconomicZone : FeatureTypeBase
         {
             public string Code => nameof(ExclusiveEconomicZone);
 
@@ -11467,7 +11467,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FisheryZone
+        public partial class FisheryZone : FeatureTypeBase
         {
             public string Code => nameof(FisheryZone);
 
@@ -11500,7 +11500,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FishingGround
+        public partial class FishingGround : FeatureTypeBase
         {
             public string Code => nameof(FishingGround);
 
@@ -11538,7 +11538,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FreePortArea
+        public partial class FreePortArea : FeatureTypeBase
         {
             public string Code => nameof(FreePortArea);
 
@@ -11567,7 +11567,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class HarbourAreaAdministrative
+        public partial class HarbourAreaAdministrative : FeatureTypeBase
         {
             public string Code => nameof(HarbourAreaAdministrative);
 
@@ -11596,7 +11596,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LogPond
+        public partial class LogPond : FeatureTypeBase
         {
             public string Code => nameof(LogPond);
 
@@ -11628,7 +11628,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OilBarrier
+        public partial class OilBarrier : FeatureTypeBase
         {
             public string Code => nameof(OilBarrier);
 
@@ -11669,7 +11669,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class StraightTerritorialSeaBaseline
+        public partial class StraightTerritorialSeaBaseline : FeatureTypeBase
         {
             public string Code => nameof(StraightTerritorialSeaBaseline);
 
@@ -11696,7 +11696,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TerritorialSeaArea
+        public partial class TerritorialSeaArea : FeatureTypeBase
         {
             public string Code => nameof(TerritorialSeaArea);
 
@@ -11732,7 +11732,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SubmarineTransitLane
+        public partial class SubmarineTransitLane : FeatureTypeBase
         {
             public string Code => nameof(SubmarineTransitLane);
 
@@ -11767,7 +11767,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PilotageDistrict
+        public partial class PilotageDistrict : FeatureTypeBase
         {
             public string Code => nameof(PilotageDistrict);
 
@@ -11796,7 +11796,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CollisionRegulationsLimit
+        public partial class CollisionRegulationsLimit : FeatureTypeBase
         {
             public string Code => nameof(CollisionRegulationsLimit);
 
@@ -11831,7 +11831,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MarinePollutionRegulationsArea
+        public partial class MarinePollutionRegulationsArea : FeatureTypeBase
         {
             public string Code => nameof(MarinePollutionRegulationsArea);
 
@@ -11860,7 +11860,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RestrictedArea
+        public partial class RestrictedArea : FeatureTypeBase
         {
             public string Code => nameof(RestrictedArea);
 
@@ -11905,7 +11905,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightAllAround
+        public partial class LightAllAround : FeatureTypeBase
         {
             public string Code => nameof(LightAllAround);
 
@@ -11987,7 +11987,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightSectored
+        public partial class LightSectored : FeatureTypeBase
         {
             public string Code => nameof(LightSectored);
 
@@ -12047,7 +12047,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightFogDetector
+        public partial class LightFogDetector : FeatureTypeBase
         {
             public string Code => nameof(LightFogDetector);
 
@@ -12103,7 +12103,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightAirObstruction
+        public partial class LightAirObstruction : FeatureTypeBase
         {
             public string Code => nameof(LightAirObstruction);
 
@@ -12165,7 +12165,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LateralBuoy
+        public partial class LateralBuoy : FeatureTypeBase
         {
             public string Code => nameof(LateralBuoy);
 
@@ -12231,7 +12231,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CardinalBuoy
+        public partial class CardinalBuoy : FeatureTypeBase
         {
             public string Code => nameof(CardinalBuoy);
 
@@ -12297,7 +12297,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IsolatedDangerBuoy
+        public partial class IsolatedDangerBuoy : FeatureTypeBase
         {
             public string Code => nameof(IsolatedDangerBuoy);
 
@@ -12360,7 +12360,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SafeWaterBuoy
+        public partial class SafeWaterBuoy : FeatureTypeBase
         {
             public string Code => nameof(SafeWaterBuoy);
 
@@ -12423,7 +12423,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpecialPurposeGeneralBuoy
+        public partial class SpecialPurposeGeneralBuoy : FeatureTypeBase
         {
             public string Code => nameof(SpecialPurposeGeneralBuoy);
 
@@ -12490,7 +12490,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class EmergencyWreckMarkingBuoy
+        public partial class EmergencyWreckMarkingBuoy : FeatureTypeBase
         {
             public string Code => nameof(EmergencyWreckMarkingBuoy);
 
@@ -12547,7 +12547,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InstallationBuoy
+        public partial class InstallationBuoy : FeatureTypeBase
         {
             public string Code => nameof(InstallationBuoy);
 
@@ -12610,7 +12610,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringBuoy
+        public partial class MooringBuoy : FeatureTypeBase
         {
             public string Code => nameof(MooringBuoy);
 
@@ -12672,7 +12672,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LateralBeacon
+        public partial class LateralBeacon : FeatureTypeBase
         {
             public string Code => nameof(LateralBeacon);
 
@@ -12753,7 +12753,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CardinalBeacon
+        public partial class CardinalBeacon : FeatureTypeBase
         {
             public string Code => nameof(CardinalBeacon);
 
@@ -12834,7 +12834,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IsolatedDangerBeacon
+        public partial class IsolatedDangerBeacon : FeatureTypeBase
         {
             public string Code => nameof(IsolatedDangerBeacon);
 
@@ -12912,7 +12912,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SafeWaterBeacon
+        public partial class SafeWaterBeacon : FeatureTypeBase
         {
             public string Code => nameof(SafeWaterBeacon);
 
@@ -12990,7 +12990,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpecialPurposeGeneralBeacon
+        public partial class SpecialPurposeGeneralBeacon : FeatureTypeBase
         {
             public string Code => nameof(SpecialPurposeGeneralBeacon);
 
@@ -13072,7 +13072,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Daymark
+        public partial class Daymark : FeatureTypeBase
         {
             public string Code => nameof(Daymark);
 
@@ -13141,7 +13141,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightFloat
+        public partial class LightFloat : FeatureTypeBase
         {
             public string Code => nameof(LightFloat);
 
@@ -13207,7 +13207,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightVessel
+        public partial class LightVessel : FeatureTypeBase
         {
             public string Code => nameof(LightVessel);
 
@@ -13270,7 +13270,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Retroreflector
+        public partial class Retroreflector : FeatureTypeBase
         {
             public string Code => nameof(Retroreflector);
 
@@ -13311,7 +13311,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarReflector
+        public partial class RadarReflector : FeatureTypeBase
         {
             public string Code => nameof(RadarReflector);
 
@@ -13346,7 +13346,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FogSignal
+        public partial class FogSignal : FeatureTypeBase
         {
             public string Code => nameof(FogSignal);
 
@@ -13402,7 +13402,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PhysicalAISAidToNavigation
+        public partial class PhysicalAISAidToNavigation : FeatureTypeBase
         {
             public string Code => nameof(PhysicalAISAidToNavigation);
 
@@ -13443,7 +13443,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VirtualAISAidToNavigation
+        public partial class VirtualAISAidToNavigation : FeatureTypeBase
         {
             public string Code => nameof(VirtualAISAidToNavigation);
 
@@ -13487,7 +13487,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadioStation
+        public partial class RadioStation : FeatureTypeBase
         {
             public string Code => nameof(RadioStation);
 
@@ -13537,7 +13537,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarTransponderBeacon
+        public partial class RadarTransponderBeacon : FeatureTypeBase
         {
             public string Code => nameof(RadarTransponderBeacon);
 
@@ -13590,7 +13590,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PilotBoardingPlace
+        public partial class PilotBoardingPlace : FeatureTypeBase
         {
             public string Code => nameof(PilotBoardingPlace);
 
@@ -13640,7 +13640,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VesselTrafficServiceArea
+        public partial class VesselTrafficServiceArea : FeatureTypeBase
         {
             public string Code => nameof(VesselTrafficServiceArea);
 
@@ -13666,7 +13666,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CoastGuardStation
+        public partial class CoastGuardStation : FeatureTypeBase
         {
             public string Code => nameof(CoastGuardStation);
 
@@ -13707,7 +13707,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SignalStationWarning
+        public partial class SignalStationWarning : FeatureTypeBase
         {
             public string Code => nameof(SignalStationWarning);
 
@@ -13749,7 +13749,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SignalStationTraffic
+        public partial class SignalStationTraffic : FeatureTypeBase
         {
             public string Code => nameof(SignalStationTraffic);
 
@@ -13791,7 +13791,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RescueStation
+        public partial class RescueStation : FeatureTypeBase
         {
             public string Code => nameof(RescueStation);
 
@@ -13832,7 +13832,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class HarbourFacility
+        public partial class HarbourFacility : FeatureTypeBase
         {
             public string Code => nameof(HarbourFacility);
 
@@ -13895,7 +13895,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SmallCraftFacility
+        public partial class SmallCraftFacility : FeatureTypeBase
         {
             public string Code => nameof(SmallCraftFacility);
 
@@ -13934,7 +13934,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement
+        public partial class TextPlacement : FeatureTypeBase
         {
             public string Code => nameof(TextPlacement);
 
@@ -13963,7 +13963,7 @@ namespace S100Framework.DomainModel.S101
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Chart1Feature
+        public partial class Chart1Feature : FeatureTypeBase
         {
             public string Code => nameof(Chart1Feature);
 

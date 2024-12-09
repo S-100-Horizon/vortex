@@ -702,7 +702,7 @@ namespace S100Framework.DomainModel.S124
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNPreamble
+        public partial class NAVWARNPreamble : InformationTypeBase
         {
             public string Code => nameof(NAVWARNPreamble);
 
@@ -755,7 +755,7 @@ namespace S100Framework.DomainModel.S124
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class References
+        public partial class References : InformationTypeBase
         {
             public string Code => nameof(References);
 
@@ -785,7 +785,7 @@ namespace S100Framework.DomainModel.S124
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNPart
+        public partial class NAVWARNPart : FeatureTypeBase
         {
             public string Code => nameof(NAVWARNPart);
 
@@ -817,7 +817,7 @@ namespace S100Framework.DomainModel.S124
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNAreaAffected
+        public partial class NAVWARNAreaAffected : FeatureTypeBase
         {
             public string Code => nameof(NAVWARNAreaAffected);
 
@@ -830,7 +830,7 @@ namespace S100Framework.DomainModel.S124
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement
+        public partial class TextPlacement : FeatureTypeBase
         {
             public string Code => nameof(TextPlacement);
 

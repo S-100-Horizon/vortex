@@ -771,6 +771,14 @@ namespace S100Framework
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager);
 
+                Type informationTypeBase;
+                {
+                    var attributes = TypeAttributes.Public | TypeAttributes.Class | /*TypeAttributes.AutoClass |*/ TypeAttributes.AutoLayout | TypeAttributes.Abstract;
+                    var informationTypeBuilder = moduleBuilder.DefineType($"S100Framework.DomainModel.InformationTypeBase", attributes);
+
+                    informationTypeBase = informationTypeBuilder.CreateType();
+                }
+
                 var informationTypes = new List<string>();
 
                 var notFinished = false;
@@ -807,7 +815,7 @@ namespace S100Framework
                             informationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, dictionaryTypes[superType.Value]);
                         }
                         else
-                            informationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes);
+                            informationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, informationTypeBase);
 
                         //  attributeBinding
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
@@ -875,8 +883,8 @@ namespace S100Framework
                                 if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
                                     prefix = "List<informationBinding>";
                                     postfix = " = [];";
-                                }                                
-                                
+                                }
+
                                 builder.AppendLine($"\t\t\tpublic {prefix} {role}{informationTypeRef} {{get; set;}}{postfix}");
 
                                 //builder.AppendLine("\t\t\t[System.Xml.Serialization.XmlIgnore]");
@@ -923,6 +931,14 @@ namespace S100Framework
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
 
+                Type featureTypeBase;
+                {
+                    var attributes = TypeAttributes.Public | TypeAttributes.Class | /*TypeAttributes.AutoClass |*/ TypeAttributes.AutoLayout | TypeAttributes.Abstract;
+                    var featureTypeBuilder = moduleBuilder.DefineType($"S100Framework.DomainModel.FeatureTypeBase", attributes);
+
+                    featureTypeBase = featureTypeBuilder.CreateType();
+                }
+
                 var featureTypes = new List<string>();
 
                 var notFinished = false;
@@ -959,7 +975,7 @@ namespace S100Framework
                             featureTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, dictionaryTypes[superType.Value]);
                         }
                         else
-                            featureTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes);
+                            featureTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, featureTypeBase);
 
                         //  attributeBinding
                         foreach (var attributeBinding in e.XPathSelectElements("S100FC:attributeBinding", xmlNamespaceManager)) {
@@ -1130,7 +1146,6 @@ namespace S100Framework
             common.AppendLine("\t\t\t_roleName = roleName;");
             common.AppendLine("\t\t}");
             common.AppendLine("\t}");
-
             common.AppendLine();
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
@@ -1142,6 +1157,17 @@ namespace S100Framework
             common.AppendLine("\tpublic abstract class FeatureAssociation {");
             common.AppendLine("\t}");
             common.AppendLine();
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\tpublic abstract class InformationTypeBase {");
+            common.AppendLine("\t}");
+            common.AppendLine();
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\tpublic abstract class FeatureTypeBase {");
+            common.AppendLine("\t}");
+            common.AppendLine();
+
 
             common.AppendLine($"\tnamespace Bindings");
             common.AppendLine("\t{");
@@ -1155,8 +1181,9 @@ namespace S100Framework
 
             common.AppendLine("\t\tpublic class informationBinding {");
             //common.AppendLine("\t\t\tpublic string? To { get; set; }");
-            common.AppendLine("\t\t\tpublic InformationAssociation? Association { get; set; }");
-            common.AppendLine("\t\t\tpublic string? Role { get; set; }");
+            common.AppendLine("\t\t\tpublic InformationAssociation? association { get; set; }");
+            common.AppendLine("\t\t\tpublic string? role { get; set; }");
+            common.AppendLine("\t\t\tpublic string? informationType { get; set; }");
             common.AppendLine("\t\t}");
             common.AppendLine();
 

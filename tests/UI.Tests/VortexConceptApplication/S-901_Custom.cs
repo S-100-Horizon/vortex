@@ -1,5 +1,6 @@
 ﻿using S100Framework.DomainModel;
 using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S201.FeatureTypes;
 using System;
 using System.Collections.Generic;
@@ -21,6 +22,23 @@ namespace S100Framework.WPF.ViewModel.S901
             _clause = clause;
         }
     }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class InformationBindingAttribute<TAssociation,TInformationType> : System.Attribute where TAssociation : InformationAssociation where TInformationType : InformationTypeBase
+    {
+        public InformationBindingAttribute() {
+
+        }
+
+    }
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
+    public class FeatureBindingAttribute<T> : System.Attribute where T : FeatureAssociation
+    {
+        public FeatureBindingAttribute() {
+
+        }
+    }
 }
 
 namespace S100Framework.WPF.ViewModel.S901
@@ -31,6 +49,7 @@ namespace S100Framework.WPF.ViewModel.S901
         //  CUSTOM
         [Category("Development")]
         [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        [InformationBinding<DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition, SpatialQuality>()]
         public ObservableCollection<informationBindingViewModel> theQualityInformationSpatialQuality { get; set; } = new();
 
 

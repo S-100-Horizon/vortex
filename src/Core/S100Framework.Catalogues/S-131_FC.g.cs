@@ -2520,7 +2520,7 @@ namespace S100Framework.DomainModel.S131
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class InformationType
+        public abstract partial class InformationType : InformationTypeBase
         {
             public string Code => nameof(InformationType);
 
@@ -2888,7 +2888,7 @@ namespace S100Framework.DomainModel.S131
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpatialQuality
+        public partial class SpatialQuality : InformationTypeBase
         {
             public string Code => nameof(SpatialQuality);
 
@@ -2915,7 +2915,7 @@ namespace S100Framework.DomainModel.S131
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class FeatureType
+        public abstract partial class FeatureType : FeatureTypeBase
         {
             public string Code => nameof(FeatureType);
 
@@ -3580,7 +3580,7 @@ namespace S100Framework.DomainModel.S131
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DataCoverage
+        public partial class DataCoverage : FeatureTypeBase
         {
             public string Code => nameof(DataCoverage);
 
@@ -3599,7 +3599,7 @@ namespace S100Framework.DomainModel.S131
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfNonBathymetricData
+        public partial class QualityOfNonBathymetricData : FeatureTypeBase
         {
             public string Code => nameof(QualityOfNonBathymetricData);
 
@@ -3637,7 +3637,7 @@ namespace S100Framework.DomainModel.S131
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SoundingDatum
+        public partial class SoundingDatum : FeatureTypeBase
         {
             public string Code => nameof(SoundingDatum);
 
@@ -3656,7 +3656,7 @@ namespace S100Framework.DomainModel.S131
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VerticalDatumOfData
+        public partial class VerticalDatumOfData : FeatureTypeBase
         {
             public string Code => nameof(VerticalDatumOfData);
 
@@ -3675,7 +3675,7 @@ namespace S100Framework.DomainModel.S131
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement
+        public partial class TextPlacement : FeatureTypeBase
         {
             public string Code => nameof(TextPlacement);
 

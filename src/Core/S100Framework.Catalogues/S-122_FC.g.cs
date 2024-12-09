@@ -1732,7 +1732,7 @@ namespace S100Framework.DomainModel.S122
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InformationType
+        public partial class InformationType : InformationTypeBase
         {
             public string Code => nameof(InformationType);
 
@@ -2013,7 +2013,7 @@ namespace S100Framework.DomainModel.S122
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class FeatureType
+        public abstract partial class FeatureType : FeatureTypeBase
         {
             public string Code => nameof(FeatureType);
 
@@ -2128,7 +2128,7 @@ namespace S100Framework.DomainModel.S122
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DataCoverage
+        public partial class DataCoverage : FeatureTypeBase
         {
             public string Code => nameof(DataCoverage);
 
@@ -2141,7 +2141,7 @@ namespace S100Framework.DomainModel.S122
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement
+        public partial class TextPlacement : FeatureTypeBase
         {
             public string Code => nameof(TextPlacement);
 

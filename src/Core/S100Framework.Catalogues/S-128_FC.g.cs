@@ -1399,7 +1399,7 @@ namespace S100Framework.DomainModel.S128
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S128/2.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CatalogueSectionHeader
+        public partial class CatalogueSectionHeader : InformationTypeBase
         {
             public string Code => nameof(CatalogueSectionHeader);
 
@@ -1424,7 +1424,7 @@ namespace S100Framework.DomainModel.S128
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S128/2.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContactDetails
+        public partial class ContactDetails : InformationTypeBase
         {
             public string Code => nameof(ContactDetails);
 
@@ -1458,7 +1458,7 @@ namespace S100Framework.DomainModel.S128
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S128/2.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IndicationOfCarriageRequirement
+        public partial class IndicationOfCarriageRequirement : InformationTypeBase
         {
             public string Code => nameof(IndicationOfCarriageRequirement);
 
@@ -1480,7 +1480,7 @@ namespace S100Framework.DomainModel.S128
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S128/2.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PriceInformation
+        public partial class PriceInformation : InformationTypeBase
         {
             public string Code => nameof(PriceInformation);
 
@@ -1506,7 +1506,7 @@ namespace S100Framework.DomainModel.S128
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S128/2.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ProducerInformation
+        public partial class ProducerInformation : InformationTypeBase
         {
             public string Code => nameof(ProducerInformation);
 
@@ -1528,7 +1528,7 @@ namespace S100Framework.DomainModel.S128
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S128/2.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DistributorInformation
+        public partial class DistributorInformation : InformationTypeBase
         {
             public string Code => nameof(DistributorInformation);
 
@@ -1555,7 +1555,7 @@ namespace S100Framework.DomainModel.S128
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
         [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S128/2.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class CatalogueElement
+        public abstract partial class CatalogueElement : FeatureTypeBase
         {
             public string Code => nameof(CatalogueElement);
 
