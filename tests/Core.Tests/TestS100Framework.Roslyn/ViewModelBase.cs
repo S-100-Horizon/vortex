@@ -1,10 +1,24 @@
-﻿using System.ComponentModel;
+﻿using S100Framework.DomainModel.Bindings;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace S100Framework.WPF.ViewModel
 {
+    public interface IViewModelHost
+    {
+        public object GetSource(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem);
+    }
+
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
+        private IViewModelHost? _host;
+
+        public IViewModelHost? Host => _host;
+
+        public ViewModelBase(IViewModelHost? host = null) {
+            _host = host;
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected Dictionary<ViewModelBase, string> nestedProperties = new Dictionary<ViewModelBase, string>();
@@ -52,9 +66,95 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-
     public abstract class ViewModelBase<T> : ViewModelBase
     {
         public abstract void Load(T instance);
     }
+
+    public class informationBindingViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            if (string.IsNullOrWhiteSpace(propertyName)) return;
+
+            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
+            backingFiled = value;
+            OnPropertyChanged(propertyName);
+        }
+
+        private string? _linkId;
+
+        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public string? LinkId {
+            get {
+                return _linkId;
+            }
+
+            set {
+                SetValue(ref _linkId, value);
+            }
+        }
+
+        private informationBinding? _informationBinding;
+
+        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public informationBinding? informationBinding {
+            get {
+                return _informationBinding;
+            }
+
+            set {
+                SetValue(ref _informationBinding, value);
+            }
+        }
+    }
+
+    public class FeatureBindingConnector : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            if (string.IsNullOrWhiteSpace(propertyName)) return;
+
+            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
+            backingFiled = value;
+            OnPropertyChanged(propertyName);
+        }
+
+        private string? _linkId;
+
+        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public string? LinkId {
+            get {
+                return _linkId;
+            }
+
+            set {
+                SetValue(ref _linkId, value);
+            }
+        }
+
+        private informationBinding? _informationBinding;
+
+        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public informationBinding? informationBinding {
+            get {
+                return _informationBinding;
+            }
+
+            set {
+                SetValue(ref _informationBinding, value);
+            }
+        }
+    }
+
 }

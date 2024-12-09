@@ -1,6 +1,9 @@
-﻿using S100Framework.DomainModel.S101.FeatureTypes;
+﻿//#define S124
+
+using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S901.FeatureTypes;
+using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -11,6 +14,8 @@ using System.Windows.Data;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
+
+
 namespace VortexConceptApplication
 {
     /// <summary>
@@ -19,7 +24,7 @@ namespace VortexConceptApplication
 
     //  https://github.com/RWS/Multiselect-ComboBox/tree/master/MultiSelectComboBox/MultiSelectComboBox.Example
 
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window, INotifyPropertyChanged, IViewModelHost
     {
         public static object MockValue => new object();
 
@@ -85,7 +90,7 @@ namespace VortexConceptApplication
                 warningInformation = new S100Framework.DomainModel.S124.ComplexAttributes.warningInformation {
                 },                
             });
-#endif
+#else
             var domailModel = new S100Framework.DomainModel.S901.FeatureTypes.QualityOfBathymetricDataCustom() {
                 categoryOfTemporalVariation = S100Framework.DomainModel.S101.categoryOfTemporalVariation.LikelyToChangeButSignificantShoalingNotExpected,
                 dataAssessment = S100Framework.DomainModel.S101.dataAssessment.Assessed,
@@ -101,10 +106,12 @@ namespace VortexConceptApplication
                 },
             };
 
-            var viewModel = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel {                
+            var viewModel = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel((IViewModelHost)this) {                
             };
 
             viewModel.Load(domailModel);
+
+#endif
 
             //this._propertyGrid.EditorDefinitions.Clear();
 
@@ -156,6 +163,37 @@ namespace VortexConceptApplication
                     propertyItem.Value = Activator.CreateInstance(propertyItem.PropertyType);
                 }
             }
+        }
+
+        object IViewModelHost.GetSource(PropertyItem propertyItem) {
+            var items = new informationBindingViewModel[] {
+                new informationBindingViewModel() {
+                    LinkId = "100/1",
+                    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
+                        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
+                        role = "theQualityInformation",
+                        informationType = "SpatialQuality",
+                    }
+                },
+                new informationBindingViewModel() {
+                    LinkId = "100/2",
+                    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
+                        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
+                        role = "theQualityInformation",
+                        informationType = "SpatialQuality",
+                    }
+                },
+                new informationBindingViewModel() {
+                    LinkId = "100/3",
+                    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
+                        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
+                        role = "theQualityInformation",
+                        informationType = "SpatialQuality",
+                    }
+                }
+
+            };
+            return items;
         }
     }
 

@@ -51,9 +51,10 @@ namespace S100Framework.DomainModel
 
         public class informationBinding
         {
-            public string? To { get; set; }
-            public InformationAssociation? Association { get; set; }
-            public string? Role { get; set; }
+            public InformationAssociation? association { get; set; }
+            public string? role { get; set; }
+
+            public string? informationType { get; set; }
         }
 
         public abstract class featureBinding

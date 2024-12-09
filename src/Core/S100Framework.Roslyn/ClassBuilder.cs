@@ -1154,7 +1154,7 @@ namespace S100Framework
             common.AppendLine("\t\t}");
 
             common.AppendLine("\t\tpublic class informationBinding {");
-            common.AppendLine("\t\t\tpublic string? To { get; set; }");
+            //common.AppendLine("\t\t\tpublic string? To { get; set; }");
             common.AppendLine("\t\t\tpublic InformationAssociation? Association { get; set; }");
             common.AppendLine("\t\t\tpublic string? Role { get; set; }");
             common.AppendLine("\t\t}");
@@ -1352,6 +1352,8 @@ namespace S100Framework
             var prefix = "\tpublic";
             if (type.IsAbstract)
                 prefix += " abstract";
+            else
+                prefix += " partial";
 
             var prefixBuilder = new StringBuilder();
 
@@ -1368,7 +1370,7 @@ namespace S100Framework
             var modelBuilder = new StringBuilder();
 
             var constructorBuilder = new StringBuilder();
-            constructorBuilder.AppendLine($"\t\tpublic {code}ViewModel() {{");
+            constructorBuilder.AppendLine($"\t\tpublic {code}ViewModel(IViewModelHost? host = null) : base(host) {{");
 
             serializeBuilder.AppendLine($"\t\t\tvar instance = new {classNamespace}.{code} {{");
 

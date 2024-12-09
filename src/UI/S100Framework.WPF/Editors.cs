@@ -1,5 +1,6 @@
 ﻿using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S124.FeatureTypes;
+using S100Framework.WPF.ViewModel;
 using System;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
@@ -59,25 +60,27 @@ namespace S100Framework.WPF.Editors
         //        NAVWARNPart.headerNAVWARNPreamble,
         //    };
 
-        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {            
-            //if (propertyItem.DisplayName.EndsWith("Binding")) {
-            //    var comboBox = new ComboBox {
-            //        Name = $"_comboBox{Guid.NewGuid():N}",
-            //        DisplayMemberPath = "association.Name",
-            //    };
+        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+            var viewModel = (ViewModelBase)propertyItem.Instance;
 
-            //    var bindingItemsSourceProperty = new Binding() { Source = informationBindingsItems, Mode = BindingMode.OneWay };
-            //    BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+            if (viewModel.Host is not null) {
+                var comboBox = new ComboBox {
+                    Name = $"_comboBox{Guid.NewGuid():N}",
+                    DisplayMemberPath = "Name",
+                };
 
-            //    return comboBox;
-            //}
+                var bindingItemsSourceProperty = new Binding() { Source = viewModel.Host.GetSource(propertyItem), Mode = BindingMode.OneWay };
+                BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                return comboBox;
+            }
 
             var text = propertyItem.DisplayName;
 
             var connector = (dynamic)propertyItem.Instance;
 
-            if (connector.informationBinding is null)
-                text += " null";
+            //if (connector.informationBinding is null)
+            //    text += " null";
             return new Label {
                 Content = text,
                 IsEnabled = true,

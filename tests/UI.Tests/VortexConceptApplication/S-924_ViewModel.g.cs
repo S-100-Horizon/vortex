@@ -1252,7 +1252,8 @@ namespace S100Framework.WPF.ViewModel.S924
 
         //  CUSTOM
         [Category("Development")]
-        public ObservableCollection<InformationBindingConnector> informationBindings { get; set; } = new();
+        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public ObservableCollection<informationBindingViewModel> informationBindings { get; set; } = new();
 
         //public ImmutableArray<informationBinding> informationBindingsItems => ImmutableArray.Create<informationBinding>(new informationBinding[] {
         //    NAVWARNPart.headerNAVWARNPreamble,
