@@ -130,7 +130,7 @@ namespace S100Framework.WPF.ViewModel.S131
         } }, });
     }
 
-    public class contactAddressViewModel : ViewModelBase
+    public partial class contactAddressViewModel : ViewModelBase
     {
         [Category("contactAddress")]
         public ObservableCollection<String> deliveryPoint { get; set; } = new();
@@ -230,7 +230,7 @@ namespace S100Framework.WPF.ViewModel.S131
             postalCode = this._postalCode,
         };
 
-        public contactAddressViewModel()
+        public contactAddressViewModel(IViewModelHost? host = null) : base(host)
         {
             deliveryPoint.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -239,7 +239,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class featureNameViewModel : ViewModelBase
+    public partial class featureNameViewModel : ViewModelBase
     {
         private Boolean? _displayName = default;
         [Category("featureName")]
@@ -312,12 +312,12 @@ namespace S100Framework.WPF.ViewModel.S131
             name = this._name,
         };
 
-        public featureNameViewModel()
+        public featureNameViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class fixedDateRangeViewModel : ViewModelBase
+    public partial class fixedDateRangeViewModel : ViewModelBase
     {
         private DateOnly? _dateStart = default;
         [Category("fixedDateRange")]
@@ -372,12 +372,12 @@ namespace S100Framework.WPF.ViewModel.S131
             dateEnd = this._dateEnd,
         };
 
-        public fixedDateRangeViewModel()
+        public fixedDateRangeViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class frequencyPairViewModel : ViewModelBase
+    public partial class frequencyPairViewModel : ViewModelBase
     {
         [Category("frequencyPair")]
         public ObservableCollection<Int32> frequencyShoreStationTransmits { get; set; } = new();
@@ -423,7 +423,7 @@ namespace S100Framework.WPF.ViewModel.S131
             contactInstructions = this.contactInstructions.ToList(),
         };
 
-        public frequencyPairViewModel()
+        public frequencyPairViewModel(IViewModelHost? host = null) : base(host)
         {
             frequencyShoreStationTransmits.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -440,7 +440,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class horizontalPositionUncertaintyViewModel : ViewModelBase
+    public partial class horizontalPositionUncertaintyViewModel : ViewModelBase
     {
         private Decimal _uncertaintyFixed;
         [Category("horizontalPositionUncertainty")]
@@ -495,14 +495,14 @@ namespace S100Framework.WPF.ViewModel.S131
             uncertaintyVariableFactor = this._uncertaintyVariableFactor,
         };
 
-        public horizontalPositionUncertaintyViewModel()
+        public horizontalPositionUncertaintyViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class informationViewModel : ViewModelBase
+    public partial class informationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         private String _fileLocator = string.Empty;
@@ -603,7 +603,7 @@ namespace S100Framework.WPF.ViewModel.S131
             text = this._text,
         };
 
-        public informationViewModel()
+        public informationViewModel(IViewModelHost? host = null) : base(host)
         {
             headline.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -612,7 +612,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class onlineResourceViewModel : ViewModelBase
+    public partial class onlineResourceViewModel : ViewModelBase
     {
         private String _onlineResourceLinkageURL = string.Empty;
         [Category("onlineResource")]
@@ -757,14 +757,14 @@ namespace S100Framework.WPF.ViewModel.S131
             protocolRequest = this._protocolRequest,
         };
 
-        public onlineResourceViewModel()
+        public onlineResourceViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class orientationViewModel : ViewModelBase
+    public partial class orientationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         private Decimal? _orientationUncertainty = default;
@@ -820,12 +820,12 @@ namespace S100Framework.WPF.ViewModel.S131
             orientationValue = this._orientationValue,
         };
 
-        public orientationViewModel()
+        public orientationViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class periodicDateRangeViewModel : ViewModelBase
+    public partial class periodicDateRangeViewModel : ViewModelBase
     {
         private DateOnly _dateStart;
         [Category("periodicDateRange")]
@@ -880,12 +880,12 @@ namespace S100Framework.WPF.ViewModel.S131
             dateEnd = this._dateEnd,
         };
 
-        public periodicDateRangeViewModel()
+        public periodicDateRangeViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class rxNCodeViewModel : ViewModelBase
+    public partial class rxNCodeViewModel : ViewModelBase
     {
         private categoryOfRxN? _categoryOfRxN;
         [DomainModel.CodeListAttribute(nameof(categoryOfRxNList))]
@@ -959,7 +959,7 @@ namespace S100Framework.WPF.ViewModel.S131
             headline = this.headline.ToList(),
         };
 
-        public rxNCodeViewModel()
+        public rxNCodeViewModel(IViewModelHost? host = null) : base(host)
         {
             headline.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -968,7 +968,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class surveyDateRangeViewModel : ViewModelBase
+    public partial class surveyDateRangeViewModel : ViewModelBase
     {
         private DateOnly? _dateStart = default;
         [Category("surveyDateRange")]
@@ -1023,12 +1023,12 @@ namespace S100Framework.WPF.ViewModel.S131
             dateEnd = this._dateEnd,
         };
 
-        public surveyDateRangeViewModel()
+        public surveyDateRangeViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class textContentViewModel : ViewModelBase
+    public partial class textContentViewModel : ViewModelBase
     {
         private categoryOfText? _categoryOfText = default;
         [Category("textContent")]
@@ -1153,7 +1153,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public textContentViewModel()
+        public textContentViewModel(IViewModelHost? host = null) : base(host)
         {
             information.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1162,7 +1162,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class timeIntervalsByDayOfWeekViewModel : ViewModelBase
+    public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase
     {
         [Category("timeIntervalsByDayOfWeek")]
         public ObservableCollection<dayOfWeek> dayOfWeek { get; set; } = new();
@@ -1226,7 +1226,7 @@ namespace S100Framework.WPF.ViewModel.S131
             timeOfDayEnd = this.timeOfDayEnd.ToList(),
         };
 
-        public timeIntervalsByDayOfWeekViewModel()
+        public timeIntervalsByDayOfWeekViewModel(IViewModelHost? host = null) : base(host)
         {
             dayOfWeek.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1243,7 +1243,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class usefulMarkDescriptionViewModel : ViewModelBase
+    public partial class usefulMarkDescriptionViewModel : ViewModelBase
     {
         [Category("usefulMarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -1271,7 +1271,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public usefulMarkDescriptionViewModel()
+        public usefulMarkDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1280,7 +1280,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class verticalUncertaintyViewModel : ViewModelBase
+    public partial class verticalUncertaintyViewModel : ViewModelBase
     {
         private Decimal _uncertaintyFixed;
         [Category("verticalUncertainty")]
@@ -1335,12 +1335,12 @@ namespace S100Framework.WPF.ViewModel.S131
             uncertaintyVariableFactor = this._uncertaintyVariableFactor,
         };
 
-        public verticalUncertaintyViewModel()
+        public verticalUncertaintyViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class vesselsMeasurementsViewModel : ViewModelBase
+    public partial class vesselsMeasurementsViewModel : ViewModelBase
     {
         private comparisonOperator _comparisonOperator;
         [Category("vesselsMeasurements")]
@@ -1431,12 +1431,12 @@ namespace S100Framework.WPF.ViewModel.S131
             vesselsCharacteristicsUnit = this._vesselsCharacteristicsUnit,
         };
 
-        public vesselsMeasurementsViewModel()
+        public vesselsMeasurementsViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class weatherResourceViewModel : ViewModelBase
+    public partial class weatherResourceViewModel : ViewModelBase
     {
         private onlineResourceViewModel? _onlineResource;
         [Category("weatherResource")]
@@ -1522,12 +1522,12 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this._textContent?.Model,
         };
 
-        public weatherResourceViewModel()
+        public weatherResourceViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class bearingInformationViewModel : ViewModelBase
+    public partial class bearingInformationViewModel : ViewModelBase
     {
         private cardinalDirection? _cardinalDirection = default;
         [Category("bearingInformation")]
@@ -1624,7 +1624,7 @@ namespace S100Framework.WPF.ViewModel.S131
             orientation = this._orientation?.Model,
         };
 
-        public bearingInformationViewModel()
+        public bearingInformationViewModel(IViewModelHost? host = null) : base(host)
         {
             sectorBearing.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1637,7 +1637,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class cargoServicesDescriptionViewModel : ViewModelBase
+    public partial class cargoServicesDescriptionViewModel : ViewModelBase
     {
         [Category("cargoServicesDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -1665,7 +1665,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public cargoServicesDescriptionViewModel()
+        public cargoServicesDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1674,7 +1674,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class constructionInformationViewModel : ViewModelBase
+    public partial class constructionInformationViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("constructionInformation")]
@@ -1781,7 +1781,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public constructionInformationViewModel()
+        public constructionInformationViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1790,7 +1790,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class depthsDescriptionViewModel : ViewModelBase
+    public partial class depthsDescriptionViewModel : ViewModelBase
     {
         private categoryOfDepthsDescription _categoryOfDepthsDescription;
         [Category("depthsDescription")]
@@ -1836,7 +1836,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public depthsDescriptionViewModel()
+        public depthsDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1845,7 +1845,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class facilitiesLayoutDescriptionViewModel : ViewModelBase
+    public partial class facilitiesLayoutDescriptionViewModel : ViewModelBase
     {
         [Category("facilitiesLayoutDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -1873,7 +1873,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public facilitiesLayoutDescriptionViewModel()
+        public facilitiesLayoutDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1882,7 +1882,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class generalPortDescriptionViewModel : ViewModelBase
+    public partial class generalPortDescriptionViewModel : ViewModelBase
     {
         [Category("generalPortDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -1910,7 +1910,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public generalPortDescriptionViewModel()
+        public generalPortDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1921,7 +1921,7 @@ namespace S100Framework.WPF.ViewModel.S131
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class graphicViewModel : ViewModelBase
+    public partial class graphicViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         [Category("graphic")]
@@ -2028,7 +2028,7 @@ namespace S100Framework.WPF.ViewModel.S131
             bearingInformation = this._bearingInformation?.Model,
         };
 
-        public graphicViewModel()
+        public graphicViewModel(IViewModelHost? host = null) : base(host)
         {
             pictorialRepresentation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2037,7 +2037,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class landmarkDescriptionViewModel : ViewModelBase
+    public partial class landmarkDescriptionViewModel : ViewModelBase
     {
         [Category("landmarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -2065,7 +2065,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public landmarkDescriptionViewModel()
+        public landmarkDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2074,7 +2074,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class limitsDescriptionViewModel : ViewModelBase
+    public partial class limitsDescriptionViewModel : ViewModelBase
     {
         [Category("limitsDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -2102,7 +2102,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public limitsDescriptionViewModel()
+        public limitsDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2111,7 +2111,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class majorLightDescriptionViewModel : ViewModelBase
+    public partial class majorLightDescriptionViewModel : ViewModelBase
     {
         [Category("majorLightDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -2139,7 +2139,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public majorLightDescriptionViewModel()
+        public majorLightDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2148,7 +2148,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class markedByViewModel : ViewModelBase
+    public partial class markedByViewModel : ViewModelBase
     {
         [Category("markedBy")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -2176,7 +2176,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public markedByViewModel()
+        public markedByViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2185,7 +2185,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class offshoreMarkDescriptionViewModel : ViewModelBase
+    public partial class offshoreMarkDescriptionViewModel : ViewModelBase
     {
         [Category("offshoreMarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -2213,7 +2213,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public offshoreMarkDescriptionViewModel()
+        public offshoreMarkDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2222,7 +2222,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class scheduleByDayOfWeekViewModel : ViewModelBase
+    public partial class scheduleByDayOfWeekViewModel : ViewModelBase
     {
         private categoryOfSchedule? _categoryOfSchedule = default;
         [Category("scheduleByDayOfWeek")]
@@ -2268,7 +2268,7 @@ namespace S100Framework.WPF.ViewModel.S131
             timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.ToList(),
         };
 
-        public scheduleByDayOfWeekViewModel()
+        public scheduleByDayOfWeekViewModel(IViewModelHost? host = null) : base(host)
         {
             timeIntervalsByDayOfWeek.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2277,7 +2277,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class spatialAccuracyViewModel : ViewModelBase
+    public partial class spatialAccuracyViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("spatialAccuracy")]
@@ -2370,14 +2370,14 @@ namespace S100Framework.WPF.ViewModel.S131
             verticalUncertainty = this._verticalUncertainty?.Model,
         };
 
-        public spatialAccuracyViewModel()
+        public spatialAccuracyViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class telecommunicationsViewModel : ViewModelBase
+    public partial class telecommunicationsViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         private categoryOfCommunicationPreference? _categoryOfCommunicationPreference = default;
@@ -2502,7 +2502,7 @@ namespace S100Framework.WPF.ViewModel.S131
             scheduleByDayOfWeek = this._scheduleByDayOfWeek?.Model,
         };
 
-        public telecommunicationsViewModel()
+        public telecommunicationsViewModel(IViewModelHost? host = null) : base(host)
         {
             telecommunicationService.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2511,7 +2511,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class generalHarbourInformationViewModel : ViewModelBase
+    public partial class generalHarbourInformationViewModel : ViewModelBase
     {
         private generalPortDescriptionViewModel? _generalPortDescription;
         [Category("generalHarbourInformation")]
@@ -2664,7 +2664,7 @@ namespace S100Framework.WPF.ViewModel.S131
             weatherResource = this.weatherResource.ToList(),
         };
 
-        public generalHarbourInformationViewModel()
+        public generalHarbourInformationViewModel(IViewModelHost? host = null) : base(host)
         {
             weatherResource.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2673,7 +2673,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class ApplicabilityViewModel : ViewModelBase
+    public partial class ApplicabilityViewModel : ViewModelBase
     {
         private Boolean? _inBallast = default;
         [Category("Applicability")]
@@ -2947,7 +2947,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public ApplicabilityViewModel()
+        public ApplicabilityViewModel(IViewModelHost? host = null) : base(host)
         {
             categoryOfCargo.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2980,7 +2980,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class AuthorityViewModel : ViewModelBase
+    public partial class AuthorityViewModel : ViewModelBase
     {
         private categoryOfAuthority _categoryOfAuthority;
         [Category("Authority")]
@@ -3148,7 +3148,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public AuthorityViewModel()
+        public AuthorityViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3165,7 +3165,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class AvailablePortServicesViewModel : ViewModelBase
+    public partial class AvailablePortServicesViewModel : ViewModelBase
     {
         [Category("AvailablePortServices")]
         public ObservableCollection<firefightingService> firefightingService { get; set; } = new();
@@ -3426,7 +3426,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public AvailablePortServicesViewModel()
+        public AvailablePortServicesViewModel(IViewModelHost? host = null) : base(host)
         {
             firefightingService.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3491,7 +3491,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class ContactDetailsViewModel : ViewModelBase
+    public partial class ContactDetailsViewModel : ViewModelBase
     {
         private String _callName = string.Empty;
         [Category("ContactDetails")]
@@ -3769,7 +3769,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public ContactDetailsViewModel()
+        public ContactDetailsViewModel(IViewModelHost? host = null) : base(host)
         {
             communicationChannel.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3814,7 +3814,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class EntranceViewModel : ViewModelBase
+    public partial class EntranceViewModel : ViewModelBase
     {
         private String _entranceDescription = string.Empty;
         [Category("Entrance")]
@@ -4056,7 +4056,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public EntranceViewModel()
+        public EntranceViewModel(IViewModelHost? host = null) : base(host)
         {
             associatedFeatureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4101,7 +4101,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class NauticalInformationViewModel : ViewModelBase
+    public partial class NauticalInformationViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
@@ -4262,7 +4262,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public NauticalInformationViewModel()
+        public NauticalInformationViewModel(IViewModelHost? host = null) : base(host)
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4287,7 +4287,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class NonStandardWorkingDayViewModel : ViewModelBase
+    public partial class NonStandardWorkingDayViewModel : ViewModelBase
     {
         [Category("NonStandardWorkingDay")]
         public ObservableCollection<DateOnly> dateFixed { get; set; } = new();
@@ -4439,7 +4439,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public NonStandardWorkingDayViewModel()
+        public NonStandardWorkingDayViewModel(IViewModelHost? host = null) : base(host)
         {
             dateFixed.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4468,7 +4468,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class RecommendationsViewModel : ViewModelBase
+    public partial class RecommendationsViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
@@ -4629,7 +4629,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public RecommendationsViewModel()
+        public RecommendationsViewModel(IViewModelHost? host = null) : base(host)
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4654,7 +4654,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class RegulationsViewModel : ViewModelBase
+    public partial class RegulationsViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
@@ -4815,7 +4815,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public RegulationsViewModel()
+        public RegulationsViewModel(IViewModelHost? host = null) : base(host)
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4840,7 +4840,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class RestrictionsViewModel : ViewModelBase
+    public partial class RestrictionsViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
@@ -5001,7 +5001,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public RestrictionsViewModel()
+        public RestrictionsViewModel(IViewModelHost? host = null) : base(host)
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -5026,7 +5026,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class ServiceHoursViewModel : ViewModelBase
+    public partial class ServiceHoursViewModel : ViewModelBase
     {
         [Category("ServiceHours")]
         public ObservableCollection<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; } = new();
@@ -5169,7 +5169,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public ServiceHoursViewModel()
+        public ServiceHoursViewModel(IViewModelHost? host = null) : base(host)
         {
             scheduleByDayOfWeek.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -5194,7 +5194,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class SpatialQualityViewModel : ViewModelBase
+    public partial class SpatialQualityViewModel : ViewModelBase
     {
         private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement = default;
         [Category("SpatialQuality")]
@@ -5240,7 +5240,7 @@ namespace S100Framework.WPF.ViewModel.S131
             spatialAccuracy = this.spatialAccuracy.ToList(),
         };
 
-        public SpatialQualityViewModel()
+        public SpatialQualityViewModel(IViewModelHost? host = null) : base(host)
         {
             spatialAccuracy.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -5249,7 +5249,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class AnchorBerthViewModel : ViewModelBase
+    public partial class AnchorBerthViewModel : ViewModelBase
     {
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
@@ -5428,7 +5428,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public AnchorBerthViewModel()
+        public AnchorBerthViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -5453,7 +5453,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class AnchorageAreaViewModel : ViewModelBase
+    public partial class AnchorageAreaViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("AnchorageArea")]
@@ -5718,7 +5718,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public AnchorageAreaViewModel()
+        public AnchorageAreaViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -5743,7 +5743,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class BerthViewModel : ViewModelBase
+    public partial class BerthViewModel : ViewModelBase
     {
         private Decimal? _availableBerthingLength = default;
         [Category("Berth")]
@@ -6201,7 +6201,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public BerthViewModel()
+        public BerthViewModel(IViewModelHost? host = null) : base(host)
         {
             bollardNumber.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -6238,7 +6238,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class BerthPositionViewModel : ViewModelBase
+    public partial class BerthPositionViewModel : ViewModelBase
     {
         private Decimal? _availableBerthingLength = default;
         [Category("BerthPosition")]
@@ -6552,7 +6552,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public BerthPositionViewModel()
+        public BerthPositionViewModel(IViewModelHost? host = null) : base(host)
         {
             bollardNumber.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -6589,7 +6589,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class DockAreaViewModel : ViewModelBase
+    public partial class DockAreaViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("DockArea")]
@@ -6854,7 +6854,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public DockAreaViewModel()
+        public DockAreaViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -6879,7 +6879,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class DryDockViewModel : ViewModelBase
+    public partial class DryDockViewModel : ViewModelBase
     {
         private Decimal? _sillDepth = default;
         [Category("DryDock")]
@@ -7094,7 +7094,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public DryDockViewModel()
+        public DryDockViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -7119,7 +7119,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class DumpingGroundViewModel : ViewModelBase
+    public partial class DumpingGroundViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("DumpingGround")]
@@ -7384,7 +7384,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public DumpingGroundViewModel()
+        public DumpingGroundViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -7409,7 +7409,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class FloatingDockViewModel : ViewModelBase
+    public partial class FloatingDockViewModel : ViewModelBase
     {
         private Decimal? _sillDepth = default;
         [Category("FloatingDock")]
@@ -7624,7 +7624,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public FloatingDockViewModel()
+        public FloatingDockViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -7649,7 +7649,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class GridironViewModel : ViewModelBase
+    public partial class GridironViewModel : ViewModelBase
     {
         private Decimal? _sillDepth = default;
         [Category("Gridiron")]
@@ -7864,7 +7864,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public GridironViewModel()
+        public GridironViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -7889,7 +7889,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class HarbourAreaAdministrativeViewModel : ViewModelBase
+    public partial class HarbourAreaAdministrativeViewModel : ViewModelBase
     {
         private String _uNLocationCode = string.Empty;
         [Category("HarbourAreaAdministrative")]
@@ -8174,7 +8174,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public HarbourAreaAdministrativeViewModel()
+        public HarbourAreaAdministrativeViewModel(IViewModelHost? host = null) : base(host)
         {
             categoryOfHarbourFacility.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -8203,7 +8203,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class HarbourAreaSectionViewModel : ViewModelBase
+    public partial class HarbourAreaSectionViewModel : ViewModelBase
     {
         private categoryOfPortSection? _categoryOfPortSection = default;
         [Category("HarbourAreaSection")]
@@ -8452,7 +8452,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public HarbourAreaSectionViewModel()
+        public HarbourAreaSectionViewModel(IViewModelHost? host = null) : base(host)
         {
             categoryOfHarbourFacility.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -8481,7 +8481,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class HarbourBasinViewModel : ViewModelBase
+    public partial class HarbourBasinViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("HarbourBasin")]
@@ -8746,7 +8746,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public HarbourBasinViewModel()
+        public HarbourBasinViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -8771,7 +8771,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class HarbourFacilityViewModel : ViewModelBase
+    public partial class HarbourFacilityViewModel : ViewModelBase
     {
         [Category("HarbourFacility")]
         public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = new();
@@ -8977,7 +8977,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public HarbourFacilityViewModel()
+        public HarbourFacilityViewModel(IViewModelHost? host = null) : base(host)
         {
             categoryOfHarbourFacility.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -9006,7 +9006,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class MooringWarpingFacilityViewModel : ViewModelBase
+    public partial class MooringWarpingFacilityViewModel : ViewModelBase
     {
         private categoryOfMooringWarpingFacility _categoryOfMooringWarpingFacility;
         [Category("MooringWarpingFacility")]
@@ -9275,7 +9275,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public MooringWarpingFacilityViewModel()
+        public MooringWarpingFacilityViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -9300,7 +9300,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class OuterLimitViewModel : ViewModelBase
+    public partial class OuterLimitViewModel : ViewModelBase
     {
         private limitsDescriptionViewModel? _limitsDescription;
         [Category("OuterLimit")]
@@ -9549,7 +9549,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public OuterLimitViewModel()
+        public OuterLimitViewModel(IViewModelHost? host = null) : base(host)
         {
             markedBy.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -9594,7 +9594,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class PilotBoardingPlaceViewModel : ViewModelBase
+    public partial class PilotBoardingPlaceViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("PilotBoardingPlace")]
@@ -9859,7 +9859,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public PilotBoardingPlaceViewModel()
+        public PilotBoardingPlaceViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -9884,7 +9884,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class SeaplaneLandingAreaViewModel : ViewModelBase
+    public partial class SeaplaneLandingAreaViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("SeaplaneLandingArea")]
@@ -10149,7 +10149,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public SeaplaneLandingAreaViewModel()
+        public SeaplaneLandingAreaViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -10174,7 +10174,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class TerminalViewModel : ViewModelBase
+    public partial class TerminalViewModel : ViewModelBase
     {
         private String _portFacilityNumber = string.Empty;
         [Category("Terminal")]
@@ -10461,7 +10461,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public TerminalViewModel()
+        public TerminalViewModel(IViewModelHost? host = null) : base(host)
         {
             categoryOfCargo.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -10494,7 +10494,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class TurningBasinViewModel : ViewModelBase
+    public partial class TurningBasinViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("TurningBasin")]
@@ -10759,7 +10759,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public TurningBasinViewModel()
+        public TurningBasinViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -10784,7 +10784,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class WaterwayAreaViewModel : ViewModelBase
+    public partial class WaterwayAreaViewModel : ViewModelBase
     {
         private categoryOfPortSection _categoryOfPortSection;
         [Category("WaterwayArea")]
@@ -11049,7 +11049,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public WaterwayAreaViewModel()
+        public WaterwayAreaViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -11074,7 +11074,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class DataCoverageViewModel : ViewModelBase
+    public partial class DataCoverageViewModel : ViewModelBase
     {
         private Int32 _maximumDisplayScale;
         [Category("DataCoverage")]
@@ -11129,12 +11129,12 @@ namespace S100Framework.WPF.ViewModel.S131
             minimumDisplayScale = this._minimumDisplayScale,
         };
 
-        public DataCoverageViewModel()
+        public DataCoverageViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class QualityOfNonBathymetricDataViewModel : ViewModelBase
+    public partial class QualityOfNonBathymetricDataViewModel : ViewModelBase
     {
         private categoryOfTemporalVariation? _categoryOfTemporalVariation = default;
         [Category("QualityOfNonBathymetricData")]
@@ -11291,7 +11291,7 @@ namespace S100Framework.WPF.ViewModel.S131
             information = this.information.ToList(),
         };
 
-        public QualityOfNonBathymetricDataViewModel()
+        public QualityOfNonBathymetricDataViewModel(IViewModelHost? host = null) : base(host)
         {
             information.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -11300,7 +11300,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class SoundingDatumViewModel : ViewModelBase
+    public partial class SoundingDatumViewModel : ViewModelBase
     {
         private verticalDatum _verticalDatum;
         [Category("SoundingDatum")]
@@ -11346,7 +11346,7 @@ namespace S100Framework.WPF.ViewModel.S131
             information = this.information.ToList(),
         };
 
-        public SoundingDatumViewModel()
+        public SoundingDatumViewModel(IViewModelHost? host = null) : base(host)
         {
             information.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -11355,7 +11355,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class VerticalDatumOfDataViewModel : ViewModelBase
+    public partial class VerticalDatumOfDataViewModel : ViewModelBase
     {
         private verticalDatum _verticalDatum;
         [Category("VerticalDatumOfData")]
@@ -11401,7 +11401,7 @@ namespace S100Framework.WPF.ViewModel.S131
             information = this.information.ToList(),
         };
 
-        public VerticalDatumOfDataViewModel()
+        public VerticalDatumOfDataViewModel(IViewModelHost? host = null) : base(host)
         {
             information.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -11410,7 +11410,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class TextPlacementViewModel : ViewModelBase
+    public partial class TextPlacementViewModel : ViewModelBase
     {
         private Decimal _orientationValue;
         [Category("TextPlacement")]
@@ -11519,7 +11519,7 @@ namespace S100Framework.WPF.ViewModel.S131
             scaleMinimum = this._scaleMinimum,
         };
 
-        public TextPlacementViewModel()
+        public TextPlacementViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }

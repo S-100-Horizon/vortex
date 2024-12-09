@@ -1,5 +1,6 @@
 ﻿using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S124.FeatureTypes;
+using S100Framework.WPF.ViewModel;
 using System;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
@@ -55,18 +56,20 @@ namespace S100Framework.WPF.Editors
 
     public sealed class BindingConnectorEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
-        public DomainModel.Bindings.informationBinding[] informationBindingsItems => new DomainModel.Bindings.informationBinding[] {
-                NAVWARNPart.headerNAVWARNPreamble,
-            };
+        //public DomainModel.Bindings.informationBinding[] informationBindingsItems => new DomainModel.Bindings.informationBinding[] {
+        //        NAVWARNPart.headerNAVWARNPreamble,
+        //    };
 
-        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {            
-            if (propertyItem.DisplayName.EndsWith("Binding")) {
+        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+            var viewModel = (ViewModelBase)propertyItem.Instance;
+
+            if (viewModel.Host is not null) {
                 var comboBox = new ComboBox {
                     Name = $"_comboBox{Guid.NewGuid():N}",
-                    DisplayMemberPath = "association.Name",
+                    DisplayMemberPath = "Name",
                 };
 
-                var bindingItemsSourceProperty = new Binding() { Source = informationBindingsItems, Mode = BindingMode.OneWay };
+                var bindingItemsSourceProperty = new Binding() { Source = viewModel.Host.GetSource(propertyItem), Mode = BindingMode.OneWay };
                 BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
                 return comboBox;
@@ -76,8 +79,8 @@ namespace S100Framework.WPF.Editors
 
             var connector = (dynamic)propertyItem.Instance;
 
-            if (connector.informationBinding is null)
-                text += " null";
+            //if (connector.informationBinding is null)
+            //    text += " null";
             return new Label {
                 Content = text,
                 IsEnabled = true,

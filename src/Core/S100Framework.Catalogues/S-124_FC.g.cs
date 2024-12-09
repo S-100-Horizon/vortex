@@ -260,6 +260,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureName
         {
+            public string Code => nameof(featureName);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
 
@@ -282,6 +284,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class dateTimeRange
         {
+            public string Code => nameof(dateTimeRange);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required DateTime dateTimeEnd { get; set; }
 
@@ -299,6 +303,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class eNCFeatureReference
         {
+            public string Code => nameof(eNCFeatureReference);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String editionNumber { get; set; } = string.Empty;
 
@@ -326,6 +332,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureReference
         {
+            public string Code => nameof(featureReference);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> featureIdentifier { get; set; } = [];
 
@@ -354,6 +362,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class fixedDateRange
         {
+            public string Code => nameof(fixedDateRange);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? dateEnd { get; set; } = default;
 
@@ -374,6 +384,8 @@ namespace S100Framework.DomainModel.S124
         public partial class information
 #pragma warning restore CS8981
         {
+            public string Code => nameof(information);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String fileLocator { get; set; } = string.Empty;
 
@@ -400,6 +412,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class warningInformation
         {
+            public string Code => nameof(warningInformation);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public information? information { get; set; }
 
@@ -417,6 +431,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class chartAffected
         {
+            public string Code => nameof(chartAffected);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String chartNumber { get; set; } = string.Empty;
 
@@ -441,6 +457,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class affectedChartPublications
         {
+            public string Code => nameof(affectedChartPublications);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public chartAffected? chartAffected { get; set; }
 
@@ -467,6 +485,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class locationName
         {
+            public string Code => nameof(locationName);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
 
@@ -485,6 +505,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class generalArea
         {
+            public string Code => nameof(generalArea);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String localityIdentifier { get; set; } = string.Empty;
 
@@ -506,6 +528,8 @@ namespace S100Framework.DomainModel.S124
         public partial class locality
 #pragma warning restore CS8981
         {
+            public string Code => nameof(locality);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String localityIdentifier { get; set; } = string.Empty;
 
@@ -524,6 +548,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class messageSeriesIdentifier
         {
+            public string Code => nameof(messageSeriesIdentifier);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
 
@@ -558,6 +584,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class nAVWARNTitle
         {
+            public string Code => nameof(nAVWARNTitle);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
 
@@ -662,27 +690,13 @@ namespace S100Framework.DomainModel.S124
 
     namespace Bindings
     {
-        public class informationBinding<Tassociation, TinformationType> : DomainModel.Bindings.informationBinding<Tassociation, TinformationType> where Tassociation : InformationAssociation where TinformationType : class
-        {
-            public informationBinding(Role role)
-            {
-                base.Role = Enum.GetName(role);
-            }
-        }
-
-        public class featureBinding<Tassociation, TfeatureType> : DomainModel.Bindings.featureBinding<Tassociation, TfeatureType> where Tassociation : FeatureAssociation where TfeatureType : class
-        {
-            public featureBinding(Role role)
-            {
-                base.Role = Enum.GetName(role);
-            }
-        }
     }
 
     namespace InformationTypes
     {
         using ComplexAttributes;
         using DomainModel;
+        using S100Framework.DomainModel.Bindings;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -690,6 +704,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNPreamble
         {
+            public string Code => nameof(NAVWARNPreamble);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<affectedChartPublications> affectedChartPublications { get; set; } = [];
 
@@ -716,13 +732,7 @@ namespace S100Framework.DomainModel.S124
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required DateTime publicationTime { get; set; }
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.NWReferences, References> theReferencesReferences => new(Role.theReferences)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
+            public List<informationBinding> theReferencesReferences { get; set; } = [];
 
             public NAVWARNPreamble()
             {
@@ -747,6 +757,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class References
         {
+            public string Code => nameof(References);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = [];
 
@@ -767,6 +779,7 @@ namespace S100Framework.DomainModel.S124
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
+        using S100Framework.DomainModel.Bindings;
 
         [System.SerializableAttribute()]
         [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -774,6 +787,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNPart
         {
+            public string Code => nameof(NAVWARNPart);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -788,28 +803,7 @@ namespace S100Framework.DomainModel.S124
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public restriction? restriction { get; set; } = default;
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.informationBinding<Associations.InformationAssociations.NWPreambleContent, NAVWARNPreamble> headerNAVWARNPreamble => new(Role.header)
-            {
-                Lower = 1,
-                Upper = 1,
-                roleType = DomainModel.Bindings.roleType.association
-            };
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.featureBinding<Associations.FeatureAssociations.AreaAffected, NAVWARNAreaAffected> affectsNAVWARNAreaAffected => new(Role.affects)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, TextPlacement> positionsTextPlacement => new(Role.positions)
-            {
-                Lower = 0,
-                roleType = DomainModel.Bindings.roleType.association
-            };
+            public informationBinding headerNAVWARNPreamble { get; set; }
 
             public NAVWARNPart()
             {
@@ -825,13 +819,7 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNAreaAffected
         {
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.featureBinding<Associations.FeatureAssociations.AreaAffected, NAVWARNPart> impactsNAVWARNPart => new(Role.impacts)
-            {
-                Lower = 1,
-                Upper = 1,
-                roleType = DomainModel.Bindings.roleType.association
-            };
+            public string Code => nameof(NAVWARNAreaAffected);
 
             public NAVWARNAreaAffected()
             {
@@ -844,6 +832,8 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TextPlacement
         {
+            public string Code => nameof(TextPlacement);
+
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String text { get; set; } = string.Empty;
 
@@ -861,14 +851,6 @@ namespace S100Framework.DomainModel.S124
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Performance", "CA1822: Mark members as static", Justification = "<Pending>")]
-            public static Bindings.featureBinding<Associations.FeatureAssociations.TextAssociation, NAVWARNPart> identifiesNAVWARNPart => new(Role.identifies)
-            {
-                Lower = 0,
-                Upper = 1,
-                roleType = DomainModel.Bindings.roleType.composition
-            };
 
             public TextPlacement()
             {

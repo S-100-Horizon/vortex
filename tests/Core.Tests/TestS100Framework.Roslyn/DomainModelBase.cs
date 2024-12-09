@@ -49,27 +49,10 @@ namespace S100Framework.DomainModel
             composition,
         }
 
-        public abstract class informationBinding
+        public class informationBinding
         {
-        }
-
-        public class InformationBindingConnector
-        {
-            public Guid Uuid { get; set; }
-
-            [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-            public informationBinding informationBinding { get; set; }
-        }
-
-        public abstract class informationBinding<Tassociation, TinformationType> : informationBinding where Tassociation : InformationAssociation where TinformationType : class
-        {
-            public int Lower { get; set; } = 0;
-            public int? Upper { get; set; } = default;
-            public bool IsIfinite => !Upper.HasValue;
-            public roleType roleType { get; set; }
-            public Type association => typeof(Tassociation);
-            public string? Role { get; protected set; }
-            public Type informationType => typeof(TinformationType);
+            public InformationAssociation? Association { get; set; }
+            public string? Role { get; set; }
         }
 
         public abstract class featureBinding

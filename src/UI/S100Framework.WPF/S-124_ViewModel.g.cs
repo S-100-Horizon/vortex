@@ -34,7 +34,7 @@ namespace S100Framework.WPF.ViewModel.S124
         } }, });
     }
 
-    public class featureNameViewModel : ViewModelBase
+    public partial class featureNameViewModel : ViewModelBase
     {
         private String _language = string.Empty;
         [Category("featureName")]
@@ -107,12 +107,12 @@ namespace S100Framework.WPF.ViewModel.S124
             nameUsage = this._nameUsage,
         };
 
-        public featureNameViewModel()
+        public featureNameViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class dateTimeRangeViewModel : ViewModelBase
+    public partial class dateTimeRangeViewModel : ViewModelBase
     {
         private DateTime _dateTimeEnd;
         [Category("dateTimeRange")]
@@ -167,12 +167,12 @@ namespace S100Framework.WPF.ViewModel.S124
             dateTimeStart = this._dateTimeStart,
         };
 
-        public dateTimeRangeViewModel()
+        public dateTimeRangeViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class eNCFeatureReferenceViewModel : ViewModelBase
+    public partial class eNCFeatureReferenceViewModel : ViewModelBase
     {
         private String _editionNumber = string.Empty;
         [Category("eNCFeatureReference")]
@@ -254,7 +254,7 @@ namespace S100Framework.WPF.ViewModel.S124
             updateNumber = this._updateNumber,
         };
 
-        public eNCFeatureReferenceViewModel()
+        public eNCFeatureReferenceViewModel(IViewModelHost? host = null) : base(host)
         {
             featureObjectIdentifier.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -263,7 +263,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
-    public class featureReferenceViewModel : ViewModelBase
+    public partial class featureReferenceViewModel : ViewModelBase
     {
         [Category("featureReference")]
         public ObservableCollection<String> featureIdentifier { get; set; } = new();
@@ -334,7 +334,7 @@ namespace S100Framework.WPF.ViewModel.S124
             eNCFeatureReference = this.eNCFeatureReference.ToList(),
         };
 
-        public featureReferenceViewModel()
+        public featureReferenceViewModel(IViewModelHost? host = null) : base(host)
         {
             featureIdentifier.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -351,7 +351,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
-    public class fixedDateRangeViewModel : ViewModelBase
+    public partial class fixedDateRangeViewModel : ViewModelBase
     {
         private DateOnly? _dateEnd = default;
         [Category("fixedDateRange")]
@@ -406,14 +406,14 @@ namespace S100Framework.WPF.ViewModel.S124
             dateStart = this._dateStart,
         };
 
-        public fixedDateRangeViewModel()
+        public fixedDateRangeViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class informationViewModel : ViewModelBase
+    public partial class informationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         private String _fileLocator = string.Empty;
@@ -523,12 +523,12 @@ namespace S100Framework.WPF.ViewModel.S124
             text = this._text,
         };
 
-        public informationViewModel()
+        public informationViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class warningInformationViewModel : ViewModelBase
+    public partial class warningInformationViewModel : ViewModelBase
     {
         private informationViewModel? _information;
         [Category("warningInformation")]
@@ -586,7 +586,7 @@ namespace S100Framework.WPF.ViewModel.S124
             navwarnTypeDetails = this.navwarnTypeDetails.ToList(),
         };
 
-        public warningInformationViewModel()
+        public warningInformationViewModel(IViewModelHost? host = null) : base(host)
         {
             navwarnTypeDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -595,7 +595,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
-    public class chartAffectedViewModel : ViewModelBase
+    public partial class chartAffectedViewModel : ViewModelBase
     {
         private String _chartNumber = string.Empty;
         [Category("chartAffected")]
@@ -686,12 +686,12 @@ namespace S100Framework.WPF.ViewModel.S124
             lastNoticeDate = this._lastNoticeDate,
         };
 
-        public chartAffectedViewModel()
+        public chartAffectedViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class affectedChartPublicationsViewModel : ViewModelBase
+    public partial class affectedChartPublicationsViewModel : ViewModelBase
     {
         private chartAffectedViewModel? _chartAffected;
         [Category("affectedChartPublications")]
@@ -807,12 +807,12 @@ namespace S100Framework.WPF.ViewModel.S124
             publicationAffected = this._publicationAffected,
         };
 
-        public affectedChartPublicationsViewModel()
+        public affectedChartPublicationsViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class locationNameViewModel : ViewModelBase
+    public partial class locationNameViewModel : ViewModelBase
     {
         private String _language = string.Empty;
         [Category("locationName")]
@@ -867,12 +867,12 @@ namespace S100Framework.WPF.ViewModel.S124
             text = this._text,
         };
 
-        public locationNameViewModel()
+        public locationNameViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class generalAreaViewModel : ViewModelBase
+    public partial class generalAreaViewModel : ViewModelBase
     {
         private String _localityIdentifier = string.Empty;
         [Category("generalArea")]
@@ -918,7 +918,7 @@ namespace S100Framework.WPF.ViewModel.S124
             locationName = this.locationName.ToList(),
         };
 
-        public generalAreaViewModel()
+        public generalAreaViewModel(IViewModelHost? host = null) : base(host)
         {
             locationName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -929,7 +929,7 @@ namespace S100Framework.WPF.ViewModel.S124
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class localityViewModel : ViewModelBase
+    public partial class localityViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         private String _localityIdentifier = string.Empty;
@@ -976,7 +976,7 @@ namespace S100Framework.WPF.ViewModel.S124
             locationName = this.locationName.ToList(),
         };
 
-        public localityViewModel()
+        public localityViewModel(IViewModelHost? host = null) : base(host)
         {
             locationName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -985,7 +985,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
-    public class messageSeriesIdentifierViewModel : ViewModelBase
+    public partial class messageSeriesIdentifierViewModel : ViewModelBase
     {
         private String _agencyResponsibleForProduction = string.Empty;
         [Category("messageSeriesIdentifier")]
@@ -1130,12 +1130,12 @@ namespace S100Framework.WPF.ViewModel.S124
             year = this._year,
         };
 
-        public messageSeriesIdentifierViewModel()
+        public messageSeriesIdentifierViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class nAVWARNTitleViewModel : ViewModelBase
+    public partial class nAVWARNTitleViewModel : ViewModelBase
     {
         private String _language = string.Empty;
         [Category("nAVWARNTitle")]
@@ -1190,12 +1190,12 @@ namespace S100Framework.WPF.ViewModel.S124
             text = this._text,
         };
 
-        public nAVWARNTitleViewModel()
+        public nAVWARNTitleViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class NAVWARNPreambleViewModel : ViewModelBase
+    public partial class NAVWARNPreambleViewModel : ViewModelBase
     {
         [Category("NAVWARNPreamble")]
         public ObservableCollection<affectedChartPublications> affectedChartPublications { get; set; } = new();
@@ -1352,7 +1352,7 @@ namespace S100Framework.WPF.ViewModel.S124
             publicationTime = this._publicationTime,
         };
 
-        public NAVWARNPreambleViewModel()
+        public NAVWARNPreambleViewModel(IViewModelHost? host = null) : base(host)
         {
             affectedChartPublications.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1373,7 +1373,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
-    public class ReferencesViewModel : ViewModelBase
+    public partial class ReferencesViewModel : ViewModelBase
     {
         [Category("References")]
         public ObservableCollection<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = new();
@@ -1437,7 +1437,7 @@ namespace S100Framework.WPF.ViewModel.S124
             referenceCategory = this._referenceCategory,
         };
 
-        public ReferencesViewModel()
+        public ReferencesViewModel(IViewModelHost? host = null) : base(host)
         {
             messageSeriesIdentifier.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1446,7 +1446,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
-    public class NAVWARNPartViewModel : ViewModelBase
+    public partial class NAVWARNPartViewModel : ViewModelBase
     {
         [Category("NAVWARNPart")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
@@ -1535,7 +1535,7 @@ namespace S100Framework.WPF.ViewModel.S124
             restriction = this._restriction,
         };
 
-        public NAVWARNPartViewModel()
+        public NAVWARNPartViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1552,7 +1552,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
-    public class NAVWARNAreaAffectedViewModel : ViewModelBase
+    public partial class NAVWARNAreaAffectedViewModel : ViewModelBase
     {
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected instance)
         {
@@ -1571,12 +1571,12 @@ namespace S100Framework.WPF.ViewModel.S124
         {
         };
 
-        public NAVWARNAreaAffectedViewModel()
+        public NAVWARNAreaAffectedViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class TextPlacementViewModel : ViewModelBase
+    public partial class TextPlacementViewModel : ViewModelBase
     {
         private String _text = string.Empty;
         [Category("TextPlacement")]
@@ -1703,7 +1703,7 @@ namespace S100Framework.WPF.ViewModel.S124
             scaleMinimum = this._scaleMinimum,
         };
 
-        public TextPlacementViewModel()
+        public TextPlacementViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }

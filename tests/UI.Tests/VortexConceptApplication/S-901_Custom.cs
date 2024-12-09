@@ -21,27 +21,37 @@ namespace S100Framework.WPF.ViewModel.S901
             _clause = clause;
         }
     }
+}
 
+namespace S100Framework.WPF.ViewModel.S901
+{
     public partial class QualityOfBathymetricDataViewModel
     {
-        private Guid? _qualityOfBathymetricDataCompositione;
-        [Category("Custom")]
-        [Editor(typeof(VortexConceptApplication.InformationTypeSelectorEditor), typeof(VortexConceptApplication.InformationTypeSelectorEditor))]
-        [WhereClause("ps = 'S-101' and code = 'SpatialQuality'")]
-        public Guid? QualityOfBathymetricDataComposition {
-            get {
-                return _qualityOfBathymetricDataCompositione;
-            }
 
-            set {
-                SetValue(ref _qualityOfBathymetricDataCompositione, value);
-            }
-        }
+        //  CUSTOM
+        [Category("Development")]
+        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public ObservableCollection<informationBindingViewModel> theQualityInformationSpatialQuality { get; set; } = new();
 
-        [Category("Custom")]
-        [Editor(typeof(VortexConceptApplication.InformationTypeSelectorEditor), typeof(VortexConceptApplication.InformationTypeSelectorEditor))]
-        [WhereClause("ps = 'S-101' and code = 'SpatialQuality'")]
-        public ObservableCollection<Guid> QualityOfBathymetricDataCompositionArray { get; set; } = new();
+
+        //private Guid? _qualityOfBathymetricDataCompositione;
+        //[Category("Custom")]
+        //[Editor(typeof(VortexConceptApplication.InformationTypeSelectorEditor), typeof(VortexConceptApplication.InformationTypeSelectorEditor))]
+        //[WhereClause("ps = 'S-101' and code = 'SpatialQuality'")]
+        //public Guid? QualityOfBathymetricDataComposition {
+        //    get {
+        //        return _qualityOfBathymetricDataCompositione;
+        //    }
+
+        //    set {
+        //        SetValue(ref _qualityOfBathymetricDataCompositione, value);
+        //    }
+        //}
+
+        //[Category("Custom")]
+        //[Editor(typeof(VortexConceptApplication.InformationTypeSelectorEditor), typeof(VortexConceptApplication.InformationTypeSelectorEditor))]
+        //[WhereClause("ps = 'S-101' and code = 'SpatialQuality'")]
+        //public ObservableCollection<Guid> QualityOfBathymetricDataCompositionArray { get; set; } = new();
 
     }
 }
@@ -60,8 +70,8 @@ namespace S100Framework.DomainModel.S901.FeatureTypes
     //}
 
     public class QualityOfBathymetricDataCustom : S101.FeatureTypes.QualityOfBathymetricData {
-        public Guid? QualityOfBathymetricDataComposition {get;set;}
+        //public Guid? QualityOfBathymetricDataComposition {get;set;}
 
-        public List<Guid>? QualityOfBathymetricDataCompositionArray { get; set; }
+        //public List<Guid>? QualityOfBathymetricDataCompositionArray { get; set; }
     }
 }

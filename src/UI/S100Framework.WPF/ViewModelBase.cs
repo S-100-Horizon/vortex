@@ -4,8 +4,20 @@ using System.Runtime.CompilerServices;
 
 namespace S100Framework.WPF.ViewModel
 {
+    public interface IViewModelHost {
+        public object GetSource(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem);
+    }
+
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
+        private IViewModelHost? _host;
+
+        public IViewModelHost? Host => _host;
+
+        public ViewModelBase(IViewModelHost? host = null) {
+            _host = host;
+        }
+
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected Dictionary<ViewModelBase, string> nestedProperties = new Dictionary<ViewModelBase, string>();
@@ -58,7 +70,7 @@ namespace S100Framework.WPF.ViewModel
         public abstract void Load(T instance);
     }
 
-    public class InformationBindingConnector : INotifyPropertyChanged 
+    public class informationBindingViewModel : INotifyPropertyChanged 
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -74,22 +86,22 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        private Guid? _globalId;
+        private string? _linkId;
 
-        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
-        public Guid? Uuid {
+        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public string? LinkId {
             get {
-                return _globalId;
+                return _linkId;
             }
 
             set {
-                SetValue(ref _globalId, value);
+                SetValue(ref _linkId, value);
             }
         }
 
         private informationBinding? _informationBinding;
 
-        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
         public informationBinding? informationBinding {
             get {
                 return _informationBinding;
@@ -99,6 +111,8 @@ namespace S100Framework.WPF.ViewModel
                 SetValue(ref _informationBinding, value);
             }
         }
+
+        public string Name => $"{_linkId} {informationBinding?.informationType}";
     }
 
     public class FeatureBindingConnector : INotifyPropertyChanged
@@ -117,22 +131,22 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        private Guid? _globalId;
+        private string? _linkId;
 
-        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
-        public Guid? Uuid {
+        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        public string? LinkId {
             get {
-                return _globalId;
+                return _linkId;
             }
 
             set {
-                SetValue(ref _globalId, value);
+                SetValue(ref _linkId, value);
             }
         }
 
         private informationBinding? _informationBinding;
 
-        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
         public informationBinding? informationBinding {
             get {
                 return _informationBinding;
