@@ -44,12 +44,14 @@ namespace S100Framework.DomainModel
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationTypeBase
     {
+        public virtual string Code => string.Empty;
     }
 
     [System.SerializableAttribute()]
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureTypeBase
     {
+        public virtual string Code => string.Empty;
     }
 
     namespace Bindings
@@ -63,8 +65,9 @@ namespace S100Framework.DomainModel
 
         public class informationBinding
         {
-            public InformationAssociation? Association { get; set; }
-            public string? Role { get; set; }
+            public InformationAssociation? association { get; set; }
+            public string? role { get; set; }
+            public string? informationType { get; set; }
         }
 
         public abstract class featureBinding

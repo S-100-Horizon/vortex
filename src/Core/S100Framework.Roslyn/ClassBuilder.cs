@@ -1160,11 +1160,13 @@ namespace S100Framework
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
             common.AppendLine("\tpublic abstract class InformationTypeBase {");
+            common.AppendLine("\t\tpublic virtual string Code => string.Empty;");
             common.AppendLine("\t}");
             common.AppendLine();
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
             common.AppendLine("\tpublic abstract class FeatureTypeBase {");
+            common.AppendLine("\t\tpublic virtual string Code => string.Empty;");
             common.AppendLine("\t}");
             common.AppendLine();
 
@@ -1294,7 +1296,11 @@ namespace S100Framework
                 classBuilder.AppendLine("#pragma warning restore CS8981");
             classBuilder.AppendLine("\t\t{");
 
-            classBuilder.AppendLine($"\t\t\tpublic string Code => nameof({code});");
+            var propertyCode = type.GetProperty("Code", BindingFlags.Public | BindingFlags.FlattenHierarchy);
+            if (propertyCode is not null)
+                ;
+
+            classBuilder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
             var first = true;
             foreach (var p in type.GetProperties()) {
