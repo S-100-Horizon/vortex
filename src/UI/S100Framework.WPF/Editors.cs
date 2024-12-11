@@ -61,20 +61,22 @@ namespace S100Framework.WPF.Editors
         //    };
 
         public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
-            var viewModel = (ViewModelBase)propertyItem.Instance;
+            if (propertyItem.Instance is ViewModelBase) {
 
-            if (viewModel.Host is not null) {
-                var comboBox = new ComboBox {
-                    Name = $"_comboBox{Guid.NewGuid():N}",
-                    DisplayMemberPath = "Name",
-                };
+                var viewModel = (ViewModelBase)propertyItem.Instance;
 
-                var bindingItemsSourceProperty = new Binding() { Source = viewModel.Host.GetSource(propertyItem), Mode = BindingMode.OneWay };
-                BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+                if (viewModel.Host is not null) {
+                    var comboBox = new ComboBox {
+                        Name = $"_comboBox{Guid.NewGuid():N}",
+                        DisplayMemberPath = "Name",
+                    };
 
-                return comboBox;
+                    var bindingItemsSourceProperty = new Binding() { Source = viewModel.Host.GetSource(propertyItem), Mode = BindingMode.OneWay };
+                    BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                    return comboBox;
+                }
             }
-
             var text = propertyItem.DisplayName;
 
             var connector = (dynamic)propertyItem.Instance;

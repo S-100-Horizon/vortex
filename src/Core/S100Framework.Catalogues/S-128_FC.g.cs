@@ -658,8 +658,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class contactAddress
         {
-            public string Code => nameof(contactAddress);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String administrativeDivision { get; set; } = string.Empty;
 
@@ -686,8 +684,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class customPaperSize
         {
-            public string Code => nameof(customPaperSize);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required Int32 x { get; set; }
 
@@ -705,8 +701,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class defaultLocale
         {
-            public string Code => nameof(defaultLocale);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String characterEncoding { get; set; } = string.Empty;
 
@@ -729,8 +723,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureName
         {
-            public string Code => nameof(featureName);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String language { get; set; } = string.Empty;
 
@@ -755,8 +747,6 @@ namespace S100Framework.DomainModel.S128
         public partial class information
 #pragma warning restore CS8981
         {
-            public string Code => nameof(information);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String fileLocator { get; set; } = string.Empty;
 
@@ -783,8 +773,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource
         {
-            public string Code => nameof(onlineResource);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String applicationProfile { get; set; } = string.Empty;
 
@@ -815,8 +803,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class periodicDateRange
         {
-            public string Code => nameof(periodicDateRange);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateOnly dateEnd { get; set; }
 
@@ -837,8 +823,6 @@ namespace S100Framework.DomainModel.S128
         public partial class pricing
 #pragma warning restore CS8981
         {
-            public string Code => nameof(pricing);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String contractPeriod { get; set; } = string.Empty;
 
@@ -860,8 +844,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class printSize
         {
-            public string Code => nameof(printSize);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public iso216? iso216 { get; set; } = default;
 
@@ -879,8 +861,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class productSpecification
         {
-            public string Code => nameof(productSpecification);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime date { get; set; }
 
@@ -906,8 +886,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class supportFileSpecification
         {
-            public string Code => nameof(supportFileSpecification);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime date { get; set; }
 
@@ -930,8 +908,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class serviceSpecification
         {
-            public string Code => nameof(serviceSpecification);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime date { get; set; }
 
@@ -954,8 +930,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sourceIndication
         {
-            public string Code => nameof(sourceIndication);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
 
@@ -988,8 +962,6 @@ namespace S100Framework.DomainModel.S128
         public partial class telecommunications
 #pragma warning restore CS8981
         {
-            public string Code => nameof(telecommunications);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String contactInstructions { get; set; } = string.Empty;
 
@@ -1012,8 +984,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalOfCycle
         {
-            public string Code => nameof(timeIntervalOfCycle);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required List<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit { get; set; }
 
@@ -1032,8 +1002,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class weekOfYear
         {
-            public string Code => nameof(weekOfYear);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required Int32 weekNumber { get; set; }
 
@@ -1051,8 +1019,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class issuanceCycle
         {
-            public string Code => nameof(issuanceCycle);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public periodicDateRange? periodicDateRange { get; set; }
 
@@ -1070,8 +1036,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class printInformation
         {
-            public string Code => nameof(printInformation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String printAgency { get; set; } = string.Empty;
 
@@ -1101,8 +1065,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class supportFile
         {
-            public string Code => nameof(supportFile);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String comment { get; set; } = string.Empty;
 
@@ -1163,8 +1125,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalOfProduct
         {
-            public string Code => nameof(timeIntervalOfProduct);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime issueDate { get; set; }
 
@@ -1185,8 +1145,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class referenceToNM
         {
-            public string Code => nameof(referenceToNM);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime publicationDate { get; set; }
 
@@ -1401,8 +1359,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CatalogueSectionHeader : InformationTypeBase
         {
-            public string Code => nameof(CatalogueSectionHeader);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required Int32 catalogueSectionNumber { get; set; }
 
@@ -1414,6 +1370,7 @@ namespace S100Framework.DomainModel.S128
             public List<informationBinding> thePriceInformationPriceInformation { get; set; } = [];
             public informationBinding? theProducerProducerInformation { get; set; }
             public List<informationBinding> theDistributorDistributorInformation { get; set; } = [];
+            public override string Code => nameof(CatalogueSectionHeader);
 
             public CatalogueSectionHeader()
             {
@@ -1426,8 +1383,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContactDetails : InformationTypeBase
         {
-            public string Code => nameof(ContactDetails);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String contactInstructions { get; set; } = string.Empty;
 
@@ -1447,6 +1402,7 @@ namespace S100Framework.DomainModel.S128
             public List<sourceIndication> sourceIndication { get; set; } = [];
             public informationBinding? theProducerProducerInformation { get; set; }
             public informationBinding? theDistributorDistributorInformation { get; set; }
+            public override string Code => nameof(ContactDetails);
 
             public ContactDetails()
             {
@@ -1460,8 +1416,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IndicationOfCarriageRequirement : InformationTypeBase
         {
-            public string Code => nameof(IndicationOfCarriageRequirement);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String domesticCarriageRequirements { get; set; } = string.Empty;
 
@@ -1470,6 +1424,7 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public List<featureName> featureName { get; set; } = [];
+            public override string Code => nameof(IndicationOfCarriageRequirement);
 
             public IndicationOfCarriageRequirement()
             {
@@ -1482,8 +1437,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PriceInformation : InformationTypeBase
         {
-            public string Code => nameof(PriceInformation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public List<information> information { get; set; } = [];
 
@@ -1496,6 +1449,7 @@ namespace S100Framework.DomainModel.S128
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public List<sourceIndication> sourceIndication { get; set; } = [];
             public List<informationBinding> theCatalogueOfNauticalProductCatalogueSectionHeader { get; set; } = [];
+            public override string Code => nameof(PriceInformation);
 
             public PriceInformation()
             {
@@ -1508,8 +1462,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ProducerInformation : InformationTypeBase
         {
-            public string Code => nameof(ProducerInformation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
 
@@ -1517,6 +1469,7 @@ namespace S100Framework.DomainModel.S128
             public String agencyName { get; set; } = string.Empty;
             public List<informationBinding> theContactDetailsContactDetails { get; set; } = [];
             public List<informationBinding> catalogueHeaderCatalogueSectionHeader { get; set; } = [];
+            public override string Code => nameof(ProducerInformation);
 
             public ProducerInformation()
             {
@@ -1530,12 +1483,11 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DistributorInformation : InformationTypeBase
         {
-            public string Code => nameof(DistributorInformation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String distributorName { get; set; } = string.Empty;
             public List<informationBinding> catalogueHeaderCatalogueSectionHeader { get; set; } = [];
             public List<informationBinding> theContactDetailsContactDetails { get; set; } = [];
+            public override string Code => nameof(DistributorInformation);
 
             public DistributorInformation()
             {
@@ -1557,8 +1509,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class CatalogueElement : FeatureTypeBase
         {
-            public string Code => nameof(CatalogueElement);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
 
@@ -1597,6 +1547,7 @@ namespace S100Framework.DomainModel.S128
             public List<informationBinding> theRequirementIndicationOfCarriageRequirement { get; set; } = [];
             public List<informationBinding> thePriceInformationPriceInformation { get; set; } = [];
             public List<informationBinding> elementContainerCatalogueSectionHeader { get; set; } = [];
+            public override string Code => nameof(CatalogueElement);
 
             public CatalogueElement()
             {
@@ -1610,8 +1561,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class NavigationalProduct : CatalogueElement
         {
-            public string Code => nameof(NavigationalProduct);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public List<Decimal> approximateGridResolution { get; set; } = [];
 
@@ -1659,6 +1608,7 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public verticalDatum? verticalDatum { get; set; } = default;
+            public override string Code => nameof(NavigationalProduct);
 
             public NavigationalProduct()
             {
@@ -1671,8 +1621,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ElectronicProduct : NavigationalProduct
         {
-            public string Code => nameof(ElectronicProduct);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public Boolean? compressionFlag { get; set; } = default;
 
@@ -1690,6 +1638,7 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public productSpecification? productSpecification { get; set; }
+            public override string Code => nameof(ElectronicProduct);
 
             public ElectronicProduct()
             {
@@ -1702,8 +1651,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PhysicalProduct : NavigationalProduct
         {
-            public string Code => nameof(PhysicalProduct);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public required DateTime editionDate { get; set; }
 
@@ -1721,6 +1668,7 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public referenceToNM? referenceToNM { get; set; }
+            public override string Code => nameof(PhysicalProduct);
 
             public PhysicalProduct()
             {
@@ -1733,8 +1681,6 @@ namespace S100Framework.DomainModel.S128
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class S100Service : CatalogueElement
         {
-            public string Code => nameof(S100Service);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public Boolean? compressionFlag { get; set; } = default;
 
@@ -1752,6 +1698,7 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S128/2.0")]
             public productSpecification? productSpecification { get; set; }
+            public override string Code => nameof(S100Service);
 
             public S100Service()
             {

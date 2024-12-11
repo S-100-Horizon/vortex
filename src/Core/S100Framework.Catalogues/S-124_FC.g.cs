@@ -260,8 +260,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureName
         {
-            public string Code => nameof(featureName);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
 
@@ -284,8 +282,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class dateTimeRange
         {
-            public string Code => nameof(dateTimeRange);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required DateTime dateTimeEnd { get; set; }
 
@@ -303,8 +299,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class eNCFeatureReference
         {
-            public string Code => nameof(eNCFeatureReference);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String editionNumber { get; set; } = string.Empty;
 
@@ -332,8 +326,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureReference
         {
-            public string Code => nameof(featureReference);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> featureIdentifier { get; set; } = [];
 
@@ -362,8 +354,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class fixedDateRange
         {
-            public string Code => nameof(fixedDateRange);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? dateEnd { get; set; } = default;
 
@@ -384,8 +374,6 @@ namespace S100Framework.DomainModel.S124
         public partial class information
 #pragma warning restore CS8981
         {
-            public string Code => nameof(information);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String fileLocator { get; set; } = string.Empty;
 
@@ -412,8 +400,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class warningInformation
         {
-            public string Code => nameof(warningInformation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public information? information { get; set; }
 
@@ -431,8 +417,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class chartAffected
         {
-            public string Code => nameof(chartAffected);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String chartNumber { get; set; } = string.Empty;
 
@@ -457,8 +441,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class affectedChartPublications
         {
-            public string Code => nameof(affectedChartPublications);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public chartAffected? chartAffected { get; set; }
 
@@ -485,8 +467,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class locationName
         {
-            public string Code => nameof(locationName);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
 
@@ -505,8 +485,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class generalArea
         {
-            public string Code => nameof(generalArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String localityIdentifier { get; set; } = string.Empty;
 
@@ -528,8 +506,6 @@ namespace S100Framework.DomainModel.S124
         public partial class locality
 #pragma warning restore CS8981
         {
-            public string Code => nameof(locality);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String localityIdentifier { get; set; } = string.Empty;
 
@@ -548,8 +524,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class messageSeriesIdentifier
         {
-            public string Code => nameof(messageSeriesIdentifier);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
 
@@ -584,8 +558,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class nAVWARNTitle
         {
-            public string Code => nameof(nAVWARNTitle);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
 
@@ -704,8 +676,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNPreamble : InformationTypeBase
         {
-            public string Code => nameof(NAVWARNPreamble);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<affectedChartPublications> affectedChartPublications { get; set; } = [];
 
@@ -733,6 +703,7 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required DateTime publicationTime { get; set; }
             public List<informationBinding> theReferencesReferences { get; set; } = [];
+            public override string Code => nameof(NAVWARNPreamble);
 
             public NAVWARNPreamble()
             {
@@ -757,8 +728,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class References : InformationTypeBase
         {
-            public string Code => nameof(References);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = [];
 
@@ -767,6 +736,7 @@ namespace S100Framework.DomainModel.S124
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required referenceCategory referenceCategory { get; set; }
+            public override string Code => nameof(References);
 
             public References()
             {
@@ -787,8 +757,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNPart : FeatureTypeBase
         {
-            public string Code => nameof(NAVWARNPart);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -804,6 +772,7 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public restriction? restriction { get; set; } = default;
             public informationBinding headerNAVWARNPreamble { get; set; }
+            public override string Code => nameof(NAVWARNPart);
 
             public NAVWARNPart()
             {
@@ -819,7 +788,7 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNAreaAffected : FeatureTypeBase
         {
-            public string Code => nameof(NAVWARNAreaAffected);
+            public override string Code => nameof(NAVWARNAreaAffected);
 
             public NAVWARNAreaAffected()
             {
@@ -832,8 +801,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TextPlacement : FeatureTypeBase
         {
-            public string Code => nameof(TextPlacement);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String text { get; set; } = string.Empty;
 
@@ -851,6 +818,7 @@ namespace S100Framework.DomainModel.S124
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
+            public override string Code => nameof(TextPlacement);
 
             public TextPlacement()
             {

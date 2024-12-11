@@ -4,6 +4,7 @@ using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S901.FeatureTypes;
 using S100Framework.WPF.ViewModel;
+using S100Framework.WPF.ViewModel.S901;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -166,29 +167,32 @@ namespace VortexConceptApplication
         }
 
         object IViewModelHost.GetSource(PropertyItem propertyItem) {
+
+            var attribute = (IBindingAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(IBindingAttribute), true)[0];
+
             var items = new informationBindingViewModel[] {
-                new informationBindingViewModel() {
+                new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition>() {
                     LinkId = "100/1",
                     informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
                         association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
                         role = "theQualityInformation",
-                        informationType = "SpatialQuality",
+                        informationType = attribute.Type,
                     }
                 },
-                new informationBindingViewModel() {
+                new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.AdditionalInformation>() {
                     LinkId = "100/2",
                     informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
                         association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
                         role = "theQualityInformation",
-                        informationType = "SpatialQuality",
+                        informationType = attribute.Type,
                     }
                 },
-                new informationBindingViewModel() {
+                new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.SpatialAssociation>() {
                     LinkId = "100/3",
                     informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
                         association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
                         role = "theQualityInformation",
-                        informationType = "SpatialQuality",
+                        informationType = attribute.Type,
                     }
                 }
 

@@ -3819,8 +3819,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureName
         {
-            public string Code => nameof(featureName);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
 
@@ -3843,8 +3841,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featuresDetected
         {
-            public string Code => nameof(featuresDetected);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean leastDepthOfDetectedFeaturesMeasured { get; set; }
 
@@ -3865,8 +3861,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class fixedDateRange
         {
-            public string Code => nameof(fixedDateRange);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? dateEnd { get; set; } = default;
 
@@ -3884,8 +3878,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class frequencyPair
         {
-            public string Code => nameof(frequencyPair);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? frequencyShoreStationReceives { get; set; } = default;
 
@@ -3903,8 +3895,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class horizontalClearanceFixed
         {
-            public string Code => nameof(horizontalClearanceFixed);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal horizontalClearanceValue { get; set; }
 
@@ -3922,8 +3912,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class horizontalClearanceOpen
         {
-            public string Code => nameof(horizontalClearanceOpen);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal horizontalClearanceValue { get; set; }
 
@@ -3941,8 +3929,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class horizontalPositionUncertainty
         {
-            public string Code => nameof(horizontalPositionUncertainty);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal uncertaintyFixed { get; set; }
 
@@ -3963,8 +3949,6 @@ namespace S100Framework.DomainModel.S101
         public partial class information
 #pragma warning restore CS8981
         {
-            public string Code => nameof(information);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String fileLocator { get; set; } = string.Empty;
 
@@ -3992,8 +3976,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class measuredDistanceValue
         {
-            public string Code => nameof(measuredDistanceValue);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required distanceUnitOfMeasurement distanceUnitOfMeasurement { get; set; }
 
@@ -4014,8 +3996,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class multiplicityOfFeatures
         {
-            public string Code => nameof(multiplicityOfFeatures);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean multiplicityKnown { get; set; }
 
@@ -4033,8 +4013,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource
         {
-            public string Code => nameof(onlineResource);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String headline { get; set; } = string.Empty;
 
@@ -4059,8 +4037,6 @@ namespace S100Framework.DomainModel.S101
         public partial class orientation
 #pragma warning restore CS8981
         {
-            public string Code => nameof(orientation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? orientationUncertainty { get; set; } = default;
 
@@ -4078,8 +4054,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class periodicDateRange
         {
-            public string Code => nameof(periodicDateRange);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required DateOnly dateEnd { get; set; }
 
@@ -4097,8 +4071,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class radarWaveLength
         {
-            public string Code => nameof(radarWaveLength);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String radarBand { get; set; } = string.Empty;
 
@@ -4117,8 +4089,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorInformation
         {
-            public string Code => nameof(sectorInformation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
 
@@ -4137,8 +4107,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorLimitOne
         {
-            public string Code => nameof(sectorLimitOne);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal sectorBearing { get; set; }
 
@@ -4156,8 +4124,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorLimitTwo
         {
-            public string Code => nameof(sectorLimitTwo);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal sectorBearing { get; set; }
 
@@ -4175,8 +4141,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class shapeInformation
         {
-            public string Code => nameof(shapeInformation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String language { get; set; } = string.Empty;
 
@@ -4195,8 +4159,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class signalSequence
         {
-            public string Code => nameof(signalSequence);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal signalDuration { get; set; }
 
@@ -4217,8 +4179,6 @@ namespace S100Framework.DomainModel.S101
         public partial class speed
 #pragma warning restore CS8981
         {
-            public string Code => nameof(speed);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal speedMaximum { get; set; }
 
@@ -4236,8 +4196,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class surfaceCharacteristics
         {
-            public string Code => nameof(surfaceCharacteristics);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public natureOfSurface? natureOfSurface { get; set; } = default;
 
@@ -4258,8 +4216,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class surveyDateRange
         {
-            public string Code => nameof(surveyDateRange);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required DateOnly dateEnd { get; set; }
 
@@ -4280,8 +4236,6 @@ namespace S100Framework.DomainModel.S101
         public partial class telecommunications
 #pragma warning restore CS8981
         {
-            public string Code => nameof(telecommunications);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String contactInstructions { get; set; } = string.Empty;
 
@@ -4303,8 +4257,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class tidalStreamValue
         {
-            public string Code => nameof(tidalStreamValue);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required orientation orientation { get; set; }
 
@@ -4329,8 +4281,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalsByDayOfWeek
         {
-            public string Code => nameof(timeIntervalsByDayOfWeek);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<dayOfWeek> dayOfWeek { get; set; } = [];
 
@@ -4357,8 +4307,6 @@ namespace S100Framework.DomainModel.S101
         public partial class topmark
 #pragma warning restore CS8981
         {
-            public string Code => nameof(topmark);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<colour> colour { get; set; } = [];
 
@@ -4382,8 +4330,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class valueOfLocalMagneticAnomaly
         {
-            public string Code => nameof(valueOfLocalMagneticAnomaly);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal magneticAnomalyValue { get; set; }
 
@@ -4401,8 +4347,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalUncertainty
         {
-            public string Code => nameof(verticalUncertainty);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal uncertaintyFixed { get; set; }
 
@@ -4420,8 +4364,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class vesselSpeedLimit
         {
-            public string Code => nameof(vesselSpeedLimit);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal speedLimit { get; set; }
 
@@ -4442,8 +4384,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class zoneOfConfidence
         {
-            public string Code => nameof(zoneOfConfidence);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData { get; set; }
 
@@ -4467,8 +4407,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class directionalCharacter
         {
-            public string Code => nameof(directionalCharacter);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? moireEffect { get; set; } = default;
 
@@ -4490,8 +4428,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class rhythmOfLight
         {
-            public string Code => nameof(rhythmOfLight);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required lightCharacteristic lightCharacteristic { get; set; }
 
@@ -4515,8 +4451,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class scheduleByDayOfWeek
         {
-            public string Code => nameof(scheduleByDayOfWeek);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfSchedule? categoryOfSchedule { get; set; } = default;
 
@@ -4535,8 +4469,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorLimit
         {
-            public string Code => nameof(sectorLimit);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required sectorLimitOne sectorLimitOne { get; set; }
 
@@ -4562,8 +4494,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class spatialAccuracy
         {
-            public string Code => nameof(spatialAccuracy);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -4584,8 +4514,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class tidalStreamPanelValues
         {
-            public string Code => nameof(tidalStreamPanelValues);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required referenceTide referenceTide { get; set; }
 
@@ -4610,8 +4538,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceClosed
         {
-            public string Code => nameof(verticalClearanceClosed);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal verticalClearanceValue { get; set; }
 
@@ -4629,8 +4555,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceFixed
         {
-            public string Code => nameof(verticalClearanceFixed);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal verticalClearanceValue { get; set; }
 
@@ -4648,8 +4572,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceOpen
         {
-            public string Code => nameof(verticalClearanceOpen);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean verticalClearanceUnlimited { get; set; }
 
@@ -4670,8 +4592,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceSafe
         {
-            public string Code => nameof(verticalClearanceSafe);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal verticalClearanceValue { get; set; }
 
@@ -4689,8 +4609,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class lightSector
         {
-            public string Code => nameof(lightSector);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<colour> colour { get; set; }
 
@@ -4724,8 +4642,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorCharacteristics
         {
-            public string Code => nameof(sectorCharacteristics);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required lightCharacteristic lightCharacteristic { get; set; }
 
@@ -5089,8 +5005,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContactDetails : InformationTypeBase
         {
-            public string Code => nameof(ContactDetails);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String callSign { get; set; } = string.Empty;
 
@@ -5114,6 +5028,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<telecommunications> telecommunications { get; set; } = [];
+            public override string Code => nameof(ContactDetails);
 
             public ContactDetails()
             {
@@ -5126,8 +5041,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ServiceHours : InformationTypeBase
         {
-            public string Code => nameof(ServiceHours);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -5139,6 +5052,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
+            public override string Code => nameof(ServiceHours);
 
             public ServiceHours()
             {
@@ -5152,8 +5066,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NonStandardWorkingDay : InformationTypeBase
         {
-            public string Code => nameof(NonStandardWorkingDay);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<DateOnly> dateFixed { get; set; } = [];
 
@@ -5168,6 +5080,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
+            public override string Code => nameof(NonStandardWorkingDay);
 
             public NonStandardWorkingDay()
             {
@@ -5180,8 +5093,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : InformationTypeBase
         {
-            public string Code => nameof(NauticalInformation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -5193,6 +5104,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
+            public override string Code => nameof(NauticalInformation);
 
             public NauticalInformation()
             {
@@ -5205,13 +5117,12 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpatialQuality : InformationTypeBase
         {
-            public string Code => nameof(SpatialQuality);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
+            public override string Code => nameof(SpatialQuality);
 
             public SpatialQuality()
             {
@@ -5232,8 +5143,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class QualityOfNonBathymetricData : FeatureTypeBase
         {
-            public string Code => nameof(QualityOfNonBathymetricData);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfTemporalVariation? categoryOfTemporalVariation { get; set; } = default;
 
@@ -5257,6 +5166,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
+            public override string Code => nameof(QualityOfNonBathymetricData);
 
             public QualityOfNonBathymetricData()
             {
@@ -5273,8 +5183,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DataCoverage : FeatureTypeBase
         {
-            public string Code => nameof(DataCoverage);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? drawingIndex { get; set; } = default;
 
@@ -5292,6 +5200,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
+            public override string Code => nameof(DataCoverage);
 
             public DataCoverage()
             {
@@ -5304,8 +5213,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NavigationalSystemOfMarks : FeatureTypeBase
         {
-            public string Code => nameof(NavigationalSystemOfMarks);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required marksNavigationalSystemOf marksNavigationalSystemOf { get; set; }
 
@@ -5314,6 +5221,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
+            public override string Code => nameof(NavigationalSystemOfMarks);
 
             public NavigationalSystemOfMarks()
             {
@@ -5326,8 +5234,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LocalDirectionOfBuoyage : FeatureTypeBase
         {
-            public string Code => nameof(LocalDirectionOfBuoyage);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -5342,6 +5248,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
+            public override string Code => nameof(LocalDirectionOfBuoyage);
 
             public LocalDirectionOfBuoyage()
             {
@@ -5354,8 +5261,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class QualityOfBathymetricData : FeatureTypeBase
         {
-            public string Code => nameof(QualityOfBathymetricData);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfTemporalVariation categoryOfTemporalVariation { get; set; }
 
@@ -5386,6 +5291,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theQualityInformationSpatialQuality { get; set; }
+            public override string Code => nameof(QualityOfBathymetricData);
 
             public QualityOfBathymetricData()
             {
@@ -5404,8 +5310,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SoundingDatum : FeatureTypeBase
         {
-            public string Code => nameof(SoundingDatum);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -5414,6 +5318,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
+            public override string Code => nameof(SoundingDatum);
 
             public SoundingDatum()
             {
@@ -5426,8 +5331,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class VerticalDatumOfData : FeatureTypeBase
         {
-            public string Code => nameof(VerticalDatumOfData);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -5436,6 +5339,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
+            public override string Code => nameof(VerticalDatumOfData);
 
             public VerticalDatumOfData()
             {
@@ -5448,8 +5352,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class QualityOfSurvey : FeatureTypeBase
         {
-            public string Code => nameof(QualityOfSurvey);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? depthRangeMaximumValue { get; set; } = default;
 
@@ -5503,6 +5405,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
+            public override string Code => nameof(QualityOfSurvey);
 
             public QualityOfSurvey()
             {
@@ -5521,8 +5424,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class UpdateInformation : FeatureTypeBase
         {
-            public string Code => nameof(UpdateInformation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -5543,6 +5444,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
+            public override string Code => nameof(UpdateInformation);
 
             public UpdateInformation()
             {
@@ -5555,8 +5457,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MagneticVariation : FeatureTypeBase
         {
-            public string Code => nameof(MagneticVariation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -5575,6 +5475,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(MagneticVariation);
 
             public MagneticVariation()
             {
@@ -5587,8 +5488,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LocalMagneticAnomaly : FeatureTypeBase
         {
-            public string Code => nameof(LocalMagneticAnomaly);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -5607,6 +5506,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(LocalMagneticAnomaly);
 
             public LocalMagneticAnomaly()
             {
@@ -5620,8 +5520,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Coastline : FeatureTypeBase
         {
-            public string Code => nameof(Coastline);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfCoastline? categoryOfCoastline { get; set; } = default;
 
@@ -5652,6 +5550,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Coastline);
 
             public Coastline()
             {
@@ -5664,8 +5563,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LandArea : FeatureTypeBase
         {
-            public string Code => nameof(LandArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
@@ -5687,6 +5584,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(LandArea);
 
             public LandArea()
             {
@@ -5699,8 +5597,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IslandGroup : FeatureTypeBase
         {
-            public string Code => nameof(IslandGroup);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<featureName> featureName { get; set; }
 
@@ -5713,6 +5609,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(IslandGroup);
 
             public IslandGroup()
             {
@@ -5726,8 +5623,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LandElevation : FeatureTypeBase
         {
-            public string Code => nameof(LandElevation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal elevation { get; set; }
 
@@ -5746,6 +5641,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(LandElevation);
 
             public LandElevation()
             {
@@ -5758,8 +5654,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class River : FeatureTypeBase
         {
-            public string Code => nameof(River);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -5775,6 +5669,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(River);
 
             public River()
             {
@@ -5787,8 +5682,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Rapids : FeatureTypeBase
         {
-            public string Code => nameof(Rapids);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -5804,6 +5697,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Rapids);
 
             public Rapids()
             {
@@ -5816,8 +5710,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Waterfall : FeatureTypeBase
         {
-            public string Code => nameof(Waterfall);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -5836,6 +5728,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Waterfall);
 
             public Waterfall()
             {
@@ -5848,8 +5741,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Lake : FeatureTypeBase
         {
-            public string Code => nameof(Lake);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? elevation { get; set; } = default;
 
@@ -5868,6 +5759,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Lake);
 
             public Lake()
             {
@@ -5880,8 +5772,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LandRegion : FeatureTypeBase
         {
-            public string Code => nameof(LandRegion);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfLandRegion> categoryOfLandRegion { get; set; } = [];
 
@@ -5903,6 +5793,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(LandRegion);
 
             public LandRegion()
             {
@@ -5915,8 +5806,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Vegetation : FeatureTypeBase
         {
-            public string Code => nameof(Vegetation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfVegetation categoryOfVegetation { get; set; }
 
@@ -5944,6 +5833,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Vegetation);
 
             public Vegetation()
             {
@@ -5956,8 +5846,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IceArea : FeatureTypeBase
         {
-            public string Code => nameof(IceArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfIce categoryOfIce { get; set; }
 
@@ -5994,6 +5882,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(IceArea);
 
             public IceArea()
             {
@@ -6006,8 +5895,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SlopingGround : FeatureTypeBase
         {
-            public string Code => nameof(SlopingGround);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
 
@@ -6035,6 +5922,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(SlopingGround);
 
             public SlopingGround()
             {
@@ -6047,8 +5935,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SlopeTopline : FeatureTypeBase
         {
-            public string Code => nameof(SlopeTopline);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
 
@@ -6079,6 +5965,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(SlopeTopline);
 
             public SlopeTopline()
             {
@@ -6091,8 +5978,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Tideway : FeatureTypeBase
         {
-            public string Code => nameof(Tideway);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -6105,6 +5990,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Tideway);
 
             public Tideway()
             {
@@ -6117,8 +6003,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class BuiltUpArea : FeatureTypeBase
         {
-            public string Code => nameof(BuiltUpArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfBuiltUpArea? categoryOfBuiltUpArea { get; set; } = default;
 
@@ -6155,6 +6039,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(BuiltUpArea);
 
             public BuiltUpArea()
             {
@@ -6167,8 +6052,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Building : FeatureTypeBase
         {
-            public string Code => nameof(Building);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public buildingShape? buildingShape { get; set; } = default;
 
@@ -6229,6 +6112,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Building);
 
             public Building()
             {
@@ -6241,8 +6125,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AirportAirfield : FeatureTypeBase
         {
-            public string Code => nameof(AirportAirfield);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfAirportAirfield> categoryOfAirportAirfield { get; set; } = [];
 
@@ -6270,6 +6152,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(AirportAirfield);
 
             public AirportAirfield()
             {
@@ -6282,8 +6165,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Runway : FeatureTypeBase
         {
-            public string Code => nameof(Runway);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
@@ -6311,6 +6192,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Runway);
 
             public Runway()
             {
@@ -6323,8 +6205,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Helipad : FeatureTypeBase
         {
-            public string Code => nameof(Helipad);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
@@ -6352,6 +6232,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Helipad);
 
             public Helipad()
             {
@@ -6364,8 +6245,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Bridge : FeatureTypeBase
         {
-            public string Code => nameof(Bridge);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public bridgeConstruction? bridgeConstruction { get; set; } = default;
 
@@ -6423,6 +6302,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Bridge);
 
             public Bridge()
             {
@@ -6435,8 +6315,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpanFixed : FeatureTypeBase
         {
-            public string Code => nameof(SpanFixed);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -6461,6 +6339,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SpanFixed);
 
             public SpanFixed()
             {
@@ -6477,8 +6356,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpanOpening : FeatureTypeBase
         {
-            public string Code => nameof(SpanOpening);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -6506,6 +6383,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SpanOpening);
 
             public SpanOpening()
             {
@@ -6526,8 +6404,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Conveyor : FeatureTypeBase
         {
-            public string Code => nameof(Conveyor);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfConveyor? categoryOfConveyor { get; set; } = default;
 
@@ -6591,6 +6467,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Conveyor);
 
             public Conveyor()
             {
@@ -6603,8 +6480,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CableOverhead : FeatureTypeBase
         {
-            public string Code => nameof(CableOverhead);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfCable? categoryOfCable { get; set; } = default;
 
@@ -6653,6 +6528,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(CableOverhead);
 
             public CableOverhead()
             {
@@ -6665,8 +6541,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PipelineOverhead : FeatureTypeBase
         {
-            public string Code => nameof(PipelineOverhead);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfPipelinePipe? categoryOfPipelinePipe { get; set; } = default;
 
@@ -6712,6 +6586,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(PipelineOverhead);
 
             public PipelineOverhead()
             {
@@ -6724,8 +6599,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PylonBridgeSupport : FeatureTypeBase
         {
-            public string Code => nameof(PylonBridgeSupport);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfPylon categoryOfPylon { get; set; }
 
@@ -6783,6 +6656,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(PylonBridgeSupport);
 
             public PylonBridgeSupport()
             {
@@ -6795,8 +6669,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FenceWall : FeatureTypeBase
         {
-            public string Code => nameof(FenceWall);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfFence? categoryOfFence { get; set; } = default;
 
@@ -6845,6 +6717,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(FenceWall);
 
             public FenceWall()
             {
@@ -6857,8 +6730,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Railway : FeatureTypeBase
         {
-            public string Code => nameof(Railway);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
@@ -6883,6 +6754,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Railway);
 
             public Railway()
             {
@@ -6895,8 +6767,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Road : FeatureTypeBase
         {
-            public string Code => nameof(Road);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfRoad? categoryOfRoad { get; set; } = default;
 
@@ -6924,6 +6794,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Road);
 
             public Road()
             {
@@ -6936,8 +6807,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Tunnel : FeatureTypeBase
         {
-            public string Code => nameof(Tunnel);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
@@ -6971,6 +6840,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Tunnel);
 
             public Tunnel()
             {
@@ -6983,8 +6853,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Landmark : FeatureTypeBase
         {
-            public string Code => nameof(Landmark);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfLandmark> categoryOfLandmark { get; set; }
 
@@ -7048,6 +6916,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Landmark);
 
             public Landmark()
             {
@@ -7061,8 +6930,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SiloTank : FeatureTypeBase
         {
-            public string Code => nameof(SiloTank);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public buildingShape? buildingShape { get; set; } = default;
 
@@ -7126,6 +6993,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SiloTank);
 
             public SiloTank()
             {
@@ -7138,8 +7006,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class WindTurbine : FeatureTypeBase
         {
-            public string Code => nameof(WindTurbine);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<colour> colour { get; set; } = [];
 
@@ -7206,6 +7072,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(WindTurbine);
 
             public WindTurbine()
             {
@@ -7218,8 +7085,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FortifiedStructure : FeatureTypeBase
         {
-            public string Code => nameof(FortifiedStructure);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfFortifiedStructure? categoryOfFortifiedStructure { get; set; } = default;
 
@@ -7265,6 +7130,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(FortifiedStructure);
 
             public FortifiedStructure()
             {
@@ -7277,8 +7143,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ProductionStorageArea : FeatureTypeBase
         {
-            public string Code => nameof(ProductionStorageArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfProductionArea categoryOfProductionArea { get; set; }
 
@@ -7327,6 +7191,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(ProductionStorageArea);
 
             public ProductionStorageArea()
             {
@@ -7339,8 +7204,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Checkpoint : FeatureTypeBase
         {
-            public string Code => nameof(Checkpoint);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfCheckpoint? categoryOfCheckpoint { get; set; } = default;
 
@@ -7359,6 +7222,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Checkpoint);
 
             public Checkpoint()
             {
@@ -7371,8 +7235,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Hulk : FeatureTypeBase
         {
-            public string Code => nameof(Hulk);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfHulk> categoryOfHulk { get; set; } = [];
 
@@ -7424,6 +7286,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Hulk);
 
             public Hulk()
             {
@@ -7436,8 +7299,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Pile : FeatureTypeBase
         {
-            public string Code => nameof(Pile);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfPile? categoryOfPile { get; set; } = default;
 
@@ -7486,6 +7347,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Pile);
 
             public Pile()
             {
@@ -7498,8 +7360,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Dyke : FeatureTypeBase
         {
-            public string Code => nameof(Dyke);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
@@ -7536,6 +7396,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Dyke);
 
             public Dyke()
             {
@@ -7548,8 +7409,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ShorelineConstruction : FeatureTypeBase
         {
-            public string Code => nameof(ShorelineConstruction);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfShorelineConstruction? categoryOfShorelineConstruction { get; set; } = default;
 
@@ -7610,6 +7469,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(ShorelineConstruction);
 
             public ShorelineConstruction()
             {
@@ -7622,8 +7482,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class StructureOverNavigableWater : FeatureTypeBase
         {
-            public string Code => nameof(StructureOverNavigableWater);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfStructure> categoryOfStructure { get; set; } = [];
 
@@ -7696,6 +7554,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(StructureOverNavigableWater);
 
             public StructureOverNavigableWater()
             {
@@ -7716,8 +7575,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Causeway : FeatureTypeBase
         {
-            public string Code => nameof(Causeway);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
@@ -7745,6 +7602,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Causeway);
 
             public Causeway()
             {
@@ -7757,8 +7615,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Canal : FeatureTypeBase
         {
-            public string Code => nameof(Canal);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfCanal? categoryOfCanal { get; set; } = default;
 
@@ -7792,6 +7648,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Canal);
 
             public Canal()
             {
@@ -7804,8 +7661,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DistanceMark : FeatureTypeBase
         {
-            public string Code => nameof(DistanceMark);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean distanceMarkVisible { get; set; }
 
@@ -7827,6 +7682,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(DistanceMark);
 
             public DistanceMark()
             {
@@ -7844,8 +7700,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Gate : FeatureTypeBase
         {
-            public string Code => nameof(Gate);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfGate? categoryOfGate { get; set; } = default;
 
@@ -7888,6 +7742,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Gate);
 
             public Gate()
             {
@@ -7900,8 +7755,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Dam : FeatureTypeBase
         {
-            public string Code => nameof(Dam);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfDam? categoryOfDam { get; set; } = default;
 
@@ -7950,6 +7803,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Dam);
 
             public Dam()
             {
@@ -7962,8 +7816,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Crane : FeatureTypeBase
         {
-            public string Code => nameof(Crane);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfCrane? categoryOfCrane { get; set; } = default;
 
@@ -8024,6 +7876,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Crane);
 
             public Crane()
             {
@@ -8036,8 +7889,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Berth : FeatureTypeBase
         {
-            public string Code => nameof(Berth);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
@@ -8080,6 +7931,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Berth);
 
             public Berth()
             {
@@ -8093,8 +7945,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Dolphin : FeatureTypeBase
         {
-            public string Code => nameof(Dolphin);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfDolphin> categoryOfDolphin { get; set; }
 
@@ -8152,6 +8002,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Dolphin);
 
             public Dolphin()
             {
@@ -8165,8 +8016,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Bollard : FeatureTypeBase
         {
-            public string Code => nameof(Bollard);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
@@ -8197,6 +8046,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Bollard);
 
             public Bollard()
             {
@@ -8209,8 +8059,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DryDock : FeatureTypeBase
         {
-            public string Code => nameof(DryDock);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
@@ -8259,6 +8107,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(DryDock);
 
             public DryDock()
             {
@@ -8271,8 +8120,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FloatingDock : FeatureTypeBase
         {
-            public string Code => nameof(FloatingDock);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<colour> colour { get; set; } = [];
 
@@ -8333,6 +8180,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(FloatingDock);
 
             public FloatingDock()
             {
@@ -8345,8 +8193,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Pontoon : FeatureTypeBase
         {
-            public string Code => nameof(Pontoon);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
@@ -8383,6 +8229,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Pontoon);
 
             public Pontoon()
             {
@@ -8395,8 +8242,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DockArea : FeatureTypeBase
         {
-            public string Code => nameof(DockArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfDock? categoryOfDock { get; set; } = default;
 
@@ -8436,6 +8281,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(DockArea);
 
             public DockArea()
             {
@@ -8448,8 +8294,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Gridiron : FeatureTypeBase
         {
-            public string Code => nameof(Gridiron);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -8480,6 +8324,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Gridiron);
 
             public Gridiron()
             {
@@ -8492,8 +8337,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LockBasin : FeatureTypeBase
         {
-            public string Code => nameof(LockBasin);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -8524,6 +8367,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(LockBasin);
 
             public LockBasin()
             {
@@ -8536,8 +8380,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MooringTrot : FeatureTypeBase
         {
-            public string Code => nameof(MooringTrot);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -8553,6 +8395,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(MooringTrot);
 
             public MooringTrot()
             {
@@ -8565,8 +8408,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeaAreaNamedWaterArea : FeatureTypeBase
         {
-            public string Code => nameof(SeaAreaNamedWaterArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfSeaArea? categoryOfSeaArea { get; set; } = default;
 
@@ -8582,6 +8423,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(SeaAreaNamedWaterArea);
 
             public SeaAreaNamedWaterArea()
             {
@@ -8594,8 +8436,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TidalStreamFloodEbb : FeatureTypeBase
         {
-            public string Code => nameof(TidalStreamFloodEbb);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfTidalStream categoryOfTidalStream { get; set; }
 
@@ -8620,6 +8460,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(TidalStreamFloodEbb);
 
             public TidalStreamFloodEbb()
             {
@@ -8640,8 +8481,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CurrentNonGravitational : FeatureTypeBase
         {
-            public string Code => nameof(CurrentNonGravitational);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -8669,6 +8508,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(CurrentNonGravitational);
 
             public CurrentNonGravitational()
             {
@@ -8689,8 +8529,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class WaterTurbulence : FeatureTypeBase
         {
-            public string Code => nameof(WaterTurbulence);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfWaterTurbulence categoryOfWaterTurbulence { get; set; }
 
@@ -8706,6 +8544,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(WaterTurbulence);
 
             public WaterTurbulence()
             {
@@ -8718,8 +8557,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TidalStreamPanelData : FeatureTypeBase
         {
-            public string Code => nameof(TidalStreamPanelData);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -8741,6 +8578,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(TidalStreamPanelData);
 
             public TidalStreamPanelData()
             {
@@ -8755,8 +8593,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Sounding : FeatureTypeBase
         {
-            public string Code => nameof(Sounding);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -8781,6 +8617,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Sounding);
 
             public Sounding()
             {
@@ -8793,8 +8630,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DredgedArea : FeatureTypeBase
         {
-            public string Code => nameof(DredgedArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal depthRangeMinimumValue { get; set; }
 
@@ -8831,6 +8666,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(DredgedArea);
 
             public DredgedArea()
             {
@@ -8843,8 +8679,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SweptArea : FeatureTypeBase
         {
-            public string Code => nameof(SweptArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal depthRangeMinimumValue { get; set; }
 
@@ -8860,6 +8694,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(SweptArea);
 
             public SweptArea()
             {
@@ -8872,8 +8707,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DepthContour : FeatureTypeBase
         {
-            public string Code => nameof(DepthContour);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -8886,6 +8719,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(DepthContour);
 
             public DepthContour()
             {
@@ -8898,8 +8732,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DepthArea : FeatureTypeBase
         {
-            public string Code => nameof(DepthArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal depthRangeMinimumValue { get; set; }
 
@@ -8912,6 +8744,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(DepthArea);
 
             public DepthArea()
             {
@@ -8924,8 +8757,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DepthNoBottomFound : FeatureTypeBase
         {
-            public string Code => nameof(DepthNoBottomFound);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -8938,6 +8769,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(DepthNoBottomFound);
 
             public DepthNoBottomFound()
             {
@@ -8950,14 +8782,13 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class UnsurveyedArea : FeatureTypeBase
         {
-            public string Code => nameof(UnsurveyedArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(UnsurveyedArea);
 
             public UnsurveyedArea()
             {
@@ -8970,8 +8801,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeabedArea : FeatureTypeBase
         {
-            public string Code => nameof(SeabedArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -8990,6 +8819,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(SeabedArea);
 
             public SeabedArea()
             {
@@ -9003,8 +8833,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class WeedKelp : FeatureTypeBase
         {
-            public string Code => nameof(WeedKelp);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfWeedKelp? categoryOfWeedKelp { get; set; } = default;
 
@@ -9020,6 +8848,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(WeedKelp);
 
             public WeedKelp()
             {
@@ -9032,8 +8861,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Seagrass : FeatureTypeBase
         {
-            public string Code => nameof(Seagrass);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -9046,6 +8873,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Seagrass);
 
             public Seagrass()
             {
@@ -9058,8 +8886,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Sandwave : FeatureTypeBase
         {
-            public string Code => nameof(Sandwave);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -9072,6 +8898,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Sandwave);
 
             public Sandwave()
             {
@@ -9084,8 +8911,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Spring : FeatureTypeBase
         {
-            public string Code => nameof(Spring);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -9098,6 +8923,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Spring);
 
             public Spring()
             {
@@ -9110,8 +8936,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class UnderwaterAwashRock : FeatureTypeBase
         {
-            public string Code => nameof(UnderwaterAwashRock);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
 
@@ -9154,6 +8978,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal surroundingDepth { get; set; }
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(UnderwaterAwashRock);
 
             public UnderwaterAwashRock()
             {
@@ -9166,8 +8991,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Wreck : FeatureTypeBase
         {
-            public string Code => nameof(Wreck);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfWreck? categoryOfWreck { get; set; } = default;
 
@@ -9222,6 +9045,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal surroundingDepth { get; set; }
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Wreck);
 
             public Wreck()
             {
@@ -9234,8 +9058,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Obstruction : FeatureTypeBase
         {
-            public string Code => nameof(Obstruction);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfObstruction? categoryOfObstruction { get; set; } = default;
 
@@ -9296,6 +9118,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal surroundingDepth { get; set; }
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Obstruction);
 
             public Obstruction()
             {
@@ -9308,8 +9131,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FoulGround : FeatureTypeBase
         {
-            public string Code => nameof(FoulGround);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -9340,6 +9161,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(FoulGround);
 
             public FoulGround()
             {
@@ -9352,8 +9174,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DiscolouredWater : FeatureTypeBase
         {
-            public string Code => nameof(DiscolouredWater);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -9366,6 +9186,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(DiscolouredWater);
 
             public DiscolouredWater()
             {
@@ -9378,8 +9199,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FishingFacility : FeatureTypeBase
         {
-            public string Code => nameof(FishingFacility);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfFishingFacility? categoryOfFishingFacility { get; set; } = default;
 
@@ -9410,6 +9229,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(FishingFacility);
 
             public FishingFacility()
             {
@@ -9422,8 +9242,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MarineFarmCulture : FeatureTypeBase
         {
-            public string Code => nameof(MarineFarmCulture);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfMarineFarmCulture? categoryOfMarineFarmCulture { get; set; } = default;
 
@@ -9475,6 +9293,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(MarineFarmCulture);
 
             public MarineFarmCulture()
             {
@@ -9487,8 +9306,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class OffshorePlatform : FeatureTypeBase
         {
-            public string Code => nameof(OffshorePlatform);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfOffshorePlatform? categoryOfOffshorePlatform { get; set; } = default;
 
@@ -9543,6 +9360,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(OffshorePlatform);
 
             public OffshorePlatform()
             {
@@ -9555,8 +9373,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CableSubmarine : FeatureTypeBase
         {
-            public string Code => nameof(CableSubmarine);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? buriedDepth { get; set; } = default;
 
@@ -9584,6 +9400,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(CableSubmarine);
 
             public CableSubmarine()
             {
@@ -9596,8 +9413,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CableArea : FeatureTypeBase
         {
-            public string Code => nameof(CableArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfCable> categoryOfCable { get; set; } = [];
 
@@ -9625,6 +9440,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(CableArea);
 
             public CableArea()
             {
@@ -9637,8 +9453,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PipelineSubmarineOnLand : FeatureTypeBase
         {
-            public string Code => nameof(PipelineSubmarineOnLand);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? buriedDepth { get; set; } = default;
 
@@ -9687,6 +9501,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(PipelineSubmarineOnLand);
 
             public PipelineSubmarineOnLand()
             {
@@ -9699,8 +9514,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SubmarinePipelineArea : FeatureTypeBase
         {
-            public string Code => nameof(SubmarinePipelineArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
 
@@ -9731,6 +9544,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SubmarinePipelineArea);
 
             public SubmarinePipelineArea()
             {
@@ -9743,8 +9557,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class OffshoreProductionArea : FeatureTypeBase
         {
-            public string Code => nameof(OffshoreProductionArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfOffshoreProductionArea? categoryOfOffshoreProductionArea { get; set; } = default;
 
@@ -9796,6 +9608,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(OffshoreProductionArea);
 
             public OffshoreProductionArea()
             {
@@ -9808,8 +9621,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NavigationLine : FeatureTypeBase
         {
-            public string Code => nameof(NavigationLine);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfNavigationLine categoryOfNavigationLine { get; set; }
 
@@ -9837,6 +9648,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(NavigationLine);
 
             public NavigationLine()
             {
@@ -9853,8 +9665,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RecommendedTrack : FeatureTypeBase
         {
-            public string Code => nameof(RecommendedTrack);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean basedOnFixedMarks { get; set; }
 
@@ -9900,6 +9710,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(RecommendedTrack);
 
             public RecommendedTrack()
             {
@@ -9912,8 +9723,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RangeSystem : FeatureTypeBase
         {
-            public string Code => nameof(RangeSystem);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -9932,6 +9741,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(RangeSystem);
 
             public RangeSystem()
             {
@@ -9944,8 +9754,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Fairway : FeatureTypeBase
         {
-            public string Code => nameof(Fairway);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? depthRangeMinimumValue { get; set; } = default;
 
@@ -9988,6 +9796,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Fairway);
 
             public Fairway()
             {
@@ -10000,8 +9809,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FairwaySystem : FeatureTypeBase
         {
-            public string Code => nameof(FairwaySystem);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -10023,6 +9830,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(FairwaySystem);
 
             public FairwaySystem()
             {
@@ -10035,8 +9843,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RecommendedRouteCentreline : FeatureTypeBase
         {
-            public string Code => nameof(RecommendedRouteCentreline);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean basedOnFixedMarks { get; set; }
 
@@ -10079,6 +9885,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(RecommendedRouteCentreline);
 
             public RecommendedRouteCentreline()
             {
@@ -10091,8 +9898,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TwoWayRoutePart : FeatureTypeBase
         {
-            public string Code => nameof(TwoWayRoutePart);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? basedOnFixedMarks { get; set; } = default;
 
@@ -10129,6 +9934,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(TwoWayRoutePart);
 
             public TwoWayRoutePart()
             {
@@ -10141,8 +9947,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TwoWayRoute : FeatureTypeBase
         {
-            public string Code => nameof(TwoWayRoute);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -10161,6 +9965,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(TwoWayRoute);
 
             public TwoWayRoute()
             {
@@ -10173,8 +9978,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RecommendedTrafficLanePart : FeatureTypeBase
         {
-            public string Code => nameof(RecommendedTrafficLanePart);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -10193,6 +9996,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(RecommendedTrafficLanePart);
 
             public RecommendedTrafficLanePart()
             {
@@ -10205,8 +10009,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DeepWaterRouteCentreline : FeatureTypeBase
         {
-            public string Code => nameof(DeepWaterRouteCentreline);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Boolean basedOnFixedMarks { get; set; }
 
@@ -10249,6 +10051,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(DeepWaterRouteCentreline);
 
             public DeepWaterRouteCentreline()
             {
@@ -10261,8 +10064,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DeepWaterRoutePart : FeatureTypeBase
         {
-            public string Code => nameof(DeepWaterRoutePart);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Decimal depthRangeMinimumValue { get; set; }
 
@@ -10308,6 +10109,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(DeepWaterRoutePart);
 
             public DeepWaterRoutePart()
             {
@@ -10320,8 +10122,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DeepWaterRoute : FeatureTypeBase
         {
-            public string Code => nameof(DeepWaterRoute);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -10340,6 +10140,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(DeepWaterRoute);
 
             public DeepWaterRoute()
             {
@@ -10352,8 +10153,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class InshoreTrafficZone : FeatureTypeBase
         {
-            public string Code => nameof(InshoreTrafficZone);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -10375,6 +10174,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(InshoreTrafficZone);
 
             public InshoreTrafficZone()
             {
@@ -10387,8 +10187,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PrecautionaryArea : FeatureTypeBase
         {
-            public string Code => nameof(PrecautionaryArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -10416,6 +10214,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<information> information { get; set; }
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(PrecautionaryArea);
 
             public PrecautionaryArea()
             {
@@ -10429,8 +10228,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationSchemeLanePart : FeatureTypeBase
         {
-            public string Code => nameof(TrafficSeparationSchemeLanePart);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -10455,6 +10252,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(TrafficSeparationSchemeLanePart);
 
             public TrafficSeparationSchemeLanePart()
             {
@@ -10467,8 +10265,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeparationZoneOrLine : FeatureTypeBase
         {
-            public string Code => nameof(SeparationZoneOrLine);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -10484,6 +10280,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(SeparationZoneOrLine);
 
             public SeparationZoneOrLine()
             {
@@ -10496,8 +10293,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationSchemeBoundary : FeatureTypeBase
         {
-            public string Code => nameof(TrafficSeparationSchemeBoundary);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -10513,6 +10308,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(TrafficSeparationSchemeBoundary);
 
             public TrafficSeparationSchemeBoundary()
             {
@@ -10525,8 +10321,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationSchemeCrossing : FeatureTypeBase
         {
-            public string Code => nameof(TrafficSeparationSchemeCrossing);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -10548,6 +10342,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(TrafficSeparationSchemeCrossing);
 
             public TrafficSeparationSchemeCrossing()
             {
@@ -10560,8 +10355,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationSchemeRoundabout : FeatureTypeBase
         {
-            public string Code => nameof(TrafficSeparationSchemeRoundabout);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -10583,6 +10376,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(TrafficSeparationSchemeRoundabout);
 
             public TrafficSeparationSchemeRoundabout()
             {
@@ -10595,8 +10389,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationScheme : FeatureTypeBase
         {
-            public string Code => nameof(TrafficSeparationScheme);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -10618,6 +10410,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(TrafficSeparationScheme);
 
             public TrafficSeparationScheme()
             {
@@ -10630,8 +10423,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ArchipelagicSeaLaneArea : FeatureTypeBase
         {
-            public string Code => nameof(ArchipelagicSeaLaneArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -10650,6 +10441,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(ArchipelagicSeaLaneArea);
 
             public ArchipelagicSeaLaneArea()
             {
@@ -10662,8 +10454,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ArchipelagicSeaLaneAxis : FeatureTypeBase
         {
-            public string Code => nameof(ArchipelagicSeaLaneAxis);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -10682,6 +10472,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(ArchipelagicSeaLaneAxis);
 
             public ArchipelagicSeaLaneAxis()
             {
@@ -10694,8 +10485,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ArchipelagicSeaLane : FeatureTypeBase
         {
-            public string Code => nameof(ArchipelagicSeaLane);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -10714,6 +10503,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(ArchipelagicSeaLane);
 
             public ArchipelagicSeaLane()
             {
@@ -10727,8 +10517,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadioCallingInPoint : FeatureTypeBase
         {
-            public string Code => nameof(RadioCallingInPoint);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> communicationChannel { get; set; } = [];
 
@@ -10759,6 +10547,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(RadioCallingInPoint);
 
             public RadioCallingInPoint()
             {
@@ -10771,8 +10560,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FerryRoute : FeatureTypeBase
         {
-            public string Code => nameof(FerryRoute);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfFerry> categoryOfFerry { get; set; }
 
@@ -10797,6 +10584,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(FerryRoute);
 
             public FerryRoute()
             {
@@ -10810,8 +10598,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarLine : FeatureTypeBase
         {
-            public string Code => nameof(RadarLine);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -10830,6 +10616,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(RadarLine);
 
             public RadarLine()
             {
@@ -10842,8 +10629,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarRange : FeatureTypeBase
         {
-            public string Code => nameof(RadarRange);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> communicationChannel { get; set; } = [];
 
@@ -10865,6 +10650,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(RadarRange);
 
             public RadarRange()
             {
@@ -10877,8 +10663,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarStation : FeatureTypeBase
         {
-            public string Code => nameof(RadarStation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String callSign { get; set; } = string.Empty;
 
@@ -10912,6 +10696,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(RadarStation);
 
             public RadarStation()
             {
@@ -10924,8 +10709,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorageArea : FeatureTypeBase
         {
-            public string Code => nameof(AnchorageArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
 
@@ -10959,6 +10742,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(AnchorageArea);
 
             public AnchorageArea()
             {
@@ -10971,8 +10755,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MooringArea : FeatureTypeBase
         {
-            public string Code => nameof(MooringArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfMooringArea> categoryOfMooringArea { get; set; } = [];
 
@@ -11009,6 +10791,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(MooringArea);
 
             public MooringArea()
             {
@@ -11021,8 +10804,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorBerth : FeatureTypeBase
         {
-            public string Code => nameof(AnchorBerth);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
 
@@ -11053,6 +10834,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(AnchorBerth);
 
             public AnchorBerth()
             {
@@ -11065,8 +10847,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeaplaneLandingArea : FeatureTypeBase
         {
-            public string Code => nameof(SeaplaneLandingArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11091,6 +10871,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SeaplaneLandingArea);
 
             public SeaplaneLandingArea()
             {
@@ -11103,8 +10884,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DumpingGround : FeatureTypeBase
         {
-            public string Code => nameof(DumpingGround);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfDumpingGround> categoryOfDumpingGround { get; set; } = [];
 
@@ -11132,6 +10911,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(DumpingGround);
 
             public DumpingGround()
             {
@@ -11144,8 +10924,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MilitaryPracticeArea : FeatureTypeBase
         {
-            public string Code => nameof(MilitaryPracticeArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea { get; set; } = [];
 
@@ -11179,6 +10957,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(MilitaryPracticeArea);
 
             public MilitaryPracticeArea()
             {
@@ -11191,8 +10970,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AdministrationArea : FeatureTypeBase
         {
-            public string Code => nameof(AdministrationArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inDispute { get; set; } = default;
 
@@ -11217,6 +10994,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(AdministrationArea);
 
             public AdministrationArea()
             {
@@ -11229,8 +11007,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CargoTranshipmentArea : FeatureTypeBase
         {
-            public string Code => nameof(CargoTranshipmentArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11258,6 +11034,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(CargoTranshipmentArea);
 
             public CargoTranshipmentArea()
             {
@@ -11270,8 +11047,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CautionArea : FeatureTypeBase
         {
-            public string Code => nameof(CautionArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public condition? condition { get; set; } = default;
 
@@ -11299,6 +11074,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(CautionArea);
 
             public CautionArea()
             {
@@ -11311,8 +11087,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class InformationArea : FeatureTypeBase
         {
-            public string Code => nameof(InformationArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11337,6 +11111,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(InformationArea);
 
             public InformationArea()
             {
@@ -11349,8 +11124,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContiguousZone : FeatureTypeBase
         {
-            public string Code => nameof(ContiguousZone);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -11369,6 +11142,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(ContiguousZone);
 
             public ContiguousZone()
             {
@@ -11382,8 +11156,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContinentalShelfArea : FeatureTypeBase
         {
-            public string Code => nameof(ContinentalShelfArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11399,6 +11171,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(ContinentalShelfArea);
 
             public ContinentalShelfArea()
             {
@@ -11412,8 +11185,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CustomZone : FeatureTypeBase
         {
-            public string Code => nameof(CustomZone);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -11426,6 +11197,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(CustomZone);
 
             public CustomZone()
             {
@@ -11439,8 +11211,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ExclusiveEconomicZone : FeatureTypeBase
         {
-            public string Code => nameof(ExclusiveEconomicZone);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inDispute { get; set; } = default;
 
@@ -11456,6 +11226,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(ExclusiveEconomicZone);
 
             public ExclusiveEconomicZone()
             {
@@ -11469,8 +11240,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FisheryZone : FeatureTypeBase
         {
-            public string Code => nameof(FisheryZone);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11489,6 +11258,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(FisheryZone);
 
             public FisheryZone()
             {
@@ -11502,8 +11272,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FishingGround : FeatureTypeBase
         {
-            public string Code => nameof(FishingGround);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11528,6 +11296,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(FishingGround);
 
             public FishingGround()
             {
@@ -11540,8 +11309,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FreePortArea : FeatureTypeBase
         {
-            public string Code => nameof(FreePortArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11557,6 +11324,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(FreePortArea);
 
             public FreePortArea()
             {
@@ -11569,8 +11337,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourAreaAdministrative : FeatureTypeBase
         {
-            public string Code => nameof(HarbourAreaAdministrative);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11586,6 +11352,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(HarbourAreaAdministrative);
 
             public HarbourAreaAdministrative()
             {
@@ -11598,8 +11365,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LogPond : FeatureTypeBase
         {
-            public string Code => nameof(LogPond);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11618,6 +11383,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(LogPond);
 
             public LogPond()
             {
@@ -11630,8 +11396,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class OilBarrier : FeatureTypeBase
         {
-            public string Code => nameof(OilBarrier);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfOilBarrier? categoryOfOilBarrier { get; set; } = default;
 
@@ -11659,6 +11423,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(OilBarrier);
 
             public OilBarrier()
             {
@@ -11671,8 +11436,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class StraightTerritorialSeaBaseline : FeatureTypeBase
         {
-            public string Code => nameof(StraightTerritorialSeaBaseline);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -11685,6 +11448,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(StraightTerritorialSeaBaseline);
 
             public StraightTerritorialSeaBaseline()
             {
@@ -11698,8 +11462,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TerritorialSeaArea : FeatureTypeBase
         {
-            public string Code => nameof(TerritorialSeaArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inDispute { get; set; } = default;
 
@@ -11721,6 +11483,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(TerritorialSeaArea);
 
             public TerritorialSeaArea()
             {
@@ -11734,8 +11497,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SubmarineTransitLane : FeatureTypeBase
         {
-            public string Code => nameof(SubmarineTransitLane);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11757,6 +11518,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(SubmarineTransitLane);
 
             public SubmarineTransitLane()
             {
@@ -11769,8 +11531,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PilotageDistrict : FeatureTypeBase
         {
-            public string Code => nameof(PilotageDistrict);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> communicationChannel { get; set; } = [];
 
@@ -11786,6 +11546,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(PilotageDistrict);
 
             public PilotageDistrict()
             {
@@ -11798,8 +11559,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CollisionRegulationsLimit : FeatureTypeBase
         {
-            public string Code => nameof(CollisionRegulationsLimit);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11821,6 +11580,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(CollisionRegulationsLimit);
 
             public CollisionRegulationsLimit()
             {
@@ -11833,8 +11593,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MarinePollutionRegulationsArea : FeatureTypeBase
         {
-            public string Code => nameof(MarinePollutionRegulationsArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -11850,6 +11608,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(MarinePollutionRegulationsArea);
 
             public MarinePollutionRegulationsArea()
             {
@@ -11862,8 +11621,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RestrictedArea : FeatureTypeBase
         {
-            public string Code => nameof(RestrictedArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
 
@@ -11894,6 +11651,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(RestrictedArea);
 
             public RestrictedArea()
             {
@@ -11907,8 +11665,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightAllAround : FeatureTypeBase
         {
-            public string Code => nameof(LightAllAround);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfLight> categoryOfLight { get; set; } = [];
 
@@ -11972,6 +11728,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(LightAllAround);
 
             public LightAllAround()
             {
@@ -11989,8 +11746,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightSectored : FeatureTypeBase
         {
-            public string Code => nameof(LightSectored);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfLight> categoryOfLight { get; set; } = [];
 
@@ -12036,6 +11791,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(LightSectored);
 
             public LightSectored()
             {
@@ -12049,8 +11805,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightFogDetector : FeatureTypeBase
         {
-            public string Code => nameof(LightFogDetector);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<colour> colour { get; set; } = [];
 
@@ -12093,6 +11847,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(LightFogDetector);
 
             public LightFogDetector()
             {
@@ -12105,8 +11860,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightAirObstruction : FeatureTypeBase
         {
-            public string Code => nameof(LightAirObstruction);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<colour> colour { get; set; } = [];
 
@@ -12155,6 +11908,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(LightAirObstruction);
 
             public LightAirObstruction()
             {
@@ -12167,8 +11921,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LateralBuoy : FeatureTypeBase
         {
-            public string Code => nameof(LateralBuoy);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
 
@@ -12220,6 +11972,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(LateralBuoy);
 
             public LateralBuoy()
             {
@@ -12233,8 +11986,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CardinalBuoy : FeatureTypeBase
         {
-            public string Code => nameof(CardinalBuoy);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
 
@@ -12286,6 +12037,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(CardinalBuoy);
 
             public CardinalBuoy()
             {
@@ -12299,8 +12051,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IsolatedDangerBuoy : FeatureTypeBase
         {
-            public string Code => nameof(IsolatedDangerBuoy);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
 
@@ -12349,6 +12099,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(IsolatedDangerBuoy);
 
             public IsolatedDangerBuoy()
             {
@@ -12362,8 +12113,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SafeWaterBuoy : FeatureTypeBase
         {
-            public string Code => nameof(SafeWaterBuoy);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
 
@@ -12412,6 +12161,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SafeWaterBuoy);
 
             public SafeWaterBuoy()
             {
@@ -12425,8 +12175,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpecialPurposeGeneralBuoy : FeatureTypeBase
         {
-            public string Code => nameof(SpecialPurposeGeneralBuoy);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
 
@@ -12478,6 +12226,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
             public SpecialPurposeGeneralBuoy()
             {
@@ -12492,8 +12241,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class EmergencyWreckMarkingBuoy : FeatureTypeBase
         {
-            public string Code => nameof(EmergencyWreckMarkingBuoy);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
 
@@ -12536,6 +12283,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(EmergencyWreckMarkingBuoy);
 
             public EmergencyWreckMarkingBuoy()
             {
@@ -12549,8 +12297,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class InstallationBuoy : FeatureTypeBase
         {
-            public string Code => nameof(InstallationBuoy);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
 
@@ -12599,6 +12345,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(InstallationBuoy);
 
             public InstallationBuoy()
             {
@@ -12612,8 +12359,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MooringBuoy : FeatureTypeBase
         {
-            public string Code => nameof(MooringBuoy);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required buoyShape buoyShape { get; set; }
 
@@ -12662,6 +12407,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(MooringBuoy);
 
             public MooringBuoy()
             {
@@ -12674,8 +12420,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LateralBeacon : FeatureTypeBase
         {
-            public string Code => nameof(LateralBeacon);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required beaconShape beaconShape { get; set; }
 
@@ -12742,6 +12486,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(LateralBeacon);
 
             public LateralBeacon()
             {
@@ -12755,8 +12500,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CardinalBeacon : FeatureTypeBase
         {
-            public string Code => nameof(CardinalBeacon);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required beaconShape beaconShape { get; set; }
 
@@ -12823,6 +12566,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(CardinalBeacon);
 
             public CardinalBeacon()
             {
@@ -12836,8 +12580,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IsolatedDangerBeacon : FeatureTypeBase
         {
-            public string Code => nameof(IsolatedDangerBeacon);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required beaconShape beaconShape { get; set; }
 
@@ -12901,6 +12643,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(IsolatedDangerBeacon);
 
             public IsolatedDangerBeacon()
             {
@@ -12914,8 +12657,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SafeWaterBeacon : FeatureTypeBase
         {
-            public string Code => nameof(SafeWaterBeacon);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required beaconShape beaconShape { get; set; }
 
@@ -12979,6 +12720,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SafeWaterBeacon);
 
             public SafeWaterBeacon()
             {
@@ -12992,8 +12734,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpecialPurposeGeneralBeacon : FeatureTypeBase
         {
-            public string Code => nameof(SpecialPurposeGeneralBeacon);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required beaconShape beaconShape { get; set; }
 
@@ -13060,6 +12800,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
             public SpecialPurposeGeneralBeacon()
             {
@@ -13074,8 +12815,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Daymark : FeatureTypeBase
         {
-            public string Code => nameof(Daymark);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = [];
 
@@ -13130,6 +12869,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(Daymark);
 
             public Daymark()
             {
@@ -13143,8 +12883,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightFloat : FeatureTypeBase
         {
-            public string Code => nameof(LightFloat);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<colour> colour { get; set; }
 
@@ -13196,6 +12934,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(LightFloat);
 
             public LightFloat()
             {
@@ -13209,8 +12948,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightVessel : FeatureTypeBase
         {
-            public string Code => nameof(LightVessel);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<colour> colour { get; set; }
 
@@ -13259,6 +12996,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(LightVessel);
 
             public LightVessel()
             {
@@ -13272,8 +13010,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Retroreflector : FeatureTypeBase
         {
-            public string Code => nameof(Retroreflector);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<colour> colour { get; set; } = [];
 
@@ -13301,6 +13037,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(Retroreflector);
 
             public Retroreflector()
             {
@@ -13313,8 +13050,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarReflector : FeatureTypeBase
         {
-            public string Code => nameof(RadarReflector);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public fixedDateRange? fixedDateRange { get; set; }
 
@@ -13336,6 +13071,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(RadarReflector);
 
             public RadarReflector()
             {
@@ -13348,8 +13084,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FogSignal : FeatureTypeBase
         {
-            public string Code => nameof(FogSignal);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfFogSignal categoryOfFogSignal { get; set; }
 
@@ -13392,6 +13126,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(FogSignal);
 
             public FogSignal()
             {
@@ -13404,8 +13139,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PhysicalAISAidToNavigation : FeatureTypeBase
         {
-            public string Code => nameof(PhysicalAISAidToNavigation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
 
@@ -13433,6 +13166,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(PhysicalAISAidToNavigation);
 
             public PhysicalAISAidToNavigation()
             {
@@ -13445,8 +13179,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class VirtualAISAidToNavigation : FeatureTypeBase
         {
-            public string Code => nameof(VirtualAISAidToNavigation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
 
@@ -13477,6 +13209,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(VirtualAISAidToNavigation);
 
             public VirtualAISAidToNavigation()
             {
@@ -13489,8 +13222,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadioStation : FeatureTypeBase
         {
-            public string Code => nameof(RadioStation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String callSign { get; set; } = string.Empty;
 
@@ -13527,6 +13258,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(RadioStation);
 
             public RadioStation()
             {
@@ -13539,8 +13271,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarTransponderBeacon : FeatureTypeBase
         {
-            public string Code => nameof(RadarTransponderBeacon);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; set; }
 
@@ -13580,6 +13310,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationNauticalInformation { get; set; }
+            public override string Code => nameof(RadarTransponderBeacon);
 
             public RadarTransponderBeacon()
             {
@@ -13592,8 +13323,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PilotBoardingPlace : FeatureTypeBase
         {
-            public string Code => nameof(PilotBoardingPlace);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace { get; set; } = default;
 
@@ -13630,6 +13359,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(PilotBoardingPlace);
 
             public PilotBoardingPlace()
             {
@@ -13642,8 +13372,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class VesselTrafficServiceArea : FeatureTypeBase
         {
-            public string Code => nameof(VesselTrafficServiceArea);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
 
@@ -13656,6 +13384,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(VesselTrafficServiceArea);
 
             public VesselTrafficServiceArea()
             {
@@ -13668,8 +13397,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CoastGuardStation : FeatureTypeBase
         {
-            public string Code => nameof(CoastGuardStation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> communicationChannel { get; set; } = [];
 
@@ -13697,6 +13424,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(CoastGuardStation);
 
             public CoastGuardStation()
             {
@@ -13709,8 +13437,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SignalStationWarning : FeatureTypeBase
         {
-            public string Code => nameof(SignalStationWarning);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfSignalStationWarning> categoryOfSignalStationWarning { get; set; }
 
@@ -13738,6 +13464,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SignalStationWarning);
 
             public SignalStationWarning()
             {
@@ -13751,8 +13478,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SignalStationTraffic : FeatureTypeBase
         {
-            public string Code => nameof(SignalStationTraffic);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic { get; set; }
 
@@ -13780,6 +13505,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SignalStationTraffic);
 
             public SignalStationTraffic()
             {
@@ -13793,8 +13519,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RescueStation : FeatureTypeBase
         {
-            public string Code => nameof(RescueStation);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<categoryOfRescueStation> categoryOfRescueStation { get; set; } = [];
 
@@ -13822,6 +13546,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(RescueStation);
 
             public RescueStation()
             {
@@ -13834,8 +13559,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourFacility : FeatureTypeBase
         {
-            public string Code => nameof(HarbourFacility);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
 
@@ -13884,6 +13607,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(HarbourFacility);
 
             public HarbourFacility()
             {
@@ -13897,8 +13621,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SmallCraftFacility : FeatureTypeBase
         {
-            public string Code => nameof(SmallCraftFacility);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required List<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility { get; set; }
 
@@ -13923,6 +13645,7 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
             public informationBinding? theInformationContactDetails { get; set; }
+            public override string Code => nameof(SmallCraftFacility);
 
             public SmallCraftFacility()
             {
@@ -13936,8 +13659,6 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TextPlacement : FeatureTypeBase
         {
-            public string Code => nameof(TextPlacement);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public required Int32 textOffsetBearing { get; set; }
 
@@ -13952,6 +13673,7 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
+            public override string Code => nameof(TextPlacement);
 
             public TextPlacement()
             {
@@ -13965,13 +13687,12 @@ namespace S100Framework.DomainModel.S101
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Chart1Feature : FeatureTypeBase
         {
-            public string Code => nameof(Chart1Feature);
-
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<String> drawingInstruction { get; set; } = [];
 
             [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
+            public override string Code => nameof(Chart1Feature);
 
             public Chart1Feature()
             {

@@ -115,6 +115,22 @@ namespace S100Framework.WPF.ViewModel
         public string Name => $"{_linkId} {informationBinding?.informationType}";
     }
 
+    public class informationBindingViewModel<T> : informationBindingViewModel where T : new()
+    {
+        public informationBindingViewModel() {
+            _value = new T();
+        }
+
+        private T _value;
+
+        public T Value {
+            get { return _value; }
+            set {
+                SetValue(ref _value, value);
+            }
+        }
+    }
+
     public class FeatureBindingConnector : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;

@@ -892,6 +892,8 @@ namespace S100Framework
                                 //builder.AppendLine($"\t\t\tpublic static Bindings.informationBinding<Associations.InformationAssociations.{association}, {informationTypeRef}> {name} => new (Role.{role}) {{ {initializer} }};");
                                 //builder.AppendLine("\t\t\t");
                             }
+
+                            builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
@@ -1080,6 +1082,8 @@ namespace S100Framework
                                 //builder.AppendLine($"\t\t\tpublic static Bindings.featureBinding<Associations.FeatureAssociations.{association}, {featureTypeRef}> {name} => new (Role.{role}) {{ {initializer} }};");
                                 //builder.AppendLine("\t\t\t");
                             }
+
+                            builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
@@ -1294,13 +1298,7 @@ namespace S100Framework
             }
             if (code.ToLowerInvariant().Equals(code))
                 classBuilder.AppendLine("#pragma warning restore CS8981");
-            classBuilder.AppendLine("\t\t{");
-
-            var propertyCode = type.GetProperty("Code", BindingFlags.Public | BindingFlags.FlattenHierarchy);
-            if (propertyCode is not null)
-                ;
-
-            classBuilder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
+            classBuilder.AppendLine("\t\t{");            
 
             var first = true;
             foreach (var p in type.GetProperties()) {

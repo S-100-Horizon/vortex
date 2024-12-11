@@ -4,7 +4,7 @@ using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
-namespace S100Framework.WPF.ViewModel.S122
+namespace S100Framework.WPF.ViewModel.S922
 {
     internal static class Preamble
     {
