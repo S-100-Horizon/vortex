@@ -14,7 +14,17 @@ using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using System.Xml.Linq;
+using Xceed.Wpf.Toolkit.PropertyGrid;
+using Xceed.Wpf.Toolkit;
+using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
+using System.Collections.Specialized;
+using S100Framework.DomainModel.S122.Associations.InformationAssociations;
+using S100Framework.DomainModel.S122;
 
 namespace S100Framework.WPF.ViewModel.S901
 {
@@ -152,6 +162,7 @@ namespace S100Framework.WPF.ViewModel.S901
 
         private string _referenceId;
 
+        [Editor(typeof(InformationTypeSelector), typeof(InformationTypeSelector))]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.PropertyOrder(1)]
         public string ReferenceId {
             get {
@@ -176,26 +187,158 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    public class informationBinding4ViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            if (string.IsNullOrWhiteSpace(propertyName)) return;
+
+            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
+            backingFiled = value;
+            OnPropertyChanged(propertyName);
+        }
+
+        private additionalInformation _additionalInformation = new additionalInformation();
+
+        public additionalInformation additionalInformation {
+            get {
+                return _additionalInformation;
+            }
+            set {
+                SetValue(ref _additionalInformation, value);
+            }
+        }
+
+        public DomainModel.S122.Role Role => DomainModel.S122.Role.providesInformation;
+
+        public Type informationType => typeof(DomainModel.S122.InformationTypes.NauticalInformation);
+    }
+
+    /*
+            public InformationAssociation? association { get; set; }
+            public string? role { get; set; }
+            public string? informationType { get; set; }
+     */
+
+    public sealed class InformationTypeCollectionEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.CollectionEditor
+    {
+        /*
+                     <xctk:PropertyGrid.EditorDefinitions>
+                        <xctk:EditorTemplateDefinition TargetProperties="ReferenceId">
+                            <xctk:EditorTemplateDefinition.EditingTemplate>
+                                <DataTemplate>
+                                    <ComboBox ItemsSource="{Binding Instance.Hello}"/>
+                                </DataTemplate>
+                            </xctk:EditorTemplateDefinition.EditingTemplate>
+                        </xctk:EditorTemplateDefinition>
+                    </xctk:PropertyGrid.EditorDefinitions>* 
+         */
+
+        public override FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var editor = (PropertyGridEditorCollectionControl)base.ResolveEditor(propertyItem);
+
+            editor.CollectionUpdated += this.Editor_CollectionUpdated;
+
+            editor.Tag = propertyItem.Instance;
+
+            ((INotifyCollectionChanged)editor.ItemsSource).CollectionChanged += this.InformationTypeCollectionEditor_CollectionChanged;
+
+            return editor;
+        }
+
+        protected override void ResolveValueBinding(PropertyItem propertyItem) {
+            base.ResolveValueBinding(propertyItem);
+        }
+
+        private void InformationTypeCollectionEditor_CollectionChanged(object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) {
+            ;
+        }
+
+        private void Editor_CollectionUpdated(object sender, RoutedEventArgs e) {
+            ;
+        }
+
+        public string[] Hello => new[] {
+            "Hello3",
+            "Hello4"
+        };
+    }
+
+    public sealed class InformationTypeSelector : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        //public DomainModel.Bindings.informationBinding[] informationBindingsItems => new DomainModel.Bindings.informationBinding[] {
+        //        NAVWARNPart.headerNAVWARNPreamble,
+        //    };
+
+        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+            if (propertyItem.Instance is ViewModelBase) {
+
+                var viewModel = (ViewModelBase)propertyItem.Instance;
+
+                if (viewModel.Host is not null) {
+                    var comboBox = new ComboBox {
+                        Name = $"_comboBox{Guid.NewGuid():N}",
+                        DisplayMemberPath = "Name",
+                    };
+
+                    var bindingItemsSourceProperty = new Binding() { Source = viewModel.Host.GetSource(propertyItem), Mode = BindingMode.OneWay };
+                    BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                    return comboBox;
+                }
+            }
+            var text = propertyItem.DisplayName;
+
+            var connector = (dynamic)propertyItem.Instance;
+
+            //if (connector.informationBinding is null)
+            //    text += " null";
+            return new Label {
+                Content = text,
+                IsEnabled = true,
+            };
+        }
+    }
+
     public class TestComposition : InformationAssociation
     {
         public TestComposition() {
         }
 
-        public static Role[] Roles => new[]
-        {   Role.theQualityInformation, };
+        public static DomainModel.S101.Role[] Roles => new[]
+        {   DomainModel.S101.Role.theQualityInformation, };
 
-        public string Test1 { get;set; }
+        public string Test1 { get; set; }
         public decimal Test2 { get; set; }
     }
 
     public partial class QualityOfBathymetricDataViewModel
     {
+        [Browsable(false)]
+        public string[] Hello => new[] {
+            "Hello1",
+            "Hello2"
+        };
 
         //  CUSTOM
         [Category("Development - S901")]
-        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        [Editor(typeof(InformationTypeCollectionEditor), typeof(InformationTypeCollectionEditor))]
         [InformationBinding<DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition, SpatialQuality>()]
-        public ObservableCollection<informationBinding3ViewModel<QualityOfBathymetricDataComposition>> theQualityInformationSpatialQuality { get; set; } = new();
+        public ObservableCollection<informationBinding3ViewModel<TestComposition>> theQualityInformationSpatialQuality { get; set; } = new();
+
+
+        //[Category("Development - S901")]
+        //[ExpandableObject]
+        //public informationBinding3ViewModel<TestComposition>[] theQualityInformationSpatialQualityArray { get; set; } = new[] {
+        //    new informationBinding3ViewModel<TestComposition>(),
+        //    new informationBinding3ViewModel<TestComposition>(),
+        //    new informationBinding3ViewModel<TestComposition>(),
+        //};
 
 
         //[Category("Development - S901")]

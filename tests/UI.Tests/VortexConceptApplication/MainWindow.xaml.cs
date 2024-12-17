@@ -131,6 +131,22 @@ namespace VortexConceptApplication
             //editorTemplate.EditingTemplate = dt;
             //this._propertyGrid.EditorDefinitions.Add(editorTemplate);
 
+            //var editorTemplate = new EditorTemplateDefinition();
+            //PropertyDefinition propertyDefinition = new PropertyDefinition();
+            //propertyDefinition.TargetProperties.Add("ReferenceId");            
+            //editorTemplate.PropertyDefinitions.Add(propertyDefinition);
+
+            //FrameworkElementFactory fac = new FrameworkElementFactory(typeof(ComboBox));
+            //var bindingItemsSourceProperty = new Binding() { Source = Hello, Mode = BindingMode.OneWay };
+            //fac.SetBinding(ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            //DataTemplate dt = new DataTemplate { VisualTree = fac };
+            //dt.Seal();
+            //editorTemplate.EditingTemplate = dt;
+            //this._propertyGrid.EditorDefinitions.Add(editorTemplate);
+
+            //this._propertyGrid.Update();
+
 
             //var p = this._propertyGrid;
 
@@ -143,7 +159,18 @@ namespace VortexConceptApplication
             //};
 
             SelectedProperty = viewModel;
+
+            //SelectedProperty = new object[]{
+            //    viewModel,
+            //    viewModel,
+            //    viewModel
+            //};
         }
+
+        public string[] Hello => new[] {
+            "Hello3",
+            "Hello4"
+        };
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
             Logger.Current.Verbose("PreparePropertyItem = {propertyName}", e.PropertyItem.Name);
@@ -153,6 +180,9 @@ namespace VortexConceptApplication
             var propertyItem = e.Item as Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem;
             if (propertyItem == null)
                 return;
+
+            //propertyItem.IsExpandable = true;
+            //return;
 
             if (!propertyItem.PropertyType.IsValueType && propertyItem.PropertyType != typeof(string) && !propertyItem.PropertyType.IsArray && !"System.Collections.Generic".Equals(propertyItem.PropertyType.Namespace)) {
 

@@ -161,6 +161,7 @@ namespace TestS100Framework
             public void Build_S122() {
 
                 var s100 = XDocument.Load(@".\Artifacts\jpS-122_FC_1.2.1.xml");
+                //var s100 = XDocument.Load(@".\Artifacts\S-122_FC_1.2.1.xml");                
 
                 var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
