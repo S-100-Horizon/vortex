@@ -6,6 +6,7 @@ using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using System;
 using static S100Framework.Applications.VortexLoader;
+using static System.Net.WebRequestMethods;
 using IO = System.IO;
 
 namespace S100Framework.Applications
@@ -29,7 +30,10 @@ namespace S100Framework.Applications
             while (cursor.MoveNext()) {
                 var current = (Feature)cursor.Current;
                 var subtype = Convert.ToInt32(current["FCSubtype"]);
-                var inform = Convert.ToString(current["INFORM"]);
+
+                var catobs = Convert.ToString(current["CATOBS"]); // 
+
+
                 Decimal valsou = -32767;
 
                 if (DBNull.Value != current["VALSOU"] && current["VALSOU"] is not null) {
@@ -38,10 +42,21 @@ namespace S100Framework.Applications
 
                 switch (subtype) {
                     case 1: { // CTNARE
+                            var cautionArea = new S100Framework.DomainModel.S101.FeatureTypes.CautionArea {
+                            };
+
+                            AddInformation(cautionArea.information, current);
+
+                            buffer["ps"] = ps;
+                            buffer["code"] = nameof(S100Framework.DomainModel.S101.FeatureTypes.UnderwaterAwashRock);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(cautionArea);
+                            buffer["shape"] = current.GetShape();
+                            insert.Insert(buffer);
                         }
                         break;
 
                     case 10: { // FSHFAC
+
                         }
                         break;
 
@@ -61,6 +76,13 @@ namespace S100Framework.Applications
                                 surroundingDepth = valsou,
                                 waterLevelEffect = waterLeveleffectCurrent
                             };
+
+
+
+
+                            
+
+
 
                             if (DBNull.Value != current["WATLEV"] && current["WATLEV"] is not null) {
                                 obstruction.waterLevelEffect = Convert.ToInt32(current["WATLEV"]) switch {
@@ -83,12 +105,11 @@ namespace S100Framework.Applications
                                 obstruction.scaleMinimum = Convert.ToInt32(current["PLTS_COMP_SCALE"]);
                             }
 
-
                             AddFeatureName(obstruction.featureName, current);
                             AddInformation(obstruction.information, current);
 
                             buffer["ps"] = ps;
-                            buffer["code"] = "Obstruction";
+                            buffer["code"] = nameof(S100Framework.DomainModel.S101.FeatureTypes.Obstruction); ;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(obstruction);
                             buffer["shape"] = current.GetShape();
                             insert.Insert(buffer);
@@ -96,10 +117,45 @@ namespace S100Framework.Applications
                         break;
                         
                     case 35: { // UWTROC
+                            var uwtroc = new S100Framework.DomainModel.S101.FeatureTypes.UnderwaterAwashRock {
+                                surroundingDepth = 0,
+                                valueOfSounding = 0,
+                                waterLevelEffect = waterLevelEffect.CoversAndUncovers
+
+                            };
+                            if (DBNull.Value != current["WATLEV"] && current["WATLEV"] is not null) {
+                                uwtroc.waterLevelEffect = Convert.ToInt32(current["WATLEV"]) switch {
+                                    1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
+                                    2 => waterLevelEffect.AlwaysDry,  // always dry
+                                    3 => waterLevelEffect.AlwaysUnderWaterSubmerged,  // always under water/submerged
+                                    4 => waterLevelEffect.CoversAndUncovers,  // covers and uncovers
+                                    5 => waterLevelEffect.Awash,  // awash
+                                    6 => waterLevelEffect.SubjectToInundationOrFlooding,  // subject to inundation or flooding
+                                    7 => waterLevelEffect.Floating,  // floating
+                                    -32767 => (waterLevelEffect)(-32767),
+                                    // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
+                                    _ => throw new IndexOutOfRangeException(),
+                                };
+                            }
+
+
+                            if (DBNull.Value != current["PLTS_COMP_SCALE"] && current["PLTS_COMP_SCALE"] is not null) {
+                                uwtroc.scaleMinimum = Convert.ToInt32(current["PLTS_COMP_SCALE"]);
+                            }
+
+                            AddFeatureName(uwtroc.featureName, current);
+                            AddInformation(uwtroc.information, current);
+
+                            buffer["ps"] = ps;
+                            buffer["code"] = nameof(S100Framework.DomainModel.S101.FeatureTypes.UnderwaterAwashRock);
+                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(uwtroc);
+                            buffer["shape"] = current.GetShape();
+                            insert.Insert(buffer);
                         }
                         break;
 
                     case 40: { // WATTUR
+                            
                         }
                         break;
 
@@ -136,7 +192,7 @@ namespace S100Framework.Applications
                             AddInformation(wreck.information, current);
 
                             buffer["ps"] = ps;
-                            buffer["code"] = "Obstruction";
+                            buffer["code"] = nameof(S100Framework.DomainModel.S101.FeatureTypes.Wreck);
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(wreck);
                             buffer["shape"] = current.GetShape();
                             insert.Insert(buffer);

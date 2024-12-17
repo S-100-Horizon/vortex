@@ -96,8 +96,67 @@ namespace S100Framework.Applications
             }
         }
 
+        
+
+
+
         private static void AddInformation(IList<information> information, Feature current) {
-            //TODO: information
+            // TODO: NOT FINISHED. Still missing handling of both files and a copy of the file content. Send to Nigel & Co.
+
+            //var informationList = new List<information>();
+
+            //if (DBNull.Value != current["TXTDSC"]) {
+            //    // TODO: handle notefiles
+            //}
+
+            //if (DBNull.Value != current["INFORM"]) {
+            //    var inform = Convert.ToString(current["INFORM"])?.Trim();
+
+            //    //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
+            //    // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
+
+            //    string[] informs = inform != null ? inform.Split(';') : Array.Empty<string>();
+
+
+            //    foreach (var value in informs) {
+            //        string fileLocator = default;
+            //        string fileReference = default;
+            //        string language = "eng";
+
+            //        var instance = new information {
+            //            fileLocator = fileLocator,
+            //            fileReference = fileReference,
+            //            headline = default,
+            //            language = language,
+            //            text = value,
+            //        };
+            //        informationList.Add(instance);
+            //    }
+
+            //}
+            //if (DBNull.Value != current["NINFORM"]) {
+            //    var ninform = Convert.ToString(current["NINFORM"])?.Trim();
+
+            //    //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
+            //    // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
+
+            //    string[] ninforms = ninform != null ? ninform.Split(';') : Array.Empty<string>();
+
+            //    foreach (var value in ninforms) {
+            //        string fileLocator = default;
+            //        string fileReference = default;
+            //        string language = "dan";
+
+            //        var instance = new information {
+            //            fileLocator = fileLocator,
+            //            fileReference = fileReference,
+            //            headline = default,
+            //            language = language,
+            //            text = value,
+            //        };
+            //        informationList.Add(instance);
+            //    }
+            //}
         }
 
         private static void NIS_ProductCoverage(Geodatabase source, Geodatabase target, QueryFilter filter) {
