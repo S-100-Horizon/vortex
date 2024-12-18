@@ -901,7 +901,7 @@ namespace S100Framework
                                     postfix = " = [];";
                                 }
 
-                                builder.AppendLine($"\t\t\tpublic {prefix} {role} {{get; set;}}{postfix}");
+                                builder.AppendLine($"\t\t\tpublic {prefix} {role}{association} {{get; set;}}{postfix}");
                             }
 
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
@@ -1085,7 +1085,7 @@ namespace S100Framework
                                     postfix = " = [];";
                                 }
 
-                                builder.AppendLine($"\t\t\tpublic {prefix} {association} {{get; set;}}{postfix}");
+                                builder.AppendLine($"\t\t\tpublic {prefix} {role}{association} {{get; set;}}{postfix}");
                             }
 
                             //  featureBinding
@@ -1144,7 +1144,7 @@ namespace S100Framework
                                     postfix = " = [];";
                                 }
 
-                                builder.AppendLine($"\t\t\tpublic {prefix} {role}{code} {{get; set;}}{postfix}");
+                                builder.AppendLine($"\t\t\tpublic {prefix} {role}{association} {{get; set;}}{postfix}");
                             }
 
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
