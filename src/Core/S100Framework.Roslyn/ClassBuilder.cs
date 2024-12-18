@@ -869,17 +869,17 @@ namespace S100Framework
 
                                 builder.AppendLine();
 
-                                var informationBindingBuinder = new StringBuilder();
+                                var informationBindingBuilder = new StringBuilder();
 
-                                informationBindingBuinder.AppendLine($"\t\t\tpublic class {role}{informationTypeRef}Binding : informationBinding");
-                                informationBindingBuinder.AppendLine("\t\t\t{");
-                                informationBindingBuinder.AppendLine($"\t\t\tpublic override Type informationType => typeof({informationTypeRef});");
-                                informationBindingBuinder.AppendLine($"\t\t\tpublic Role Role => Role.{role};");
-                                informationBindingBuinder.AppendLine($"\t\t\tpublic Associations.InformationAssociations.{association} {association} {{get; set; }} = new();");
-                                informationBindingBuinder.AppendLine("\t\t\t}");
-                                informationBindingBuinder.AppendLine();
+                                informationBindingBuilder.AppendLine($"\t\t\tpublic class {role}{informationTypeRef}Binding : informationBinding");
+                                informationBindingBuilder.AppendLine("\t\t\t{");
+                                informationBindingBuilder.AppendLine($"\t\t\tpublic override Type[] informationTypes => [typeof({informationTypeRef})];");
+                                informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => Role.{role};");
+                                informationBindingBuilder.AppendLine($"\t\t\tpublic Associations.InformationAssociations.{association} {association} {{get; set; }} = new();");
+                                informationBindingBuilder.AppendLine("\t\t\t}");
+                                informationBindingBuilder.AppendLine();
 
-                                var b = informationBindingBuinder.ToString();
+                                var b = informationBindingBuilder.ToString();
                                 if (!informationBindings.ContainsKey($"{role}{informationTypeRef}Binding")) {
 
                                     classBuilder.Insert(informationBindingIndex, b);
@@ -1054,7 +1054,7 @@ namespace S100Framework
 
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic class {role}{informationTypeRef}Binding : informationBinding");
                                 informationBindingBuilder.AppendLine("\t\t\t{");
-                                informationBindingBuilder.AppendLine($"\t\t\tpublic override Type informationType => typeof({informationTypeRef});");
+                                informationBindingBuilder.AppendLine($"\t\t\tpublic override Type[] informationTypes => [typeof({informationTypeRef})];");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => Role.{role};");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic Associations.InformationAssociations.{association} {association} {{get; set; }} = new();");
                                 informationBindingBuilder.AppendLine("\t\t\t}");
@@ -1109,7 +1109,7 @@ namespace S100Framework
 
                                 featureBindingBuilder.AppendLine($"\t\t\tpublic class {role}{featureTypeRef}Binding : featureBinding");
                                 featureBindingBuilder.AppendLine("\t\t\t{");
-                                featureBindingBuilder.AppendLine($"\t\t\tpublic override Type featureType => typeof({featureTypeRef});");
+                                featureBindingBuilder.AppendLine($"\t\t\tpublic override Type[] featureTypes => [typeof({featureTypeRef})];");
                                 featureBindingBuilder.AppendLine($"\t\t\tpublic Role Role => Role.{role};");
                                 featureBindingBuilder.AppendLine($"\t\t\tpublic Associations.FeatureAssociations.{association} {association} {{get; set; }} = new();");
                                 featureBindingBuilder.AppendLine("\t\t\t}");
@@ -1240,12 +1240,12 @@ namespace S100Framework
             common.AppendLine("\t\t}");
 
             common.AppendLine("\t\tpublic abstract class informationBinding {");
-            common.AppendLine("\t\t\tpublic abstract Type informationType { get; }");
+            common.AppendLine("\t\t\tpublic abstract Type[] informationTypes { get; }");
             common.AppendLine("\t\t}");
             common.AppendLine();
 
             common.AppendLine("\t\tpublic abstract class featureBinding {");
-            common.AppendLine("\t\t\tpublic abstract Type featureType { get; }");
+            common.AppendLine("\t\t\tpublic abstract Type[] featureTypes { get; }");
             common.AppendLine("\t\t}");
             common.AppendLine();
 

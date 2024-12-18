@@ -65,12 +65,12 @@ namespace S100Framework.DomainModel
 
         public abstract class informationBinding
         {
-            public abstract Type informationType { get; }
+            public abstract Type[] informationTypes { get; }
         }
 
         public abstract class featureBinding
         {
-            public abstract Type featureType { get; }
+            public abstract Type[] featureTypes { get; }
         }
     }
 }
