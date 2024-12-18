@@ -12,122 +12,162 @@ using S100Framework.DomainModel.S131.FeatureTypes;
 using S100Framework.DomainModel.S131.Associations.InformationAssociations;
 using S100Framework.DomainModel.S131.Associations.FeatureAssociations;
 
+
 namespace S100Framework.WPF.ViewModel.S131
 {
+
     internal static class Preamble
     {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S131.InformationTypes.Applicability).Name, () =>
-        {
-            return new ApplicabilityViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Authority).Name, () =>
-        {
-            return new AuthorityViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.AvailablePortServices).Name, () =>
-        {
-            return new AvailablePortServicesViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.ContactDetails).Name, () =>
-        {
-            return new ContactDetailsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Entrance).Name, () =>
-        {
-            return new EntranceViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.NauticalInformation).Name, () =>
-        {
-            return new NauticalInformationViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.NonStandardWorkingDay).Name, () =>
-        {
-            return new NonStandardWorkingDayViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Recommendations).Name, () =>
-        {
-            return new RecommendationsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Regulations).Name, () =>
-        {
-            return new RegulationsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Restrictions).Name, () =>
-        {
-            return new RestrictionsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.ServiceHours).Name, () =>
-        {
-            return new ServiceHoursViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.SpatialQuality).Name, () =>
-        {
-            return new SpatialQualityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.AnchorBerth).Name, () =>
-        {
-            return new AnchorBerthViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.AnchorageArea).Name, () =>
-        {
-            return new AnchorageAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Berth).Name, () =>
-        {
-            return new BerthViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.BerthPosition).Name, () =>
-        {
-            return new BerthPositionViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DockArea).Name, () =>
-        {
-            return new DockAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DryDock).Name, () =>
-        {
-            return new DryDockViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DumpingGround).Name, () =>
-        {
-            return new DumpingGroundViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.FloatingDock).Name, () =>
-        {
-            return new FloatingDockViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Gridiron).Name, () =>
-        {
-            return new GridironViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative).Name, () =>
-        {
-            return new HarbourAreaAdministrativeViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourAreaSection).Name, () =>
-        {
-            return new HarbourAreaSectionViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourBasin).Name, () =>
-        {
-            return new HarbourBasinViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourFacility).Name, () =>
-        {
-            return new HarbourFacilityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.MooringWarpingFacility).Name, () =>
-        {
-            return new MooringWarpingFacilityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.OuterLimit).Name, () =>
-        {
-            return new OuterLimitViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.PilotBoardingPlace).Name, () =>
-        {
-            return new PilotBoardingPlaceViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.SeaplaneLandingArea).Name, () =>
-        {
-            return new SeaplaneLandingAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Terminal).Name, () =>
-        {
-            return new TerminalViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.TurningBasin).Name, () =>
-        {
-            return new TurningBasinViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.WaterwayArea).Name, () =>
-        {
-            return new WaterwayAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DataCoverage).Name, () =>
-        {
-            return new DataCoverageViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData).Name, () =>
-        {
-            return new QualityOfNonBathymetricDataViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.SoundingDatum).Name, () =>
-        {
-            return new SoundingDatumViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.VerticalDatumOfData).Name, () =>
-        {
-            return new VerticalDatumOfDataViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.TextPlacement).Name, () =>
-        {
-            return new TextPlacementViewModel();
-        } }, });
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {
+            { typeof(DomainModel.S131.InformationTypes.Applicability).Name, ()=> {
+                return new ApplicabilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Authority).Name, ()=> {
+                return new AuthorityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.AvailablePortServices).Name, ()=> {
+                return new AvailablePortServicesViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.ContactDetails).Name, ()=> {
+                return new ContactDetailsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Entrance).Name, ()=> {
+                return new EntranceViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.NauticalInformation).Name, ()=> {
+                return new NauticalInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.NonStandardWorkingDay).Name, ()=> {
+                return new NonStandardWorkingDayViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Recommendations).Name, ()=> {
+                return new RecommendationsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Regulations).Name, ()=> {
+                return new RegulationsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Restrictions).Name, ()=> {
+                return new RestrictionsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.ServiceHours).Name, ()=> {
+                return new ServiceHoursViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.SpatialQuality).Name, ()=> {
+                return new SpatialQualityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.AnchorBerth).Name, ()=> {
+                return new AnchorBerthViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.AnchorageArea).Name, ()=> {
+                return new AnchorageAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.Berth).Name, ()=> {
+                return new BerthViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.BerthPosition).Name, ()=> {
+                return new BerthPositionViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DockArea).Name, ()=> {
+                return new DockAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DryDock).Name, ()=> {
+                return new DryDockViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DumpingGround).Name, ()=> {
+                return new DumpingGroundViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.FloatingDock).Name, ()=> {
+                return new FloatingDockViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.Gridiron).Name, ()=> {
+                return new GridironViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative).Name, ()=> {
+                return new HarbourAreaAdministrativeViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourAreaSection).Name, ()=> {
+                return new HarbourAreaSectionViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourBasin).Name, ()=> {
+                return new HarbourBasinViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourFacility).Name, ()=> {
+                return new HarbourFacilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.MooringWarpingFacility).Name, ()=> {
+                return new MooringWarpingFacilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.OuterLimit).Name, ()=> {
+                return new OuterLimitViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.PilotBoardingPlace).Name, ()=> {
+                return new PilotBoardingPlaceViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.SeaplaneLandingArea).Name, ()=> {
+                return new SeaplaneLandingAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.Terminal).Name, ()=> {
+                return new TerminalViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.TurningBasin).Name, ()=> {
+                return new TurningBasinViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.WaterwayArea).Name, ()=> {
+                return new WaterwayAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DataCoverage).Name, ()=> {
+                return new DataCoverageViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData).Name, ()=> {
+                return new QualityOfNonBathymetricDataViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.SoundingDatum).Name, ()=> {
+                return new SoundingDatumViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.VerticalDatumOfData).Name, ()=> {
+                return new VerticalDatumOfDataViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.TextPlacement).Name, ()=> {
+                return new TextPlacementViewModel();
+              }
+            },
+        });
     }
 
     public partial class contactAddressViewModel : ViewModelBase

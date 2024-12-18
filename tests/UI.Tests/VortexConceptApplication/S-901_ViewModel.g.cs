@@ -4181,8 +4181,6 @@ namespace S100Framework.WPF.ViewModel.S901
             information = this.information.ToList(),
         };
 
-        public string ReferenceId { get; set; }
-
         public QualityOfBathymetricDataViewModel(IViewModelHost? host = null) : base(host) {
             zoneOfConfidence.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
                 OnPropertyChanged(nameof(zoneOfConfidence));

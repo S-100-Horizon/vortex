@@ -12,38 +12,50 @@ using S100Framework.DomainModel.S128.FeatureTypes;
 using S100Framework.DomainModel.S128.Associations.InformationAssociations;
 using S100Framework.DomainModel.S128.Associations.FeatureAssociations;
 
+
 namespace S100Framework.WPF.ViewModel.S128
 {
+
     internal static class Preamble
     {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S128.InformationTypes.CatalogueSectionHeader).Name, () =>
-        {
-            return new CatalogueSectionHeaderViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.ContactDetails).Name, () =>
-        {
-            return new ContactDetailsViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement).Name, () =>
-        {
-            return new IndicationOfCarriageRequirementViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.PriceInformation).Name, () =>
-        {
-            return new PriceInformationViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.ProducerInformation).Name, () =>
-        {
-            return new ProducerInformationViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.DistributorInformation).Name, () =>
-        {
-            return new DistributorInformationViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.ElectronicProduct).Name, () =>
-        {
-            return new ElectronicProductViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.PhysicalProduct).Name, () =>
-        {
-            return new PhysicalProductViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.S100Service).Name, () =>
-        {
-            return new S100ServiceViewModel();
-        } }, });
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {
+            { typeof(DomainModel.S128.InformationTypes.CatalogueSectionHeader).Name, ()=> {
+                return new CatalogueSectionHeaderViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.InformationTypes.ContactDetails).Name, ()=> {
+                return new ContactDetailsViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement).Name, ()=> {
+                return new IndicationOfCarriageRequirementViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.InformationTypes.PriceInformation).Name, ()=> {
+                return new PriceInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.InformationTypes.ProducerInformation).Name, ()=> {
+                return new ProducerInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.InformationTypes.DistributorInformation).Name, ()=> {
+                return new DistributorInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.FeatureTypes.ElectronicProduct).Name, ()=> {
+                return new ElectronicProductViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.FeatureTypes.PhysicalProduct).Name, ()=> {
+                return new PhysicalProductViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.FeatureTypes.S100Service).Name, ()=> {
+                return new S100ServiceViewModel();
+              }
+            },
+        });
     }
 
     public partial class contactAddressViewModel : ViewModelBase

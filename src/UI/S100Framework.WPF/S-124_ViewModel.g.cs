@@ -12,26 +12,34 @@ using S100Framework.DomainModel.S124.FeatureTypes;
 using S100Framework.DomainModel.S124.Associations.InformationAssociations;
 using S100Framework.DomainModel.S124.Associations.FeatureAssociations;
 
+
 namespace S100Framework.WPF.ViewModel.S124
 {
+
     internal static class Preamble
     {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S124.InformationTypes.NAVWARNPreamble).Name, () =>
-        {
-            return new NAVWARNPreambleViewModel();
-        } }, { typeof(DomainModel.S124.InformationTypes.References).Name, () =>
-        {
-            return new ReferencesViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.NAVWARNPart).Name, () =>
-        {
-            return new NAVWARNPartViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected).Name, () =>
-        {
-            return new NAVWARNAreaAffectedViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.TextPlacement).Name, () =>
-        {
-            return new TextPlacementViewModel();
-        } }, });
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {
+            { typeof(DomainModel.S124.InformationTypes.NAVWARNPreamble).Name, ()=> {
+                return new NAVWARNPreambleViewModel();
+              }
+            },
+            { typeof(DomainModel.S124.InformationTypes.References).Name, ()=> {
+                return new ReferencesViewModel();
+              }
+            },
+            { typeof(DomainModel.S124.FeatureTypes.NAVWARNPart).Name, ()=> {
+                return new NAVWARNPartViewModel();
+              }
+            },
+            { typeof(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected).Name, ()=> {
+                return new NAVWARNAreaAffectedViewModel();
+              }
+            },
+            { typeof(DomainModel.S124.FeatureTypes.TextPlacement).Name, ()=> {
+                return new TextPlacementViewModel();
+              }
+            },
+        });
     }
 
     public partial class featureNameViewModel : ViewModelBase

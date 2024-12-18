@@ -1,5 +1,7 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
+using Microsoft.CodeAnalysis.Formatting;
 using Pluralize.NET.Core;
 using System.Reflection;
 using System.Reflection.Emit;
@@ -884,7 +886,7 @@ namespace S100Framework
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic class {name} : informationBinding");
                                 informationBindingBuilder.AppendLine("\t\t\t{");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic override Type[] informationTypes => [{string.Join(',', informationTypeRefs.Select(e => $"typeof({e})"))}];");
-                                informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => DomainModel.{productId}.Role.{role};");
+                                informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => Role.{role};");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic Associations.InformationAssociations.{association} {association} {{get; set; }} = new();");
                                 informationBindingBuilder.AppendLine("\t\t\t}");
                                 informationBindingBuilder.AppendLine();
@@ -917,7 +919,8 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, informationType, $"DomainModel.{productId}.InformationTypes", codelistTypes.Keys, roleTypes.Keys));
+                            viewBuilder.AppendLine(BuildClassViewModel(code, informationType, $"DomainModel.{productId}.InformationTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
+                            }));
 
                             creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.InformationTypes.{code}).Name, ()=> {{");
                             creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
@@ -1068,7 +1071,7 @@ namespace S100Framework
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic class {name} : informationBinding");
                                 informationBindingBuilder.AppendLine("\t\t\t{");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic override Type[] informationTypes => [{string.Join(',', informationTypeRefs.Select(e => $"typeof({e})"))}];");
-                                informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => DomainModel.{productId}.Role.{role};");
+                                informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => Role.{role};");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic Associations.InformationAssociations.{association} {association} {{get; set; }} = new();");
                                 informationBindingBuilder.AppendLine("\t\t\t}");
                                 informationBindingBuilder.AppendLine();
@@ -1127,7 +1130,7 @@ namespace S100Framework
                                 featureBindingBuilder.AppendLine($"\t\t\tpublic class {name} : featureBinding");
                                 featureBindingBuilder.AppendLine("\t\t\t{");
                                 featureBindingBuilder.AppendLine($"\t\t\tpublic override Type[] featureTypes => [{string.Join(',', featureTypeRefs.Select(e => $"typeof({e})"))}];");
-                                featureBindingBuilder.AppendLine($"\t\t\tpublic Role Role => DomainModel.{productId}.Role.{role};");
+                                featureBindingBuilder.AppendLine($"\t\t\tpublic Role Role => Role.{role};");
                                 featureBindingBuilder.AppendLine($"\t\t\tpublic Associations.FeatureAssociations.{association} {association} {{get; set; }} = new();");
                                 featureBindingBuilder.AppendLine("\t\t\t}");
                                 featureBindingBuilder.AppendLine();
@@ -1160,7 +1163,8 @@ namespace S100Framework
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                            viewBuilder.AppendLine(BuildClassViewModel(code, featureType, $"DomainModel.{productId}.FeatureTypes", codelistTypes.Keys, roleTypes.Keys));
+                            viewBuilder.AppendLine(BuildClassViewModel(code, featureType, $"DomainModel.{productId}.FeatureTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
+                            }));
 
                             creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.FeatureTypes.{code}).Name, ()=> {{");
                             creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
@@ -1265,11 +1269,13 @@ namespace S100Framework
 
             common.AppendLine("\t\tpublic abstract class informationBinding {");
             common.AppendLine("\t\t\tpublic abstract Type[] informationTypes { get; }");
+            common.AppendLine("\t\t\tpublic string? LinkId { get; set; } = default;");
             common.AppendLine("\t\t}");
             common.AppendLine();
 
             common.AppendLine("\t\tpublic abstract class featureBinding {");
             common.AppendLine("\t\t\tpublic abstract Type[] featureTypes { get; }");
+            common.AppendLine("\t\t\tpublic string? LinkId { get; set; } = default;");
             common.AppendLine("\t\t}");
             common.AppendLine();
 
@@ -1304,10 +1310,30 @@ namespace S100Framework
 
             common.AppendLine("}");
 
+            // Create a workspace to apply formatting options
+            var workspace = new AdhocWorkspace();
+
+            // Define formatting options
+            var options = workspace.Options
+                .WithChangedOption(FormattingOptions.IndentationSize, LanguageNames.CSharp, 4)
+                .WithChangedOption(FormattingOptions.TabSize, LanguageNames.CSharp, 4)
+                .WithChangedOption(FormattingOptions.UseTabs, LanguageNames.CSharp, false);
+
+            var rootDomain = CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd()).GetRoot();
+            var rootViewModel = CSharpSyntaxTree.ParseText(viewBuilder.ToString().TrimEnd()).GetRoot();
+            var rootCommon = CSharpSyntaxTree.ParseText(common.ToString().TrimEnd()).GetRoot();
+            
+            var rootDomainModified = rootDomain.EnsureOpeningBrace().EnsureNewline()!;
+
+            var rootViewModelModified = rootViewModel.EnsureOpeningBrace().EnsureNewline()!;
+
+            var rootCommonModified = rootCommon.EnsureOpeningBrace().EnsureNewline()!;
+
+
             return (
-                CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd()).GetRoot().NormalizeWhitespace(elasticTrivia: true).ToFullString(),
-                CSharpSyntaxTree.ParseText(viewBuilder.ToString().TrimEnd()).GetRoot().NormalizeWhitespace(elasticTrivia: true).ToFullString(),
-                CSharpSyntaxTree.ParseText(common.ToString().TrimEnd()).GetRoot().NormalizeWhitespace(elasticTrivia: true).ToFullString()
+                Formatter.Format(rootDomainModified, workspace, options).ToFullString(),
+                Formatter.Format(rootViewModelModified, workspace, options).ToFullString(),
+                Formatter.Format(rootCommonModified, workspace, options).ToFullString()
             );
         }
 
@@ -1426,7 +1452,7 @@ namespace S100Framework
             return CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd(Environment.NewLine.ToCharArray())).GetRoot().NormalizeWhitespace().ToFullString();
         }
 
-        private static string BuildClassViewModel(string code, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> roles) {
+        private static string BuildClassViewModel(string code, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
             var classBuilder = new StringBuilder();
 
             if (code.ToLowerInvariant().Equals(code))
@@ -1596,6 +1622,9 @@ namespace S100Framework
 
                 first = false;
             }
+
+            postAction?.Invoke(classBuilder);
+
             foreach (var codelist in insertCodeLists) {
                 codelist.Value.Invoke(classBuilder);
             }
@@ -1711,5 +1740,39 @@ namespace S100Framework
         }
 
         private static readonly string[] OnesEnglish = { "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen" };
+    }
+}
+
+namespace S100Framework
+{
+    public static class Extensions {
+        public static SyntaxNode? EnsureOpeningBrace(this SyntaxNode? root) {
+            if (root is null)
+                return root;
+            return root.ReplaceNodes(
+                root.DescendantNodes().OfType<MethodDeclarationSyntax>(),
+                (original, rewritten) => {
+                    // Ensure the opening brace is on the same line as the method declaration
+                    var openBraceToken = rewritten!.Body!.OpenBraceToken
+                        .WithLeadingTrivia(SyntaxFactory.ElasticSpace);
+                    var methodBody = rewritten.Body.WithOpenBraceToken(openBraceToken);
+                    return rewritten.WithBody(methodBody);
+                })!;
+        }
+
+        public static SyntaxNode? EnsureNewline(this SyntaxNode? root) {
+            if (root is null)
+                return root;
+            return root.ReplaceNodes(
+                root.DescendantNodes().OfType<ClassDeclarationSyntax>(),
+                (original, rewritten) => {
+                    // Ensure there is a leading newline before the class
+                    var leadingTrivia = rewritten.GetLeadingTrivia();
+                    if (!leadingTrivia.ToString().Contains("\n\n")) {
+                        leadingTrivia = leadingTrivia.Insert(0, SyntaxFactory.CarriageReturnLineFeed);
+                    }
+                    return rewritten.WithLeadingTrivia(leadingTrivia);
+                });
+        }
     }
 }
