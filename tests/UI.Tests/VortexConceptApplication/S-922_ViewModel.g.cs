@@ -9,59 +9,78 @@ using S100Framework.DomainModel.S122;
 using S100Framework.DomainModel.S122.ComplexAttributes;
 
 
+
 namespace S100Framework.WPF.ViewModel.S922
 {
+
     internal static class Preamble
     {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S122.InformationTypes.InformationType).Name, () =>
-        {
-            return new InformationTypeViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.AbstractRxN).Name, () =>
-        {
-            return new AbstractRxNViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.NauticalInformation).Name, () =>
-        {
-            return new NauticalInformationViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.Regulations).Name, () =>
-        {
-            return new RegulationsViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.Restrictions).Name, () =>
-        {
-            return new RestrictionsViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.Recommendations).Name, () =>
-        {
-            return new RecommendationsViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.Authority).Name, () =>
-        {
-            return new AuthorityViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.ContactDetails).Name, () =>
-        {
-            return new ContactDetailsViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.NonStandardWorkingDay).Name, () =>
-        {
-            return new NonStandardWorkingDayViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.ServiceHours).Name, () =>
-        {
-            return new ServiceHoursViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.Applicability).Name, () =>
-        {
-            return new ApplicabilityViewModel();
-        } }, { typeof(DomainModel.S122.FeatureTypes.RestrictedArea).Name, () =>
-        {
-            return new RestrictedAreaViewModel();
-        } }, { typeof(DomainModel.S122.FeatureTypes.MarineProtectedArea).Name, () =>
-        {
-            return new MarineProtectedAreaViewModel();
-        } }, { typeof(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea).Name, () =>
-        {
-            return new VesselTrafficServiceAreaViewModel();
-        } }, { typeof(DomainModel.S122.FeatureTypes.DataCoverage).Name, () =>
-        {
-            return new DataCoverageViewModel();
-        } }, { typeof(DomainModel.S122.FeatureTypes.TextPlacement).Name, () =>
-        {
-            return new TextPlacementViewModel();
-        } }, });
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {
+            { typeof(DomainModel.S122.InformationTypes.InformationType).Name, ()=> {
+                return new InformationTypeViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.AbstractRxN).Name, ()=> {
+                return new AbstractRxNViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.NauticalInformation).Name, ()=> {
+                return new NauticalInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.Regulations).Name, ()=> {
+                return new RegulationsViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.Restrictions).Name, ()=> {
+                return new RestrictionsViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.Recommendations).Name, ()=> {
+                return new RecommendationsViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.Authority).Name, ()=> {
+                return new AuthorityViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.ContactDetails).Name, ()=> {
+                return new ContactDetailsViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.NonStandardWorkingDay).Name, ()=> {
+                return new NonStandardWorkingDayViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.ServiceHours).Name, ()=> {
+                return new ServiceHoursViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.Applicability).Name, ()=> {
+                return new ApplicabilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.FeatureTypes.RestrictedArea).Name, ()=> {
+                return new RestrictedAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.FeatureTypes.MarineProtectedArea).Name, ()=> {
+                return new MarineProtectedAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea).Name, ()=> {
+                return new VesselTrafficServiceAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.FeatureTypes.DataCoverage).Name, ()=> {
+                return new DataCoverageViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.FeatureTypes.TextPlacement).Name, ()=> {
+                return new TextPlacementViewModel();
+              }
+            },
+        });
     }
 
     public partial class contactAddressViewModel : ViewModelBase

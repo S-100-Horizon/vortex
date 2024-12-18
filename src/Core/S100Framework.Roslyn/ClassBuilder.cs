@@ -1269,13 +1269,13 @@ namespace S100Framework
 
             common.AppendLine("\t\tpublic abstract class informationBinding {");
             common.AppendLine("\t\t\tpublic abstract Type[] informationTypes { get; }");
-            common.AppendLine("\t\t\tpublic string? LinkId { get; set; } = default;");
+            common.AppendLine("\t\t\tpublic string? RefId { get; set; } = default;");
             common.AppendLine("\t\t}");
             common.AppendLine();
 
             common.AppendLine("\t\tpublic abstract class featureBinding {");
             common.AppendLine("\t\t\tpublic abstract Type[] featureTypes { get; }");
-            common.AppendLine("\t\t\tpublic string? LinkId { get; set; } = default;");
+            common.AppendLine("\t\t\tpublic string? RefId { get; set; } = default;");
             common.AppendLine("\t\t}");
             common.AppendLine();
 

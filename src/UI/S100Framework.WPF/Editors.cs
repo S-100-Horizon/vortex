@@ -3,6 +3,8 @@ using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Xceed.Wpf.Toolkit;
+using Xceed.Wpf.Toolkit.PropertyGrid;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace S100Framework.WPF.Editors
 {
@@ -84,4 +86,29 @@ namespace S100Framework.WPF.Editors
             };
         }
     }
+
+    public sealed class RefIdEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var text = propertyItem.DisplayName;
+
+            return new Label {
+                Content = text,
+                IsEnabled = true,
+            };
+        }
+    }
+
+    public sealed class InformationTypeEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var text = ((Type)propertyItem.Value).Name;
+
+            return new Label {
+                Content = text,
+                IsEnabled = true,
+            };
+        }
+    }
+    
 }

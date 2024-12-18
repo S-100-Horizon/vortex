@@ -12,596 +12,794 @@ using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101.Associations.InformationAssociations;
 using S100Framework.DomainModel.S101.Associations.FeatureAssociations;
 
+
 namespace S100Framework.WPF.ViewModel.S901
 {
+
     internal static class Preamble
     {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S101.InformationTypes.ContactDetails).Name, () =>
-        {
-            return new ContactDetailsViewModel();
-        } }, { typeof(DomainModel.S101.InformationTypes.ServiceHours).Name, () =>
-        {
-            return new ServiceHoursViewModel();
-        } }, { typeof(DomainModel.S101.InformationTypes.NonStandardWorkingDay).Name, () =>
-        {
-            return new NonStandardWorkingDayViewModel();
-        } }, { typeof(DomainModel.S101.InformationTypes.NauticalInformation).Name, () =>
-        {
-            return new NauticalInformationViewModel();
-        } }, { typeof(DomainModel.S101.InformationTypes.SpatialQuality).Name, () =>
-        {
-            return new SpatialQualityViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.QualityOfNonBathymetricData).Name, () =>
-        {
-            return new QualityOfNonBathymetricDataViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DataCoverage).Name, () =>
-        {
-            return new DataCoverageViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.NavigationalSystemOfMarks).Name, () =>
-        {
-            return new NavigationalSystemOfMarksViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LocalDirectionOfBuoyage).Name, () =>
-        {
-            return new LocalDirectionOfBuoyageViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.QualityOfBathymetricData).Name, () =>
-        {
-            return new QualityOfBathymetricDataViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SoundingDatum).Name, () =>
-        {
-            return new SoundingDatumViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.VerticalDatumOfData).Name, () =>
-        {
-            return new VerticalDatumOfDataViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.QualityOfSurvey).Name, () =>
-        {
-            return new QualityOfSurveyViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.UpdateInformation).Name, () =>
-        {
-            return new UpdateInformationViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.MagneticVariation).Name, () =>
-        {
-            return new MagneticVariationViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LocalMagneticAnomaly).Name, () =>
-        {
-            return new LocalMagneticAnomalyViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Coastline).Name, () =>
-        {
-            return new CoastlineViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LandArea).Name, () =>
-        {
-            return new LandAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.IslandGroup).Name, () =>
-        {
-            return new IslandGroupViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LandElevation).Name, () =>
-        {
-            return new LandElevationViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.River).Name, () =>
-        {
-            return new RiverViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Rapids).Name, () =>
-        {
-            return new RapidsViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Waterfall).Name, () =>
-        {
-            return new WaterfallViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Lake).Name, () =>
-        {
-            return new LakeViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LandRegion).Name, () =>
-        {
-            return new LandRegionViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Vegetation).Name, () =>
-        {
-            return new VegetationViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.IceArea).Name, () =>
-        {
-            return new IceAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SlopingGround).Name, () =>
-        {
-            return new SlopingGroundViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SlopeTopline).Name, () =>
-        {
-            return new SlopeToplineViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Tideway).Name, () =>
-        {
-            return new TidewayViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.BuiltUpArea).Name, () =>
-        {
-            return new BuiltUpAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Building).Name, () =>
-        {
-            return new BuildingViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.AirportAirfield).Name, () =>
-        {
-            return new AirportAirfieldViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Runway).Name, () =>
-        {
-            return new RunwayViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Helipad).Name, () =>
-        {
-            return new HelipadViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Bridge).Name, () =>
-        {
-            return new BridgeViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SpanFixed).Name, () =>
-        {
-            return new SpanFixedViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SpanOpening).Name, () =>
-        {
-            return new SpanOpeningViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Conveyor).Name, () =>
-        {
-            return new ConveyorViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.CableOverhead).Name, () =>
-        {
-            return new CableOverheadViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.PipelineOverhead).Name, () =>
-        {
-            return new PipelineOverheadViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.PylonBridgeSupport).Name, () =>
-        {
-            return new PylonBridgeSupportViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.FenceWall).Name, () =>
-        {
-            return new FenceWallViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Railway).Name, () =>
-        {
-            return new RailwayViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Road).Name, () =>
-        {
-            return new RoadViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Tunnel).Name, () =>
-        {
-            return new TunnelViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Landmark).Name, () =>
-        {
-            return new LandmarkViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SiloTank).Name, () =>
-        {
-            return new SiloTankViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.WindTurbine).Name, () =>
-        {
-            return new WindTurbineViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.FortifiedStructure).Name, () =>
-        {
-            return new FortifiedStructureViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.ProductionStorageArea).Name, () =>
-        {
-            return new ProductionStorageAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Checkpoint).Name, () =>
-        {
-            return new CheckpointViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Hulk).Name, () =>
-        {
-            return new HulkViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Pile).Name, () =>
-        {
-            return new PileViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Dyke).Name, () =>
-        {
-            return new DykeViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.ShorelineConstruction).Name, () =>
-        {
-            return new ShorelineConstructionViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.StructureOverNavigableWater).Name, () =>
-        {
-            return new StructureOverNavigableWaterViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Causeway).Name, () =>
-        {
-            return new CausewayViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Canal).Name, () =>
-        {
-            return new CanalViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DistanceMark).Name, () =>
-        {
-            return new DistanceMarkViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Gate).Name, () =>
-        {
-            return new GateViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Dam).Name, () =>
-        {
-            return new DamViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Crane).Name, () =>
-        {
-            return new CraneViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Berth).Name, () =>
-        {
-            return new BerthViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Dolphin).Name, () =>
-        {
-            return new DolphinViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Bollard).Name, () =>
-        {
-            return new BollardViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DryDock).Name, () =>
-        {
-            return new DryDockViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.FloatingDock).Name, () =>
-        {
-            return new FloatingDockViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Pontoon).Name, () =>
-        {
-            return new PontoonViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DockArea).Name, () =>
-        {
-            return new DockAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Gridiron).Name, () =>
-        {
-            return new GridironViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LockBasin).Name, () =>
-        {
-            return new LockBasinViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.MooringTrot).Name, () =>
-        {
-            return new MooringTrotViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea).Name, () =>
-        {
-            return new SeaAreaNamedWaterAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.TidalStreamFloodEbb).Name, () =>
-        {
-            return new TidalStreamFloodEbbViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.CurrentNonGravitational).Name, () =>
-        {
-            return new CurrentNonGravitationalViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.WaterTurbulence).Name, () =>
-        {
-            return new WaterTurbulenceViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.TidalStreamPanelData).Name, () =>
-        {
-            return new TidalStreamPanelDataViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Sounding).Name, () =>
-        {
-            return new SoundingViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DredgedArea).Name, () =>
-        {
-            return new DredgedAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SweptArea).Name, () =>
-        {
-            return new SweptAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DepthContour).Name, () =>
-        {
-            return new DepthContourViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DepthArea).Name, () =>
-        {
-            return new DepthAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DepthNoBottomFound).Name, () =>
-        {
-            return new DepthNoBottomFoundViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.UnsurveyedArea).Name, () =>
-        {
-            return new UnsurveyedAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SeabedArea).Name, () =>
-        {
-            return new SeabedAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.WeedKelp).Name, () =>
-        {
-            return new WeedKelpViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Seagrass).Name, () =>
-        {
-            return new SeagrassViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Sandwave).Name, () =>
-        {
-            return new SandwaveViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Spring).Name, () =>
-        {
-            return new SpringViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.UnderwaterAwashRock).Name, () =>
-        {
-            return new UnderwaterAwashRockViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Wreck).Name, () =>
-        {
-            return new WreckViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Obstruction).Name, () =>
-        {
-            return new ObstructionViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.FoulGround).Name, () =>
-        {
-            return new FoulGroundViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DiscolouredWater).Name, () =>
-        {
-            return new DiscolouredWaterViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.FishingFacility).Name, () =>
-        {
-            return new FishingFacilityViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.MarineFarmCulture).Name, () =>
-        {
-            return new MarineFarmCultureViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.OffshorePlatform).Name, () =>
-        {
-            return new OffshorePlatformViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.CableSubmarine).Name, () =>
-        {
-            return new CableSubmarineViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.CableArea).Name, () =>
-        {
-            return new CableAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.PipelineSubmarineOnLand).Name, () =>
-        {
-            return new PipelineSubmarineOnLandViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SubmarinePipelineArea).Name, () =>
-        {
-            return new SubmarinePipelineAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.OffshoreProductionArea).Name, () =>
-        {
-            return new OffshoreProductionAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.NavigationLine).Name, () =>
-        {
-            return new NavigationLineViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RecommendedTrack).Name, () =>
-        {
-            return new RecommendedTrackViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RangeSystem).Name, () =>
-        {
-            return new RangeSystemViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Fairway).Name, () =>
-        {
-            return new FairwayViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.FairwaySystem).Name, () =>
-        {
-            return new FairwaySystemViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RecommendedRouteCentreline).Name, () =>
-        {
-            return new RecommendedRouteCentrelineViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.TwoWayRoutePart).Name, () =>
-        {
-            return new TwoWayRoutePartViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.TwoWayRoute).Name, () =>
-        {
-            return new TwoWayRouteViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RecommendedTrafficLanePart).Name, () =>
-        {
-            return new RecommendedTrafficLanePartViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DeepWaterRouteCentreline).Name, () =>
-        {
-            return new DeepWaterRouteCentrelineViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DeepWaterRoutePart).Name, () =>
-        {
-            return new DeepWaterRoutePartViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DeepWaterRoute).Name, () =>
-        {
-            return new DeepWaterRouteViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.InshoreTrafficZone).Name, () =>
-        {
-            return new InshoreTrafficZoneViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.PrecautionaryArea).Name, () =>
-        {
-            return new PrecautionaryAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeLanePart).Name, () =>
-        {
-            return new TrafficSeparationSchemeLanePartViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SeparationZoneOrLine).Name, () =>
-        {
-            return new SeparationZoneOrLineViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeBoundary).Name, () =>
-        {
-            return new TrafficSeparationSchemeBoundaryViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeCrossing).Name, () =>
-        {
-            return new TrafficSeparationSchemeCrossingViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeRoundabout).Name, () =>
-        {
-            return new TrafficSeparationSchemeRoundaboutViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.TrafficSeparationScheme).Name, () =>
-        {
-            return new TrafficSeparationSchemeViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneArea).Name, () =>
-        {
-            return new ArchipelagicSeaLaneAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneAxis).Name, () =>
-        {
-            return new ArchipelagicSeaLaneAxisViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.ArchipelagicSeaLane).Name, () =>
-        {
-            return new ArchipelagicSeaLaneViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RadioCallingInPoint).Name, () =>
-        {
-            return new RadioCallingInPointViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.FerryRoute).Name, () =>
-        {
-            return new FerryRouteViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RadarLine).Name, () =>
-        {
-            return new RadarLineViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RadarRange).Name, () =>
-        {
-            return new RadarRangeViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RadarStation).Name, () =>
-        {
-            return new RadarStationViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.AnchorageArea).Name, () =>
-        {
-            return new AnchorageAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.MooringArea).Name, () =>
-        {
-            return new MooringAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.AnchorBerth).Name, () =>
-        {
-            return new AnchorBerthViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SeaplaneLandingArea).Name, () =>
-        {
-            return new SeaplaneLandingAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.DumpingGround).Name, () =>
-        {
-            return new DumpingGroundViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.MilitaryPracticeArea).Name, () =>
-        {
-            return new MilitaryPracticeAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.AdministrationArea).Name, () =>
-        {
-            return new AdministrationAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.CargoTranshipmentArea).Name, () =>
-        {
-            return new CargoTranshipmentAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.CautionArea).Name, () =>
-        {
-            return new CautionAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.InformationArea).Name, () =>
-        {
-            return new InformationAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.ContiguousZone).Name, () =>
-        {
-            return new ContiguousZoneViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.ContinentalShelfArea).Name, () =>
-        {
-            return new ContinentalShelfAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.CustomZone).Name, () =>
-        {
-            return new CustomZoneViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.ExclusiveEconomicZone).Name, () =>
-        {
-            return new ExclusiveEconomicZoneViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.FisheryZone).Name, () =>
-        {
-            return new FisheryZoneViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.FishingGround).Name, () =>
-        {
-            return new FishingGroundViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.FreePortArea).Name, () =>
-        {
-            return new FreePortAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.HarbourAreaAdministrative).Name, () =>
-        {
-            return new HarbourAreaAdministrativeViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LogPond).Name, () =>
-        {
-            return new LogPondViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.OilBarrier).Name, () =>
-        {
-            return new OilBarrierViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.StraightTerritorialSeaBaseline).Name, () =>
-        {
-            return new StraightTerritorialSeaBaselineViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.TerritorialSeaArea).Name, () =>
-        {
-            return new TerritorialSeaAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SubmarineTransitLane).Name, () =>
-        {
-            return new SubmarineTransitLaneViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.PilotageDistrict).Name, () =>
-        {
-            return new PilotageDistrictViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.CollisionRegulationsLimit).Name, () =>
-        {
-            return new CollisionRegulationsLimitViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.MarinePollutionRegulationsArea).Name, () =>
-        {
-            return new MarinePollutionRegulationsAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RestrictedArea).Name, () =>
-        {
-            return new RestrictedAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LightAllAround).Name, () =>
-        {
-            return new LightAllAroundViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LightSectored).Name, () =>
-        {
-            return new LightSectoredViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LightFogDetector).Name, () =>
-        {
-            return new LightFogDetectorViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LightAirObstruction).Name, () =>
-        {
-            return new LightAirObstructionViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LateralBuoy).Name, () =>
-        {
-            return new LateralBuoyViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.CardinalBuoy).Name, () =>
-        {
-            return new CardinalBuoyViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.IsolatedDangerBuoy).Name, () =>
-        {
-            return new IsolatedDangerBuoyViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SafeWaterBuoy).Name, () =>
-        {
-            return new SafeWaterBuoyViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBuoy).Name, () =>
-        {
-            return new SpecialPurposeGeneralBuoyViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.EmergencyWreckMarkingBuoy).Name, () =>
-        {
-            return new EmergencyWreckMarkingBuoyViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.InstallationBuoy).Name, () =>
-        {
-            return new InstallationBuoyViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.MooringBuoy).Name, () =>
-        {
-            return new MooringBuoyViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LateralBeacon).Name, () =>
-        {
-            return new LateralBeaconViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.CardinalBeacon).Name, () =>
-        {
-            return new CardinalBeaconViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.IsolatedDangerBeacon).Name, () =>
-        {
-            return new IsolatedDangerBeaconViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SafeWaterBeacon).Name, () =>
-        {
-            return new SafeWaterBeaconViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBeacon).Name, () =>
-        {
-            return new SpecialPurposeGeneralBeaconViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Daymark).Name, () =>
-        {
-            return new DaymarkViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LightFloat).Name, () =>
-        {
-            return new LightFloatViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.LightVessel).Name, () =>
-        {
-            return new LightVesselViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Retroreflector).Name, () =>
-        {
-            return new RetroreflectorViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RadarReflector).Name, () =>
-        {
-            return new RadarReflectorViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.FogSignal).Name, () =>
-        {
-            return new FogSignalViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.PhysicalAISAidToNavigation).Name, () =>
-        {
-            return new PhysicalAISAidToNavigationViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.VirtualAISAidToNavigation).Name, () =>
-        {
-            return new VirtualAISAidToNavigationViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RadioStation).Name, () =>
-        {
-            return new RadioStationViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RadarTransponderBeacon).Name, () =>
-        {
-            return new RadarTransponderBeaconViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.PilotBoardingPlace).Name, () =>
-        {
-            return new PilotBoardingPlaceViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.VesselTrafficServiceArea).Name, () =>
-        {
-            return new VesselTrafficServiceAreaViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.CoastGuardStation).Name, () =>
-        {
-            return new CoastGuardStationViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SignalStationWarning).Name, () =>
-        {
-            return new SignalStationWarningViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SignalStationTraffic).Name, () =>
-        {
-            return new SignalStationTrafficViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.RescueStation).Name, () =>
-        {
-            return new RescueStationViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.HarbourFacility).Name, () =>
-        {
-            return new HarbourFacilityViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.SmallCraftFacility).Name, () =>
-        {
-            return new SmallCraftFacilityViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.TextPlacement).Name, () =>
-        {
-            return new TextPlacementViewModel();
-        } }, { typeof(DomainModel.S101.FeatureTypes.Chart1Feature).Name, () =>
-        {
-            return new Chart1FeatureViewModel();
-        } }, });
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {
+            { typeof(DomainModel.S101.InformationTypes.ContactDetails).Name, ()=> {
+                return new ContactDetailsViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.InformationTypes.ServiceHours).Name, ()=> {
+                return new ServiceHoursViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.InformationTypes.NonStandardWorkingDay).Name, ()=> {
+                return new NonStandardWorkingDayViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.InformationTypes.NauticalInformation).Name, ()=> {
+                return new NauticalInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.InformationTypes.SpatialQuality).Name, ()=> {
+                return new SpatialQualityViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.QualityOfNonBathymetricData).Name, ()=> {
+                return new QualityOfNonBathymetricDataViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DataCoverage).Name, ()=> {
+                return new DataCoverageViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.NavigationalSystemOfMarks).Name, ()=> {
+                return new NavigationalSystemOfMarksViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LocalDirectionOfBuoyage).Name, ()=> {
+                return new LocalDirectionOfBuoyageViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.QualityOfBathymetricData).Name, ()=> {
+                return new QualityOfBathymetricDataViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SoundingDatum).Name, ()=> {
+                return new SoundingDatumViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.VerticalDatumOfData).Name, ()=> {
+                return new VerticalDatumOfDataViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.QualityOfSurvey).Name, ()=> {
+                return new QualityOfSurveyViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.UpdateInformation).Name, ()=> {
+                return new UpdateInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.MagneticVariation).Name, ()=> {
+                return new MagneticVariationViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LocalMagneticAnomaly).Name, ()=> {
+                return new LocalMagneticAnomalyViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Coastline).Name, ()=> {
+                return new CoastlineViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LandArea).Name, ()=> {
+                return new LandAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.IslandGroup).Name, ()=> {
+                return new IslandGroupViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LandElevation).Name, ()=> {
+                return new LandElevationViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.River).Name, ()=> {
+                return new RiverViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Rapids).Name, ()=> {
+                return new RapidsViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Waterfall).Name, ()=> {
+                return new WaterfallViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Lake).Name, ()=> {
+                return new LakeViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LandRegion).Name, ()=> {
+                return new LandRegionViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Vegetation).Name, ()=> {
+                return new VegetationViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.IceArea).Name, ()=> {
+                return new IceAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SlopingGround).Name, ()=> {
+                return new SlopingGroundViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SlopeTopline).Name, ()=> {
+                return new SlopeToplineViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Tideway).Name, ()=> {
+                return new TidewayViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.BuiltUpArea).Name, ()=> {
+                return new BuiltUpAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Building).Name, ()=> {
+                return new BuildingViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.AirportAirfield).Name, ()=> {
+                return new AirportAirfieldViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Runway).Name, ()=> {
+                return new RunwayViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Helipad).Name, ()=> {
+                return new HelipadViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Bridge).Name, ()=> {
+                return new BridgeViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SpanFixed).Name, ()=> {
+                return new SpanFixedViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SpanOpening).Name, ()=> {
+                return new SpanOpeningViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Conveyor).Name, ()=> {
+                return new ConveyorViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.CableOverhead).Name, ()=> {
+                return new CableOverheadViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.PipelineOverhead).Name, ()=> {
+                return new PipelineOverheadViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.PylonBridgeSupport).Name, ()=> {
+                return new PylonBridgeSupportViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.FenceWall).Name, ()=> {
+                return new FenceWallViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Railway).Name, ()=> {
+                return new RailwayViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Road).Name, ()=> {
+                return new RoadViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Tunnel).Name, ()=> {
+                return new TunnelViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Landmark).Name, ()=> {
+                return new LandmarkViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SiloTank).Name, ()=> {
+                return new SiloTankViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.WindTurbine).Name, ()=> {
+                return new WindTurbineViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.FortifiedStructure).Name, ()=> {
+                return new FortifiedStructureViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.ProductionStorageArea).Name, ()=> {
+                return new ProductionStorageAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Checkpoint).Name, ()=> {
+                return new CheckpointViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Hulk).Name, ()=> {
+                return new HulkViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Pile).Name, ()=> {
+                return new PileViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Dyke).Name, ()=> {
+                return new DykeViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.ShorelineConstruction).Name, ()=> {
+                return new ShorelineConstructionViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.StructureOverNavigableWater).Name, ()=> {
+                return new StructureOverNavigableWaterViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Causeway).Name, ()=> {
+                return new CausewayViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Canal).Name, ()=> {
+                return new CanalViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DistanceMark).Name, ()=> {
+                return new DistanceMarkViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Gate).Name, ()=> {
+                return new GateViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Dam).Name, ()=> {
+                return new DamViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Crane).Name, ()=> {
+                return new CraneViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Berth).Name, ()=> {
+                return new BerthViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Dolphin).Name, ()=> {
+                return new DolphinViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Bollard).Name, ()=> {
+                return new BollardViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DryDock).Name, ()=> {
+                return new DryDockViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.FloatingDock).Name, ()=> {
+                return new FloatingDockViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Pontoon).Name, ()=> {
+                return new PontoonViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DockArea).Name, ()=> {
+                return new DockAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Gridiron).Name, ()=> {
+                return new GridironViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LockBasin).Name, ()=> {
+                return new LockBasinViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.MooringTrot).Name, ()=> {
+                return new MooringTrotViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea).Name, ()=> {
+                return new SeaAreaNamedWaterAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.TidalStreamFloodEbb).Name, ()=> {
+                return new TidalStreamFloodEbbViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.CurrentNonGravitational).Name, ()=> {
+                return new CurrentNonGravitationalViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.WaterTurbulence).Name, ()=> {
+                return new WaterTurbulenceViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.TidalStreamPanelData).Name, ()=> {
+                return new TidalStreamPanelDataViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Sounding).Name, ()=> {
+                return new SoundingViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DredgedArea).Name, ()=> {
+                return new DredgedAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SweptArea).Name, ()=> {
+                return new SweptAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DepthContour).Name, ()=> {
+                return new DepthContourViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DepthArea).Name, ()=> {
+                return new DepthAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DepthNoBottomFound).Name, ()=> {
+                return new DepthNoBottomFoundViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.UnsurveyedArea).Name, ()=> {
+                return new UnsurveyedAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SeabedArea).Name, ()=> {
+                return new SeabedAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.WeedKelp).Name, ()=> {
+                return new WeedKelpViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Seagrass).Name, ()=> {
+                return new SeagrassViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Sandwave).Name, ()=> {
+                return new SandwaveViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Spring).Name, ()=> {
+                return new SpringViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.UnderwaterAwashRock).Name, ()=> {
+                return new UnderwaterAwashRockViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Wreck).Name, ()=> {
+                return new WreckViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Obstruction).Name, ()=> {
+                return new ObstructionViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.FoulGround).Name, ()=> {
+                return new FoulGroundViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DiscolouredWater).Name, ()=> {
+                return new DiscolouredWaterViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.FishingFacility).Name, ()=> {
+                return new FishingFacilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.MarineFarmCulture).Name, ()=> {
+                return new MarineFarmCultureViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.OffshorePlatform).Name, ()=> {
+                return new OffshorePlatformViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.CableSubmarine).Name, ()=> {
+                return new CableSubmarineViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.CableArea).Name, ()=> {
+                return new CableAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.PipelineSubmarineOnLand).Name, ()=> {
+                return new PipelineSubmarineOnLandViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SubmarinePipelineArea).Name, ()=> {
+                return new SubmarinePipelineAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.OffshoreProductionArea).Name, ()=> {
+                return new OffshoreProductionAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.NavigationLine).Name, ()=> {
+                return new NavigationLineViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RecommendedTrack).Name, ()=> {
+                return new RecommendedTrackViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RangeSystem).Name, ()=> {
+                return new RangeSystemViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Fairway).Name, ()=> {
+                return new FairwayViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.FairwaySystem).Name, ()=> {
+                return new FairwaySystemViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RecommendedRouteCentreline).Name, ()=> {
+                return new RecommendedRouteCentrelineViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.TwoWayRoutePart).Name, ()=> {
+                return new TwoWayRoutePartViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.TwoWayRoute).Name, ()=> {
+                return new TwoWayRouteViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RecommendedTrafficLanePart).Name, ()=> {
+                return new RecommendedTrafficLanePartViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DeepWaterRouteCentreline).Name, ()=> {
+                return new DeepWaterRouteCentrelineViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DeepWaterRoutePart).Name, ()=> {
+                return new DeepWaterRoutePartViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DeepWaterRoute).Name, ()=> {
+                return new DeepWaterRouteViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.InshoreTrafficZone).Name, ()=> {
+                return new InshoreTrafficZoneViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.PrecautionaryArea).Name, ()=> {
+                return new PrecautionaryAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeLanePart).Name, ()=> {
+                return new TrafficSeparationSchemeLanePartViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SeparationZoneOrLine).Name, ()=> {
+                return new SeparationZoneOrLineViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeBoundary).Name, ()=> {
+                return new TrafficSeparationSchemeBoundaryViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeCrossing).Name, ()=> {
+                return new TrafficSeparationSchemeCrossingViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeRoundabout).Name, ()=> {
+                return new TrafficSeparationSchemeRoundaboutViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.TrafficSeparationScheme).Name, ()=> {
+                return new TrafficSeparationSchemeViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneArea).Name, ()=> {
+                return new ArchipelagicSeaLaneAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneAxis).Name, ()=> {
+                return new ArchipelagicSeaLaneAxisViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.ArchipelagicSeaLane).Name, ()=> {
+                return new ArchipelagicSeaLaneViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RadioCallingInPoint).Name, ()=> {
+                return new RadioCallingInPointViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.FerryRoute).Name, ()=> {
+                return new FerryRouteViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RadarLine).Name, ()=> {
+                return new RadarLineViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RadarRange).Name, ()=> {
+                return new RadarRangeViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RadarStation).Name, ()=> {
+                return new RadarStationViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.AnchorageArea).Name, ()=> {
+                return new AnchorageAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.MooringArea).Name, ()=> {
+                return new MooringAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.AnchorBerth).Name, ()=> {
+                return new AnchorBerthViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SeaplaneLandingArea).Name, ()=> {
+                return new SeaplaneLandingAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.DumpingGround).Name, ()=> {
+                return new DumpingGroundViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.MilitaryPracticeArea).Name, ()=> {
+                return new MilitaryPracticeAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.AdministrationArea).Name, ()=> {
+                return new AdministrationAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.CargoTranshipmentArea).Name, ()=> {
+                return new CargoTranshipmentAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.CautionArea).Name, ()=> {
+                return new CautionAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.InformationArea).Name, ()=> {
+                return new InformationAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.ContiguousZone).Name, ()=> {
+                return new ContiguousZoneViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.ContinentalShelfArea).Name, ()=> {
+                return new ContinentalShelfAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.CustomZone).Name, ()=> {
+                return new CustomZoneViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.ExclusiveEconomicZone).Name, ()=> {
+                return new ExclusiveEconomicZoneViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.FisheryZone).Name, ()=> {
+                return new FisheryZoneViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.FishingGround).Name, ()=> {
+                return new FishingGroundViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.FreePortArea).Name, ()=> {
+                return new FreePortAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.HarbourAreaAdministrative).Name, ()=> {
+                return new HarbourAreaAdministrativeViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LogPond).Name, ()=> {
+                return new LogPondViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.OilBarrier).Name, ()=> {
+                return new OilBarrierViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.StraightTerritorialSeaBaseline).Name, ()=> {
+                return new StraightTerritorialSeaBaselineViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.TerritorialSeaArea).Name, ()=> {
+                return new TerritorialSeaAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SubmarineTransitLane).Name, ()=> {
+                return new SubmarineTransitLaneViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.PilotageDistrict).Name, ()=> {
+                return new PilotageDistrictViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.CollisionRegulationsLimit).Name, ()=> {
+                return new CollisionRegulationsLimitViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.MarinePollutionRegulationsArea).Name, ()=> {
+                return new MarinePollutionRegulationsAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RestrictedArea).Name, ()=> {
+                return new RestrictedAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LightAllAround).Name, ()=> {
+                return new LightAllAroundViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LightSectored).Name, ()=> {
+                return new LightSectoredViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LightFogDetector).Name, ()=> {
+                return new LightFogDetectorViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LightAirObstruction).Name, ()=> {
+                return new LightAirObstructionViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LateralBuoy).Name, ()=> {
+                return new LateralBuoyViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.CardinalBuoy).Name, ()=> {
+                return new CardinalBuoyViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.IsolatedDangerBuoy).Name, ()=> {
+                return new IsolatedDangerBuoyViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SafeWaterBuoy).Name, ()=> {
+                return new SafeWaterBuoyViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBuoy).Name, ()=> {
+                return new SpecialPurposeGeneralBuoyViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.EmergencyWreckMarkingBuoy).Name, ()=> {
+                return new EmergencyWreckMarkingBuoyViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.InstallationBuoy).Name, ()=> {
+                return new InstallationBuoyViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.MooringBuoy).Name, ()=> {
+                return new MooringBuoyViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LateralBeacon).Name, ()=> {
+                return new LateralBeaconViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.CardinalBeacon).Name, ()=> {
+                return new CardinalBeaconViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.IsolatedDangerBeacon).Name, ()=> {
+                return new IsolatedDangerBeaconViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SafeWaterBeacon).Name, ()=> {
+                return new SafeWaterBeaconViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBeacon).Name, ()=> {
+                return new SpecialPurposeGeneralBeaconViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Daymark).Name, ()=> {
+                return new DaymarkViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LightFloat).Name, ()=> {
+                return new LightFloatViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.LightVessel).Name, ()=> {
+                return new LightVesselViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Retroreflector).Name, ()=> {
+                return new RetroreflectorViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RadarReflector).Name, ()=> {
+                return new RadarReflectorViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.FogSignal).Name, ()=> {
+                return new FogSignalViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.PhysicalAISAidToNavigation).Name, ()=> {
+                return new PhysicalAISAidToNavigationViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.VirtualAISAidToNavigation).Name, ()=> {
+                return new VirtualAISAidToNavigationViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RadioStation).Name, ()=> {
+                return new RadioStationViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RadarTransponderBeacon).Name, ()=> {
+                return new RadarTransponderBeaconViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.PilotBoardingPlace).Name, ()=> {
+                return new PilotBoardingPlaceViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.VesselTrafficServiceArea).Name, ()=> {
+                return new VesselTrafficServiceAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.CoastGuardStation).Name, ()=> {
+                return new CoastGuardStationViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SignalStationWarning).Name, ()=> {
+                return new SignalStationWarningViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SignalStationTraffic).Name, ()=> {
+                return new SignalStationTrafficViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.RescueStation).Name, ()=> {
+                return new RescueStationViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.HarbourFacility).Name, ()=> {
+                return new HarbourFacilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.SmallCraftFacility).Name, ()=> {
+                return new SmallCraftFacilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.TextPlacement).Name, ()=> {
+                return new TextPlacementViewModel();
+              }
+            },
+            { typeof(DomainModel.S101.FeatureTypes.Chart1Feature).Name, ()=> {
+                return new Chart1FeatureViewModel();
+              }
+            },
+        });
     }
 
     public partial class featureNameViewModel : ViewModelBase

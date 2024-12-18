@@ -3,6 +3,8 @@ using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S122.Associations.InformationAssociations;
 using S100Framework.DomainModel.S122.InformationTypes;
+using S100Framework.DomainModel.S201.FeatureTypes;
+using S100Framework.WPF.Editors;
 using S100Framework.WPF.ViewModel.S901;
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
@@ -386,18 +388,70 @@ namespace S100Framework.WPF.ViewModel.S901
 
 namespace S100Framework.WPF.ViewModel.S922
 {
+    public class controlAuthorityServiceControlVesselTrafficServiceAreaBindingViewModel : ViewModelBase
+    {
+        public override string Serialize() {
+            throw new NotImplementedException();
+        }
+
+        private DomainModel.S122.Associations.InformationAssociations.ServiceControl _serviceControl;
+
+        [ExpandableObject]
+        public DomainModel.S122.Associations.InformationAssociations.ServiceControl ServiceControl {
+            get { return _serviceControl; }
+            set {
+                SetValue(ref _serviceControl, value);
+            }
+        }
+    }
+
+    public abstract class informationBindingViewModel
+    {
+        private Type[] _types;
+
+        public informationBindingViewModel(Type[] types) {
+            _types = types;
+            InformationType = _types.FirstOrDefault();
+        }
+
+        [Browsable(false)]
+        public Type[] Types => _types;
+
+        [PropertyOrder(0)]
+        [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
+        public string? RefId { get; set; } = default;
+
+        [PropertyOrder(1)]
+        [Editor(typeof(InformationTypeEditor), typeof(InformationTypeEditor))]
+        public Type? InformationType { get; set; }
+    }
+
+    public class informationBindingViewModel<T> : informationBindingViewModel where T : InformationAssociation, new()
+    {
+        public informationBindingViewModel(Type[] types) : base(types) {            
+            InformationAssociation = new T();
+        }
+
+        [ExpandableObject]
+        public T InformationAssociation { get; set; }
+    }
+
     public partial class VesselTrafficServiceAreaViewModel
     {
 
-        //  CUSTOM
-        [Category("Development S-922")]
-        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
-        [InformationBinding<DomainModel.S122.Associations.InformationAssociations.PermissionType, Regulations>()]
-        public ObservableCollection<informationBindingViewModel> theQualityInformationSpatialQuality1 { get; set; } = new();
+        ////  CUSTOM
+        //[Category("Development S-922")]
+        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
+        //[InformationBinding<DomainModel.S122.Associations.InformationAssociations.PermissionType, Regulations>()]
+        //public ObservableCollection<informationBindingViewModel> theQualityInformationSpatialQuality1 { get; set; } = new();
+
+        //[Category("Development S-922")]
+        //[InformationBinding<DomainModel.S122.Associations.InformationAssociations.PermissionType, Regulations>()]
+        //public ObservableCollection<informationBindingViewModel> theQualityInformationSpatialQuality2 { get; set; } = new();
 
         [Category("Development S-922")]
-        [InformationBinding<DomainModel.S122.Associations.InformationAssociations.PermissionType, Regulations>()]
-        public ObservableCollection<informationBindingViewModel> theQualityInformationSpatialQuality2 { get; set; } = new();
+        [ExpandableObject]
+        public informationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ServiceControl> controlAuthorityServiceControl { get; set; } = new informationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ServiceControl>([typeof(Authority)]);
 
 
         //private Guid? _qualityOfBathymetricDataCompositione;
