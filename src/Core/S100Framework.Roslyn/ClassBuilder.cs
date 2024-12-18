@@ -875,7 +875,7 @@ namespace S100Framework
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic class {association}{code}Binding : informationBinding");
                                 informationBindingBuilder.AppendLine("\t\t\t{");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic override Type[] informationTypes => [{string.Join(',', informationTypeRefs.Select(e => $"typeof({e})"))}];");
-                                informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => Role.{role};");
+                                informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => DomainModel.{productId}.Role.{role};");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic Associations.InformationAssociations.{association} {association} {{get; set; }} = new();");
                                 informationBindingBuilder.AppendLine("\t\t\t}");
                                 informationBindingBuilder.AppendLine();
@@ -1059,7 +1059,7 @@ namespace S100Framework
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic class {association}{code}Binding : informationBinding");
                                 informationBindingBuilder.AppendLine("\t\t\t{");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic override Type[] informationTypes => [{string.Join(',', informationTypeRefs.Select(e => $"typeof({e})"))}];");
-                                informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => Role.{role};");
+                                informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => DomainModel.{productId}.Role.{role};");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic Associations.InformationAssociations.{association} {association} {{get; set; }} = new();");
                                 informationBindingBuilder.AppendLine("\t\t\t}");
                                 informationBindingBuilder.AppendLine();
@@ -1092,14 +1092,14 @@ namespace S100Framework
                             foreach (var featureBinding in e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
                                 var roleType = featureBinding.Attribute("roleType")!.Value;
 
-                                var featureTypeRef = featureBinding.Element(XName.Get("featureType", scope_S100))!.Attribute("ref")!.Value!;
+                                //var featureTypeRef = featureBinding.Element(XName.Get("featureType", scope_S100))!.Attribute("ref")!.Value!;
                                 var association = featureBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value!;
                                 var role = featureBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value!;
 
                                 var lower = int.Parse(featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                                 var upper = featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
 
-                                var name = $"{role}{featureTypeRef}";
+                                //var name = $"{role}{featureTypeRef}";
 
                                 var initializer = $"Lower = {lower}";
                                 if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
@@ -1113,34 +1113,38 @@ namespace S100Framework
 
                                 var featureBindingBuilder = new StringBuilder();
 
-                                featureBindingBuilder.AppendLine($"\t\t\tpublic class {role}{featureTypeRef}Binding : featureBinding");
+                                var featureTypeRefs = featureBinding.Elements(XName.Get("featureType", scope_S100)).Select(e => e.Attribute("ref")!.Value).ToArray();
+
+                                featureBindingBuilder.AppendLine($"\t\t\tpublic class {association}{code}Binding : featureBinding");
                                 featureBindingBuilder.AppendLine("\t\t\t{");
-                                featureBindingBuilder.AppendLine($"\t\t\tpublic override Type[] featureTypes => [typeof({featureTypeRef})];");
-                                featureBindingBuilder.AppendLine($"\t\t\tpublic Role Role => Role.{role};");
+                                featureBindingBuilder.AppendLine($"\t\t\tpublic override Type[] featureTypes => [{string.Join(',', featureTypeRefs.Select(e => $"typeof({e})"))}];");
+                                featureBindingBuilder.AppendLine($"\t\t\tpublic Role Role => DomainModel.{productId}.Role.{role};");
                                 featureBindingBuilder.AppendLine($"\t\t\tpublic Associations.FeatureAssociations.{association} {association} {{get; set; }} = new();");
                                 featureBindingBuilder.AppendLine("\t\t\t}");
                                 featureBindingBuilder.AppendLine();
 
                                 var b = featureBindingBuilder.ToString();
-                                if (!featureBindings.ContainsKey($"{role}{featureTypeRef}Binding")) {
+                                classBuilder.Insert(bindingIndex, b);
 
-                                    classBuilder.Insert(bindingIndex, b);
+                                //if (!featureBindings.ContainsKey($"{role}{featureTypeRef}Binding")) {
 
-                                    featureBindings.Add($"{role}{featureTypeRef}Binding", Base64Encode(b));
-                                }
-                                else {
-                                    if (!featureBindings[$"{role}{featureTypeRef}Binding"].Equals(Base64Encode(b)))
-                                        System.Diagnostics.Debugger.Break();
-                                }
+                                //    classBuilder.Insert(bindingIndex, b);
 
-                                var prefix = lower > 0 ? $"{role}{featureTypeRef}Binding" : $"{role}{featureTypeRef}Binding?";
+                                //    featureBindings.Add($"{role}{featureTypeRef}Binding", Base64Encode(b));
+                                //}
+                                //else {
+                                //    if (!featureBindings[$"{role}{featureTypeRef}Binding"].Equals(Base64Encode(b)))
+                                //        System.Diagnostics.Debugger.Break();
+                                //}
+
+                                var prefix = lower > 0 ? $"{association}{code}Binding" : $"{association}{code}Binding?";
                                 var postfix = "";
                                 if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
-                                    prefix = $"List<{role}{featureTypeRef}Binding>";
+                                    prefix = $"List<{association}{code}Binding>";
                                     postfix = " = [];";
                                 }
 
-                                builder.AppendLine($"\t\t\tpublic {prefix} {role}{featureTypeRef} {{get; set;}}{postfix}");
+                                builder.AppendLine($"\t\t\tpublic {prefix} {association}{code} {{get; set;}}{postfix}");
                             }
 
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
