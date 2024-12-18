@@ -888,7 +888,7 @@ namespace S100Framework.WPF.ViewModel.S131
     public partial class rxNCodeViewModel : ViewModelBase
     {
         private categoryOfRxN? _categoryOfRxN;
-        [DomainModel.CodeListAttribute(nameof(categoryOfRxNList))]
+        [DomainModel.CodeList(nameof(categoryOfRxNList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public categoryOfRxN? categoryOfRxN
@@ -905,7 +905,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         private actionOrActivity? _actionOrActivity;
-        [DomainModel.CodeListAttribute(nameof(actionOrActivityList))]
+        [DomainModel.CodeList(nameof(actionOrActivityList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public actionOrActivity? actionOrActivity
@@ -2697,7 +2697,7 @@ namespace S100Framework.WPF.ViewModel.S131
         public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = new();
 
         private categoryOfVessel? _categoryOfVessel;
-        [DomainModel.CodeListAttribute(nameof(categoryOfVesselList))]
+        [DomainModel.CodeList(nameof(categoryOfVesselList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("Applicability")]
         public categoryOfVessel? categoryOfVessel
@@ -3182,7 +3182,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AvailablePortServices")]
         public ObservableCollection<shipSanitationControl> shipSanitationControl { get; set; } = new();
 
-        [DomainModel.CodeListAttribute(nameof(transportConnectionList))]
+        [DomainModel.CodeList(nameof(transportConnectionList))]
         [Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]
         [Category("AvailablePortServices")]
         public ObservableCollection<transportConnection> transportConnection { get; set; } = new();
@@ -3193,7 +3193,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AvailablePortServices")]
         public ObservableCollection<cargoService> cargoService { get; set; } = new();
 
-        [DomainModel.CodeListAttribute(nameof(securitySafetyEmergencyServiceList))]
+        [DomainModel.CodeList(nameof(securitySafetyEmergencyServiceList))]
         [Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]
         [Category("AvailablePortServices")]
         public ObservableCollection<securitySafetyEmergencyService> securitySafetyEmergencyService { get; set; } = new();

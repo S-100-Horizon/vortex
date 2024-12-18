@@ -2698,7 +2698,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         private horizontalDatumEpsg? _horizontalDatumEpsg;
-        [DomainModel.CodeListAttribute(nameof(horizontalDatumEpsgList))]
+        [DomainModel.CodeList(nameof(horizontalDatumEpsgList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("NavigationalProduct")]
         public horizontalDatumEpsg? horizontalDatumEpsg
@@ -3327,7 +3327,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         private horizontalDatumEpsg? _horizontalDatumEpsg;
-        [DomainModel.CodeListAttribute(nameof(horizontalDatumEpsgList))]
+        [DomainModel.CodeList(nameof(horizontalDatumEpsgList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("NavigationalProduct")]
         public horizontalDatumEpsg? horizontalDatumEpsg

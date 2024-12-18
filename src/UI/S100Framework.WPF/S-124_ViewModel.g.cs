@@ -546,7 +546,7 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        [DomainModel.CodeListAttribute(nameof(navwarnTypeDetailsList))]
+        [DomainModel.CodeList(nameof(navwarnTypeDetailsList))]
         [Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]
         [Category("warningInformation")]
         public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails { get; set; } = new();
@@ -1256,7 +1256,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private navwarnTypeGeneral _navwarnTypeGeneral;
-        [DomainModel.CodeListAttribute(nameof(navwarnTypeGeneralList))]
+        [DomainModel.CodeList(nameof(navwarnTypeGeneralList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("NAVWARNPreamble")]
         public navwarnTypeGeneral navwarnTypeGeneral

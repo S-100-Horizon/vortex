@@ -1,8 +1,13 @@
-using S100Framework.DomainModel.S122;
-using S100Framework.DomainModel.S122.ComplexAttributes;
+using System;
+using System.Linq;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
+using S100Framework.DomainModel;
+using S100Framework.DomainModel.S122;
+using S100Framework.DomainModel.S122.ComplexAttributes;
+
 
 namespace S100Framework.WPF.ViewModel.S122
 {
@@ -764,7 +769,7 @@ namespace S100Framework.WPF.ViewModel.S122
     public partial class rxNCodeViewModel : ViewModelBase
     {
         private categoryOfRxN? _categoryOfRxN;
-        [DomainModel.CodeListAttribute(nameof(categoryOfRxNList))]
+        [DomainModel.CodeList(nameof(categoryOfRxNList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public categoryOfRxN? categoryOfRxN
@@ -781,7 +786,7 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private actionOrActivity? _actionOrActivity;
-        [DomainModel.CodeListAttribute(nameof(actionOrActivityList))]
+        [DomainModel.CodeList(nameof(actionOrActivityList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public actionOrActivity? actionOrActivity
@@ -3907,7 +3912,7 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = new();
 
         private categoryOfVessel? _categoryOfVessel;
-        [DomainModel.CodeListAttribute(nameof(categoryOfVesselList))]
+        [DomainModel.CodeList(nameof(categoryOfVesselList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("Applicability")]
         public categoryOfVessel? categoryOfVessel
@@ -4392,7 +4397,7 @@ namespace S100Framework.WPF.ViewModel.S122
     public partial class MarineProtectedAreaViewModel : ViewModelBase
     {
         private categoryOfMarineProtectedArea _categoryOfMarineProtectedArea;
-        [DomainModel.CodeListAttribute(nameof(categoryOfMarineProtectedAreaList))]
+        [DomainModel.CodeList(nameof(categoryOfMarineProtectedAreaList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("MarineProtectedArea")]
         public categoryOfMarineProtectedArea categoryOfMarineProtectedArea

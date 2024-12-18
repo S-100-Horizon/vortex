@@ -134,7 +134,7 @@ namespace S100Framework
 
                         //  Code generator
                         classBuilder.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
-                        classBuilder.AppendLine("\t[System.SerializableAttribute()]");
+                        classBuilder.AppendLine("\t[System.Serializable()]");
                         if (code.ToLowerInvariant().Equals(code))
                             classBuilder.AppendLine("#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.");
                         classBuilder.AppendLine($"\tpublic enum {code} : int");
@@ -193,12 +193,10 @@ namespace S100Framework
                         codelistTypes.Add(code, codelistType);
                         codelistTypes.Add($"{code}?", GetNullableType(codelistType));
 
-                        //codelistTypes.Add($"{code}*", codelistType.MakePointerType());
-
-                        classBuilder.AppendLine("\t[System.SerializableAttribute()]");
+                        classBuilder.AppendLine("\t[System.Serializable()]");
                         classBuilder.AppendLine($"\tpublic class {code}");
                         classBuilder.AppendLine("\t{");
-                        classBuilder.AppendLine("\t\t[System.Xml.Serialization.XmlTextAttribute()]");
+                        classBuilder.AppendLine("\t\t[System.Xml.Serialization.XmlText()]");
                         classBuilder.AppendLine("\t\tpublic string label { get; set; }");
                         classBuilder.AppendLine();
                         classBuilder.AppendLine("\t\tpublic string definition { get; set; }");
@@ -571,7 +569,10 @@ namespace S100Framework
                             }
 
                             if (!p.PropertyType.IsGenericType && p.PropertyType != typeof(String)) {
-                                var prop_prefix = attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                                if (attribute is not null)
+                                    classBuilder.AppendLine("\t\t\t[Required()]");
+                                //var prop_prefix = attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                                var prop_prefix = "\t\t\tpublic";   // attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
                                 var prop_type = attribute != null ? $"{p.PropertyType.Name}" : $"{p.PropertyType.Name}?";
 
                                 if ("System.Collections.Generic".Equals(p.PropertyType.Namespace))
@@ -587,7 +588,9 @@ namespace S100Framework
                                 classBuilder.AppendLine($"\t\t\tpublic {prop_type} {p.Name} {{ get; set; }} = string.Empty;");
                             }
                             else {
-                                var prop_prefix = attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                                if (attribute is not null)
+                                    classBuilder.AppendLine("\t\t\t[Required()]");
+                                var prop_prefix = "\t\t\tpublic";   // attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
                                 var prop_type = GetPropertyType(p.PropertyType);
 
                                 var prop_postfix = attribute != null ? "" : " = default;";
@@ -693,7 +696,9 @@ namespace S100Framework
                             }
 
                             if (!p.PropertyType.IsGenericType && p.PropertyType != typeof(String)) {
-                                var prop_prefix = attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                                if (attribute is not null)
+                                    classBuilder.AppendLine("\t\t\t[Required()]");
+                                var prop_prefix = "\t\t\tpublic";   // attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
                                 var prop_type = attribute != null ? $"{p.PropertyType.Name}" : $"{p.PropertyType.Name}?";
 
                                 if ("System.Collections.Generic".Equals(p.PropertyType.Namespace))
@@ -709,7 +714,9 @@ namespace S100Framework
                                 classBuilder.AppendLine($"\t\t\tpublic {prop_type} {p.Name} {{ get; set; }} = string.Empty;");
                             }
                             else {
-                                var prop_prefix = attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                                if (attribute is not null)
+                                    classBuilder.AppendLine("\t\t\t[Required()]");
+                                var prop_prefix = "\t\t\tpublic";   // attribute != null ? "\t\t\tpublic required" : "\t\t\tpublic";
                                 var prop_type = GetPropertyType(p.PropertyType);
 
                                 var prop_postfix = attribute != null ? "" : " = default;";
@@ -1217,6 +1224,11 @@ namespace S100Framework
             common.AppendLine("\t\t}");
             common.AppendLine("\t}");
             common.AppendLine();
+            common.AppendLine("\t[System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]");
+            common.AppendLine("\tpublic class RequiredAttribute : System.Attribute");
+            common.AppendLine("\t{");
+            common.AppendLine("\t}");
+            common.AppendLine();
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
             common.AppendLine("\tpublic abstract class InformationAssociation {");
@@ -1312,9 +1324,9 @@ namespace S100Framework
             constructorBuilder.AppendLine($"\t\t\tpublic {code}(){{");
 
 
-            classBuilder.AppendLine("\t\t[System.SerializableAttribute()]");
-            classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = \"{S100FC}\")]");
-            classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlRootAttribute(Namespace = \"{S100FC}\", IsNullable = false)]");
+            classBuilder.AppendLine("\t\t[System.Serializable()]");
+            classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = \"{S100FC}\")]");
+            classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlRoot(Namespace = \"{S100FC}\", IsNullable = false)]");
             classBuilder.AppendLine("\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
             if (code.ToLowerInvariant().Equals(code))
                 classBuilder.AppendLine("#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.");
@@ -1357,13 +1369,15 @@ namespace S100Framework
                 var attribute2 = p.GetCustomAttribute<S100Framework.DomainModel.RoleAttribute>();
 
                 if (attribute2 is not null) {
-                    classBuilder.AppendLine($"\t\t\t[S100Framework.DomainModel.RoleAttribute({attribute2.RoleName})]");
+                    classBuilder.AppendLine($"\t\t\t[S100Framework.DomainModel.Role({attribute2.RoleName})]");
                 }
 
-                classBuilder.AppendLine($"\t\t\t[System.Xml.Serialization.XmlElementAttribute(Namespace = \"{S100FC}\")]");
+                classBuilder.AppendLine($"\t\t\t[System.Xml.Serialization.XmlElement(Namespace = \"{S100FC}\")]");
 
                 if (!p.PropertyType.IsGenericType && p.PropertyType != typeof(String)) {
-                    var prop_prefix = attribute1 != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                    if (attribute1 is not null)
+                        classBuilder.AppendLine("\t\t\t[Required()]");
+                    var prop_prefix = "\t\t\tpublic";   // attribute1 != null ? "\t\t\tpublic required" : "\t\t\tpublic";
                     var prop_type = attribute1 != null ? $"{p.PropertyType.Name}" : $"{p.PropertyType.Name}?";
 
                     if ("System.Collections.Generic".Equals(p.PropertyType.Namespace))
@@ -1379,7 +1393,9 @@ namespace S100Framework
                     classBuilder.AppendLine($"\t\t\tpublic {prop_type} {p.Name} {{ get; set; }} = string.Empty;");
                 }
                 else {
-                    var prop_prefix = attribute1 != null ? "\t\t\tpublic required" : "\t\t\tpublic";
+                    if (attribute1 is not null)
+                        classBuilder.AppendLine("\t\t\t[Required()]");
+                    var prop_prefix = "\t\t\tpublic";   // attribute1 != null ? "\t\t\tpublic required" : "\t\t\tpublic";
                     var prop_type = GetPropertyType(p.PropertyType);
 
                     var prop_postfix = attribute1 != null ? "" : " = default;";
@@ -1496,7 +1512,7 @@ namespace S100Framework
                         classBuilder.AppendLine($"\t\tprivate {prop_type} _{p.Name};");
                         classBuilder.AppendLine();
                         if (codeLists.Contains(p.Name)) {
-                            classBuilder.AppendLine($"\t\t[DomainModel.CodeListAttribute(nameof({p.PropertyType.Name}List))]");
+                            classBuilder.AppendLine($"\t\t[DomainModel.CodeList(nameof({p.PropertyType.Name}List))]");
                             classBuilder.AppendLine("\t\t[Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]");
                         }
                         classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");
@@ -1540,7 +1556,7 @@ namespace S100Framework
                         modelBuilder.AppendLine($"\t\t\t\t{p.Name} = this.{p.Name}.ToList(),");
 
                         if (codeLists.Contains(prop_name)) {
-                            classBuilder.AppendLine($"\t\t[DomainModel.CodeListAttribute(nameof({prop_name}List))]");
+                            classBuilder.AppendLine($"\t\t[DomainModel.CodeList(nameof({prop_name}List))]");
                             classBuilder.AppendLine("\t\t[Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]");
                         }
                         classBuilder.AppendLine($"\t\t[Category(\"{p.DeclaringType!.Name}\")]");

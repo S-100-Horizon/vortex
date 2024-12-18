@@ -113,7 +113,7 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        public string Name => $"{_linkId} {informationBinding?.informationType}";
+        //public string Name => $"{_linkId} {informationBinding?.informationType}";
     }
 
     public class informationBindingViewModel<T> : informationBindingViewModel where T : new()

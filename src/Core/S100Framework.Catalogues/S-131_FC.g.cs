@@ -13,7 +13,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum berthingAssistance : int
     {
         [System.ComponentModel.Description("Information about assistance or arrangements for a service related to berthing operations.")]
@@ -37,7 +37,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum cardinalDirection : int
     {
         [System.ComponentModel.Description("348.75-011.25 degrees (true north).")]
@@ -91,7 +91,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum cargoService : int
     {
         [System.ComponentModel.Description("The loading, unloading, moving or handling of cargo, ship's stores, gear, or other materials, into, in, on, or out of any vessel.")]
@@ -109,7 +109,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfAuthority : int
     {
         [System.ComponentModel.Description("The administration to prevent or detect and prosecute violations of rules and regulations at international boundaries.")]
@@ -160,7 +160,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfBerthLocation : int
     {
         [System.ComponentModel.Description("A wharf or quay with reference position(s) given by one or more metre marks.")]
@@ -178,7 +178,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfCargo : int
     {
         [System.ComponentModel.Description("One of a number of standard sized cargo carrying units, secured using standard corner attachments and bar.")]
@@ -217,7 +217,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfCommunicationPreference : int
     {
         [System.ComponentModel.Description("The first choice channel or frequency to be used when calling a radio station.")]
@@ -235,7 +235,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfDangerousOrHazardousCargo : int
     {
         [System.ComponentModel.Description("Explosives, Division 1: Substances and articles which have a mass explosion hazard.")]
@@ -304,7 +304,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfDepthsDescription : int
     {
         [System.ComponentModel.Description("A shallow elevation composed of unconsolidated material that may constitute a hazard to surface navigation.")]
@@ -319,7 +319,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfHarbourFacility : int
     {
         [System.ComponentModel.Description("A terminal for roll-on roll-off ferries.")]
@@ -373,7 +373,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfMooringWarpingFacility : int
     {
         [System.ComponentModel.Description("A post or group of posts, used for mooring or warping a vessel, or as an aid to navigation. The dolphin may be in the water, on a wharf or on the beach.")]
@@ -400,7 +400,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfPortSection : int
     {
         [System.ComponentModel.Description("The main navigable channel in a harbour or its approaches, for vessels of larger size.")]
@@ -424,7 +424,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfRelationship : int
     {
         [System.ComponentModel.Description("Use of facility, waterway or service is forbidden.")]
@@ -448,7 +448,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfSchedule : int
     {
         [System.ComponentModel.Description("The service, office, is open, fully manned, and operating normally, or the area is accessible as usual.")]
@@ -463,7 +463,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfTemporalVariation : int
     {
         [System.ComponentModel.Description("Indication of the possible impact of a significant event (for example hurricane, earthquake, volcanic eruption, landslide, etc), which is considered likely to have changed the seafloor or landscape significantly.")]
@@ -487,7 +487,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfText : int
     {
         [System.ComponentModel.Description("A statement summarizing the important points of a text.")]
@@ -502,7 +502,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum categoryOfVesselRegistry : int
     {
         [System.ComponentModel.Description("The vessel is registered or enrolled under the same national flag as the port, harbour, territorial sea, exclusive economic zone, or administrative area in which the object that possesses this attribute applies or is located.")]
@@ -514,7 +514,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum comparisonOperator : int
     {
         [System.ComponentModel.Description("The value of the left value is greater than that of the right.")]
@@ -538,7 +538,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum condition : int
@@ -559,7 +559,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum dayOfWeek : int
     {
         [System.ComponentModel.Description("The first day of the week.")]
@@ -586,7 +586,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum dynamicResource : int
     {
         [System.ComponentModel.Description("The information is static, or a source of up-to-date information is unavailable or unknown.")]
@@ -604,7 +604,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum firefightingService : int
     {
         [System.ComponentModel.Description("Personnel and equipment that are capable of combating a fire from ashore.")]
@@ -619,7 +619,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum iSPSLevel : int
     {
         [System.ComponentModel.Description("The level for which minimum appropriate protective security measures shall be maintained at all times.")]
@@ -634,7 +634,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum logicalConnectives : int
     {
         [System.ComponentModel.Description("All the conditions described by the other attributes of the object, or sub-attributes of the same complex attribute, are true.")]
@@ -646,7 +646,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum medicalService : int
     {
         [System.ComponentModel.Description("A vehicle for conveying the sick or injured to or from a hospital.")]
@@ -667,7 +667,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum membership : int
@@ -682,7 +682,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum methodOfSecuring : int
     {
         [System.ComponentModel.Description("Vessel is secured perpendicular to the wharf with bow to seaward.")]
@@ -718,7 +718,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum onlineFunction : int
     {
         [System.ComponentModel.Description("Online instructions for transferring data from one storage device or system to another.")]
@@ -754,7 +754,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
     public enum product : int
@@ -823,7 +823,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum qualityOfHorizontalMeasurement : int
     {
         [System.ComponentModel.Description("The position(s) was(were) determined by the operation of making measurements for determining the relative position of points on, above or beneath the earth's surface. Survey implies a regular, controlled survey of any date.")]
@@ -862,7 +862,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum repairService : int
     {
         [System.ComponentModel.Description("The process of neutralizing or reducing to a minimum the magnetic effects the vessel itself exerts on a magnetic compass. It is based on the principle that the magnetic effect of the iron and steel of the vessel can be counterbalanced by means of magnets and soft iron placed near the compass. Also called compass adjustment, compass compensation, or magnetic compensation.")]
@@ -898,7 +898,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum shipSanitationControl : int
     {
         [System.ComponentModel.Description("Capable of applying measures to ensure that a vessel is free of disease and disease risks, but cannot issue a certificate.")]
@@ -913,7 +913,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum sourceType : int
     {
         [System.ComponentModel.Description("Treaty, convention, or international agreement; law or regulation issued by a national or other authority.")]
@@ -949,7 +949,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum supplyService : int
     {
         [System.ComponentModel.Description("The provision of shoreside electrical power to a ship at berth while its main and auxiliary engines are shut down.")]
@@ -985,7 +985,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum technicalPortService : int
     {
         [System.ComponentModel.Description("The process of neutralizing or reducing to a minimum the magnetic effects the vessel itself exerts on a magnetic compass. It is based on the principle that the magnetic effect of the iron and steel of the vessel can be counterbalanced by means of magnets and soft iron placed near the compass. Also called compass adjustment, compass compensation, or magnetic compensation.")]
@@ -1003,7 +1003,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum telecommunicationService : int
     {
         [System.ComponentModel.Description("The transfer or exchange of information by using sounds that are being made by mouth and throat when speaking.")]
@@ -1033,7 +1033,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum textType : int
     {
         [System.ComponentModel.Description("The individual name of a feature.")]
@@ -1042,7 +1042,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum verticalDatum : int
     {
         [System.ComponentModel.Description("The average height of the low waters of spring tides. This level is used as a tidal datum in some areas. Also called spring low water.")]
@@ -1141,7 +1141,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum vesselsCharacteristics : int
     {
         [System.ComponentModel.Description("The maximum length of the ship.")]
@@ -1183,7 +1183,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum vesselsCharacteristicsUnit : int
     {
         [System.ComponentModel.Description("The basic unit of length in the International System of Units (SI) system.")]
@@ -1210,7 +1210,7 @@ namespace S100Framework.DomainModel.S131
     }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public enum wasteDisposalService : int
     {
         [System.ComponentModel.Description("The service with facility to receive oil related waste/residue of the type \"Oily bilge water\" as specified in MARPOL Annex I.")]
@@ -1287,46 +1287,46 @@ namespace S100Framework.DomainModel.S131
         MarpolAnnexViExhaustGasCleaningResidues = 24,
     }
 
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public class actionOrActivity
     {
-        [System.Xml.Serialization.XmlTextAttribute()]
+        [System.Xml.Serialization.XmlText()]
         public string label { get; set; }
         public string definition { get; set; }
         public int code { get; set; }
     }
 
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public class categoryOfRxN
     {
-        [System.Xml.Serialization.XmlTextAttribute()]
+        [System.Xml.Serialization.XmlText()]
         public string label { get; set; }
         public string definition { get; set; }
         public int code { get; set; }
     }
 
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public class categoryOfVessel
     {
-        [System.Xml.Serialization.XmlTextAttribute()]
+        [System.Xml.Serialization.XmlText()]
         public string label { get; set; }
         public string definition { get; set; }
         public int code { get; set; }
     }
 
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public class securitySafetyEmergencyService
     {
-        [System.Xml.Serialization.XmlTextAttribute()]
+        [System.Xml.Serialization.XmlText()]
         public string label { get; set; }
         public string definition { get; set; }
         public int code { get; set; }
     }
 
-    [System.SerializableAttribute()]
+    [System.Serializable()]
     public class transportConnection
     {
-        [System.Xml.Serialization.XmlTextAttribute()]
+        [System.Xml.Serialization.XmlText()]
         public string label { get; set; }
         public string definition { get; set; }
         public int code { get; set; }
@@ -1343,25 +1343,25 @@ namespace S100Framework.DomainModel.S131
 
     namespace ComplexAttributes
     {
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class contactAddress
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> deliveryPoint { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String cityName { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String administrativeDivision { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String countryName { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String postalCode { get; set; } = string.Empty;
 
             public contactAddress()
@@ -1369,19 +1369,19 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureName
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Boolean? displayName { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String language { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String name { get; set; } = string.Empty;
 
             public featureName()
@@ -1390,16 +1390,16 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class fixedDateRange
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public DateOnly? dateStart { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public DateOnly? dateEnd { get; set; } = default;
 
             public fixedDateRange()
@@ -1407,19 +1407,19 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class frequencyPair
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<Int32> frequencyShoreStationTransmits { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<Int32> frequencyShoreStationReceives { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> contactInstructions { get; set; } = [];
 
             public frequencyPair()
@@ -1427,16 +1427,17 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class horizontalPositionUncertainty
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required Decimal uncertaintyFixed { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public Decimal uncertaintyFixed { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? uncertaintyVariableFactor { get; set; } = default;
 
             public horizontalPositionUncertainty()
@@ -1444,28 +1445,28 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
         public partial class information
 #pragma warning restore CS8981
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String fileLocator { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String fileReference { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> headline { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String language { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String text { get; set; } = string.Empty;
 
             public information()
@@ -1473,31 +1474,31 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String onlineResourceLinkageURL { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String protocol { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String applicationProfile { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String nameOfResource { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String onlineResourceDescription { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public onlineFunction? onlineFunction { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String protocolRequest { get; set; } = string.Empty;
 
             public onlineResource()
@@ -1506,56 +1507,59 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
         public partial class orientation
 #pragma warning restore CS8981
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? orientationUncertainty { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required Decimal orientationValue { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public Decimal orientationValue { get; set; }
 
             public orientation()
             {
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class periodicDateRange
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required DateOnly dateStart { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public DateOnly dateStart { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required DateOnly dateEnd { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public DateOnly dateEnd { get; set; }
 
             public periodicDateRange()
             {
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class rxNCode
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfRxN? categoryOfRxN { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public actionOrActivity? actionOrActivity { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> headline { get; set; } = [];
 
             public rxNCode()
@@ -1563,45 +1567,46 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class surveyDateRange
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public DateOnly? dateStart { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required DateOnly dateEnd { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public DateOnly dateEnd { get; set; }
 
             public surveyDateRange()
             {
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class textContent
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfText? categoryOfText { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public onlineResource? onlineResource { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String source { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public sourceType? sourceType { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public DateOnly? reportedDate { get; set; } = default;
 
             public textContent()
@@ -1609,22 +1614,22 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalsByDayOfWeek
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<dayOfWeek> dayOfWeek { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Boolean? dayOfWeekIsRange { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<TimeOnly> timeOfDayStart { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<TimeOnly> timeOfDayEnd { get; set; } = [];
 
             public timeIntervalsByDayOfWeek()
@@ -1632,14 +1637,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class usefulMarkDescription
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<textContent> textContent { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<textContent> textContent { get; set; }
 
             public usefulMarkDescription()
             {
@@ -1647,16 +1653,17 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalUncertainty
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required Decimal uncertaintyFixed { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public Decimal uncertaintyFixed { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? uncertaintyVariableFactor { get; set; } = default;
 
             public verticalUncertainty()
@@ -1664,42 +1671,46 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class vesselsMeasurements
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required comparisonOperator comparisonOperator { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public comparisonOperator comparisonOperator { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required vesselsCharacteristics vesselsCharacteristics { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public vesselsCharacteristics vesselsCharacteristics { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required Decimal vesselsCharacteristicsValue { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public Decimal vesselsCharacteristicsValue { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required vesselsCharacteristicsUnit vesselsCharacteristicsUnit { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public vesselsCharacteristicsUnit vesselsCharacteristicsUnit { get; set; }
 
             public vesselsMeasurements()
             {
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class weatherResource
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public onlineResource? onlineResource { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public dynamicResource? dynamicResource { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public textContent? textContent { get; set; }
 
             public weatherResource()
@@ -1707,25 +1718,25 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class bearingInformation
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public cardinalDirection? cardinalDirection { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? distance { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<Decimal> sectorBearing { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public orientation? orientation { get; set; }
 
             public bearingInformation()
@@ -1733,14 +1744,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class cargoServicesDescription
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<textContent> textContent { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<textContent> textContent { get; set; }
 
             public cargoServicesDescription()
             {
@@ -1748,25 +1760,25 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class constructionInformation
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public fixedDateRange? fixedDateRange { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public condition? condition { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String development { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationByText { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<textContent> textContent { get; set; } = [];
 
             public constructionInformation()
@@ -1775,17 +1787,19 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class depthsDescription
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required categoryOfDepthsDescription categoryOfDepthsDescription { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public categoryOfDepthsDescription categoryOfDepthsDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<textContent> textContent { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<textContent> textContent { get; set; }
 
             public depthsDescription()
             {
@@ -1793,14 +1807,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class facilitiesLayoutDescription
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<textContent> textContent { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<textContent> textContent { get; set; }
 
             public facilitiesLayoutDescription()
             {
@@ -1808,14 +1823,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class generalPortDescription
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<textContent> textContent { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<textContent> textContent { get; set; }
 
             public generalPortDescription()
             {
@@ -1823,28 +1839,29 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
         public partial class graphic
 #pragma warning restore CS8981
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<String> pictorialRepresentation { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<String> pictorialRepresentation { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String pictureCaption { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public DateTime? sourceDate { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String pictureInformation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public bearingInformation? bearingInformation { get; set; }
 
             public graphic()
@@ -1853,14 +1870,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class landmarkDescription
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<textContent> textContent { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<textContent> textContent { get; set; }
 
             public landmarkDescription()
             {
@@ -1868,14 +1886,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class limitsDescription
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<textContent> textContent { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<textContent> textContent { get; set; }
 
             public limitsDescription()
             {
@@ -1883,14 +1902,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class majorLightDescription
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<textContent> textContent { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<textContent> textContent { get; set; }
 
             public majorLightDescription()
             {
@@ -1898,14 +1918,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class markedBy
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<textContent> textContent { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<textContent> textContent { get; set; }
 
             public markedBy()
             {
@@ -1913,14 +1934,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class offshoreMarkDescription
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<textContent> textContent { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<textContent> textContent { get; set; }
 
             public offshoreMarkDescription()
             {
@@ -1928,17 +1950,18 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class scheduleByDayOfWeek
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfSchedule? categoryOfSchedule { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<timeIntervalsByDayOfWeek> timeIntervalsByDayOfWeek { get; set; }
 
             public scheduleByDayOfWeek()
             {
@@ -1946,19 +1969,19 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class spatialAccuracy
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public fixedDateRange? fixedDateRange { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public horizontalPositionUncertainty? horizontalPositionUncertainty { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public spatialAccuracy()
@@ -1966,31 +1989,31 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
         public partial class telecommunications
 #pragma warning restore CS8981
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String telecommunicationIdentifier { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String telecommunicationCarrier { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String contactInstructions { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<telecommunicationService> telecommunicationService { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public scheduleByDayOfWeek? scheduleByDayOfWeek { get; set; }
 
             public telecommunications()
@@ -1999,28 +2022,28 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class generalHarbourInformation
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public generalPortDescription? generalPortDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public facilitiesLayoutDescription? facilitiesLayoutDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public limitsDescription? limitsDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public constructionInformation? constructionInformation { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public cargoServicesDescription? cargoServicesDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<weatherResource> weatherResource { get; set; } = [];
 
             public generalHarbourInformation()
@@ -2288,7 +2311,9 @@ namespace S100Framework.DomainModel.S131
                     Role.theApplicableRxN,
                     Role.isApplicableTo
                 };
-                public required membership membership { get; set; }
+
+                [Required()]
+                public membership membership { get; set; }
             }
 
             public class PermissionType : InformationAssociation
@@ -2302,7 +2327,9 @@ namespace S100Framework.DomainModel.S131
                     Role.vslLocation,
                     Role.permission
                 };
-                public required categoryOfRelationship categoryOfRelationship { get; set; }
+
+                [Required()]
+                public categoryOfRelationship categoryOfRelationship { get; set; }
             }
 
             public class SpatialAssociation : InformationAssociation
@@ -2450,33 +2477,40 @@ namespace S100Framework.DomainModel.S131
         using DomainModel;
         using S100Framework.DomainModel.Bindings;
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class providesInformationAdditionalInformationInformationTypeBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(NauticalInformation)];
+            public Role Role => DomainModel.S131.Role.providesInformation;
+            public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class InformationType : InformationTypeBase
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<featureName> featureName { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public fixedDateRange? fixedDateRange { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<graphic> graphic { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String source { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public sourceType? sourceType { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public DateOnly? reportedDate { get; set; } = default;
-            public List<informationBinding> providesInformationNauticalInformation { get; set; } = [];
+            public List<providesInformationAdditionalInformationInformationTypeBinding> providesInformationAdditionalInformation { get; set; } = [];
             public override string Code => nameof(InformationType);
 
             public InformationType()
@@ -2484,22 +2518,36 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class theOrganisationRelatedOrganisationAbstractRxNBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(Authority)];
+            public Role Role => DomainModel.S131.Role.theOrganisation;
+            public Associations.InformationAssociations.RelatedOrganisation RelatedOrganisation { get; set; } = new();
+        }
+
+        public class isApplicableToInclusionTypeAbstractRxNBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(Applicability)];
+            public Role Role => DomainModel.S131.Role.isApplicableTo;
+            public Associations.InformationAssociations.InclusionType InclusionType { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class AbstractRxN : InformationType
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<rxNCode> rxNCode { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<textContent> textContent { get; set; } = [];
-            public List<informationBinding> isApplicableToApplicability { get; set; } = [];
-            public List<informationBinding> theOrganisationAuthority { get; set; } = [];
+            public List<isApplicableToInclusionTypeAbstractRxNBinding> isApplicableToInclusionType { get; set; } = [];
+            public List<theOrganisationRelatedOrganisationAbstractRxNBinding> theOrganisationRelatedOrganisation { get; set; } = [];
             public override string Code => nameof(AbstractRxN);
 
             public AbstractRxN()
@@ -2507,43 +2555,57 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class vslLocationPermissionTypeApplicabilityBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(InformationType)];
+            public Role Role => DomainModel.S131.Role.vslLocation;
+            public Associations.InformationAssociations.PermissionType PermissionType { get; set; } = new();
+        }
+
+        public class theApplicableRxNInclusionTypeApplicabilityBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(AbstractRxN)];
+            public Role Role => DomainModel.S131.Role.theApplicableRxN;
+            public Associations.InformationAssociations.InclusionType InclusionType { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Applicability : InformationType
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Boolean? inBallast { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfVessel? categoryOfVessel { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfVesselRegistry? categoryOfVesselRegistry { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public logicalConnectives? logicalConnectives { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Int32? thicknessOfIceCapability { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String vesselPerformance { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
-            public List<informationBinding> theApplicableRxNAbstractRxN { get; set; } = [];
-            public List<informationBinding> vslLocationInformationType { get; set; } = [];
+            public List<theApplicableRxNInclusionTypeApplicabilityBinding> theApplicableRxNInclusionType { get; set; } = [];
+            public List<vslLocationPermissionTypeApplicabilityBinding> vslLocationPermissionType { get; set; } = [];
             public override string Code => nameof(Applicability);
 
             public Applicability()
@@ -2551,20 +2613,42 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class theServiceHoursAuthorityHoursAuthorityBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.theServiceHours;
+            public Associations.InformationAssociations.AuthorityHours AuthorityHours { get; set; } = new();
+        }
+
+        public class theInformationRelatedOrganisationAuthorityBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(AbstractRxN)];
+            public Role Role => DomainModel.S131.Role.theInformation;
+            public Associations.InformationAssociations.RelatedOrganisation RelatedOrganisation { get; set; } = new();
+        }
+
+        public class theContactDetailsAuthorityContactAuthorityBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ContactDetails)];
+            public Role Role => DomainModel.S131.Role.theContactDetails;
+            public Associations.InformationAssociations.AuthorityContact AuthorityContact { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Authority : InformationType
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required categoryOfAuthority categoryOfAuthority { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public categoryOfAuthority categoryOfAuthority { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public textContent? textContent { get; set; }
-            public List<informationBinding> theContactDetailsContactDetails { get; set; } = [];
-            public List<informationBinding> theInformationAbstractRxN { get; set; } = [];
-            public List<informationBinding> theServiceHoursServiceHours { get; set; } = [];
+            public List<theContactDetailsAuthorityContactAuthorityBinding> theContactDetailsAuthorityContact { get; set; } = [];
+            public List<theInformationRelatedOrganisationAuthorityBinding> theInformationRelatedOrganisation { get; set; } = [];
+            public List<theServiceHoursAuthorityHoursAuthorityBinding> theServiceHoursAuthorityHours { get; set; } = [];
             public override string Code => nameof(Authority);
 
             public Authority()
@@ -2572,49 +2656,49 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AvailablePortServices : InformationType
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<firefightingService> firefightingService { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<medicalService> medicalService { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<repairService> repairService { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<technicalPortService> technicalPortService { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<shipSanitationControl> shipSanitationControl { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<transportConnection> transportConnection { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<berthingAssistance> berthingAssistance { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<cargoService> cargoService { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<securitySafetyEmergencyService> securitySafetyEmergencyService { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<wasteDisposalService> wasteDisposalService { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<supplyService> supplyService { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String tugInformation { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<textContent> textContent { get; set; } = [];
             public override string Code => nameof(AvailablePortServices);
 
@@ -2623,48 +2707,55 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class theAuthorityAuthorityContactContactDetailsBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(Authority)];
+            public Role Role => DomainModel.S131.Role.theAuthority;
+            public Associations.InformationAssociations.AuthorityContact AuthorityContact { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContactDetails : InformationType
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String callName { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String callSign { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> communicationChannel { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<contactAddress> contactAddress { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String contactInstructions { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<Int32> signalFrequency { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<frequencyPair> frequencyPair { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<information> information { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String mMSICode { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<onlineResource> onlineResource { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<telecommunications> telecommunications { get; set; } = [];
-            public List<informationBinding> theAuthorityAuthority { get; set; } = [];
+            public List<theAuthorityAuthorityContactContactDetailsBinding> theAuthorityAuthorityContact { get; set; } = [];
             public override string Code => nameof(ContactDetails);
 
             public ContactDetails()
@@ -2672,40 +2763,40 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Entrance : InformationType
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String entranceDescription { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> associatedFeatureName { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String localKnowledgeDescription { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String approachDescription { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<markedBy> markedBy { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<landmarkDescription> landmarkDescription { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<offshoreMarkDescription> offshoreMarkDescription { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<majorLightDescription> majorLightDescription { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<usefulMarkDescription> usefulMarkDescription { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<textContent> textContent { get; set; } = [];
             public override string Code => nameof(Entrance);
 
@@ -2714,13 +2805,20 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class informationProvidedForAdditionalInformationNauticalInformationBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(InformationType)];
+            public Role Role => DomainModel.S131.Role.informationProvidedFor;
+            public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : AbstractRxN
         {
-            public List<informationBinding> informationProvidedForInformationType { get; set; } = [];
+            public List<informationProvidedForAdditionalInformationNauticalInformationBinding> informationProvidedForAdditionalInformation { get; set; } = [];
             public override string Code => nameof(NauticalInformation);
 
             public NauticalInformation()
@@ -2728,19 +2826,19 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NonStandardWorkingDay : InformationType
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<DateOnly> dateFixed { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> dateVariable { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<information> information { get; set; } = [];
             public override string Code => nameof(NonStandardWorkingDay);
 
@@ -2749,9 +2847,9 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Recommendations : AbstractRxN
         {
@@ -2762,9 +2860,9 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Regulations : AbstractRxN
         {
@@ -2775,9 +2873,9 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Restrictions : AbstractRxN
         {
@@ -2788,19 +2886,34 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class theAuthority_srvHrsAuthorityHoursServiceHoursBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(Authority)];
+            public Role Role => DomainModel.S131.Role.theAuthority_srvHrs;
+            public Associations.InformationAssociations.AuthorityHours AuthorityHours { get; set; } = new();
+        }
+
+        public class partialWorkingDayExceptionalWorkdayServiceHoursBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(NonStandardWorkingDay)];
+            public Role Role => DomainModel.S131.Role.partialWorkingDay;
+            public Associations.InformationAssociations.ExceptionalWorkday ExceptionalWorkday { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ServiceHours : InformationType
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<information> information { get; set; } = [];
-            public List<informationBinding> partialWorkingDayNonStandardWorkingDay { get; set; } = [];
-            public List<informationBinding> theAuthority_srvHrsAuthority { get; set; } = [];
+            public List<partialWorkingDayExceptionalWorkdayServiceHoursBinding> partialWorkingDayExceptionalWorkday { get; set; } = [];
+            public List<theAuthority_srvHrsAuthorityHoursServiceHoursBinding> theAuthority_srvHrsAuthorityHours { get; set; } = [];
             public override string Code => nameof(ServiceHours);
 
             public ServiceHours()
@@ -2809,16 +2922,16 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpatialQuality : InformationTypeBase
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
             public override string Code => nameof(SpatialQuality);
 
@@ -2835,47 +2948,76 @@ namespace S100Framework.DomainModel.S131
         using DomainModel;
         using S100Framework.DomainModel.Bindings;
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class positionsTextAssociationFeatureTypeBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(TextPlacement)];
+            public Role Role => DomainModel.S131.Role.positions;
+            public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
+        }
+
+        public class providesInformationAdditionalInformationFeatureTypeBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(NauticalInformation)];
+            public Role Role => DomainModel.S131.Role.providesInformation;
+            public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
+        }
+
+        public class theRxNAssociatedRxNFeatureTypeBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(AbstractRxN)];
+            public Role Role => DomainModel.S131.Role.theRxN;
+            public Associations.InformationAssociations.AssociatedRxN AssociatedRxN { get; set; } = new();
+        }
+
+        public class permissionPermissionTypeFeatureTypeBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(Applicability)];
+            public Role Role => DomainModel.S131.Role.permission;
+            public Associations.InformationAssociations.PermissionType PermissionType { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class FeatureType : FeatureTypeBase
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationMRN { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String globalLocationNumber { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<featureName> featureName { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public fixedDateRange? fixedDateRange { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<rxNCode> rxNCode { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<graphic> graphic { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String source { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public sourceType? sourceType { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public DateOnly? reportedDate { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<textContent> textContent { get; set; } = [];
-            public List<informationBinding> permissionApplicability { get; set; } = [];
-            public List<informationBinding> theRxNAbstractRxN { get; set; } = [];
-            public List<informationBinding> providesInformationNauticalInformation { get; set; } = [];
+            public List<permissionPermissionTypeFeatureTypeBinding> permissionPermissionType { get; set; } = [];
+            public List<theRxNAssociatedRxNFeatureTypeBinding> theRxNAssociatedRxN { get; set; } = [];
+            public List<providesInformationAdditionalInformationFeatureTypeBinding> providesInformationAdditionalInformation { get; set; } = [];
+            public positionsTextAssociationFeatureTypeBinding? positionsTextAssociation { get; set; }
             public override string Code => nameof(FeatureType);
 
             public FeatureType()
@@ -2883,13 +3025,20 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class theContactDetailsServiceContactOrganizationContactAreaBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ContactDetails)];
+            public Role Role => DomainModel.S131.Role.theContactDetails;
+            public Associations.InformationAssociations.ServiceContact ServiceContact { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class OrganizationContactArea : FeatureType
         {
-            public List<informationBinding> theContactDetailsContactDetails { get; set; } = [];
+            public List<theContactDetailsServiceContactOrganizationContactAreaBinding> theContactDetailsServiceContact { get; set; } = [];
             public override string Code => nameof(OrganizationContactArea);
 
             public OrganizationContactArea()
@@ -2897,13 +3046,20 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class controlAuthorityServiceControlSupervisedAreaBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(Authority)];
+            public Role Role => DomainModel.S131.Role.controlAuthority;
+            public Associations.InformationAssociations.ServiceControl ServiceControl { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class SupervisedArea : OrganizationContactArea
         {
-            public informationBinding? controlAuthorityAuthority { get; set; }
+            public controlAuthorityServiceControlSupervisedAreaBinding? controlAuthorityServiceControl { get; set; }
             public override string Code => nameof(SupervisedArea);
 
             public SupervisedArea()
@@ -2911,14 +3067,22 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class infrastructureLocationInfrastructureHarbourPhysicalInfrastructureBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+            public Role Role => DomainModel.S131.Role.infrastructureLocation;
+            public Associations.FeatureAssociations.Infrastructure Infrastructure { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class HarbourPhysicalInfrastructure : SupervisedArea
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? verticalClearanceValue { get; set; } = default;
+            public infrastructureLocationInfrastructureHarbourPhysicalInfrastructureBinding? infrastructureLocationInfrastructure { get; set; }
             public override string Code => nameof(HarbourPhysicalInfrastructure);
 
             public HarbourPhysicalInfrastructure()
@@ -2926,9 +3090,9 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class Layout : SupervisedArea
         {
@@ -2939,14 +3103,36 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class auxiliaryFacilityPrimaryAuxiliaryFacilityAnchorBerthBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(MooringWarpingFacility)];
+            public Role Role => DomainModel.S131.Role.auxiliaryFacility;
+            public Associations.FeatureAssociations.PrimaryAuxiliaryFacility PrimaryAuxiliaryFacility { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursAnchorBerthBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        public class serviceDescriptionReferenceServiceAvailabilityAnchorBerthBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(AvailablePortServices)];
+            public Role Role => DomainModel.S131.Role.serviceDescriptionReference;
+            public Associations.InformationAssociations.ServiceAvailability ServiceAvailability { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorBerth : Layout
         {
-            public informationBinding? serviceDescriptionReferenceAvailablePortServices { get; set; }
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public serviceDescriptionReferenceServiceAvailabilityAnchorBerthBinding? serviceDescriptionReferenceServiceAvailability { get; set; }
+            public location_srvHrsLocationHoursAnchorBerthBinding? location_srvHrsLocationHours { get; set; }
+            public List<auxiliaryFacilityPrimaryAuxiliaryFacilityAnchorBerthBinding> auxiliaryFacilityPrimaryAuxiliaryFacility { get; set; } = [];
             public override string Code => nameof(AnchorBerth);
 
             public AnchorBerth()
@@ -2954,24 +3140,39 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class componentOfLayoutDivisionAnchorageAreaBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.componentOf;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursAnchorageAreaBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorageArea : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public depthsDescription? depthsDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationByText { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public markedBy? markedBy { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public location_srvHrsLocationHoursAnchorageAreaBinding? location_srvHrsLocationHours { get; set; }
+            public componentOfLayoutDivisionAnchorageAreaBinding componentOfLayoutDivision { get; set; }
             public override string Code => nameof(AnchorageArea);
 
             public AnchorageArea()
@@ -2979,64 +3180,94 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class componentOfLayoutDivisionBerthBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+            public Role Role => DomainModel.S131.Role.componentOf;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class demarcationIndicatorDemarcationBerthBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(BerthPosition)];
+            public Role Role => DomainModel.S131.Role.demarcationIndicator;
+            public Associations.FeatureAssociations.Demarcation Demarcation { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursBerthBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        public class serviceDescriptionReferenceServiceAvailabilityBerthBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(AvailablePortServices)];
+            public Role Role => DomainModel.S131.Role.serviceDescriptionReference;
+            public Associations.InformationAssociations.ServiceAvailability ServiceAvailability { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Berth : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? availableBerthingLength { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String bollardDescription { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? bollardPull { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? minimumBerthDepth { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? elevation { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Boolean? cathodicProtectionSystem { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfBerthLocation? categoryOfBerthLocation { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String portFacilityNumber { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> bollardNumber { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String gLNExtension { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> metreMarkNumber { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> manifoldNumber { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String rampNumber { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationByText { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public methodOfSecuring? methodOfSecuring { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String uNLocationCode { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String terminalIdentifier { get; set; } = string.Empty;
-            public informationBinding? serviceDescriptionReferenceAvailablePortServices { get; set; }
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public serviceDescriptionReferenceServiceAvailabilityBerthBinding? serviceDescriptionReferenceServiceAvailability { get; set; }
+            public location_srvHrsLocationHoursBerthBinding? location_srvHrsLocationHours { get; set; }
+            public List<demarcationIndicatorDemarcationBerthBinding> demarcationIndicatorDemarcation { get; set; } = [];
+            public componentOfLayoutDivisionBerthBinding componentOfLayoutDivision { get; set; }
             public override string Code => nameof(Berth);
 
             public Berth()
@@ -3045,38 +3276,54 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class auxiliaryFacilityPrimaryAuxiliaryFacilityBerthPositionBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(MooringWarpingFacility)];
+            public Role Role => DomainModel.S131.Role.auxiliaryFacility;
+            public Associations.FeatureAssociations.PrimaryAuxiliaryFacility PrimaryAuxiliaryFacility { get; set; } = new();
+        }
+
+        public class demarcatedFeatureDemarcationBerthPositionBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(Berth)];
+            public Role Role => DomainModel.S131.Role.demarcatedFeature;
+            public Associations.FeatureAssociations.Demarcation Demarcation { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class BerthPosition : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? availableBerthingLength { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String bollardDescription { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? bollardPull { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> bollardNumber { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String gLNExtension { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> metreMarkNumber { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<String> manifoldNumber { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String rampNumber { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationByText { get; set; } = string.Empty;
+            public demarcatedFeatureDemarcationBerthPositionBinding demarcatedFeatureDemarcation { get; set; }
+            public List<auxiliaryFacilityPrimaryAuxiliaryFacilityBerthPositionBinding> auxiliaryFacilityPrimaryAuxiliaryFacility { get; set; } = [];
             public override string Code => nameof(BerthPosition);
 
             public BerthPosition()
@@ -3084,25 +3331,47 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class componentOfLayoutDivisionDockAreaBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.componentOf;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursDockAreaBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        public class serviceDescriptionReferenceServiceAvailabilityDockAreaBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(AvailablePortServices)];
+            public Role Role => DomainModel.S131.Role.serviceDescriptionReference;
+            public Associations.InformationAssociations.ServiceAvailability ServiceAvailability { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DockArea : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public depthsDescription? depthsDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationByText { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public markedBy? markedBy { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
-            public informationBinding? serviceDescriptionReferenceAvailablePortServices { get; set; }
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public serviceDescriptionReferenceServiceAvailabilityDockAreaBinding? serviceDescriptionReferenceServiceAvailability { get; set; }
+            public location_srvHrsLocationHoursDockAreaBinding? location_srvHrsLocationHours { get; set; }
+            public componentOfLayoutDivisionDockAreaBinding componentOfLayoutDivision { get; set; }
             public override string Code => nameof(DockArea);
 
             public DockArea()
@@ -3110,15 +3379,22 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class location_srvHrsLocationHoursDryDockBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DryDock : HarbourPhysicalInfrastructure
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? sillDepth { get; set; } = default;
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public location_srvHrsLocationHoursDryDockBinding? location_srvHrsLocationHours { get; set; }
             public override string Code => nameof(DryDock);
 
             public DryDock()
@@ -3126,24 +3402,39 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class componentOfLayoutDivisionDumpingGroundBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.componentOf;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursDumpingGroundBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DumpingGround : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public depthsDescription? depthsDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationByText { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public markedBy? markedBy { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public location_srvHrsLocationHoursDumpingGroundBinding? location_srvHrsLocationHours { get; set; }
+            public componentOfLayoutDivisionDumpingGroundBinding componentOfLayoutDivision { get; set; }
             public override string Code => nameof(DumpingGround);
 
             public DumpingGround()
@@ -3151,15 +3442,22 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class location_srvHrsLocationHoursFloatingDockBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FloatingDock : HarbourPhysicalInfrastructure
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? sillDepth { get; set; } = default;
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public location_srvHrsLocationHoursFloatingDockBinding? location_srvHrsLocationHours { get; set; }
             public override string Code => nameof(FloatingDock);
 
             public FloatingDock()
@@ -3167,15 +3465,22 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class location_srvHrsLocationHoursGridironBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Gridiron : HarbourPhysicalInfrastructure
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? sillDepth { get; set; } = default;
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public location_srvHrsLocationHoursGridironBinding? location_srvHrsLocationHours { get; set; }
             public override string Code => nameof(Gridiron);
 
             public Gridiron()
@@ -3183,31 +3488,61 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class layoutUnitLayoutDivisionHarbourAreaAdministrativeBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.layoutUnit;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class limitExtentJurisdictionalLimitHarbourAreaAdministrativeBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(OuterLimit)];
+            public Role Role => DomainModel.S131.Role.limitExtent;
+            public Associations.FeatureAssociations.JurisdictionalLimit JurisdictionalLimit { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursHarbourAreaAdministrativeBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        public class serviceDescriptionReferenceServiceAvailabilityHarbourAreaAdministrativeBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(AvailablePortServices)];
+            public Role Role => DomainModel.S131.Role.serviceDescriptionReference;
+            public Associations.InformationAssociations.ServiceAvailability ServiceAvailability { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourAreaAdministrative : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String uNLocationCode { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String nationality { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String applicableLoadLineZone { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public generalHarbourInformation? generalHarbourInformation { get; set; }
-            public informationBinding? serviceDescriptionReferenceAvailablePortServices { get; set; }
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public serviceDescriptionReferenceServiceAvailabilityHarbourAreaAdministrativeBinding? serviceDescriptionReferenceServiceAvailability { get; set; }
+            public location_srvHrsLocationHoursHarbourAreaAdministrativeBinding? location_srvHrsLocationHours { get; set; }
+            public limitExtentJurisdictionalLimitHarbourAreaAdministrativeBinding? limitExtentJurisdictionalLimit { get; set; }
+            public List<layoutUnitLayoutDivisionHarbourAreaAdministrativeBinding> layoutUnitLayoutDivision { get; set; } = [];
             public override string Code => nameof(HarbourAreaAdministrative);
 
             public HarbourAreaAdministrative()
@@ -3215,25 +3550,79 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class layoutUnitLayoutDivisionHarbourAreaSectionBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(AnchorageArea), typeof(Berth), typeof(DockArea), typeof(DumpingGround), typeof(HarbourBasin), typeof(PilotBoardingPlace), typeof(SeaplaneLandingArea), typeof(Terminal), typeof(TurningBasin), typeof(WaterwayArea)];
+            public Role Role => DomainModel.S131.Role.layoutUnit;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class hasInfrastructureInfrastructureHarbourAreaSectionBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourPhysicalInfrastructure)];
+            public Role Role => DomainModel.S131.Role.hasInfrastructure;
+            public Associations.FeatureAssociations.Infrastructure Infrastructure { get; set; } = new();
+        }
+
+        public class subUnitSubsectionHarbourAreaSectionBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.subUnit;
+            public Associations.FeatureAssociations.Subsection Subsection { get; set; } = new();
+        }
+
+        public class constituteSubsectionHarbourAreaSectionBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.constitute;
+            public Associations.FeatureAssociations.Subsection Subsection { get; set; } = new();
+        }
+
+        public class componentOfLayoutDivisionHarbourAreaSectionBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaAdministrative)];
+            public Role Role => DomainModel.S131.Role.componentOf;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursHarbourAreaSectionBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        public class serviceDescriptionReferenceServiceAvailabilityHarbourAreaSectionBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(AvailablePortServices)];
+            public Role Role => DomainModel.S131.Role.serviceDescriptionReference;
+            public Associations.InformationAssociations.ServiceAvailability ServiceAvailability { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourAreaSection : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfPortSection? categoryOfPortSection { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public facilitiesLayoutDescription? facilitiesLayoutDescription { get; set; }
-            public informationBinding? serviceDescriptionReferenceAvailablePortServices { get; set; }
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public serviceDescriptionReferenceServiceAvailabilityHarbourAreaSectionBinding? serviceDescriptionReferenceServiceAvailability { get; set; }
+            public location_srvHrsLocationHoursHarbourAreaSectionBinding? location_srvHrsLocationHours { get; set; }
+            public componentOfLayoutDivisionHarbourAreaSectionBinding? componentOfLayoutDivision { get; set; }
+            public constituteSubsectionHarbourAreaSectionBinding? constituteSubsection { get; set; }
+            public List<subUnitSubsectionHarbourAreaSectionBinding> subUnitSubsection { get; set; } = [];
+            public List<hasInfrastructureInfrastructureHarbourAreaSectionBinding> hasInfrastructureInfrastructure { get; set; } = [];
+            public List<layoutUnitLayoutDivisionHarbourAreaSectionBinding> layoutUnitLayoutDivision { get; set; } = [];
             public override string Code => nameof(HarbourAreaSection);
 
             public HarbourAreaSection()
@@ -3241,24 +3630,39 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class componentOfLayoutDivisionHarbourBasinBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.componentOf;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursHarbourBasinBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourBasin : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public depthsDescription? depthsDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationByText { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public markedBy? markedBy { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public location_srvHrsLocationHoursHarbourBasinBinding? location_srvHrsLocationHours { get; set; }
+            public componentOfLayoutDivisionHarbourBasinBinding componentOfLayoutDivision { get; set; }
             public override string Code => nameof(HarbourBasin);
 
             public HarbourBasin()
@@ -3266,15 +3670,23 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class location_srvHrsLocationHoursHarbourFacilityBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourFacility : HarbourPhysicalInfrastructure
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
+            public location_srvHrsLocationHoursHarbourFacilityBinding? location_srvHrsLocationHours { get; set; }
             public override string Code => nameof(HarbourFacility);
 
             public HarbourFacility()
@@ -3283,28 +3695,51 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class primaryFacilityPrimaryAuxiliaryFacilityMooringWarpingFacilityBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(AnchorBerth), typeof(BerthPosition)];
+            public Role Role => DomainModel.S131.Role.primaryFacility;
+            public Associations.FeatureAssociations.PrimaryAuxiliaryFacility PrimaryAuxiliaryFacility { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursMooringWarpingFacilityBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        public class serviceDescriptionReferenceServiceAvailabilityMooringWarpingFacilityBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(AvailablePortServices)];
+            public Role Role => DomainModel.S131.Role.serviceDescriptionReference;
+            public Associations.InformationAssociations.ServiceAvailability ServiceAvailability { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MooringWarpingFacility : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String iDCode { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String bollardDescription { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? bollardPull { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Boolean? heavingLinesFromShore { get; set; } = default;
-            public informationBinding? serviceDescriptionReferenceAvailablePortServices { get; set; }
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public serviceDescriptionReferenceServiceAvailabilityMooringWarpingFacilityBinding? serviceDescriptionReferenceServiceAvailability { get; set; }
+            public location_srvHrsLocationHoursMooringWarpingFacilityBinding? location_srvHrsLocationHours { get; set; }
+            public primaryFacilityPrimaryAuxiliaryFacilityMooringWarpingFacilityBinding? primaryFacilityPrimaryAuxiliaryFacility { get; set; }
             public override string Code => nameof(MooringWarpingFacility);
 
             public MooringWarpingFacility()
@@ -3313,30 +3748,45 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class limitReferenceJurisdictionalLimitOuterLimitBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaAdministrative)];
+            public Role Role => DomainModel.S131.Role.limitReference;
+            public Associations.FeatureAssociations.JurisdictionalLimit JurisdictionalLimit { get; set; } = new();
+        }
+
+        public class entranceReferenceLimitEntranceOuterLimitBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(Entrance)];
+            public Role Role => DomainModel.S131.Role.entranceReference;
+            public Associations.InformationAssociations.LimitEntrance LimitEntrance { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class OuterLimit : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public limitsDescription? limitsDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<markedBy> markedBy { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<landmarkDescription> landmarkDescription { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<offshoreMarkDescription> offshoreMarkDescription { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<majorLightDescription> majorLightDescription { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<usefulMarkDescription> usefulMarkDescription { get; set; } = [];
-            public informationBinding? entranceReferenceEntrance { get; set; }
+            public entranceReferenceLimitEntranceOuterLimitBinding? entranceReferenceLimitEntrance { get; set; }
+            public limitReferenceJurisdictionalLimitOuterLimitBinding limitReferenceJurisdictionalLimit { get; set; }
             public override string Code => nameof(OuterLimit);
 
             public OuterLimit()
@@ -3344,24 +3794,39 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class componentOfLayoutDivisionPilotBoardingPlaceBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.componentOf;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursPilotBoardingPlaceBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PilotBoardingPlace : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public depthsDescription? depthsDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationByText { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public markedBy? markedBy { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public location_srvHrsLocationHoursPilotBoardingPlaceBinding? location_srvHrsLocationHours { get; set; }
+            public componentOfLayoutDivisionPilotBoardingPlaceBinding componentOfLayoutDivision { get; set; }
             public override string Code => nameof(PilotBoardingPlace);
 
             public PilotBoardingPlace()
@@ -3369,24 +3834,39 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class componentOfLayoutDivisionSeaplaneLandingAreaBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.componentOf;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursSeaplaneLandingAreaBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeaplaneLandingArea : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public depthsDescription? depthsDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationByText { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public markedBy? markedBy { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public location_srvHrsLocationHoursSeaplaneLandingAreaBinding? location_srvHrsLocationHours { get; set; }
+            public componentOfLayoutDivisionSeaplaneLandingAreaBinding componentOfLayoutDivision { get; set; }
             public override string Code => nameof(SeaplaneLandingArea);
 
             public SeaplaneLandingArea()
@@ -3394,34 +3874,72 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class hasInfrastructureInfrastructureTerminalBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourPhysicalInfrastructure)];
+            public Role Role => DomainModel.S131.Role.hasInfrastructure;
+            public Associations.FeatureAssociations.Infrastructure Infrastructure { get; set; } = new();
+        }
+
+        public class layoutUnitLayoutDivisionTerminalBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(Berth)];
+            public Role Role => DomainModel.S131.Role.layoutUnit;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class componentOfLayoutDivisionTerminalBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.componentOf;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursTerminalBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        public class serviceDescriptionReferenceServiceAvailabilityTerminalBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(AvailablePortServices)];
+            public Role Role => DomainModel.S131.Role.serviceDescriptionReference;
+            public Associations.InformationAssociations.ServiceAvailability ServiceAvailability { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Terminal : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String portFacilityNumber { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfHarbourFacility? categoryOfHarbourFacility { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<product> product { get; set; } = [];
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String terminalIdentifier { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String sMDGTerminalCode { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String uNLocationCode { get; set; } = string.Empty;
-            public informationBinding? serviceDescriptionReferenceAvailablePortServices { get; set; }
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public serviceDescriptionReferenceServiceAvailabilityTerminalBinding? serviceDescriptionReferenceServiceAvailability { get; set; }
+            public location_srvHrsLocationHoursTerminalBinding? location_srvHrsLocationHours { get; set; }
+            public componentOfLayoutDivisionTerminalBinding componentOfLayoutDivision { get; set; }
+            public List<layoutUnitLayoutDivisionTerminalBinding> layoutUnitLayoutDivision { get; set; } = [];
+            public List<hasInfrastructureInfrastructureTerminalBinding> hasInfrastructureInfrastructure { get; set; } = [];
             public override string Code => nameof(Terminal);
 
             public Terminal()
@@ -3429,24 +3947,39 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class componentOfLayoutDivisionTurningBasinBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.componentOf;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursTurningBasinBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TurningBasin : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public depthsDescription? depthsDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationByText { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public markedBy? markedBy { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public iSPSLevel? iSPSLevel { get; set; } = default;
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public location_srvHrsLocationHoursTurningBasinBinding? location_srvHrsLocationHours { get; set; }
+            public componentOfLayoutDivisionTurningBasinBinding componentOfLayoutDivision { get; set; }
             public override string Code => nameof(TurningBasin);
 
             public TurningBasin()
@@ -3454,24 +3987,40 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class componentOfLayoutDivisionWaterwayAreaBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(HarbourAreaSection)];
+            public Role Role => DomainModel.S131.Role.componentOf;
+            public Associations.FeatureAssociations.LayoutDivision LayoutDivision { get; set; } = new();
+        }
+
+        public class location_srvHrsLocationHoursWaterwayAreaBinding : informationBinding
+        {
+            public override Type[] informationTypes => [typeof(ServiceHours)];
+            public Role Role => DomainModel.S131.Role.location_srvHrs;
+            public Associations.InformationAssociations.LocationHours LocationHours { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class WaterwayArea : Layout
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required categoryOfPortSection categoryOfPortSection { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public categoryOfPortSection categoryOfPortSection { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public depthsDescription? depthsDescription { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String locationByText { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public markedBy? markedBy { get; set; }
-            public informationBinding? location_srvHrsServiceHours { get; set; }
+            public location_srvHrsLocationHoursWaterwayAreaBinding? location_srvHrsLocationHours { get; set; }
+            public componentOfLayoutDivisionWaterwayAreaBinding componentOfLayoutDivision { get; set; }
             public override string Code => nameof(WaterwayArea);
 
             public WaterwayArea()
@@ -3479,17 +4028,19 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DataCoverage : FeatureTypeBase
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required Int32 maximumDisplayScale { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public Int32 maximumDisplayScale { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required Int32 minimumDisplayScale { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public Int32 minimumDisplayScale { get; set; }
             public override string Code => nameof(DataCoverage);
 
             public DataCoverage()
@@ -3497,31 +4048,32 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class QualityOfNonBathymetricData : FeatureTypeBase
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public categoryOfTemporalVariation? categoryOfTemporalVariation { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? horizontalDistanceUncertainty { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required horizontalPositionUncertainty horizontalPositionUncertainty { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public horizontalPositionUncertainty horizontalPositionUncertainty { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Decimal? orientationUncertainty { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public surveyDateRange? surveyDateRange { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public verticalUncertainty? verticalUncertainty { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<information> information { get; set; } = [];
             public override string Code => nameof(QualityOfNonBathymetricData);
 
@@ -3534,16 +4086,17 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SoundingDatum : FeatureTypeBase
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required verticalDatum verticalDatum { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public verticalDatum verticalDatum { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SoundingDatum);
 
@@ -3552,16 +4105,17 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class VerticalDatumOfData : FeatureTypeBase
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required verticalDatum verticalDatum { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public verticalDatum verticalDatum { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public List<information> information { get; set; } = [];
             public override string Code => nameof(VerticalDatumOfData);
 
@@ -3570,26 +4124,36 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
-        [System.SerializableAttribute()]
-        [System.Xml.Serialization.XmlTypeAttribute(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
-        [System.Xml.Serialization.XmlRootAttribute(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
+        public class positionsTextAssociationTextPlacementBinding : featureBinding
+        {
+            public override Type[] featureTypes => [typeof(FeatureType)];
+            public Role Role => DomainModel.S131.Role.positions;
+            public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
+        }
+
+        [System.Serializable()]
+        [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S131/1.0")]
+        [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S131/1.0", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TextPlacement : FeatureTypeBase
         {
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required Decimal orientationValue { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public Decimal orientationValue { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public String text { get; set; } = string.Empty;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
-            public required Int32 textOffsetMm { get; set; }
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
+            [Required()]
+            public Int32 textOffsetMm { get; set; }
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public textType? textType { get; set; } = default;
 
-            [System.Xml.Serialization.XmlElementAttribute(Namespace = "http://www.iho.int/S131/1.0")]
+            [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S131/1.0")]
             public Int32? scaleMinimum { get; set; } = default;
+            public positionsTextAssociationTextPlacementBinding positionsTextAssociation { get; set; }
             public override string Code => nameof(TextPlacement);
 
             public TextPlacement()

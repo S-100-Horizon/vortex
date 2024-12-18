@@ -100,8 +100,8 @@ namespace S100Framework.WPF.ViewModel.S901
             }
         }
 
-        [Browsable(false)]
-        public string Name => $"{_linkId} {informationBinding?.informationType}";
+        //[Browsable(false)]
+        //public string Name => $"{_linkId} {informationBinding?.informationType}";
     }
     public class informationBindingViewModel2<T> : informationBindingViewModel2 where T : new()
     {
@@ -213,6 +213,19 @@ namespace S100Framework.WPF.ViewModel.S901
             public string? role { get; set; }
             public string? informationType { get; set; }
      */
+
+    public record beaconShape_TEST(int code, string label, string definition)
+    {
+        //public static ???
+
+        public static beaconShape_TEST beaconShape_1 => new beaconShape_TEST(1, "Stake, Pole, Perch, Post", "An elongated wood or metal pole, driven into the ground or seabed, which serves as a navigational aid or a support for a navigational aid.");
+
+        public static beaconShape_TEST[] beaconShapes => [
+            beaconShape_1,
+        ];
+
+        //public static beaconShape_TEST this[int code] => null; 
+    }
 
     public sealed class InformationTypeCollectionEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.CollectionEditor
     {
