@@ -49,7 +49,7 @@ namespace S100Framework
             foreach (var e in scopes)
                 xmlNamespaceManager.AddNamespace(e.Key, e.Value);
 
-            var productId = productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty);
+            var productId = productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
             var versionNumber = productSpecification.XPathSelectElement("//S100FC:versionNumber", xmlNamespaceManager)!.Value;
 
             classBuilder.AppendLine("using System;");
