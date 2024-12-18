@@ -1,30 +1,19 @@
 ﻿using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.Associations.InformationAssociations;
 using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.DomainModel.S122.Associations.InformationAssociations;
 using S100Framework.DomainModel.S122.InformationTypes;
-using S100Framework.DomainModel.S201.FeatureTypes;
 using S100Framework.WPF.ViewModel.S901;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows;
-using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
-using System.Xml.Linq;
 using Xceed.Wpf.Toolkit.PropertyGrid;
-using Xceed.Wpf.Toolkit;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
-using System.Collections.Specialized;
-using S100Framework.DomainModel.S122.Associations.InformationAssociations;
-using S100Framework.DomainModel.S122;
 
 namespace S100Framework.WPF.ViewModel.S901
 {

@@ -4,7 +4,8 @@ using System.Runtime.CompilerServices;
 
 namespace S100Framework.WPF.ViewModel
 {
-    public interface IViewModelHost {
+    public interface IViewModelHost
+    {
         public object GetSource(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem);
     }
 
@@ -70,7 +71,7 @@ namespace S100Framework.WPF.ViewModel
         public abstract void Load(T instance);
     }
 
-    public class informationBindingViewModel : INotifyPropertyChanged 
+    public class informationBindingViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -81,7 +82,7 @@ namespace S100Framework.WPF.ViewModel
         protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
             if (string.IsNullOrWhiteSpace(propertyName)) return;
 
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;            
+            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
             backingFiled = value;
             OnPropertyChanged(propertyName);
         }

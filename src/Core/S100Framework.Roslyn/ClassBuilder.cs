@@ -3,12 +3,14 @@ using Microsoft.CodeAnalysis.CSharp;
 using Pluralize.NET.Core;
 using System.Reflection;
 using System.Reflection.Emit;
-using System.Reflection.PortableExecutable;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+
+//TODO: Enum som lister ala Aegir
+
 
 namespace S100Framework
 {
@@ -849,7 +851,7 @@ namespace S100Framework
                             //  informationBinding
                             foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
                                 var roleType = informationBinding.Attribute("roleType")!.Value;
-                                
+
                                 var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value!;
                                 var role = informationBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value!;
 
@@ -882,7 +884,7 @@ namespace S100Framework
 
                                 var b = informationBindingBuilder.ToString();
                                 classBuilder.Insert(informationBindingIndex, b);
-                                
+
                                 //if (!informationBindings.ContainsKey($"{association}{code}Binding")) {
 
                                 //    classBuilder.Insert(informationBindingIndex, b);
@@ -1066,7 +1068,7 @@ namespace S100Framework
 
                                 var b = informationBindingBuilder.ToString();
                                 classBuilder.Insert(bindingIndex, b);
-                                
+
                                 //if (!informationBindings.ContainsKey($"{association}{code}Binding")) {
 
                                 //    classBuilder.Insert(informationBindingIndex, b);

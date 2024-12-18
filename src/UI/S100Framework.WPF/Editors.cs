@@ -1,9 +1,4 @@
-﻿using S100Framework.DomainModel.S124;
-using S100Framework.DomainModel.S124.FeatureTypes;
-using S100Framework.WPF.ViewModel;
-using System;
-using System.Collections.Immutable;
-using System.Collections.ObjectModel;
+﻿using S100Framework.WPF.ViewModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;

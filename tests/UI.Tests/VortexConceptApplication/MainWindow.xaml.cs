@@ -1,8 +1,6 @@
 ﻿//#define S124
 
-using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S124;
-using S100Framework.DomainModel.S901.FeatureTypes;
 using S100Framework.WPF.ViewModel;
 using S100Framework.WPF.ViewModel.S901;
 using System.Collections.ObjectModel;
@@ -102,12 +100,12 @@ namespace VortexConceptApplication
                 fullSeafloorCoverageAchieved = true,
                 zoneOfConfidence = new List<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence> {
                     new S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence {
-                        categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1                     
+                        categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1
                     }
                 },
             };
 
-            var viewModel = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel((IViewModelHost)this) {                
+            var viewModel = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel((IViewModelHost)this) {
             };
 
             viewModel.Load(domailModel);
