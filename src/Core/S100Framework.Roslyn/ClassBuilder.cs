@@ -856,7 +856,7 @@ namespace S100Framework
                                 var lower = int.Parse(informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                                 var upper = informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
 
-                                //var name = $"{role}{informationTypeRef}";
+                                var name = $"{role}{association}{code}Binding";
 
                                 var initializer = $"Lower = {lower}";
                                 if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
@@ -872,7 +872,7 @@ namespace S100Framework
 
                                 var informationTypeRefs = informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => e.Attribute("ref")!.Value).ToArray();
 
-                                informationBindingBuilder.AppendLine($"\t\t\tpublic class {association}{code}Binding : informationBinding");
+                                informationBindingBuilder.AppendLine($"\t\t\tpublic class {name} : informationBinding");
                                 informationBindingBuilder.AppendLine("\t\t\t{");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic override Type[] informationTypes => [{string.Join(',', informationTypeRefs.Select(e => $"typeof({e})"))}];");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => DomainModel.{productId}.Role.{role};");
@@ -894,14 +894,14 @@ namespace S100Framework
                                 //        System.Diagnostics.Debugger.Break();
                                 //}
 
-                                var prefix = lower > 0 ? $"{association}{code}Binding" : $"{association}{code}Binding?";
+                                var prefix = lower > 0 ? $"{name}" : $"{name}?";
                                 var postfix = "";
                                 if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
-                                    prefix = $"List<{association}{code}Binding>";
+                                    prefix = $"List<{name}>";
                                     postfix = " = [];";
                                 }
 
-                                builder.AppendLine($"\t\t\tpublic {prefix} {association} {{get; set;}}{postfix}");
+                                builder.AppendLine($"\t\t\tpublic {prefix} {role} {{get; set;}}{postfix}");
                             }
 
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
@@ -1040,7 +1040,7 @@ namespace S100Framework
                                 var lower = int.Parse(informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                                 var upper = informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
 
-                                //var name = $"{role}{informationTypeRef}";
+                                var name = $"{role}{association}{code}Binding";
 
                                 var initializer = $"Lower = {lower}";
                                 if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
@@ -1056,7 +1056,7 @@ namespace S100Framework
 
                                 var informationTypeRefs = informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => e.Attribute("ref")!.Value).ToArray();
 
-                                informationBindingBuilder.AppendLine($"\t\t\tpublic class {association}{code}Binding : informationBinding");
+                                informationBindingBuilder.AppendLine($"\t\t\tpublic class {name} : informationBinding");
                                 informationBindingBuilder.AppendLine("\t\t\t{");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic override Type[] informationTypes => [{string.Join(',', informationTypeRefs.Select(e => $"typeof({e})"))}];");
                                 informationBindingBuilder.AppendLine($"\t\t\tpublic Role Role => DomainModel.{productId}.Role.{role};");
@@ -1078,10 +1078,10 @@ namespace S100Framework
                                 //        System.Diagnostics.Debugger.Break();
                                 //}
 
-                                var prefix = lower > 0 ? $"{association}{code}Binding" : $"{association}{code}Binding?";
+                                var prefix = lower > 0 ? $"{name}" : $"{name}?";
                                 var postfix = "";
                                 if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
-                                    prefix = $"List<{association}{code}Binding>";
+                                    prefix = $"List<{name}>";
                                     postfix = " = [];";
                                 }
 
@@ -1099,7 +1099,7 @@ namespace S100Framework
                                 var lower = int.Parse(featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                                 var upper = featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
 
-                                //var name = $"{role}{featureTypeRef}";
+                                var name = $"{role}{association}{code}Binding";
 
                                 var initializer = $"Lower = {lower}";
                                 if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
@@ -1115,7 +1115,7 @@ namespace S100Framework
 
                                 var featureTypeRefs = featureBinding.Elements(XName.Get("featureType", scope_S100)).Select(e => e.Attribute("ref")!.Value).ToArray();
 
-                                featureBindingBuilder.AppendLine($"\t\t\tpublic class {association}{code}Binding : featureBinding");
+                                featureBindingBuilder.AppendLine($"\t\t\tpublic class {name} : featureBinding");
                                 featureBindingBuilder.AppendLine("\t\t\t{");
                                 featureBindingBuilder.AppendLine($"\t\t\tpublic override Type[] featureTypes => [{string.Join(',', featureTypeRefs.Select(e => $"typeof({e})"))}];");
                                 featureBindingBuilder.AppendLine($"\t\t\tpublic Role Role => DomainModel.{productId}.Role.{role};");
@@ -1137,14 +1137,14 @@ namespace S100Framework
                                 //        System.Diagnostics.Debugger.Break();
                                 //}
 
-                                var prefix = lower > 0 ? $"{association}{code}Binding" : $"{association}{code}Binding?";
+                                var prefix = lower > 0 ? $"{name}" : $"{name}?";
                                 var postfix = "";
                                 if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
-                                    prefix = $"List<{association}{code}Binding>";
+                                    prefix = $"List<{name}>";
                                     postfix = " = [];";
                                 }
 
-                                builder.AppendLine($"\t\t\tpublic {prefix} {association}{code} {{get; set;}}{postfix}");
+                                builder.AppendLine($"\t\t\tpublic {prefix} {role}{code} {{get; set;}}{postfix}");
                             }
 
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
