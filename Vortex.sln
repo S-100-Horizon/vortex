@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestS100Framework.Roslyn", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "S100Framework.WPF", "src\UI\S100Framework.WPF\S100Framework.WPF.csproj", "{D2C9EDAE-4FB7-4CB5-AD63-1ABF7D9E80BD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestNisImporter", "tests\Core.Tests\TestNisImporter\TestNisImporter.csproj", "{9AF56CAB-F83B-4043-AE1C-F69D4DB15E71}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TestNisImporter", "tests\Core.Tests\TestNisImporter\TestNisImporter.csproj", "{9AF56CAB-F83B-4043-AE1C-F69D4DB15E71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
