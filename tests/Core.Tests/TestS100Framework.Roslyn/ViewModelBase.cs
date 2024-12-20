@@ -1,6 +1,7 @@
-﻿using S100Framework.DomainModel.Bindings;
+﻿using S100Framework.DomainModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel
 {
@@ -69,5 +70,50 @@ namespace S100Framework.WPF.ViewModel
     public abstract class ViewModelBase<T> : ViewModelBase
     {
         public abstract void Load(T instance);
+    }
+
+    public abstract class BindingViewModel
+    {
+        private Type[] _types;
+
+        public BindingViewModel(Type[] types) {
+            _types = types;
+        }
+
+        [Browsable(false)]
+        public Type[] Types => _types;
+
+        [PropertyOrder(0)]
+        public string? RefId { get; set; } = default;
+    }
+
+    public class InformationBindingViewModel<T> : BindingViewModel where T : InformationAssociation, new()
+    {
+        public InformationBindingViewModel(Type[] types) : base(types) {
+            InformationType = types.FirstOrDefault();
+            InformationAssociation = new T();
+        }
+
+        [PropertyOrder(1)]
+        public Type? InformationType { get; set; }
+
+        [PropertyOrder(2)]
+        [ExpandableObject]
+        public T InformationAssociation { get; set; }
+    }
+
+    public class FeatureBindingViewModel<T> : BindingViewModel where T : FeatureAssociation, new()
+    {
+        public FeatureBindingViewModel(Type[] types) : base(types) {
+            FeatureType = types.FirstOrDefault();
+            FeatureAssociation = new T();
+        }
+
+        [PropertyOrder(1)]
+        public Type? FeatureType { get; set; }
+
+        [PropertyOrder(2)]
+        [ExpandableObject]
+        public T FeatureAssociation { get; set; }
     }
 }

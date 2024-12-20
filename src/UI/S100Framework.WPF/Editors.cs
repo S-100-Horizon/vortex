@@ -1,11 +1,9 @@
 ﻿using S100Framework.WPF.ViewModel;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Xceed.Wpf.Toolkit;
 using Xceed.Wpf.Toolkit.PropertyGrid;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace S100Framework.WPF.Editors
 {
@@ -110,7 +108,7 @@ namespace S100Framework.WPF.Editors
                 DisplayMemberPath = propertyItem.DisplayName,
             };
 
-            var bindingItemsSourceProperty = new Binding() { Source = viewModel.Types.Select(e=>e.Name).ToArray(), Mode = BindingMode.OneWay };
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.Types.Select(e => e.Name).ToArray(), Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             //var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
@@ -120,5 +118,5 @@ namespace S100Framework.WPF.Editors
 
         }
     }
-    
+
 }

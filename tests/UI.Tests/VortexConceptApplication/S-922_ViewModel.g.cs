@@ -1,8 +1,12 @@
 using S100Framework.DomainModel.S122;
+using S100Framework.DomainModel.S122.Associations.InformationAssociations;
 using S100Framework.DomainModel.S122.ComplexAttributes;
+using S100Framework.DomainModel.S122.FeatureTypes;
+using S100Framework.DomainModel.S122.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 
 namespace S100Framework.WPF.ViewModel.S922
@@ -1762,6 +1766,10 @@ namespace S100Framework.WPF.ViewModel.S922
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation> theOrganisationRelatedOrganisation { get; set; } = new(AbstractRxN.theOrganisationRelatedOrganisation.informationTypes);
+
         public void Load(DomainModel.S122.InformationTypes.AbstractRxN instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent = new();
@@ -1930,6 +1938,10 @@ namespace S100Framework.WPF.ViewModel.S922
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation> theOrganisationRelatedOrganisation { get; set; } = new(NauticalInformation.theOrganisationRelatedOrganisation.informationTypes);
 
         public void Load(DomainModel.S122.InformationTypes.NauticalInformation instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -2594,6 +2606,18 @@ namespace S100Framework.WPF.ViewModel.S922
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation> theInformationRelatedOrganisation { get; set; } = new(Authority.theInformationRelatedOrganisation.informationTypes);
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityContact> theContactDetailsAuthorityContact { get; set; } = new(Authority.theContactDetailsAuthorityContact.informationTypes);
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityHours> theServiceHoursAuthorityHours { get; set; } = new(Authority.theServiceHoursAuthorityHours.informationTypes);
+
         public void Load(DomainModel.S122.InformationTypes.Authority instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
             textContent.Clear();
@@ -2836,6 +2860,10 @@ namespace S100Framework.WPF.ViewModel.S922
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityContact> theAuthorityAuthorityContact { get; set; } = new(ContactDetails.theAuthorityAuthorityContact.informationTypes);
+
         public void Load(DomainModel.S122.InformationTypes.ContactDetails instance) {
             callName = instance.callName;
             callSign = instance.callSign;
@@ -3064,6 +3092,10 @@ namespace S100Framework.WPF.ViewModel.S922
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ExceptionalWorkday> theServiceHours_nsdyExceptionalWorkday { get; set; } = new(NonStandardWorkingDay.theServiceHours_nsdyExceptionalWorkday.informationTypes);
+
         public void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDay instance) {
             dateFixed.Clear();
             if (instance.dateFixed is not null)
@@ -3227,6 +3259,14 @@ namespace S100Framework.WPF.ViewModel.S922
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityHours> theAuthority_srvHrsAuthorityHours { get; set; } = new(ServiceHours.theAuthority_srvHrsAuthorityHours.informationTypes);
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ExceptionalWorkday> partialWorkingDayExceptionalWorkday { get; set; } = new(ServiceHours.partialWorkingDayExceptionalWorkday.informationTypes);
 
         public void Load(DomainModel.S122.InformationTypes.ServiceHours instance) {
             scheduleByDayOfWeek.Clear();
@@ -3852,6 +3892,10 @@ namespace S100Framework.WPF.ViewModel.S922
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ProtectedAreaAuthority> responsibleAuthorityProtectedAreaAuthority { get; set; } = new(MarineProtectedArea.responsibleAuthorityProtectedAreaAuthority.informationTypes);
+
         [Browsable(false)]
         public categoryOfMarineProtectedArea[] categoryOfMarineProtectedAreaList => CodeList.categoryOfMarineProtectedAreas.ToArray();
 
@@ -4044,6 +4088,10 @@ namespace S100Framework.WPF.ViewModel.S922
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl> controlAuthorityServiceControl { get; set; } = new(VesselTrafficServiceArea.controlAuthorityServiceControl.informationTypes);
 
         public void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance) {
             categoryOfVesselTrafficService = instance.categoryOfVesselTrafficService;

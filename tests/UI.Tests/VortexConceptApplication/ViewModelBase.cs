@@ -1,5 +1,4 @@
-﻿using S100Framework.DomainModel.Bindings;
-using S100Framework.WPF.ViewModel;
+﻿using S100Framework.WPF.ViewModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 

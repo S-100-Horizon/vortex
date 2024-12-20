@@ -81,6 +81,7 @@ namespace S100Framework
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.FeatureTypes;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.Associations.InformationAssociations;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.Associations.FeatureAssociations;");
+            viewBuilder.AppendLine($"using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;");
             viewBuilder.AppendLine();
             viewBuilder.AppendLine();
             viewBuilder.AppendLine($"namespace S100Framework.WPF.ViewModel.{productId}");
@@ -856,6 +857,8 @@ namespace S100Framework
 
                         var informationBindingIndex = classBuilder.Length;
 
+                        var viewModelBindingBuilder = new StringBuilder();
+
                         classBuilder.AppendLine(BuildClass(code, informationType, xmlNamespace, "S100Framework.DomainModel.InformationType", (builder) => {
                             //  informationBinding
                             foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
@@ -906,6 +909,11 @@ namespace S100Framework
 
                                 builder.AppendLine($"\t\t\tpublic {prefix} {roleType}{association} {{get; set;}}{postfix}");
                                 builder.AppendLine();
+
+                                viewModelBindingBuilder.AppendLine("[Category(\"InformationBindings\")]");
+                                viewModelBindingBuilder.AppendLine("[ExpandableObject]");
+                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<{association}> {name}  {{ get; set; }} = new({code}.{role}{association}.informationTypes);");
+                                viewModelBindingBuilder.AppendLine();
                             }
 
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
@@ -913,6 +921,7 @@ namespace S100Framework
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
                             viewBuilder.AppendLine(BuildClassViewModel(code, informationType, $"DomainModel.{productId}.InformationTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
+                                builder.AppendLine(viewModelBindingBuilder.ToString());
                             }));
 
                             creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.InformationTypes.{code}).Name, ()=> {{");
@@ -1034,6 +1043,8 @@ namespace S100Framework
 
                         var bindingIndex = classBuilder.Length;
 
+                        var viewModelBindingBuilder = new StringBuilder();
+
                         classBuilder.AppendLine(BuildClass(code, featureType, xmlNamespace, "S100Framework.DomainModel.FeatureType", (builder) => {
                             //  informationBinding
                             foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
@@ -1084,6 +1095,11 @@ namespace S100Framework
 
                                 builder.AppendLine($"\t\t\tpublic {prefix} {roleType}{association} {{get; set;}}{postfix}");
                                 builder.AppendLine();
+
+                                viewModelBindingBuilder.AppendLine("[Category(\"InformationBindings\")]");
+                                viewModelBindingBuilder.AppendLine("[ExpandableObject]");
+                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<{association}> {name}  {{ get; set; }} = new({code}.{role}{association}.informationTypes);");
+                                viewModelBindingBuilder.AppendLine();
                             }
 
                             //  featureBinding
@@ -1136,6 +1152,11 @@ namespace S100Framework
 
                                 builder.AppendLine($"\t\t\tpublic {prefix} {roleType}{association} {{get; set;}}{postfix}");
                                 builder.AppendLine();
+
+                                viewModelBindingBuilder.AppendLine("[Category(\"FeatureBindings\")]");
+                                viewModelBindingBuilder.AppendLine("[ExpandableObject]");
+                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic FeatureBindingViewModel<{association}> {name}  {{ get; set; }} = new({code}.{role}{association}.featureTypes);");
+                                viewModelBindingBuilder.AppendLine();
                             }
 
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
@@ -1143,6 +1164,7 @@ namespace S100Framework
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
                             viewBuilder.AppendLine(BuildClassViewModel(code, featureType, $"DomainModel.{productId}.FeatureTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
+                                builder.AppendLine(viewModelBindingBuilder.ToString());
                             }));
 
                             creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.FeatureTypes.{code}).Name, ()=> {{");
@@ -1258,45 +1280,6 @@ namespace S100Framework
             common.AppendLine("\t\t}");
             common.AppendLine();
 
-            //common.AppendLine("\t\tpublic abstract class informationBinding {");
-            //common.AppendLine("\t\t\tpublic abstract Type[] informationTypes { get; }");
-            //common.AppendLine("\t\t\tpublic string? RefId { get; set; } = default;");
-            //common.AppendLine("\t\t}");
-            //common.AppendLine();
-
-            //common.AppendLine("\t\tpublic abstract class featureBinding {");
-            //common.AppendLine("\t\t\tpublic abstract Type[] featureTypes { get; }");
-            //common.AppendLine("\t\t\tpublic string? RefId { get; set; } = default;");
-            //common.AppendLine("\t\t}");
-            //common.AppendLine();
-
-            //common.AppendLine("\t\tpublic class FeatureBindingConnector {");
-            //common.AppendLine("\t\t\tpublic Guid Uuid { get; set; }");
-            //common.AppendLine();
-            //common.AppendLine("\t\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
-            //common.AppendLine("\t\t\tpublic featureBinding featureBinding { get; set; }");
-            //common.AppendLine("\t\t}");
-            //common.AppendLine();
-
-            //common.AppendLine("\t\tpublic abstract class featureBinding<Tassociation, TfeatureType> : featureBinding");
-            //common.AppendLine("\t\t\twhere Tassociation : FeatureAssociation");
-            //common.AppendLine("\t\t\twhere TfeatureType : class");
-            //common.AppendLine("\t\t{");
-            //common.AppendLine("\t\t\tpublic int Lower { get; set; } = 0;");
-            //common.AppendLine();
-            //common.AppendLine("\t\t\tpublic int? Upper { get; set; } = default;");
-            //common.AppendLine();
-            //common.AppendLine("\t\t\tpublic bool IsIfinite => !Upper.HasValue;");
-            //common.AppendLine();
-            //common.AppendLine("\t\t\tpublic roleType roleType { get; set; }");
-            //common.AppendLine();
-            //common.AppendLine("\t\t\tpublic Type association => typeof(Tassociation);");
-            //common.AppendLine();
-            //common.AppendLine("\t\t\tpublic string? Role { get; protected set; }");
-            //common.AppendLine();
-            //common.AppendLine("\t\t\tpublic Type featureType => typeof(TfeatureType);");
-            //common.AppendLine("\t\t}");
-
             common.AppendLine("\t}");
 
             common.AppendLine("}");
@@ -1313,7 +1296,7 @@ namespace S100Framework
             var rootDomain = CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd()).GetRoot();
             var rootViewModel = CSharpSyntaxTree.ParseText(viewBuilder.ToString().TrimEnd()).GetRoot();
             var rootCommon = CSharpSyntaxTree.ParseText(common.ToString().TrimEnd()).GetRoot();
-            
+
             var rootDomainModified = rootDomain.EnsureOpeningBrace().EnsureNewline()!;
 
             var rootViewModelModified = rootViewModel.EnsureOpeningBrace().EnsureNewline()!;
@@ -1441,6 +1424,9 @@ namespace S100Framework
             classBuilder.AppendLine("\t\t}");
 
             return CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd(Environment.NewLine.ToCharArray())).GetRoot().NormalizeWhitespace().ToFullString();
+        }
+
+        private static void BuildInformationBindings(string code, string xmlNamespace, XElement e, StringBuilder builder) {
         }
 
         private static string BuildClassViewModel(string code, Type type, string classNamespace, ICollection<string> codeLists, ICollection<string> roles, Action<StringBuilder>? postAction = null) {
@@ -1736,7 +1722,8 @@ namespace S100Framework
 
 namespace S100Framework
 {
-    public static class Extensions {
+    public static class Extensions
+    {
         public static SyntaxNode? EnsureOpeningBrace(this SyntaxNode? root) {
             if (root is null)
                 return root;

@@ -1,8 +1,17 @@
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
+using System;
+using System.Linq;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
+using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.ComplexAttributes;
+using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S101.Associations.InformationAssociations;
+using S100Framework.DomainModel.S101.Associations.FeatureAssociations;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 
 namespace S100Framework.WPF.ViewModel.S101
@@ -4516,6 +4525,10 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("QualityOfNonBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(QualityOfNonBathymetricData.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.QualityOfNonBathymetricData instance)
         {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
@@ -4749,6 +4762,10 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("NavigationalSystemOfMarks")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(NavigationalSystemOfMarks.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.NavigationalSystemOfMarks instance)
         {
             marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
@@ -4851,6 +4868,10 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LocalDirectionOfBuoyage")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LocalDirectionOfBuoyage.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.LocalDirectionOfBuoyage instance)
         {
@@ -5026,6 +5047,14 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("QualityOfBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<QualityOfBathymetricDataComposition> theQualityInformationQualityOfBathymetricDataComposition { get; set; } = new(QualityOfBathymetricData.theQualityInformationQualityOfBathymetricDataComposition.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(QualityOfBathymetricData.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.QualityOfBathymetricData instance)
         {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
@@ -5139,6 +5168,10 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SoundingDatum")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SoundingDatum.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.SoundingDatum instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5211,6 +5244,10 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("VerticalDatumOfData")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(VerticalDatumOfData.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.VerticalDatumOfData instance)
         {
@@ -5476,6 +5513,10 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("QualityOfSurvey")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(QualityOfSurvey.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.QualityOfSurvey instance)
         {
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
@@ -5688,6 +5729,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("UpdateInformation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdateAggregation> theComponentUpdateAggregation { get; set; } = new(UpdateInformation.theComponentUpdateAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdateAggregation> theCollectionUpdateAggregation { get; set; } = new(UpdateInformation.theCollectionUpdateAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(UpdateInformation.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.UpdateInformation instance)
         {
             fixedDateRange = new();
@@ -5824,6 +5877,14 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MagneticVariation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(MagneticVariation.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(MagneticVariation.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.MagneticVariation instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5926,6 +5987,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LocalMagneticAnomaly")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LocalMagneticAnomaly.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LocalMagneticAnomaly.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LocalMagneticAnomaly.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.LocalMagneticAnomaly instance)
         {
@@ -6092,6 +6165,18 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Coastline.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Coastline.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Coastline.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Coastline instance)
         {
             categoryOfCoastline = instance.categoryOfCoastline;
@@ -6255,6 +6340,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LandArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LandArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<IslandAggregation> theCollectionIslandAggregation { get; set; } = new(LandArea.theCollectionIslandAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LandArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LandArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.LandArea instance)
         {
             condition = instance.condition;
@@ -6349,6 +6450,26 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("IslandGroup")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(IslandGroup.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<IslandAggregation> theComponentIslandAggregation { get; set; } = new(IslandGroup.theComponentIslandAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<IslandAggregation> theCollectionIslandAggregation { get; set; } = new(IslandGroup.theCollectionIslandAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(IslandGroup.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(IslandGroup.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.IslandGroup instance)
         {
@@ -6466,6 +6587,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LandElevation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LandElevation.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LandElevation.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LandElevation.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.LandElevation instance)
         {
             elevation = instance.elevation;
@@ -6573,6 +6706,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("River")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(River.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(River.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(River.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.River instance)
         {
             featureName.Clear();
@@ -6676,6 +6821,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Rapids")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Rapids.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Rapids.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Rapids.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Rapids instance)
         {
@@ -6795,6 +6952,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Waterfall")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Waterfall.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Waterfall.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Waterfall.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Waterfall instance)
         {
@@ -6918,6 +7087,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Lake")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Lake.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Lake.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Lake.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Lake instance)
         {
             elevation = instance.elevation;
@@ -7030,6 +7211,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LandRegion")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LandRegion.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LandRegion.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LandRegion.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.LandRegion instance)
         {
@@ -7214,6 +7407,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Vegetation")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Vegetation.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Vegetation.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Vegetation.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Vegetation instance)
         {
@@ -7412,6 +7617,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("IceArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(IceArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(IceArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(IceArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.IceArea instance)
         {
             categoryOfIce = instance.categoryOfIce;
@@ -7586,6 +7803,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SlopingGround")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SlopingGround.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SlopingGround.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SlopingGround.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.SlopingGround instance)
         {
@@ -7768,6 +7997,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SlopeTopline")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SlopeTopline.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SlopeTopline.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SlopeTopline.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.SlopeTopline instance)
         {
             categoryOfSlope = instance.categoryOfSlope;
@@ -7885,6 +8126,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Tideway")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Tideway.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Tideway.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Tideway.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Tideway instance)
         {
@@ -8091,6 +8344,18 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _inTheWater, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(BuiltUpArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(BuiltUpArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(BuiltUpArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.BuiltUpArea instance)
         {
@@ -8395,6 +8660,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Building.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(Building.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(Building.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(Building.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Building.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Building.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Building instance)
         {
             buildingShape = instance.buildingShape;
@@ -8614,6 +8903,18 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(AirportAirfield.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(AirportAirfield.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(AirportAirfield.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.AirportAirfield instance)
         {
             categoryOfAirportAirfield.Clear();
@@ -8767,6 +9068,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Runway")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Runway.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Runway.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Runway.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Runway instance)
         {
@@ -8928,6 +9241,22 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Helipad")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Helipad.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(Helipad.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Helipad.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Helipad.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Helipad instance)
         {
@@ -9229,6 +9558,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Bridge.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<BridgeAggregation> theComponentBridgeAggregation { get; set; } = new(Bridge.theComponentBridgeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(Bridge.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(Bridge.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Bridge.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Bridge.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Bridge instance)
         {
             bridgeConstruction = instance.bridgeConstruction;
@@ -9469,6 +9822,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SpanFixed.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<BridgeAggregation> theCollectionBridgeAggregation { get; set; } = new(SpanFixed.theCollectionBridgeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(SpanFixed.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(SpanFixed.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SpanFixed.theCartographicTextTextAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SpanFixed.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.SpanFixed instance)
         {
             fixedDateRange = new();
@@ -9668,6 +10045,30 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SpanOpening.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<BridgeAggregation> theCollectionBridgeAggregation { get; set; } = new(SpanOpening.theCollectionBridgeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(SpanOpening.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(SpanOpening.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SpanOpening.theCartographicTextTextAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SpanOpening.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.SpanOpening instance)
         {
@@ -10008,6 +10409,26 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Conveyor.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(Conveyor.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(Conveyor.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Conveyor.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Conveyor.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Conveyor instance)
         {
@@ -10357,6 +10778,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CableOverhead")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(CableOverhead.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(CableOverhead.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(CableOverhead.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(CableOverhead.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.CableOverhead instance)
         {
             categoryOfCable = instance.categoryOfCable;
@@ -10653,6 +11090,26 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("PipelineOverhead")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(PipelineOverhead.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(PipelineOverhead.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(PipelineOverhead.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(PipelineOverhead.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(PipelineOverhead.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.PipelineOverhead instance)
         {
@@ -10996,6 +11453,34 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(PylonBridgeSupport.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<BridgeAggregation> theCollectionBridgeAggregation { get; set; } = new(PylonBridgeSupport.theCollectionBridgeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RoofedStructureAggregation> theRoofedStructureRoofedStructureAggregation { get; set; } = new(PylonBridgeSupport.theRoofedStructureRoofedStructureAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(PylonBridgeSupport.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(PylonBridgeSupport.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(PylonBridgeSupport.theCartographicTextTextAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(PylonBridgeSupport.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.PylonBridgeSupport instance)
         {
             categoryOfPylon = instance.categoryOfPylon;
@@ -11304,6 +11789,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FenceWall")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(FenceWall.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(FenceWall.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(FenceWall.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.FenceWall instance)
         {
             categoryOfFence = instance.categoryOfFence;
@@ -11495,6 +11992,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Railway")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Railway.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Railway.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Railway.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Railway instance)
         {
             condition = instance.condition;
@@ -11650,6 +12159,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Road")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Road.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Road.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Road.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Road instance)
         {
@@ -11860,6 +12381,18 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Tunnel.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Tunnel.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Tunnel.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Tunnel instance)
         {
@@ -12170,6 +12703,34 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _inTheWater, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Landmark.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(Landmark.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(Landmark.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(Landmark.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(Landmark.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Landmark.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Landmark.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Landmark instance)
         {
@@ -12563,6 +13124,30 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _inTheWater, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SiloTank.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(SiloTank.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(SiloTank.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(SiloTank.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SiloTank.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SiloTank.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.SiloTank instance)
         {
@@ -12972,6 +13557,26 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(WindTurbine.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(WindTurbine.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(WindTurbine.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(WindTurbine.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(WindTurbine.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.WindTurbine instance)
         {
             colour.Clear();
@@ -13292,6 +13897,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(FortifiedStructure.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(FortifiedStructure.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(FortifiedStructure.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(FortifiedStructure.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(FortifiedStructure.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(FortifiedStructure.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.FortifiedStructure instance)
         {
             categoryOfFortifiedStructure = instance.categoryOfFortifiedStructure;
@@ -13582,6 +14211,18 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(ProductionStorageArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(ProductionStorageArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(ProductionStorageArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.ProductionStorageArea instance)
         {
             categoryOfProductionArea = instance.categoryOfProductionArea;
@@ -13741,6 +14382,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Checkpoint")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Checkpoint.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Checkpoint.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Checkpoint.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Checkpoint instance)
         {
@@ -14000,6 +14653,26 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Hulk.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(Hulk.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(Hulk.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Hulk.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Hulk.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Hulk instance)
         {
@@ -14310,6 +14983,34 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Pile.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(Pile.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(Pile.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(Pile.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(Pile.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Pile.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Pile.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Pile instance)
         {
             categoryOfPile = instance.categoryOfPile;
@@ -14560,6 +15261,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Dyke")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Dyke.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Dyke.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Dyke.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Dyke instance)
         {
@@ -14889,6 +15602,26 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("ShorelineConstruction")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(ShorelineConstruction.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(ShorelineConstruction.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(ShorelineConstruction.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(ShorelineConstruction.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(ShorelineConstruction.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.ShorelineConstruction instance)
         {
@@ -15300,6 +16033,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(StructureOverNavigableWater.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(StructureOverNavigableWater.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RoofedStructureAggregation> theSupportRoofedStructureAggregation { get; set; } = new(StructureOverNavigableWater.theSupportRoofedStructureAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(StructureOverNavigableWater.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(StructureOverNavigableWater.theCartographicTextTextAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(StructureOverNavigableWater.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.StructureOverNavigableWater instance)
         {
             categoryOfStructure.Clear();
@@ -15550,6 +16307,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Causeway")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Causeway.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Causeway.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Causeway.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Causeway instance)
         {
             condition = instance.condition;
@@ -15760,6 +16529,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Canal")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Canal.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Canal.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Canal.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Canal instance)
         {
             categoryOfCanal = instance.categoryOfCanal;
@@ -15932,6 +16713,22 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("DistanceMark")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DistanceMark.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(DistanceMark.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DistanceMark.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(DistanceMark.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.DistanceMark instance)
         {
@@ -16156,6 +16953,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Gate")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Gate.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Gate.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Gate.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Gate instance)
         {
@@ -16456,6 +17265,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Dam")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Dam.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Dam.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Dam.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Dam instance)
         {
@@ -16824,6 +17645,26 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Crane.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(Crane.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(Crane.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Crane.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Crane.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Crane instance)
         {
             categoryOfCrane = instance.categoryOfCrane;
@@ -17087,6 +17928,22 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Berth")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Berth.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<MooringTrotAggregation> theCollectionMooringTrotAggregation { get; set; } = new(Berth.theCollectionMooringTrotAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Berth.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Berth.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Berth instance)
         {
@@ -17410,6 +18267,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Dolphin.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(Dolphin.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(Dolphin.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(Dolphin.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Dolphin.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Dolphin.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Dolphin instance)
         {
             categoryOfDolphin.Clear();
@@ -17648,6 +18529,22 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Bollard.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(Bollard.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Bollard.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Bollard.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Bollard instance)
         {
@@ -17930,6 +18827,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("DryDock")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DryDock.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DryDock.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(DryDock.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.DryDock instance)
         {
@@ -18296,6 +19205,26 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(FloatingDock.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(FloatingDock.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(FloatingDock.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(FloatingDock.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(FloatingDock.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.FloatingDock instance)
         {
             colour.Clear();
@@ -18547,6 +19476,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Pontoon.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<BridgeAggregation> theCollectionBridgeAggregation { get; set; } = new(Pontoon.theCollectionBridgeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(Pontoon.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(Pontoon.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Pontoon.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Pontoon.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Pontoon instance)
         {
             condition = instance.condition;
@@ -18790,6 +19743,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DockArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DockArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DockArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(DockArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.DockArea instance)
         {
             categoryOfDock = instance.categoryOfDock;
@@ -18995,6 +19960,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Gridiron")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Gridiron.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Gridiron.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Gridiron.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Gridiron instance)
         {
             featureName.Clear();
@@ -19181,6 +20158,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LockBasin")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LockBasin.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LockBasin.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LockBasin.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.LockBasin instance)
         {
             featureName.Clear();
@@ -19327,6 +20316,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MooringTrot")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(MooringTrot.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<MooringTrotAggregation> theComponentMooringTrotAggregation { get; set; } = new(MooringTrot.theComponentMooringTrotAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(MooringTrot.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(MooringTrot.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.MooringTrot instance)
         {
             featureName.Clear();
@@ -19436,6 +20441,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SeaAreaNamedWaterArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SeaAreaNamedWaterArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SeaAreaNamedWaterArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SeaAreaNamedWaterArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea instance)
         {
@@ -19588,6 +20605,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TidalStreamFloodEbb")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(TidalStreamFloodEbb.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(TidalStreamFloodEbb.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(TidalStreamFloodEbb.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.TidalStreamFloodEbb instance)
         {
@@ -19771,6 +20800,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CurrentNonGravitational")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(CurrentNonGravitational.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(CurrentNonGravitational.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(CurrentNonGravitational.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.CurrentNonGravitational instance)
         {
             featureName.Clear();
@@ -19912,6 +20953,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("WaterTurbulence")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(WaterTurbulence.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(WaterTurbulence.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(WaterTurbulence.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.WaterTurbulence instance)
         {
             categoryOfWaterTurbulence = instance.categoryOfWaterTurbulence;
@@ -20033,6 +21086,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TidalStreamPanelData")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(TidalStreamPanelData.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(TidalStreamPanelData.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(TidalStreamPanelData.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.TidalStreamPanelData instance)
         {
@@ -20171,6 +21236,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Sounding")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Sounding.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Sounding.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Sounding.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Sounding instance)
         {
@@ -20369,6 +21446,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DredgedArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DredgedArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(DredgedArea.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DredgedArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(DredgedArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.DredgedArea instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -20533,6 +21626,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SweptArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SweptArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(SweptArea.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SweptArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SweptArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.SweptArea instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -20627,6 +21736,14 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthContour")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DepthContour.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DepthContour.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.DepthContour instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -20718,6 +21835,14 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DepthArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DepthArea.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.DepthArea instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -20797,6 +21922,14 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthNoBottomFound")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DepthNoBottomFound.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DepthNoBottomFound.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.DepthNoBottomFound instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -20864,6 +21997,14 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("UnsurveyedArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(UnsurveyedArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(UnsurveyedArea.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.UnsurveyedArea instance)
         {
@@ -20955,6 +22096,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SeabedArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SeabedArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SeabedArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SeabedArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.SeabedArea instance)
         {
@@ -21070,6 +22223,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("WeedKelp")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(WeedKelp.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(WeedKelp.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(WeedKelp.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.WeedKelp instance)
         {
             categoryOfWeedKelp = instance.categoryOfWeedKelp;
@@ -21158,6 +22323,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Seagrass")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Seagrass.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Seagrass.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Seagrass.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Seagrass instance)
         {
@@ -21257,6 +22434,14 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Sandwave")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Sandwave.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Sandwave.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Sandwave instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -21335,6 +22520,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Spring")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Spring.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Spring.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Spring.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Spring instance)
         {
@@ -21547,6 +22744,18 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _surroundingDepth, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(UnderwaterAwashRock.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(UnderwaterAwashRock.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(UnderwaterAwashRock.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.UnderwaterAwashRock instance)
         {
@@ -21851,6 +23060,22 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _surroundingDepth, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Wreck.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(Wreck.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Wreck.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Wreck.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Wreck instance)
         {
@@ -22181,6 +23406,22 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Obstruction.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<MooringTrotAggregation> theCollectionMooringTrotAggregation { get; set; } = new(Obstruction.theCollectionMooringTrotAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Obstruction.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Obstruction.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Obstruction instance)
         {
             categoryOfObstruction = instance.categoryOfObstruction;
@@ -22405,6 +23646,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FoulGround")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(FoulGround.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(FoulGround.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(FoulGround.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.FoulGround instance)
         {
             featureName.Clear();
@@ -22547,6 +23800,14 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("DiscolouredWater")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DiscolouredWater.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DiscolouredWater.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.DiscolouredWater instance)
         {
@@ -22692,6 +23953,26 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("FishingFacility")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(FishingFacility.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(FishingFacility.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(FishingFacility.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(FishingFacility.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(FishingFacility.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.FishingFacility instance)
         {
@@ -22947,6 +24228,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("MarineFarmCulture")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(MarineFarmCulture.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(MarineFarmCulture.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(MarineFarmCulture.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.MarineFarmCulture instance)
         {
@@ -23295,6 +24588,26 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(OffshorePlatform.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(OffshorePlatform.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(OffshorePlatform.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(OffshorePlatform.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(OffshorePlatform.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.OffshorePlatform instance)
         {
             categoryOfOffshorePlatform = instance.categoryOfOffshorePlatform;
@@ -23514,6 +24827,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CableSubmarine")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(CableSubmarine.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<MooringTrotAggregation> theCollectionMooringTrotAggregation { get; set; } = new(CableSubmarine.theCollectionMooringTrotAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(CableSubmarine.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(CableSubmarine.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.CableSubmarine instance)
         {
             buriedDepth = instance.buriedDepth;
@@ -23655,6 +24984,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("CableArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(CableArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(CableArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(CableArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.CableArea instance)
         {
@@ -23925,6 +25266,18 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(PipelineSubmarineOnLand.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(PipelineSubmarineOnLand.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(PipelineSubmarineOnLand.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.PipelineSubmarineOnLand instance)
         {
             buriedDepth = instance.buriedDepth;
@@ -24117,6 +25470,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SubmarinePipelineArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SubmarinePipelineArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SubmarinePipelineArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SubmarinePipelineArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.SubmarinePipelineArea instance)
         {
@@ -24411,6 +25776,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("OffshoreProductionArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(OffshoreProductionArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(OffshoreProductionArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(OffshoreProductionArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.OffshoreProductionArea instance)
         {
             categoryOfOffshoreProductionArea = instance.categoryOfOffshoreProductionArea;
@@ -24634,6 +26011,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("NavigationLine")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(NavigationLine.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(NavigationLine.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(NavigationLine.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.NavigationLine instance)
         {
@@ -24874,6 +26263,26 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RecommendedTrack")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RecommendedTrack.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(RecommendedTrack.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RecommendedTrack.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(RecommendedTrack.theCartographicTextTextAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(RecommendedTrack.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.RecommendedTrack instance)
         {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -25063,6 +26472,30 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RangeSystem")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RangeSystem.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theComponentRangeSystemAggregation { get; set; } = new(RangeSystem.theComponentRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(RangeSystem.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(RangeSystem.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RangeSystem.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(RangeSystem.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.RangeSystem instance)
         {
@@ -25266,6 +26699,26 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Fairway")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Fairway.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAggregation> theCollectionFairwayAggregation { get; set; } = new(Fairway.theCollectionFairwayAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> theAuxiliaryFeatureFairwayAuxiliary { get; set; } = new(Fairway.theAuxiliaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Fairway.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Fairway.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Fairway instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -25455,6 +26908,26 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("FairwaySystem")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(FairwaySystem.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theComponentAidsToNavigationAssociation { get; set; } = new(FairwaySystem.theComponentAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAggregation> theComponentFairwayAggregation { get; set; } = new(FairwaySystem.theComponentFairwayAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(FairwaySystem.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(FairwaySystem.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.FairwaySystem instance)
         {
@@ -25667,6 +27140,26 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RecommendedRouteCentreline")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RecommendedRouteCentreline.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(RecommendedRouteCentreline.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(RecommendedRouteCentreline.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RecommendedRouteCentreline.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(RecommendedRouteCentreline.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.RecommendedRouteCentreline instance)
         {
@@ -25922,6 +27415,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TwoWayRoutePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(TwoWayRoutePart.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TwoWayRouteAggregation> theCollectionTwoWayRouteAggregation { get; set; } = new(TwoWayRoutePart.theCollectionTwoWayRouteAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(TwoWayRoutePart.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(TwoWayRoutePart.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.TwoWayRoutePart instance)
         {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -26089,6 +27598,30 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TwoWayRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(TwoWayRoute.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theComponentAidsToNavigationAssociation { get; set; } = new(TwoWayRoute.theComponentAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TwoWayRouteAggregation> theComponentTwoWayRouteAggregation { get; set; } = new(TwoWayRoute.theComponentTwoWayRouteAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(TwoWayRoute.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(TwoWayRoute.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(TwoWayRoute.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.TwoWayRoute instance)
         {
             featureName.Clear();
@@ -26217,6 +27750,14 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RecommendedTrafficLanePart")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RecommendedTrafficLanePart.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RecommendedTrafficLanePart.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.RecommendedTrafficLanePart instance)
         {
@@ -26431,6 +27972,26 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("DeepWaterRouteCentreline")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DeepWaterRouteCentreline.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DeepWaterRouteAggregation> theCollectionDeepWaterRouteAggregation { get; set; } = new(DeepWaterRouteCentreline.theCollectionDeepWaterRouteAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(DeepWaterRouteCentreline.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DeepWaterRouteCentreline.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(DeepWaterRouteCentreline.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRouteCentreline instance)
         {
@@ -26688,6 +28249,26 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DeepWaterRoutePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DeepWaterRoutePart.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DeepWaterRouteAggregation> theCollectionDeepWaterRouteAggregation { get; set; } = new(DeepWaterRoutePart.theCollectionDeepWaterRouteAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(DeepWaterRoutePart.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DeepWaterRoutePart.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(DeepWaterRoutePart.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRoutePart instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -26885,6 +28466,30 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DeepWaterRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DeepWaterRoute.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theComponentAidsToNavigationAssociation { get; set; } = new(DeepWaterRoute.theComponentAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DeepWaterRouteAggregation> theComponentDeepWaterRouteAggregation { get; set; } = new(DeepWaterRoute.theComponentDeepWaterRouteAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(DeepWaterRoute.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DeepWaterRoute.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(DeepWaterRoute.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRoute instance)
         {
             featureName.Clear();
@@ -27004,6 +28609,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("InshoreTrafficZone")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(InshoreTrafficZone.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(InshoreTrafficZone.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(InshoreTrafficZone.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.InshoreTrafficZone instance)
         {
@@ -27159,6 +28776,22 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("PrecautionaryArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(PrecautionaryArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(PrecautionaryArea.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(PrecautionaryArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(PrecautionaryArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.PrecautionaryArea instance)
         {
@@ -27325,6 +28958,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationSchemeLanePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(TrafficSeparationSchemeLanePart.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(TrafficSeparationSchemeLanePart.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(TrafficSeparationSchemeLanePart.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeLanePart instance)
         {
             fixedDateRange = new();
@@ -27459,6 +29104,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SeparationZoneOrLine")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SeparationZoneOrLine.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(SeparationZoneOrLine.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SeparationZoneOrLine.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.SeparationZoneOrLine instance)
         {
             fixedDateRange = new();
@@ -27569,6 +29226,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TrafficSeparationSchemeBoundary")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(TrafficSeparationSchemeBoundary.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(TrafficSeparationSchemeBoundary.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(TrafficSeparationSchemeBoundary.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeBoundary instance)
         {
@@ -27686,6 +29355,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TrafficSeparationSchemeCrossing")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(TrafficSeparationSchemeCrossing.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(TrafficSeparationSchemeCrossing.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(TrafficSeparationSchemeCrossing.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeCrossing instance)
         {
@@ -27823,6 +29504,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TrafficSeparationSchemeRoundabout")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(TrafficSeparationSchemeRoundabout.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(TrafficSeparationSchemeRoundabout.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(TrafficSeparationSchemeRoundabout.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeRoundabout instance)
         {
@@ -27985,6 +29678,34 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationScheme")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(TrafficSeparationScheme.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theComponentAidsToNavigationAssociation { get; set; } = new(TrafficSeparationScheme.theComponentAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theComponentTrafficSeparationSchemeAggregation { get; set; } = new(TrafficSeparationScheme.theComponentTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(TrafficSeparationScheme.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<CautionAreaAssociation> theCollectionCautionAreaAssociation { get; set; } = new(TrafficSeparationScheme.theCollectionCautionAreaAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(TrafficSeparationScheme.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(TrafficSeparationScheme.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationScheme instance)
         {
             featureName.Clear();
@@ -28117,6 +29838,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ArchipelagicSeaLaneArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(ArchipelagicSeaLaneArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<ASLAggregation> theCollectionASLAggregation { get; set; } = new(ArchipelagicSeaLaneArea.theCollectionASLAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(ArchipelagicSeaLaneArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(ArchipelagicSeaLaneArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneArea instance)
         {
             featureName.Clear();
@@ -28246,6 +29983,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ArchipelagicSeaLaneAxis")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(ArchipelagicSeaLaneAxis.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<ASLAggregation> theCollectionASLAggregation { get; set; } = new(ArchipelagicSeaLaneAxis.theCollectionASLAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(ArchipelagicSeaLaneAxis.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(ArchipelagicSeaLaneAxis.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneAxis instance)
         {
             featureName.Clear();
@@ -28374,6 +30127,30 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("ArchipelagicSeaLane")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(ArchipelagicSeaLane.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theComponentAidsToNavigationAssociation { get; set; } = new(ArchipelagicSeaLane.theComponentAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<ASLAggregation> theComponentASLAggregation { get; set; } = new(ArchipelagicSeaLane.theComponentASLAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<CautionAreaAssociation> theCollectionCautionAreaAssociation { get; set; } = new(ArchipelagicSeaLane.theCollectionCautionAreaAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(ArchipelagicSeaLane.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(ArchipelagicSeaLane.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLane instance)
         {
@@ -28515,6 +30292,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RadioCallingInPoint")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RadioCallingInPoint.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RadioCallingInPoint.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(RadioCallingInPoint.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.RadioCallingInPoint instance)
         {
@@ -28679,6 +30468,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FerryRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(FerryRoute.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(FerryRoute.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(FerryRoute.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.FerryRoute instance)
         {
             categoryOfFerry.Clear();
@@ -28822,6 +30623,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarLine")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RadarLine.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RadarLine.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(RadarLine.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.RadarLine instance)
         {
             featureName.Clear();
@@ -28942,6 +30755,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RadarRange")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RadarRange.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RadarRange.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(RadarRange.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.RadarRange instance)
         {
@@ -29115,6 +30940,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarStation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RadarStation.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RadarStation.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(RadarStation.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.RadarStation instance)
         {
             callSign = instance.callSign;
@@ -29283,6 +31120,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("AnchorageArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(AnchorageArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(AnchorageArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(AnchorageArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.AnchorageArea instance)
         {
@@ -29500,6 +31349,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MooringArea")]
         public ObservableCollection<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(MooringArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(MooringArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(MooringArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.MooringArea instance)
         {
             categoryOfMooringArea.Clear();
@@ -29694,6 +31555,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("AnchorBerth")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(AnchorBerth.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(AnchorBerth.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(AnchorBerth.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.AnchorBerth instance)
         {
             categoryOfAnchorage.Clear();
@@ -29843,6 +31716,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SeaplaneLandingArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SeaplaneLandingArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SeaplaneLandingArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SeaplaneLandingArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.SeaplaneLandingArea instance)
         {
@@ -29996,6 +31881,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("DumpingGround")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(DumpingGround.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(DumpingGround.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(DumpingGround.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.DumpingGround instance)
         {
@@ -30171,6 +32068,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("MilitaryPracticeArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(MilitaryPracticeArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(MilitaryPracticeArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(MilitaryPracticeArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.MilitaryPracticeArea instance)
         {
@@ -30368,6 +32277,18 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(AdministrationArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(AdministrationArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(AdministrationArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.AdministrationArea instance)
         {
             inDispute = instance.inDispute;
@@ -30500,6 +32421,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("CargoTranshipmentArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(CargoTranshipmentArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(CargoTranshipmentArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(CargoTranshipmentArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.CargoTranshipmentArea instance)
         {
@@ -30712,6 +32645,22 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(CautionArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<CautionAreaAssociation> theComponentCautionAreaAssociation { get; set; } = new(CautionArea.theComponentCautionAreaAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(CautionArea.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(CautionArea.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.CautionArea instance)
         {
             condition = instance.condition;
@@ -30868,6 +32817,18 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(InformationArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(InformationArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(InformationArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.InformationArea instance)
         {
             featureName.Clear();
@@ -31010,6 +32971,14 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ContiguousZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(ContiguousZone.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(ContiguousZone.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.ContiguousZone instance)
         {
             fixedDateRange = new();
@@ -31110,6 +33079,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("ContinentalShelfArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(ContinentalShelfArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(ContinentalShelfArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(ContinentalShelfArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.ContinentalShelfArea instance)
         {
@@ -31219,6 +33200,14 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CustomZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(CustomZone.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(CustomZone.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.CustomZone instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -31312,6 +33301,14 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("ExclusiveEconomicZone")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(ExclusiveEconomicZone.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(ExclusiveEconomicZone.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.ExclusiveEconomicZone instance)
         {
@@ -31419,6 +33416,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("FisheryZone")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(FisheryZone.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(FisheryZone.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(FisheryZone.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.FisheryZone instance)
         {
@@ -31530,6 +33539,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("FishingGround")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(FishingGround.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(FishingGround.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(FishingGround.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.FishingGround instance)
         {
@@ -31660,6 +33681,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FreePortArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(FreePortArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(FreePortArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(FreePortArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.FreePortArea instance)
         {
             featureName.Clear();
@@ -31758,6 +33791,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("HarbourAreaAdministrative")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(HarbourAreaAdministrative.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(HarbourAreaAdministrative.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(HarbourAreaAdministrative.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.HarbourAreaAdministrative instance)
         {
@@ -31860,6 +33905,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LogPond")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LogPond.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LogPond.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LogPond.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.LogPond instance)
         {
@@ -32031,6 +34088,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("OilBarrier")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(OilBarrier.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(OilBarrier.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(OilBarrier.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.OilBarrier instance)
         {
             categoryOfOilBarrier = instance.categoryOfOilBarrier;
@@ -32157,6 +34226,14 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("StraightTerritorialSeaBaseline")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(StraightTerritorialSeaBaseline.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(StraightTerritorialSeaBaseline.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.StraightTerritorialSeaBaseline instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -32256,6 +34333,14 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TerritorialSeaArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(TerritorialSeaArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(TerritorialSeaArea.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.TerritorialSeaArea instance)
         {
@@ -32387,6 +34472,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SubmarineTransitLane")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SubmarineTransitLane.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SubmarineTransitLane.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SubmarineTransitLane.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.SubmarineTransitLane instance)
         {
             featureName.Clear();
@@ -32498,6 +34595,22 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("PilotageDistrict")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(PilotageDistrict.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<PilotageDistrictAssociation> theComponentPilotageDistrictAssociation { get; set; } = new(PilotageDistrict.theComponentPilotageDistrictAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(PilotageDistrict.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(PilotageDistrict.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.PilotageDistrict instance)
         {
@@ -32629,6 +34742,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CollisionRegulationsLimit")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(CollisionRegulationsLimit.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(CollisionRegulationsLimit.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(CollisionRegulationsLimit.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.CollisionRegulationsLimit instance)
         {
             featureName.Clear();
@@ -32752,6 +34877,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MarinePollutionRegulationsArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(MarinePollutionRegulationsArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(MarinePollutionRegulationsArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(MarinePollutionRegulationsArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.MarinePollutionRegulationsArea instance)
         {
             featureName.Clear();
@@ -32871,6 +35008,26 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RestrictedArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RestrictedArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(RestrictedArea.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TrafficSeparationSchemeAggregation> theCollectionTrafficSeparationSchemeAggregation { get; set; } = new(RestrictedArea.theCollectionTrafficSeparationSchemeAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RestrictedArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(RestrictedArea.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.RestrictedArea instance)
         {
@@ -33227,6 +35384,30 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightAllAround")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LightAllAround.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(LightAllAround.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(LightAllAround.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(LightAllAround.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LightAllAround.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LightAllAround.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.LightAllAround instance)
         {
             categoryOfLight.Clear();
@@ -33529,6 +35710,30 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightSectored")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LightSectored.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(LightSectored.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(LightSectored.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(LightSectored.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LightSectored.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LightSectored.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.LightSectored instance)
         {
             categoryOfLight.Clear();
@@ -33803,6 +36008,22 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LightFogDetector")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LightFogDetector.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(LightFogDetector.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LightFogDetector.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LightFogDetector.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.LightFogDetector instance)
         {
@@ -34087,6 +36308,22 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LightAirObstruction")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LightAirObstruction.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(LightAirObstruction.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LightAirObstruction.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LightAirObstruction.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.LightAirObstruction instance)
         {
@@ -34405,6 +36642,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LateralBuoy.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(LateralBuoy.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(LateralBuoy.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(LateralBuoy.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LateralBuoy.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LateralBuoy.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.LateralBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -34719,6 +36980,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(CardinalBuoy.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(CardinalBuoy.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(CardinalBuoy.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(CardinalBuoy.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(CardinalBuoy.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(CardinalBuoy.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.CardinalBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -35018,6 +37303,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(IsolatedDangerBuoy.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(IsolatedDangerBuoy.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(IsolatedDangerBuoy.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(IsolatedDangerBuoy.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(IsolatedDangerBuoy.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(IsolatedDangerBuoy.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -35313,6 +37622,30 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SafeWaterBuoy.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(SafeWaterBuoy.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(SafeWaterBuoy.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(SafeWaterBuoy.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SafeWaterBuoy.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SafeWaterBuoy.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.SafeWaterBuoy instance)
         {
@@ -35612,6 +37945,30 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SpecialPurposeGeneralBuoy.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(SpecialPurposeGeneralBuoy.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(SpecialPurposeGeneralBuoy.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(SpecialPurposeGeneralBuoy.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SpecialPurposeGeneralBuoy.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SpecialPurposeGeneralBuoy.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBuoy instance)
         {
@@ -35913,6 +38270,26 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(EmergencyWreckMarkingBuoy.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(EmergencyWreckMarkingBuoy.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(EmergencyWreckMarkingBuoy.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(EmergencyWreckMarkingBuoy.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(EmergencyWreckMarkingBuoy.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.EmergencyWreckMarkingBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -36175,6 +38552,22 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(InstallationBuoy.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(InstallationBuoy.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(InstallationBuoy.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(InstallationBuoy.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.InstallationBuoy instance)
         {
@@ -36471,6 +38864,30 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(MooringBuoy.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(MooringBuoy.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(MooringBuoy.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<MooringTrotAggregation> theCollectionMooringTrotAggregation { get; set; } = new(MooringBuoy.theCollectionMooringTrotAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(MooringBuoy.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(MooringBuoy.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.MooringBuoy instance)
         {
@@ -36851,6 +39268,34 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LateralBeacon.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(LateralBeacon.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(LateralBeacon.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(LateralBeacon.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(LateralBeacon.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LateralBeacon.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LateralBeacon.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.LateralBeacon instance)
         {
@@ -37256,6 +39701,34 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(CardinalBeacon.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(CardinalBeacon.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(CardinalBeacon.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(CardinalBeacon.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(CardinalBeacon.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(CardinalBeacon.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(CardinalBeacon.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.CardinalBeacon instance)
         {
             beaconShape = instance.beaconShape;
@@ -37645,6 +40118,34 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(IsolatedDangerBeacon.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(IsolatedDangerBeacon.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(IsolatedDangerBeacon.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(IsolatedDangerBeacon.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(IsolatedDangerBeacon.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(IsolatedDangerBeacon.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(IsolatedDangerBeacon.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBeacon instance)
         {
             beaconShape = instance.beaconShape;
@@ -38030,6 +40531,34 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SafeWaterBeacon.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(SafeWaterBeacon.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(SafeWaterBeacon.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(SafeWaterBeacon.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(SafeWaterBeacon.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SafeWaterBeacon.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SafeWaterBeacon.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.SafeWaterBeacon instance)
         {
@@ -38420,6 +40949,34 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SpecialPurposeGeneralBeacon.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(SpecialPurposeGeneralBeacon.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(SpecialPurposeGeneralBeacon.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(SpecialPurposeGeneralBeacon.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(SpecialPurposeGeneralBeacon.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SpecialPurposeGeneralBeacon.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SpecialPurposeGeneralBeacon.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBeacon instance)
         {
             beaconShape = instance.beaconShape;
@@ -38746,6 +41303,38 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Daymark.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(Daymark.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(Daymark.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(Daymark.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(Daymark.theCollectionRangeSystemAggregation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(Daymark.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Daymark.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Daymark.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Daymark instance)
         {
             categoryOfSpecialPurposeMark.Clear();
@@ -39071,6 +41660,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LightFloat.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(LightFloat.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(LightFloat.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(LightFloat.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LightFloat.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LightFloat.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.LightFloat instance)
         {
             colour.Clear();
@@ -39369,6 +41982,30 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(LightVessel.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theEquipmentStructureEquipment { get; set; } = new(LightVessel.theEquipmentStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AidsToNavigationAssociation> theCollectionAidsToNavigationAssociation { get; set; } = new(LightVessel.theCollectionAidsToNavigationAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<FairwayAuxiliary> thePrimaryFeatureFairwayAuxiliary { get; set; } = new(LightVessel.thePrimaryFeatureFairwayAuxiliary.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(LightVessel.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(LightVessel.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.LightVessel instance)
         {
             colour.Clear();
@@ -39577,6 +42214,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Retroreflector")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(Retroreflector.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(Retroreflector.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(Retroreflector.theUpdateUpdatedInformation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.Retroreflector instance)
         {
             colour.Clear();
@@ -39731,6 +42380,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RadarReflector")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RadarReflector.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(RadarReflector.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RadarReflector.theUpdateUpdatedInformation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.RadarReflector instance)
         {
@@ -39955,6 +42616,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FogSignal")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(FogSignal.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(FogSignal.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(FogSignal.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(FogSignal.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.FogSignal instance)
         {
             categoryOfFogSignal = instance.categoryOfFogSignal;
@@ -40162,6 +42839,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PhysicalAISAidToNavigation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(PhysicalAISAidToNavigation.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(PhysicalAISAidToNavigation.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(PhysicalAISAidToNavigation.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(PhysicalAISAidToNavigation.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.PhysicalAISAidToNavigation instance)
         {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
@@ -40355,6 +43048,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("VirtualAISAidToNavigation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(VirtualAISAidToNavigation.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(VirtualAISAidToNavigation.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(VirtualAISAidToNavigation.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.VirtualAISAidToNavigation instance)
         {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
@@ -40545,6 +43250,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RadioStation")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RadioStation.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RadioStation.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(RadioStation.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.RadioStation instance)
         {
@@ -40785,6 +43502,26 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarTransponderBeacon")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RadarTransponderBeacon.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(RadarTransponderBeacon.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RadarTransponderBeacon.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(RadarTransponderBeacon.theCartographicTextTextAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<RangeSystemAggregation> theCollectionRangeSystemAggregation { get; set; } = new(RadarTransponderBeacon.theCollectionRangeSystemAggregation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.RadarTransponderBeacon instance)
         {
             categoryOfRadarTransponderBeacon = instance.categoryOfRadarTransponderBeacon;
@@ -40999,6 +43736,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PilotBoardingPlace")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(PilotBoardingPlace.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<PilotageDistrictAssociation> theCollectionPilotageDistrictAssociation { get; set; } = new(PilotBoardingPlace.theCollectionPilotageDistrictAssociation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(PilotBoardingPlace.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(PilotBoardingPlace.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.PilotBoardingPlace instance)
         {
             categoryOfPilotBoardingPlace = instance.categoryOfPilotBoardingPlace;
@@ -41150,6 +43903,18 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("VesselTrafficServiceArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(VesselTrafficServiceArea.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(VesselTrafficServiceArea.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(VesselTrafficServiceArea.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.VesselTrafficServiceArea instance)
         {
             featureName.Clear();
@@ -41275,6 +44040,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("CoastGuardStation")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(CoastGuardStation.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(CoastGuardStation.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(CoastGuardStation.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.CoastGuardStation instance)
         {
@@ -41431,6 +44208,22 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SignalStationWarning")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SignalStationWarning.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(SignalStationWarning.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SignalStationWarning.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SignalStationWarning.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.SignalStationWarning instance)
         {
@@ -41595,6 +44388,22 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SignalStationTraffic")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SignalStationTraffic.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<StructureEquipment> theStructureStructureEquipment { get; set; } = new(SignalStationTraffic.theStructureStructureEquipment.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SignalStationTraffic.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SignalStationTraffic.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.SignalStationTraffic instance)
         {
             categoryOfSignalStationTraffic.Clear();
@@ -41757,6 +44566,18 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RescueStation")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(RescueStation.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(RescueStation.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(RescueStation.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.RescueStation instance)
         {
@@ -41990,6 +44811,18 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(HarbourFacility.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(HarbourFacility.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(HarbourFacility.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.HarbourFacility instance)
         {
             categoryOfHarbourFacility.Clear();
@@ -42191,6 +45024,18 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation> theInformationAdditionalInformation { get; set; } = new(SmallCraftFacility.theInformationAdditionalInformation.informationTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<UpdatedInformation> theUpdateUpdatedInformation { get; set; } = new(SmallCraftFacility.theUpdateUpdatedInformation.featureTypes);
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(SmallCraftFacility.theCartographicTextTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.SmallCraftFacility instance)
         {
             categoryOfSmallCraftFacility.Clear();
@@ -42337,6 +45182,10 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> thePositionProviderTextAssociation { get; set; } = new(TextPlacement.thePositionProviderTextAssociation.featureTypes);
+
         public void Load(DomainModel.S101.FeatureTypes.TextPlacement instance)
         {
             textOffsetBearing = instance.textOffsetBearing;
@@ -42388,6 +45237,10 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Chart1Feature")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation> theCartographicTextTextAssociation { get; set; } = new(Chart1Feature.theCartographicTextTextAssociation.featureTypes);
 
         public void Load(DomainModel.S101.FeatureTypes.Chart1Feature instance)
         {

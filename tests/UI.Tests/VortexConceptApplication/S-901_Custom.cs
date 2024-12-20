@@ -1,15 +1,6 @@
 ﻿using S100Framework.DomainModel;
-using S100Framework.DomainModel.Bindings;
-using S100Framework.DomainModel.S101.InformationTypes;
-using S100Framework.DomainModel.S122.Associations.InformationAssociations;
-using S100Framework.DomainModel.S122.InformationTypes;
-using S100Framework.DomainModel.S201.FeatureTypes;
-using S100Framework.WPF.Editors;
-using S100Framework.WPF.ViewModel.S901;
-using System.Collections.ObjectModel;
 using System.Collections.Specialized;
 using System.ComponentModel;
-using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -59,7 +50,7 @@ namespace S100Framework.WPF.ViewModel.S901
 
 namespace S100Framework.WPF.ViewModel.S901
 {
-  
+
     public sealed class InformationTypeCollectionEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.CollectionEditor
     {
         /*
@@ -244,9 +235,9 @@ namespace S100Framework.WPF.ViewModel.S922
         //[InformationBinding<DomainModel.S122.Associations.InformationAssociations.PermissionType, Regulations>()]
         //public ObservableCollection<informationBindingViewModel> theQualityInformationSpatialQuality2 { get; set; } = new();
 
-        [Category("Development S-922")]
-        [ExpandableObject]
-        public informationBindingViewModel<ServiceControl> controlAuthorityServiceControl { get; set; } = new informationBindingViewModel<ServiceControl>(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea.controlAuthorityServiceControl.informationTypes);
+        //[Category("Development S-922")]
+        //[ExpandableObject]
+        //public informationBindingViewModel<ServiceControl> associationServiceControl { get; set; } = new informationBindingViewModel<ServiceControl>(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea.controlAuthorityServiceControl.informationTypes);
 
 
         //private Guid? _qualityOfBathymetricDataCompositione;

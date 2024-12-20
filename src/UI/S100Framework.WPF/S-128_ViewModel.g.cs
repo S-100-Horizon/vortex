@@ -1,8 +1,11 @@
 using S100Framework.DomainModel.S128;
+using S100Framework.DomainModel.S128.Associations.InformationAssociations;
 using S100Framework.DomainModel.S128.ComplexAttributes;
+using S100Framework.DomainModel.S128.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 
 namespace S100Framework.WPF.ViewModel.S128
@@ -2040,6 +2043,18 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<PriceOfNauticalProduct> thePriceInformationPriceOfNauticalProduct { get; set; } = new(CatalogueSectionHeader.thePriceInformationPriceOfNauticalProduct.informationTypes);
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ProductionDetails> theProducerProductionDetails { get; set; } = new(CatalogueSectionHeader.theProducerProductionDetails.informationTypes);
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DistributionDetails> theDistributorDistributionDetails { get; set; } = new(CatalogueSectionHeader.theDistributorDistributionDetails.informationTypes);
+
         public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance)
         {
             catalogueSectionNumber = instance.catalogueSectionNumber;
@@ -2107,6 +2122,14 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("ContactDetails")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ProducerContact> theProducerProducerContact { get; set; } = new(ContactDetails.theProducerProducerContact.informationTypes);
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DistributorContact> theDistributorDistributorContact { get; set; } = new(ContactDetails.theDistributorDistributorContact.informationTypes);
 
         public void Load(DomainModel.S128.InformationTypes.ContactDetails instance)
         {
@@ -2270,6 +2293,10 @@ namespace S100Framework.WPF.ViewModel.S128
         [Category("PriceInformation")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<PriceOfNauticalProduct> theCatalogueOfNauticalProductPriceOfNauticalProduct { get; set; } = new(PriceInformation.theCatalogueOfNauticalProductPriceOfNauticalProduct.informationTypes);
+
         public void Load(DomainModel.S128.InformationTypes.PriceInformation instance)
         {
             information.Clear();
@@ -2364,6 +2391,14 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ProducerContact> theContactDetailsProducerContact { get; set; } = new(ProducerInformation.theContactDetailsProducerContact.informationTypes);
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ProductionDetails> catalogueHeaderProductionDetails { get; set; } = new(ProducerInformation.catalogueHeaderProductionDetails.informationTypes);
+
         public void Load(DomainModel.S128.InformationTypes.ProducerInformation instance)
         {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -2408,6 +2443,14 @@ namespace S100Framework.WPF.ViewModel.S128
                 SetValue(ref _distributorName, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DistributionDetails> catalogueHeaderDistributionDetails { get; set; } = new(DistributorInformation.catalogueHeaderDistributionDetails.informationTypes);
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DistributorContact> theContactDetailsDistributorContact { get; set; } = new(DistributorInformation.theContactDetailsDistributorContact.informationTypes);
 
         public void Load(DomainModel.S128.InformationTypes.DistributorInformation instance)
         {
