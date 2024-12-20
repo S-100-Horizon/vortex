@@ -90,34 +90,39 @@ namespace VortexConceptApplication
                 },                
             });
 #else
-            //var domainModel = new S100Framework.DomainModel.S901.FeatureTypes.QualityOfBathymetricDataCustom() {
-            //    categoryOfTemporalVariation = S100Framework.DomainModel.S101.categoryOfTemporalVariation.LikelyToChangeButSignificantShoalingNotExpected,
-            //    dataAssessment = S100Framework.DomainModel.S101.dataAssessment.Assessed,
-            //    featuresDetected = new S100Framework.DomainModel.S101.ComplexAttributes.featuresDetected {
-            //        leastDepthOfDetectedFeaturesMeasured = true,
-            //        significantFeaturesDetected = true,
-            //    },
-            //    fullSeafloorCoverageAchieved = true,
-            //    zoneOfConfidence = new List<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence> {
-            //        new S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence {
-            //            categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1
-            //        }
-            //    },
+            var domainModelQualityOfBathymetricDataCustom = new S100Framework.DomainModel.S901.FeatureTypes.QualityOfBathymetricDataCustom() {
+                categoryOfTemporalVariation = S100Framework.DomainModel.S101.categoryOfTemporalVariation.LikelyToChangeButSignificantShoalingNotExpected,
+                dataAssessment = S100Framework.DomainModel.S101.dataAssessment.Assessed,
+                featuresDetected = new S100Framework.DomainModel.S101.ComplexAttributes.featuresDetected {
+                    leastDepthOfDetectedFeaturesMeasured = true,
+                    significantFeaturesDetected = true,
+                },
+                fullSeafloorCoverageAchieved = true,
+                zoneOfConfidence = new List<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence> {
+                    new S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence {
+                        categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1
+                    }
+                },
+            };
+
+            var domainModelUpdateInformation = new S100Framework.DomainModel.S101.FeatureTypes.UpdateInformation() {
+
+            };
+
+
+            var domainModelVesselTrafficServiceArea = new S100Framework.DomainModel.S122.FeatureTypes.VesselTrafficServiceArea() {
+            };
+
+            //var viewModel = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel((IViewModelHost)this) {
             //};
 
-            var viewModelOld = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel((IViewModelHost)this) {
+            var viewModel = new S100Framework.WPF.ViewModel.S901.UpdateInformationViewModel((IViewModelHost)this) {
             };
 
+            //var viewModel = new S100Framework.WPF.ViewModel.S922.VesselTrafficServiceAreaViewModel((IViewModelHost)this) {
+            //};
 
-            var domainModel = new S100Framework.DomainModel.S122.FeatureTypes.VesselTrafficServiceArea() {
-
-            };
-
-            var viewModel = new S100Framework.WPF.ViewModel.S922.VesselTrafficServiceAreaViewModel((IViewModelHost)this) {
-
-            };
-
-            viewModel.Load(domainModel);
+            viewModel.Load(domainModelUpdateInformation);
 
 #endif
 

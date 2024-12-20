@@ -113,7 +113,7 @@ namespace S100Framework.WPF.ViewModel
         }
 
         [PropertyOrder(1)]
-        [Editor(typeof(InformationTypeEditor), typeof(InformationTypeEditor))]
+        [Editor(typeof(FeatureTypeEditor), typeof(FeatureTypeEditor))]
         public Type? FeatureType { get; set; }
 
         [PropertyOrder(2)]
