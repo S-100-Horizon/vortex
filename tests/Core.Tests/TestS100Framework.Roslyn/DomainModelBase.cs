@@ -76,18 +76,16 @@ namespace S100Framework.DomainModel
             aggregation,
             composition,
         }
-
-        public abstract class informationBinding
+        public interface informationBinding
         {
-            public abstract Type[] informationTypes { get; }
-            public string? LinkId { get; set; } = default;
+            public static abstract Type[] informationTypes { get; }
+            public string? RefId { get; set; }
         }
 
-
-        public abstract class featureBinding
+        public interface featureBinding
         {
-            public abstract Type[] featureTypes { get; }
-            public string? LinkId { get; set; } = default;
+            public static abstract Type[] featureTypes { get; }
+            public string? RefId { get; set; }
         }
 
     }

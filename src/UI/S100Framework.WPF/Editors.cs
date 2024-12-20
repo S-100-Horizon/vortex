@@ -1,4 +1,5 @@
 ﻿using S100Framework.WPF.ViewModel;
+using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -102,12 +103,21 @@ namespace S100Framework.WPF.Editors
     public sealed class InformationTypeEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var text = ((Type)propertyItem.Value).Name;
+            var viewModel = (BindingViewModel)propertyItem.Instance;
 
-            return new Label {
-                Content = text,
-                IsEnabled = true,
+            var comboBox = new ComboBox {
+                Name = $"_comboBox{Guid.NewGuid():N}",
+                DisplayMemberPath = propertyItem.DisplayName,
             };
+
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.Types.Select(e=>e.Name).ToArray(), Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            //var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            //BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            return comboBox;
+
         }
     }
     

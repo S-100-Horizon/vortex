@@ -1561,30 +1561,6 @@ namespace S100Framework.DomainModel.S128
         using S100Framework.DomainModel.Bindings;
 
 
-        public class theDistributorDistributionDetailsCatalogueSectionHeaderBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(DistributorInformation)];
-            public Role Role => Role.theDistributor;
-            public Associations.InformationAssociations.DistributionDetails DistributionDetails { get; set; } = new();
-        }
-
-
-        public class theProducerProductionDetailsCatalogueSectionHeaderBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(ProducerInformation)];
-            public Role Role => Role.theProducer;
-            public Associations.InformationAssociations.ProductionDetails ProductionDetails { get; set; } = new();
-        }
-
-
-        public class thePriceInformationPriceOfNauticalProductCatalogueSectionHeaderBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(PriceInformation)];
-            public Role Role => Role.thePriceInformation;
-            public Associations.InformationAssociations.PriceOfNauticalProduct PriceOfNauticalProduct { get; set; } = new();
-        }
-
-
         [System.Serializable()]
         [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
         [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S128/2.0", IsNullable = false)]
@@ -1600,31 +1576,45 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S128/2.0")]
             public information? information { get; set; }
-            public List<thePriceInformationPriceOfNauticalProductCatalogueSectionHeaderBinding> thePriceInformationPriceOfNauticalProduct { get; set; } = [];
-            public theProducerProductionDetailsCatalogueSectionHeaderBinding? theProducerProductionDetails { get; set; }
-            public List<theDistributorDistributionDetailsCatalogueSectionHeaderBinding> theDistributorDistributionDetails { get; set; } = [];
+
+
+            public class thePriceInformationPriceOfNauticalProduct : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(PriceInformation)];
+                public Role Role => Role.thePriceInformation;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.PriceOfNauticalProduct PriceOfNauticalProduct { get; set; } = new();
+            }
+
+            public List<thePriceInformationPriceOfNauticalProduct> associationPriceOfNauticalProduct { get; set; } = [];
+
+
+            public class theProducerProductionDetails : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(ProducerInformation)];
+                public Role Role => Role.theProducer;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.ProductionDetails ProductionDetails { get; set; } = new();
+            }
+
+            public theProducerProductionDetails? associationProductionDetails { get; set; }
+
+
+            public class theDistributorDistributionDetails : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(DistributorInformation)];
+                public Role Role => Role.theDistributor;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.DistributionDetails DistributionDetails { get; set; } = new();
+            }
+
+            public List<theDistributorDistributionDetails> associationDistributionDetails { get; set; } = [];
             public override string Code => nameof(CatalogueSectionHeader);
 
             public CatalogueSectionHeader()
             {
             }
         }
-
-        public class theDistributorDistributorContactContactDetailsBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(DistributorInformation)];
-            public Role Role => Role.theDistributor;
-            public Associations.InformationAssociations.DistributorContact DistributorContact { get; set; } = new();
-        }
-
-
-        public class theProducerProducerContactContactDetailsBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(ProducerInformation)];
-            public Role Role => Role.theProducer;
-            public Associations.InformationAssociations.ProducerContact ProducerContact { get; set; } = new();
-        }
-
 
         [System.Serializable()]
         [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
@@ -1649,8 +1639,28 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S128/2.0")]
             public List<sourceIndication> sourceIndication { get; set; } = [];
-            public theProducerProducerContactContactDetailsBinding? theProducerProducerContact { get; set; }
-            public theDistributorDistributorContactContactDetailsBinding? theDistributorDistributorContact { get; set; }
+
+
+            public class theProducerProducerContact : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(ProducerInformation)];
+                public Role Role => Role.theProducer;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.ProducerContact ProducerContact { get; set; } = new();
+            }
+
+            public theProducerProducerContact? associationProducerContact { get; set; }
+
+
+            public class theDistributorDistributorContact : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(DistributorInformation)];
+                public Role Role => Role.theDistributor;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.DistributorContact DistributorContact { get; set; } = new();
+            }
+
+            public theDistributorDistributorContact? associationDistributorContact { get; set; }
             public override string Code => nameof(ContactDetails);
 
             public ContactDetails()
@@ -1680,14 +1690,6 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
-        public class theCatalogueOfNauticalProductPriceOfNauticalProductPriceInformationBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(CatalogueSectionHeader)];
-            public Role Role => Role.theCatalogueOfNauticalProduct;
-            public Associations.InformationAssociations.PriceOfNauticalProduct PriceOfNauticalProduct { get; set; } = new();
-        }
-
-
         [System.Serializable()]
         [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
         [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S128/2.0", IsNullable = false)]
@@ -1705,29 +1707,23 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S128/2.0")]
             public List<sourceIndication> sourceIndication { get; set; } = [];
-            public List<theCatalogueOfNauticalProductPriceOfNauticalProductPriceInformationBinding> theCatalogueOfNauticalProductPriceOfNauticalProduct { get; set; } = [];
+
+
+            public class theCatalogueOfNauticalProductPriceOfNauticalProduct : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(CatalogueSectionHeader)];
+                public Role Role => Role.theCatalogueOfNauticalProduct;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.PriceOfNauticalProduct PriceOfNauticalProduct { get; set; } = new();
+            }
+
+            public List<theCatalogueOfNauticalProductPriceOfNauticalProduct> associationPriceOfNauticalProduct { get; set; } = [];
             public override string Code => nameof(PriceInformation);
 
             public PriceInformation()
             {
             }
         }
-
-        public class catalogueHeaderProductionDetailsProducerInformationBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(CatalogueSectionHeader)];
-            public Role Role => Role.catalogueHeader;
-            public Associations.InformationAssociations.ProductionDetails ProductionDetails { get; set; } = new();
-        }
-
-
-        public class theContactDetailsProducerContactProducerInformationBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(ContactDetails)];
-            public Role Role => Role.theContactDetails;
-            public Associations.InformationAssociations.ProducerContact ProducerContact { get; set; } = new();
-        }
-
 
         [System.Serializable()]
         [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
@@ -1740,8 +1736,28 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S128/2.0")]
             public String agencyName { get; set; } = string.Empty;
-            public List<theContactDetailsProducerContactProducerInformationBinding> theContactDetailsProducerContact { get; set; } = [];
-            public List<catalogueHeaderProductionDetailsProducerInformationBinding> catalogueHeaderProductionDetails { get; set; } = [];
+
+
+            public class theContactDetailsProducerContact : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(ContactDetails)];
+                public Role Role => Role.theContactDetails;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.ProducerContact ProducerContact { get; set; } = new();
+            }
+
+            public List<theContactDetailsProducerContact> associationProducerContact { get; set; } = [];
+
+
+            public class catalogueHeaderProductionDetails : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(CatalogueSectionHeader)];
+                public Role Role => Role.catalogueHeader;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.ProductionDetails ProductionDetails { get; set; } = new();
+            }
+
+            public List<catalogueHeaderProductionDetails> associationProductionDetails { get; set; } = [];
             public override string Code => nameof(ProducerInformation);
 
             public ProducerInformation()
@@ -1749,22 +1765,6 @@ namespace S100Framework.DomainModel.S128
                 agencyResponsibleForProduction = string.Empty;
             }
         }
-
-        public class theContactDetailsDistributorContactDistributorInformationBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(ContactDetails)];
-            public Role Role => Role.theContactDetails;
-            public Associations.InformationAssociations.DistributorContact DistributorContact { get; set; } = new();
-        }
-
-
-        public class catalogueHeaderDistributionDetailsDistributorInformationBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(CatalogueSectionHeader)];
-            public Role Role => Role.catalogueHeader;
-            public Associations.InformationAssociations.DistributionDetails DistributionDetails { get; set; } = new();
-        }
-
 
         [System.Serializable()]
         [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
@@ -1774,8 +1774,28 @@ namespace S100Framework.DomainModel.S128
         {
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S128/2.0")]
             public String distributorName { get; set; } = string.Empty;
-            public List<catalogueHeaderDistributionDetailsDistributorInformationBinding> catalogueHeaderDistributionDetails { get; set; } = [];
-            public List<theContactDetailsDistributorContactDistributorInformationBinding> theContactDetailsDistributorContact { get; set; } = [];
+
+
+            public class catalogueHeaderDistributionDetails : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(CatalogueSectionHeader)];
+                public Role Role => Role.catalogueHeader;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.DistributionDetails DistributionDetails { get; set; } = new();
+            }
+
+            public List<catalogueHeaderDistributionDetails> associationDistributionDetails { get; set; } = [];
+
+
+            public class theContactDetailsDistributorContact : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(ContactDetails)];
+                public Role Role => Role.theContactDetails;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.DistributorContact DistributorContact { get; set; } = new();
+            }
+
+            public List<theContactDetailsDistributorContact> associationDistributorContact { get; set; } = [];
             public override string Code => nameof(DistributorInformation);
 
             public DistributorInformation()
@@ -1791,38 +1811,6 @@ namespace S100Framework.DomainModel.S128
         using InformationTypes;
         using DomainModel;
         using S100Framework.DomainModel.Bindings;
-
-
-        public class theReferenceProductMappingCatalogueElementBinding : featureBinding
-        {
-            public override Type[] featureTypes => [typeof(CatalogueElement)];
-            public Role Role => Role.theReference;
-            public Associations.FeatureAssociations.ProductMapping ProductMapping { get; set; } = new();
-        }
-
-
-        public class elementContainerProductPackageCatalogueElementBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(CatalogueSectionHeader)];
-            public Role Role => Role.elementContainer;
-            public Associations.InformationAssociations.ProductPackage ProductPackage { get; set; } = new();
-        }
-
-
-        public class thePriceInformationPriceOfElementCatalogueElementBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(PriceInformation)];
-            public Role Role => Role.thePriceInformation;
-            public Associations.InformationAssociations.PriceOfElement PriceOfElement { get; set; } = new();
-        }
-
-
-        public class theRequirementCarriageRequirementCatalogueElementBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(IndicationOfCarriageRequirement)];
-            public Role Role => Role.theRequirement;
-            public Associations.InformationAssociations.CarriageRequirement CarriageRequirement { get; set; } = new();
-        }
 
 
         [System.Serializable()]
@@ -1868,10 +1856,50 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S128/2.0")]
             public timeIntervalOfProduct? timeIntervalOfProduct { get; set; }
-            public List<theRequirementCarriageRequirementCatalogueElementBinding> theRequirementCarriageRequirement { get; set; } = [];
-            public List<thePriceInformationPriceOfElementCatalogueElementBinding> thePriceInformationPriceOfElement { get; set; } = [];
-            public List<elementContainerProductPackageCatalogueElementBinding> elementContainerProductPackage { get; set; } = [];
-            public List<theReferenceProductMappingCatalogueElementBinding> theReferenceProductMapping { get; set; } = [];
+
+
+            public class theRequirementCarriageRequirement : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(IndicationOfCarriageRequirement)];
+                public Role Role => Role.theRequirement;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.CarriageRequirement CarriageRequirement { get; set; } = new();
+            }
+
+            public List<theRequirementCarriageRequirement> associationCarriageRequirement { get; set; } = [];
+
+
+            public class thePriceInformationPriceOfElement : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(PriceInformation)];
+                public Role Role => Role.thePriceInformation;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.PriceOfElement PriceOfElement { get; set; } = new();
+            }
+
+            public List<thePriceInformationPriceOfElement> associationPriceOfElement { get; set; } = [];
+
+
+            public class elementContainerProductPackage : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(CatalogueSectionHeader)];
+                public Role Role => Role.elementContainer;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.ProductPackage ProductPackage { get; set; } = new();
+            }
+
+            public List<elementContainerProductPackage> associationProductPackage { get; set; } = [];
+
+
+            public class theReferenceProductMapping : featureBinding
+            {
+                public static Type[] featureTypes => [typeof(CatalogueElement)];
+                public Role Role => Role.theReference;
+                public string? RefId { get; set; } = default;
+                public Associations.FeatureAssociations.ProductMapping ProductMapping { get; set; } = new();
+            }
+
+            public List<theReferenceProductMapping> associationProductMapping { get; set; } = [];
             public override string Code => nameof(CatalogueElement);
 
             public CatalogueElement()
@@ -1879,14 +1907,6 @@ namespace S100Framework.DomainModel.S128
                 catalogueElementClassification = new();
             }
         }
-
-        public class mainCorrelatedNavigationalProductBinding : featureBinding
-        {
-            public override Type[] featureTypes => [typeof(NavigationalProduct)];
-            public Role Role => Role.main;
-            public Associations.FeatureAssociations.Correlated Correlated { get; set; } = new();
-        }
-
 
         [System.Serializable()]
         [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S128/2.0")]
@@ -1941,7 +1961,17 @@ namespace S100Framework.DomainModel.S128
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S128/2.0")]
             public verticalDatum? verticalDatum { get; set; } = default;
-            public mainCorrelatedNavigationalProductBinding mainCorrelated { get; set; }
+
+
+            public class mainCorrelated : featureBinding
+            {
+                public static Type[] featureTypes => [typeof(NavigationalProduct)];
+                public Role Role => Role.main;
+                public string? RefId { get; set; } = default;
+                public Associations.FeatureAssociations.Correlated Correlated { get; set; } = new();
+            }
+
+            public mainCorrelated associationCorrelated { get; set; }
             public override string Code => nameof(NavigationalProduct);
 
             public NavigationalProduct()

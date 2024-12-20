@@ -1,13 +1,8 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Collections.Immutable;
-using System.Collections.ObjectModel;
-using S100Framework.DomainModel;
 using S100Framework.DomainModel.S122;
 using S100Framework.DomainModel.S122.ComplexAttributes;
-
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 
 namespace S100Framework.WPF.ViewModel.S122

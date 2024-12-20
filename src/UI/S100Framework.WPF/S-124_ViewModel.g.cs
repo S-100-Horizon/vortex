@@ -1,16 +1,8 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Collections.Immutable;
-using System.Collections.ObjectModel;
-using S100Framework.DomainModel;
 using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S124.ComplexAttributes;
-using S100Framework.DomainModel.S124.InformationTypes;
-using S100Framework.DomainModel.S124.FeatureTypes;
-using S100Framework.DomainModel.S124.Associations.InformationAssociations;
-using S100Framework.DomainModel.S124.Associations.FeatureAssociations;
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
 
 
 namespace S100Framework.WPF.ViewModel.S124

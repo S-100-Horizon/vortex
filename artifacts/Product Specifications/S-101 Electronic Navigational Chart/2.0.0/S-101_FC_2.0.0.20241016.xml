@@ -15102,7 +15102,7 @@
 					<S100Base:upper xsi:nil="true" infinite="true" />
 				</S100FC:multiplicity>
 				<S100FC:association ref="UpdatedInformation" />
-				<S100FC:role ref="theUpdatedObject" />
+				<S100FC:role ref="theUpdate" />
 				<S100FC:featureType ref="AdministrationArea" />
 				<S100FC:featureType ref="AirportAirfield" />
 				<S100FC:featureType ref="AnchorBerth" />
@@ -15291,7 +15291,7 @@
 				<S100FC:featureType ref="WindTurbine" />
 				<S100FC:featureType ref="Wreck" />
 			</S100FC:featureBinding>
-			<S100FC:featureBinding roleType="association">
+			<!-- jesoe <S100FC:featureBinding roleType="association">
 				<S100FC:multiplicity>
 					<S100Base:lower>0</S100Base:lower>
 					<S100Base:upper xsi:nil="true" infinite="true" />
@@ -15299,7 +15299,7 @@
 				<S100FC:association ref="UpdatedInformation" />
 				<S100FC:role ref="theUpdate" />
 				<S100FC:featureType ref="UpdateInformation" />
-			</S100FC:featureBinding>
+			</S100FC:featureBinding>-->
 			<S100FC:permittedPrimitives>point</S100FC:permittedPrimitives>
 			<S100FC:permittedPrimitives>curve</S100FC:permittedPrimitives>
 			<S100FC:permittedPrimitives>surface</S100FC:permittedPrimitives>

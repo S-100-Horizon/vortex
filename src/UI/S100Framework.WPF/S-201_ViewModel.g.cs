@@ -1,13 +1,7 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using S100Framework.DomainModel.S201;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using S100Framework.DomainModel.S201;
-using S100Framework.DomainModel.S201.ComplexAttributes;
-using S100Framework.DomainModel.S201.InformationTypes;
-using S100Framework.DomainModel.S201.FeatureTypes;
+using System.ComponentModel;
 
 namespace S100Framework.WPF.ViewModel.S201
 {

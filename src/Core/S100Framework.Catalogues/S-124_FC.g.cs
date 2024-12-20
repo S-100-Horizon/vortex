@@ -2361,14 +2361,6 @@ namespace S100Framework.DomainModel.S124
         using S100Framework.DomainModel.Bindings;
 
 
-        public class theReferencesNWReferencesNAVWARNPreambleBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(References)];
-            public Role Role => Role.theReferences;
-            public Associations.InformationAssociations.NWReferences NWReferences { get; set; } = new();
-        }
-
-
         [System.Serializable()]
         [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
@@ -2406,7 +2398,17 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             [Required()]
             public DateTime publicationTime { get; set; }
-            public List<theReferencesNWReferencesNAVWARNPreambleBinding> theReferencesNWReferences { get; set; } = [];
+
+
+            public class theReferencesNWReferences : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(References)];
+                public Role Role => Role.theReferences;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.NWReferences NWReferences { get; set; } = new();
+            }
+
+            public List<theReferencesNWReferences> associationNWReferences { get; set; } = [];
             public override string Code => nameof(NAVWARNPreamble);
 
             public NAVWARNPreamble()
@@ -2458,30 +2460,6 @@ namespace S100Framework.DomainModel.S124
         using S100Framework.DomainModel.Bindings;
 
 
-        public class positionsTextAssociationNAVWARNPartBinding : featureBinding
-        {
-            public override Type[] featureTypes => [typeof(TextPlacement)];
-            public Role Role => Role.positions;
-            public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-        }
-
-
-        public class affectsAreaAffectedNAVWARNPartBinding : featureBinding
-        {
-            public override Type[] featureTypes => [typeof(NAVWARNAreaAffected)];
-            public Role Role => Role.affects;
-            public Associations.FeatureAssociations.AreaAffected AreaAffected { get; set; } = new();
-        }
-
-
-        public class headerNWPreambleContentNAVWARNPartBinding : informationBinding
-        {
-            public override Type[] informationTypes => [typeof(NAVWARNPreamble)];
-            public Role Role => Role.header;
-            public Associations.InformationAssociations.NWPreambleContent NWPreambleContent { get; set; } = new();
-        }
-
-
         [System.Serializable()]
         [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
@@ -2503,9 +2481,39 @@ namespace S100Framework.DomainModel.S124
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public restriction? restriction { get; set; } = default;
-            public headerNWPreambleContentNAVWARNPartBinding headerNWPreambleContent { get; set; }
-            public List<affectsAreaAffectedNAVWARNPartBinding> affectsAreaAffected { get; set; } = [];
-            public List<positionsTextAssociationNAVWARNPartBinding> positionsTextAssociation { get; set; } = [];
+
+
+            public class headerNWPreambleContent : informationBinding
+            {
+                public static Type[] informationTypes => [typeof(NAVWARNPreamble)];
+                public Role Role => Role.header;
+                public string? RefId { get; set; } = default;
+                public Associations.InformationAssociations.NWPreambleContent NWPreambleContent { get; set; } = new();
+            }
+
+            public headerNWPreambleContent associationNWPreambleContent { get; set; }
+
+
+            public class affectsAreaAffected : featureBinding
+            {
+                public static Type[] featureTypes => [typeof(NAVWARNAreaAffected)];
+                public Role Role => Role.affects;
+                public string? RefId { get; set; } = default;
+                public Associations.FeatureAssociations.AreaAffected AreaAffected { get; set; } = new();
+            }
+
+            public List<affectsAreaAffected> associationAreaAffected { get; set; } = [];
+
+
+            public class positionsTextAssociation : featureBinding
+            {
+                public static Type[] featureTypes => [typeof(TextPlacement)];
+                public Role Role => Role.positions;
+                public string? RefId { get; set; } = default;
+                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
+            }
+
+            public List<positionsTextAssociation> associationTextAssociation { get; set; } = [];
             public override string Code => nameof(NAVWARNPart);
 
             public NAVWARNPart()
@@ -2516,35 +2524,28 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
-        public class impactsAreaAffectedNAVWARNAreaAffectedBinding : featureBinding
-        {
-            public override Type[] featureTypes => [typeof(NAVWARNPart)];
-            public Role Role => Role.impacts;
-            public Associations.FeatureAssociations.AreaAffected AreaAffected { get; set; } = new();
-        }
-
-
         [System.Serializable()]
         [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
         [System.Xml.Serialization.XmlRoot(Namespace = "http://www.iho.int/S100FC/5.2", IsNullable = false)]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNAreaAffected : FeatureTypeBase
         {
-            public impactsAreaAffectedNAVWARNAreaAffectedBinding impactsAreaAffected { get; set; }
+
+            public class impactsAreaAffected : featureBinding
+            {
+                public static Type[] featureTypes => [typeof(NAVWARNPart)];
+                public Role Role => Role.impacts;
+                public string? RefId { get; set; } = default;
+                public Associations.FeatureAssociations.AreaAffected AreaAffected { get; set; } = new();
+            }
+
+            public impactsAreaAffected associationAreaAffected { get; set; }
             public override string Code => nameof(NAVWARNAreaAffected);
 
             public NAVWARNAreaAffected()
             {
             }
         }
-
-        public class identifiesTextAssociationTextPlacementBinding : featureBinding
-        {
-            public override Type[] featureTypes => [typeof(NAVWARNPart)];
-            public Role Role => Role.identifies;
-            public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-        }
-
 
         [System.Serializable()]
         [System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = "http://www.iho.int/S100FC/5.2")]
@@ -2571,7 +2572,17 @@ namespace S100Framework.DomainModel.S124
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
-            public identifiesTextAssociationTextPlacementBinding? identifiesTextAssociation { get; set; }
+
+
+            public class identifiesTextAssociation : featureBinding
+            {
+                public static Type[] featureTypes => [typeof(NAVWARNPart)];
+                public Role Role => Role.identifies;
+                public string? RefId { get; set; } = default;
+                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
+            }
+
+            public identifiesTextAssociation? compositionTextAssociation { get; set; }
             public override string Code => nameof(TextPlacement);
 
             public TextPlacement()

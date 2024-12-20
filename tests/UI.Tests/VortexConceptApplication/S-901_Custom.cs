@@ -59,176 +59,7 @@ namespace S100Framework.WPF.ViewModel.S901
 
 namespace S100Framework.WPF.ViewModel.S901
 {
-    public class informationBindingViewModel2 : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-            if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            backingFiled = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        private string? _linkId;
-
-        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
-        public string? LinkId {
-            get {
-                return _linkId;
-            }
-
-            set {
-                SetValue(ref _linkId, value);
-            }
-        }
-
-        private informationBinding? _informationBinding;
-
-        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
-        [Browsable(false)]
-        public informationBinding? informationBinding {
-            get {
-                return _informationBinding;
-            }
-
-            set {
-                SetValue(ref _informationBinding, value);
-            }
-        }
-
-        //[Browsable(false)]
-        //public string Name => $"{_linkId} {informationBinding?.informationType}";
-    }
-    public class informationBindingViewModel2<T> : informationBindingViewModel2 where T : new()
-    {
-        public informationBindingViewModel2() {
-            _value = new T();
-        }
-
-        private T _value;
-
-        [Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
-        [ExpandableObject]
-        [ReadOnly(true)]
-        public T Value {
-            get { return _value; }
-            set {
-                SetValue(ref _value, value);
-            }
-        }
-    }
-
-    public class informationBinding3<T> where T : InformationAssociation, new()
-    {
-        public string ReferenceId { get; set; } = string.Empty;
-
-        public T Association { get; set; } = new();
-    }
-
-    public class informationBinding3ViewModel<T> : INotifyPropertyChanged where T : InformationAssociation, new()
-    {
-        public informationBinding3ViewModel() {
-            Association = new();
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-            if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            backingFiled = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        private string _referenceId;
-
-        [Editor(typeof(InformationTypeSelector), typeof(InformationTypeSelector))]
-        [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.PropertyOrder(1)]
-        public string ReferenceId {
-            get {
-                return _referenceId;
-            }
-            set {
-                SetValue(ref _referenceId, value);
-            }
-        }
-
-        private T _association;
-
-        [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
-        [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.PropertyOrder(1000)]
-        public T Association {
-            get {
-                return _association;
-            }
-            set {
-                SetValue(ref _association, value);
-            }
-        }
-    }
-
-    public class informationBinding4ViewModel : INotifyPropertyChanged
-    {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-            if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            backingFiled = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        private additionalInformation _additionalInformation = new additionalInformation();
-
-        public additionalInformation additionalInformation {
-            get {
-                return _additionalInformation;
-            }
-            set {
-                SetValue(ref _additionalInformation, value);
-            }
-        }
-
-        public DomainModel.S122.Role Role => DomainModel.S122.Role.providesInformation;
-
-        public Type informationType => typeof(DomainModel.S122.InformationTypes.NauticalInformation);
-    }
-
-    /*
-            public InformationAssociation? association { get; set; }
-            public string? role { get; set; }
-            public string? informationType { get; set; }
-     */
-
-    public record beaconShape_TEST(int code, string label, string definition)
-    {
-        //public static ???
-
-        public static beaconShape_TEST beaconShape_1 => new beaconShape_TEST(1, "Stake, Pole, Perch, Post", "An elongated wood or metal pole, driven into the ground or seabed, which serves as a navigational aid or a support for a navigational aid.");
-
-        public static beaconShape_TEST[] beaconShapes => [
-            beaconShape_1,
-        ];
-
-        //public static beaconShape_TEST this[int code] => null; 
-    }
-
+  
     public sealed class InformationTypeCollectionEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.CollectionEditor
     {
         /*
@@ -330,11 +161,6 @@ namespace S100Framework.WPF.ViewModel.S901
         };
 
         //  CUSTOM
-        [Category("Development - S901")]
-        [Editor(typeof(InformationTypeCollectionEditor), typeof(InformationTypeCollectionEditor))]
-        [InformationBinding<DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition, SpatialQuality>()]
-        public ObservableCollection<informationBinding3ViewModel<TestComposition>> theQualityInformationSpatialQuality { get; set; } = new();
-
 
         //[Category("Development - S901")]
         //[ExpandableObject]
@@ -405,37 +231,6 @@ namespace S100Framework.WPF.ViewModel.S922
         }
     }
 
-    public abstract class informationBindingViewModel
-    {
-        private Type[] _types;
-
-        public informationBindingViewModel(Type[] types) {
-            _types = types;
-            InformationType = _types.FirstOrDefault();
-        }
-
-        [Browsable(false)]
-        public Type[] Types => _types;
-
-        [PropertyOrder(0)]
-        [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public string? RefId { get; set; } = default;
-
-        [PropertyOrder(1)]
-        [Editor(typeof(InformationTypeEditor), typeof(InformationTypeEditor))]
-        public Type? InformationType { get; set; }
-    }
-
-    public class informationBindingViewModel<T> : informationBindingViewModel where T : InformationAssociation, new()
-    {
-        public informationBindingViewModel(Type[] types) : base(types) {            
-            InformationAssociation = new T();
-        }
-
-        [ExpandableObject]
-        public T InformationAssociation { get; set; }
-    }
-
     public partial class VesselTrafficServiceAreaViewModel
     {
 
@@ -451,7 +246,7 @@ namespace S100Framework.WPF.ViewModel.S922
 
         [Category("Development S-922")]
         [ExpandableObject]
-        public informationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ServiceControl> controlAuthorityServiceControl { get; set; } = new informationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ServiceControl>([typeof(Authority)]);
+        public informationBindingViewModel<ServiceControl> controlAuthorityServiceControl { get; set; } = new informationBindingViewModel<ServiceControl>(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea.controlAuthorityServiceControl.informationTypes);
 
 
         //private Guid? _qualityOfBathymetricDataCompositione;

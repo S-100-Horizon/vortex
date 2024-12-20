@@ -210,34 +210,34 @@ namespace VortexConceptApplication
 
             var attribute = (IBindingAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(IBindingAttribute), true)[0];
 
-            var items = new informationBindingViewModel[] {
-                //new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition>() {
-                //    LinkId = "100/1",
-                //    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
-                //        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
-                //        role = "theQualityInformation",
-                //        informationType = attribute.Type,
-                //    }
-                //},
-                //new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.AdditionalInformation>() {
-                //    LinkId = "100/2",
-                //    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
-                //        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
-                //        role = "theQualityInformation",
-                //        informationType = attribute.Type,
-                //    }
-                //},
-                //new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.SpatialAssociation>() {
-                //    LinkId = "100/3",
-                //    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
-                //        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
-                //        role = "theQualityInformation",
-                //        informationType = attribute.Type,
-                //    }
-                //}
+            //var items = new informationBindingViewModel[] {
+            //    //new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition>() {
+            //    //    LinkId = "100/1",
+            //    //    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
+            //    //        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
+            //    //        role = "theQualityInformation",
+            //    //        informationType = attribute.Type,
+            //    //    }
+            //    //},
+            //    //new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.AdditionalInformation>() {
+            //    //    LinkId = "100/2",
+            //    //    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
+            //    //        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
+            //    //        role = "theQualityInformation",
+            //    //        informationType = attribute.Type,
+            //    //    }
+            //    //},
+            //    //new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.SpatialAssociation>() {
+            //    //    LinkId = "100/3",
+            //    //    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
+            //    //        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
+            //    //        role = "theQualityInformation",
+            //    //        informationType = attribute.Type,
+            //    //    }
+            //    //}
 
-            };
-            return items;
+            //};
+            return null;
         }
     }
 
