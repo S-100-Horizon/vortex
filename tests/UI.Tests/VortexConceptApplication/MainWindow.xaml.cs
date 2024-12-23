@@ -1,5 +1,6 @@
 ﻿//#define S124
 
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF.ViewModel;
 using S100Framework.WPF.ViewModel.S901;
@@ -113,16 +114,30 @@ namespace VortexConceptApplication
             var domainModelVesselTrafficServiceArea = new S100Framework.DomainModel.S122.FeatureTypes.VesselTrafficServiceArea() {
             };
 
+            var domainModelElectronicProduct = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct() {
+
+            };
+
             //var viewModel = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel((IViewModelHost)this) {
             //};
 
-            var viewModel = new S100Framework.WPF.ViewModel.S901.UpdateInformationViewModel((IViewModelHost)this) {
-            };
+            //var viewModel = new S100Framework.WPF.ViewModel.S901.UpdateInformationViewModel((IViewModelHost)this) {
+            //};
+
+            //viewModel.Load(domainModelUpdateInformation);
 
             //var viewModel = new S100Framework.WPF.ViewModel.S922.VesselTrafficServiceAreaViewModel((IViewModelHost)this) {
             //};
 
-            viewModel.Load(domainModelUpdateInformation);
+            //viewModel.Load(domainModelVesselTrafficServiceArea);
+
+
+            var viewModel = new S100Framework.WPF.ViewModel.S128.ElectronicProductViewModel((IViewModelHost)this) {
+                //  Testing associations with attributes
+            };
+
+            viewModel.Load(domainModelElectronicProduct);
+
 
 #endif
 
@@ -213,36 +228,22 @@ namespace VortexConceptApplication
 
         object IViewModelHost.GetSource(PropertyItem propertyItem) {
 
-            var attribute = (IBindingAttribute)propertyItem.Instance.GetType().GetProperty(propertyItem.DisplayName)!.GetCustomAttributes(typeof(IBindingAttribute), true)[0];
+            var type = propertyItem.Instance switch {
+                InformationBindingViewModel viewModel => viewModel.InformationType,
+                FeatureBindingViewModel viewModel => viewModel.FeatureType,
+                _ => throw new NotImplementedException(),
+            };
 
-            //var items = new informationBindingViewModel[] {
-            //    //new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition>() {
-            //    //    LinkId = "100/1",
-            //    //    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
-            //    //        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
-            //    //        role = "theQualityInformation",
-            //    //        informationType = attribute.Type,
-            //    //    }
-            //    //},
-            //    //new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.AdditionalInformation>() {
-            //    //    LinkId = "100/2",
-            //    //    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
-            //    //        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
-            //    //        role = "theQualityInformation",
-            //    //        informationType = attribute.Type,
-            //    //    }
-            //    //},
-            //    //new informationBindingViewModel<S100Framework.DomainModel.S101.Associations.InformationAssociations.SpatialAssociation>() {
-            //    //    LinkId = "100/3",
-            //    //    informationBinding = new S100Framework.DomainModel.Bindings.informationBinding {
-            //    //        association = new S100Framework.DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition(),
-            //    //        role = "theQualityInformation",
-            //    //        informationType = attribute.Type,
-            //    //    }
-            //    //}
-
-            //};
-            return null;
+            return new[] {
+                new {
+                    refId = "P1000",
+                    code = type!.Name,
+                },
+                new {
+                    refId = "P1001",
+                    code = type!.Name,
+                },
+            };
         }
     }
 

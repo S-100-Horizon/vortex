@@ -1294,7 +1294,7 @@ namespace S100Framework.WPF.ViewModel.S124
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<NWReferences, NAVWARNPreamble.theReferencesNWReferences> theReferencesNWReferences { get; set; } = new();
+        public InformationBindingViewModel<NWReferences, NAVWARNPreamble.theReferencesNWReferences> associationNWReferences { get; set; } = new();
 
         [Browsable(false)]
         public navwarnTypeGeneral[] navwarnTypeGeneralList => CodeList.navwarnTypeGenerals.ToArray();
@@ -1499,15 +1499,15 @@ namespace S100Framework.WPF.ViewModel.S124
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<NWPreambleContent, NAVWARNPart.headerNWPreambleContent> headerNWPreambleContent { get; set; } = new();
+        public InformationBindingViewModel<NWPreambleContent, NAVWARNPart.headerNWPreambleContent> associationNWPreambleContent { get; set; } = new();
 
         [Category("FeatureBindings")]
         [ExpandableObject]
-        public FeatureBindingViewModel<AreaAffected, NAVWARNPart.affectsAreaAffected> affectsAreaAffected { get; set; } = new();
+        public FeatureBindingViewModel<AreaAffected, NAVWARNPart.affectsAreaAffected> associationAreaAffected { get; set; } = new();
 
         [Category("FeatureBindings")]
         [ExpandableObject]
-        public FeatureBindingViewModel<TextAssociation, NAVWARNPart.positionsTextAssociation> positionsTextAssociation { get; set; } = new();
+        public FeatureBindingViewModel<TextAssociation, NAVWARNPart.positionsTextAssociation> associationTextAssociation { get; set; } = new();
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance)
         {
@@ -1577,7 +1577,7 @@ namespace S100Framework.WPF.ViewModel.S124
     {
         [Category("FeatureBindings")]
         [ExpandableObject]
-        public FeatureBindingViewModel<AreaAffected, NAVWARNAreaAffected.impactsAreaAffected> impactsAreaAffected { get; set; } = new();
+        public FeatureBindingViewModel<AreaAffected, NAVWARNAreaAffected.impactsAreaAffected> associationAreaAffected { get; set; } = new();
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected instance)
         {
@@ -1695,7 +1695,7 @@ namespace S100Framework.WPF.ViewModel.S124
 
         [Category("FeatureBindings")]
         [ExpandableObject]
-        public FeatureBindingViewModel<TextAssociation, TextPlacement.identifiesTextAssociation> identifiesTextAssociation { get; set; } = new();
+        public FeatureBindingViewModel<TextAssociation, TextPlacement.identifiesTextAssociation> compositionTextAssociation { get; set; } = new();
 
         public void Load(DomainModel.S124.FeatureTypes.TextPlacement instance)
         {

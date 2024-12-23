@@ -74,9 +74,11 @@ namespace S100Framework.WPF.ViewModel
         public abstract void Load(T instance);
     }
 
-    public abstract class BindingViewModel
+    public abstract class BindingViewModel : INotifyPropertyChanged
     {
         private Type[] _types;
+
+        public event PropertyChangedEventHandler? PropertyChanged;
 
         public BindingViewModel(Type[] types) {
             _types = types;
@@ -85,41 +87,87 @@ namespace S100Framework.WPF.ViewModel
         [Browsable(false)]
         public Type[] Types => _types;
 
+        private string? _refId = default;
+
         [PropertyOrder(0)]
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public string? RefId { get; set; } = default;
+        public string? RefId {
+            get { return _refId; }
+            set {
+                SetValue(ref _refId, value);
+            }
+        }
+
+        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            if (string.IsNullOrWhiteSpace(propertyName)) return;
+
+            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
+            backingFiled = value;
+            OnPropertyChanged(propertyName);
+        }
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 
-    public class InformationBindingViewModel<TAssociation, TBinding> : BindingViewModel
+    public abstract class InformationBindingViewModel : BindingViewModel
+    {
+        public InformationBindingViewModel(Type[] types) : base(types) {
+            InformationType = base.Types.FirstOrDefault();
+        }
+
+        private Type? _informationType = default;
+
+        [PropertyOrder(1)]
+        [Editor(typeof(InformationTypeEditor), typeof(InformationTypeEditor))]
+        public Type? InformationType {
+            get { return _informationType; }
+            set {
+                base.RefId = default;
+                SetValue(ref _informationType, value);
+            }
+        }
+    }
+
+    public abstract class FeatureBindingViewModel : BindingViewModel
+    {
+        public FeatureBindingViewModel(Type[] types) : base(types) {
+            FeatureType = base.Types.FirstOrDefault();
+        }
+
+        private Type? _featureType = default;
+
+        [PropertyOrder(1)]
+        [Editor(typeof(FeatureTypeEditor), typeof(FeatureTypeEditor))]
+        public Type? FeatureType {
+            get { return _featureType; }
+            set {
+                base.RefId = default;
+                SetValue(ref _featureType, value);
+            }
+        }
+    }
+
+    public class InformationBindingViewModel<TAssociation, TBinding> : InformationBindingViewModel
         where TAssociation : InformationAssociation, new()
         where TBinding : informationBinding
     {
         public InformationBindingViewModel() : base(TBinding.informationTypes) {
-            InformationType = base.Types.FirstOrDefault();
             InformationAssociation = new TAssociation();
         }
-
-        [PropertyOrder(1)]
-        [Editor(typeof(InformationTypeEditor), typeof(InformationTypeEditor))]
-        public Type? InformationType { get; set; }
 
         [PropertyOrder(2)]
         [ExpandableObject]
         public TAssociation InformationAssociation { get; set; }
     }
 
-    public class FeatureBindingViewModel<TAssociation, TBinding> : BindingViewModel
+    public class FeatureBindingViewModel<TAssociation, TBinding> : FeatureBindingViewModel
         where TAssociation : FeatureAssociation, new()
         where TBinding : featureBinding
     {
         public FeatureBindingViewModel() : base(TBinding.featureTypes) {
-            FeatureType = base.Types.FirstOrDefault();
             FeatureAssociation = new TAssociation();
         }
-
-        [PropertyOrder(1)]
-        [Editor(typeof(FeatureTypeEditor), typeof(FeatureTypeEditor))]
-        public Type? FeatureType { get; set; }
 
         [PropertyOrder(2)]
         [ExpandableObject]

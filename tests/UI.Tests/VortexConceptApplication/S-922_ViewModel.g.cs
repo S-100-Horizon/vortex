@@ -1768,7 +1768,7 @@ namespace S100Framework.WPF.ViewModel.S922
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<RelatedOrganisation, AbstractRxN.theOrganisationRelatedOrganisation> theOrganisationRelatedOrganisation { get; set; } = new();
+        public InformationBindingViewModel<RelatedOrganisation, AbstractRxN.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
 
         public void Load(DomainModel.S122.InformationTypes.AbstractRxN instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -1941,7 +1941,7 @@ namespace S100Framework.WPF.ViewModel.S922
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<RelatedOrganisation, NauticalInformation.theOrganisationRelatedOrganisation> theOrganisationRelatedOrganisation { get; set; } = new();
+        public InformationBindingViewModel<RelatedOrganisation, NauticalInformation.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
 
         public void Load(DomainModel.S122.InformationTypes.NauticalInformation instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -2608,15 +2608,15 @@ namespace S100Framework.WPF.ViewModel.S922
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<RelatedOrganisation, Authority.theInformationRelatedOrganisation> theInformationRelatedOrganisation { get; set; } = new();
+        public InformationBindingViewModel<RelatedOrganisation, Authority.theInformationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<AuthorityContact, Authority.theContactDetailsAuthorityContact> theContactDetailsAuthorityContact { get; set; } = new();
+        public InformationBindingViewModel<AuthorityContact, Authority.theContactDetailsAuthorityContact> associationAuthorityContact { get; set; } = new();
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<AuthorityHours, Authority.theServiceHoursAuthorityHours> theServiceHoursAuthorityHours { get; set; } = new();
+        public InformationBindingViewModel<AuthorityHours, Authority.theServiceHoursAuthorityHours> associationAuthorityHours { get; set; } = new();
 
         public void Load(DomainModel.S122.InformationTypes.Authority instance) {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -2862,7 +2862,7 @@ namespace S100Framework.WPF.ViewModel.S922
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<AuthorityContact, ContactDetails.theAuthorityAuthorityContact> theAuthorityAuthorityContact { get; set; } = new();
+        public InformationBindingViewModel<AuthorityContact, ContactDetails.theAuthorityAuthorityContact> associationAuthorityContact { get; set; } = new();
 
         public void Load(DomainModel.S122.InformationTypes.ContactDetails instance) {
             callName = instance.callName;
@@ -3094,7 +3094,7 @@ namespace S100Framework.WPF.ViewModel.S922
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<ExceptionalWorkday, NonStandardWorkingDay.theServiceHours_nsdyExceptionalWorkday> theServiceHours_nsdyExceptionalWorkday { get; set; } = new();
+        public InformationBindingViewModel<ExceptionalWorkday, NonStandardWorkingDay.theServiceHours_nsdyExceptionalWorkday> associationExceptionalWorkday { get; set; } = new();
 
         public void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDay instance) {
             dateFixed.Clear();
@@ -3262,11 +3262,11 @@ namespace S100Framework.WPF.ViewModel.S922
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<AuthorityHours, ServiceHours.theAuthority_srvHrsAuthorityHours> theAuthority_srvHrsAuthorityHours { get; set; } = new();
+        public InformationBindingViewModel<AuthorityHours, ServiceHours.theAuthority_srvHrsAuthorityHours> associationAuthorityHours { get; set; } = new();
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<ExceptionalWorkday, ServiceHours.partialWorkingDayExceptionalWorkday> partialWorkingDayExceptionalWorkday { get; set; } = new();
+        public InformationBindingViewModel<ExceptionalWorkday, ServiceHours.partialWorkingDayExceptionalWorkday> associationExceptionalWorkday { get; set; } = new();
 
         public void Load(DomainModel.S122.InformationTypes.ServiceHours instance) {
             scheduleByDayOfWeek.Clear();
@@ -3894,7 +3894,7 @@ namespace S100Framework.WPF.ViewModel.S922
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<ProtectedAreaAuthority, MarineProtectedArea.responsibleAuthorityProtectedAreaAuthority> responsibleAuthorityProtectedAreaAuthority { get; set; } = new();
+        public InformationBindingViewModel<ProtectedAreaAuthority, MarineProtectedArea.responsibleAuthorityProtectedAreaAuthority> associationProtectedAreaAuthority { get; set; } = new();
 
         [Browsable(false)]
         public categoryOfMarineProtectedArea[] categoryOfMarineProtectedAreaList => CodeList.categoryOfMarineProtectedAreas.ToArray();
@@ -4091,7 +4091,7 @@ namespace S100Framework.WPF.ViewModel.S922
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<ServiceControl, VesselTrafficServiceArea.controlAuthorityServiceControl> controlAuthorityServiceControl { get; set; } = new();
+        public InformationBindingViewModel<ServiceControl, VesselTrafficServiceArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
 
         public void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance) {
             categoryOfVesselTrafficService = instance.categoryOfVesselTrafficService;

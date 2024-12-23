@@ -90,6 +90,28 @@ namespace S100Framework.WPF.Editors
     public sealed class RefIdEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+
+            var propertyGrid = propertyItem.FindRootPropertyGrid(); // ((PropertyItemBase)propertyItem.ParentElement).ParentElement as PropertyGrid;
+
+            var modelBase = propertyGrid?.SelectedObject as ViewModelBase;
+
+            if (modelBase is not null) {
+                var sources = modelBase.Host!.GetSource(propertyItem);
+
+                var comboBox = new ComboBox {
+                    Name = $"_comboBox{Guid.NewGuid():N}",
+                    DisplayMemberPath = "refId",
+                };
+
+                var bindingItemsSourceProperty = new Binding() { Source = sources, Mode = BindingMode.OneWay };
+                BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+                var bindingSelectedItemProperty = new Binding("RefId") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+                BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+                return comboBox;
+            }
+
             var text = propertyItem.DisplayName;
 
             return new Label {
@@ -101,7 +123,7 @@ namespace S100Framework.WPF.Editors
 
     public sealed class InformationTypeEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
-        public static Type[] Types { get; } =  [typeof(DomainModel.S101.InformationTypes.SpatialQuality)];
+        public static Type[] Types { get; } = [typeof(DomainModel.S101.InformationTypes.SpatialQuality)];
 
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
             var viewModel = (BindingViewModel)propertyItem.Instance;
@@ -142,6 +164,15 @@ namespace S100Framework.WPF.Editors
 
             return comboBox;
 
+        }
+    }
+
+    public static class Extensions
+    {
+        public static PropertyGrid FindRootPropertyGrid(this PropertyItemBase propertyItem) {
+            if(propertyItem.ParentElement is PropertyGrid)
+                return (PropertyGrid)propertyItem.ParentElement;
+            return ((PropertyItemBase)propertyItem.ParentElement).FindRootPropertyGrid();
         }
     }
 }

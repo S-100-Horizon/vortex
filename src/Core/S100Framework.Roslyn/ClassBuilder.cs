@@ -782,6 +782,9 @@ namespace S100Framework
 
                 var informationTypes = new List<string>();
 
+                var superClassHierarchy = new Dictionary<string, string>();
+                var superClassViewModels = new Dictionary<string, StringBuilder>();
+
                 var notFinished = false;
                 do {
                     notFinished = false;
@@ -814,6 +817,8 @@ namespace S100Framework
                                 continue;
                             }
                             informationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, dictionaryTypes[superType.Value]);
+
+                            superClassHierarchy.Add(code, superType.Value);
                         }
                         else
                             informationTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, informationTypeBase);
@@ -912,7 +917,7 @@ namespace S100Framework
 
                                 viewModelBindingBuilder.AppendLine("[Category(\"InformationBindings\")]");
                                 viewModelBindingBuilder.AppendLine("[ExpandableObject]");
-                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<{association}, {code}.{role}{association}> {name}  {{ get; set; }} = new();");
+                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<{association}, {code}.{role}{association}> {roleType}{association}  {{ get; set; }} = new();");
                                 viewModelBindingBuilder.AppendLine();
                             }
 
@@ -921,6 +926,14 @@ namespace S100Framework
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
                             viewBuilder.AppendLine(BuildClassViewModel(code, informationType, $"DomainModel.{productId}.InformationTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
+                                var c = superType?.Value;
+                                while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
+                                    if (superClassViewModels.ContainsKey(c)) {
+                                        builder.AppendLine(superClassViewModels[c].ToString());
+                                    }
+                                    c = superClassHierarchy[c];
+                                }
+
                                 builder.AppendLine(viewModelBindingBuilder.ToString());
                             }));
 
@@ -929,6 +942,8 @@ namespace S100Framework
                             creatorBuilder.AppendLine("\t\t\t  }");
                             creatorBuilder.AppendLine("\t\t\t},");
                         }
+                        else
+                            superClassViewModels.Add(code, viewModelBindingBuilder);
 
                         dictionaryTypes.Add(code, informationType);
 
@@ -968,6 +983,9 @@ namespace S100Framework
 
                 var featureTypes = new List<string>();
 
+                var superClassHierarchy = new Dictionary<string, string>();
+                var superClassViewModels = new Dictionary<string, StringBuilder>();
+
                 var notFinished = false;
                 do {
                     notFinished = false;
@@ -1000,6 +1018,8 @@ namespace S100Framework
                                 continue;
                             }
                             featureTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, dictionaryTypes[superType.Value]);
+
+                            superClassHierarchy.Add(code, superType.Value);
                         }
                         else
                             featureTypeBuilder = moduleBuilder.DefineType($"{S100Framework.Roslyn.Namespace}.{code}", attributes, featureTypeBase);
@@ -1098,7 +1118,7 @@ namespace S100Framework
 
                                 viewModelBindingBuilder.AppendLine("[Category(\"InformationBindings\")]");
                                 viewModelBindingBuilder.AppendLine("[ExpandableObject]");
-                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<{association}, {code}.{role}{association}> {name}  {{ get; set; }} = new();");
+                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<{association}, {code}.{role}{association}> {roleType}{association}  {{ get; set; }} = new();");
                                 viewModelBindingBuilder.AppendLine();
                             }
 
@@ -1155,7 +1175,7 @@ namespace S100Framework
 
                                 viewModelBindingBuilder.AppendLine("[Category(\"FeatureBindings\")]");
                                 viewModelBindingBuilder.AppendLine("[ExpandableObject]");
-                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic FeatureBindingViewModel<{association}, {code}.{role}{association}> {name}  {{ get; set; }} = new();");
+                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic FeatureBindingViewModel<{association}, {code}.{role}{association}> {roleType}{association}  {{ get; set; }} = new();");
                                 viewModelBindingBuilder.AppendLine();
                             }
 
@@ -1164,6 +1184,14 @@ namespace S100Framework
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
                             viewBuilder.AppendLine(BuildClassViewModel(code, featureType, $"DomainModel.{productId}.FeatureTypes", codelistTypes.Keys, roleTypes.Keys, (builder) => {
+                                var c = superType?.Value;
+                                while (!string.IsNullOrEmpty(c) && superClassHierarchy.ContainsKey(c)) {
+                                    if (superClassViewModels.ContainsKey(c)) {
+                                        builder.AppendLine(superClassViewModels[c].ToString());
+                                    }
+                                    c = superClassHierarchy[c];
+                                }
+
                                 builder.AppendLine(viewModelBindingBuilder.ToString());
                             }));
 
@@ -1172,6 +1200,8 @@ namespace S100Framework
                             creatorBuilder.AppendLine("\t\t\t  }");
                             creatorBuilder.AppendLine("\t\t\t},");
                         }
+                        else
+                            superClassViewModels.Add(code, viewModelBindingBuilder);
 
                         dictionaryTypes.Add(code, featureType);
                     }
