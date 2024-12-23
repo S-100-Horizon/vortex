@@ -1,6 +1,5 @@
 ﻿using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
-using S100Framework.WPF.Editors;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -110,7 +109,7 @@ namespace S100Framework.WPF.ViewModel
         where TAssociation : FeatureAssociation, new()
         where TBinding : featureBinding
     {
-        public FeatureBindingViewModel() : base(TBinding.featureTypes) {            
+        public FeatureBindingViewModel() : base(TBinding.featureTypes) {
             FeatureType = base.Types.FirstOrDefault();
             FeatureAssociation = new TAssociation();
         }

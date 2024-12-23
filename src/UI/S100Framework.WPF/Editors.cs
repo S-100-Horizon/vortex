@@ -1,5 +1,4 @@
 ﻿using S100Framework.WPF.ViewModel;
-using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -170,7 +169,7 @@ namespace S100Framework.WPF.Editors
     public static class Extensions
     {
         public static PropertyGrid FindRootPropertyGrid(this PropertyItemBase propertyItem) {
-            if(propertyItem.ParentElement is PropertyGrid)
+            if (propertyItem.ParentElement is PropertyGrid)
                 return (PropertyGrid)propertyItem.ParentElement;
             return ((PropertyItemBase)propertyItem.ParentElement).FindRootPropertyGrid();
         }
