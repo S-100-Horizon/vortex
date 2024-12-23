@@ -2045,15 +2045,15 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<PriceOfNauticalProduct> thePriceInformationPriceOfNauticalProduct { get; set; } = new(CatalogueSectionHeader.thePriceInformationPriceOfNauticalProduct.informationTypes);
+        public InformationBindingViewModel<PriceOfNauticalProduct, CatalogueSectionHeader.thePriceInformationPriceOfNauticalProduct> thePriceInformationPriceOfNauticalProduct { get; set; } = new();
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<ProductionDetails> theProducerProductionDetails { get; set; } = new(CatalogueSectionHeader.theProducerProductionDetails.informationTypes);
+        public InformationBindingViewModel<ProductionDetails, CatalogueSectionHeader.theProducerProductionDetails> theProducerProductionDetails { get; set; } = new();
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<DistributionDetails> theDistributorDistributionDetails { get; set; } = new(CatalogueSectionHeader.theDistributorDistributionDetails.informationTypes);
+        public InformationBindingViewModel<DistributionDetails, CatalogueSectionHeader.theDistributorDistributionDetails> theDistributorDistributionDetails { get; set; } = new();
 
         public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance)
         {
@@ -2125,11 +2125,11 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<ProducerContact> theProducerProducerContact { get; set; } = new(ContactDetails.theProducerProducerContact.informationTypes);
+        public InformationBindingViewModel<ProducerContact, ContactDetails.theProducerProducerContact> theProducerProducerContact { get; set; } = new();
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<DistributorContact> theDistributorDistributorContact { get; set; } = new(ContactDetails.theDistributorDistributorContact.informationTypes);
+        public InformationBindingViewModel<DistributorContact, ContactDetails.theDistributorDistributorContact> theDistributorDistributorContact { get; set; } = new();
 
         public void Load(DomainModel.S128.InformationTypes.ContactDetails instance)
         {
@@ -2295,7 +2295,7 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<PriceOfNauticalProduct> theCatalogueOfNauticalProductPriceOfNauticalProduct { get; set; } = new(PriceInformation.theCatalogueOfNauticalProductPriceOfNauticalProduct.informationTypes);
+        public InformationBindingViewModel<PriceOfNauticalProduct, PriceInformation.theCatalogueOfNauticalProductPriceOfNauticalProduct> theCatalogueOfNauticalProductPriceOfNauticalProduct { get; set; } = new();
 
         public void Load(DomainModel.S128.InformationTypes.PriceInformation instance)
         {
@@ -2393,11 +2393,11 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<ProducerContact> theContactDetailsProducerContact { get; set; } = new(ProducerInformation.theContactDetailsProducerContact.informationTypes);
+        public InformationBindingViewModel<ProducerContact, ProducerInformation.theContactDetailsProducerContact> theContactDetailsProducerContact { get; set; } = new();
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<ProductionDetails> catalogueHeaderProductionDetails { get; set; } = new(ProducerInformation.catalogueHeaderProductionDetails.informationTypes);
+        public InformationBindingViewModel<ProductionDetails, ProducerInformation.catalogueHeaderProductionDetails> catalogueHeaderProductionDetails { get; set; } = new();
 
         public void Load(DomainModel.S128.InformationTypes.ProducerInformation instance)
         {
@@ -2446,11 +2446,11 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<DistributionDetails> catalogueHeaderDistributionDetails { get; set; } = new(DistributorInformation.catalogueHeaderDistributionDetails.informationTypes);
+        public InformationBindingViewModel<DistributionDetails, DistributorInformation.catalogueHeaderDistributionDetails> catalogueHeaderDistributionDetails { get; set; } = new();
 
         [Category("InformationBindings")]
         [ExpandableObject]
-        public InformationBindingViewModel<DistributorContact> theContactDetailsDistributorContact { get; set; } = new(DistributorInformation.theContactDetailsDistributorContact.informationTypes);
+        public InformationBindingViewModel<DistributorContact, DistributorInformation.theContactDetailsDistributorContact> theContactDetailsDistributorContact { get; set; } = new();
 
         public void Load(DomainModel.S128.InformationTypes.DistributorInformation instance)
         {

@@ -1,4 +1,6 @@
 ﻿using S100Framework.DomainModel;
+using S100Framework.DomainModel.Bindings;
+using S100Framework.WPF.Editors;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -87,11 +89,13 @@ namespace S100Framework.WPF.ViewModel
         public string? RefId { get; set; } = default;
     }
 
-    public class InformationBindingViewModel<T> : BindingViewModel where T : InformationAssociation, new()
+    public class InformationBindingViewModel<TAssociation, TBinding> : BindingViewModel
+        where TAssociation : InformationAssociation, new()
+        where TBinding : informationBinding
     {
-        public InformationBindingViewModel(Type[] types) : base(types) {
-            InformationType = types.FirstOrDefault();
-            InformationAssociation = new T();
+        public InformationBindingViewModel() : base(TBinding.informationTypes) {
+            InformationType = base.Types.FirstOrDefault();
+            InformationAssociation = new TAssociation();
         }
 
         [PropertyOrder(1)]
@@ -99,14 +103,16 @@ namespace S100Framework.WPF.ViewModel
 
         [PropertyOrder(2)]
         [ExpandableObject]
-        public T InformationAssociation { get; set; }
+        public TAssociation InformationAssociation { get; set; }
     }
 
-    public class FeatureBindingViewModel<T> : BindingViewModel where T : FeatureAssociation, new()
+    public class FeatureBindingViewModel<TAssociation, TBinding> : BindingViewModel
+        where TAssociation : FeatureAssociation, new()
+        where TBinding : featureBinding
     {
-        public FeatureBindingViewModel(Type[] types) : base(types) {
-            FeatureType = types.FirstOrDefault();
-            FeatureAssociation = new T();
+        public FeatureBindingViewModel() : base(TBinding.featureTypes) {            
+            FeatureType = base.Types.FirstOrDefault();
+            FeatureAssociation = new TAssociation();
         }
 
         [PropertyOrder(1)]
@@ -114,6 +120,6 @@ namespace S100Framework.WPF.ViewModel
 
         [PropertyOrder(2)]
         [ExpandableObject]
-        public T FeatureAssociation { get; set; }
+        public TAssociation FeatureAssociation { get; set; }
     }
 }

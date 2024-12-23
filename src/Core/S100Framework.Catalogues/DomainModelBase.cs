@@ -1,3 +1,7 @@
+using System;
+using System.Linq;
+using System.ComponentModel;
+
 namespace S100Framework.DomainModel
 {
 
@@ -8,7 +12,8 @@ namespace S100Framework.DomainModel
 
         public string PropertyName => _propertyName;
 
-        public CodeListAttribute(string propertyName) {
+        public CodeListAttribute(string propertyName)
+        {
             _propertyName = propertyName;
         }
     }
@@ -21,7 +26,8 @@ namespace S100Framework.DomainModel
 
         public string RoleName => _roleName;
 
-        public RoleAttribute(string roleName) {
+        public RoleAttribute(string roleName)
+        {
             _roleName = roleName;
         }
     }
@@ -34,18 +40,21 @@ namespace S100Framework.DomainModel
 
 
     [System.SerializableAttribute()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationAssociation
     {
     }
 
 
     [System.SerializableAttribute()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureAssociation
     {
     }
 
 
     [System.SerializableAttribute()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationTypeBase
     {
         public virtual string Code => string.Empty;
@@ -53,6 +62,7 @@ namespace S100Framework.DomainModel
 
 
     [System.SerializableAttribute()]
+    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureTypeBase
     {
         public virtual string Code => string.Empty;

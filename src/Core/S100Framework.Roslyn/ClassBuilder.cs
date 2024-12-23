@@ -912,7 +912,7 @@ namespace S100Framework
 
                                 viewModelBindingBuilder.AppendLine("[Category(\"InformationBindings\")]");
                                 viewModelBindingBuilder.AppendLine("[ExpandableObject]");
-                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<{association}> {name}  {{ get; set; }} = new({code}.{role}{association}.informationTypes);");
+                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<{association}, {code}.{role}{association}> {name}  {{ get; set; }} = new();");
                                 viewModelBindingBuilder.AppendLine();
                             }
 
@@ -1098,7 +1098,7 @@ namespace S100Framework
 
                                 viewModelBindingBuilder.AppendLine("[Category(\"InformationBindings\")]");
                                 viewModelBindingBuilder.AppendLine("[ExpandableObject]");
-                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<{association}> {name}  {{ get; set; }} = new({code}.{role}{association}.informationTypes);");
+                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<{association}, {code}.{role}{association}> {name}  {{ get; set; }} = new();");
                                 viewModelBindingBuilder.AppendLine();
                             }
 
@@ -1155,7 +1155,7 @@ namespace S100Framework
 
                                 viewModelBindingBuilder.AppendLine("[Category(\"FeatureBindings\")]");
                                 viewModelBindingBuilder.AppendLine("[ExpandableObject]");
-                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic FeatureBindingViewModel<{association}> {name}  {{ get; set; }} = new({code}.{role}{association}.featureTypes);");
+                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic FeatureBindingViewModel<{association}, {code}.{role}{association}> {name}  {{ get; set; }} = new();");
                                 viewModelBindingBuilder.AppendLine();
                             }
 
