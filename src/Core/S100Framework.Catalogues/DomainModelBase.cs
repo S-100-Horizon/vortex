@@ -78,5 +78,18 @@ namespace S100Framework.DomainModel
             public string? RefId { get; set; }
         }
 
+
+
+
+        //  TEST, TEST, TEST, TEST, TEST, TEST, 
+        public abstract record informationBindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] informationTypes)
+        {
+            public abstract string associationName { get; }
+        }
+
+        public record informationBindingDescriptor<TAssociation>(roleType roleType, int lower, int? upper, string role, Type[] informationTypes) : informationBindingDescriptor(roleType, lower, upper, role, informationTypes) where TAssociation : InformationAssociation
+        {
+            public override string associationName => $"{typeof(TAssociation).Name}, {role}";
+        }
     }
 }

@@ -16,6 +16,7 @@ namespace S100Framework.WPF.ViewModel
     {
         private IViewModelHost? _host;
 
+        [Browsable(false)]
         public IViewModelHost? Host => _host;
 
         public ViewModelBase(IViewModelHost? host = null) {

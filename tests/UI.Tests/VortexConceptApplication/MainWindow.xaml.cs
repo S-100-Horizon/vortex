@@ -2,6 +2,7 @@
 
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF.ViewModel;
+using S100Framework.WPF.ViewModel.S902;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -88,7 +89,7 @@ namespace VortexConceptApplication
                 warningInformation = new S100Framework.DomainModel.S124.ComplexAttributes.warningInformation {
                 },                
             });
-#else
+#elif S101
             var domainModelQualityOfBathymetricDataCustom = new S100Framework.DomainModel.S901.FeatureTypes.QualityOfBathymetricDataCustom() {
                 categoryOfTemporalVariation = S100Framework.DomainModel.S101.categoryOfTemporalVariation.LikelyToChangeButSignificantShoalingNotExpected,
                 dataAssessment = S100Framework.DomainModel.S101.dataAssessment.Assessed,
@@ -135,7 +136,16 @@ namespace VortexConceptApplication
             };
 
             viewModel.Load(domainModelElectronicProduct);
+#else
+            var domainModel = new S100Framework.WPF.ViewModel.S902.S131_FeatureTypeTest() {
 
+            };
+
+            var viewModel = new S131_FeatureTypeTestViewModel() {
+
+            };
+
+            viewModel.Load(domainModel);
 
 #endif
 
@@ -212,14 +222,16 @@ namespace VortexConceptApplication
             //propertyItem.IsExpandable = true;
             //return;
 
-            if (!propertyItem.PropertyType.IsValueType && propertyItem.PropertyType != typeof(string) && !propertyItem.PropertyType.IsArray && !"System.Collections.Generic".Equals(propertyItem.PropertyType.Namespace)) {
+            if (!propertyItem.PropertyType.IsAbstract) {
+                if (!propertyItem.PropertyType.IsValueType && propertyItem.PropertyType != typeof(string) && !propertyItem.PropertyType.IsArray && !"System.Collections.Generic".Equals(propertyItem.PropertyType.Namespace)) {
 
 
-                var attribute = propertyItem.Instance.GetType().GetProperty(displayName)!.GetCustomAttribute<S100Framework.DomainModel.CodeListAttribute>();
+                    var attribute = propertyItem.Instance.GetType().GetProperty(displayName)!.GetCustomAttribute<S100Framework.DomainModel.CodeListAttribute>();
 
-                //propertyItem.IsExpandable = attribute is null ? !"System.Collections.ObjectModel".Equals(propertyItem.PropertyType.Namespace) : false;
-                if (propertyItem.Value == null) {
-                    propertyItem.Value = Activator.CreateInstance(propertyItem.PropertyType);
+                    //propertyItem.IsExpandable = attribute is null ? !"System.Collections.ObjectModel".Equals(propertyItem.PropertyType.Namespace) : false;
+                    if (propertyItem.Value == null) {
+                        propertyItem.Value = Activator.CreateInstance(propertyItem.PropertyType);
+                    }
                 }
             }
         }
