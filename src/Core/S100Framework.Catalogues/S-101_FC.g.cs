@@ -6307,18 +6307,11 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(QualityOfNonBathymetricData);
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public QualityOfNonBathymetricData()
             {
@@ -6377,18 +6370,11 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(NavigationalSystemOfMarks);
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public NavigationalSystemOfMarks()
             {
@@ -6417,18 +6403,11 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(LocalDirectionOfBuoyage);
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public LocalDirectionOfBuoyage()
             {
@@ -6475,29 +6454,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theQualityInformationQualityOfBathymetricDataComposition : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(SpatialQuality)];
-                public Role Role => Role.theQualityInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.QualityOfBathymetricDataComposition QualityOfBathymetricDataComposition { get; set; } = new();
-            }
-
-            public theQualityInformationQualityOfBathymetricDataComposition? associationQualityOfBathymetricDataComposition { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(QualityOfBathymetricData);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.QualityOfBathymetricDataComposition>(roleType.association, 0, 1, Role.theQualityInformation.ToString(), [typeof(SpatialQuality)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public QualityOfBathymetricData()
             {
@@ -6525,18 +6490,11 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(SoundingDatum);
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public SoundingDatum()
             {
@@ -6558,18 +6516,11 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(VerticalDatumOfData);
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public VerticalDatumOfData()
             {
@@ -6637,18 +6588,11 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(QualityOfSurvey);
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public QualityOfSurvey()
             {
@@ -6689,40 +6633,13 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theComponentUpdateAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdateAggregation UpdateAggregation { get; set; } = new();
-            }
-
-            public List<theComponentUpdateAggregation> associationUpdateAggregation { get; set; } = [];
-
-
-            public class theCollectionUpdateAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdateAggregation UpdateAggregation { get; set; } = new();
-            }
-
-            public theCollectionUpdateAggregation? aggregationUpdateAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(AdministrationArea), typeof(AirportAirfield), typeof(AnchorBerth), typeof(AnchorageArea), typeof(ArchipelagicSeaLane), typeof(ArchipelagicSeaLaneArea), typeof(ArchipelagicSeaLaneAxis), typeof(Berth), typeof(Bollard), typeof(Bridge), typeof(Building), typeof(BuiltUpArea), typeof(CableArea), typeof(CableOverhead), typeof(CableSubmarine), typeof(Canal), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(CargoTranshipmentArea), typeof(Causeway), typeof(CautionArea), typeof(Checkpoint), typeof(CoastGuardStation), typeof(Coastline), typeof(CollisionRegulationsLimit), typeof(ContiguousZone), typeof(ContinentalShelfArea), typeof(Conveyor), typeof(Crane), typeof(CurrentNonGravitational), typeof(CustomZone), typeof(Dam), typeof(Daymark), typeof(DeepWaterRoute), typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart), typeof(DepthArea), typeof(DepthContour), typeof(DepthNoBottomFound), typeof(DiscolouredWater), typeof(DistanceMark), typeof(DockArea), typeof(Dolphin), typeof(DredgedArea), typeof(DryDock), typeof(DumpingGround), typeof(Dyke), typeof(EmergencyWreckMarkingBuoy), typeof(ExclusiveEconomicZone), typeof(Fairway), typeof(FairwaySystem), typeof(FenceWall), typeof(FerryRoute), typeof(FisheryZone), typeof(FishingFacility), typeof(FishingGround), typeof(FloatingDock), typeof(FogSignal), typeof(FortifiedStructure), typeof(FoulGround), typeof(FreePortArea), typeof(Gate), typeof(Gridiron), typeof(HarbourAreaAdministrative), typeof(HarbourFacility), typeof(Helipad), typeof(Hulk), typeof(IceArea), typeof(InformationArea), typeof(InshoreTrafficZone), typeof(InstallationBuoy), typeof(IslandGroup), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Lake), typeof(LandArea), typeof(LandElevation), typeof(LandRegion), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFloat), typeof(LightFogDetector), typeof(LightSectored), typeof(LightVessel), typeof(LocalDirectionOfBuoyage), typeof(LocalMagneticAnomaly), typeof(LockBasin), typeof(LogPond), typeof(MagneticVariation), typeof(MarineFarmCulture), typeof(MarinePollutionRegulationsArea), typeof(MilitaryPracticeArea), typeof(MooringArea), typeof(MooringBuoy), typeof(MooringTrot), typeof(NavigationLine), typeof(NavigationalSystemOfMarks), typeof(Obstruction), typeof(OffshorePlatform), typeof(OffshoreProductionArea), typeof(OilBarrier), typeof(PhysicalAISAidToNavigation), typeof(Pile), typeof(PilotBoardingPlace), typeof(PilotageDistrict), typeof(PipelineOverhead), typeof(PipelineSubmarineOnLand), typeof(Pontoon), typeof(PrecautionaryArea), typeof(ProductionStorageArea), typeof(PylonBridgeSupport), typeof(QualityOfBathymetricData), typeof(QualityOfNonBathymetricData), typeof(QualityOfSurvey), typeof(RadarLine), typeof(RadarRange), typeof(RadarReflector), typeof(RadarStation), typeof(RadarTransponderBeacon), typeof(RadioCallingInPoint), typeof(RadioStation), typeof(Railway), typeof(RangeSystem), typeof(Rapids), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(RecommendedTrafficLanePart), typeof(RescueStation), typeof(RestrictedArea), typeof(Retroreflector), typeof(River), typeof(Road), typeof(Runway), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(Sandwave), typeof(SeaAreaNamedWaterArea), typeof(SeabedArea), typeof(Seagrass), typeof(SeaplaneLandingArea), typeof(SeparationZoneOrLine), typeof(ShorelineConstruction), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(SiloTank), typeof(SmallCraftFacility), typeof(SlopeTopline), typeof(SlopingGround), typeof(Sounding), typeof(SoundingDatum), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Spring), typeof(StraightTerritorialSeaBaseline), typeof(StructureOverNavigableWater), typeof(SubmarinePipelineArea), typeof(SubmarineTransitLane), typeof(SweptArea), typeof(TerritorialSeaArea), typeof(TidalStreamPanelData), typeof(TidalStreamFloodEbb), typeof(Tideway), typeof(TrafficSeparationScheme), typeof(TrafficSeparationSchemeBoundary), typeof(TrafficSeparationSchemeCrossing), typeof(TrafficSeparationSchemeLanePart), typeof(TrafficSeparationSchemeRoundabout), typeof(Tunnel), typeof(TwoWayRoute), typeof(TwoWayRoutePart), typeof(UnderwaterAwashRock), typeof(UnsurveyedArea), typeof(UpdateInformation), typeof(Vegetation), typeof(VerticalDatumOfData), typeof(VesselTrafficServiceArea), typeof(VirtualAISAidToNavigation), typeof(WaterTurbulence), typeof(Waterfall), typeof(WeedKelp), typeof(WindTurbine), typeof(Wreck)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(UpdateInformation);
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdateAggregation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdateAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(AdministrationArea), typeof(AirportAirfield), typeof(AnchorBerth), typeof(AnchorageArea), typeof(ArchipelagicSeaLane), typeof(ArchipelagicSeaLaneArea), typeof(ArchipelagicSeaLaneAxis), typeof(Berth), typeof(Bollard), typeof(Bridge), typeof(Building), typeof(BuiltUpArea), typeof(CableArea), typeof(CableOverhead), typeof(CableSubmarine), typeof(Canal), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(CargoTranshipmentArea), typeof(Causeway), typeof(CautionArea), typeof(Checkpoint), typeof(CoastGuardStation), typeof(Coastline), typeof(CollisionRegulationsLimit), typeof(ContiguousZone), typeof(ContinentalShelfArea), typeof(Conveyor), typeof(Crane), typeof(CurrentNonGravitational), typeof(CustomZone), typeof(Dam), typeof(Daymark), typeof(DeepWaterRoute), typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart), typeof(DepthArea), typeof(DepthContour), typeof(DepthNoBottomFound), typeof(DiscolouredWater), typeof(DistanceMark), typeof(DockArea), typeof(Dolphin), typeof(DredgedArea), typeof(DryDock), typeof(DumpingGround), typeof(Dyke), typeof(EmergencyWreckMarkingBuoy), typeof(ExclusiveEconomicZone), typeof(Fairway), typeof(FairwaySystem), typeof(FenceWall), typeof(FerryRoute), typeof(FisheryZone), typeof(FishingFacility), typeof(FishingGround), typeof(FloatingDock), typeof(FogSignal), typeof(FortifiedStructure), typeof(FoulGround), typeof(FreePortArea), typeof(Gate), typeof(Gridiron), typeof(HarbourAreaAdministrative), typeof(HarbourFacility), typeof(Helipad), typeof(Hulk), typeof(IceArea), typeof(InformationArea), typeof(InshoreTrafficZone), typeof(InstallationBuoy), typeof(IslandGroup), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Lake), typeof(LandArea), typeof(LandElevation), typeof(LandRegion), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFloat), typeof(LightFogDetector), typeof(LightSectored), typeof(LightVessel), typeof(LocalDirectionOfBuoyage), typeof(LocalMagneticAnomaly), typeof(LockBasin), typeof(LogPond), typeof(MagneticVariation), typeof(MarineFarmCulture), typeof(MarinePollutionRegulationsArea), typeof(MilitaryPracticeArea), typeof(MooringArea), typeof(MooringBuoy), typeof(MooringTrot), typeof(NavigationLine), typeof(NavigationalSystemOfMarks), typeof(Obstruction), typeof(OffshorePlatform), typeof(OffshoreProductionArea), typeof(OilBarrier), typeof(PhysicalAISAidToNavigation), typeof(Pile), typeof(PilotBoardingPlace), typeof(PilotageDistrict), typeof(PipelineOverhead), typeof(PipelineSubmarineOnLand), typeof(Pontoon), typeof(PrecautionaryArea), typeof(ProductionStorageArea), typeof(PylonBridgeSupport), typeof(QualityOfBathymetricData), typeof(QualityOfNonBathymetricData), typeof(QualityOfSurvey), typeof(RadarLine), typeof(RadarRange), typeof(RadarReflector), typeof(RadarStation), typeof(RadarTransponderBeacon), typeof(RadioCallingInPoint), typeof(RadioStation), typeof(Railway), typeof(RangeSystem), typeof(Rapids), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(RecommendedTrafficLanePart), typeof(RescueStation), typeof(RestrictedArea), typeof(Retroreflector), typeof(River), typeof(Road), typeof(Runway), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(Sandwave), typeof(SeaAreaNamedWaterArea), typeof(SeabedArea), typeof(Seagrass), typeof(SeaplaneLandingArea), typeof(SeparationZoneOrLine), typeof(ShorelineConstruction), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(SiloTank), typeof(SmallCraftFacility), typeof(SlopeTopline), typeof(SlopingGround), typeof(Sounding), typeof(SoundingDatum), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Spring), typeof(StraightTerritorialSeaBaseline), typeof(StructureOverNavigableWater), typeof(SubmarinePipelineArea), typeof(SubmarineTransitLane), typeof(SweptArea), typeof(TerritorialSeaArea), typeof(TidalStreamPanelData), typeof(TidalStreamFloodEbb), typeof(Tideway), typeof(TrafficSeparationScheme), typeof(TrafficSeparationSchemeBoundary), typeof(TrafficSeparationSchemeCrossing), typeof(TrafficSeparationSchemeLanePart), typeof(TrafficSeparationSchemeRoundabout), typeof(Tunnel), typeof(TwoWayRoute), typeof(TwoWayRoutePart), typeof(UnderwaterAwashRock), typeof(UnsurveyedArea), typeof(UpdateInformation), typeof(Vegetation), typeof(VerticalDatumOfData), typeof(VesselTrafficServiceArea), typeof(VirtualAISAidToNavigation), typeof(WaterTurbulence), typeof(Waterfall), typeof(WeedKelp), typeof(WindTurbine), typeof(Wreck)]),
+            };
 
             public UpdateInformation()
             {
@@ -6755,29 +6672,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(MagneticVariation);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public MagneticVariation()
             {
@@ -6808,40 +6711,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LocalMagneticAnomaly);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LocalMagneticAnomaly()
             {
@@ -6884,40 +6763,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Coastline);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Coastline()
             {
@@ -6950,51 +6805,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionIslandAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(IslandGroup)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.IslandAggregation IslandAggregation { get; set; } = new();
-            }
-
-            public theCollectionIslandAggregation? aggregationIslandAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LandArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.IslandAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(IslandGroup)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LandArea()
             {
@@ -7019,62 +6840,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theComponentIslandAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(LandArea), typeof(IslandGroup)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.IslandAggregation IslandAggregation { get; set; } = new();
-            }
-
-            public List<theComponentIslandAggregation> associationIslandAggregation { get; set; } = [];
-
-
-            public class theCollectionIslandAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(IslandGroup)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.IslandAggregation IslandAggregation { get; set; } = new();
-            }
-
-            public theCollectionIslandAggregation? aggregationIslandAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(IslandGroup);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.IslandAggregation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(LandArea), typeof(IslandGroup)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.IslandAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(IslandGroup)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public IslandGroup()
             {
@@ -7106,40 +6883,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LandElevation);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LandElevation()
             {
@@ -7166,40 +6919,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(River);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public River()
             {
@@ -7226,40 +6955,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Rapids);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Rapids()
             {
@@ -7289,40 +6994,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Waterfall);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Waterfall()
             {
@@ -7352,40 +7033,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Lake);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Lake()
             {
@@ -7418,40 +7075,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LandRegion);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LandRegion()
             {
@@ -7491,40 +7124,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Vegetation);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Vegetation()
             {
@@ -7573,40 +7182,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(IceArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public IceArea()
             {
@@ -7645,40 +7230,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SlopingGround);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SlopingGround()
             {
@@ -7720,40 +7281,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SlopeTopline);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SlopeTopline()
             {
@@ -7777,40 +7314,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Tideway);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Tideway()
             {
@@ -7858,40 +7371,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(BuiltUpArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public BuiltUpArea()
             {
@@ -7963,73 +7452,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(Helipad), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Building);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(Helipad), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Building()
             {
@@ -8068,40 +7503,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(AirportAirfield);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public AirportAirfield()
             {
@@ -8140,40 +7551,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Runway);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Runway()
             {
@@ -8212,51 +7599,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Building), typeof(Landmark), typeof(OffshorePlatform)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Helipad);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Building), typeof(Landmark), typeof(OffshorePlatform)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Helipad()
             {
@@ -8325,73 +7678,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theComponentBridgeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(SpanFixed), typeof(SpanOpening), typeof(Pontoon), typeof(PylonBridgeSupport)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.BridgeAggregation BridgeAggregation { get; set; } = new();
-            }
-
-            public List<theComponentBridgeAggregation> associationBridgeAggregation { get; set; } = [];
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Bridge);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.BridgeAggregation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(SpanFixed), typeof(SpanOpening), typeof(Pontoon), typeof(PylonBridgeSupport)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Bridge()
             {
@@ -8428,73 +7727,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionBridgeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.BridgeAggregation BridgeAggregation { get; set; } = new();
-            }
-
-            public theCollectionBridgeAggregation? aggregationBridgeAggregation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(SpanFixed);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.BridgeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(Bridge)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public SpanFixed()
             {
@@ -8539,73 +7784,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionBridgeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.BridgeAggregation BridgeAggregation { get; set; } = new();
-            }
-
-            public theCollectionBridgeAggregation? aggregationBridgeAggregation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(SpanOpening);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.BridgeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(Bridge)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public SpanOpening()
             {
@@ -8688,62 +7879,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Conveyor);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Conveyor()
             {
@@ -8803,51 +7950,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RadarReflector)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(CableOverhead);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(RadarReflector)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public CableOverhead()
             {
@@ -8904,62 +8017,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(RadarReflector)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(PipelineOverhead);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(RadarReflector)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public PipelineOverhead()
             {
@@ -9029,84 +8098,20 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionBridgeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.BridgeAggregation BridgeAggregation { get; set; } = new();
-            }
-
-            public theCollectionBridgeAggregation? aggregationBridgeAggregation { get; set; }
-
-
-            public class theRoofedStructureRoofedStructureAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(StructureOverNavigableWater)];
-                public Role Role => Role.theRoofedStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RoofedStructureAggregation RoofedStructureAggregation { get; set; } = new();
-            }
-
-            public theRoofedStructureRoofedStructureAggregation? aggregationRoofedStructureAggregation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard), typeof(LightAirObstruction)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(PylonBridgeSupport);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.BridgeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(Bridge)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RoofedStructureAggregation>(roleType.aggregation, 0, 1, Role.theRoofedStructure.ToString(), [typeof(StructureOverNavigableWater)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard), typeof(LightAirObstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public PylonBridgeSupport()
             {
@@ -9166,40 +8171,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(FenceWall);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public FenceWall()
             {
@@ -9235,40 +8216,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Railway);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Railway()
             {
@@ -9307,40 +8264,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Road);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Road()
             {
@@ -9385,40 +8318,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Tunnel);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Tunnel()
             {
@@ -9495,84 +8404,20 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(Helipad), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard), typeof(LightAirObstruction)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Landmark);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(Helipad), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard), typeof(LightAirObstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Landmark()
             {
@@ -9648,73 +8493,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SiloTank);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SiloTank()
             {
@@ -9792,62 +8583,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(WindTurbine);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public WindTurbine()
             {
@@ -9904,73 +8651,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(FortifiedStructure);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public FortifiedStructure()
             {
@@ -10031,40 +8724,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(ProductionStorageArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public ProductionStorageArea()
             {
@@ -10094,40 +8763,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Checkpoint);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Checkpoint()
             {
@@ -10190,62 +8835,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(Bollard)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Hulk);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(Bollard)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Hulk()
             {
@@ -10305,84 +8906,20 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Pile);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Pile()
             {
@@ -10430,40 +8967,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Dyke);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Dyke()
             {
@@ -10535,62 +9048,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(ShorelineConstruction);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public ShorelineConstruction()
             {
@@ -10676,73 +9145,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theSupportRoofedStructureAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(PylonBridgeSupport)];
-                public Role Role => Role.theSupport;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RoofedStructureAggregation RoofedStructureAggregation { get; set; } = new();
-            }
-
-            public List<theSupportRoofedStructureAggregation> associationRoofedStructureAggregation { get; set; } = [];
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(StructureOverNavigableWater);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RoofedStructureAggregation>(roleType.association, 0, 2147483647, Role.theSupport.ToString(), [typeof(PylonBridgeSupport)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public StructureOverNavigableWater()
             {
@@ -10789,40 +9204,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Causeway);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Causeway()
             {
@@ -10867,40 +9258,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Canal);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Canal()
             {
@@ -10935,51 +9302,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(DistanceMark);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public DistanceMark()
             {
@@ -11038,40 +9371,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Gate);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Gate()
             {
@@ -11131,40 +9440,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Dam);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Dam()
             {
@@ -11236,62 +9521,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Boolean? inTheWater { get; set; } = default;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Crane);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Crane()
             {
@@ -11346,51 +9587,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionMooringTrotAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(MooringTrot)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.MooringTrotAggregation MooringTrotAggregation { get; set; } = new();
-            }
-
-            public theCollectionMooringTrotAggregation? aggregationMooringTrotAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Berth);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.MooringTrotAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(MooringTrot)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Berth()
             {
@@ -11461,73 +9668,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Dolphin);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Dolphin()
             {
@@ -11570,51 +9723,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Dolphin), typeof(FortifiedStructure), typeof(Hulk), typeof(Landmark), typeof(OffshorePlatform), typeof(Pile), typeof(PylonBridgeSupport), typeof(ShorelineConstruction)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Bollard);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Dolphin), typeof(FortifiedStructure), typeof(Hulk), typeof(Landmark), typeof(OffshorePlatform), typeof(Pile), typeof(PylonBridgeSupport), typeof(ShorelineConstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Bollard()
             {
@@ -11674,40 +9793,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(DryDock);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public DryDock()
             {
@@ -11779,62 +9874,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(FloatingDock);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public FloatingDock()
             {
@@ -11882,73 +9933,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionBridgeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.BridgeAggregation BridgeAggregation { get; set; } = new();
-            }
-
-            public theCollectionBridgeAggregation? aggregationBridgeAggregation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Pontoon);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.BridgeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(Bridge)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Pontoon()
             {
@@ -11999,40 +9996,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(DockArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public DockArea()
             {
@@ -12074,40 +10047,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Gridiron);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Gridiron()
             {
@@ -12149,40 +10098,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LockBasin);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LockBasin()
             {
@@ -12209,51 +10134,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theComponentMooringTrotAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Berth), typeof(CableSubmarine), typeof(MooringBuoy), typeof(Obstruction)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.MooringTrotAggregation MooringTrotAggregation { get; set; } = new();
-            }
-
-            public List<theComponentMooringTrotAggregation> associationMooringTrotAggregation { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(MooringTrot);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.MooringTrotAggregation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(Berth), typeof(CableSubmarine), typeof(MooringBuoy), typeof(Obstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public MooringTrot()
             {
@@ -12280,40 +10171,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SeaAreaNamedWaterArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SeaAreaNamedWaterArea()
             {
@@ -12352,40 +10219,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(TidalStreamFloodEbb);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public TidalStreamFloodEbb()
             {
@@ -12434,40 +10277,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(CurrentNonGravitational);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public CurrentNonGravitational()
             {
@@ -12503,40 +10322,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(WaterTurbulence);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public WaterTurbulence()
             {
@@ -12570,40 +10365,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(TidalStreamPanelData);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public TidalStreamPanelData()
             {
@@ -12641,40 +10412,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Sounding);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Sounding()
             {
@@ -12723,51 +10470,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(DredgedArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public DredgedArea()
             {
@@ -12795,51 +10508,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SweptArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SweptArea()
             {
@@ -12864,29 +10543,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(DepthContour);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public DepthContour()
             {
@@ -12912,29 +10577,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(DepthArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public DepthArea()
             {
@@ -12958,29 +10609,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(DepthNoBottomFound);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public DepthNoBottomFound()
             {
@@ -12998,29 +10635,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(UnsurveyedArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public UnsurveyedArea()
             {
@@ -13051,40 +10674,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SeabedArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SeabedArea()
             {
@@ -13112,40 +10711,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(WeedKelp);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public WeedKelp()
             {
@@ -13169,40 +10744,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Seagrass);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Seagrass()
             {
@@ -13226,29 +10777,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(Sandwave);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public Sandwave()
             {
@@ -13272,40 +10809,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Spring);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Spring()
             {
@@ -13362,40 +10875,16 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             [Required()]
             public Decimal surroundingDepth { get; set; }
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(UnderwaterAwashRock);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public UnderwaterAwashRock()
             {
@@ -13463,51 +10952,17 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             [Required()]
             public Decimal surroundingDepth { get; set; }
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Wreck);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Wreck()
             {
@@ -13581,51 +11036,17 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             [Required()]
             public Decimal surroundingDepth { get; set; }
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionMooringTrotAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(MooringTrot)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.MooringTrotAggregation MooringTrotAggregation { get; set; } = new();
-            }
-
-            public theCollectionMooringTrotAggregation? aggregationMooringTrotAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Obstruction);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.MooringTrotAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(MooringTrot)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Obstruction()
             {
@@ -13667,40 +11088,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(FoulGround);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public FoulGround()
             {
@@ -13724,29 +11121,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(DiscolouredWater);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public DiscolouredWater()
             {
@@ -13788,62 +11171,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(FishingFacility);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public FishingFacility()
             {
@@ -13907,40 +11246,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(MarineFarmCulture);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public MarineFarmCulture()
             {
@@ -14006,62 +11321,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(Helipad), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard), typeof(LightAirObstruction)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(OffshorePlatform);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(Helipad), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard), typeof(LightAirObstruction)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public OffshorePlatform()
             {
@@ -14100,51 +11371,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionMooringTrotAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(MooringTrot)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.MooringTrotAggregation MooringTrotAggregation { get; set; } = new();
-            }
-
-            public theCollectionMooringTrotAggregation? aggregationMooringTrotAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(CableSubmarine);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.MooringTrotAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(MooringTrot)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public CableSubmarine()
             {
@@ -14183,40 +11420,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(CableArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public CableArea()
             {
@@ -14276,40 +11489,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(PipelineSubmarineOnLand);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public PipelineSubmarineOnLand()
             {
@@ -14351,40 +11540,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SubmarinePipelineArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SubmarinePipelineArea()
             {
@@ -14447,40 +11612,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(OffshoreProductionArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public OffshoreProductionArea()
             {
@@ -14521,40 +11662,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(NavigationLine);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public NavigationLine()
             {
@@ -14618,62 +11735,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
             public override string Code => nameof(RecommendedTrack);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+            };
 
             public RecommendedTrack()
             {
@@ -14703,73 +11776,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theComponentRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(CardinalBeacon), typeof(Building), typeof(Daymark), typeof(Dolphin), typeof(FortifiedStructure), typeof(IsolatedDangerBeacon), typeof(Landmark), typeof(LateralBeacon), typeof(LightAllAround), typeof(LightSectored), typeof(NavigationLine), typeof(Pile), typeof(RadarTransponderBeacon), typeof(RangeSystem), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(SafeWaterBeacon), typeof(SiloTank), typeof(SpecialPurposeGeneralBeacon)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public List<theComponentRangeSystemAggregation> associationRangeSystemAggregation { get; set; } = [];
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(RangeSystem);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(CardinalBeacon), typeof(Building), typeof(Daymark), typeof(Dolphin), typeof(FortifiedStructure), typeof(IsolatedDangerBeacon), typeof(Landmark), typeof(LateralBeacon), typeof(LightAllAround), typeof(LightSectored), typeof(NavigationLine), typeof(Pile), typeof(RadarTransponderBeacon), typeof(RangeSystem), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(SafeWaterBeacon), typeof(SiloTank), typeof(SpecialPurposeGeneralBeacon)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public RangeSystem()
             {
@@ -14823,62 +11842,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionFairwayAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FairwaySystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAggregation FairwayAggregation { get; set; } = new();
-            }
-
-            public theCollectionFairwayAggregation? aggregationFairwayAggregation { get; set; }
-
-
-            public class theAuxiliaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(CautionArea), typeof(Daymark), typeof(DredgedArea), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Landmark), typeof(Pile), typeof(RangeSystem), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(RestrictedArea), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(SweptArea)];
-                public Role Role => Role.theAuxiliaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public List<theAuxiliaryFeatureFairwayAuxiliary> associationFairwayAuxiliary { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Fairway);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(FairwaySystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.association, 0, 2147483647, Role.theAuxiliaryFeature.ToString(), [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(CautionArea), typeof(Daymark), typeof(DredgedArea), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Landmark), typeof(Pile), typeof(RangeSystem), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(RestrictedArea), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(SweptArea)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Fairway()
             {
@@ -14911,62 +11886,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theComponentAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine), typeof(Bridge), typeof(Conveyor), typeof(FloatingDock), typeof(Hulk), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(ShorelineConstruction), typeof(SpanFixed), typeof(SpanOpening), typeof(StructureOverNavigableWater)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public List<theComponentAidsToNavigationAssociation> associationAidsToNavigationAssociation { get; set; } = [];
-
-
-            public class theComponentFairwayAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAggregation FairwayAggregation { get; set; } = new();
-            }
-
-            public List<theComponentFairwayAggregation> associationFairwayAggregation { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(FairwaySystem);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine), typeof(Bridge), typeof(Conveyor), typeof(FloatingDock), typeof(Hulk), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(ShorelineConstruction), typeof(SpanFixed), typeof(SpanOpening), typeof(StructureOverNavigableWater)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAggregation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public FairwaySystem()
             {
@@ -15021,62 +11952,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(RecommendedRouteCentreline);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public RecommendedRouteCentreline()
             {
@@ -15126,51 +12013,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionTwoWayRouteAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TwoWayRouteAggregation TwoWayRouteAggregation { get; set; } = new();
-            }
-
-            public theCollectionTwoWayRouteAggregation? aggregationTwoWayRouteAggregation { get; set; }
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TwoWayRoutePart);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.TwoWayRouteAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public TwoWayRoutePart()
             {
@@ -15200,73 +12053,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theComponentAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine), typeof(Bridge), typeof(Conveyor), typeof(FloatingDock), typeof(Hulk), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(ShorelineConstruction), typeof(SpanFixed), typeof(SpanOpening), typeof(StructureOverNavigableWater)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public List<theComponentAidsToNavigationAssociation> associationAidsToNavigationAssociation { get; set; } = [];
-
-
-            public class theComponentTwoWayRouteAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TwoWayRoutePart)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TwoWayRouteAggregation TwoWayRouteAggregation { get; set; } = new();
-            }
-
-            public List<theComponentTwoWayRouteAggregation> associationTwoWayRouteAggregation { get; set; } = [];
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(TwoWayRoute);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine), typeof(Bridge), typeof(Conveyor), typeof(FloatingDock), typeof(Hulk), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(ShorelineConstruction), typeof(SpanFixed), typeof(SpanOpening), typeof(StructureOverNavigableWater)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TwoWayRouteAggregation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(TwoWayRoutePart)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public TwoWayRoute()
             {
@@ -15297,29 +12096,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(RecommendedTrafficLanePart);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public RecommendedTrafficLanePart()
             {
@@ -15376,62 +12161,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionDeepWaterRouteAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.DeepWaterRouteAggregation DeepWaterRouteAggregation { get; set; } = new();
-            }
-
-            public theCollectionDeepWaterRouteAggregation? aggregationDeepWaterRouteAggregation { get; set; }
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(DeepWaterRouteCentreline);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.DeepWaterRouteAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public DeepWaterRouteCentreline()
             {
@@ -15491,62 +12232,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionDeepWaterRouteAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.DeepWaterRouteAggregation DeepWaterRouteAggregation { get; set; } = new();
-            }
-
-            public theCollectionDeepWaterRouteAggregation? aggregationDeepWaterRouteAggregation { get; set; }
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(DeepWaterRoutePart);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.DeepWaterRouteAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public DeepWaterRoutePart()
             {
@@ -15576,73 +12273,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theComponentAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public List<theComponentAidsToNavigationAssociation> associationAidsToNavigationAssociation { get; set; } = [];
-
-
-            public class theComponentDeepWaterRouteAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.DeepWaterRouteAggregation DeepWaterRouteAggregation { get; set; } = new();
-            }
-
-            public List<theComponentDeepWaterRouteAggregation> associationDeepWaterRouteAggregation { get; set; } = [];
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(DeepWaterRoute);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.DeepWaterRouteAggregation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public DeepWaterRoute()
             {
@@ -15675,40 +12318,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(InshoreTrafficZone);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public InshoreTrafficZone()
             {
@@ -15748,51 +12367,17 @@ namespace S100Framework.DomainModel.S101
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             [Required()]
             public List<information> information { get; set; }
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(PrecautionaryArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public PrecautionaryArea()
             {
@@ -15829,40 +12414,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeLanePart);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public TrafficSeparationSchemeLanePart()
             {
@@ -15889,40 +12450,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(SeparationZoneOrLine);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public SeparationZoneOrLine()
             {
@@ -15949,40 +12486,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeBoundary);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public TrafficSeparationSchemeBoundary()
             {
@@ -16015,40 +12528,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeCrossing);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public TrafficSeparationSchemeCrossing()
             {
@@ -16081,40 +12570,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeRoundabout);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public TrafficSeparationSchemeRoundabout()
             {
@@ -16147,84 +12612,20 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theComponentAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine), typeof(Bridge), typeof(Conveyor), typeof(FloatingDock), typeof(Hulk), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(ShorelineConstruction), typeof(SpanFixed), typeof(SpanOpening), typeof(StructureOverNavigableWater)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public List<theComponentAidsToNavigationAssociation> associationAidsToNavigationAssociation { get; set; } = [];
-
-
-            public class theComponentTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute), typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart), typeof(InshoreTrafficZone), typeof(PrecautionaryArea), typeof(RestrictedArea), typeof(SeparationZoneOrLine), typeof(TrafficSeparationScheme), typeof(TrafficSeparationSchemeBoundary), typeof(TrafficSeparationSchemeCrossing), typeof(TrafficSeparationSchemeLanePart), typeof(TrafficSeparationSchemeRoundabout), typeof(TwoWayRoute), typeof(TwoWayRoutePart)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public List<theComponentTrafficSeparationSchemeAggregation> associationTrafficSeparationSchemeAggregation { get; set; } = [];
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theCollectionCautionAreaAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(CautionArea)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.CautionAreaAssociation CautionAreaAssociation { get; set; } = new();
-            }
-
-            public theCollectionCautionAreaAssociation? aggregationCautionAreaAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(TrafficSeparationScheme);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine), typeof(Bridge), typeof(Conveyor), typeof(FloatingDock), typeof(Hulk), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(ShorelineConstruction), typeof(SpanFixed), typeof(SpanOpening), typeof(StructureOverNavigableWater)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(DeepWaterRoute), typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart), typeof(InshoreTrafficZone), typeof(PrecautionaryArea), typeof(RestrictedArea), typeof(SeparationZoneOrLine), typeof(TrafficSeparationScheme), typeof(TrafficSeparationSchemeBoundary), typeof(TrafficSeparationSchemeCrossing), typeof(TrafficSeparationSchemeLanePart), typeof(TrafficSeparationSchemeRoundabout), typeof(TwoWayRoute), typeof(TwoWayRoutePart)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.CautionAreaAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(CautionArea)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public TrafficSeparationScheme()
             {
@@ -16254,51 +12655,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionASLAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.ASLAggregation ASLAggregation { get; set; } = new();
-            }
-
-            public theCollectionASLAggregation? aggregationASLAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(ArchipelagicSeaLaneArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.ASLAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public ArchipelagicSeaLaneArea()
             {
@@ -16328,51 +12695,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionASLAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.ASLAggregation ASLAggregation { get; set; } = new();
-            }
-
-            public theCollectionASLAggregation? aggregationASLAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(ArchipelagicSeaLaneAxis);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.ASLAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public ArchipelagicSeaLaneAxis()
             {
@@ -16402,73 +12735,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theComponentAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public List<theComponentAidsToNavigationAssociation> associationAidsToNavigationAssociation { get; set; } = [];
-
-
-            public class theComponentASLAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLaneArea), typeof(ArchipelagicSeaLaneAxis)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.ASLAggregation ASLAggregation { get; set; } = new();
-            }
-
-            public List<theComponentASLAggregation> associationASLAggregation { get; set; } = [];
-
-
-            public class theCollectionCautionAreaAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(CautionArea)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.CautionAreaAssociation CautionAreaAssociation { get; set; } = new();
-            }
-
-            public theCollectionCautionAreaAssociation? aggregationCautionAreaAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(ArchipelagicSeaLane);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.ASLAggregation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(ArchipelagicSeaLaneArea), typeof(ArchipelagicSeaLaneAxis)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.CautionAreaAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(CautionArea)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public ArchipelagicSeaLane()
             {
@@ -16512,40 +12791,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(RadioCallingInPoint);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public RadioCallingInPoint()
             {
@@ -16582,40 +12837,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(FerryRoute);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public FerryRoute()
             {
@@ -16647,40 +12878,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(RadarLine);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public RadarLine()
             {
@@ -16713,40 +12920,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(RadarRange);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public RadarRange()
             {
@@ -16791,40 +12974,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(RadarStation);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public RadarStation()
             {
@@ -16869,40 +13028,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(AnchorageArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public AnchorageArea()
             {
@@ -16950,40 +13085,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(MooringArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public MooringArea()
             {
@@ -17025,40 +13136,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(AnchorBerth);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public AnchorBerth()
             {
@@ -17094,40 +13181,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SeaplaneLandingArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SeaplaneLandingArea()
             {
@@ -17166,40 +13229,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(DumpingGround);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public DumpingGround()
             {
@@ -17244,40 +13283,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(MilitaryPracticeArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public MilitaryPracticeArea()
             {
@@ -17314,40 +13329,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(AdministrationArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public AdministrationArea()
             {
@@ -17386,40 +13377,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(CargoTranshipmentArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public CargoTranshipmentArea()
             {
@@ -17458,51 +13425,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theComponentCautionAreaAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.CautionAreaAssociation CautionAreaAssociation { get; set; } = new();
-            }
-
-            public List<theComponentCautionAreaAssociation> associationCautionAreaAssociation { get; set; } = [];
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(CautionArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.CautionAreaAssociation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(ArchipelagicSeaLane), typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public CautionArea()
             {
@@ -17538,40 +13471,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(InformationArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public InformationArea()
             {
@@ -17602,29 +13511,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(ContiguousZone);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public ContiguousZone()
             {
@@ -17653,40 +13548,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(ContinentalShelfArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public ContinentalShelfArea()
             {
@@ -17711,29 +13582,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(CustomZone);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public CustomZone()
             {
@@ -17762,29 +13619,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(ExclusiveEconomicZone);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public ExclusiveEconomicZone()
             {
@@ -17815,40 +13658,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(FisheryZone);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public FisheryZone()
             {
@@ -17885,40 +13704,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(FishingGround);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public FishingGround()
             {
@@ -17945,40 +13740,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(FreePortArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public FreePortArea()
             {
@@ -18005,40 +13776,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(HarbourAreaAdministrative);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public HarbourAreaAdministrative()
             {
@@ -18068,40 +13815,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LogPond);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LogPond()
             {
@@ -18140,40 +13863,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(OilBarrier);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public OilBarrier()
             {
@@ -18197,29 +13896,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(StraightTerritorialSeaBaseline);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public StraightTerritorialSeaBaseline()
             {
@@ -18254,29 +13939,15 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TerritorialSeaArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public TerritorialSeaArea()
             {
@@ -18310,40 +13981,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SubmarineTransitLane);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SubmarineTransitLane()
             {
@@ -18370,51 +14017,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theComponentPilotageDistrictAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(PilotBoardingPlace)];
-                public Role Role => Role.theComponent;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.PilotageDistrictAssociation PilotageDistrictAssociation { get; set; } = new();
-            }
-
-            public List<theComponentPilotageDistrictAssociation> associationPilotageDistrictAssociation { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(PilotageDistrict);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.PilotageDistrictAssociation>(roleType.association, 0, 2147483647, Role.theComponent.ToString(), [typeof(PilotBoardingPlace)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public PilotageDistrict()
             {
@@ -18447,40 +14060,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(CollisionRegulationsLimit);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public CollisionRegulationsLimit()
             {
@@ -18507,40 +14096,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(MarinePollutionRegulationsArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public MarinePollutionRegulationsArea()
             {
@@ -18583,62 +14148,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theCollectionTrafficSeparationSchemeAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TrafficSeparationScheme)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TrafficSeparationSchemeAggregation TrafficSeparationSchemeAggregation { get; set; } = new();
-            }
-
-            public theCollectionTrafficSeparationSchemeAggregation? aggregationTrafficSeparationSchemeAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(RestrictedArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(TrafficSeparationScheme)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public RestrictedArea()
             {
@@ -18716,73 +14237,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FogSignal), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFogDetector), typeof(LightSectored), typeof(RadarTransponderBeacon), typeof(Retroreflector)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LightAllAround);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(FogSignal), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFogDetector), typeof(LightSectored), typeof(RadarTransponderBeacon), typeof(Retroreflector)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LightAllAround()
             {
@@ -18845,73 +14312,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(FogSignal), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFogDetector), typeof(LightSectored), typeof(RadarTransponderBeacon), typeof(Retroreflector)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(Conveyor), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(IsolatedDangerBeacon), typeof(Landmark), typeof(LateralBeacon), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LightSectored);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(FogSignal), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFogDetector), typeof(LightSectored), typeof(RadarTransponderBeacon), typeof(Retroreflector)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(Conveyor), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(IsolatedDangerBeacon), typeof(Landmark), typeof(LateralBeacon), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LightSectored()
             {
@@ -18966,51 +14379,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LightFogDetector);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LightFogDetector()
             {
@@ -19070,51 +14449,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(Conveyor), typeof(Landmark), typeof(OffshorePlatform), typeof(PylonBridgeSupport), typeof(SpanFixed), typeof(SpanOpening), typeof(WindTurbine), typeof(LightAllAround), typeof(LightSectored)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LightAirObstruction);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(Conveyor), typeof(Landmark), typeof(OffshorePlatform), typeof(PylonBridgeSupport), typeof(SpanFixed), typeof(SpanOpening), typeof(WindTurbine), typeof(LightAllAround), typeof(LightSectored)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LightAirObstruction()
             {
@@ -19180,73 +14525,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LateralBuoy);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LateralBuoy()
             {
@@ -19313,73 +14604,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(CardinalBuoy);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public CardinalBuoy()
             {
@@ -19442,73 +14679,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(IsolatedDangerBuoy);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public IsolatedDangerBuoy()
             {
@@ -19571,73 +14754,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SafeWaterBuoy);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SafeWaterBuoy()
             {
@@ -19704,73 +14833,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SpecialPurposeGeneralBuoy);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SpecialPurposeGeneralBuoy()
             {
@@ -19828,62 +14903,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(EmergencyWreckMarkingBuoy);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public EmergencyWreckMarkingBuoy()
             {
@@ -19946,51 +14977,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(InstallationBuoy);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public InstallationBuoy()
             {
@@ -20052,73 +15049,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionMooringTrotAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(MooringTrot)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.MooringTrotAggregation MooringTrotAggregation { get; set; } = new();
-            }
-
-            public theCollectionMooringTrotAggregation? aggregationMooringTrotAggregation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(MooringBuoy);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.MooringTrotAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(MooringTrot)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public MooringBuoy()
             {
@@ -20199,84 +15142,20 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LateralBeacon);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LateralBeacon()
             {
@@ -20358,84 +15237,20 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(CardinalBeacon);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public CardinalBeacon()
             {
@@ -20513,84 +15328,20 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(IsolatedDangerBeacon);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public IsolatedDangerBeacon()
             {
@@ -20668,84 +15419,20 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SafeWaterBeacon);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SafeWaterBeacon()
             {
@@ -20827,84 +15514,20 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SpecialPurposeGeneralBeacon);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SpecialPurposeGeneralBeacon()
             {
@@ -20974,95 +15597,21 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(LightSectored), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Daymark);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(LightSectored), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Daymark()
             {
@@ -21127,73 +15676,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LightFloat);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LightFloat()
             {
@@ -21255,73 +15750,19 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theEquipmentStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)];
-                public Role Role => Role.theEquipment;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public List<theEquipmentStructureEquipment> associationStructureEquipment { get; set; } = [];
-
-
-            public class theCollectionAidsToNavigationAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AidsToNavigationAssociation AidsToNavigationAssociation { get; set; } = new();
-            }
-
-            public theCollectionAidsToNavigationAssociation? aggregationAidsToNavigationAssociation { get; set; }
-
-
-            public class thePrimaryFeatureFairwayAuxiliary : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Fairway)];
-                public Role Role => Role.thePrimaryFeature;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.FairwayAuxiliary FairwayAuxiliary { get; set; } = new();
-            }
-
-            public thePrimaryFeatureFairwayAuxiliary? aggregationFairwayAuxiliary { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(LightVessel);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.association, 0, 2147483647, Role.theEquipment.ToString(), [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.AidsToNavigationAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.FairwayAuxiliary>(roleType.aggregation, 0, 1, Role.thePrimaryFeature.ToString(), [typeof(Fairway)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public LightVessel()
             {
@@ -21361,40 +15802,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(Retroreflector);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public Retroreflector()
             {
@@ -21427,40 +15844,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(CableOverhead), typeof(PipelineOverhead)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
             public override string Code => nameof(RadarReflector);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(CableOverhead), typeof(PipelineOverhead)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+            };
 
             public RadarReflector()
             {
@@ -21515,51 +15908,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(FogSignal);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public FogSignal()
             {
@@ -21598,51 +15957,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(PhysicalAISAidToNavigation);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public PhysicalAISAidToNavigation()
             {
@@ -21685,40 +16010,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(VirtualAISAidToNavigation);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public VirtualAISAidToNavigation()
             {
@@ -21766,40 +16067,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(RadioStation);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public RadioStation()
             {
@@ -21851,62 +16128,18 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
-
-
-            public class theCollectionRangeSystemAggregation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(RangeSystem)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.RangeSystemAggregation RangeSystemAggregation { get; set; } = new();
-            }
-
-            public theCollectionRangeSystemAggregation? aggregationRangeSystemAggregation { get; set; }
             public override string Code => nameof(RadarTransponderBeacon);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.RangeSystemAggregation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(RangeSystem)]),
+            };
 
             public RadarTransponderBeacon()
             {
@@ -21954,51 +16187,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theCollectionPilotageDistrictAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(PilotageDistrict)];
-                public Role Role => Role.theCollection;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.PilotageDistrictAssociation PilotageDistrictAssociation { get; set; } = new();
-            }
-
-            public theCollectionPilotageDistrictAssociation? aggregationPilotageDistrictAssociation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(PilotBoardingPlace);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.PilotageDistrictAssociation>(roleType.aggregation, 0, 1, Role.theCollection.ToString(), [typeof(PilotageDistrict)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public PilotBoardingPlace()
             {
@@ -22022,40 +16221,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(VesselTrafficServiceArea);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public VesselTrafficServiceArea()
             {
@@ -22094,40 +16269,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(CoastGuardStation);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public CoastGuardStation()
             {
@@ -22167,51 +16318,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SignalStationWarning);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SignalStationWarning()
             {
@@ -22252,51 +16369,17 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theStructureStructureEquipment : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)];
-                public Role Role => Role.theStructure;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.StructureEquipment StructureEquipment { get; set; } = new();
-            }
-
-            public theStructureStructureEquipment? compositionStructureEquipment { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SignalStationTraffic);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.StructureEquipment>(roleType.composition, 0, 1, Role.theStructure.ToString(), [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SignalStationTraffic()
             {
@@ -22336,40 +16419,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(RescueStation);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public RescueStation()
             {
@@ -22430,40 +16489,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(HarbourFacility);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public HarbourFacility()
             {
@@ -22501,40 +16536,16 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-
-            public class theInformationAdditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails), typeof(NauticalInformation)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AdditionalInformation AdditionalInformation { get; set; } = new();
-            }
-
-            public theInformationAdditionalInformation? associationAdditionalInformation { get; set; }
-
-
-            public class theUpdateUpdatedInformation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(UpdateInformation)];
-                public Role Role => Role.theUpdate;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.UpdatedInformation UpdatedInformation { get; set; } = new();
-            }
-
-            public List<theUpdateUpdatedInformation> associationUpdatedInformation { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(SmallCraftFacility);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 1, Role.theInformation.ToString(), [typeof(ContactDetails), typeof(NauticalInformation)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.UpdatedInformation>(roleType.association, 0, 2147483647, Role.theUpdate.ToString(), [typeof(UpdateInformation)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public SmallCraftFacility()
             {
@@ -22565,18 +16576,11 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
-
-
-            public class thePositionProviderTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(AdministrationArea), typeof(AirportAirfield), typeof(AnchorBerth), typeof(AnchorageArea), typeof(ArchipelagicSeaLane), typeof(ArchipelagicSeaLaneArea), typeof(ArchipelagicSeaLaneAxis), typeof(Berth), typeof(Bollard), typeof(Bridge), typeof(Building), typeof(BuiltUpArea), typeof(CableArea), typeof(CableOverhead), typeof(CableSubmarine), typeof(Canal), typeof(CardinalBuoy), typeof(CardinalBeacon), typeof(CargoTranshipmentArea), typeof(Causeway), typeof(Chart1Feature), typeof(Checkpoint), typeof(CoastGuardStation), typeof(Coastline), typeof(CollisionRegulationsLimit), typeof(ContinentalShelfArea), typeof(Conveyor), typeof(Crane), typeof(CurrentNonGravitational), typeof(Dam), typeof(Daymark), typeof(DeepWaterRoute), typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart), typeof(DistanceMark), typeof(DockArea), typeof(Dolphin), typeof(DredgedArea), typeof(DryDock), typeof(DumpingGround), typeof(Dyke), typeof(EmergencyWreckMarkingBuoy), typeof(Fairway), typeof(FairwaySystem), typeof(FenceWall), typeof(FerryRoute), typeof(FisheryZone), typeof(FishingFacility), typeof(FishingGround), typeof(FloatingDock), typeof(FogSignal), typeof(FortifiedStructure), typeof(FoulGround), typeof(FreePortArea), typeof(Gate), typeof(Gridiron), typeof(HarbourAreaAdministrative), typeof(HarbourFacility), typeof(Helipad), typeof(Hulk), typeof(IceArea), typeof(InformationArea), typeof(InstallationBuoy), typeof(IslandGroup), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Lake), typeof(LandArea), typeof(LandElevation), typeof(LandRegion), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFloat), typeof(LightFogDetector), typeof(LightSectored), typeof(LightVessel), typeof(LocalMagneticAnomaly), typeof(LockBasin), typeof(LogPond), typeof(MarineFarmCulture), typeof(MarinePollutionRegulationsArea), typeof(MilitaryPracticeArea), typeof(MooringArea), typeof(MooringBuoy), typeof(MooringTrot), typeof(Obstruction), typeof(OffshorePlatform), typeof(OffshoreProductionArea), typeof(OilBarrier), typeof(PhysicalAISAidToNavigation), typeof(Pile), typeof(PilotBoardingPlace), typeof(PilotageDistrict), typeof(PipelineOverhead), typeof(PipelineSubmarineOnLand), typeof(Pontoon), typeof(PrecautionaryArea), typeof(ProductionStorageArea), typeof(PylonBridgeSupport), typeof(RadarLine), typeof(RadarRange), typeof(RadarStation), typeof(RadarTransponderBeacon), typeof(RadioCallingInPoint), typeof(RadioStation), typeof(Railway), typeof(RangeSystem), typeof(Rapids), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(RescueStation), typeof(RestrictedArea), typeof(River), typeof(Road), typeof(Runway), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SeaAreaNamedWaterArea), typeof(SeabedArea), typeof(Seagrass), typeof(SeaplaneLandingArea), typeof(ShorelineConstruction), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(SiloTank), typeof(SlopeTopline), typeof(SlopingGround), typeof(SmallCraftFacility), typeof(Sounding), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Spring), typeof(StructureOverNavigableWater), typeof(SubmarinePipelineArea), typeof(SubmarineTransitLane), typeof(SweptArea), typeof(TidalStreamFloodEbb), typeof(TidalStreamPanelData), typeof(Tideway), typeof(TrafficSeparationScheme), typeof(Tunnel), typeof(TwoWayRoute), typeof(UnderwaterAwashRock), typeof(Vegetation), typeof(VesselTrafficServiceArea), typeof(VirtualAISAidToNavigation), typeof(WaterTurbulence), typeof(Waterfall), typeof(WeedKelp), typeof(WindTurbine), typeof(Wreck)];
-                public Role Role => Role.thePositionProvider;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public thePositionProviderTextAssociation? compositionTextAssociation { get; set; }
             public override string Code => nameof(TextPlacement);
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.composition, 0, 1, Role.thePositionProvider.ToString(), [typeof(AdministrationArea), typeof(AirportAirfield), typeof(AnchorBerth), typeof(AnchorageArea), typeof(ArchipelagicSeaLane), typeof(ArchipelagicSeaLaneArea), typeof(ArchipelagicSeaLaneAxis), typeof(Berth), typeof(Bollard), typeof(Bridge), typeof(Building), typeof(BuiltUpArea), typeof(CableArea), typeof(CableOverhead), typeof(CableSubmarine), typeof(Canal), typeof(CardinalBuoy), typeof(CardinalBeacon), typeof(CargoTranshipmentArea), typeof(Causeway), typeof(Chart1Feature), typeof(Checkpoint), typeof(CoastGuardStation), typeof(Coastline), typeof(CollisionRegulationsLimit), typeof(ContinentalShelfArea), typeof(Conveyor), typeof(Crane), typeof(CurrentNonGravitational), typeof(Dam), typeof(Daymark), typeof(DeepWaterRoute), typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart), typeof(DistanceMark), typeof(DockArea), typeof(Dolphin), typeof(DredgedArea), typeof(DryDock), typeof(DumpingGround), typeof(Dyke), typeof(EmergencyWreckMarkingBuoy), typeof(Fairway), typeof(FairwaySystem), typeof(FenceWall), typeof(FerryRoute), typeof(FisheryZone), typeof(FishingFacility), typeof(FishingGround), typeof(FloatingDock), typeof(FogSignal), typeof(FortifiedStructure), typeof(FoulGround), typeof(FreePortArea), typeof(Gate), typeof(Gridiron), typeof(HarbourAreaAdministrative), typeof(HarbourFacility), typeof(Helipad), typeof(Hulk), typeof(IceArea), typeof(InformationArea), typeof(InstallationBuoy), typeof(IslandGroup), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Lake), typeof(LandArea), typeof(LandElevation), typeof(LandRegion), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFloat), typeof(LightFogDetector), typeof(LightSectored), typeof(LightVessel), typeof(LocalMagneticAnomaly), typeof(LockBasin), typeof(LogPond), typeof(MarineFarmCulture), typeof(MarinePollutionRegulationsArea), typeof(MilitaryPracticeArea), typeof(MooringArea), typeof(MooringBuoy), typeof(MooringTrot), typeof(Obstruction), typeof(OffshorePlatform), typeof(OffshoreProductionArea), typeof(OilBarrier), typeof(PhysicalAISAidToNavigation), typeof(Pile), typeof(PilotBoardingPlace), typeof(PilotageDistrict), typeof(PipelineOverhead), typeof(PipelineSubmarineOnLand), typeof(Pontoon), typeof(PrecautionaryArea), typeof(ProductionStorageArea), typeof(PylonBridgeSupport), typeof(RadarLine), typeof(RadarRange), typeof(RadarStation), typeof(RadarTransponderBeacon), typeof(RadioCallingInPoint), typeof(RadioStation), typeof(Railway), typeof(RangeSystem), typeof(Rapids), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(RescueStation), typeof(RestrictedArea), typeof(River), typeof(Road), typeof(Runway), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SeaAreaNamedWaterArea), typeof(SeabedArea), typeof(Seagrass), typeof(SeaplaneLandingArea), typeof(ShorelineConstruction), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(SiloTank), typeof(SlopeTopline), typeof(SlopingGround), typeof(SmallCraftFacility), typeof(Sounding), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Spring), typeof(StructureOverNavigableWater), typeof(SubmarinePipelineArea), typeof(SubmarineTransitLane), typeof(SweptArea), typeof(TidalStreamFloodEbb), typeof(TidalStreamPanelData), typeof(Tideway), typeof(TrafficSeparationScheme), typeof(Tunnel), typeof(TwoWayRoute), typeof(UnderwaterAwashRock), typeof(Vegetation), typeof(VesselTrafficServiceArea), typeof(VirtualAISAidToNavigation), typeof(WaterTurbulence), typeof(Waterfall), typeof(WeedKelp), typeof(WindTurbine), typeof(Wreck)]),
+            };
 
             public TextPlacement()
             {
@@ -22595,18 +16599,11 @@ namespace S100Framework.DomainModel.S101
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<featureName> featureName { get; set; } = [];
-
-
-            public class theCartographicTextTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.theCartographicText;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public theCartographicTextTextAssociation? associationTextAssociation { get; set; }
             public override string Code => nameof(Chart1Feature);
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2, Role.theCartographicText.ToString(), [typeof(TextPlacement)]),
+            };
 
             public Chart1Feature()
             {

@@ -2300,18 +2300,11 @@ namespace S100Framework.DomainModel.S122
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<rxNCode> rxNCode { get; set; } = [];
-
-
-            public class theOrganisationRelatedOrganisation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(Authority)];
-                public Role Role => Role.theOrganisation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.RelatedOrganisation RelatedOrganisation { get; set; } = new();
-            }
-
-            public List<theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = [];
             public override string Code => nameof(AbstractRxN);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.RelatedOrganisation>(roleType.association, 0, 2147483647, Role.theOrganisation.ToString(), [typeof(Authority)]),
+            };
 
             public AbstractRxN()
             {
@@ -2324,17 +2317,8 @@ namespace S100Framework.DomainModel.S122
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : AbstractRxN
         {
-
-            public class theOrganisationRelatedOrganisation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(Authority)];
-                public Role Role => Role.theOrganisation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.RelatedOrganisation RelatedOrganisation { get; set; } = new();
-            }
-
-            public List<theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = [];
             public override string Code => nameof(NauticalInformation);
+            public static new informationBindingDescriptor[] informationBindings => AbstractRxN.informationBindings.Union(new informationBindingDescriptor[] { new informationBindingDescriptor<Associations.InformationAssociations.RelatedOrganisation>(roleType.association, 0, 2147483647, Role.theOrganisation.ToString(), [typeof(Authority)]), }).ToArray();
 
             public NauticalInformation()
             {
@@ -2392,40 +2376,13 @@ namespace S100Framework.DomainModel.S122
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<textContent> textContent { get; set; } = [];
-
-
-            public class theInformationRelatedOrganisation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(AbstractRxN)];
-                public Role Role => Role.theInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.RelatedOrganisation RelatedOrganisation { get; set; } = new();
-            }
-
-            public List<theInformationRelatedOrganisation> associationRelatedOrganisation { get; set; } = [];
-
-
-            public class theContactDetailsAuthorityContact : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ContactDetails)];
-                public Role Role => Role.theContactDetails;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AuthorityContact AuthorityContact { get; set; } = new();
-            }
-
-            public List<theContactDetailsAuthorityContact> associationAuthorityContact { get; set; } = [];
-
-
-            public class theServiceHoursAuthorityHours : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ServiceHours)];
-                public Role Role => Role.theServiceHours;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AuthorityHours AuthorityHours { get; set; } = new();
-            }
-
-            public List<theServiceHoursAuthorityHours> associationAuthorityHours { get; set; } = [];
             public override string Code => nameof(Authority);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.RelatedOrganisation>(roleType.association, 0, 2147483647, Role.theInformation.ToString(), [typeof(AbstractRxN)]),
+        new informationBindingDescriptor<Associations.InformationAssociations.AuthorityContact>(roleType.association, 0, 2147483647, Role.theContactDetails.ToString(), [typeof(ContactDetails)]),
+        new informationBindingDescriptor<Associations.InformationAssociations.AuthorityHours>(roleType.association, 0, 2147483647, Role.theServiceHours.ToString(), [typeof(ServiceHours)]),
+            };
 
             public Authority()
             {
@@ -2473,18 +2430,8 @@ namespace S100Framework.DomainModel.S122
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theAuthorityAuthorityContact : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(Authority)];
-                public Role Role => Role.theAuthority;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AuthorityContact AuthorityContact { get; set; } = new();
-            }
-
-            public List<theAuthorityAuthorityContact> associationAuthorityContact { get; set; } = [];
             public override string Code => nameof(ContactDetails);
+            public static new informationBindingDescriptor[] informationBindings => AbstractRxN.informationBindings.Union(new informationBindingDescriptor[] { new informationBindingDescriptor<Associations.InformationAssociations.AuthorityContact>(roleType.association, 0, 2147483647, Role.theAuthority.ToString(), [typeof(Authority)]), }).ToArray();
 
             public ContactDetails()
             {
@@ -2505,18 +2452,11 @@ namespace S100Framework.DomainModel.S122
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<information> information { get; set; } = [];
-
-
-            public class theServiceHours_nsdyExceptionalWorkday : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(ServiceHours)];
-                public Role Role => Role.theServiceHours_nsdy;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.ExceptionalWorkday ExceptionalWorkday { get; set; } = new();
-            }
-
-            public List<theServiceHours_nsdyExceptionalWorkday> associationExceptionalWorkday { get; set; } = [];
             public override string Code => nameof(NonStandardWorkingDay);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.ExceptionalWorkday>(roleType.association, 0, 2147483647, Role.theServiceHours_nsdy.ToString(), [typeof(ServiceHours)]),
+            };
 
             public NonStandardWorkingDay()
             {
@@ -2536,29 +2476,12 @@ namespace S100Framework.DomainModel.S122
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             [Required()]
             public information information { get; set; }
-
-
-            public class theAuthority_srvHrsAuthorityHours : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(Authority)];
-                public Role Role => Role.theAuthority_srvHrs;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AuthorityHours AuthorityHours { get; set; } = new();
-            }
-
-            public List<theAuthority_srvHrsAuthorityHours> associationAuthorityHours { get; set; } = [];
-
-
-            public class partialWorkingDayExceptionalWorkday : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NonStandardWorkingDay)];
-                public Role Role => Role.partialWorkingDay;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.ExceptionalWorkday ExceptionalWorkday { get; set; } = new();
-            }
-
-            public List<partialWorkingDayExceptionalWorkday> associationExceptionalWorkday { get; set; } = [];
             public override string Code => nameof(ServiceHours);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AuthorityHours>(roleType.association, 0, 2147483647, Role.theAuthority_srvHrs.ToString(), [typeof(Authority)]),
+        new informationBindingDescriptor<Associations.InformationAssociations.ExceptionalWorkday>(roleType.association, 0, 2147483647, Role.partialWorkingDay.ToString(), [typeof(NonStandardWorkingDay)]),
+            };
 
             public ServiceHours()
             {
@@ -2649,29 +2572,12 @@ namespace S100Framework.DomainModel.S122
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public DateOnly? reportedDate { get; set; } = default;
-
-
-            public class theRxNAssociatedRxN : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(AbstractRxN)];
-                public Role Role => Role.theRxN;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.AssociatedRxN AssociatedRxN { get; set; } = new();
-            }
-
-            public List<theRxNAssociatedRxN> associationAssociatedRxN { get; set; } = [];
-
-
-            public class providesInformationadditionalInformation : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NauticalInformation)];
-                public Role Role => Role.providesInformation;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.additionalInformation additionalInformation { get; set; } = new();
-            }
-
-            public List<providesInformationadditionalInformation> associationadditionalInformation { get; set; } = [];
             public override string Code => nameof(FeatureType);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.AssociatedRxN>(roleType.association, 0, 2147483647, Role.theRxN.ToString(), [typeof(AbstractRxN)]),
+        new informationBindingDescriptor<Associations.InformationAssociations.additionalInformation>(roleType.association, 0, 2147483647, Role.providesInformation.ToString(), [typeof(NauticalInformation)]),
+            };
 
             public FeatureType()
             {
@@ -2727,18 +2633,8 @@ namespace S100Framework.DomainModel.S122
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public List<designation> designation { get; set; } = [];
-
-
-            public class responsibleAuthorityProtectedAreaAuthority : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(Authority)];
-                public Role Role => Role.responsibleAuthority;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.ProtectedAreaAuthority ProtectedAreaAuthority { get; set; } = new();
-            }
-
-            public List<responsibleAuthorityProtectedAreaAuthority> associationProtectedAreaAuthority { get; set; } = [];
             public override string Code => nameof(MarineProtectedArea);
+            public static new informationBindingDescriptor[] informationBindings => FeatureType.informationBindings.Union(new informationBindingDescriptor[] { new informationBindingDescriptor<Associations.InformationAssociations.ProtectedAreaAuthority>(roleType.association, 0, 2147483647, Role.responsibleAuthority.ToString(), [typeof(Authority)]), }).ToArray();
 
             public MarineProtectedArea()
             {
@@ -2757,18 +2653,8 @@ namespace S100Framework.DomainModel.S122
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             [Required()]
             public categoryOfVesselTrafficService categoryOfVesselTrafficService { get; set; }
-
-
-            public class controlAuthorityServiceControl : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(Authority)];
-                public Role Role => Role.controlAuthority;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.ServiceControl ServiceControl { get; set; } = new();
-            }
-
-            public controlAuthorityServiceControl? associationServiceControl { get; set; }
             public override string Code => nameof(VesselTrafficServiceArea);
+            public static new informationBindingDescriptor[] informationBindings => FeatureType.informationBindings.Union(new informationBindingDescriptor[] { new informationBindingDescriptor<Associations.InformationAssociations.ServiceControl>(roleType.association, 0, 1, Role.controlAuthority.ToString(), [typeof(Authority)]), }).ToArray();
 
             public VesselTrafficServiceArea()
             {

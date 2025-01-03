@@ -1,21 +1,12 @@
 ﻿using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
-using S100Framework.DomainModel.S128;
-using S100Framework.DomainModel.S131.InformationTypes;
-using S100Framework.DomainModel.S201.FeatureTypes;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
-using S131 = S100Framework.DomainModel.S131;
 
 namespace S100Framework.WPF.ViewModel.S902
 {
@@ -29,14 +20,14 @@ namespace S100Framework.WPF.ViewModel.S902
         public informationBindingDescriptor? informationBindingDescriptor { get; set; }
     }
 
-    //public class S131_FeatureTypeTest
-    //{
-    //    public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[] {
-    //        new informationBindingDescriptor<DomainModel.S131.Associations.InformationAssociations.PermissionType>(roleType.association, 0, int.MaxValue, "permission", [typeof(Applicability),typeof(AbstractRxN)]),
-    //        new informationBindingDescriptor<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN>(roleType.association, 0, int.MaxValue, "theRxN", [typeof(AbstractRxN)]),
-    //        new informationBindingDescriptor<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, int.MaxValue, "providesInformation", [typeof(NauticalInformation)]),
-    //    };
-    //}
+    public class S131_FeatureTypeTest : DomainModel.S131.FeatureTypes.FeatureType
+    {
+        //    public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[] {
+        //        new informationBindingDescriptor<DomainModel.S131.Associations.InformationAssociations.PermissionType>(roleType.association, 0, int.MaxValue, "permission", [typeof(Applicability),typeof(AbstractRxN)]),
+        //        new informationBindingDescriptor<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN>(roleType.association, 0, int.MaxValue, "theRxN", [typeof(AbstractRxN)]),
+        //        new informationBindingDescriptor<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, int.MaxValue, "providesInformation", [typeof(NauticalInformation)]),
+        //    };
+    }
 
     public class informationBindingViewModel : ViewModelBase
     {
@@ -101,7 +92,7 @@ namespace S100Framework.WPF.ViewModel.S902
         [Browsable(false)]
         public informationBindingDescriptor[] informationBindingDescriptors => DomainModel.S131.FeatureTypes.FeatureType.informationBindings;
 
-        public void Load(DomainModel.S131.FeatureTypes.FeatureType instance) {
+        public void Load(S131_FeatureTypeTest instance) {
             _informationBinding1 = new informationBindingViewModel() {
                 //association = new DomainModel.S131.Associations.InformationAssociations.PermissionType(),
                 //informationBindingDescriptor = S131_FeatureTypeTest.informationBindingDescriptors[0],

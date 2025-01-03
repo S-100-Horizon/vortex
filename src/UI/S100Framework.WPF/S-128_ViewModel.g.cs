@@ -1,13 +1,8 @@
 using S100Framework.DomainModel.S128;
-using S100Framework.DomainModel.S128.Associations.FeatureAssociations;
-using S100Framework.DomainModel.S128.Associations.InformationAssociations;
 using S100Framework.DomainModel.S128.ComplexAttributes;
-using S100Framework.DomainModel.S128.FeatureTypes;
-using S100Framework.DomainModel.S128.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 
 namespace S100Framework.WPF.ViewModel.S128
@@ -2045,18 +2040,6 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<PriceOfNauticalProduct, CatalogueSectionHeader.thePriceInformationPriceOfNauticalProduct> associationPriceOfNauticalProduct { get; set; } = new();
-
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<ProductionDetails, CatalogueSectionHeader.theProducerProductionDetails> associationProductionDetails { get; set; } = new();
-
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DistributionDetails, CatalogueSectionHeader.theDistributorDistributionDetails> associationDistributionDetails { get; set; } = new();
-
         public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance)
         {
             catalogueSectionNumber = instance.catalogueSectionNumber;
@@ -2124,14 +2107,6 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("ContactDetails")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
-
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<ProducerContact, ContactDetails.theProducerProducerContact> associationProducerContact { get; set; } = new();
-
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DistributorContact, ContactDetails.theDistributorDistributorContact> associationDistributorContact { get; set; } = new();
 
         public void Load(DomainModel.S128.InformationTypes.ContactDetails instance)
         {
@@ -2295,10 +2270,6 @@ namespace S100Framework.WPF.ViewModel.S128
         [Category("PriceInformation")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
 
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<PriceOfNauticalProduct, PriceInformation.theCatalogueOfNauticalProductPriceOfNauticalProduct> associationPriceOfNauticalProduct { get; set; } = new();
-
         public void Load(DomainModel.S128.InformationTypes.PriceInformation instance)
         {
             information.Clear();
@@ -2393,14 +2364,6 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<ProducerContact, ProducerInformation.theContactDetailsProducerContact> associationProducerContact { get; set; } = new();
-
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<ProductionDetails, ProducerInformation.catalogueHeaderProductionDetails> associationProductionDetails { get; set; } = new();
-
         public void Load(DomainModel.S128.InformationTypes.ProducerInformation instance)
         {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -2445,14 +2408,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 SetValue(ref _distributorName, value);
             }
         }
-
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DistributionDetails, DistributorInformation.catalogueHeaderDistributionDetails> associationDistributionDetails { get; set; } = new();
-
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DistributorContact, DistributorInformation.theContactDetailsDistributorContact> associationDistributorContact { get; set; } = new();
 
         public void Load(DomainModel.S128.InformationTypes.DistributorInformation instance)
         {
@@ -2900,10 +2855,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 SetValue(ref _timeIntervalOfProduct, value);
             }
         }
-
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<Correlated, NavigationalProduct.mainCorrelated> associationCorrelated { get; set; } = new();
 
         [Browsable(false)]
         public horizontalDatumEpsg[] horizontalDatumEpsgList => CodeList.horizontalDatumEpsgs.ToArray();
@@ -3533,10 +3484,6 @@ namespace S100Framework.WPF.ViewModel.S128
                 SetValue(ref _timeIntervalOfProduct, value);
             }
         }
-
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<Correlated, NavigationalProduct.mainCorrelated> associationCorrelated { get; set; } = new();
 
         [Browsable(false)]
         public horizontalDatumEpsg[] horizontalDatumEpsgList => CodeList.horizontalDatumEpsgs.ToArray();

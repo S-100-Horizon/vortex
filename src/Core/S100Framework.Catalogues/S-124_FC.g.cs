@@ -2398,18 +2398,11 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             [Required()]
             public DateTime publicationTime { get; set; }
-
-
-            public class theReferencesNWReferences : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(References)];
-                public Role Role => Role.theReferences;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.NWReferences NWReferences { get; set; } = new();
-            }
-
-            public List<theReferencesNWReferences> associationNWReferences { get; set; } = [];
             public override string Code => nameof(NAVWARNPreamble);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.NWReferences>(roleType.association, 0, 2147483647, Role.theReferences.ToString(), [typeof(References)]),
+            };
 
             public NAVWARNPreamble()
             {
@@ -2481,40 +2474,16 @@ namespace S100Framework.DomainModel.S124
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public restriction? restriction { get; set; } = default;
-
-
-            public class headerNWPreambleContent : informationBinding
-            {
-                public static Type[] informationTypes => [typeof(NAVWARNPreamble)];
-                public Role Role => Role.header;
-                public string? RefId { get; set; } = default;
-                public Associations.InformationAssociations.NWPreambleContent NWPreambleContent { get; set; } = new();
-            }
-
-            public headerNWPreambleContent associationNWPreambleContent { get; set; }
-
-
-            public class affectsAreaAffected : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(NAVWARNAreaAffected)];
-                public Role Role => Role.affects;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AreaAffected AreaAffected { get; set; } = new();
-            }
-
-            public List<affectsAreaAffected> associationAreaAffected { get; set; } = [];
-
-
-            public class positionsTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(TextPlacement)];
-                public Role Role => Role.positions;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public List<positionsTextAssociation> associationTextAssociation { get; set; } = [];
             public override string Code => nameof(NAVWARNPart);
+            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            {
+        new informationBindingDescriptor<Associations.InformationAssociations.NWPreambleContent>(roleType.association, 1, 1, Role.header.ToString(), [typeof(NAVWARNPreamble)]),
+            };
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.AreaAffected>(roleType.association, 0, 2147483647, Role.affects.ToString(), [typeof(NAVWARNAreaAffected)]),
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2147483647, Role.positions.ToString(), [typeof(TextPlacement)]),
+            };
 
             public NAVWARNPart()
             {
@@ -2530,17 +2499,11 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNAreaAffected : FeatureTypeBase
         {
-
-            public class impactsAreaAffected : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(NAVWARNPart)];
-                public Role Role => Role.impacts;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.AreaAffected AreaAffected { get; set; } = new();
-            }
-
-            public impactsAreaAffected associationAreaAffected { get; set; }
             public override string Code => nameof(NAVWARNAreaAffected);
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.AreaAffected>(roleType.association, 1, 1, Role.impacts.ToString(), [typeof(NAVWARNPart)]),
+            };
 
             public NAVWARNAreaAffected()
             {
@@ -2572,18 +2535,11 @@ namespace S100Framework.DomainModel.S124
 
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
-
-
-            public class identifiesTextAssociation : featureBinding
-            {
-                public static Type[] featureTypes => [typeof(NAVWARNPart)];
-                public Role Role => Role.identifies;
-                public string? RefId { get; set; } = default;
-                public Associations.FeatureAssociations.TextAssociation TextAssociation { get; set; } = new();
-            }
-
-            public identifiesTextAssociation? compositionTextAssociation { get; set; }
             public override string Code => nameof(TextPlacement);
+            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            {
+        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.composition, 0, 1, Role.identifies.ToString(), [typeof(NAVWARNPart)]),
+            };
 
             public TextPlacement()
             {
