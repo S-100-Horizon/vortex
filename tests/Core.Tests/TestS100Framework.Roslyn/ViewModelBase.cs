@@ -1,6 +1,4 @@
-﻿using S100Framework.DomainModel;
-using S100Framework.DomainModel.Bindings;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
@@ -88,37 +86,37 @@ namespace S100Framework.WPF.ViewModel
         public string? RefId { get; set; } = default;
     }
 
-    public class InformationBindingViewModel<TAssociation, TBinding> : BindingViewModel
-        where TAssociation : InformationAssociation, new()
-        where TBinding : informationBinding
-    {
-        public InformationBindingViewModel() : base(TBinding.informationTypes) {
-            InformationType = base.Types.FirstOrDefault();
-            InformationAssociation = new TAssociation();
-        }
+    //public class InformationBindingViewModel<TAssociation, TBinding> : BindingViewModel
+    //    where TAssociation : InformationAssociation, new()
+    //    where TBinding : informationBinding
+    //{
+    //    public InformationBindingViewModel() : base(TBinding.informationTypes) {
+    //        InformationType = base.Types.FirstOrDefault();
+    //        InformationAssociation = new TAssociation();
+    //    }
 
-        [PropertyOrder(1)]
-        public Type? InformationType { get; set; }
+    //    [PropertyOrder(1)]
+    //    public Type? InformationType { get; set; }
 
-        [PropertyOrder(2)]
-        [ExpandableObject]
-        public TAssociation InformationAssociation { get; set; }
-    }
+    //    [PropertyOrder(2)]
+    //    [ExpandableObject]
+    //    public TAssociation InformationAssociation { get; set; }
+    //}
 
-    public class FeatureBindingViewModel<TAssociation, TBinding> : BindingViewModel
-        where TAssociation : FeatureAssociation, new()
-        where TBinding : featureBinding
-    {
-        public FeatureBindingViewModel() : base(TBinding.featureTypes) {
-            FeatureType = base.Types.FirstOrDefault();
-            FeatureAssociation = new TAssociation();
-        }
+    //public class FeatureBindingViewModel<TAssociation, TBinding> : BindingViewModel
+    //    where TAssociation : FeatureAssociation, new()
+    //    where TBinding : featureBinding
+    //{
+    //    public FeatureBindingViewModel() : base(TBinding.featureTypes) {
+    //        FeatureType = base.Types.FirstOrDefault();
+    //        FeatureAssociation = new TAssociation();
+    //    }
 
-        [PropertyOrder(1)]
-        public Type? FeatureType { get; set; }
+    //    [PropertyOrder(1)]
+    //    public Type? FeatureType { get; set; }
 
-        [PropertyOrder(2)]
-        [ExpandableObject]
-        public TAssociation FeatureAssociation { get; set; }
-    }
+    //    [PropertyOrder(2)]
+    //    [ExpandableObject]
+    //    public TAssociation FeatureAssociation { get; set; }
+    //}
 }

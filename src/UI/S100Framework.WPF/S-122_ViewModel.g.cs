@@ -1,5 +1,8 @@
+using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S122;
 using S100Framework.DomainModel.S122.ComplexAttributes;
+using S100Framework.DomainModel.S122.FeatureTypes;
+using S100Framework.DomainModel.S122.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -2105,6 +2108,9 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => AbstractRxN.InformationBindingDescriptors;
+
         public void Load(DomainModel.S122.InformationTypes.AbstractRxN instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -2302,6 +2308,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => NauticalInformation.InformationBindingDescriptors;
 
         public void Load(DomainModel.S122.InformationTypes.NauticalInformation instance)
         {
@@ -3079,6 +3088,9 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Authority.InformationBindingDescriptors;
+
         public void Load(DomainModel.S122.InformationTypes.Authority instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -3364,6 +3376,9 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ContactDetails.InformationBindingDescriptors;
+
         public void Load(DomainModel.S122.InformationTypes.ContactDetails instance)
         {
             callName = instance.callName;
@@ -3622,6 +3637,9 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => NonStandardWorkingDay.InformationBindingDescriptors;
+
         public void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDay instance)
         {
             dateFixed.Clear();
@@ -3812,6 +3830,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ServiceHours.InformationBindingDescriptors;
 
         public void Load(DomainModel.S122.InformationTypes.ServiceHours instance)
         {
@@ -4540,6 +4561,9 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => MarineProtectedArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
         public categoryOfMarineProtectedArea[] categoryOfMarineProtectedAreaList => CodeList.categoryOfMarineProtectedAreas.ToArray();
 
         public void Load(DomainModel.S122.FeatureTypes.MarineProtectedArea instance)
@@ -4762,6 +4786,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => VesselTrafficServiceArea.InformationBindingDescriptors;
 
         public void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance)
         {

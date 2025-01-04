@@ -238,22 +238,23 @@ namespace VortexConceptApplication
 
         object IViewModelHost.GetSource(PropertyItem propertyItem) {
 
-            var type = propertyItem.Instance switch {
-                InformationBindingViewModel viewModel => viewModel.InformationType,
-                FeatureBindingViewModel viewModel => viewModel.FeatureType,
-                _ => throw new NotImplementedException(),
-            };
+            //var type = propertyItem.Instance switch {
+            //    InformationBindingViewModel viewModel => viewModel.InformationType,
+            //    FeatureBindingViewModel viewModel => viewModel.FeatureType,
+            //    _ => throw new NotImplementedException(),
+            //};
 
-            return new[] {
-                new {
-                    refId = "P1000",
-                    code = type!.Name,
-                },
-                new {
-                    refId = "P1001",
-                    code = type!.Name,
-                },
-            };
+            return null;
+            //return {
+            //    //new {
+            //    //    refId = "P1000",
+            //    //    code = type!.Name,
+            //    //},
+            //    //new {
+            //    //    refId = "P1001",
+            //    //    code = type!.Name,
+            //    //},
+            //};
         }
     }
 

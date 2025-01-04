@@ -1,5 +1,8 @@
+using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S131;
 using S100Framework.DomainModel.S131.ComplexAttributes;
+using S100Framework.DomainModel.S131.FeatureTypes;
+using S100Framework.DomainModel.S131.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -2882,6 +2885,9 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Applicability.InformationBindingDescriptors;
+
+        [Browsable(false)]
         public categoryOfVessel[] categoryOfVesselList => CodeList.categoryOfVessels.ToArray();
 
         public void Load(DomainModel.S131.InformationTypes.Applicability instance)
@@ -3114,6 +3120,9 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Authority.InformationBindingDescriptors;
 
         public void Load(DomainModel.S131.InformationTypes.Authority instance)
         {
@@ -3691,6 +3700,9 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ContactDetails.InformationBindingDescriptors;
+
         public void Load(DomainModel.S131.InformationTypes.ContactDetails instance)
         {
             callName = instance.callName;
@@ -4225,6 +4237,9 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => NauticalInformation.InformationBindingDescriptors;
 
         public void Load(DomainModel.S131.InformationTypes.NauticalInformation instance)
         {
@@ -5136,6 +5151,9 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ServiceHours.InformationBindingDescriptors;
+
         public void Load(DomainModel.S131.InformationTypes.ServiceHours instance)
         {
             scheduleByDayOfWeek.Clear();
@@ -5388,6 +5406,12 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => AnchorBerth.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => AnchorBerth.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S131.FeatureTypes.AnchorBerth instance)
         {
@@ -5654,6 +5678,12 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => AnchorageArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => AnchorageArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S131.FeatureTypes.AnchorageArea instance)
         {
@@ -6102,6 +6132,12 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Berth.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Berth.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S131.FeatureTypes.Berth instance)
         {
             availableBerthingLength = instance.availableBerthingLength;
@@ -6477,6 +6513,9 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => BerthPosition.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S131.FeatureTypes.BerthPosition instance)
         {
             availableBerthingLength = instance.availableBerthingLength;
@@ -6791,6 +6830,12 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DockArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DockArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S131.FeatureTypes.DockArea instance)
         {
             depthsDescription = new();
@@ -7048,6 +7093,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DryDock.InformationBindingDescriptors;
 
         public void Load(DomainModel.S131.FeatureTypes.DryDock instance)
         {
@@ -7321,6 +7369,12 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DumpingGround.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DumpingGround.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S131.FeatureTypes.DumpingGround instance)
         {
             depthsDescription = new();
@@ -7579,6 +7633,9 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FloatingDock.InformationBindingDescriptors;
+
         public void Load(DomainModel.S131.FeatureTypes.FloatingDock instance)
         {
             sillDepth = instance.sillDepth;
@@ -7818,6 +7875,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Gridiron.InformationBindingDescriptors;
 
         public void Load(DomainModel.S131.FeatureTypes.Gridiron instance)
         {
@@ -8108,6 +8168,12 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => HarbourAreaAdministrative.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => HarbourAreaAdministrative.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative instance)
         {
             uNLocationCode = instance.uNLocationCode;
@@ -8391,6 +8457,12 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => HarbourAreaSection.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => HarbourAreaSection.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaSection instance)
         {
@@ -8683,6 +8755,12 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => HarbourBasin.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => HarbourBasin.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S131.FeatureTypes.HarbourBasin instance)
         {
             depthsDescription = new();
@@ -8928,6 +9006,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => HarbourFacility.InformationBindingDescriptors;
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourFacility instance)
         {
@@ -9221,6 +9302,12 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => MooringWarpingFacility.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MooringWarpingFacility.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S131.FeatureTypes.MooringWarpingFacility instance)
         {
             categoryOfMooringWarpingFacility = instance.categoryOfMooringWarpingFacility;
@@ -9470,6 +9557,12 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => OuterLimit.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => OuterLimit.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S131.FeatureTypes.OuterLimit instance)
         {
@@ -9796,6 +9889,12 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => PilotBoardingPlace.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PilotBoardingPlace.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S131.FeatureTypes.PilotBoardingPlace instance)
         {
             depthsDescription = new();
@@ -10085,6 +10184,12 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SeaplaneLandingArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SeaplaneLandingArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S131.FeatureTypes.SeaplaneLandingArea instance)
         {
@@ -10395,6 +10500,12 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Terminal.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Terminal.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S131.FeatureTypes.Terminal instance)
         {
             portFacilityNumber = instance.portFacilityNumber;
@@ -10696,6 +10807,12 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => TurningBasin.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TurningBasin.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S131.FeatureTypes.TurningBasin instance)
         {
             depthsDescription = new();
@@ -10985,6 +11102,12 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => WaterwayArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => WaterwayArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S131.FeatureTypes.WaterwayArea instance)
         {
@@ -11518,6 +11641,9 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _scaleMinimum, value);
             }
         }
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TextPlacement.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S131.FeatureTypes.TextPlacement instance)
         {

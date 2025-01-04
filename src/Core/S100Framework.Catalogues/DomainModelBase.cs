@@ -83,22 +83,22 @@ namespace S100Framework.DomainModel
             public abstract string associationName { get; }
         }
 
-        public abstract record informationBindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] informationTypes) : BindingDescriptor(roleType, lower, upper, role, informationTypes)
+        public abstract record InformationBindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] informationTypes) : BindingDescriptor(roleType, lower, upper, role, informationTypes)
         {
             public Type[] informationTypes => base.types;
         }
 
-        public record informationBindingDescriptor<TAssociation>(roleType roleType, int lower, int? upper, string role, Type[] informationTypes) : informationBindingDescriptor(roleType, lower, upper, role, informationTypes) where TAssociation : InformationAssociation
+        public record InformationBindingDescriptor<TAssociation>(roleType roleType, int lower, int? upper, string role, Type[] informationTypes) : InformationBindingDescriptor(roleType, lower, upper, role, informationTypes) where TAssociation : InformationAssociation
         {
             public override string associationName => $"{typeof(TAssociation).Name}, {role}";
         }
 
-        public abstract record featureBindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] featureTypes) : BindingDescriptor(roleType, lower, upper, role, featureTypes)
+        public abstract record FeatureBindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] featureTypes) : BindingDescriptor(roleType, lower, upper, role, featureTypes)
         {
             public Type[] featureTypes => base.types;
         }
 
-        public record featureBindingDescriptor<TAssociation>(roleType roleType, int lower, int? upper, string role, Type[] featureTypes) : featureBindingDescriptor(roleType, lower, upper, role, featureTypes) where TAssociation : FeatureAssociation
+        public record FeatureBindingDescriptor<TAssociation>(roleType roleType, int lower, int? upper, string role, Type[] featureTypes) : FeatureBindingDescriptor(roleType, lower, upper, role, featureTypes) where TAssociation : FeatureAssociation
         {
             public override string associationName => $"{typeof(TAssociation).Name}, {role}";
         }

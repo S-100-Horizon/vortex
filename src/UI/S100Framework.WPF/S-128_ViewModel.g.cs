@@ -1,5 +1,7 @@
+using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S128;
 using S100Framework.DomainModel.S128.ComplexAttributes;
+using S100Framework.DomainModel.S128.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -2040,6 +2042,9 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CatalogueSectionHeader.InformationBindingDescriptors;
+
         public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance)
         {
             catalogueSectionNumber = instance.catalogueSectionNumber;
@@ -2107,6 +2112,9 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("ContactDetails")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ContactDetails.InformationBindingDescriptors;
 
         public void Load(DomainModel.S128.InformationTypes.ContactDetails instance)
         {
@@ -2270,6 +2278,9 @@ namespace S100Framework.WPF.ViewModel.S128
         [Category("PriceInformation")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => PriceInformation.InformationBindingDescriptors;
+
         public void Load(DomainModel.S128.InformationTypes.PriceInformation instance)
         {
             information.Clear();
@@ -2364,6 +2375,9 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ProducerInformation.InformationBindingDescriptors;
+
         public void Load(DomainModel.S128.InformationTypes.ProducerInformation instance)
         {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -2408,6 +2422,9 @@ namespace S100Framework.WPF.ViewModel.S128
                 SetValue(ref _distributorName, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DistributorInformation.InformationBindingDescriptors;
 
         public void Load(DomainModel.S128.InformationTypes.DistributorInformation instance)
         {

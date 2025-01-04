@@ -1,5 +1,8 @@
+using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S124.ComplexAttributes;
+using S100Framework.DomainModel.S124.FeatureTypes;
+using S100Framework.DomainModel.S124.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -1288,6 +1291,9 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => NAVWARNPreamble.InformationBindingDescriptors;
+
+        [Browsable(false)]
         public navwarnTypeGeneral[] navwarnTypeGeneralList => CodeList.navwarnTypeGenerals.ToArray();
 
         public void Load(DomainModel.S124.InformationTypes.NAVWARNPreamble instance)
@@ -1488,6 +1494,12 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => NAVWARNPart.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => NAVWARNPart.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance)
         {
             featureName.Clear();
@@ -1554,6 +1566,9 @@ namespace S100Framework.WPF.ViewModel.S124
 
     public partial class NAVWARNAreaAffectedViewModel : ViewModelBase
     {
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => NAVWARNAreaAffected.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected instance)
         {
         }
@@ -1667,6 +1682,9 @@ namespace S100Framework.WPF.ViewModel.S124
                 SetValue(ref _scaleMinimum, value);
             }
         }
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TextPlacement.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S124.FeatureTypes.TextPlacement instance)
         {

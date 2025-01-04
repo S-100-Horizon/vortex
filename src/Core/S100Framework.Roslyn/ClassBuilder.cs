@@ -74,7 +74,8 @@ namespace S100Framework
             viewBuilder.AppendLine("using System.Runtime.CompilerServices;");
             viewBuilder.AppendLine("using System.Collections.Immutable;");
             viewBuilder.AppendLine("using System.Collections.ObjectModel;");
-            viewBuilder.AppendLine($"using S100Framework.DomainModel;");
+            viewBuilder.AppendLine("using S100Framework.DomainModel;");
+            viewBuilder.AppendLine("using S100Framework.DomainModel.Bindings;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId};");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.ComplexAttributes;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.InformationTypes;");
@@ -887,7 +888,7 @@ namespace S100Framework
 
                                 var informationTypeRefs = informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"typeof({e.Attribute("ref")!.Value})").ToArray();
 
-                                informationBindingsList.Add($"new informationBindingDescriptor<Associations.InformationAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', informationTypeRefs)}])");
+                                informationBindingsList.Add($"new InformationBindingDescriptor<Associations.InformationAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', informationTypeRefs)}])");
 
                                 //var name = $"{role}{association}{code}Binding";
                                 //name = $"{role}{association}";
@@ -940,10 +941,10 @@ namespace S100Framework
                                 informationBindingTypes.Add(code);
 
                                 if (superType is null || !informationBindingTypes.Contains(superType.Value)) {
-                                    builder.AppendLine($"\t\t\tpublic static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]");
+                                    builder.AppendLine($"\t\t\tpublic static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]");
                                 }
                                 else {
-                                    builder.AppendLine($"\t\t\tpublic static new informationBindingDescriptor[] informationBindings => {superType.Value}.informationBindings.Union(new informationBindingDescriptor[]");
+                                    builder.AppendLine($"\t\t\tpublic static new InformationBindingDescriptor[] InformationBindingDescriptors => {superType.Value}.InformationBindingDescriptors.Union(new InformationBindingDescriptor[]");
                                 }
                                 builder.AppendLine("\t\t\t{");
                                 foreach (var i in informationBindingsList) {
@@ -953,6 +954,11 @@ namespace S100Framework
                                     builder.AppendLine("\t\t\t};");
                                 else
                                     builder.AppendLine("\t\t\t}).ToArray();");
+
+                                if (!attributes.HasFlag(TypeAttributes.Abstract)) {
+                                    viewModelBindingBuilder.AppendLine("\t\t\t[Browsable(false)]");
+                                    viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingDescriptor[] InformationBindingDescriptors => {code}.InformationBindingDescriptors;");
+                                }
                             }
                         }));
 
@@ -1118,7 +1124,7 @@ namespace S100Framework
 
                                 var informationTypeRefs = informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"typeof({e.Attribute("ref")!.Value})").ToArray();
 
-                                informationBindingsList.Add($"new informationBindingDescriptor<Associations.InformationAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', informationTypeRefs)}])");
+                                informationBindingsList.Add($"new InformationBindingDescriptor<Associations.InformationAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', informationTypeRefs)}])");
 
                                 //var name = $"{role}{association}{code}Binding";
                                 //name = $"{role}{association}";
@@ -1184,7 +1190,7 @@ namespace S100Framework
 
                                 var featureTypeRefs = featureBinding.Elements(XName.Get("featureType", scope_S100)).Select(e => $"typeof({e.Attribute("ref")!.Value})").ToArray();
 
-                                featureBindingsList.Add($"new featureBindingDescriptor<Associations.FeatureAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', featureTypeRefs)}])");
+                                featureBindingsList.Add($"new FeatureBindingDescriptor<Associations.FeatureAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', featureTypeRefs)}])");
 
                                 //var name = $"{role}{association}{code}Binding";
                                 //name = $"{role}{association}";
@@ -1238,10 +1244,10 @@ namespace S100Framework
                                 informationBindingTypes.Add(code);
 
                                 if (superType is null || !informationBindingTypes.Contains(superType.Value)) {
-                                    builder.AppendLine($"\t\t\tpublic static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]");
+                                    builder.AppendLine($"\t\t\tpublic static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]");
                                 }
                                 else {
-                                    builder.AppendLine($"\t\t\tpublic static new informationBindingDescriptor[] informationBindings => {superType.Value}.informationBindings.Union(new informationBindingDescriptor[]");
+                                    builder.AppendLine($"\t\t\tpublic static new InformationBindingDescriptor[] InformationBindingDescriptors => {superType.Value}.InformationBindingDescriptors.Union(new InformationBindingDescriptor[]");
                                 }
                                 builder.AppendLine("\t\t\t{");
                                 foreach (var i in informationBindingsList) {
@@ -1251,16 +1257,21 @@ namespace S100Framework
                                     builder.AppendLine("\t\t\t};");
                                 else
                                     builder.AppendLine("\t\t\t}).ToArray();");
+
+                                if (!attributes.HasFlag(TypeAttributes.Abstract)) {
+                                    viewModelBindingBuilder.AppendLine("\t\t\t[Browsable(false)]");
+                                    viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingDescriptor[] InformationBindingDescriptors => {code}.InformationBindingDescriptors;");
+                                }
                             }
 
                             if (featureBindingsList.Any()) {
                                 featureBindingTypes.Add(code);
 
                                 if (superType is null || !featureBindingTypes.Contains(superType.Value)) {
-                                    builder.AppendLine($"\t\t\tpublic static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]");
+                                    builder.AppendLine($"\t\t\tpublic static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]");
                                 }
                                 else {
-                                    builder.AppendLine($"\t\t\tpublic static new featureBindingDescriptor[] featureBindings => {superType.Value}.featureBindings.Union(new featureBindingDescriptor[]");
+                                    builder.AppendLine($"\t\t\tpublic static new FeatureBindingDescriptor[] FeatureBindingDescriptors => {superType.Value}.FeatureBindingDescriptors.Union(new FeatureBindingDescriptor[]");
                                 }
                                 builder.AppendLine("\t\t\t{");
                                 foreach (var i in featureBindingsList) {
@@ -1270,6 +1281,11 @@ namespace S100Framework
                                     builder.AppendLine("\t\t\t};");
                                 else
                                     builder.AppendLine("\t\t\t}).ToArray();");
+
+                                if (!attributes.HasFlag(TypeAttributes.Abstract)) {
+                                    viewModelBindingBuilder.AppendLine("\t\t\t[Browsable(false)]");
+                                    viewModelBindingBuilder.AppendLine($"\t\t\tpublic FeatureBindingDescriptor[] FeatureBindingDescriptors => {code}.FeatureBindingDescriptors;");
+                                }
                             }
                         }));
 
@@ -1406,20 +1422,20 @@ namespace S100Framework
             common.AppendLine("\t\t}");
             common.AppendLine();
 
-            common.AppendLine("\t\tpublic abstract record informationBindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] informationTypes) : BindingDescriptor(roleType, lower, upper, role, informationTypes) {");
+            common.AppendLine("\t\tpublic abstract record InformationBindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] informationTypes) : BindingDescriptor(roleType, lower, upper, role, informationTypes) {");
             common.AppendLine("\t\t\tpublic Type[] informationTypes => base.types;");
             common.AppendLine("\t\t}");
             common.AppendLine();
-            common.AppendLine("\t\tpublic record informationBindingDescriptor<TAssociation>(roleType roleType, int lower, int? upper, string role, Type[] informationTypes) : informationBindingDescriptor(roleType, lower, upper, role, informationTypes) where TAssociation : InformationAssociation {");
+            common.AppendLine("\t\tpublic record InformationBindingDescriptor<TAssociation>(roleType roleType, int lower, int? upper, string role, Type[] informationTypes) : InformationBindingDescriptor(roleType, lower, upper, role, informationTypes) where TAssociation : InformationAssociation {");
             common.AppendLine("\t\t\tpublic override string associationName => $\"{typeof(TAssociation).Name}, {role}\";");
             common.AppendLine("\t\t}");
             common.AppendLine();
 
-            common.AppendLine("\t\tpublic abstract record featureBindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] featureTypes) : BindingDescriptor(roleType, lower, upper, role, featureTypes) {");
+            common.AppendLine("\t\tpublic abstract record FeatureBindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] featureTypes) : BindingDescriptor(roleType, lower, upper, role, featureTypes) {");
             common.AppendLine("\t\t\tpublic Type[] featureTypes => base.types;");
             common.AppendLine("\t\t}");
             common.AppendLine();
-            common.AppendLine("\t\tpublic record featureBindingDescriptor<TAssociation>(roleType roleType, int lower, int? upper, string role, Type[] featureTypes) : featureBindingDescriptor(roleType, lower, upper, role, featureTypes) where TAssociation : FeatureAssociation {");
+            common.AppendLine("\t\tpublic record FeatureBindingDescriptor<TAssociation>(roleType roleType, int lower, int? upper, string role, Type[] featureTypes) : FeatureBindingDescriptor(roleType, lower, upper, role, featureTypes) where TAssociation : FeatureAssociation {");
             common.AppendLine("\t\t\tpublic override string associationName => $\"{typeof(TAssociation).Name}, {role}\";");
             common.AppendLine("\t\t}");
             common.AppendLine();

@@ -1,8 +1,18 @@
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
+using System;
+using System.Linq;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
+using S100Framework.DomainModel;
+using S100Framework.DomainModel.Bindings;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.ComplexAttributes;
+using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S101.Associations.InformationAssociations;
+using S100Framework.DomainModel.S101.Associations.FeatureAssociations;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 
 namespace S100Framework.WPF.ViewModel.S101
@@ -4516,6 +4526,9 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("QualityOfNonBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => QualityOfNonBathymetricData.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.QualityOfNonBathymetricData instance)
         {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
@@ -4749,6 +4762,9 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("NavigationalSystemOfMarks")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => NavigationalSystemOfMarks.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.NavigationalSystemOfMarks instance)
         {
             marksNavigationalSystemOf = instance.marksNavigationalSystemOf;
@@ -4851,6 +4867,9 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LocalDirectionOfBuoyage")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LocalDirectionOfBuoyage.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.LocalDirectionOfBuoyage instance)
         {
@@ -5026,6 +5045,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("QualityOfBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => QualityOfBathymetricData.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => QualityOfBathymetricData.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.QualityOfBathymetricData instance)
         {
             categoryOfTemporalVariation = instance.categoryOfTemporalVariation;
@@ -5139,6 +5164,9 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SoundingDatum")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SoundingDatum.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.SoundingDatum instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5211,6 +5239,9 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("VerticalDatumOfData")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => VerticalDatumOfData.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.VerticalDatumOfData instance)
         {
@@ -5476,6 +5507,9 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("QualityOfSurvey")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => QualityOfSurvey.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.QualityOfSurvey instance)
         {
             depthRangeMaximumValue = instance.depthRangeMaximumValue;
@@ -5688,6 +5722,9 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("UpdateInformation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => UpdateInformation.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.UpdateInformation instance)
         {
             fixedDateRange = new();
@@ -5824,6 +5861,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MagneticVariation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => MagneticVariation.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MagneticVariation.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.MagneticVariation instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -5926,6 +5969,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LocalMagneticAnomaly")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LocalMagneticAnomaly.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LocalMagneticAnomaly.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.LocalMagneticAnomaly instance)
         {
@@ -6092,6 +6141,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Coastline.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Coastline.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Coastline instance)
         {
             categoryOfCoastline = instance.categoryOfCoastline;
@@ -6255,6 +6310,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LandArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LandArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LandArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.LandArea instance)
         {
             condition = instance.condition;
@@ -6349,6 +6410,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("IslandGroup")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => IslandGroup.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => IslandGroup.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.IslandGroup instance)
         {
@@ -6466,6 +6533,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LandElevation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LandElevation.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LandElevation.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.LandElevation instance)
         {
             elevation = instance.elevation;
@@ -6573,6 +6646,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("River")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => River.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => River.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.River instance)
         {
             featureName.Clear();
@@ -6676,6 +6755,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Rapids")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Rapids.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Rapids.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Rapids instance)
         {
@@ -6795,6 +6880,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Waterfall")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Waterfall.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Waterfall.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Waterfall instance)
         {
@@ -6918,6 +7009,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Lake")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Lake.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Lake.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Lake instance)
         {
             elevation = instance.elevation;
@@ -7030,6 +7127,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LandRegion")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LandRegion.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LandRegion.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.LandRegion instance)
         {
@@ -7214,6 +7317,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Vegetation")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Vegetation.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Vegetation.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Vegetation instance)
         {
@@ -7412,6 +7521,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("IceArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => IceArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => IceArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.IceArea instance)
         {
             categoryOfIce = instance.categoryOfIce;
@@ -7586,6 +7701,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SlopingGround")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SlopingGround.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SlopingGround.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.SlopingGround instance)
         {
@@ -7768,6 +7889,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SlopeTopline")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SlopeTopline.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SlopeTopline.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.SlopeTopline instance)
         {
             categoryOfSlope = instance.categoryOfSlope;
@@ -7885,6 +8012,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Tideway")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Tideway.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Tideway.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Tideway instance)
         {
@@ -8091,6 +8224,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _inTheWater, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => BuiltUpArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => BuiltUpArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.BuiltUpArea instance)
         {
@@ -8395,6 +8534,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Building.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Building.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Building instance)
         {
             buildingShape = instance.buildingShape;
@@ -8614,6 +8759,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => AirportAirfield.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => AirportAirfield.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.AirportAirfield instance)
         {
             categoryOfAirportAirfield.Clear();
@@ -8767,6 +8918,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Runway")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Runway.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Runway.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Runway instance)
         {
@@ -8928,6 +9085,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Helipad")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Helipad.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Helipad.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Helipad instance)
         {
@@ -9229,6 +9392,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Bridge.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Bridge.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Bridge instance)
         {
             bridgeConstruction = instance.bridgeConstruction;
@@ -9469,6 +9638,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SpanFixed.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SpanFixed.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.SpanFixed instance)
         {
             fixedDateRange = new();
@@ -9668,6 +9843,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SpanOpening.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SpanOpening.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.SpanOpening instance)
         {
@@ -10008,6 +10189,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Conveyor.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Conveyor.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Conveyor instance)
         {
@@ -10357,6 +10544,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CableOverhead")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CableOverhead.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CableOverhead.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.CableOverhead instance)
         {
             categoryOfCable = instance.categoryOfCable;
@@ -10653,6 +10846,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("PipelineOverhead")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => PipelineOverhead.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PipelineOverhead.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.PipelineOverhead instance)
         {
@@ -10996,6 +11195,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => PylonBridgeSupport.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PylonBridgeSupport.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.PylonBridgeSupport instance)
         {
             categoryOfPylon = instance.categoryOfPylon;
@@ -11304,6 +11509,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FenceWall")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FenceWall.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FenceWall.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.FenceWall instance)
         {
             categoryOfFence = instance.categoryOfFence;
@@ -11495,6 +11706,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Railway")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Railway.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Railway.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Railway instance)
         {
             condition = instance.condition;
@@ -11650,6 +11867,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Road")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Road.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Road.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Road instance)
         {
@@ -11860,6 +12083,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Tunnel.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Tunnel.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Tunnel instance)
         {
@@ -12170,6 +12399,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _inTheWater, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Landmark.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Landmark.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Landmark instance)
         {
@@ -12563,6 +12798,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _inTheWater, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SiloTank.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SiloTank.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.SiloTank instance)
         {
@@ -12972,6 +13213,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => WindTurbine.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => WindTurbine.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.WindTurbine instance)
         {
             colour.Clear();
@@ -13292,6 +13539,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FortifiedStructure.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FortifiedStructure.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.FortifiedStructure instance)
         {
             categoryOfFortifiedStructure = instance.categoryOfFortifiedStructure;
@@ -13582,6 +13835,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ProductionStorageArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ProductionStorageArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.ProductionStorageArea instance)
         {
             categoryOfProductionArea = instance.categoryOfProductionArea;
@@ -13741,6 +14000,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Checkpoint")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Checkpoint.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Checkpoint.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Checkpoint instance)
         {
@@ -14000,6 +14265,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Hulk.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Hulk.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Hulk instance)
         {
@@ -14310,6 +14581,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Pile.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Pile.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Pile instance)
         {
             categoryOfPile = instance.categoryOfPile;
@@ -14560,6 +14837,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Dyke")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Dyke.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Dyke.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Dyke instance)
         {
@@ -14889,6 +15172,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("ShorelineConstruction")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ShorelineConstruction.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ShorelineConstruction.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.ShorelineConstruction instance)
         {
@@ -15300,6 +15589,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => StructureOverNavigableWater.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => StructureOverNavigableWater.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.StructureOverNavigableWater instance)
         {
             categoryOfStructure.Clear();
@@ -15550,6 +15845,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Causeway")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Causeway.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Causeway.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Causeway instance)
         {
             condition = instance.condition;
@@ -15760,6 +16061,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Canal")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Canal.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Canal.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Canal instance)
         {
             categoryOfCanal = instance.categoryOfCanal;
@@ -15932,6 +16239,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("DistanceMark")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DistanceMark.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DistanceMark.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.DistanceMark instance)
         {
@@ -16156,6 +16469,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Gate")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Gate.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Gate.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Gate instance)
         {
@@ -16456,6 +16775,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Dam")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Dam.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Dam.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Dam instance)
         {
@@ -16824,6 +17149,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Crane.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Crane.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Crane instance)
         {
             categoryOfCrane = instance.categoryOfCrane;
@@ -17087,6 +17418,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Berth")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Berth.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Berth.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Berth instance)
         {
@@ -17410,6 +17747,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Dolphin.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Dolphin.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Dolphin instance)
         {
             categoryOfDolphin.Clear();
@@ -17648,6 +17991,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Bollard.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Bollard.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Bollard instance)
         {
@@ -17930,6 +18279,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("DryDock")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DryDock.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DryDock.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.DryDock instance)
         {
@@ -18296,6 +18651,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FloatingDock.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FloatingDock.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.FloatingDock instance)
         {
             colour.Clear();
@@ -18547,6 +18908,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Pontoon.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Pontoon.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Pontoon instance)
         {
             condition = instance.condition;
@@ -18790,6 +19157,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DockArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DockArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DockArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.DockArea instance)
         {
             categoryOfDock = instance.categoryOfDock;
@@ -18995,6 +19368,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Gridiron")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Gridiron.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Gridiron.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Gridiron instance)
         {
             featureName.Clear();
@@ -19181,6 +19560,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LockBasin")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LockBasin.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LockBasin.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.LockBasin instance)
         {
             featureName.Clear();
@@ -19327,6 +19712,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MooringTrot")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => MooringTrot.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MooringTrot.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.MooringTrot instance)
         {
             featureName.Clear();
@@ -19436,6 +19827,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SeaAreaNamedWaterArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SeaAreaNamedWaterArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SeaAreaNamedWaterArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea instance)
         {
@@ -19588,6 +19985,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TidalStreamFloodEbb")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => TidalStreamFloodEbb.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TidalStreamFloodEbb.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.TidalStreamFloodEbb instance)
         {
@@ -19771,6 +20174,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CurrentNonGravitational")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CurrentNonGravitational.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CurrentNonGravitational.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.CurrentNonGravitational instance)
         {
             featureName.Clear();
@@ -19912,6 +20321,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("WaterTurbulence")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => WaterTurbulence.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => WaterTurbulence.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.WaterTurbulence instance)
         {
             categoryOfWaterTurbulence = instance.categoryOfWaterTurbulence;
@@ -20033,6 +20448,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TidalStreamPanelData")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => TidalStreamPanelData.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TidalStreamPanelData.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.TidalStreamPanelData instance)
         {
@@ -20171,6 +20592,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Sounding")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Sounding.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Sounding.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Sounding instance)
         {
@@ -20369,6 +20796,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DredgedArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DredgedArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DredgedArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.DredgedArea instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -20533,6 +20966,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SweptArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SweptArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SweptArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.SweptArea instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -20627,6 +21066,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthContour")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DepthContour.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DepthContour.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.DepthContour instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -20718,6 +21163,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DepthArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DepthArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.DepthArea instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -20797,6 +21248,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthNoBottomFound")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DepthNoBottomFound.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DepthNoBottomFound.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.DepthNoBottomFound instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -20864,6 +21321,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("UnsurveyedArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => UnsurveyedArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => UnsurveyedArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.UnsurveyedArea instance)
         {
@@ -20955,6 +21418,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SeabedArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SeabedArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SeabedArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.SeabedArea instance)
         {
@@ -21070,6 +21539,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("WeedKelp")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => WeedKelp.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => WeedKelp.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.WeedKelp instance)
         {
             categoryOfWeedKelp = instance.categoryOfWeedKelp;
@@ -21158,6 +21633,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Seagrass")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Seagrass.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Seagrass.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Seagrass instance)
         {
@@ -21257,6 +21738,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Sandwave")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Sandwave.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Sandwave.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Sandwave instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -21335,6 +21822,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Spring")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Spring.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Spring.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Spring instance)
         {
@@ -21547,6 +22040,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _surroundingDepth, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => UnderwaterAwashRock.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => UnderwaterAwashRock.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.UnderwaterAwashRock instance)
         {
@@ -21851,6 +22350,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _surroundingDepth, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Wreck.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Wreck.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Wreck instance)
         {
@@ -22181,6 +22686,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Obstruction.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Obstruction.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Obstruction instance)
         {
             categoryOfObstruction = instance.categoryOfObstruction;
@@ -22405,6 +22916,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FoulGround")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FoulGround.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FoulGround.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.FoulGround instance)
         {
             featureName.Clear();
@@ -22547,6 +23064,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("DiscolouredWater")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DiscolouredWater.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DiscolouredWater.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.DiscolouredWater instance)
         {
@@ -22692,6 +23215,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("FishingFacility")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FishingFacility.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FishingFacility.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.FishingFacility instance)
         {
@@ -22947,6 +23476,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("MarineFarmCulture")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => MarineFarmCulture.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MarineFarmCulture.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.MarineFarmCulture instance)
         {
@@ -23295,6 +23830,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => OffshorePlatform.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => OffshorePlatform.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.OffshorePlatform instance)
         {
             categoryOfOffshorePlatform = instance.categoryOfOffshorePlatform;
@@ -23514,6 +24055,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CableSubmarine")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CableSubmarine.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CableSubmarine.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.CableSubmarine instance)
         {
             buriedDepth = instance.buriedDepth;
@@ -23655,6 +24202,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("CableArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CableArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CableArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.CableArea instance)
         {
@@ -23925,6 +24478,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => PipelineSubmarineOnLand.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PipelineSubmarineOnLand.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.PipelineSubmarineOnLand instance)
         {
             buriedDepth = instance.buriedDepth;
@@ -24117,6 +24676,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SubmarinePipelineArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SubmarinePipelineArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SubmarinePipelineArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.SubmarinePipelineArea instance)
         {
@@ -24411,6 +24976,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("OffshoreProductionArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => OffshoreProductionArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => OffshoreProductionArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.OffshoreProductionArea instance)
         {
             categoryOfOffshoreProductionArea = instance.categoryOfOffshoreProductionArea;
@@ -24634,6 +25205,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("NavigationLine")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => NavigationLine.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => NavigationLine.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.NavigationLine instance)
         {
@@ -24874,6 +25451,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RecommendedTrack")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RecommendedTrack.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RecommendedTrack.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.RecommendedTrack instance)
         {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -25063,6 +25646,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RangeSystem")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RangeSystem.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RangeSystem.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.RangeSystem instance)
         {
@@ -25266,6 +25855,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Fairway")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Fairway.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Fairway.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Fairway instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -25455,6 +26050,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("FairwaySystem")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FairwaySystem.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FairwaySystem.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.FairwaySystem instance)
         {
@@ -25667,6 +26268,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RecommendedRouteCentreline")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RecommendedRouteCentreline.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RecommendedRouteCentreline.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.RecommendedRouteCentreline instance)
         {
@@ -25922,6 +26529,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TwoWayRoutePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => TwoWayRoutePart.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TwoWayRoutePart.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.TwoWayRoutePart instance)
         {
             basedOnFixedMarks = instance.basedOnFixedMarks;
@@ -26089,6 +26702,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TwoWayRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => TwoWayRoute.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TwoWayRoute.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.TwoWayRoute instance)
         {
             featureName.Clear();
@@ -26217,6 +26836,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RecommendedTrafficLanePart")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RecommendedTrafficLanePart.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RecommendedTrafficLanePart.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.RecommendedTrafficLanePart instance)
         {
@@ -26431,6 +27056,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("DeepWaterRouteCentreline")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DeepWaterRouteCentreline.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DeepWaterRouteCentreline.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRouteCentreline instance)
         {
@@ -26688,6 +27319,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DeepWaterRoutePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DeepWaterRoutePart.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DeepWaterRoutePart.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRoutePart instance)
         {
             depthRangeMinimumValue = instance.depthRangeMinimumValue;
@@ -26885,6 +27522,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DeepWaterRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DeepWaterRoute.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DeepWaterRoute.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRoute instance)
         {
             featureName.Clear();
@@ -27004,6 +27647,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("InshoreTrafficZone")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => InshoreTrafficZone.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => InshoreTrafficZone.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.InshoreTrafficZone instance)
         {
@@ -27159,6 +27808,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("PrecautionaryArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => PrecautionaryArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PrecautionaryArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.PrecautionaryArea instance)
         {
@@ -27325,6 +27980,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationSchemeLanePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => TrafficSeparationSchemeLanePart.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TrafficSeparationSchemeLanePart.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeLanePart instance)
         {
             fixedDateRange = new();
@@ -27459,6 +28120,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SeparationZoneOrLine")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SeparationZoneOrLine.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SeparationZoneOrLine.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.SeparationZoneOrLine instance)
         {
             fixedDateRange = new();
@@ -27569,6 +28236,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TrafficSeparationSchemeBoundary")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => TrafficSeparationSchemeBoundary.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TrafficSeparationSchemeBoundary.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeBoundary instance)
         {
@@ -27686,6 +28359,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TrafficSeparationSchemeCrossing")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => TrafficSeparationSchemeCrossing.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TrafficSeparationSchemeCrossing.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeCrossing instance)
         {
@@ -27823,6 +28502,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TrafficSeparationSchemeRoundabout")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => TrafficSeparationSchemeRoundabout.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TrafficSeparationSchemeRoundabout.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeRoundabout instance)
         {
@@ -27985,6 +28670,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationScheme")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => TrafficSeparationScheme.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TrafficSeparationScheme.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationScheme instance)
         {
             featureName.Clear();
@@ -28117,6 +28808,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ArchipelagicSeaLaneArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ArchipelagicSeaLaneArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ArchipelagicSeaLaneArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneArea instance)
         {
             featureName.Clear();
@@ -28246,6 +28943,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ArchipelagicSeaLaneAxis")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ArchipelagicSeaLaneAxis.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ArchipelagicSeaLaneAxis.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneAxis instance)
         {
             featureName.Clear();
@@ -28374,6 +29077,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("ArchipelagicSeaLane")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ArchipelagicSeaLane.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ArchipelagicSeaLane.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLane instance)
         {
@@ -28515,6 +29224,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RadioCallingInPoint")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RadioCallingInPoint.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadioCallingInPoint.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.RadioCallingInPoint instance)
         {
@@ -28679,6 +29394,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FerryRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FerryRoute.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FerryRoute.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.FerryRoute instance)
         {
             categoryOfFerry.Clear();
@@ -28822,6 +29543,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarLine")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RadarLine.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadarLine.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.RadarLine instance)
         {
             featureName.Clear();
@@ -28942,6 +29669,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RadarRange")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RadarRange.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadarRange.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.RadarRange instance)
         {
@@ -29115,6 +29848,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarStation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RadarStation.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadarStation.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.RadarStation instance)
         {
             callSign = instance.callSign;
@@ -29283,6 +30022,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("AnchorageArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => AnchorageArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => AnchorageArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.AnchorageArea instance)
         {
@@ -29500,6 +30245,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MooringArea")]
         public ObservableCollection<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => MooringArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MooringArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.MooringArea instance)
         {
             categoryOfMooringArea.Clear();
@@ -29694,6 +30445,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("AnchorBerth")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => AnchorBerth.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => AnchorBerth.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.AnchorBerth instance)
         {
             categoryOfAnchorage.Clear();
@@ -29843,6 +30600,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SeaplaneLandingArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SeaplaneLandingArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SeaplaneLandingArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.SeaplaneLandingArea instance)
         {
@@ -29996,6 +30759,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("DumpingGround")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => DumpingGround.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DumpingGround.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.DumpingGround instance)
         {
@@ -30171,6 +30940,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("MilitaryPracticeArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => MilitaryPracticeArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MilitaryPracticeArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.MilitaryPracticeArea instance)
         {
@@ -30368,6 +31143,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => AdministrationArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => AdministrationArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.AdministrationArea instance)
         {
             inDispute = instance.inDispute;
@@ -30500,6 +31281,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("CargoTranshipmentArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CargoTranshipmentArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CargoTranshipmentArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.CargoTranshipmentArea instance)
         {
@@ -30712,6 +31499,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CautionArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CautionArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.CautionArea instance)
         {
             condition = instance.condition;
@@ -30868,6 +31661,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => InformationArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => InformationArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.InformationArea instance)
         {
             featureName.Clear();
@@ -31010,6 +31809,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ContiguousZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ContiguousZone.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ContiguousZone.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.ContiguousZone instance)
         {
             fixedDateRange = new();
@@ -31110,6 +31915,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("ContinentalShelfArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ContinentalShelfArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ContinentalShelfArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.ContinentalShelfArea instance)
         {
@@ -31219,6 +32030,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CustomZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CustomZone.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CustomZone.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.CustomZone instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -31312,6 +32129,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("ExclusiveEconomicZone")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => ExclusiveEconomicZone.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ExclusiveEconomicZone.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.ExclusiveEconomicZone instance)
         {
@@ -31419,6 +32242,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("FisheryZone")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FisheryZone.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FisheryZone.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.FisheryZone instance)
         {
@@ -31530,6 +32359,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("FishingGround")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FishingGround.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FishingGround.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.FishingGround instance)
         {
@@ -31660,6 +32495,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FreePortArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FreePortArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FreePortArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.FreePortArea instance)
         {
             featureName.Clear();
@@ -31758,6 +32599,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("HarbourAreaAdministrative")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => HarbourAreaAdministrative.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => HarbourAreaAdministrative.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.HarbourAreaAdministrative instance)
         {
@@ -31860,6 +32707,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LogPond")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LogPond.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LogPond.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.LogPond instance)
         {
@@ -32031,6 +32884,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("OilBarrier")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => OilBarrier.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => OilBarrier.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.OilBarrier instance)
         {
             categoryOfOilBarrier = instance.categoryOfOilBarrier;
@@ -32157,6 +33016,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("StraightTerritorialSeaBaseline")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => StraightTerritorialSeaBaseline.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => StraightTerritorialSeaBaseline.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.StraightTerritorialSeaBaseline instance)
         {
             interoperabilityIdentifier = instance.interoperabilityIdentifier;
@@ -32256,6 +33121,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("TerritorialSeaArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => TerritorialSeaArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TerritorialSeaArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.TerritorialSeaArea instance)
         {
@@ -32387,6 +33258,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SubmarineTransitLane")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SubmarineTransitLane.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SubmarineTransitLane.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.SubmarineTransitLane instance)
         {
             featureName.Clear();
@@ -32498,6 +33375,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("PilotageDistrict")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => PilotageDistrict.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PilotageDistrict.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.PilotageDistrict instance)
         {
@@ -32629,6 +33512,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CollisionRegulationsLimit")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CollisionRegulationsLimit.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CollisionRegulationsLimit.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.CollisionRegulationsLimit instance)
         {
             featureName.Clear();
@@ -32752,6 +33641,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MarinePollutionRegulationsArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => MarinePollutionRegulationsArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MarinePollutionRegulationsArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.MarinePollutionRegulationsArea instance)
         {
             featureName.Clear();
@@ -32871,6 +33766,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RestrictedArea")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RestrictedArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RestrictedArea.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.RestrictedArea instance)
         {
@@ -33227,6 +34128,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightAllAround")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LightAllAround.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightAllAround.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.LightAllAround instance)
         {
             categoryOfLight.Clear();
@@ -33529,6 +34436,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightSectored")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LightSectored.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightSectored.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.LightSectored instance)
         {
             categoryOfLight.Clear();
@@ -33803,6 +34716,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LightFogDetector")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LightFogDetector.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightFogDetector.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.LightFogDetector instance)
         {
@@ -34087,6 +35006,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("LightAirObstruction")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LightAirObstruction.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightAirObstruction.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.LightAirObstruction instance)
         {
@@ -34405,6 +35330,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LateralBuoy.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LateralBuoy.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.LateralBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -34719,6 +35650,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CardinalBuoy.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CardinalBuoy.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.CardinalBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -35018,6 +35955,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => IsolatedDangerBuoy.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => IsolatedDangerBuoy.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -35313,6 +36256,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SafeWaterBuoy.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SafeWaterBuoy.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.SafeWaterBuoy instance)
         {
@@ -35612,6 +36561,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SpecialPurposeGeneralBuoy.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SpecialPurposeGeneralBuoy.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBuoy instance)
         {
@@ -35913,6 +36868,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => EmergencyWreckMarkingBuoy.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => EmergencyWreckMarkingBuoy.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.EmergencyWreckMarkingBuoy instance)
         {
             buoyShape = instance.buoyShape;
@@ -36175,6 +37136,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => InstallationBuoy.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => InstallationBuoy.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.InstallationBuoy instance)
         {
@@ -36471,6 +37438,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => MooringBuoy.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MooringBuoy.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.MooringBuoy instance)
         {
@@ -36851,6 +37824,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LateralBeacon.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LateralBeacon.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.LateralBeacon instance)
         {
@@ -37256,6 +38235,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CardinalBeacon.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CardinalBeacon.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.CardinalBeacon instance)
         {
             beaconShape = instance.beaconShape;
@@ -37645,6 +38630,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => IsolatedDangerBeacon.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => IsolatedDangerBeacon.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBeacon instance)
         {
             beaconShape = instance.beaconShape;
@@ -38030,6 +39021,12 @@ namespace S100Framework.WPF.ViewModel.S101
                 SetValue(ref _pictorialRepresentation, value);
             }
         }
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SafeWaterBeacon.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SafeWaterBeacon.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.SafeWaterBeacon instance)
         {
@@ -38420,6 +39417,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SpecialPurposeGeneralBeacon.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SpecialPurposeGeneralBeacon.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBeacon instance)
         {
             beaconShape = instance.beaconShape;
@@ -38746,6 +39749,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Daymark.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Daymark.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Daymark instance)
         {
             categoryOfSpecialPurposeMark.Clear();
@@ -39071,6 +40080,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LightFloat.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightFloat.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.LightFloat instance)
         {
             colour.Clear();
@@ -39369,6 +40384,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => LightVessel.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightVessel.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.LightVessel instance)
         {
             colour.Clear();
@@ -39577,6 +40598,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Retroreflector")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => Retroreflector.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Retroreflector.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.Retroreflector instance)
         {
             colour.Clear();
@@ -39731,6 +40758,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RadarReflector")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RadarReflector.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadarReflector.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.RadarReflector instance)
         {
@@ -39955,6 +40988,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FogSignal")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => FogSignal.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FogSignal.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.FogSignal instance)
         {
             categoryOfFogSignal = instance.categoryOfFogSignal;
@@ -40162,6 +41201,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PhysicalAISAidToNavigation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => PhysicalAISAidToNavigation.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PhysicalAISAidToNavigation.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.PhysicalAISAidToNavigation instance)
         {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
@@ -40355,6 +41400,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("VirtualAISAidToNavigation")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => VirtualAISAidToNavigation.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => VirtualAISAidToNavigation.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.VirtualAISAidToNavigation instance)
         {
             estimatedRangeOfTransmission = instance.estimatedRangeOfTransmission;
@@ -40545,6 +41596,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RadioStation")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RadioStation.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadioStation.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.RadioStation instance)
         {
@@ -40785,6 +41842,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarTransponderBeacon")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RadarTransponderBeacon.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadarTransponderBeacon.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.RadarTransponderBeacon instance)
         {
             categoryOfRadarTransponderBeacon = instance.categoryOfRadarTransponderBeacon;
@@ -40999,6 +42062,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PilotBoardingPlace")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => PilotBoardingPlace.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PilotBoardingPlace.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.PilotBoardingPlace instance)
         {
             categoryOfPilotBoardingPlace = instance.categoryOfPilotBoardingPlace;
@@ -41150,6 +42219,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("VesselTrafficServiceArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => VesselTrafficServiceArea.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => VesselTrafficServiceArea.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.VesselTrafficServiceArea instance)
         {
             featureName.Clear();
@@ -41275,6 +42350,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("CoastGuardStation")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => CoastGuardStation.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CoastGuardStation.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.CoastGuardStation instance)
         {
@@ -41431,6 +42512,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("SignalStationWarning")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SignalStationWarning.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SignalStationWarning.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.SignalStationWarning instance)
         {
@@ -41595,6 +42682,12 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SignalStationTraffic")]
         public ObservableCollection<information> information { get; set; } = new();
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SignalStationTraffic.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SignalStationTraffic.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.SignalStationTraffic instance)
         {
             categoryOfSignalStationTraffic.Clear();
@@ -41757,6 +42850,12 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("RescueStation")]
         public ObservableCollection<information> information { get; set; } = new();
+
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => RescueStation.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RescueStation.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.RescueStation instance)
         {
@@ -41990,6 +43089,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => HarbourFacility.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => HarbourFacility.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.HarbourFacility instance)
         {
             categoryOfHarbourFacility.Clear();
@@ -42191,6 +43296,12 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public InformationBindingDescriptor[] InformationBindingDescriptors => SmallCraftFacility.InformationBindingDescriptors;
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SmallCraftFacility.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.SmallCraftFacility instance)
         {
             categoryOfSmallCraftFacility.Clear();
@@ -42337,6 +43448,9 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TextPlacement.FeatureBindingDescriptors;
+
         public void Load(DomainModel.S101.FeatureTypes.TextPlacement instance)
         {
             textOffsetBearing = instance.textOffsetBearing;
@@ -42388,6 +43502,9 @@ namespace S100Framework.WPF.ViewModel.S101
 
         [Category("Chart1Feature")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
+
+        [Browsable(false)]
+        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Chart1Feature.FeatureBindingDescriptors;
 
         public void Load(DomainModel.S101.FeatureTypes.Chart1Feature instance)
         {

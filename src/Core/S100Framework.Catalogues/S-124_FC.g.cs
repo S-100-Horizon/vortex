@@ -2399,9 +2399,9 @@ namespace S100Framework.DomainModel.S124
             [Required()]
             public DateTime publicationTime { get; set; }
             public override string Code => nameof(NAVWARNPreamble);
-            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
             {
-        new informationBindingDescriptor<Associations.InformationAssociations.NWReferences>(roleType.association, 0, 2147483647, Role.theReferences.ToString(), [typeof(References)]),
+        new InformationBindingDescriptor<Associations.InformationAssociations.NWReferences>(roleType.association, 0, 2147483647, Role.theReferences.ToString(), [typeof(References)]),
             };
 
             public NAVWARNPreamble()
@@ -2475,14 +2475,14 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public restriction? restriction { get; set; } = default;
             public override string Code => nameof(NAVWARNPart);
-            public static informationBindingDescriptor[] informationBindings => new informationBindingDescriptor[]
+            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
             {
-        new informationBindingDescriptor<Associations.InformationAssociations.NWPreambleContent>(roleType.association, 1, 1, Role.header.ToString(), [typeof(NAVWARNPreamble)]),
+        new InformationBindingDescriptor<Associations.InformationAssociations.NWPreambleContent>(roleType.association, 1, 1, Role.header.ToString(), [typeof(NAVWARNPreamble)]),
             };
-            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
             {
-        new featureBindingDescriptor<Associations.FeatureAssociations.AreaAffected>(roleType.association, 0, 2147483647, Role.affects.ToString(), [typeof(NAVWARNAreaAffected)]),
-        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2147483647, Role.positions.ToString(), [typeof(TextPlacement)]),
+        new FeatureBindingDescriptor<Associations.FeatureAssociations.AreaAffected>(roleType.association, 0, 2147483647, Role.affects.ToString(), [typeof(NAVWARNAreaAffected)]),
+        new FeatureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2147483647, Role.positions.ToString(), [typeof(TextPlacement)]),
             };
 
             public NAVWARNPart()
@@ -2500,9 +2500,9 @@ namespace S100Framework.DomainModel.S124
         public partial class NAVWARNAreaAffected : FeatureTypeBase
         {
             public override string Code => nameof(NAVWARNAreaAffected);
-            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
             {
-        new featureBindingDescriptor<Associations.FeatureAssociations.AreaAffected>(roleType.association, 1, 1, Role.impacts.ToString(), [typeof(NAVWARNPart)]),
+        new FeatureBindingDescriptor<Associations.FeatureAssociations.AreaAffected>(roleType.association, 1, 1, Role.impacts.ToString(), [typeof(NAVWARNPart)]),
             };
 
             public NAVWARNAreaAffected()
@@ -2536,9 +2536,9 @@ namespace S100Framework.DomainModel.S124
             [System.Xml.Serialization.XmlElement(Namespace = "http://www.iho.int/S100FC/5.2")]
             public Int32? scaleMinimum { get; set; } = default;
             public override string Code => nameof(TextPlacement);
-            public static featureBindingDescriptor[] featureBindings => new featureBindingDescriptor[]
+            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
             {
-        new featureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.composition, 0, 1, Role.identifies.ToString(), [typeof(NAVWARNPart)]),
+        new FeatureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.composition, 0, 1, Role.identifies.ToString(), [typeof(NAVWARNPart)]),
             };
 
             public TextPlacement()

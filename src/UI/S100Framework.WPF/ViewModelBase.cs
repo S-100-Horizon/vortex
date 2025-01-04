@@ -1,6 +1,7 @@
 ﻿using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
 using S100Framework.WPF.Editors;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -111,67 +112,122 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-    public abstract class InformationBindingViewModel : BindingViewModel
+
+    public class InformationBindingViewModel : ViewModelBase
     {
-        public InformationBindingViewModel(Type[] types) : base(types) {
-            InformationType = base.Types.FirstOrDefault();
+        private string? _refId;
+
+        [ExpandableObject]
+        public string? RefId {
+            get { return _refId; }
+            set { base.SetValue(ref _refId, value); }
         }
 
-        private Type? _informationType = default;
+        private InformationAssociation? _association;
 
-        [PropertyOrder(1)]
+        [ExpandableObject]
+        [Editor(typeof(AssociationEditor), typeof(AssociationEditor))]
+        public InformationAssociation? association {
+            get { return _association; }
+            set { base.SetValue(ref _association, value); }
+        }
+
+        private Type? _informationType;
+
         [Editor(typeof(InformationTypeEditor), typeof(InformationTypeEditor))]
-        public Type? InformationType {
+        public Type? informationType {
             get { return _informationType; }
+            set { base.SetValue(ref _informationType, value); }
+        }
+
+        [Browsable(false)]
+        public ObservableCollection<Type> informationTypes { get; init; } = new ObservableCollection<Type>();
+
+
+        private InformationBindingDescriptor? _informationBindingDescriptor;
+
+        [Browsable(false)]
+        public InformationBindingDescriptor? informationBindingDescriptor {
+            get { return _informationBindingDescriptor; }
             set {
-                base.RefId = default;
-                SetValue(ref _informationType, value);
+                base.SetValue(ref (_informationBindingDescriptor), value);
+                association = (InformationAssociation?)Activator.CreateInstance(value!.GetType().GenericTypeArguments[0]);
+                informationTypes.Clear();
+                foreach (var e in value!.informationTypes)
+                    informationTypes.Add(e);
             }
         }
-    }
 
-    public abstract class FeatureBindingViewModel : BindingViewModel
-    {
-        public FeatureBindingViewModel(Type[] types) : base(types) {
-            FeatureType = base.Types.FirstOrDefault();
-        }
-
-        private Type? _featureType = default;
-
-        [PropertyOrder(1)]
-        [Editor(typeof(FeatureTypeEditor), typeof(FeatureTypeEditor))]
-        public Type? FeatureType {
-            get { return _featureType; }
-            set {
-                base.RefId = default;
-                SetValue(ref _featureType, value);
-            }
+        public override string Serialize() {
+            throw new NotImplementedException();
         }
     }
 
-    public class InformationBindingViewModel<TAssociation, TBinding> : InformationBindingViewModel
-        where TAssociation : InformationAssociation, new()
-        where TBinding : informationBinding
-    {
-        public InformationBindingViewModel() : base(TBinding.informationTypes) {
-            InformationAssociation = new TAssociation();
-        }
 
-        [PropertyOrder(2)]
-        [ExpandableObject]
-        public TAssociation InformationAssociation { get; set; }
-    }
 
-    public class FeatureBindingViewModel<TAssociation, TBinding> : FeatureBindingViewModel
-        where TAssociation : FeatureAssociation, new()
-        where TBinding : featureBinding
-    {
-        public FeatureBindingViewModel() : base(TBinding.featureTypes) {
-            FeatureAssociation = new TAssociation();
-        }
 
-        [PropertyOrder(2)]
-        [ExpandableObject]
-        public TAssociation FeatureAssociation { get; set; }
-    }
+
+    //public abstract class InformationBindingViewModel : BindingViewModel
+    //{
+    //    public InformationBindingViewModel(Type[] types) : base(types) {
+    //        InformationType = base.Types.FirstOrDefault();
+    //    }
+
+    //    private Type? _informationType = default;
+
+    //    [PropertyOrder(1)]
+    //    [Editor(typeof(InformationTypeEditor), typeof(InformationTypeEditor))]
+    //    public Type? InformationType {
+    //        get { return _informationType; }
+    //        set {
+    //            base.RefId = default;
+    //            SetValue(ref _informationType, value);
+    //        }
+    //    }
+    //}
+
+    //public abstract class FeatureBindingViewModel : BindingViewModel
+    //{
+    //    public FeatureBindingViewModel(Type[] types) : base(types) {
+    //        FeatureType = base.Types.FirstOrDefault();
+    //    }
+
+    //    private Type? _featureType = default;
+
+    //    [PropertyOrder(1)]
+    //    [Editor(typeof(FeatureTypeEditor), typeof(FeatureTypeEditor))]
+    //    public Type? FeatureType {
+    //        get { return _featureType; }
+    //        set {
+    //            base.RefId = default;
+    //            SetValue(ref _featureType, value);
+    //        }
+    //    }
+    //}
+
+    //public class InformationBindingViewModel<TAssociation, TBinding> : InformationBindingViewModel
+    //    where TAssociation : InformationAssociation, new()
+    //    where TBinding : informationBinding
+    //{
+    //    public InformationBindingViewModel() : base(TBinding.informationTypes) {
+    //        InformationAssociation = new TAssociation();
+    //    }
+
+    //    [PropertyOrder(2)]
+    //    [ExpandableObject]
+    //    public TAssociation InformationAssociation { get; set; }
+    //}
+
+    //public class FeatureBindingViewModel<TAssociation, TBinding> : FeatureBindingViewModel
+    //    where TAssociation : FeatureAssociation, new()
+    //    where TBinding : featureBinding
+    //{
+    //    public FeatureBindingViewModel() : base(TBinding.featureTypes) {
+    //        FeatureAssociation = new TAssociation();
+    //    }
+
+    //    [PropertyOrder(2)]
+    //    [ExpandableObject]
+    //    public TAssociation FeatureAssociation { get; set; }
+    //}
 }
