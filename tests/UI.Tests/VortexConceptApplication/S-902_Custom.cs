@@ -1,5 +1,6 @@
 ﻿using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
+using S100Framework.DomainModel.S201.FeatureTypes;
 using System.ComponentModel;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
@@ -26,6 +27,15 @@ namespace S100Framework.WPF.ViewModel.S902
 
     public class S131_FeatureTypeTestViewModel : ViewModelBase
     {
+        private informationBinding<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation;
+
+        [ExpandableObject]
+        public informationBinding<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation {
+            get { return _providesInformationOfAdditionalInformation; }
+            set { base.SetValue(ref _providesInformationOfAdditionalInformation, value); }
+        }
+
+
         private InformationBindingViewModel _informationBinding1;
 
         [ExpandableObject]
@@ -38,6 +48,7 @@ namespace S100Framework.WPF.ViewModel.S902
         public InformationBindingDescriptor[] InformationBindingDescriptors => DomainModel.S131.FeatureTypes.FeatureType.InformationBindingDescriptors;
 
         public void Load(S131_FeatureTypeTest instance) {
+            _providesInformationOfAdditionalInformation = new();
             _informationBinding1 = new InformationBindingViewModel() {
                 //association = new DomainModel.S131.Associations.InformationAssociations.PermissionType(),
                 //informationBindingDescriptor = S131_FeatureTypeTest.informationBindingDescriptors[0],

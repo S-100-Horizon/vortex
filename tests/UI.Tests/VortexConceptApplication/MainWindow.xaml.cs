@@ -3,6 +3,7 @@
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF.ViewModel;
 using S100Framework.WPF.ViewModel.S902;
+using S100Framework.WPF.ViewModel.S903;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -136,7 +137,7 @@ namespace VortexConceptApplication
             };
 
             viewModel.Load(domainModelElectronicProduct);
-#else
+#elif S902
             var domainModel = new S100Framework.WPF.ViewModel.S902.S131_FeatureTypeTest() {
 
             };
@@ -146,7 +147,18 @@ namespace VortexConceptApplication
             };
 
             viewModel.Load(domainModel);
+#else
+            var domainModel = new S100Framework.WPF.ViewModel.S903.S101_PileTest() {
 
+            };
+
+            var attributes = typeof(S100Framework.WPF.ViewModel.S903.S101_PileTest).GetProperty("theCollectionOfAidsToNavigationAssociationTest")!.GetCustomAttributes<FeatureTypeAttribute>();
+
+            var viewModel = new S101_PileTestViewModel() {
+
+            };
+
+            viewModel.Load(domainModel);
 #endif
 
             //this._propertyGrid.EditorDefinitions.Clear();

@@ -159,7 +159,7 @@ namespace S100Framework
                                                             .Replace("\n", " ");
 
                             classBuilder.AppendLine($"\t\t[System.ComponentModel.Description(\"{listedValueDefinition}\")]");
-                            classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlEnum(\"{(int)e}\")]");
+                            //classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlEnum(\"{(int)e}\")]");
                             classBuilder.AppendLine($"\t\t{e} = {(int)e},");
                             isFirst = false;
                         }
@@ -200,7 +200,7 @@ namespace S100Framework
                         classBuilder.AppendLine("\t[System.Serializable()]");
                         classBuilder.AppendLine($"\tpublic class {code}");
                         classBuilder.AppendLine("\t{");
-                        classBuilder.AppendLine("\t\t[System.Xml.Serialization.XmlText()]");
+                        //classBuilder.AppendLine("\t\t[System.Xml.Serialization.XmlText()]");
                         classBuilder.AppendLine("\t\tpublic string label { get; set; }");
                         classBuilder.AppendLine();
                         classBuilder.AppendLine("\t\tpublic string definition { get; set; }");
@@ -485,7 +485,7 @@ namespace S100Framework
                         var name = enumType.GetEnumName(e)!;
 
                         classBuilder.AppendLine($"\t\t[System.ComponentModel.Description(\"{definitions[name]}\")]");
-                        classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlEnum(\"{name}\")]");
+                        //classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlEnum(\"{name}\")]");
 
                         classBuilder.AppendLine($"\t\t{e},");
                         isFirst = false;
@@ -919,12 +919,14 @@ namespace S100Framework
                                 //var b = informationBindingBuilder.ToString();
                                 //builder.AppendLine(b);
 
-                                //var prefix = lower > 0 ? $"{name}" : $"{name}?";
-                                //var postfix = "";
-                                //if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
-                                //    prefix = $"List<{name}>";
-                                //    postfix = " = [];";
-                                //}
+                                var prefix = lower > 0 ? $"informationBinding<Associations.InformationAssociations.{association}>" : $"informationBinding<Associations.InformationAssociations.{association}>?";
+                                var postfix = "";
+                                if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
+                                    prefix = $"List<informationBinding<Associations.InformationAssociations.{association}>>";
+                                    postfix = " = [];";
+                                }
+
+                                builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");
 
                                 //builder.AppendLine($"\t\t\tpublic {prefix} {roleType}{association} {{get; set;}}{postfix}");
                                 //builder.AppendLine();
@@ -1156,12 +1158,14 @@ namespace S100Framework
                                 ////classBuilder.Insert(bindingIndex, b);
                                 //builder.AppendLine(b);
 
-                                //var prefix = lower > 0 ? $"{name}" : $"{name}?";
-                                //var postfix = "";
-                                //if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
-                                //    prefix = $"List<{name}>";
-                                //    postfix = " = [];";
-                                //}
+                                var prefix = lower > 0 ? $"informationBinding<Associations.InformationAssociations.{association}>" : $"informationBinding<Associations.InformationAssociations.{association}>?";
+                                var postfix = "";
+                                if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
+                                    prefix = $"List<informationBinding<Associations.InformationAssociations.{association}>>";
+                                    postfix = " = [];";
+                                }
+
+                                builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");
 
                                 //builder.AppendLine($"\t\t\tpublic {prefix} {roleType}{association} {{get; set;}}{postfix}");
                                 //builder.AppendLine();
@@ -1222,12 +1226,14 @@ namespace S100Framework
                                 ////classBuilder.Insert(bindingIndex, b);
                                 //builder.AppendLine(b);
 
-                                //var prefix = lower > 0 ? $"{name}" : $"{name}?";
-                                //var postfix = "";
-                                //if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
-                                //    prefix = $"List<{name}>";
-                                //    postfix = " = [];";
-                                //}
+                                var prefix = lower > 0 ? $"featureBinding<Associations.FeatureAssociations.{association}>" : $"featureBinding<Associations.FeatureAssociations.{association}>?";
+                                var postfix = "";
+                                if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
+                                    prefix = $"List<featureBinding<Associations.FeatureAssociations.{association}>>";
+                                    postfix = " = [];";
+                                }
+
+                                builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");
 
                                 //builder.AppendLine($"\t\t\tpublic {prefix} {roleType}{association} {{get; set;}}{postfix}");
                                 //builder.AppendLine();
@@ -1405,15 +1411,37 @@ namespace S100Framework
             common.AppendLine("\t\t\tcomposition,");
             common.AppendLine("\t\t}");
 
-            common.AppendLine("\t\tpublic interface informationBinding {");
-            common.AppendLine("\t\t\tpublic static abstract Type[] informationTypes { get; }");
+            //common.AppendLine("\t\tpublic interface informationBinding {");
+            //common.AppendLine("\t\t\tpublic static abstract Type[] informationTypes { get; }");
+            //common.AppendLine("\t\t\tpublic string? RefId { get; set; }");
+            //common.AppendLine("\t\t}");
+            //common.AppendLine();
+
+            //common.AppendLine("\t\tpublic interface featureBinding {");
+            //common.AppendLine("\t\t\tpublic static abstract Type[] featureTypes { get; }");
+            //common.AppendLine("\t\t\tpublic string? RefId { get; set; }");
+            //common.AppendLine("\t\t}");
+            //common.AppendLine();
+
+            common.AppendLine("\t\tpublic class informationBinding {");
             common.AppendLine("\t\t\tpublic string? RefId { get; set; }");
+            common.AppendLine("\t\t\tpublic string? InformationType { get; set; }");
             common.AppendLine("\t\t}");
             common.AppendLine();
 
-            common.AppendLine("\t\tpublic interface featureBinding {");
-            common.AppendLine("\t\t\tpublic static abstract Type[] featureTypes { get; }");
+            common.AppendLine("\t\tpublic class informationBinding<TAssociation> where TAssociation : InformationAssociation {");
+            common.AppendLine("\t\t\tpublic TAssociation? association { get; set; } = default;");
+            common.AppendLine("\t\t}");
+            common.AppendLine();
+
+            common.AppendLine("\t\tpublic class featureBinding {");
             common.AppendLine("\t\t\tpublic string? RefId { get; set; }");
+            common.AppendLine("\t\t\tpublic string? FeatureType { get; set; }");
+            common.AppendLine("\t\t}");
+            common.AppendLine();
+
+            common.AppendLine("\t\tpublic class featureBinding<TAssociation> where TAssociation : FeatureAssociation {");
+            common.AppendLine("\t\t\tpublic TAssociation? association { get; set; } = default;");
             common.AppendLine("\t\t}");
             common.AppendLine();
 
@@ -1492,8 +1520,8 @@ namespace S100Framework
 
 
             classBuilder.AppendLine("\t\t[System.Serializable()]");
-            classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = \"{S100FC}\")]");
-            classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlRoot(Namespace = \"{S100FC}\", IsNullable = false)]");
+            //classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlType(AnonymousType = true, Namespace = \"{S100FC}\")]");
+            //classBuilder.AppendLine($"\t\t[System.Xml.Serialization.XmlRoot(Namespace = \"{S100FC}\", IsNullable = false)]");
             classBuilder.AppendLine("\t\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
             if (code.ToLowerInvariant().Equals(code))
                 classBuilder.AppendLine("#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.");
@@ -1539,7 +1567,7 @@ namespace S100Framework
                     classBuilder.AppendLine($"\t\t\t[S100Framework.DomainModel.Role({attribute2.RoleName})]");
                 }
 
-                classBuilder.AppendLine($"\t\t\t[System.Xml.Serialization.XmlElement(Namespace = \"{S100FC}\")]");
+                //classBuilder.AppendLine($"\t\t\t[System.Xml.Serialization.XmlElement(Namespace = \"{S100FC}\")]");
 
                 if (!p.PropertyType.IsGenericType && p.PropertyType != typeof(String)) {
                     if (attribute1 is not null)

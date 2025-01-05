@@ -123,7 +123,7 @@ namespace S100Framework.WPF.Editors
     public sealed class AssociationEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var viewModel = (InformationBindingViewModel)((PropertyItem)propertyItem.ParentElement).Instance;
+            var viewModel = (InformationBindingViewModel)(propertyItem.Instance);
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
