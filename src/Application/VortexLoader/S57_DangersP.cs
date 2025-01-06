@@ -1,5 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-<<<<<<< HEAD
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.DomainModel.S101;
@@ -9,8 +8,6 @@ using System;
 using static S100Framework.Applications.VortexLoader;
 using static System.Net.WebRequestMethods;
 using IO = System.IO;
-=======
->>>>>>> 1c6aaac6c4d00c3c184af5d5f9397920f1d501cb
 
 namespace S100Framework.Applications
 {
