@@ -1,6 +1,8 @@
-﻿using S100Framework.DomainModel.Bindings;
+﻿using S100Framework.DomainModel;
+using S100Framework.DomainModel.Bindings;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel
 {
@@ -71,90 +73,52 @@ namespace S100Framework.WPF.ViewModel
         public abstract void Load(T instance);
     }
 
-    public class informationBindingViewModel : INotifyPropertyChanged
+    public abstract class BindingViewModel
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
+        private Type[] _types;
 
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        public BindingViewModel(Type[] types) {
+            _types = types;
         }
 
-        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-            if (string.IsNullOrWhiteSpace(propertyName)) return;
+        [Browsable(false)]
+        public Type[] Types => _types;
 
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            backingFiled = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        private string? _linkId;
-
-        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
-        public string? LinkId {
-            get {
-                return _linkId;
-            }
-
-            set {
-                SetValue(ref _linkId, value);
-            }
-        }
-
-        private informationBinding? _informationBinding;
-
-        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
-        public informationBinding? informationBinding {
-            get {
-                return _informationBinding;
-            }
-
-            set {
-                SetValue(ref _informationBinding, value);
-            }
-        }
+        [PropertyOrder(0)]
+        public string? RefId { get; set; } = default;
     }
 
-    public class FeatureBindingConnector : INotifyPropertyChanged
+    public class InformationBindingViewModel<TAssociation, TBinding> : BindingViewModel
+        where TAssociation : InformationAssociation, new()
+        where TBinding : informationBinding
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        public InformationBindingViewModel() : base(TBinding.informationTypes) {
+            InformationType = base.Types.FirstOrDefault();
+            InformationAssociation = new TAssociation();
         }
 
-        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-            if (string.IsNullOrWhiteSpace(propertyName)) return;
+        [PropertyOrder(1)]
+        public Type? InformationType { get; set; }
 
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            backingFiled = value;
-            OnPropertyChanged(propertyName);
-        }
-
-        private string? _linkId;
-
-        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
-        public string? LinkId {
-            get {
-                return _linkId;
-            }
-
-            set {
-                SetValue(ref _linkId, value);
-            }
-        }
-
-        private informationBinding? _informationBinding;
-
-        //[Editor(typeof(Editors.BindingConnectorEditor), typeof(Editors.BindingConnectorEditor))]
-        public informationBinding? informationBinding {
-            get {
-                return _informationBinding;
-            }
-
-            set {
-                SetValue(ref _informationBinding, value);
-            }
-        }
+        [PropertyOrder(2)]
+        [ExpandableObject]
+        public TAssociation InformationAssociation { get; set; }
     }
 
+    public class FeatureBindingViewModel<TAssociation, TBinding> : BindingViewModel
+        where TAssociation : FeatureAssociation, new()
+        where TBinding : featureBinding
+    {
+        public FeatureBindingViewModel() : base(TBinding.featureTypes) {
+            FeatureType = base.Types.FirstOrDefault();
+            FeatureAssociation = new TAssociation();
+        }
+
+        [PropertyOrder(1)]
+        public Type? FeatureType { get; set; }
+
+        [PropertyOrder(2)]
+        [ExpandableObject]
+        public TAssociation FeatureAssociation { get; set; }
+    }
 }

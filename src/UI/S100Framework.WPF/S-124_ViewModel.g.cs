@@ -1,37 +1,42 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using S100Framework.DomainModel.S124;
+using S100Framework.DomainModel.S124.Associations.FeatureAssociations;
+using S100Framework.DomainModel.S124.Associations.InformationAssociations;
+using S100Framework.DomainModel.S124.ComplexAttributes;
+using S100Framework.DomainModel.S124.FeatureTypes;
+using S100Framework.DomainModel.S124.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using S100Framework.DomainModel;
-using S100Framework.DomainModel.S124;
-using S100Framework.DomainModel.S124.ComplexAttributes;
-using S100Framework.DomainModel.S124.InformationTypes;
-using S100Framework.DomainModel.S124.FeatureTypes;
-using S100Framework.DomainModel.S124.Associations.InformationAssociations;
-using S100Framework.DomainModel.S124.Associations.FeatureAssociations;
+using System.ComponentModel;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+
 
 namespace S100Framework.WPF.ViewModel.S124
 {
+
     internal static class Preamble
     {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S124.InformationTypes.NAVWARNPreamble).Name, () =>
-        {
-            return new NAVWARNPreambleViewModel();
-        } }, { typeof(DomainModel.S124.InformationTypes.References).Name, () =>
-        {
-            return new ReferencesViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.NAVWARNPart).Name, () =>
-        {
-            return new NAVWARNPartViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected).Name, () =>
-        {
-            return new NAVWARNAreaAffectedViewModel();
-        } }, { typeof(DomainModel.S124.FeatureTypes.TextPlacement).Name, () =>
-        {
-            return new TextPlacementViewModel();
-        } }, });
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {
+            { typeof(DomainModel.S124.InformationTypes.NAVWARNPreamble).Name, ()=> {
+                return new NAVWARNPreambleViewModel();
+              }
+            },
+            { typeof(DomainModel.S124.InformationTypes.References).Name, ()=> {
+                return new ReferencesViewModel();
+              }
+            },
+            { typeof(DomainModel.S124.FeatureTypes.NAVWARNPart).Name, ()=> {
+                return new NAVWARNPartViewModel();
+              }
+            },
+            { typeof(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected).Name, ()=> {
+                return new NAVWARNAreaAffectedViewModel();
+              }
+            },
+            { typeof(DomainModel.S124.FeatureTypes.TextPlacement).Name, ()=> {
+                return new TextPlacementViewModel();
+              }
+            },
+        });
     }
 
     public partial class featureNameViewModel : ViewModelBase
@@ -546,7 +551,7 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        [DomainModel.CodeListAttribute(nameof(navwarnTypeDetailsList))]
+        [DomainModel.CodeList(nameof(navwarnTypeDetailsList))]
         [Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]
         [Category("warningInformation")]
         public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails { get; set; } = new();
@@ -1256,7 +1261,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private navwarnTypeGeneral _navwarnTypeGeneral;
-        [DomainModel.CodeListAttribute(nameof(navwarnTypeGeneralList))]
+        [DomainModel.CodeList(nameof(navwarnTypeGeneralList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("NAVWARNPreamble")]
         public navwarnTypeGeneral navwarnTypeGeneral
@@ -1286,6 +1291,10 @@ namespace S100Framework.WPF.ViewModel.S124
                 SetValue(ref _publicationTime, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<NWReferences, NAVWARNPreamble.theReferencesNWReferences> associationNWReferences { get; set; } = new();
 
         [Browsable(false)]
         public navwarnTypeGeneral[] navwarnTypeGeneralList => CodeList.navwarnTypeGenerals.ToArray();
@@ -1488,6 +1497,18 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<NWPreambleContent, NAVWARNPart.headerNWPreambleContent> associationNWPreambleContent { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AreaAffected, NAVWARNPart.affectsAreaAffected> associationAreaAffected { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation, NAVWARNPart.positionsTextAssociation> associationTextAssociation { get; set; } = new();
+
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance)
         {
             featureName.Clear();
@@ -1554,6 +1575,10 @@ namespace S100Framework.WPF.ViewModel.S124
 
     public partial class NAVWARNAreaAffectedViewModel : ViewModelBase
     {
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<AreaAffected, NAVWARNAreaAffected.impactsAreaAffected> associationAreaAffected { get; set; } = new();
+
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected instance)
         {
         }
@@ -1667,6 +1692,10 @@ namespace S100Framework.WPF.ViewModel.S124
                 SetValue(ref _scaleMinimum, value);
             }
         }
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation, TextPlacement.identifiesTextAssociation> compositionTextAssociation { get; set; } = new();
 
         public void Load(DomainModel.S124.FeatureTypes.TextPlacement instance)
         {

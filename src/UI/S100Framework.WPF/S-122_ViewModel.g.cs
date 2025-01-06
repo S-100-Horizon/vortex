@@ -1,69 +1,85 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using S100Framework.DomainModel.S122;
+using S100Framework.DomainModel.S122.Associations.InformationAssociations;
+using S100Framework.DomainModel.S122.ComplexAttributes;
+using S100Framework.DomainModel.S122.FeatureTypes;
+using S100Framework.DomainModel.S122.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using S100Framework.DomainModel;
-using S100Framework.DomainModel.S122;
-using S100Framework.DomainModel.S122.ComplexAttributes;
-using S100Framework.DomainModel.S122.InformationTypes;
-using S100Framework.DomainModel.S122.FeatureTypes;
-using S100Framework.DomainModel.S122.Associations.InformationAssociations;
+using System.ComponentModel;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+
 
 namespace S100Framework.WPF.ViewModel.S122
 {
+
     internal static class Preamble
     {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S122.InformationTypes.InformationType).Name, () =>
-        {
-            return new InformationTypeViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.AbstractRxN).Name, () =>
-        {
-            return new AbstractRxNViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.NauticalInformation).Name, () =>
-        {
-            return new NauticalInformationViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.Regulations).Name, () =>
-        {
-            return new RegulationsViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.Restrictions).Name, () =>
-        {
-            return new RestrictionsViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.Recommendations).Name, () =>
-        {
-            return new RecommendationsViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.Authority).Name, () =>
-        {
-            return new AuthorityViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.ContactDetails).Name, () =>
-        {
-            return new ContactDetailsViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.NonStandardWorkingDay).Name, () =>
-        {
-            return new NonStandardWorkingDayViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.ServiceHours).Name, () =>
-        {
-            return new ServiceHoursViewModel();
-        } }, { typeof(DomainModel.S122.InformationTypes.Applicability).Name, () =>
-        {
-            return new ApplicabilityViewModel();
-        } }, { typeof(DomainModel.S122.FeatureTypes.RestrictedArea).Name, () =>
-        {
-            return new RestrictedAreaViewModel();
-        } }, { typeof(DomainModel.S122.FeatureTypes.MarineProtectedArea).Name, () =>
-        {
-            return new MarineProtectedAreaViewModel();
-        } }, { typeof(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea).Name, () =>
-        {
-            return new VesselTrafficServiceAreaViewModel();
-        } }, { typeof(DomainModel.S122.FeatureTypes.DataCoverage).Name, () =>
-        {
-            return new DataCoverageViewModel();
-        } }, { typeof(DomainModel.S122.FeatureTypes.TextPlacement).Name, () =>
-        {
-            return new TextPlacementViewModel();
-        } }, });
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {
+            { typeof(DomainModel.S122.InformationTypes.InformationType).Name, ()=> {
+                return new InformationTypeViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.AbstractRxN).Name, ()=> {
+                return new AbstractRxNViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.NauticalInformation).Name, ()=> {
+                return new NauticalInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.Regulations).Name, ()=> {
+                return new RegulationsViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.Restrictions).Name, ()=> {
+                return new RestrictionsViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.Recommendations).Name, ()=> {
+                return new RecommendationsViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.Authority).Name, ()=> {
+                return new AuthorityViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.ContactDetails).Name, ()=> {
+                return new ContactDetailsViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.NonStandardWorkingDay).Name, ()=> {
+                return new NonStandardWorkingDayViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.ServiceHours).Name, ()=> {
+                return new ServiceHoursViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.InformationTypes.Applicability).Name, ()=> {
+                return new ApplicabilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.FeatureTypes.RestrictedArea).Name, ()=> {
+                return new RestrictedAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.FeatureTypes.MarineProtectedArea).Name, ()=> {
+                return new MarineProtectedAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea).Name, ()=> {
+                return new VesselTrafficServiceAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.FeatureTypes.DataCoverage).Name, ()=> {
+                return new DataCoverageViewModel();
+              }
+            },
+            { typeof(DomainModel.S122.FeatureTypes.TextPlacement).Name, ()=> {
+                return new TextPlacementViewModel();
+              }
+            },
+        });
     }
 
     public partial class contactAddressViewModel : ViewModelBase
@@ -771,7 +787,7 @@ namespace S100Framework.WPF.ViewModel.S122
     public partial class rxNCodeViewModel : ViewModelBase
     {
         private categoryOfRxN? _categoryOfRxN;
-        [DomainModel.CodeListAttribute(nameof(categoryOfRxNList))]
+        [DomainModel.CodeList(nameof(categoryOfRxNList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public categoryOfRxN? categoryOfRxN
@@ -788,7 +804,7 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private actionOrActivity? _actionOrActivity;
-        [DomainModel.CodeListAttribute(nameof(actionOrActivityList))]
+        [DomainModel.CodeList(nameof(actionOrActivityList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public actionOrActivity? actionOrActivity
@@ -2093,6 +2109,10 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, AbstractRxN.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
+
         public void Load(DomainModel.S122.InformationTypes.AbstractRxN instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -2290,6 +2310,10 @@ namespace S100Framework.WPF.ViewModel.S122
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, NauticalInformation.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
 
         public void Load(DomainModel.S122.InformationTypes.NauticalInformation instance)
         {
@@ -3067,6 +3091,18 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, Authority.theInformationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityContact, Authority.theContactDetailsAuthorityContact> associationAuthorityContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityHours, Authority.theServiceHoursAuthorityHours> associationAuthorityHours { get; set; } = new();
+
         public void Load(DomainModel.S122.InformationTypes.Authority instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -3352,6 +3388,10 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityContact, ContactDetails.theAuthorityAuthorityContact> associationAuthorityContact { get; set; } = new();
+
         public void Load(DomainModel.S122.InformationTypes.ContactDetails instance)
         {
             callName = instance.callName;
@@ -3610,6 +3650,10 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ExceptionalWorkday, NonStandardWorkingDay.theServiceHours_nsdyExceptionalWorkday> associationExceptionalWorkday { get; set; } = new();
+
         public void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDay instance)
         {
             dateFixed.Clear();
@@ -3801,6 +3845,14 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityHours, ServiceHours.theAuthority_srvHrsAuthorityHours> associationAuthorityHours { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ExceptionalWorkday, ServiceHours.partialWorkingDayExceptionalWorkday> associationExceptionalWorkday { get; set; } = new();
+
         public void Load(DomainModel.S122.InformationTypes.ServiceHours instance)
         {
             scheduleByDayOfWeek.Clear();
@@ -3914,7 +3966,7 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = new();
 
         private categoryOfVessel? _categoryOfVessel;
-        [DomainModel.CodeListAttribute(nameof(categoryOfVesselList))]
+        [DomainModel.CodeList(nameof(categoryOfVesselList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("Applicability")]
         public categoryOfVessel? categoryOfVessel
@@ -4399,7 +4451,7 @@ namespace S100Framework.WPF.ViewModel.S122
     public partial class MarineProtectedAreaViewModel : ViewModelBase
     {
         private categoryOfMarineProtectedArea _categoryOfMarineProtectedArea;
-        [DomainModel.CodeListAttribute(nameof(categoryOfMarineProtectedAreaList))]
+        [DomainModel.CodeList(nameof(categoryOfMarineProtectedAreaList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("MarineProtectedArea")]
         public categoryOfMarineProtectedArea categoryOfMarineProtectedArea
@@ -4526,6 +4578,10 @@ namespace S100Framework.WPF.ViewModel.S122
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ProtectedAreaAuthority, MarineProtectedArea.responsibleAuthorityProtectedAreaAuthority> associationProtectedAreaAuthority { get; set; } = new();
 
         [Browsable(false)]
         public categoryOfMarineProtectedArea[] categoryOfMarineProtectedAreaList => CodeList.categoryOfMarineProtectedAreas.ToArray();
@@ -4750,6 +4806,10 @@ namespace S100Framework.WPF.ViewModel.S122
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, VesselTrafficServiceArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
 
         public void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance)
         {

@@ -1,133 +1,170 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using S100Framework.DomainModel.S131;
+using S100Framework.DomainModel.S131.Associations.FeatureAssociations;
+using S100Framework.DomainModel.S131.Associations.InformationAssociations;
+using S100Framework.DomainModel.S131.ComplexAttributes;
+using S100Framework.DomainModel.S131.FeatureTypes;
+using S100Framework.DomainModel.S131.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using S100Framework.DomainModel;
-using S100Framework.DomainModel.S131;
-using S100Framework.DomainModel.S131.ComplexAttributes;
-using S100Framework.DomainModel.S131.InformationTypes;
-using S100Framework.DomainModel.S131.FeatureTypes;
-using S100Framework.DomainModel.S131.Associations.InformationAssociations;
-using S100Framework.DomainModel.S131.Associations.FeatureAssociations;
+using System.ComponentModel;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+
 
 namespace S100Framework.WPF.ViewModel.S131
 {
+
     internal static class Preamble
     {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S131.InformationTypes.Applicability).Name, () =>
-        {
-            return new ApplicabilityViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Authority).Name, () =>
-        {
-            return new AuthorityViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.AvailablePortServices).Name, () =>
-        {
-            return new AvailablePortServicesViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.ContactDetails).Name, () =>
-        {
-            return new ContactDetailsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Entrance).Name, () =>
-        {
-            return new EntranceViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.NauticalInformation).Name, () =>
-        {
-            return new NauticalInformationViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.NonStandardWorkingDay).Name, () =>
-        {
-            return new NonStandardWorkingDayViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Recommendations).Name, () =>
-        {
-            return new RecommendationsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Regulations).Name, () =>
-        {
-            return new RegulationsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Restrictions).Name, () =>
-        {
-            return new RestrictionsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.ServiceHours).Name, () =>
-        {
-            return new ServiceHoursViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.SpatialQuality).Name, () =>
-        {
-            return new SpatialQualityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.AnchorBerth).Name, () =>
-        {
-            return new AnchorBerthViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.AnchorageArea).Name, () =>
-        {
-            return new AnchorageAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Berth).Name, () =>
-        {
-            return new BerthViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.BerthPosition).Name, () =>
-        {
-            return new BerthPositionViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DockArea).Name, () =>
-        {
-            return new DockAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DryDock).Name, () =>
-        {
-            return new DryDockViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DumpingGround).Name, () =>
-        {
-            return new DumpingGroundViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.FloatingDock).Name, () =>
-        {
-            return new FloatingDockViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Gridiron).Name, () =>
-        {
-            return new GridironViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative).Name, () =>
-        {
-            return new HarbourAreaAdministrativeViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourAreaSection).Name, () =>
-        {
-            return new HarbourAreaSectionViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourBasin).Name, () =>
-        {
-            return new HarbourBasinViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourFacility).Name, () =>
-        {
-            return new HarbourFacilityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.MooringWarpingFacility).Name, () =>
-        {
-            return new MooringWarpingFacilityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.OuterLimit).Name, () =>
-        {
-            return new OuterLimitViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.PilotBoardingPlace).Name, () =>
-        {
-            return new PilotBoardingPlaceViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.SeaplaneLandingArea).Name, () =>
-        {
-            return new SeaplaneLandingAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Terminal).Name, () =>
-        {
-            return new TerminalViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.TurningBasin).Name, () =>
-        {
-            return new TurningBasinViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.WaterwayArea).Name, () =>
-        {
-            return new WaterwayAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DataCoverage).Name, () =>
-        {
-            return new DataCoverageViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData).Name, () =>
-        {
-            return new QualityOfNonBathymetricDataViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.SoundingDatum).Name, () =>
-        {
-            return new SoundingDatumViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.VerticalDatumOfData).Name, () =>
-        {
-            return new VerticalDatumOfDataViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.TextPlacement).Name, () =>
-        {
-            return new TextPlacementViewModel();
-        } }, });
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {
+            { typeof(DomainModel.S131.InformationTypes.Applicability).Name, ()=> {
+                return new ApplicabilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Authority).Name, ()=> {
+                return new AuthorityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.AvailablePortServices).Name, ()=> {
+                return new AvailablePortServicesViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.ContactDetails).Name, ()=> {
+                return new ContactDetailsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Entrance).Name, ()=> {
+                return new EntranceViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.NauticalInformation).Name, ()=> {
+                return new NauticalInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.NonStandardWorkingDay).Name, ()=> {
+                return new NonStandardWorkingDayViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Recommendations).Name, ()=> {
+                return new RecommendationsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Regulations).Name, ()=> {
+                return new RegulationsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Restrictions).Name, ()=> {
+                return new RestrictionsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.ServiceHours).Name, ()=> {
+                return new ServiceHoursViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.SpatialQuality).Name, ()=> {
+                return new SpatialQualityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.AnchorBerth).Name, ()=> {
+                return new AnchorBerthViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.AnchorageArea).Name, ()=> {
+                return new AnchorageAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.Berth).Name, ()=> {
+                return new BerthViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.BerthPosition).Name, ()=> {
+                return new BerthPositionViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DockArea).Name, ()=> {
+                return new DockAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DryDock).Name, ()=> {
+                return new DryDockViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DumpingGround).Name, ()=> {
+                return new DumpingGroundViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.FloatingDock).Name, ()=> {
+                return new FloatingDockViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.Gridiron).Name, ()=> {
+                return new GridironViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative).Name, ()=> {
+                return new HarbourAreaAdministrativeViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourAreaSection).Name, ()=> {
+                return new HarbourAreaSectionViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourBasin).Name, ()=> {
+                return new HarbourBasinViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourFacility).Name, ()=> {
+                return new HarbourFacilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.MooringWarpingFacility).Name, ()=> {
+                return new MooringWarpingFacilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.OuterLimit).Name, ()=> {
+                return new OuterLimitViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.PilotBoardingPlace).Name, ()=> {
+                return new PilotBoardingPlaceViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.SeaplaneLandingArea).Name, ()=> {
+                return new SeaplaneLandingAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.Terminal).Name, ()=> {
+                return new TerminalViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.TurningBasin).Name, ()=> {
+                return new TurningBasinViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.WaterwayArea).Name, ()=> {
+                return new WaterwayAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DataCoverage).Name, ()=> {
+                return new DataCoverageViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData).Name, ()=> {
+                return new QualityOfNonBathymetricDataViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.SoundingDatum).Name, ()=> {
+                return new SoundingDatumViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.VerticalDatumOfData).Name, ()=> {
+                return new VerticalDatumOfDataViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.TextPlacement).Name, ()=> {
+                return new TextPlacementViewModel();
+              }
+            },
+        });
     }
 
     public partial class contactAddressViewModel : ViewModelBase
@@ -888,7 +925,7 @@ namespace S100Framework.WPF.ViewModel.S131
     public partial class rxNCodeViewModel : ViewModelBase
     {
         private categoryOfRxN? _categoryOfRxN;
-        [DomainModel.CodeListAttribute(nameof(categoryOfRxNList))]
+        [DomainModel.CodeList(nameof(categoryOfRxNList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public categoryOfRxN? categoryOfRxN
@@ -905,7 +942,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         private actionOrActivity? _actionOrActivity;
-        [DomainModel.CodeListAttribute(nameof(actionOrActivityList))]
+        [DomainModel.CodeList(nameof(actionOrActivityList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public actionOrActivity? actionOrActivity
@@ -2697,7 +2734,7 @@ namespace S100Framework.WPF.ViewModel.S131
         public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = new();
 
         private categoryOfVessel? _categoryOfVessel;
-        [DomainModel.CodeListAttribute(nameof(categoryOfVesselList))]
+        [DomainModel.CodeList(nameof(categoryOfVesselList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("Applicability")]
         public categoryOfVessel? categoryOfVessel
@@ -2848,6 +2885,14 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<InclusionType, Applicability.theApplicableRxNInclusionType> associationInclusionType { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<PermissionType, Applicability.vslLocationPermissionType> associationPermissionType { get; set; } = new();
 
         [Browsable(false)]
         public categoryOfVessel[] categoryOfVesselList => CodeList.categoryOfVessels.ToArray();
@@ -3083,6 +3128,18 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityContact, Authority.theContactDetailsAuthorityContact> associationAuthorityContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, Authority.theInformationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityHours, Authority.theServiceHoursAuthorityHours> associationAuthorityHours { get; set; } = new();
+
         public void Load(DomainModel.S131.InformationTypes.Authority instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -3182,7 +3239,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AvailablePortServices")]
         public ObservableCollection<shipSanitationControl> shipSanitationControl { get; set; } = new();
 
-        [DomainModel.CodeListAttribute(nameof(transportConnectionList))]
+        [DomainModel.CodeList(nameof(transportConnectionList))]
         [Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]
         [Category("AvailablePortServices")]
         public ObservableCollection<transportConnection> transportConnection { get; set; } = new();
@@ -3193,7 +3250,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AvailablePortServices")]
         public ObservableCollection<cargoService> cargoService { get; set; } = new();
 
-        [DomainModel.CodeListAttribute(nameof(securitySafetyEmergencyServiceList))]
+        [DomainModel.CodeList(nameof(securitySafetyEmergencyServiceList))]
         [Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]
         [Category("AvailablePortServices")]
         public ObservableCollection<securitySafetyEmergencyService> securitySafetyEmergencyService { get; set; } = new();
@@ -3658,6 +3715,10 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityContact, ContactDetails.theAuthorityAuthorityContact> associationAuthorityContact { get; set; } = new();
 
         public void Load(DomainModel.S131.InformationTypes.ContactDetails instance)
         {
@@ -4194,6 +4255,18 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<InclusionType, AbstractRxN.isApplicableToInclusionType> associationInclusionType { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, AbstractRxN.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation, NauticalInformation.informationProvidedForAdditionalInformation> associationAdditionalInformation { get; set; } = new();
+
         public void Load(DomainModel.S131.InformationTypes.NauticalInformation instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -4561,6 +4634,14 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<InclusionType, AbstractRxN.isApplicableToInclusionType> associationInclusionType { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, AbstractRxN.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
+
         public void Load(DomainModel.S131.InformationTypes.Recommendations instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -4746,6 +4827,14 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<InclusionType, AbstractRxN.isApplicableToInclusionType> associationInclusionType { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, AbstractRxN.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
 
         public void Load(DomainModel.S131.InformationTypes.Regulations instance)
         {
@@ -4933,6 +5022,14 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<InclusionType, AbstractRxN.isApplicableToInclusionType> associationInclusionType { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, AbstractRxN.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
+
         public void Load(DomainModel.S131.InformationTypes.Restrictions instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -5103,6 +5200,14 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ExceptionalWorkday, ServiceHours.partialWorkingDayExceptionalWorkday> associationExceptionalWorkday { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityHours, ServiceHours.theAuthority_srvHrsAuthorityHours> associationAuthorityHours { get; set; } = new();
 
         public void Load(DomainModel.S131.InformationTypes.ServiceHours instance)
         {
@@ -5356,6 +5461,26 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, AnchorBerth.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, AnchorBerth.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<PrimaryAuxiliaryFacility, AnchorBerth.auxiliaryFacilityPrimaryAuxiliaryFacility> associationPrimaryAuxiliaryFacility { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.AnchorBerth instance)
         {
@@ -5622,6 +5747,22 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, AnchorageArea.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, AnchorageArea.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.AnchorageArea instance)
         {
@@ -6070,6 +6211,30 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, Berth.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, Berth.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Demarcation, Berth.demarcationIndicatorDemarcation> associationDemarcation { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, Berth.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.Berth instance)
         {
             availableBerthingLength = instance.availableBerthingLength;
@@ -6445,6 +6610,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Demarcation, BerthPosition.demarcatedFeatureDemarcation> compositionDemarcation { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<PrimaryAuxiliaryFacility, BerthPosition.auxiliaryFacilityPrimaryAuxiliaryFacility> associationPrimaryAuxiliaryFacility { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.BerthPosition instance)
         {
             availableBerthingLength = instance.availableBerthingLength;
@@ -6759,6 +6940,26 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, DockArea.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, DockArea.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, DockArea.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.DockArea instance)
         {
             depthsDescription = new();
@@ -7016,6 +7217,22 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, HarbourPhysicalInfrastructure.infrastructureLocationInfrastructure> associationInfrastructure { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, DryDock.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.DryDock instance)
         {
@@ -7289,6 +7506,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, DumpingGround.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, DumpingGround.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.DumpingGround instance)
         {
             depthsDescription = new();
@@ -7547,6 +7780,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, HarbourPhysicalInfrastructure.infrastructureLocationInfrastructure> associationInfrastructure { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, FloatingDock.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.FloatingDock instance)
         {
             sillDepth = instance.sillDepth;
@@ -7786,6 +8035,22 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, HarbourPhysicalInfrastructure.infrastructureLocationInfrastructure> associationInfrastructure { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, Gridiron.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.Gridiron instance)
         {
@@ -8076,6 +8341,30 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, HarbourAreaAdministrative.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, HarbourAreaAdministrative.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<JurisdictionalLimit, HarbourAreaAdministrative.limitExtentJurisdictionalLimit> associationJurisdictionalLimit { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, HarbourAreaAdministrative.layoutUnitLayoutDivision> associationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative instance)
         {
             uNLocationCode = instance.uNLocationCode;
@@ -8359,6 +8648,42 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, HarbourAreaSection.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, HarbourAreaSection.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, HarbourAreaSection.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Subsection, HarbourAreaSection.constituteSubsection> aggregationSubsection { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Subsection, HarbourAreaSection.subUnitSubsection> associationSubsection { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, HarbourAreaSection.hasInfrastructureInfrastructure> associationInfrastructure { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, HarbourAreaSection.layoutUnitLayoutDivision> associationLayoutDivision { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaSection instance)
         {
@@ -8651,6 +8976,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, HarbourBasin.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, HarbourBasin.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.HarbourBasin instance)
         {
             depthsDescription = new();
@@ -8896,6 +9237,22 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, HarbourPhysicalInfrastructure.infrastructureLocationInfrastructure> associationInfrastructure { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, HarbourFacility.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourFacility instance)
         {
@@ -9189,6 +9546,26 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, MooringWarpingFacility.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, MooringWarpingFacility.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<PrimaryAuxiliaryFacility, MooringWarpingFacility.primaryFacilityPrimaryAuxiliaryFacility> associationPrimaryAuxiliaryFacility { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.MooringWarpingFacility instance)
         {
             categoryOfMooringWarpingFacility = instance.categoryOfMooringWarpingFacility;
@@ -9438,6 +9815,22 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LimitEntrance, OuterLimit.entranceReferenceLimitEntrance> associationLimitEntrance { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<JurisdictionalLimit, OuterLimit.limitReferenceJurisdictionalLimit> associationJurisdictionalLimit { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.OuterLimit instance)
         {
@@ -9764,6 +10157,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, PilotBoardingPlace.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, PilotBoardingPlace.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.PilotBoardingPlace instance)
         {
             depthsDescription = new();
@@ -10053,6 +10462,22 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, SeaplaneLandingArea.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, SeaplaneLandingArea.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.SeaplaneLandingArea instance)
         {
@@ -10363,6 +10788,34 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, Terminal.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, Terminal.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, Terminal.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, Terminal.layoutUnitLayoutDivision> associationLayoutDivision { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, Terminal.hasInfrastructureInfrastructure> associationInfrastructure { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.Terminal instance)
         {
             portFacilityNumber = instance.portFacilityNumber;
@@ -10664,6 +11117,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, TurningBasin.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, TurningBasin.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.TurningBasin instance)
         {
             depthsDescription = new();
@@ -10953,6 +11422,22 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, WaterwayArea.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, WaterwayArea.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.WaterwayArea instance)
         {
@@ -11486,6 +11971,10 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _scaleMinimum, value);
             }
         }
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation, TextPlacement.positionsTextAssociation> associationTextAssociation { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.TextPlacement instance)
         {

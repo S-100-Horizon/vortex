@@ -1,8 +1,11 @@
+<<<<<<< HEAD
 ﻿using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+=======
+﻿using ArcGIS.Core.Data;
+>>>>>>> 1c6aaac6c4d00c3c184af5d5f9397920f1d501cb
 using CommandLine;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
