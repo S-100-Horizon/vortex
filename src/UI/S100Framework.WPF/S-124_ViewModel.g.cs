@@ -1,4 +1,4 @@
-using S100Framework.DomainModel.Bindings;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S124.ComplexAttributes;
 using S100Framework.DomainModel.S124.FeatureTypes;
@@ -6,6 +6,8 @@ using S100Framework.DomainModel.S124.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Reflection;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 
 namespace S100Framework.WPF.ViewModel.S124
@@ -37,6 +39,8 @@ namespace S100Framework.WPF.ViewModel.S124
         });
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class featureNameViewModel : ViewModelBase
     {
         private String _language = string.Empty;
@@ -115,6 +119,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class dateTimeRangeViewModel : ViewModelBase
     {
         private DateTime _dateTimeEnd;
@@ -175,6 +181,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class eNCFeatureReferenceViewModel : ViewModelBase
     {
         private String _editionNumber = string.Empty;
@@ -266,6 +274,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class featureReferenceViewModel : ViewModelBase
     {
         [Category("featureReference")]
@@ -354,6 +364,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class fixedDateRangeViewModel : ViewModelBase
     {
         private DateOnly? _dateEnd = default;
@@ -416,6 +428,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class informationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -531,6 +545,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class warningInformationViewModel : ViewModelBase
     {
         private informationViewModel? _information;
@@ -598,6 +614,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class chartAffectedViewModel : ViewModelBase
     {
         private String _chartNumber = string.Empty;
@@ -694,6 +712,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class affectedChartPublicationsViewModel : ViewModelBase
     {
         private chartAffectedViewModel? _chartAffected;
@@ -815,6 +835,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class locationNameViewModel : ViewModelBase
     {
         private String _language = string.Empty;
@@ -875,6 +897,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class generalAreaViewModel : ViewModelBase
     {
         private String _localityIdentifier = string.Empty;
@@ -932,6 +956,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class localityViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -988,6 +1014,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class messageSeriesIdentifierViewModel : ViewModelBase
     {
         private String _agencyResponsibleForProduction = string.Empty;
@@ -1138,6 +1166,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class nAVWARNTitleViewModel : ViewModelBase
     {
         private String _language = string.Empty;
@@ -1198,6 +1228,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class NAVWARNPreambleViewModel : ViewModelBase
     {
         [Category("NAVWARNPreamble")]
@@ -1290,8 +1322,21 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => NAVWARNPreamble.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S124.Associations.InformationAssociations.NWReferences> _theReferencesOfNWReferences = new(typeof(NAVWARNPreamble).GetProperty("theReferencesOfNWReferences")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S124.Associations.InformationAssociations.NWReferences> theReferencesOfNWReferences
+        {
+            get
+            {
+                return _theReferencesOfNWReferences;
+            }
+
+            set
+            {
+                base.SetValue(ref _theReferencesOfNWReferences, value);
+            }
+        }
 
         [Browsable(false)]
         public navwarnTypeGeneral[] navwarnTypeGeneralList => CodeList.navwarnTypeGenerals.ToArray();
@@ -1379,6 +1424,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ReferencesViewModel : ViewModelBase
     {
         [Category("References")]
@@ -1452,6 +1499,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class NAVWARNPartViewModel : ViewModelBase
     {
         [Category("NAVWARNPart")]
@@ -1494,11 +1543,53 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => NAVWARNPart.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S124.Associations.InformationAssociations.NWPreambleContent> _headerOfNWPreambleContent = new(typeof(NAVWARNPart).GetProperty("headerOfNWPreambleContent")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S124.Associations.InformationAssociations.NWPreambleContent> headerOfNWPreambleContent
+        {
+            get
+            {
+                return _headerOfNWPreambleContent;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => NAVWARNPart.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _headerOfNWPreambleContent, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.AreaAffected> _affectsOfAreaAffected = new(typeof(NAVWARNPart).GetProperty("affectsOfAreaAffected")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.AreaAffected> affectsOfAreaAffected
+        {
+            get
+            {
+                return _affectsOfAreaAffected;
+            }
+
+            set
+            {
+                base.SetValue(ref _affectsOfAreaAffected, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(NAVWARNPart).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
+        {
+            get
+            {
+                return _positionsOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _positionsOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance)
         {
@@ -1564,10 +1655,25 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class NAVWARNAreaAffectedViewModel : ViewModelBase
     {
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => NAVWARNAreaAffected.FeatureBindingDescriptors;
+        private FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.AreaAffected> _impactsOfAreaAffected = new(typeof(NAVWARNAreaAffected).GetProperty("impactsOfAreaAffected")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.AreaAffected> impactsOfAreaAffected
+        {
+            get
+            {
+                return _impactsOfAreaAffected;
+            }
+
+            set
+            {
+                base.SetValue(ref _impactsOfAreaAffected, value);
+            }
+        }
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected instance)
         {
@@ -1591,6 +1697,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TextPlacementViewModel : ViewModelBase
     {
         private String _text = string.Empty;
@@ -1683,8 +1791,21 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TextPlacement.FeatureBindingDescriptors;
+        private FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.TextAssociation> _identifiesOfTextAssociation = new(typeof(TextPlacement).GetProperty("identifiesOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.TextAssociation> identifiesOfTextAssociation
+        {
+            get
+            {
+                return _identifiesOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _identifiesOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S124.FeatureTypes.TextPlacement instance)
         {

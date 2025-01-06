@@ -1834,10 +1834,6 @@ namespace S100Framework.DomainModel.S122
             public List<rxNCode> rxNCode { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.RelatedOrganisation>> theOrganisationOfRelatedOrganisation { get; set; } = [];
             public override string Code => nameof(AbstractRxN);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.RelatedOrganisation>(roleType.association, 0, 2147483647, Role.theOrganisation.ToString(), [typeof(Authority)]),
-            };
 
             public AbstractRxN()
             {
@@ -1850,7 +1846,6 @@ namespace S100Framework.DomainModel.S122
         {
             public List<informationBinding<Associations.InformationAssociations.RelatedOrganisation>> theOrganisationOfRelatedOrganisation { get; set; } = [];
             public override string Code => nameof(NauticalInformation);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => AbstractRxN.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.RelatedOrganisation>(roleType.association, 0, 2147483647, Role.theOrganisation.ToString(), [typeof(Authority)]), }).ToArray();
 
             public NauticalInformation()
             {
@@ -1901,12 +1896,6 @@ namespace S100Framework.DomainModel.S122
             public List<informationBinding<Associations.InformationAssociations.AuthorityContact>> theContactDetailsOfAuthorityContact { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.AuthorityHours>> theServiceHoursOfAuthorityHours { get; set; } = [];
             public override string Code => nameof(Authority);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.RelatedOrganisation>(roleType.association, 0, 2147483647, Role.theInformation.ToString(), [typeof(AbstractRxN)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.AuthorityContact>(roleType.association, 0, 2147483647, Role.theContactDetails.ToString(), [typeof(ContactDetails)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.AuthorityHours>(roleType.association, 0, 2147483647, Role.theServiceHours.ToString(), [typeof(ServiceHours)]),
-            };
 
             public Authority()
             {
@@ -1931,7 +1920,6 @@ namespace S100Framework.DomainModel.S122
             public List<information> information { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.AuthorityContact>> theAuthorityOfAuthorityContact { get; set; } = [];
             public override string Code => nameof(ContactDetails);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => AbstractRxN.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.AuthorityContact>(roleType.association, 0, 2147483647, Role.theAuthority.ToString(), [typeof(Authority)]), }).ToArray();
 
             public ContactDetails()
             {
@@ -1947,10 +1935,6 @@ namespace S100Framework.DomainModel.S122
             public List<information> information { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.ExceptionalWorkday>> theServiceHours_nsdyOfExceptionalWorkday { get; set; } = [];
             public override string Code => nameof(NonStandardWorkingDay);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.ExceptionalWorkday>(roleType.association, 0, 2147483647, Role.theServiceHours_nsdy.ToString(), [typeof(ServiceHours)]),
-            };
 
             public NonStandardWorkingDay()
             {
@@ -1969,11 +1953,6 @@ namespace S100Framework.DomainModel.S122
             public List<informationBinding<Associations.InformationAssociations.AuthorityHours>> theAuthority_srvHrsOfAuthorityHours { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.ExceptionalWorkday>> partialWorkingDayOfExceptionalWorkday { get; set; } = [];
             public override string Code => nameof(ServiceHours);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.AuthorityHours>(roleType.association, 0, 2147483647, Role.theAuthority_srvHrs.ToString(), [typeof(Authority)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.ExceptionalWorkday>(roleType.association, 0, 2147483647, Role.partialWorkingDay.ToString(), [typeof(NonStandardWorkingDay)]),
-            };
 
             public ServiceHours()
             {
@@ -2029,11 +2008,6 @@ namespace S100Framework.DomainModel.S122
             public List<informationBinding<Associations.InformationAssociations.AssociatedRxN>> theRxNOfAssociatedRxN { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.additionalInformation>> providesInformationOfadditionalInformation { get; set; } = [];
             public override string Code => nameof(FeatureType);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.AssociatedRxN>(roleType.association, 0, 2147483647, Role.theRxN.ToString(), [typeof(AbstractRxN)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.additionalInformation>(roleType.association, 0, 2147483647, Role.providesInformation.ToString(), [typeof(NauticalInformation)]),
-            };
 
             public FeatureType()
             {
@@ -2073,7 +2047,6 @@ namespace S100Framework.DomainModel.S122
             public List<designation> designation { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.ProtectedAreaAuthority>> responsibleAuthorityOfProtectedAreaAuthority { get; set; } = [];
             public override string Code => nameof(MarineProtectedArea);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => FeatureType.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.ProtectedAreaAuthority>(roleType.association, 0, 2147483647, Role.responsibleAuthority.ToString(), [typeof(Authority)]), }).ToArray();
 
             public MarineProtectedArea()
             {
@@ -2091,7 +2064,6 @@ namespace S100Framework.DomainModel.S122
             public categoryOfVesselTrafficService categoryOfVesselTrafficService { get; set; }
             public informationBinding<Associations.InformationAssociations.ServiceControl>? controlAuthorityOfServiceControl { get; set; }
             public override string Code => nameof(VesselTrafficServiceArea);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => FeatureType.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.ServiceControl>(roleType.association, 0, 1, Role.controlAuthority.ToString(), [typeof(Authority)]), }).ToArray();
 
             public VesselTrafficServiceArea()
             {

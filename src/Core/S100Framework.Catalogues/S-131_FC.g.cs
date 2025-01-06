@@ -2565,10 +2565,6 @@ namespace S100Framework.DomainModel.S131
             public DateOnly? reportedDate { get; set; } = default;
             public List<informationBinding<Associations.InformationAssociations.AdditionalInformation>> providesInformationOfAdditionalInformation { get; set; } = [];
             public override string Code => nameof(InformationType);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 2147483647, Role.providesInformation.ToString(), [typeof(NauticalInformation)]),
-            };
 
             public InformationType()
             {
@@ -2585,7 +2581,6 @@ namespace S100Framework.DomainModel.S131
             public List<informationBinding<Associations.InformationAssociations.InclusionType>> isApplicableToOfInclusionType { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.RelatedOrganisation>> theOrganisationOfRelatedOrganisation { get; set; } = [];
             public override string Code => nameof(AbstractRxN);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => InformationType.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.InclusionType>(roleType.association, 0, 2147483647, Role.isApplicableTo.ToString(), [typeof(Applicability)]), new InformationBindingDescriptor<Associations.InformationAssociations.RelatedOrganisation>(roleType.association, 0, 2147483647, Role.theOrganisation.ToString(), [typeof(Authority)]), }).ToArray();
 
             public AbstractRxN()
             {
@@ -2609,7 +2604,6 @@ namespace S100Framework.DomainModel.S131
             public List<informationBinding<Associations.InformationAssociations.InclusionType>> theApplicableRxNOfInclusionType { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.PermissionType>> vslLocationOfPermissionType { get; set; } = [];
             public override string Code => nameof(Applicability);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => InformationType.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.InclusionType>(roleType.association, 0, 2147483647, Role.theApplicableRxN.ToString(), [typeof(AbstractRxN)]), new InformationBindingDescriptor<Associations.InformationAssociations.PermissionType>(roleType.association, 0, 2147483647, Role.vslLocation.ToString(), [typeof(InformationType)]), }).ToArray();
 
             public Applicability()
             {
@@ -2627,7 +2621,6 @@ namespace S100Framework.DomainModel.S131
             public List<informationBinding<Associations.InformationAssociations.RelatedOrganisation>> theInformationOfRelatedOrganisation { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.AuthorityHours>> theServiceHoursOfAuthorityHours { get; set; } = [];
             public override string Code => nameof(Authority);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => InformationType.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.AuthorityContact>(roleType.association, 0, 2147483647, Role.theContactDetails.ToString(), [typeof(ContactDetails)]), new InformationBindingDescriptor<Associations.InformationAssociations.RelatedOrganisation>(roleType.association, 0, 2147483647, Role.theInformation.ToString(), [typeof(AbstractRxN)]), new InformationBindingDescriptor<Associations.InformationAssociations.AuthorityHours>(roleType.association, 0, 2147483647, Role.theServiceHours.ToString(), [typeof(ServiceHours)]), }).ToArray();
 
             public Authority()
             {
@@ -2676,7 +2669,6 @@ namespace S100Framework.DomainModel.S131
             public List<telecommunications> telecommunications { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.AuthorityContact>> theAuthorityOfAuthorityContact { get; set; } = [];
             public override string Code => nameof(ContactDetails);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => InformationType.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.AuthorityContact>(roleType.association, 0, 2147483647, Role.theAuthority.ToString(), [typeof(Authority)]), }).ToArray();
 
             public ContactDetails()
             {
@@ -2710,7 +2702,6 @@ namespace S100Framework.DomainModel.S131
         {
             public List<informationBinding<Associations.InformationAssociations.AdditionalInformation>> informationProvidedForOfAdditionalInformation { get; set; } = [];
             public override string Code => nameof(NauticalInformation);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => AbstractRxN.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 2147483647, Role.informationProvidedFor.ToString(), [typeof(InformationType)]), }).ToArray();
 
             public NauticalInformation()
             {
@@ -2774,7 +2765,6 @@ namespace S100Framework.DomainModel.S131
             public List<informationBinding<Associations.InformationAssociations.ExceptionalWorkday>> partialWorkingDayOfExceptionalWorkday { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.AuthorityHours>> theAuthority_srvHrsOfAuthorityHours { get; set; } = [];
             public override string Code => nameof(ServiceHours);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => InformationType.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.ExceptionalWorkday>(roleType.association, 0, 2147483647, Role.partialWorkingDay.ToString(), [typeof(NonStandardWorkingDay)]), new InformationBindingDescriptor<Associations.InformationAssociations.AuthorityHours>(roleType.association, 0, 2147483647, Role.theAuthority_srvHrs.ToString(), [typeof(Authority)]), }).ToArray();
 
             public ServiceHours()
             {
@@ -2824,16 +2814,6 @@ namespace S100Framework.DomainModel.S131
             public List<informationBinding<Associations.InformationAssociations.AdditionalInformation>> providesInformationOfAdditionalInformation { get; set; } = [];
             public featureBinding<Associations.FeatureAssociations.TextAssociation>? positionsOfTextAssociation { get; set; }
             public override string Code => nameof(FeatureType);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.PermissionType>(roleType.association, 0, 2147483647, Role.permission.ToString(), [typeof(Applicability)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.AssociatedRxN>(roleType.association, 0, 2147483647, Role.theRxN.ToString(), [typeof(AbstractRxN)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.AdditionalInformation>(roleType.association, 0, 2147483647, Role.providesInformation.ToString(), [typeof(NauticalInformation)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 1, Role.positions.ToString(), [typeof(TextPlacement)]),
-            };
 
             public FeatureType()
             {
@@ -2846,7 +2826,6 @@ namespace S100Framework.DomainModel.S131
         {
             public List<informationBinding<Associations.InformationAssociations.ServiceContact>> theContactDetailsOfServiceContact { get; set; } = [];
             public override string Code => nameof(OrganizationContactArea);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => FeatureType.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.ServiceContact>(roleType.association, 0, 2147483647, Role.theContactDetails.ToString(), [typeof(ContactDetails)]), }).ToArray();
 
             public OrganizationContactArea()
             {
@@ -2859,7 +2838,6 @@ namespace S100Framework.DomainModel.S131
         {
             public informationBinding<Associations.InformationAssociations.ServiceControl>? controlAuthorityOfServiceControl { get; set; }
             public override string Code => nameof(SupervisedArea);
-            public static new InformationBindingDescriptor[] InformationBindingDescriptors => OrganizationContactArea.InformationBindingDescriptors.Union(new InformationBindingDescriptor[] { new InformationBindingDescriptor<Associations.InformationAssociations.ServiceControl>(roleType.association, 0, 1, Role.controlAuthority.ToString(), [typeof(Authority)]), }).ToArray();
 
             public SupervisedArea()
             {
@@ -2873,10 +2851,6 @@ namespace S100Framework.DomainModel.S131
             public Decimal? verticalClearanceValue { get; set; } = default;
             public featureBinding<Associations.FeatureAssociations.Infrastructure>? infrastructureLocationOfInfrastructure { get; set; }
             public override string Code => nameof(HarbourPhysicalInfrastructure);
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.Infrastructure>(roleType.association, 0, 1, Role.infrastructureLocation.ToString(), [typeof(HarbourAreaSection), typeof(Terminal)]),
-            };
 
             public HarbourPhysicalInfrastructure()
             {
@@ -2902,15 +2876,6 @@ namespace S100Framework.DomainModel.S131
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public List<featureBinding<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>> auxiliaryFacilityOfPrimaryAuxiliaryFacility { get; set; } = [];
             public override string Code => nameof(AnchorBerth);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.ServiceAvailability>(roleType.association, 0, 1, Role.serviceDescriptionReference.ToString(), [typeof(AvailablePortServices)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>(roleType.association, 0, 2147483647, Role.auxiliaryFacility.ToString(), [typeof(MooringWarpingFacility)]),
-            };
 
             public AnchorBerth()
             {
@@ -2928,14 +2893,6 @@ namespace S100Framework.DomainModel.S131
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(AnchorageArea);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.aggregation, 1, 1, Role.componentOf.ToString(), [typeof(HarbourAreaSection)]),
-            };
 
             public AnchorageArea()
             {
@@ -2968,16 +2925,6 @@ namespace S100Framework.DomainModel.S131
             public List<featureBinding<Associations.FeatureAssociations.Demarcation>> demarcationIndicatorOfDemarcation { get; set; } = [];
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(Berth);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.ServiceAvailability>(roleType.association, 0, 1, Role.serviceDescriptionReference.ToString(), [typeof(AvailablePortServices)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.Demarcation>(roleType.association, 0, 2147483647, Role.demarcationIndicator.ToString(), [typeof(BerthPosition)]),
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.aggregation, 1, 1, Role.componentOf.ToString(), [typeof(HarbourAreaSection), typeof(Terminal)]),
-            };
 
             public Berth()
             {
@@ -3001,11 +2948,6 @@ namespace S100Framework.DomainModel.S131
             public featureBinding<Associations.FeatureAssociations.Demarcation> demarcatedFeatureOfDemarcation { get; set; }
             public List<featureBinding<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>> auxiliaryFacilityOfPrimaryAuxiliaryFacility { get; set; } = [];
             public override string Code => nameof(BerthPosition);
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.Demarcation>(roleType.composition, 1, 1, Role.demarcatedFeature.ToString(), [typeof(Berth)]),
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>(roleType.association, 0, 2147483647, Role.auxiliaryFacility.ToString(), [typeof(MooringWarpingFacility)]),
-            };
 
             public BerthPosition()
             {
@@ -3024,15 +2966,6 @@ namespace S100Framework.DomainModel.S131
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(DockArea);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.ServiceAvailability>(roleType.association, 0, 1, Role.serviceDescriptionReference.ToString(), [typeof(AvailablePortServices)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.aggregation, 1, 1, Role.componentOf.ToString(), [typeof(HarbourAreaSection)]),
-            };
 
             public DockArea()
             {
@@ -3046,10 +2979,6 @@ namespace S100Framework.DomainModel.S131
             public Decimal? sillDepth { get; set; } = default;
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(DryDock);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
 
             public DryDock()
             {
@@ -3067,14 +2996,6 @@ namespace S100Framework.DomainModel.S131
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(DumpingGround);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.aggregation, 1, 1, Role.componentOf.ToString(), [typeof(HarbourAreaSection)]),
-            };
 
             public DumpingGround()
             {
@@ -3088,10 +3009,6 @@ namespace S100Framework.DomainModel.S131
             public Decimal? sillDepth { get; set; } = default;
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(FloatingDock);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
 
             public FloatingDock()
             {
@@ -3105,10 +3022,6 @@ namespace S100Framework.DomainModel.S131
             public Decimal? sillDepth { get; set; } = default;
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(Gridiron);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
 
             public Gridiron()
             {
@@ -3130,16 +3043,6 @@ namespace S100Framework.DomainModel.S131
             public featureBinding<Associations.FeatureAssociations.JurisdictionalLimit>? limitExtentOfJurisdictionalLimit { get; set; }
             public List<featureBinding<Associations.FeatureAssociations.LayoutDivision>> layoutUnitOfLayoutDivision { get; set; } = [];
             public override string Code => nameof(HarbourAreaAdministrative);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.ServiceAvailability>(roleType.association, 0, 1, Role.serviceDescriptionReference.ToString(), [typeof(AvailablePortServices)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.JurisdictionalLimit>(roleType.association, 0, 1, Role.limitExtent.ToString(), [typeof(OuterLimit)]),
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.association, 0, 2147483647, Role.layoutUnit.ToString(), [typeof(HarbourAreaSection)]),
-            };
 
             public HarbourAreaAdministrative()
             {
@@ -3162,19 +3065,6 @@ namespace S100Framework.DomainModel.S131
             public List<featureBinding<Associations.FeatureAssociations.Infrastructure>> hasInfrastructureOfInfrastructure { get; set; } = [];
             public List<featureBinding<Associations.FeatureAssociations.LayoutDivision>> layoutUnitOfLayoutDivision { get; set; } = [];
             public override string Code => nameof(HarbourAreaSection);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.ServiceAvailability>(roleType.association, 0, 1, Role.serviceDescriptionReference.ToString(), [typeof(AvailablePortServices)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.aggregation, 0, 1, Role.componentOf.ToString(), [typeof(HarbourAreaAdministrative)]),
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.Subsection>(roleType.aggregation, 0, 1, Role.constitute.ToString(), [typeof(HarbourAreaSection)]),
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.Subsection>(roleType.association, 0, 2147483647, Role.subUnit.ToString(), [typeof(HarbourAreaSection)]),
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.Infrastructure>(roleType.association, 0, 2147483647, Role.hasInfrastructure.ToString(), [typeof(HarbourPhysicalInfrastructure)]),
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.association, 0, 2147483647, Role.layoutUnit.ToString(), [typeof(AnchorageArea), typeof(Berth), typeof(DockArea), typeof(DumpingGround), typeof(HarbourBasin), typeof(PilotBoardingPlace), typeof(SeaplaneLandingArea), typeof(Terminal), typeof(TurningBasin), typeof(WaterwayArea)]),
-            };
 
             public HarbourAreaSection()
             {
@@ -3192,14 +3082,6 @@ namespace S100Framework.DomainModel.S131
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(HarbourBasin);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.aggregation, 1, 1, Role.componentOf.ToString(), [typeof(HarbourAreaSection)]),
-            };
 
             public HarbourBasin()
             {
@@ -3214,10 +3096,6 @@ namespace S100Framework.DomainModel.S131
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(HarbourFacility);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
 
             public HarbourFacility()
             {
@@ -3239,15 +3117,6 @@ namespace S100Framework.DomainModel.S131
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public featureBinding<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>? primaryFacilityOfPrimaryAuxiliaryFacility { get; set; }
             public override string Code => nameof(MooringWarpingFacility);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.ServiceAvailability>(roleType.association, 0, 1, Role.serviceDescriptionReference.ToString(), [typeof(AvailablePortServices)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>(roleType.association, 0, 1, Role.primaryFacility.ToString(), [typeof(AnchorBerth), typeof(BerthPosition)]),
-            };
 
             public MooringWarpingFacility()
             {
@@ -3268,14 +3137,6 @@ namespace S100Framework.DomainModel.S131
             public informationBinding<Associations.InformationAssociations.LimitEntrance>? entranceReferenceOfLimitEntrance { get; set; }
             public featureBinding<Associations.FeatureAssociations.JurisdictionalLimit> limitReferenceOfJurisdictionalLimit { get; set; }
             public override string Code => nameof(OuterLimit);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LimitEntrance>(roleType.association, 0, 1, Role.entranceReference.ToString(), [typeof(Entrance)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.JurisdictionalLimit>(roleType.association, 1, 1, Role.limitReference.ToString(), [typeof(HarbourAreaAdministrative)]),
-            };
 
             public OuterLimit()
             {
@@ -3293,14 +3154,6 @@ namespace S100Framework.DomainModel.S131
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(PilotBoardingPlace);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.aggregation, 1, 1, Role.componentOf.ToString(), [typeof(HarbourAreaSection)]),
-            };
 
             public PilotBoardingPlace()
             {
@@ -3318,14 +3171,6 @@ namespace S100Framework.DomainModel.S131
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(SeaplaneLandingArea);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.aggregation, 1, 1, Role.componentOf.ToString(), [typeof(HarbourAreaSection)]),
-            };
 
             public SeaplaneLandingArea()
             {
@@ -3349,17 +3194,6 @@ namespace S100Framework.DomainModel.S131
             public List<featureBinding<Associations.FeatureAssociations.LayoutDivision>> layoutUnitOfLayoutDivision { get; set; } = [];
             public List<featureBinding<Associations.FeatureAssociations.Infrastructure>> hasInfrastructureOfInfrastructure { get; set; } = [];
             public override string Code => nameof(Terminal);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.ServiceAvailability>(roleType.association, 0, 1, Role.serviceDescriptionReference.ToString(), [typeof(AvailablePortServices)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.aggregation, 1, 1, Role.componentOf.ToString(), [typeof(HarbourAreaSection)]),
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.association, 0, 2147483647, Role.layoutUnit.ToString(), [typeof(Berth)]),
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.Infrastructure>(roleType.association, 0, 2147483647, Role.hasInfrastructure.ToString(), [typeof(HarbourPhysicalInfrastructure)]),
-            };
 
             public Terminal()
             {
@@ -3377,14 +3211,6 @@ namespace S100Framework.DomainModel.S131
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(TurningBasin);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.aggregation, 1, 1, Role.componentOf.ToString(), [typeof(HarbourAreaSection)]),
-            };
 
             public TurningBasin()
             {
@@ -3403,14 +3229,6 @@ namespace S100Framework.DomainModel.S131
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(WaterwayArea);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.LocationHours>(roleType.association, 0, 1, Role.location_srvHrs.ToString(), [typeof(ServiceHours)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.LayoutDivision>(roleType.aggregation, 1, 1, Role.componentOf.ToString(), [typeof(HarbourAreaSection)]),
-            };
 
             public WaterwayArea()
             {
@@ -3499,10 +3317,6 @@ namespace S100Framework.DomainModel.S131
             public Int32? scaleMinimum { get; set; } = default;
             public featureBinding<Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation { get; set; }
             public override string Code => nameof(TextPlacement);
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 1, 1, Role.positions.ToString(), [typeof(FeatureType)]),
-            };
 
             public TextPlacement()
             {

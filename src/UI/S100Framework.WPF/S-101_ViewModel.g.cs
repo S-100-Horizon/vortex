@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
+using System.Reflection;
 using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S101;
@@ -804,6 +805,8 @@ namespace S100Framework.WPF.ViewModel.S101
         });
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class featureNameViewModel : ViewModelBase
     {
         private String _language = string.Empty;
@@ -882,6 +885,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class featuresDetectedViewModel : ViewModelBase
     {
         private Boolean _leastDepthOfDetectedFeaturesMeasured;
@@ -960,6 +965,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class fixedDateRangeViewModel : ViewModelBase
     {
         private DateOnly? _dateEnd = default;
@@ -1020,6 +1027,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class frequencyPairViewModel : ViewModelBase
     {
         private Int32? _frequencyShoreStationReceives = default;
@@ -1080,6 +1089,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class horizontalClearanceFixedViewModel : ViewModelBase
     {
         private Decimal _horizontalClearanceValue;
@@ -1140,6 +1151,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class horizontalClearanceOpenViewModel : ViewModelBase
     {
         private Decimal _horizontalClearanceValue;
@@ -1200,6 +1213,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class horizontalPositionUncertaintyViewModel : ViewModelBase
     {
         private Decimal _uncertaintyFixed;
@@ -1262,6 +1277,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class informationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -1377,6 +1394,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class measuredDistanceValueViewModel : ViewModelBase
     {
         private distanceUnitOfMeasurement _distanceUnitOfMeasurement;
@@ -1455,6 +1474,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class multiplicityOfFeaturesViewModel : ViewModelBase
     {
         private Boolean _multiplicityKnown;
@@ -1515,6 +1536,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class onlineResourceViewModel : ViewModelBase
     {
         private String _headline = string.Empty;
@@ -1595,6 +1618,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class orientationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -1656,6 +1681,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class periodicDateRangeViewModel : ViewModelBase
     {
         private DateOnly _dateEnd;
@@ -1716,6 +1743,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class radarWaveLengthViewModel : ViewModelBase
     {
         private String _radarBand = string.Empty;
@@ -1776,6 +1805,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorInformationViewModel : ViewModelBase
     {
         private String _language = string.Empty;
@@ -1836,6 +1867,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitOneViewModel : ViewModelBase
     {
         private Decimal _sectorBearing;
@@ -1896,6 +1929,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitTwoViewModel : ViewModelBase
     {
         private Decimal _sectorBearing;
@@ -1956,6 +1991,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class shapeInformationViewModel : ViewModelBase
     {
         private String _language = string.Empty;
@@ -2016,6 +2053,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class signalSequenceViewModel : ViewModelBase
     {
         private Decimal _signalDuration;
@@ -2078,6 +2117,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class speedViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -2139,6 +2180,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class surfaceCharacteristicsViewModel : ViewModelBase
     {
         private natureOfSurface? _natureOfSurface = default;
@@ -2212,6 +2255,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class surveyDateRangeViewModel : ViewModelBase
     {
         private DateOnly _dateEnd;
@@ -2274,6 +2319,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class telecommunicationsViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -2353,6 +2400,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class tidalStreamValueViewModel : ViewModelBase
     {
         private orientationViewModel _orientation;
@@ -2438,6 +2487,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase
     {
         [Category("timeIntervalsByDayOfWeek")]
@@ -2521,6 +2572,8 @@ namespace S100Framework.WPF.ViewModel.S101
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class topmarkViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -2608,6 +2661,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class valueOfLocalMagneticAnomalyViewModel : ViewModelBase
     {
         private Decimal _magneticAnomalyValue;
@@ -2668,6 +2723,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class verticalUncertaintyViewModel : ViewModelBase
     {
         private Decimal _uncertaintyFixed;
@@ -2728,6 +2785,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class vesselSpeedLimitViewModel : ViewModelBase
     {
         private Decimal _speedLimit;
@@ -2806,6 +2865,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class zoneOfConfidenceViewModel : ViewModelBase
     {
         private categoryOfZoneOfConfidenceInData _categoryOfZoneOfConfidenceInData;
@@ -2922,6 +2983,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class directionalCharacterViewModel : ViewModelBase
     {
         private Boolean? _moireEffect = default;
@@ -2988,6 +3051,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class rhythmOfLightViewModel : ViewModelBase
     {
         private lightCharacteristic _lightCharacteristic;
@@ -3074,6 +3139,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class scheduleByDayOfWeekViewModel : ViewModelBase
     {
         private categoryOfSchedule? _categoryOfSchedule = default;
@@ -3129,6 +3196,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitViewModel : ViewModelBase
     {
         private sectorLimitOneViewModel _sectorLimitOne;
@@ -3202,6 +3271,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class spatialAccuracyViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -3300,6 +3371,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class tidalStreamPanelValuesViewModel : ViewModelBase
     {
         private referenceTide _referenceTide;
@@ -3391,6 +3464,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class verticalClearanceClosedViewModel : ViewModelBase
     {
         private Decimal _verticalClearanceValue;
@@ -3457,6 +3532,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class verticalClearanceFixedViewModel : ViewModelBase
     {
         private Decimal _verticalClearanceValue;
@@ -3523,6 +3600,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class verticalClearanceOpenViewModel : ViewModelBase
     {
         private Boolean _verticalClearanceUnlimited;
@@ -3607,6 +3686,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class verticalClearanceSafeViewModel : ViewModelBase
     {
         private Decimal _verticalClearanceValue;
@@ -3673,6 +3754,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class lightSectorViewModel : ViewModelBase
     {
         [Category("lightSector")]
@@ -3822,6 +3905,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorCharacteristicsViewModel : ViewModelBase
     {
         private lightCharacteristic _lightCharacteristic;
@@ -3921,6 +4006,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ContactDetailsViewModel : ViewModelBase
     {
         private String _callSign = string.Empty;
@@ -4076,6 +4163,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ServiceHoursViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -4164,6 +4253,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class NonStandardWorkingDayViewModel : ViewModelBase
     {
         [Category("NonStandardWorkingDay")]
@@ -4265,6 +4356,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class NauticalInformationViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -4358,6 +4451,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SpatialQualityViewModel : ViewModelBase
     {
         private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement = default;
@@ -4413,6 +4508,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class QualityOfNonBathymetricDataViewModel : ViewModelBase
     {
         private categoryOfTemporalVariation? _categoryOfTemporalVariation = default;
@@ -4526,8 +4623,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("QualityOfNonBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => QualityOfNonBathymetricData.FeatureBindingDescriptors;
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(QualityOfNonBathymetricData).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.QualityOfNonBathymetricData instance)
         {
@@ -4600,6 +4710,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DataCoverageViewModel : ViewModelBase
     {
         private Int32? _drawingIndex = default;
@@ -4727,6 +4839,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class NavigationalSystemOfMarksViewModel : ViewModelBase
     {
         private marksNavigationalSystemOf _marksNavigationalSystemOf;
@@ -4762,8 +4876,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("NavigationalSystemOfMarks")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => NavigationalSystemOfMarks.FeatureBindingDescriptors;
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(NavigationalSystemOfMarks).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.NavigationalSystemOfMarks instance)
         {
@@ -4803,6 +4930,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LocalDirectionOfBuoyageViewModel : ViewModelBase
     {
         private String _interoperabilityIdentifier = string.Empty;
@@ -4868,8 +4997,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LocalDirectionOfBuoyage")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LocalDirectionOfBuoyage.FeatureBindingDescriptors;
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LocalDirectionOfBuoyage).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LocalDirectionOfBuoyage instance)
         {
@@ -4915,6 +5057,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class QualityOfBathymetricDataViewModel : ViewModelBase
     {
         private categoryOfTemporalVariation _categoryOfTemporalVariation;
@@ -5045,11 +5189,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("QualityOfBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => QualityOfBathymetricData.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition> _theQualityInformationOfQualityOfBathymetricDataComposition = new(typeof(QualityOfBathymetricData).GetProperty("theQualityInformationOfQualityOfBathymetricDataComposition")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.QualityOfBathymetricDataComposition> theQualityInformationOfQualityOfBathymetricDataComposition
+        {
+            get
+            {
+                return _theQualityInformationOfQualityOfBathymetricDataComposition;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => QualityOfBathymetricData.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theQualityInformationOfQualityOfBathymetricDataComposition, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(QualityOfBathymetricData).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.QualityOfBathymetricData instance)
         {
@@ -5129,6 +5299,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SoundingDatumViewModel : ViewModelBase
     {
         private String _interoperabilityIdentifier = string.Empty;
@@ -5164,8 +5336,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SoundingDatum")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SoundingDatum.FeatureBindingDescriptors;
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SoundingDatum).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SoundingDatum instance)
         {
@@ -5205,6 +5390,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class VerticalDatumOfDataViewModel : ViewModelBase
     {
         private String _interoperabilityIdentifier = string.Empty;
@@ -5240,8 +5427,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("VerticalDatumOfData")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => VerticalDatumOfData.FeatureBindingDescriptors;
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(VerticalDatumOfData).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.VerticalDatumOfData instance)
         {
@@ -5281,6 +5481,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class QualityOfSurveyViewModel : ViewModelBase
     {
         private Decimal? _depthRangeMaximumValue = default;
@@ -5507,8 +5709,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("QualityOfSurvey")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => QualityOfSurvey.FeatureBindingDescriptors;
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(QualityOfSurvey).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.QualityOfSurvey instance)
         {
@@ -5626,6 +5841,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class UpdateInformationViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -5722,8 +5939,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("UpdateInformation")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => UpdateInformation.FeatureBindingDescriptors;
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdateAggregation> _theComponentOfUpdateAggregation = new(typeof(UpdateInformation).GetProperty("theComponentOfUpdateAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdateAggregation> theComponentOfUpdateAggregation
+        {
+            get
+            {
+                return _theComponentOfUpdateAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfUpdateAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdateAggregation> _theCollectionOfUpdateAggregation = new(typeof(UpdateInformation).GetProperty("theCollectionOfUpdateAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdateAggregation> theCollectionOfUpdateAggregation
+        {
+            get
+            {
+                return _theCollectionOfUpdateAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfUpdateAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(UpdateInformation).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.UpdateInformation instance)
         {
@@ -5781,6 +6043,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class MagneticVariationViewModel : ViewModelBase
     {
         private String _interoperabilityIdentifier = string.Empty;
@@ -5861,11 +6125,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MagneticVariation")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => MagneticVariation.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(MagneticVariation).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MagneticVariation.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(MagneticVariation).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.MagneticVariation instance)
         {
@@ -5914,6 +6204,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LocalMagneticAnomalyViewModel : ViewModelBase
     {
         [Category("LocalMagneticAnomaly")]
@@ -5970,11 +6262,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LocalMagneticAnomaly")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LocalMagneticAnomaly.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LocalMagneticAnomaly).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LocalMagneticAnomaly.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LocalMagneticAnomaly).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LocalMagneticAnomaly).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LocalMagneticAnomaly instance)
         {
@@ -6037,6 +6371,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CoastlineViewModel : ViewModelBase
     {
         private categoryOfCoastline? _categoryOfCoastline = default;
@@ -6141,11 +6477,53 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Coastline.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Coastline).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Coastline.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Coastline).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Coastline).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Coastline instance)
         {
@@ -6227,6 +6605,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LandAreaViewModel : ViewModelBase
     {
         private condition? _condition = default;
@@ -6310,11 +6690,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LandArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LandArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LandArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LandArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.IslandAggregation> _theCollectionOfIslandAggregation = new(typeof(LandArea).GetProperty("theCollectionOfIslandAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.IslandAggregation> theCollectionOfIslandAggregation
+        {
+            get
+            {
+                return _theCollectionOfIslandAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfIslandAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LandArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LandArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LandArea instance)
         {
@@ -6373,6 +6811,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class IslandGroupViewModel : ViewModelBase
     {
         [Category("IslandGroup")]
@@ -6411,11 +6851,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("IslandGroup")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => IslandGroup.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(IslandGroup).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => IslandGroup.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.IslandAggregation> _theComponentOfIslandAggregation = new(typeof(IslandGroup).GetProperty("theComponentOfIslandAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.IslandAggregation> theComponentOfIslandAggregation
+        {
+            get
+            {
+                return _theComponentOfIslandAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfIslandAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.IslandAggregation> _theCollectionOfIslandAggregation = new(typeof(IslandGroup).GetProperty("theCollectionOfIslandAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.IslandAggregation> theCollectionOfIslandAggregation
+        {
+            get
+            {
+                return _theCollectionOfIslandAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfIslandAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(IslandGroup).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(IslandGroup).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.IslandGroup instance)
         {
@@ -6465,6 +6979,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LandElevationViewModel : ViewModelBase
     {
         private Decimal _elevation;
@@ -6533,11 +7049,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LandElevation")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LandElevation.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LandElevation).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LandElevation.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LandElevation).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LandElevation).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LandElevation instance)
         {
@@ -6593,6 +7151,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RiverViewModel : ViewModelBase
     {
         [Category("River")]
@@ -6646,11 +7206,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("River")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => River.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(River).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => River.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(River).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(River).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.River instance)
         {
@@ -6703,6 +7305,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RapidsViewModel : ViewModelBase
     {
         [Category("Rapids")]
@@ -6756,11 +7360,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Rapids")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Rapids.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Rapids).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Rapids.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Rapids).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Rapids).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Rapids instance)
         {
@@ -6813,6 +7459,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class WaterfallViewModel : ViewModelBase
     {
         [Category("Waterfall")]
@@ -6881,11 +7529,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Waterfall")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Waterfall.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Waterfall).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Waterfall.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Waterfall).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Waterfall).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Waterfall instance)
         {
@@ -6941,6 +7631,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LakeViewModel : ViewModelBase
     {
         private Decimal? _elevation = default;
@@ -7009,11 +7701,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Lake")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Lake.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Lake).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Lake.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Lake).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Lake).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Lake instance)
         {
@@ -7069,6 +7803,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LandRegionViewModel : ViewModelBase
     {
         [Category("LandRegion")]
@@ -7128,11 +7864,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LandRegion")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LandRegion.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LandRegion).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LandRegion.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LandRegion).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LandRegion).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LandRegion instance)
         {
@@ -7205,6 +7983,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class VegetationViewModel : ViewModelBase
     {
         private categoryOfVegetation _categoryOfVegetation;
@@ -7318,11 +8098,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Vegetation")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Vegetation.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Vegetation).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Vegetation.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Vegetation).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Vegetation).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Vegetation instance)
         {
@@ -7387,6 +8209,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class IceAreaViewModel : ViewModelBase
     {
         private categoryOfIce _categoryOfIce;
@@ -7521,11 +8345,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("IceArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => IceArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(IceArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => IceArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(IceArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(IceArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.IceArea instance)
         {
@@ -7613,6 +8479,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SlopingGroundViewModel : ViewModelBase
     {
         private categoryOfSlope? _categoryOfSlope = default;
@@ -7702,11 +8570,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SlopingGround")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SlopingGround.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SlopingGround).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SlopingGround.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SlopingGround).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SlopingGround).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SlopingGround instance)
         {
@@ -7785,6 +8695,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SlopeToplineViewModel : ViewModelBase
     {
         private categoryOfSlope? _categoryOfSlope = default;
@@ -7889,11 +8801,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SlopeTopline")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SlopeTopline.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SlopeTopline).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SlopeTopline.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SlopeTopline).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SlopeTopline).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SlopeTopline instance)
         {
@@ -7975,6 +8929,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TidewayViewModel : ViewModelBase
     {
         [Category("Tideway")]
@@ -8013,11 +8969,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Tideway")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Tideway.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Tideway).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Tideway.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Tideway).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Tideway).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Tideway instance)
         {
@@ -8067,6 +9065,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class BuiltUpAreaViewModel : ViewModelBase
     {
         private categoryOfBuiltUpArea? _categoryOfBuiltUpArea = default;
@@ -8225,11 +9225,53 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => BuiltUpArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(BuiltUpArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => BuiltUpArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(BuiltUpArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(BuiltUpArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.BuiltUpArea instance)
         {
@@ -8303,6 +9345,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class BuildingViewModel : ViewModelBase
     {
         private buildingShape? _buildingShape = default;
@@ -8534,11 +9578,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Building.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Building).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Building.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Building).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(Building).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(Building).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Building).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Building).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Building instance)
         {
@@ -8670,6 +9804,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class AirportAirfieldViewModel : ViewModelBase
     {
         [Category("AirportAirfield")]
@@ -8759,11 +9895,53 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => AirportAirfield.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(AirportAirfield).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => AirportAirfield.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(AirportAirfield).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(AirportAirfield).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.AirportAirfield instance)
         {
@@ -8842,6 +10020,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RunwayViewModel : ViewModelBase
     {
         private condition? _condition = default;
@@ -8919,11 +10099,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Runway")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Runway.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Runway).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Runway.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Runway).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Runway).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Runway instance)
         {
@@ -9009,6 +10231,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class HelipadViewModel : ViewModelBase
     {
         private condition? _condition = default;
@@ -9086,11 +10310,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Helipad")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Helipad.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Helipad).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Helipad.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(Helipad).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Helipad).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Helipad).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Helipad instance)
         {
@@ -9176,6 +10458,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class BridgeViewModel : ViewModelBase
     {
         private bridgeConstruction? _bridgeConstruction = default;
@@ -9392,11 +10676,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Bridge.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Bridge).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Bridge.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.BridgeAggregation> _theComponentOfBridgeAggregation = new(typeof(Bridge).GetProperty("theComponentOfBridgeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.BridgeAggregation> theComponentOfBridgeAggregation
+        {
+            get
+            {
+                return _theComponentOfBridgeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfBridgeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Bridge).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(Bridge).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Bridge).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Bridge).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Bridge instance)
         {
@@ -9525,6 +10899,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SpanFixedViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -9638,11 +11014,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SpanFixed.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SpanFixed).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SpanFixed.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.BridgeAggregation> _theCollectionOfBridgeAggregation = new(typeof(SpanFixed).GetProperty("theCollectionOfBridgeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.BridgeAggregation> theCollectionOfBridgeAggregation
+        {
+            get
+            {
+                return _theCollectionOfBridgeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfBridgeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(SpanFixed).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(SpanFixed).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SpanFixed).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SpanFixed).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SpanFixed instance)
         {
@@ -9715,6 +11181,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SpanOpeningViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -9844,11 +11312,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SpanOpening.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SpanOpening).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SpanOpening.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.BridgeAggregation> _theCollectionOfBridgeAggregation = new(typeof(SpanOpening).GetProperty("theCollectionOfBridgeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.BridgeAggregation> theCollectionOfBridgeAggregation
+        {
+            get
+            {
+                return _theCollectionOfBridgeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfBridgeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(SpanOpening).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(SpanOpening).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SpanOpening).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SpanOpening).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SpanOpening instance)
         {
@@ -9930,6 +11488,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ConveyorViewModel : ViewModelBase
     {
         private categoryOfConveyor? _categoryOfConveyor = default;
@@ -10190,11 +11750,85 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Conveyor.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Conveyor).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Conveyor.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Conveyor).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(Conveyor).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Conveyor).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Conveyor).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Conveyor instance)
         {
@@ -10334,6 +11968,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CableOverheadViewModel : ViewModelBase
     {
         private categoryOfCable? _categoryOfCable = default;
@@ -10544,11 +12180,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CableOverhead")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => CableOverhead.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(CableOverhead).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CableOverhead.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(CableOverhead).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(CableOverhead).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(CableOverhead).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.CableOverhead instance)
         {
@@ -10665,6 +12359,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class PipelineOverheadViewModel : ViewModelBase
     {
         private categoryOfPipelinePipe? _categoryOfPipelinePipe = default;
@@ -10847,11 +12543,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PipelineOverhead")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => PipelineOverhead.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(PipelineOverhead).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PipelineOverhead.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(PipelineOverhead).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(PipelineOverhead).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(PipelineOverhead).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(PipelineOverhead).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.PipelineOverhead instance)
         {
@@ -10966,6 +12736,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class PylonBridgeSupportViewModel : ViewModelBase
     {
         private categoryOfPylon _categoryOfPylon;
@@ -11195,11 +12967,117 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => PylonBridgeSupport.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(PylonBridgeSupport).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PylonBridgeSupport.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.BridgeAggregation> _theCollectionOfBridgeAggregation = new(typeof(PylonBridgeSupport).GetProperty("theCollectionOfBridgeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.BridgeAggregation> theCollectionOfBridgeAggregation
+        {
+            get
+            {
+                return _theCollectionOfBridgeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfBridgeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RoofedStructureAggregation> _theRoofedStructureOfRoofedStructureAggregation = new(typeof(PylonBridgeSupport).GetProperty("theRoofedStructureOfRoofedStructureAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RoofedStructureAggregation> theRoofedStructureOfRoofedStructureAggregation
+        {
+            get
+            {
+                return _theRoofedStructureOfRoofedStructureAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theRoofedStructureOfRoofedStructureAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(PylonBridgeSupport).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(PylonBridgeSupport).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(PylonBridgeSupport).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(PylonBridgeSupport).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.PylonBridgeSupport instance)
         {
@@ -11327,6 +13205,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FenceWallViewModel : ViewModelBase
     {
         private categoryOfFence? _categoryOfFence = default;
@@ -11509,11 +13389,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FenceWall")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => FenceWall.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(FenceWall).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FenceWall.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(FenceWall).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(FenceWall).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.FenceWall instance)
         {
@@ -11620,6 +13542,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RailwayViewModel : ViewModelBase
     {
         private condition? _condition = default;
@@ -11706,11 +13630,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Railway")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Railway.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Railway).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Railway.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Railway).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Railway).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Railway instance)
         {
@@ -11779,6 +13745,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RoadViewModel : ViewModelBase
     {
         private categoryOfRoad? _categoryOfRoad = default;
@@ -11868,11 +13836,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Road")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Road.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Road).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Road.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Road).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Road).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Road instance)
         {
@@ -11951,6 +13961,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TunnelViewModel : ViewModelBase
     {
         private condition? _condition = default;
@@ -12084,11 +14096,53 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Tunnel.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Tunnel).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Tunnel.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Tunnel).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Tunnel).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Tunnel instance)
         {
@@ -12178,6 +14232,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LandmarkViewModel : ViewModelBase
     {
         [Category("Landmark")]
@@ -12400,11 +14456,117 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Landmark.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Landmark).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Landmark.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Landmark).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(Landmark).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(Landmark).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(Landmark).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Landmark).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Landmark).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Landmark instance)
         {
@@ -12553,6 +14715,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SiloTankViewModel : ViewModelBase
     {
         private buildingShape? _buildingShape = default;
@@ -12799,11 +14963,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SiloTank.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SiloTank).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SiloTank.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(SiloTank).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(SiloTank).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(SiloTank).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SiloTank).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SiloTank).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SiloTank instance)
         {
@@ -12938,6 +15192,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class WindTurbineViewModel : ViewModelBase
     {
         [Category("WindTurbine")]
@@ -13213,11 +15469,85 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => WindTurbine.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(WindTurbine).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => WindTurbine.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(WindTurbine).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(WindTurbine).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(WindTurbine).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(WindTurbine).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.WindTurbine instance)
         {
@@ -13360,6 +15690,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FortifiedStructureViewModel : ViewModelBase
     {
         private categoryOfFortifiedStructure? _categoryOfFortifiedStructure = default;
@@ -13539,11 +15871,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => FortifiedStructure.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(FortifiedStructure).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FortifiedStructure.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(FortifiedStructure).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(FortifiedStructure).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(FortifiedStructure).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(FortifiedStructure).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(FortifiedStructure).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.FortifiedStructure instance)
         {
@@ -13640,6 +16062,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ProductionStorageAreaViewModel : ViewModelBase
     {
         private categoryOfProductionArea _categoryOfProductionArea;
@@ -13835,11 +16259,53 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => ProductionStorageArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(ProductionStorageArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ProductionStorageArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(ProductionStorageArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(ProductionStorageArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.ProductionStorageArea instance)
         {
@@ -13945,6 +16411,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CheckpointViewModel : ViewModelBase
     {
         private categoryOfCheckpoint? _categoryOfCheckpoint = default;
@@ -14001,11 +16469,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Checkpoint")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Checkpoint.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Checkpoint).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Checkpoint.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Checkpoint).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Checkpoint).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Checkpoint instance)
         {
@@ -14068,6 +16578,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class HulkViewModel : ViewModelBase
     {
         [Category("Hulk")]
@@ -14266,11 +16778,85 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Hulk.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Hulk).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Hulk.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Hulk).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(Hulk).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Hulk).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Hulk).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Hulk instance)
         {
@@ -14386,6 +16972,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class PileViewModel : ViewModelBase
     {
         private categoryOfPile? _categoryOfPile = default;
@@ -14581,11 +17169,117 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Pile.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Pile).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Pile.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Pile).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(Pile).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(Pile).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(Pile).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Pile).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Pile).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Pile instance)
         {
@@ -14691,6 +17385,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DykeViewModel : ViewModelBase
     {
         private condition? _condition = default;
@@ -14838,11 +17534,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Dyke")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Dyke.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Dyke).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Dyke.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Dyke).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Dyke).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Dyke instance)
         {
@@ -14929,6 +17667,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ShorelineConstructionViewModel : ViewModelBase
     {
         private categoryOfShorelineConstruction? _categoryOfShorelineConstruction = default;
@@ -15173,11 +17913,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ShorelineConstruction")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => ShorelineConstruction.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(ShorelineConstruction).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ShorelineConstruction.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(ShorelineConstruction).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(ShorelineConstruction).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(ShorelineConstruction).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(ShorelineConstruction).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.ShorelineConstruction instance)
         {
@@ -15308,6 +18122,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class StructureOverNavigableWaterViewModel : ViewModelBase
     {
         [Category("StructureOverNavigableWater")]
@@ -15589,11 +18405,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => StructureOverNavigableWater.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(StructureOverNavigableWater).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => StructureOverNavigableWater.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(StructureOverNavigableWater).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RoofedStructureAggregation> _theSupportOfRoofedStructureAggregation = new(typeof(StructureOverNavigableWater).GetProperty("theSupportOfRoofedStructureAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RoofedStructureAggregation> theSupportOfRoofedStructureAggregation
+        {
+            get
+            {
+                return _theSupportOfRoofedStructureAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theSupportOfRoofedStructureAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(StructureOverNavigableWater).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(StructureOverNavigableWater).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(StructureOverNavigableWater).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.StructureOverNavigableWater instance)
         {
@@ -15756,6 +18662,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CausewayViewModel : ViewModelBase
     {
         private condition? _condition = default;
@@ -15845,11 +18753,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Causeway")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Causeway.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Causeway).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Causeway.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Causeway).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Causeway).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Causeway instance)
         {
@@ -15928,6 +18878,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CanalViewModel : ViewModelBase
     {
         private categoryOfCanal? _categoryOfCanal = default;
@@ -16061,11 +19013,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Canal")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Canal.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Canal).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Canal.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Canal).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Canal).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Canal instance)
         {
@@ -16155,6 +19149,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DistanceMarkViewModel : ViewModelBase
     {
         private Boolean _distanceMarkVisible;
@@ -16240,11 +19236,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DistanceMark")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DistanceMark.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DistanceMark).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DistanceMark.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(DistanceMark).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DistanceMark).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(DistanceMark).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DistanceMark instance)
         {
@@ -16315,6 +19369,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class GateViewModel : ViewModelBase
     {
         private categoryOfGate? _categoryOfGate = default;
@@ -16470,11 +19526,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Gate")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Gate.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Gate).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Gate.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Gate).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Gate).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Gate instance)
         {
@@ -16593,6 +19691,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DamViewModel : ViewModelBase
     {
         private categoryOfDam? _categoryOfDam = default;
@@ -16776,11 +19876,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Dam")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Dam.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Dam).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Dam.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Dam).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Dam).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Dam instance)
         {
@@ -16893,6 +20035,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CraneViewModel : ViewModelBase
     {
         private categoryOfCrane? _categoryOfCrane = default;
@@ -17149,11 +20293,85 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Crane.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Crane).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Crane.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Crane).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(Crane).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Crane).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Crane).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Crane instance)
         {
@@ -17277,6 +20495,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class BerthViewModel : ViewModelBase
     {
         [Category("Berth")]
@@ -17419,11 +20639,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Berth")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Berth.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Berth).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Berth.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.MooringTrotAggregation> _theCollectionOfMooringTrotAggregation = new(typeof(Berth).GetProperty("theCollectionOfMooringTrotAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.MooringTrotAggregation> theCollectionOfMooringTrotAggregation
+        {
+            get
+            {
+                return _theCollectionOfMooringTrotAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfMooringTrotAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Berth).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Berth).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Berth instance)
         {
@@ -17543,6 +20821,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DolphinViewModel : ViewModelBase
     {
         [Category("Dolphin")]
@@ -17747,11 +21027,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Dolphin.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Dolphin).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Dolphin.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Dolphin).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(Dolphin).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(Dolphin).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Dolphin).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Dolphin).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Dolphin instance)
         {
@@ -17887,6 +21257,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class BollardViewModel : ViewModelBase
     {
         private condition? _condition = default;
@@ -17992,11 +21364,69 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Bollard.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Bollard).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Bollard.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(Bollard).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Bollard).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Bollard).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Bollard instance)
         {
@@ -18084,6 +21514,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DryDockViewModel : ViewModelBase
     {
         private condition? _condition = default;
@@ -18280,11 +21712,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DryDock")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DryDock.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DryDock).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DryDock.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DryDock).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(DryDock).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DryDock instance)
         {
@@ -18396,6 +21870,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FloatingDockViewModel : ViewModelBase
     {
         [Category("FloatingDock")]
@@ -18651,11 +22127,85 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => FloatingDock.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(FloatingDock).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FloatingDock.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(FloatingDock).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(FloatingDock).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(FloatingDock).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(FloatingDock).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.FloatingDock instance)
         {
@@ -18773,6 +22323,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class PontoonViewModel : ViewModelBase
     {
         private condition? _condition = default;
@@ -18908,11 +22460,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Pontoon.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Pontoon).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Pontoon.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.BridgeAggregation> _theCollectionOfBridgeAggregation = new(typeof(Pontoon).GetProperty("theCollectionOfBridgeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.BridgeAggregation> theCollectionOfBridgeAggregation
+        {
+            get
+            {
+                return _theCollectionOfBridgeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfBridgeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Pontoon).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(Pontoon).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Pontoon).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Pontoon).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Pontoon instance)
         {
@@ -19006,6 +22648,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DockAreaViewModel : ViewModelBase
     {
         private categoryOfDock? _categoryOfDock = default;
@@ -19157,11 +22801,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DockArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DockArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DockArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DockArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DockArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(DockArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DockArea instance)
         {
@@ -19264,6 +22950,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class GridironViewModel : ViewModelBase
     {
         [Category("Gridiron")]
@@ -19368,11 +23056,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Gridiron")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Gridiron.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Gridiron).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Gridiron.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Gridiron).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Gridiron).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Gridiron instance)
         {
@@ -19454,6 +23184,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LockBasinViewModel : ViewModelBase
     {
         [Category("LockBasin")]
@@ -19560,11 +23292,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LockBasin")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LockBasin.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LockBasin).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LockBasin.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LockBasin).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LockBasin).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LockBasin instance)
         {
@@ -19658,6 +23432,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class MooringTrotViewModel : ViewModelBase
     {
         [Category("MooringTrot")]
@@ -19712,11 +23488,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MooringTrot")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => MooringTrot.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(MooringTrot).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MooringTrot.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.MooringTrotAggregation> _theComponentOfMooringTrotAggregation = new(typeof(MooringTrot).GetProperty("theComponentOfMooringTrotAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.MooringTrotAggregation> theComponentOfMooringTrotAggregation
+        {
+            get
+            {
+                return _theComponentOfMooringTrotAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfMooringTrotAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(MooringTrot).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(MooringTrot).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.MooringTrot instance)
         {
@@ -19775,6 +23609,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SeaAreaNamedWaterAreaViewModel : ViewModelBase
     {
         private categoryOfSeaArea? _categoryOfSeaArea = default;
@@ -19828,11 +23664,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SeaAreaNamedWaterArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SeaAreaNamedWaterArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SeaAreaNamedWaterArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SeaAreaNamedWaterArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SeaAreaNamedWaterArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SeaAreaNamedWaterArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea instance)
         {
@@ -19885,6 +23763,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TidalStreamFloodEbbViewModel : ViewModelBase
     {
         private categoryOfTidalStream _categoryOfTidalStream;
@@ -19986,11 +23866,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TidalStreamFloodEbb")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => TidalStreamFloodEbb.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(TidalStreamFloodEbb).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TidalStreamFloodEbb.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(TidalStreamFloodEbb).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(TidalStreamFloodEbb).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.TidalStreamFloodEbb instance)
         {
@@ -20070,6 +23992,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CurrentNonGravitationalViewModel : ViewModelBase
     {
         [Category("CurrentNonGravitational")]
@@ -20174,11 +24098,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CurrentNonGravitational")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => CurrentNonGravitational.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(CurrentNonGravitational).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CurrentNonGravitational.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(CurrentNonGravitational).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(CurrentNonGravitational).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.CurrentNonGravitational instance)
         {
@@ -20268,6 +24234,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class WaterTurbulenceViewModel : ViewModelBase
     {
         private categoryOfWaterTurbulence _categoryOfWaterTurbulence;
@@ -20321,11 +24289,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("WaterTurbulence")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => WaterTurbulence.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(WaterTurbulence).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => WaterTurbulence.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(WaterTurbulence).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(WaterTurbulence).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.WaterTurbulence instance)
         {
@@ -20378,6 +24388,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TidalStreamPanelDataViewModel : ViewModelBase
     {
         [Category("TidalStreamPanelData")]
@@ -20449,11 +24461,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TidalStreamPanelData")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => TidalStreamPanelData.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(TidalStreamPanelData).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TidalStreamPanelData.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(TidalStreamPanelData).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(TidalStreamPanelData).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.TidalStreamPanelData instance)
         {
@@ -20519,6 +24573,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SoundingViewModel : ViewModelBase
     {
         [Category("Sounding")]
@@ -20593,11 +24649,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Sounding")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Sounding.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Sounding).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Sounding.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Sounding).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Sounding).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Sounding instance)
         {
@@ -20673,6 +24771,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DredgedAreaViewModel : ViewModelBase
     {
         private Decimal _depthRangeMinimumValue;
@@ -20796,11 +24896,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DredgedArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DredgedArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DredgedArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DredgedArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(DredgedArea).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DredgedArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(DredgedArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DredgedArea instance)
         {
@@ -20901,6 +25059,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SweptAreaViewModel : ViewModelBase
     {
         private Decimal _depthRangeMinimumValue;
@@ -20966,11 +25126,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SweptArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SweptArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SweptArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SweptArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(SweptArea).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SweptArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SweptArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SweptArea instance)
         {
@@ -21016,6 +25234,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DepthContourViewModel : ViewModelBase
     {
         private String _interoperabilityIdentifier = string.Empty;
@@ -21066,11 +25286,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthContour")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DepthContour.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DepthContour).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DepthContour.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DepthContour).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DepthContour instance)
         {
@@ -21113,6 +25359,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DepthAreaViewModel : ViewModelBase
     {
         private Decimal _depthRangeMinimumValue;
@@ -21163,11 +25411,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DepthArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DepthArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DepthArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DepthArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DepthArea instance)
         {
@@ -21210,6 +25484,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DepthNoBottomFoundViewModel : ViewModelBase
     {
         private String _interoperabilityIdentifier = string.Empty;
@@ -21248,11 +25524,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DepthNoBottomFound")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DepthNoBottomFound.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DepthNoBottomFound).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DepthNoBottomFound.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DepthNoBottomFound).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DepthNoBottomFound instance)
         {
@@ -21302,6 +25604,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class UnsurveyedAreaViewModel : ViewModelBase
     {
         private String _interoperabilityIdentifier = string.Empty;
@@ -21322,11 +25626,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("UnsurveyedArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => UnsurveyedArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(UnsurveyedArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => UnsurveyedArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(UnsurveyedArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.UnsurveyedArea instance)
         {
@@ -21363,6 +25693,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SeabedAreaViewModel : ViewModelBase
     {
         [Category("SeabedArea")]
@@ -21419,11 +25751,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SeabedArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SeabedArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SeabedArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SeabedArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SeabedArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SeabedArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SeabedArea instance)
         {
@@ -21486,6 +25860,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class WeedKelpViewModel : ViewModelBase
     {
         private categoryOfWeedKelp? _categoryOfWeedKelp = default;
@@ -21539,11 +25915,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("WeedKelp")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => WeedKelp.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(WeedKelp).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => WeedKelp.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(WeedKelp).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(WeedKelp).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.WeedKelp instance)
         {
@@ -21596,6 +26014,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SeagrassViewModel : ViewModelBase
     {
         [Category("Seagrass")]
@@ -21634,11 +26054,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Seagrass")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Seagrass.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Seagrass).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Seagrass.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Seagrass).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Seagrass).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Seagrass instance)
         {
@@ -21688,6 +26150,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SandwaveViewModel : ViewModelBase
     {
         private String _interoperabilityIdentifier = string.Empty;
@@ -21738,11 +26202,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Sandwave")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Sandwave.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Sandwave).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Sandwave.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Sandwave).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Sandwave instance)
         {
@@ -21785,6 +26275,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SpringViewModel : ViewModelBase
     {
         [Category("Spring")]
@@ -21823,11 +26315,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Spring")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Spring.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Spring).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Spring.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Spring).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Spring).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Spring instance)
         {
@@ -21877,6 +26411,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class UnderwaterAwashRockViewModel : ViewModelBase
     {
         private expositionOfSounding? _expositionOfSounding = default;
@@ -22041,11 +26577,53 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => UnderwaterAwashRock.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(UnderwaterAwashRock).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => UnderwaterAwashRock.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(UnderwaterAwashRock).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(UnderwaterAwashRock).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.UnderwaterAwashRock instance)
         {
@@ -22139,6 +26717,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class WreckViewModel : ViewModelBase
     {
         private categoryOfWreck? _categoryOfWreck = default;
@@ -22351,11 +26931,69 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Wreck.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Wreck).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Wreck.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Wreck).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Wreck).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Wreck).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Wreck instance)
         {
@@ -22468,6 +27106,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ObstructionViewModel : ViewModelBase
     {
         private categoryOfObstruction? _categoryOfObstruction = default;
@@ -22686,11 +27326,69 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Obstruction.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Obstruction).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Obstruction.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.MooringTrotAggregation> _theCollectionOfMooringTrotAggregation = new(typeof(Obstruction).GetProperty("theCollectionOfMooringTrotAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.MooringTrotAggregation> theCollectionOfMooringTrotAggregation
+        {
+            get
+            {
+                return _theCollectionOfMooringTrotAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfMooringTrotAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Obstruction).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Obstruction).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Obstruction instance)
         {
@@ -22823,6 +27521,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FoulGroundViewModel : ViewModelBase
     {
         [Category("FoulGround")]
@@ -22916,11 +27616,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FoulGround")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => FoulGround.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(FoulGround).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FoulGround.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(FoulGround).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(FoulGround).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.FoulGround instance)
         {
@@ -23015,6 +27757,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DiscolouredWaterViewModel : ViewModelBase
     {
         private String _interoperabilityIdentifier = string.Empty;
@@ -23065,11 +27809,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DiscolouredWater")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DiscolouredWater.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DiscolouredWater).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DiscolouredWater.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DiscolouredWater).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DiscolouredWater instance)
         {
@@ -23112,6 +27882,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FishingFacilityViewModel : ViewModelBase
     {
         private categoryOfFishingFacility? _categoryOfFishingFacility = default;
@@ -23216,11 +27988,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FishingFacility")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => FishingFacility.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(FishingFacility).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FishingFacility.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(FishingFacility).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(FishingFacility).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(FishingFacility).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(FishingFacility).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.FishingFacility instance)
         {
@@ -23302,6 +28148,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class MarineFarmCultureViewModel : ViewModelBase
     {
         private categoryOfMarineFarmCulture? _categoryOfMarineFarmCulture = default;
@@ -23477,11 +28325,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MarineFarmCulture")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => MarineFarmCulture.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(MarineFarmCulture).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MarineFarmCulture.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(MarineFarmCulture).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(MarineFarmCulture).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.MarineFarmCulture instance)
         {
@@ -23617,6 +28507,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class OffshorePlatformViewModel : ViewModelBase
     {
         private categoryOfOffshorePlatform? _categoryOfOffshorePlatform = default;
@@ -23830,11 +28722,85 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => OffshorePlatform.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(OffshorePlatform).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => OffshorePlatform.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(OffshorePlatform).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(OffshorePlatform).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(OffshorePlatform).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(OffshorePlatform).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.OffshorePlatform instance)
         {
@@ -23953,6 +28919,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CableSubmarineViewModel : ViewModelBase
     {
         private Decimal? _buriedDepth = default;
@@ -24055,11 +29023,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CableSubmarine")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => CableSubmarine.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(CableSubmarine).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CableSubmarine.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.MooringTrotAggregation> _theCollectionOfMooringTrotAggregation = new(typeof(CableSubmarine).GetProperty("theCollectionOfMooringTrotAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.MooringTrotAggregation> theCollectionOfMooringTrotAggregation
+        {
+            get
+            {
+                return _theCollectionOfMooringTrotAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfMooringTrotAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(CableSubmarine).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(CableSubmarine).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.CableSubmarine instance)
         {
@@ -24137,6 +29163,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CableAreaViewModel : ViewModelBase
     {
         [Category("CableArea")]
@@ -24203,11 +29231,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CableArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => CableArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(CableArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CableArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(CableArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(CableArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.CableArea instance)
         {
@@ -24306,6 +29376,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class PipelineSubmarineOnLandViewModel : ViewModelBase
     {
         private Decimal? _buriedDepth = default;
@@ -24478,11 +29550,53 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => PipelineSubmarineOnLand.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(PipelineSubmarineOnLand).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PipelineSubmarineOnLand.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(PipelineSubmarineOnLand).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(PipelineSubmarineOnLand).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.PipelineSubmarineOnLand instance)
         {
@@ -24608,6 +29722,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SubmarinePipelineAreaViewModel : ViewModelBase
     {
         [Category("SubmarinePipelineArea")]
@@ -24677,11 +29793,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SubmarinePipelineArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SubmarinePipelineArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SubmarinePipelineArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SubmarinePipelineArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SubmarinePipelineArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SubmarinePipelineArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SubmarinePipelineArea instance)
         {
@@ -24790,6 +29948,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class OffshoreProductionAreaViewModel : ViewModelBase
     {
         private categoryOfOffshoreProductionArea? _categoryOfOffshoreProductionArea = default;
@@ -24976,11 +30136,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("OffshoreProductionArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => OffshoreProductionArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(OffshoreProductionArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => OffshoreProductionArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(OffshoreProductionArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(OffshoreProductionArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.OffshoreProductionArea instance)
         {
@@ -25103,6 +30305,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class NavigationLineViewModel : ViewModelBase
     {
         private categoryOfNavigationLine _categoryOfNavigationLine;
@@ -25206,11 +30410,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("NavigationLine")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => NavigationLine.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(NavigationLine).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => NavigationLine.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(NavigationLine).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(NavigationLine).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.NavigationLine instance)
         {
@@ -25294,6 +30540,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RecommendedTrackViewModel : ViewModelBase
     {
         private Boolean _basedOnFixedMarks;
@@ -25451,11 +30699,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RecommendedTrack")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RecommendedTrack.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RecommendedTrack).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RecommendedTrack.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(RecommendedTrack).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RecommendedTrack).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(RecommendedTrack).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(RecommendedTrack).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RecommendedTrack instance)
         {
@@ -25578,6 +30900,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RangeSystemViewModel : ViewModelBase
     {
         [Category("RangeSystem")]
@@ -25647,11 +30971,101 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RangeSystem")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RangeSystem.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RangeSystem).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RangeSystem.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theComponentOfRangeSystemAggregation = new(typeof(RangeSystem).GetProperty("theComponentOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theComponentOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theComponentOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(RangeSystem).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(RangeSystem).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RangeSystem).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(RangeSystem).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RangeSystem instance)
         {
@@ -25713,6 +31127,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FairwayViewModel : ViewModelBase
     {
         private Decimal? _depthRangeMinimumValue = default;
@@ -25855,11 +31271,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Fairway")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Fairway.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Fairway).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Fairway.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAggregation> _theCollectionOfFairwayAggregation = new(typeof(Fairway).GetProperty("theCollectionOfFairwayAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAggregation> theCollectionOfFairwayAggregation
+        {
+            get
+            {
+                return _theCollectionOfFairwayAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfFairwayAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _theAuxiliaryFeatureOfFairwayAuxiliary = new(typeof(Fairway).GetProperty("theAuxiliaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> theAuxiliaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _theAuxiliaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _theAuxiliaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Fairway).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Fairway).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Fairway instance)
         {
@@ -25979,6 +31469,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FairwaySystemViewModel : ViewModelBase
     {
         [Category("FairwaySystem")]
@@ -26051,11 +31543,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FairwaySystem")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => FairwaySystem.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(FairwaySystem).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FairwaySystem.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theComponentOfAidsToNavigationAssociation = new(typeof(FairwaySystem).GetProperty("theComponentOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theComponentOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theComponentOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAggregation> _theComponentOfFairwayAggregation = new(typeof(FairwaySystem).GetProperty("theComponentOfFairwayAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAggregation> theComponentOfFairwayAggregation
+        {
+            get
+            {
+                return _theComponentOfFairwayAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfFairwayAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(FairwaySystem).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(FairwaySystem).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.FairwaySystem instance)
         {
@@ -26127,6 +31693,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RecommendedRouteCentrelineViewModel : ViewModelBase
     {
         private Boolean _basedOnFixedMarks;
@@ -26269,11 +31837,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RecommendedRouteCentreline")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RecommendedRouteCentreline.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RecommendedRouteCentreline).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RecommendedRouteCentreline.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(RecommendedRouteCentreline).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(RecommendedRouteCentreline).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RecommendedRouteCentreline).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(RecommendedRouteCentreline).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RecommendedRouteCentreline instance)
         {
@@ -26393,6 +32035,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TwoWayRoutePartViewModel : ViewModelBase
     {
         private Boolean? _basedOnFixedMarks = default;
@@ -26529,11 +32173,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TwoWayRoutePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => TwoWayRoutePart.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(TwoWayRoutePart).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TwoWayRoutePart.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TwoWayRouteAggregation> _theCollectionOfTwoWayRouteAggregation = new(typeof(TwoWayRoutePart).GetProperty("theCollectionOfTwoWayRouteAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TwoWayRouteAggregation> theCollectionOfTwoWayRouteAggregation
+        {
+            get
+            {
+                return _theCollectionOfTwoWayRouteAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTwoWayRouteAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(TwoWayRoutePart).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(TwoWayRoutePart).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.TwoWayRoutePart instance)
         {
@@ -26633,6 +32335,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TwoWayRouteViewModel : ViewModelBase
     {
         [Category("TwoWayRoute")]
@@ -26702,11 +32406,101 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TwoWayRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => TwoWayRoute.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(TwoWayRoute).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TwoWayRoute.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theComponentOfAidsToNavigationAssociation = new(typeof(TwoWayRoute).GetProperty("theComponentOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theComponentOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theComponentOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TwoWayRouteAggregation> _theComponentOfTwoWayRouteAggregation = new(typeof(TwoWayRoute).GetProperty("theComponentOfTwoWayRouteAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TwoWayRouteAggregation> theComponentOfTwoWayRouteAggregation
+        {
+            get
+            {
+                return _theComponentOfTwoWayRouteAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfTwoWayRouteAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(TwoWayRoute).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(TwoWayRoute).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(TwoWayRoute).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.TwoWayRoute instance)
         {
@@ -26768,6 +32562,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RecommendedTrafficLanePartViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -26837,11 +32633,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RecommendedTrafficLanePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RecommendedTrafficLanePart.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RecommendedTrafficLanePart).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RecommendedTrafficLanePart.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RecommendedTrafficLanePart).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RecommendedTrafficLanePart instance)
         {
@@ -26903,6 +32725,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DeepWaterRouteCentrelineViewModel : ViewModelBase
     {
         private Boolean _basedOnFixedMarks;
@@ -27057,11 +32881,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DeepWaterRouteCentreline")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DeepWaterRouteCentreline.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DeepWaterRouteCentreline).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DeepWaterRouteCentreline.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.DeepWaterRouteAggregation> _theCollectionOfDeepWaterRouteAggregation = new(typeof(DeepWaterRouteCentreline).GetProperty("theCollectionOfDeepWaterRouteAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.DeepWaterRouteAggregation> theCollectionOfDeepWaterRouteAggregation
+        {
+            get
+            {
+                return _theCollectionOfDeepWaterRouteAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfDeepWaterRouteAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(DeepWaterRouteCentreline).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DeepWaterRouteCentreline).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(DeepWaterRouteCentreline).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRouteCentreline instance)
         {
@@ -27174,6 +33072,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DeepWaterRoutePartViewModel : ViewModelBase
     {
         private Decimal _depthRangeMinimumValue;
@@ -27319,11 +33219,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DeepWaterRoutePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DeepWaterRoutePart.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DeepWaterRoutePart).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DeepWaterRoutePart.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.DeepWaterRouteAggregation> _theCollectionOfDeepWaterRouteAggregation = new(typeof(DeepWaterRoutePart).GetProperty("theCollectionOfDeepWaterRouteAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.DeepWaterRouteAggregation> theCollectionOfDeepWaterRouteAggregation
+        {
+            get
+            {
+                return _theCollectionOfDeepWaterRouteAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfDeepWaterRouteAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(DeepWaterRoutePart).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DeepWaterRoutePart).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(DeepWaterRoutePart).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRoutePart instance)
         {
@@ -27453,6 +33427,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DeepWaterRouteViewModel : ViewModelBase
     {
         [Category("DeepWaterRoute")]
@@ -27522,11 +33498,101 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DeepWaterRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DeepWaterRoute.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DeepWaterRoute).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DeepWaterRoute.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theComponentOfAidsToNavigationAssociation = new(typeof(DeepWaterRoute).GetProperty("theComponentOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theComponentOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theComponentOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.DeepWaterRouteAggregation> _theComponentOfDeepWaterRouteAggregation = new(typeof(DeepWaterRoute).GetProperty("theComponentOfDeepWaterRouteAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.DeepWaterRouteAggregation> theComponentOfDeepWaterRouteAggregation
+        {
+            get
+            {
+                return _theComponentOfDeepWaterRouteAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfDeepWaterRouteAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(DeepWaterRoute).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DeepWaterRoute).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(DeepWaterRoute).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DeepWaterRoute instance)
         {
@@ -27588,6 +33654,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class InshoreTrafficZoneViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -27648,11 +33716,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("InshoreTrafficZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => InshoreTrafficZone.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(InshoreTrafficZone).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => InshoreTrafficZone.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(InshoreTrafficZone).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(InshoreTrafficZone).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.InshoreTrafficZone instance)
         {
@@ -27731,6 +33841,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class PrecautionaryAreaViewModel : ViewModelBase
     {
         [Category("PrecautionaryArea")]
@@ -27809,11 +33921,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PrecautionaryArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => PrecautionaryArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(PrecautionaryArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PrecautionaryArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(PrecautionaryArea).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(PrecautionaryArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(PrecautionaryArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.PrecautionaryArea instance)
         {
@@ -27905,6 +34075,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TrafficSeparationSchemeLanePartViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -27980,11 +34152,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationSchemeLanePart")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => TrafficSeparationSchemeLanePart.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(TrafficSeparationSchemeLanePart).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TrafficSeparationSchemeLanePart.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(TrafficSeparationSchemeLanePart).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(TrafficSeparationSchemeLanePart).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeLanePart instance)
         {
@@ -28066,6 +34280,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SeparationZoneOrLineViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -28120,11 +34336,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SeparationZoneOrLine")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SeparationZoneOrLine.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SeparationZoneOrLine).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SeparationZoneOrLine.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(SeparationZoneOrLine).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SeparationZoneOrLine).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SeparationZoneOrLine instance)
         {
@@ -28183,6 +34441,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TrafficSeparationSchemeBoundaryViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -28237,11 +34497,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationSchemeBoundary")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => TrafficSeparationSchemeBoundary.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(TrafficSeparationSchemeBoundary).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TrafficSeparationSchemeBoundary.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(TrafficSeparationSchemeBoundary).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(TrafficSeparationSchemeBoundary).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeBoundary instance)
         {
@@ -28300,6 +34602,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TrafficSeparationSchemeCrossingViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -28360,11 +34664,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationSchemeCrossing")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => TrafficSeparationSchemeCrossing.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(TrafficSeparationSchemeCrossing).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TrafficSeparationSchemeCrossing.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(TrafficSeparationSchemeCrossing).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(TrafficSeparationSchemeCrossing).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeCrossing instance)
         {
@@ -28443,6 +34789,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TrafficSeparationSchemeRoundaboutViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -28503,11 +34851,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationSchemeRoundabout")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => TrafficSeparationSchemeRoundabout.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(TrafficSeparationSchemeRoundabout).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TrafficSeparationSchemeRoundabout.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(TrafficSeparationSchemeRoundabout).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(TrafficSeparationSchemeRoundabout).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationSchemeRoundabout instance)
         {
@@ -28586,6 +34976,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TrafficSeparationSchemeViewModel : ViewModelBase
     {
         [Category("TrafficSeparationScheme")]
@@ -28670,11 +35062,117 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TrafficSeparationScheme")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => TrafficSeparationScheme.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(TrafficSeparationScheme).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TrafficSeparationScheme.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theComponentOfAidsToNavigationAssociation = new(typeof(TrafficSeparationScheme).GetProperty("theComponentOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theComponentOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theComponentOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theComponentOfTrafficSeparationSchemeAggregation = new(typeof(TrafficSeparationScheme).GetProperty("theComponentOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theComponentOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theComponentOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(TrafficSeparationScheme).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.CautionAreaAssociation> _theCollectionOfCautionAreaAssociation = new(typeof(TrafficSeparationScheme).GetProperty("theCollectionOfCautionAreaAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.CautionAreaAssociation> theCollectionOfCautionAreaAssociation
+        {
+            get
+            {
+                return _theCollectionOfCautionAreaAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfCautionAreaAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(TrafficSeparationScheme).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(TrafficSeparationScheme).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.TrafficSeparationScheme instance)
         {
@@ -28739,6 +35237,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ArchipelagicSeaLaneAreaViewModel : ViewModelBase
     {
         [Category("ArchipelagicSeaLaneArea")]
@@ -28808,11 +35308,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ArchipelagicSeaLaneArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => ArchipelagicSeaLaneArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(ArchipelagicSeaLaneArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ArchipelagicSeaLaneArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.ASLAggregation> _theCollectionOfASLAggregation = new(typeof(ArchipelagicSeaLaneArea).GetProperty("theCollectionOfASLAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.ASLAggregation> theCollectionOfASLAggregation
+        {
+            get
+            {
+                return _theCollectionOfASLAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfASLAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(ArchipelagicSeaLaneArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(ArchipelagicSeaLaneArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneArea instance)
         {
@@ -28874,6 +35432,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ArchipelagicSeaLaneAxisViewModel : ViewModelBase
     {
         [Category("ArchipelagicSeaLaneAxis")]
@@ -28943,11 +35503,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ArchipelagicSeaLaneAxis")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => ArchipelagicSeaLaneAxis.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(ArchipelagicSeaLaneAxis).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ArchipelagicSeaLaneAxis.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.ASLAggregation> _theCollectionOfASLAggregation = new(typeof(ArchipelagicSeaLaneAxis).GetProperty("theCollectionOfASLAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.ASLAggregation> theCollectionOfASLAggregation
+        {
+            get
+            {
+                return _theCollectionOfASLAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfASLAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(ArchipelagicSeaLaneAxis).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(ArchipelagicSeaLaneAxis).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLaneAxis instance)
         {
@@ -29009,6 +35627,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ArchipelagicSeaLaneViewModel : ViewModelBase
     {
         [Category("ArchipelagicSeaLane")]
@@ -29078,11 +35698,101 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ArchipelagicSeaLane")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => ArchipelagicSeaLane.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(ArchipelagicSeaLane).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ArchipelagicSeaLane.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theComponentOfAidsToNavigationAssociation = new(typeof(ArchipelagicSeaLane).GetProperty("theComponentOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theComponentOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theComponentOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.ASLAggregation> _theComponentOfASLAggregation = new(typeof(ArchipelagicSeaLane).GetProperty("theComponentOfASLAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.ASLAggregation> theComponentOfASLAggregation
+        {
+            get
+            {
+                return _theComponentOfASLAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfASLAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.CautionAreaAssociation> _theCollectionOfCautionAreaAssociation = new(typeof(ArchipelagicSeaLane).GetProperty("theCollectionOfCautionAreaAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.CautionAreaAssociation> theCollectionOfCautionAreaAssociation
+        {
+            get
+            {
+                return _theCollectionOfCautionAreaAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfCautionAreaAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(ArchipelagicSeaLane).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(ArchipelagicSeaLane).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.ArchipelagicSeaLane instance)
         {
@@ -29144,6 +35854,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RadioCallingInPointViewModel : ViewModelBase
     {
         [Category("RadioCallingInPoint")]
@@ -29225,11 +35937,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadioCallingInPoint")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RadioCallingInPoint.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RadioCallingInPoint).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadioCallingInPoint.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RadioCallingInPoint).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(RadioCallingInPoint).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RadioCallingInPoint instance)
         {
@@ -29331,6 +36085,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FerryRouteViewModel : ViewModelBase
     {
         [Category("FerryRoute")]
@@ -29394,11 +36150,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FerryRoute")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => FerryRoute.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(FerryRoute).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FerryRoute.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(FerryRoute).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(FerryRoute).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.FerryRoute instance)
         {
@@ -29487,6 +36285,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RadarLineViewModel : ViewModelBase
     {
         [Category("RadarLine")]
@@ -29543,11 +36343,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarLine")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RadarLine.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RadarLine).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadarLine.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RadarLine).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(RadarLine).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RadarLine instance)
         {
@@ -29610,6 +36452,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RadarRangeViewModel : ViewModelBase
     {
         [Category("RadarRange")]
@@ -29670,11 +36514,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarRange")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RadarRange.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RadarRange).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadarRange.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RadarRange).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(RadarRange).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RadarRange instance)
         {
@@ -29753,6 +36639,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RadarStationViewModel : ViewModelBase
     {
         private String _callSign = string.Empty;
@@ -29848,11 +36736,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarStation")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RadarStation.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RadarStation).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadarStation.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RadarStation).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(RadarStation).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RadarStation instance)
         {
@@ -29951,6 +36881,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class AnchorageAreaViewModel : ViewModelBase
     {
         [Category("AnchorageArea")]
@@ -30023,11 +36955,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("AnchorageArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => AnchorageArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(AnchorageArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => AnchorageArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(AnchorageArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(AnchorageArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.AnchorageArea instance)
         {
@@ -30146,6 +37120,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class MooringAreaViewModel : ViewModelBase
     {
         [Category("MooringArea")]
@@ -30245,11 +37221,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MooringArea")]
         public ObservableCollection<vesselSpeedLimit> vesselSpeedLimit { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => MooringArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(MooringArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MooringArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(MooringArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(MooringArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.MooringArea instance)
         {
@@ -30364,6 +37382,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class AnchorBerthViewModel : ViewModelBase
     {
         [Category("AnchorBerth")]
@@ -30445,11 +37465,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("AnchorBerth")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => AnchorBerth.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(AnchorBerth).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => AnchorBerth.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(AnchorBerth).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(AnchorBerth).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.AnchorBerth instance)
         {
@@ -30551,6 +37613,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SeaplaneLandingAreaViewModel : ViewModelBase
     {
         [Category("SeaplaneLandingArea")]
@@ -30601,11 +37665,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SeaplaneLandingArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SeaplaneLandingArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SeaplaneLandingArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SeaplaneLandingArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SeaplaneLandingArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SeaplaneLandingArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SeaplaneLandingArea instance)
         {
@@ -30695,6 +37801,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DumpingGroundViewModel : ViewModelBase
     {
         [Category("DumpingGround")]
@@ -30760,11 +37868,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("DumpingGround")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => DumpingGround.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(DumpingGround).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => DumpingGround.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(DumpingGround).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(DumpingGround).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.DumpingGround instance)
         {
@@ -30857,6 +38007,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class MilitaryPracticeAreaViewModel : ViewModelBase
     {
         [Category("MilitaryPracticeArea")]
@@ -30941,11 +38093,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MilitaryPracticeArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => MilitaryPracticeArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(MilitaryPracticeArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MilitaryPracticeArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(MilitaryPracticeArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(MilitaryPracticeArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.MilitaryPracticeArea instance)
         {
@@ -31057,6 +38251,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class AdministrationAreaViewModel : ViewModelBase
     {
         private Boolean? _inDispute = default;
@@ -31143,11 +38339,53 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => AdministrationArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(AdministrationArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => AdministrationArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(AdministrationArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(AdministrationArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.AdministrationArea instance)
         {
@@ -31216,6 +38454,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CargoTranshipmentAreaViewModel : ViewModelBase
     {
         [Category("CargoTranshipmentArea")]
@@ -31282,11 +38522,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CargoTranshipmentArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => CargoTranshipmentArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(CargoTranshipmentArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CargoTranshipmentArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(CargoTranshipmentArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(CargoTranshipmentArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.CargoTranshipmentArea instance)
         {
@@ -31385,6 +38667,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CautionAreaViewModel : ViewModelBase
     {
         private condition? _condition = default;
@@ -31499,11 +38783,69 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => CautionArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(CautionArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CautionArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.CautionAreaAssociation> _theComponentOfCautionAreaAssociation = new(typeof(CautionArea).GetProperty("theComponentOfCautionAreaAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.CautionAreaAssociation> theComponentOfCautionAreaAssociation
+        {
+            get
+            {
+                return _theComponentOfCautionAreaAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfCautionAreaAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(CautionArea).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(CautionArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.CautionArea instance)
         {
@@ -31574,6 +38916,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class InformationAreaViewModel : ViewModelBase
     {
         [Category("InformationArea")]
@@ -31661,11 +39005,53 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => InformationArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(InformationArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => InformationArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(InformationArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(InformationArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.InformationArea instance)
         {
@@ -31740,6 +39126,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ContiguousZoneViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -31809,11 +39197,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ContiguousZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => ContiguousZone.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(ContiguousZone).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ContiguousZone.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(ContiguousZone).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.ContiguousZone instance)
         {
@@ -31875,6 +39289,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ContinentalShelfAreaViewModel : ViewModelBase
     {
         [Category("ContinentalShelfArea")]
@@ -31916,11 +39332,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ContinentalShelfArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => ContinentalShelfArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(ContinentalShelfArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ContinentalShelfArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(ContinentalShelfArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(ContinentalShelfArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.ContinentalShelfArea instance)
         {
@@ -31980,6 +39438,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CustomZoneViewModel : ViewModelBase
     {
         private String _interoperabilityIdentifier = string.Empty;
@@ -32030,11 +39490,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CustomZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => CustomZone.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(CustomZone).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CustomZone.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(CustomZone).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.CustomZone instance)
         {
@@ -32077,6 +39563,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ExclusiveEconomicZoneViewModel : ViewModelBase
     {
         private Boolean? _inDispute = default;
@@ -32130,11 +39618,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("ExclusiveEconomicZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => ExclusiveEconomicZone.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(ExclusiveEconomicZone).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => ExclusiveEconomicZone.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(ExclusiveEconomicZone).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.ExclusiveEconomicZone instance)
         {
@@ -32187,6 +39701,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FisheryZoneViewModel : ViewModelBase
     {
         [Category("FisheryZone")]
@@ -32243,11 +39759,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FisheryZone")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => FisheryZone.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(FisheryZone).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FisheryZone.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(FisheryZone).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(FisheryZone).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.FisheryZone instance)
         {
@@ -32310,6 +39868,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FishingGroundViewModel : ViewModelBase
     {
         [Category("FishingGround")]
@@ -32360,11 +39920,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FishingGround")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => FishingGround.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(FishingGround).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FishingGround.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(FishingGround).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(FishingGround).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.FishingGround instance)
         {
@@ -32454,6 +40056,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FreePortAreaViewModel : ViewModelBase
     {
         [Category("FreePortArea")]
@@ -32495,11 +40099,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FreePortArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => FreePortArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(FreePortArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FreePortArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(FreePortArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(FreePortArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.FreePortArea instance)
         {
@@ -32559,6 +40205,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class HarbourAreaAdministrativeViewModel : ViewModelBase
     {
         [Category("HarbourAreaAdministrative")]
@@ -32600,11 +40248,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("HarbourAreaAdministrative")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => HarbourAreaAdministrative.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(HarbourAreaAdministrative).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => HarbourAreaAdministrative.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(HarbourAreaAdministrative).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(HarbourAreaAdministrative).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.HarbourAreaAdministrative instance)
         {
@@ -32664,6 +40354,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LogPondViewModel : ViewModelBase
     {
         [Category("LogPond")]
@@ -32708,11 +40400,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LogPond")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LogPond.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LogPond).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LogPond.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LogPond).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LogPond).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LogPond instance)
         {
@@ -32782,6 +40516,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class OilBarrierViewModel : ViewModelBase
     {
         private categoryOfOilBarrier? _categoryOfOilBarrier = default;
@@ -32884,11 +40620,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("OilBarrier")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => OilBarrier.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(OilBarrier).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => OilBarrier.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(OilBarrier).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(OilBarrier).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.OilBarrier instance)
         {
@@ -32966,6 +40744,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class StraightTerritorialSeaBaselineViewModel : ViewModelBase
     {
         private String _interoperabilityIdentifier = string.Empty;
@@ -33016,11 +40796,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("StraightTerritorialSeaBaseline")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => StraightTerritorialSeaBaseline.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(StraightTerritorialSeaBaseline).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => StraightTerritorialSeaBaseline.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(StraightTerritorialSeaBaseline).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.StraightTerritorialSeaBaseline instance)
         {
@@ -33063,6 +40869,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TerritorialSeaAreaViewModel : ViewModelBase
     {
         private Boolean? _inDispute = default;
@@ -33122,11 +40930,37 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("TerritorialSeaArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => TerritorialSeaArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(TerritorialSeaArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TerritorialSeaArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(TerritorialSeaArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.TerritorialSeaArea instance)
         {
@@ -33199,6 +41033,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SubmarineTransitLaneViewModel : ViewModelBase
     {
         [Category("SubmarineTransitLane")]
@@ -33258,11 +41094,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SubmarineTransitLane")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SubmarineTransitLane.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SubmarineTransitLane).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SubmarineTransitLane.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SubmarineTransitLane).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SubmarineTransitLane).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SubmarineTransitLane instance)
         {
@@ -33335,6 +41213,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class PilotageDistrictViewModel : ViewModelBase
     {
         [Category("PilotageDistrict")]
@@ -33376,11 +41256,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PilotageDistrict")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => PilotageDistrict.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(PilotageDistrict).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PilotageDistrict.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.PilotageDistrictAssociation> _theComponentOfPilotageDistrictAssociation = new(typeof(PilotageDistrict).GetProperty("theComponentOfPilotageDistrictAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.PilotageDistrictAssociation> theComponentOfPilotageDistrictAssociation
+        {
+            get
+            {
+                return _theComponentOfPilotageDistrictAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theComponentOfPilotageDistrictAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(PilotageDistrict).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(PilotageDistrict).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.PilotageDistrict instance)
         {
@@ -33440,6 +41378,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CollisionRegulationsLimitViewModel : ViewModelBase
     {
         [Category("CollisionRegulationsLimit")]
@@ -33512,11 +41452,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CollisionRegulationsLimit")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => CollisionRegulationsLimit.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(CollisionRegulationsLimit).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CollisionRegulationsLimit.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(CollisionRegulationsLimit).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(CollisionRegulationsLimit).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.CollisionRegulationsLimit instance)
         {
@@ -33588,6 +41570,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class MarinePollutionRegulationsAreaViewModel : ViewModelBase
     {
         [Category("MarinePollutionRegulationsArea")]
@@ -33641,11 +41625,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("MarinePollutionRegulationsArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => MarinePollutionRegulationsArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(MarinePollutionRegulationsArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MarinePollutionRegulationsArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(MarinePollutionRegulationsArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(MarinePollutionRegulationsArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.MarinePollutionRegulationsArea instance)
         {
@@ -33698,6 +41724,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RestrictedAreaViewModel : ViewModelBase
     {
         [Category("RestrictedArea")]
@@ -33767,11 +41795,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RestrictedArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RestrictedArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RestrictedArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RestrictedArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(RestrictedArea).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> _theCollectionOfTrafficSeparationSchemeAggregation = new(typeof(RestrictedArea).GetProperty("theCollectionOfTrafficSeparationSchemeAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TrafficSeparationSchemeAggregation> theCollectionOfTrafficSeparationSchemeAggregation
+        {
+            get
+            {
+                return _theCollectionOfTrafficSeparationSchemeAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfTrafficSeparationSchemeAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RestrictedArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(RestrictedArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RestrictedArea instance)
         {
@@ -33880,6 +41982,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LightAllAroundViewModel : ViewModelBase
     {
         [Category("LightAllAround")]
@@ -34128,11 +42232,101 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightAllAround")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LightAllAround.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LightAllAround).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightAllAround.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(LightAllAround).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(LightAllAround).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(LightAllAround).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LightAllAround).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LightAllAround).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LightAllAround instance)
         {
@@ -34279,6 +42473,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LightSectoredViewModel : ViewModelBase
     {
         [Category("LightSectored")]
@@ -34436,11 +42632,101 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightSectored")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LightSectored.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LightSectored).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightSectored.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(LightSectored).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(LightSectored).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(LightSectored).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LightSectored).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LightSectored).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LightSectored instance)
         {
@@ -34563,6 +42849,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LightFogDetectorViewModel : ViewModelBase
     {
         [Category("LightFogDetector")]
@@ -34717,11 +43005,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightFogDetector")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LightFogDetector.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LightFogDetector).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightFogDetector.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(LightFogDetector).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LightFogDetector).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LightFogDetector).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LightFogDetector instance)
         {
@@ -34834,6 +43180,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LightAirObstructionViewModel : ViewModelBase
     {
         [Category("LightAirObstruction")]
@@ -35007,11 +43355,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("LightAirObstruction")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LightAirObstruction.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LightAirObstruction).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightAirObstruction.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(LightAirObstruction).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LightAirObstruction).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LightAirObstruction).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LightAirObstruction instance)
         {
@@ -35143,6 +43549,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LateralBuoyViewModel : ViewModelBase
     {
         private buoyShape _buoyShape;
@@ -35330,11 +43738,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LateralBuoy.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LateralBuoy).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LateralBuoy.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(LateralBuoy).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(LateralBuoy).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(LateralBuoy).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LateralBuoy).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LateralBuoy).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LateralBuoy instance)
         {
@@ -35463,6 +43961,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CardinalBuoyViewModel : ViewModelBase
     {
         private buoyShape _buoyShape;
@@ -35650,11 +44150,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => CardinalBuoy.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(CardinalBuoy).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CardinalBuoy.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(CardinalBuoy).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(CardinalBuoy).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(CardinalBuoy).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(CardinalBuoy).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(CardinalBuoy).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.CardinalBuoy instance)
         {
@@ -35783,6 +44373,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class IsolatedDangerBuoyViewModel : ViewModelBase
     {
         private buoyShape _buoyShape;
@@ -35955,11 +44547,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => IsolatedDangerBuoy.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(IsolatedDangerBuoy).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => IsolatedDangerBuoy.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(IsolatedDangerBuoy).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(IsolatedDangerBuoy).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(IsolatedDangerBuoy).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(IsolatedDangerBuoy).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(IsolatedDangerBuoy).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBuoy instance)
         {
@@ -36085,6 +44767,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SafeWaterBuoyViewModel : ViewModelBase
     {
         private buoyShape _buoyShape;
@@ -36257,11 +44941,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SafeWaterBuoy.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SafeWaterBuoy).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SafeWaterBuoy.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(SafeWaterBuoy).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(SafeWaterBuoy).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(SafeWaterBuoy).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SafeWaterBuoy).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SafeWaterBuoy).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SafeWaterBuoy instance)
         {
@@ -36387,6 +45161,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SpecialPurposeGeneralBuoyViewModel : ViewModelBase
     {
         private buoyShape _buoyShape;
@@ -36562,11 +45338,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SpecialPurposeGeneralBuoy.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SpecialPurposeGeneralBuoy).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SpecialPurposeGeneralBuoy.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(SpecialPurposeGeneralBuoy).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(SpecialPurposeGeneralBuoy).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(SpecialPurposeGeneralBuoy).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SpecialPurposeGeneralBuoy).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SpecialPurposeGeneralBuoy).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBuoy instance)
         {
@@ -36702,6 +45568,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class EmergencyWreckMarkingBuoyViewModel : ViewModelBase
     {
         private buoyShape _buoyShape;
@@ -36868,11 +45736,85 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => EmergencyWreckMarkingBuoy.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(EmergencyWreckMarkingBuoy).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => EmergencyWreckMarkingBuoy.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(EmergencyWreckMarkingBuoy).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(EmergencyWreckMarkingBuoy).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(EmergencyWreckMarkingBuoy).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(EmergencyWreckMarkingBuoy).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.EmergencyWreckMarkingBuoy instance)
         {
@@ -36978,6 +45920,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class InstallationBuoyViewModel : ViewModelBase
     {
         private buoyShape _buoyShape;
@@ -37137,11 +46081,69 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => InstallationBuoy.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(InstallationBuoy).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => InstallationBuoy.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(InstallationBuoy).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(InstallationBuoy).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(InstallationBuoy).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.InstallationBuoy instance)
         {
@@ -37268,6 +46270,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class MooringBuoyViewModel : ViewModelBase
     {
         private buoyShape _buoyShape;
@@ -37439,11 +46443,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => MooringBuoy.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(MooringBuoy).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => MooringBuoy.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(MooringBuoy).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(MooringBuoy).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.MooringTrotAggregation> _theCollectionOfMooringTrotAggregation = new(typeof(MooringBuoy).GetProperty("theCollectionOfMooringTrotAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.MooringTrotAggregation> theCollectionOfMooringTrotAggregation
+        {
+            get
+            {
+                return _theCollectionOfMooringTrotAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfMooringTrotAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(MooringBuoy).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(MooringBuoy).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.MooringBuoy instance)
         {
@@ -37563,6 +46657,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LateralBeaconViewModel : ViewModelBase
     {
         private beaconShape _beaconShape;
@@ -37825,11 +46921,117 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LateralBeacon.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LateralBeacon).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LateralBeacon.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(LateralBeacon).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(LateralBeacon).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(LateralBeacon).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(LateralBeacon).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LateralBeacon).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LateralBeacon).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LateralBeacon instance)
         {
@@ -37973,6 +47175,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CardinalBeaconViewModel : ViewModelBase
     {
         private beaconShape _beaconShape;
@@ -38235,11 +47439,117 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => CardinalBeacon.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(CardinalBeacon).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CardinalBeacon.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(CardinalBeacon).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(CardinalBeacon).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(CardinalBeacon).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(CardinalBeacon).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(CardinalBeacon).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(CardinalBeacon).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.CardinalBeacon instance)
         {
@@ -38383,6 +47693,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class IsolatedDangerBeaconViewModel : ViewModelBase
     {
         private beaconShape _beaconShape;
@@ -38630,11 +47942,117 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => IsolatedDangerBeacon.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(IsolatedDangerBeacon).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => IsolatedDangerBeacon.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(IsolatedDangerBeacon).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(IsolatedDangerBeacon).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(IsolatedDangerBeacon).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(IsolatedDangerBeacon).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(IsolatedDangerBeacon).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(IsolatedDangerBeacon).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.IsolatedDangerBeacon instance)
         {
@@ -38775,6 +48193,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SafeWaterBeaconViewModel : ViewModelBase
     {
         private beaconShape _beaconShape;
@@ -39022,11 +48442,117 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SafeWaterBeacon.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SafeWaterBeacon).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SafeWaterBeacon.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(SafeWaterBeacon).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(SafeWaterBeacon).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(SafeWaterBeacon).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(SafeWaterBeacon).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SafeWaterBeacon).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SafeWaterBeacon).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SafeWaterBeacon instance)
         {
@@ -39167,6 +48693,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SpecialPurposeGeneralBeaconViewModel : ViewModelBase
     {
         private beaconShape _beaconShape;
@@ -39417,11 +48945,117 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SpecialPurposeGeneralBeacon.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SpecialPurposeGeneralBeacon).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SpecialPurposeGeneralBeacon.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(SpecialPurposeGeneralBeacon).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(SpecialPurposeGeneralBeacon).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(SpecialPurposeGeneralBeacon).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(SpecialPurposeGeneralBeacon).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SpecialPurposeGeneralBeacon).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SpecialPurposeGeneralBeacon).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SpecialPurposeGeneralBeacon instance)
         {
@@ -39572,6 +49206,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DaymarkViewModel : ViewModelBase
     {
         [Category("Daymark")]
@@ -39749,11 +49385,133 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Daymark.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Daymark).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Daymark.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Daymark).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(Daymark).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(Daymark).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(Daymark).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(Daymark).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Daymark).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Daymark).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Daymark instance)
         {
@@ -39893,6 +49651,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LightFloatViewModel : ViewModelBase
     {
         [Category("LightFloat")]
@@ -40080,11 +49840,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LightFloat.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LightFloat).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightFloat.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(LightFloat).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(LightFloat).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(LightFloat).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LightFloat).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LightFloat).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LightFloat instance)
         {
@@ -40213,6 +50063,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class LightVesselViewModel : ViewModelBase
     {
         [Category("LightVessel")]
@@ -40384,11 +50236,101 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => LightVessel.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(LightVessel).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => LightVessel.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(LightVessel).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
+        {
+            get
+            {
+                return _theEquipmentOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theEquipmentOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> _theCollectionOfAidsToNavigationAssociation = new(typeof(LightVessel).GetProperty("theCollectionOfAidsToNavigationAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation> theCollectionOfAidsToNavigationAssociation
+        {
+            get
+            {
+                return _theCollectionOfAidsToNavigationAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfAidsToNavigationAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> _thePrimaryFeatureOfFairwayAuxiliary = new(typeof(LightVessel).GetProperty("thePrimaryFeatureOfFairwayAuxiliary")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.FairwayAuxiliary> thePrimaryFeatureOfFairwayAuxiliary
+        {
+            get
+            {
+                return _thePrimaryFeatureOfFairwayAuxiliary;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePrimaryFeatureOfFairwayAuxiliary, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(LightVessel).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(LightVessel).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.LightVessel instance)
         {
@@ -40508,6 +50450,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RetroreflectorViewModel : ViewModelBase
     {
         [Category("Retroreflector")]
@@ -40598,11 +50542,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Retroreflector")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Retroreflector.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(Retroreflector).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Retroreflector.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(Retroreflector).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(Retroreflector).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Retroreflector instance)
         {
@@ -40687,6 +50673,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RadarReflectorViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
@@ -40759,11 +50747,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarReflector")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RadarReflector.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RadarReflector).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadarReflector.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(RadarReflector).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RadarReflector).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RadarReflector instance)
         {
@@ -40835,6 +50865,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class FogSignalViewModel : ViewModelBase
     {
         private categoryOfFogSignal _categoryOfFogSignal;
@@ -40988,11 +51020,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("FogSignal")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => FogSignal.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(FogSignal).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => FogSignal.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(FogSignal).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(FogSignal).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(FogSignal).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.FogSignal instance)
         {
@@ -41099,6 +51189,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class PhysicalAISAidToNavigationViewModel : ViewModelBase
     {
         private Decimal? _estimatedRangeOfTransmission = default;
@@ -41201,11 +51293,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PhysicalAISAidToNavigation")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => PhysicalAISAidToNavigation.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(PhysicalAISAidToNavigation).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PhysicalAISAidToNavigation.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(PhysicalAISAidToNavigation).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(PhysicalAISAidToNavigation).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(PhysicalAISAidToNavigation).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.PhysicalAISAidToNavigation instance)
         {
@@ -41283,6 +51433,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class VirtualAISAidToNavigationViewModel : ViewModelBase
     {
         private Decimal? _estimatedRangeOfTransmission = default;
@@ -41400,11 +51552,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("VirtualAISAidToNavigation")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => VirtualAISAidToNavigation.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(VirtualAISAidToNavigation).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => VirtualAISAidToNavigation.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(VirtualAISAidToNavigation).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(VirtualAISAidToNavigation).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.VirtualAISAidToNavigation instance)
         {
@@ -41485,6 +51679,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RadioStationViewModel : ViewModelBase
     {
         private String _callSign = string.Empty;
@@ -41597,11 +51793,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadioStation")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RadioStation.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RadioStation).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadioStation.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RadioStation).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(RadioStation).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RadioStation instance)
         {
@@ -41715,6 +51953,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RadarTransponderBeaconViewModel : ViewModelBase
     {
         private categoryOfRadarTransponderBeacon _categoryOfRadarTransponderBeacon;
@@ -41842,11 +52082,85 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RadarTransponderBeacon")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RadarTransponderBeacon.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RadarTransponderBeacon).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RadarTransponderBeacon.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(RadarTransponderBeacon).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RadarTransponderBeacon).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(RadarTransponderBeacon).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> _theCollectionOfRangeSystemAggregation = new(typeof(RadarTransponderBeacon).GetProperty("theCollectionOfRangeSystemAggregation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.RangeSystemAggregation> theCollectionOfRangeSystemAggregation
+        {
+            get
+            {
+                return _theCollectionOfRangeSystemAggregation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfRangeSystemAggregation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RadarTransponderBeacon instance)
         {
@@ -41963,6 +52277,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class PilotBoardingPlaceViewModel : ViewModelBase
     {
         private categoryOfPilotBoardingPlace? _categoryOfPilotBoardingPlace = default;
@@ -42062,11 +52378,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("PilotBoardingPlace")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => PilotBoardingPlace.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(PilotBoardingPlace).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => PilotBoardingPlace.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.PilotageDistrictAssociation> _theCollectionOfPilotageDistrictAssociation = new(typeof(PilotBoardingPlace).GetProperty("theCollectionOfPilotageDistrictAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.PilotageDistrictAssociation> theCollectionOfPilotageDistrictAssociation
+        {
+            get
+            {
+                return _theCollectionOfPilotageDistrictAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCollectionOfPilotageDistrictAssociation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(PilotBoardingPlace).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(PilotBoardingPlace).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.PilotBoardingPlace instance)
         {
@@ -42181,6 +52555,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class VesselTrafficServiceAreaViewModel : ViewModelBase
     {
         [Category("VesselTrafficServiceArea")]
@@ -42219,11 +52595,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("VesselTrafficServiceArea")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => VesselTrafficServiceArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(VesselTrafficServiceArea).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => VesselTrafficServiceArea.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(VesselTrafficServiceArea).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(VesselTrafficServiceArea).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.VesselTrafficServiceArea instance)
         {
@@ -42273,6 +52691,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class CoastGuardStationViewModel : ViewModelBase
     {
         [Category("CoastGuardStation")]
@@ -42351,11 +52771,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("CoastGuardStation")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => CoastGuardStation.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(CoastGuardStation).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => CoastGuardStation.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(CoastGuardStation).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(CoastGuardStation).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.CoastGuardStation instance)
         {
@@ -42447,6 +52909,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SignalStationWarningViewModel : ViewModelBase
     {
         [Category("SignalStationWarning")]
@@ -42513,11 +52977,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SignalStationWarning")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SignalStationWarning.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SignalStationWarning).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SignalStationWarning.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(SignalStationWarning).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SignalStationWarning).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SignalStationWarning).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SignalStationWarning instance)
         {
@@ -42616,6 +53138,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SignalStationTrafficViewModel : ViewModelBase
     {
         [Category("SignalStationTraffic")]
@@ -42682,11 +53206,69 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("SignalStationTraffic")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SignalStationTraffic.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SignalStationTraffic).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SignalStationTraffic.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theStructureOfStructureEquipment = new(typeof(SignalStationTraffic).GetProperty("theStructureOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theStructureOfStructureEquipment
+        {
+            get
+            {
+                return _theStructureOfStructureEquipment;
+            }
+
+            set
+            {
+                base.SetValue(ref _theStructureOfStructureEquipment, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SignalStationTraffic).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SignalStationTraffic).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SignalStationTraffic instance)
         {
@@ -42785,6 +53367,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RescueStationViewModel : ViewModelBase
     {
         [Category("RescueStation")]
@@ -42851,11 +53435,53 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("RescueStation")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => RescueStation.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(RescueStation).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => RescueStation.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(RescueStation).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(RescueStation).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.RescueStation instance)
         {
@@ -42954,6 +53580,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class HarbourFacilityViewModel : ViewModelBase
     {
         [Category("HarbourFacility")]
@@ -43089,11 +53717,53 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => HarbourFacility.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(HarbourFacility).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => HarbourFacility.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(HarbourFacility).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(HarbourFacility).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.HarbourFacility instance)
         {
@@ -43234,6 +53904,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class SmallCraftFacilityViewModel : ViewModelBase
     {
         [Category("SmallCraftFacility")]
@@ -43296,11 +53968,53 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => SmallCraftFacility.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> _theInformationOfAdditionalInformation = new(typeof(SmallCraftFacility).GetProperty("theInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S101.Associations.InformationAssociations.AdditionalInformation> theInformationOfAdditionalInformation
+        {
+            get
+            {
+                return _theInformationOfAdditionalInformation;
+            }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => SmallCraftFacility.FeatureBindingDescriptors;
+            set
+            {
+                base.SetValue(ref _theInformationOfAdditionalInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> _theUpdateOfUpdatedInformation = new(typeof(SmallCraftFacility).GetProperty("theUpdateOfUpdatedInformation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.UpdatedInformation> theUpdateOfUpdatedInformation
+        {
+            get
+            {
+                return _theUpdateOfUpdatedInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theUpdateOfUpdatedInformation, value);
+            }
+        }
+
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(SmallCraftFacility).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.SmallCraftFacility instance)
         {
@@ -43383,6 +54097,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TextPlacementViewModel : ViewModelBase
     {
         private Int32 _textOffsetBearing;
@@ -43448,8 +54164,21 @@ namespace S100Framework.WPF.ViewModel.S101
             }
         }
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => TextPlacement.FeatureBindingDescriptors;
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _thePositionProviderOfTextAssociation = new(typeof(TextPlacement).GetProperty("thePositionProviderOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> thePositionProviderOfTextAssociation
+        {
+            get
+            {
+                return _thePositionProviderOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _thePositionProviderOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.TextPlacement instance)
         {
@@ -43495,6 +54224,8 @@ namespace S100Framework.WPF.ViewModel.S101
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class Chart1FeatureViewModel : ViewModelBase
     {
         [Category("Chart1Feature")]
@@ -43503,8 +54234,21 @@ namespace S100Framework.WPF.ViewModel.S101
         [Category("Chart1Feature")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
-        [Browsable(false)]
-        public FeatureBindingDescriptor[] FeatureBindingDescriptors => Chart1Feature.FeatureBindingDescriptors;
+        private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> _theCartographicTextOfTextAssociation = new(typeof(Chart1Feature).GetProperty("theCartographicTextOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.TextAssociation> theCartographicTextOfTextAssociation
+        {
+            get
+            {
+                return _theCartographicTextOfTextAssociation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theCartographicTextOfTextAssociation, value);
+            }
+        }
 
         public void Load(DomainModel.S101.FeatureTypes.Chart1Feature instance)
         {

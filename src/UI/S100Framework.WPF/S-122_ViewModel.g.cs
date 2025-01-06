@@ -1,4 +1,4 @@
-using S100Framework.DomainModel.Bindings;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.S122;
 using S100Framework.DomainModel.S122.ComplexAttributes;
 using S100Framework.DomainModel.S122.FeatureTypes;
@@ -6,6 +6,8 @@ using S100Framework.DomainModel.S122.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Reflection;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 
 namespace S100Framework.WPF.ViewModel.S122
@@ -81,6 +83,8 @@ namespace S100Framework.WPF.ViewModel.S122
         });
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class contactAddressViewModel : ViewModelBase
     {
         private String _deliveryPoint = string.Empty;
@@ -195,6 +199,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class featureNameViewModel : ViewModelBase
     {
         private Boolean? _displayName = default;
@@ -273,6 +279,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class fixedDateRangeViewModel : ViewModelBase
     {
         private DateOnly? _dateStart = default;
@@ -333,6 +341,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class frequencyPairViewModel : ViewModelBase
     {
         private Int32? _frequencyShoreStationReceives = default;
@@ -395,6 +405,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class informationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -510,6 +522,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class onlineResourceViewModel : ViewModelBase
     {
         private String _onlineResourceLinkageURL = string.Empty;
@@ -662,6 +676,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class orientationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -723,6 +739,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class periodicDateRangeViewModel : ViewModelBase
     {
         private DateOnly _dateStart;
@@ -783,6 +801,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class rxNCodeViewModel : ViewModelBase
     {
         private categoryOfRxN? _categoryOfRxN;
@@ -871,6 +891,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitOneViewModel : ViewModelBase
     {
         private Decimal _sectorBearing;
@@ -931,6 +953,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitTwoViewModel : ViewModelBase
     {
         private Decimal _sectorBearing;
@@ -991,6 +1015,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class textContentViewModel : ViewModelBase
     {
         private categoryOfText? _categoryOfText = default;
@@ -1087,6 +1113,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase
     {
         [Category("timeIntervalsByDayOfWeek")]
@@ -1168,6 +1196,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class vesselsMeasurementsViewModel : ViewModelBase
     {
         private vesselsCharacteristics _vesselsCharacteristics;
@@ -1266,6 +1296,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class designationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -1363,6 +1395,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class bearingInformationViewModel : ViewModelBase
     {
         private cardinalDirection? _cardinalDirection = default;
@@ -1475,6 +1509,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class graphicViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -1591,6 +1627,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class scheduleByDayOfWeekViewModel : ViewModelBase
     {
         private categoryOfSchedule? _categoryOfSchedule = default;
@@ -1646,6 +1684,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitViewModel : ViewModelBase
     {
         private sectorLimitOneViewModel _sectorLimitOne;
@@ -1721,6 +1761,8 @@ namespace S100Framework.WPF.ViewModel.S122
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class telecommunicationsViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
@@ -1860,6 +1902,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class InformationTypeViewModel : ViewModelBase
     {
         [Category("InformationType")]
@@ -2002,6 +2046,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class AbstractRxNViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
@@ -2108,8 +2154,21 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => AbstractRxN.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.RelatedOrganisation> _theOrganisationOfRelatedOrganisation = new(typeof(AbstractRxN).GetProperty("theOrganisationOfRelatedOrganisation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.RelatedOrganisation> theOrganisationOfRelatedOrganisation
+        {
+            get
+            {
+                return _theOrganisationOfRelatedOrganisation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theOrganisationOfRelatedOrganisation, value);
+            }
+        }
 
         public void Load(DomainModel.S122.InformationTypes.AbstractRxN instance)
         {
@@ -2203,6 +2262,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class NauticalInformationViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
@@ -2309,8 +2370,21 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => NauticalInformation.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.RelatedOrganisation> _theOrganisationOfRelatedOrganisation = new(typeof(NauticalInformation).GetProperty("theOrganisationOfRelatedOrganisation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.RelatedOrganisation> theOrganisationOfRelatedOrganisation
+        {
+            get
+            {
+                return _theOrganisationOfRelatedOrganisation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theOrganisationOfRelatedOrganisation, value);
+            }
+        }
 
         public void Load(DomainModel.S122.InformationTypes.NauticalInformation instance)
         {
@@ -2404,6 +2478,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RegulationsViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
@@ -2602,6 +2678,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RestrictionsViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
@@ -2800,6 +2878,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RecommendationsViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
@@ -2998,6 +3078,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class AuthorityViewModel : ViewModelBase
     {
         private categoryOfAuthority _categoryOfAuthority;
@@ -3088,8 +3170,53 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => Authority.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.RelatedOrganisation> _theInformationOfRelatedOrganisation = new(typeof(Authority).GetProperty("theInformationOfRelatedOrganisation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.RelatedOrganisation> theInformationOfRelatedOrganisation
+        {
+            get
+            {
+                return _theInformationOfRelatedOrganisation;
+            }
+
+            set
+            {
+                base.SetValue(ref _theInformationOfRelatedOrganisation, value);
+            }
+        }
+
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AuthorityContact> _theContactDetailsOfAuthorityContact = new(typeof(Authority).GetProperty("theContactDetailsOfAuthorityContact")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AuthorityContact> theContactDetailsOfAuthorityContact
+        {
+            get
+            {
+                return _theContactDetailsOfAuthorityContact;
+            }
+
+            set
+            {
+                base.SetValue(ref _theContactDetailsOfAuthorityContact, value);
+            }
+        }
+
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AuthorityHours> _theServiceHoursOfAuthorityHours = new(typeof(Authority).GetProperty("theServiceHoursOfAuthorityHours")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AuthorityHours> theServiceHoursOfAuthorityHours
+        {
+            get
+            {
+                return _theServiceHoursOfAuthorityHours;
+            }
+
+            set
+            {
+                base.SetValue(ref _theServiceHoursOfAuthorityHours, value);
+            }
+        }
 
         public void Load(DomainModel.S122.InformationTypes.Authority instance)
         {
@@ -3174,6 +3301,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ContactDetailsViewModel : ViewModelBase
     {
         private String _callName = string.Empty;
@@ -3376,8 +3505,21 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => ContactDetails.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AuthorityContact> _theAuthorityOfAuthorityContact = new(typeof(ContactDetails).GetProperty("theAuthorityOfAuthorityContact")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AuthorityContact> theAuthorityOfAuthorityContact
+        {
+            get
+            {
+                return _theAuthorityOfAuthorityContact;
+            }
+
+            set
+            {
+                base.SetValue(ref _theAuthorityOfAuthorityContact, value);
+            }
+        }
 
         public void Load(DomainModel.S122.InformationTypes.ContactDetails instance)
         {
@@ -3556,6 +3698,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class NonStandardWorkingDayViewModel : ViewModelBase
     {
         [Category("NonStandardWorkingDay")]
@@ -3637,8 +3781,21 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => NonStandardWorkingDay.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ExceptionalWorkday> _theServiceHours_nsdyOfExceptionalWorkday = new(typeof(NonStandardWorkingDay).GetProperty("theServiceHours_nsdyOfExceptionalWorkday")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ExceptionalWorkday> theServiceHours_nsdyOfExceptionalWorkday
+        {
+            get
+            {
+                return _theServiceHours_nsdyOfExceptionalWorkday;
+            }
+
+            set
+            {
+                base.SetValue(ref _theServiceHours_nsdyOfExceptionalWorkday, value);
+            }
+        }
 
         public void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDay instance)
         {
@@ -3740,6 +3897,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ServiceHoursViewModel : ViewModelBase
     {
         [Category("ServiceHours")]
@@ -3831,8 +3990,37 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => ServiceHours.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AuthorityHours> _theAuthority_srvHrsOfAuthorityHours = new(typeof(ServiceHours).GetProperty("theAuthority_srvHrsOfAuthorityHours")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AuthorityHours> theAuthority_srvHrsOfAuthorityHours
+        {
+            get
+            {
+                return _theAuthority_srvHrsOfAuthorityHours;
+            }
+
+            set
+            {
+                base.SetValue(ref _theAuthority_srvHrsOfAuthorityHours, value);
+            }
+        }
+
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ExceptionalWorkday> _partialWorkingDayOfExceptionalWorkday = new(typeof(ServiceHours).GetProperty("partialWorkingDayOfExceptionalWorkday")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ExceptionalWorkday> partialWorkingDayOfExceptionalWorkday
+        {
+            get
+            {
+                return _partialWorkingDayOfExceptionalWorkday;
+            }
+
+            set
+            {
+                base.SetValue(ref _partialWorkingDayOfExceptionalWorkday, value);
+            }
+        }
 
         public void Load(DomainModel.S122.InformationTypes.ServiceHours instance)
         {
@@ -3923,6 +4111,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class ApplicabilityViewModel : ViewModelBase
     {
         private Boolean? _inBallast = default;
@@ -4230,6 +4420,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class RestrictedAreaViewModel : ViewModelBase
     {
         [Category("RestrictedArea")]
@@ -4323,6 +4515,38 @@ namespace S100Framework.WPF.ViewModel.S122
             set
             {
                 SetValue(ref _reportedDate, value);
+            }
+        }
+
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
+        {
+            get
+            {
+                return _theRxNOfAssociatedRxN;
+            }
+
+            set
+            {
+                base.SetValue(ref _theRxNOfAssociatedRxN, value);
+            }
+        }
+
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.additionalInformation> _providesInformationOfadditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfadditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.additionalInformation> providesInformationOfadditionalInformation
+        {
+            get
+            {
+                return _providesInformationOfadditionalInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _providesInformationOfadditionalInformation, value);
             }
         }
 
@@ -4429,6 +4653,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class MarineProtectedAreaViewModel : ViewModelBase
     {
         private categoryOfMarineProtectedArea _categoryOfMarineProtectedArea;
@@ -4560,8 +4786,53 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => MarineProtectedArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
+        {
+            get
+            {
+                return _theRxNOfAssociatedRxN;
+            }
+
+            set
+            {
+                base.SetValue(ref _theRxNOfAssociatedRxN, value);
+            }
+        }
+
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.additionalInformation> _providesInformationOfadditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfadditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.additionalInformation> providesInformationOfadditionalInformation
+        {
+            get
+            {
+                return _providesInformationOfadditionalInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _providesInformationOfadditionalInformation, value);
+            }
+        }
+
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ProtectedAreaAuthority> _responsibleAuthorityOfProtectedAreaAuthority = new(typeof(MarineProtectedArea).GetProperty("responsibleAuthorityOfProtectedAreaAuthority")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ProtectedAreaAuthority> responsibleAuthorityOfProtectedAreaAuthority
+        {
+            get
+            {
+                return _responsibleAuthorityOfProtectedAreaAuthority;
+            }
+
+            set
+            {
+                base.SetValue(ref _responsibleAuthorityOfProtectedAreaAuthority, value);
+            }
+        }
 
         [Browsable(false)]
         public categoryOfMarineProtectedArea[] categoryOfMarineProtectedAreaList => CodeList.categoryOfMarineProtectedAreas.ToArray();
@@ -4685,6 +4956,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class VesselTrafficServiceAreaViewModel : ViewModelBase
     {
         private categoryOfVesselTrafficService _categoryOfVesselTrafficService;
@@ -4787,8 +5060,53 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
-        [Browsable(false)]
-        public InformationBindingDescriptor[] InformationBindingDescriptors => VesselTrafficServiceArea.InformationBindingDescriptors;
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
+        {
+            get
+            {
+                return _theRxNOfAssociatedRxN;
+            }
+
+            set
+            {
+                base.SetValue(ref _theRxNOfAssociatedRxN, value);
+            }
+        }
+
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.additionalInformation> _providesInformationOfadditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfadditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.additionalInformation> providesInformationOfadditionalInformation
+        {
+            get
+            {
+                return _providesInformationOfadditionalInformation;
+            }
+
+            set
+            {
+                base.SetValue(ref _providesInformationOfadditionalInformation, value);
+            }
+        }
+
+        private InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(VesselTrafficServiceArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DomainModel.S122.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
+        {
+            get
+            {
+                return _controlAuthorityOfServiceControl;
+            }
+
+            set
+            {
+                base.SetValue(ref _controlAuthorityOfServiceControl, value);
+            }
+        }
 
         public void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance)
         {
@@ -4866,6 +5184,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class DataCoverageViewModel : ViewModelBase
     {
         public void Load(DomainModel.S122.FeatureTypes.DataCoverage instance)
@@ -4890,6 +5210,8 @@ namespace S100Framework.WPF.ViewModel.S122
         }
     }
 
+    [CategoryOrder("InformationBindings", 100)]
+    [CategoryOrder("FeatureBindings", 200)]
     public partial class TextPlacementViewModel : ViewModelBase
     {
         public void Load(DomainModel.S122.FeatureTypes.TextPlacement instance)

@@ -2218,10 +2218,6 @@ namespace S100Framework.DomainModel.S124
             public DateTime publicationTime { get; set; }
             public List<informationBinding<Associations.InformationAssociations.NWReferences>> theReferencesOfNWReferences { get; set; } = [];
             public override string Code => nameof(NAVWARNPreamble);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.NWReferences>(roleType.association, 0, 2147483647, Role.theReferences.ToString(), [typeof(References)]),
-            };
 
             public NAVWARNPreamble()
             {
@@ -2282,15 +2278,6 @@ namespace S100Framework.DomainModel.S124
             public List<featureBinding<Associations.FeatureAssociations.AreaAffected>> affectsOfAreaAffected { get; set; } = [];
             public List<featureBinding<Associations.FeatureAssociations.TextAssociation>> positionsOfTextAssociation { get; set; } = [];
             public override string Code => nameof(NAVWARNPart);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.NWPreambleContent>(roleType.association, 1, 1, Role.header.ToString(), [typeof(NAVWARNPreamble)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.AreaAffected>(roleType.association, 0, 2147483647, Role.affects.ToString(), [typeof(NAVWARNAreaAffected)]),
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.association, 0, 2147483647, Role.positions.ToString(), [typeof(TextPlacement)]),
-            };
 
             public NAVWARNPart()
             {
@@ -2306,10 +2293,6 @@ namespace S100Framework.DomainModel.S124
         {
             public featureBinding<Associations.FeatureAssociations.AreaAffected> impactsOfAreaAffected { get; set; }
             public override string Code => nameof(NAVWARNAreaAffected);
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.AreaAffected>(roleType.association, 1, 1, Role.impacts.ToString(), [typeof(NAVWARNPart)]),
-            };
 
             public NAVWARNAreaAffected()
             {
@@ -2332,10 +2315,6 @@ namespace S100Framework.DomainModel.S124
             public Int32? scaleMinimum { get; set; } = default;
             public featureBinding<Associations.FeatureAssociations.TextAssociation>? identifiesOfTextAssociation { get; set; }
             public override string Code => nameof(TextPlacement);
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.TextAssociation>(roleType.composition, 0, 1, Role.identifies.ToString(), [typeof(NAVWARNPart)]),
-            };
 
             public TextPlacement()
             {

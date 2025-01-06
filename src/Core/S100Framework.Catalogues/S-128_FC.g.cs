@@ -1221,12 +1221,6 @@ namespace S100Framework.DomainModel.S128
             public informationBinding<Associations.InformationAssociations.ProductionDetails>? theProducerOfProductionDetails { get; set; }
             public List<informationBinding<Associations.InformationAssociations.DistributionDetails>> theDistributorOfDistributionDetails { get; set; } = [];
             public override string Code => nameof(CatalogueSectionHeader);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.PriceOfNauticalProduct>(roleType.association, 0, 2147483647, Role.thePriceInformation.ToString(), [typeof(PriceInformation)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.ProductionDetails>(roleType.association, 0, 1, Role.theProducer.ToString(), [typeof(ProducerInformation)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.DistributionDetails>(roleType.association, 0, 2147483647, Role.theDistributor.ToString(), [typeof(DistributorInformation)]),
-            };
 
             public CatalogueSectionHeader()
             {
@@ -1246,11 +1240,6 @@ namespace S100Framework.DomainModel.S128
             public informationBinding<Associations.InformationAssociations.ProducerContact>? theProducerOfProducerContact { get; set; }
             public informationBinding<Associations.InformationAssociations.DistributorContact>? theDistributorOfDistributorContact { get; set; }
             public override string Code => nameof(ContactDetails);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.ProducerContact>(roleType.association, 0, 1, Role.theProducer.ToString(), [typeof(ProducerInformation)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.DistributorContact>(roleType.association, 0, 1, Role.theDistributor.ToString(), [typeof(DistributorInformation)]),
-            };
 
             public ContactDetails()
             {
@@ -1282,10 +1271,6 @@ namespace S100Framework.DomainModel.S128
             public List<sourceIndication> sourceIndication { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.PriceOfNauticalProduct>> theCatalogueOfNauticalProductOfPriceOfNauticalProduct { get; set; } = [];
             public override string Code => nameof(PriceInformation);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.PriceOfNauticalProduct>(roleType.association, 0, 2147483647, Role.theCatalogueOfNauticalProduct.ToString(), [typeof(CatalogueSectionHeader)]),
-            };
 
             public PriceInformation()
             {
@@ -1301,11 +1286,6 @@ namespace S100Framework.DomainModel.S128
             public List<informationBinding<Associations.InformationAssociations.ProducerContact>> theContactDetailsOfProducerContact { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.ProductionDetails>> catalogueHeaderOfProductionDetails { get; set; } = [];
             public override string Code => nameof(ProducerInformation);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.ProducerContact>(roleType.association, 0, 2147483647, Role.theContactDetails.ToString(), [typeof(ContactDetails)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.ProductionDetails>(roleType.association, 0, 2147483647, Role.catalogueHeader.ToString(), [typeof(CatalogueSectionHeader)]),
-            };
 
             public ProducerInformation()
             {
@@ -1321,11 +1301,6 @@ namespace S100Framework.DomainModel.S128
             public List<informationBinding<Associations.InformationAssociations.DistributionDetails>> catalogueHeaderOfDistributionDetails { get; set; } = [];
             public List<informationBinding<Associations.InformationAssociations.DistributorContact>> theContactDetailsOfDistributorContact { get; set; } = [];
             public override string Code => nameof(DistributorInformation);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.DistributionDetails>(roleType.association, 0, 2147483647, Role.catalogueHeader.ToString(), [typeof(CatalogueSectionHeader)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.DistributorContact>(roleType.association, 0, 2147483647, Role.theContactDetails.ToString(), [typeof(ContactDetails)]),
-            };
 
             public DistributorInformation()
             {
@@ -1367,16 +1342,6 @@ namespace S100Framework.DomainModel.S128
             public List<informationBinding<Associations.InformationAssociations.ProductPackage>> elementContainerOfProductPackage { get; set; } = [];
             public List<featureBinding<Associations.FeatureAssociations.ProductMapping>> theReferenceOfProductMapping { get; set; } = [];
             public override string Code => nameof(CatalogueElement);
-            public static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]
-            {
-        new InformationBindingDescriptor<Associations.InformationAssociations.CarriageRequirement>(roleType.association, 0, 2147483647, Role.theRequirement.ToString(), [typeof(IndicationOfCarriageRequirement)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.PriceOfElement>(roleType.association, 0, 2147483647, Role.thePriceInformation.ToString(), [typeof(PriceInformation)]),
-        new InformationBindingDescriptor<Associations.InformationAssociations.ProductPackage>(roleType.association, 1, 2147483647, Role.elementContainer.ToString(), [typeof(CatalogueSectionHeader)]),
-            };
-            public static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]
-            {
-        new FeatureBindingDescriptor<Associations.FeatureAssociations.ProductMapping>(roleType.association, 0, 2147483647, Role.theReference.ToString(), [typeof(CatalogueElement)]),
-            };
 
             public CatalogueElement()
             {
@@ -1406,7 +1371,6 @@ namespace S100Framework.DomainModel.S128
             public verticalDatum? verticalDatum { get; set; } = default;
             public featureBinding<Associations.FeatureAssociations.Correlated> mainOfCorrelated { get; set; }
             public override string Code => nameof(NavigationalProduct);
-            public static new FeatureBindingDescriptor[] FeatureBindingDescriptors => CatalogueElement.FeatureBindingDescriptors.Union(new FeatureBindingDescriptor[] { new FeatureBindingDescriptor<Associations.FeatureAssociations.Correlated>(roleType.association, 1, 1, Role.main.ToString(), [typeof(NavigationalProduct)]), }).ToArray();
 
             public NavigationalProduct()
             {

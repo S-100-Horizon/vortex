@@ -1,7 +1,3 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-
 namespace S100Framework.DomainModel
 {
 
@@ -12,8 +8,7 @@ namespace S100Framework.DomainModel
 
         public string PropertyName => _propertyName;
 
-        public CodeListAttribute(string propertyName)
-        {
+        public CodeListAttribute(string propertyName) {
             _propertyName = propertyName;
         }
     }
@@ -26,8 +21,7 @@ namespace S100Framework.DomainModel
 
         public string RoleName => _roleName;
 
-        public RoleAttribute(string roleName)
-        {
+        public RoleAttribute(string roleName) {
             _roleName = roleName;
         }
     }
@@ -39,22 +33,41 @@ namespace S100Framework.DomainModel
     }
 
 
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class InformationTypeAttribute : System.Attribute
+    {
+        private Type _informationType;
+        public Type informationType => _informationType;
+        public InformationTypeAttribute(Type informationType) {
+            _informationType = informationType;
+        }
+    }
+
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class FeatureTypeAttribute : System.Attribute
+    {
+        private Type _featureType;
+        public Type FeatureType => _featureType;
+        public FeatureTypeAttribute(Type featureType) {
+            _featureType = featureType;
+        }
+    }
+
+
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationAssociation
     {
     }
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureAssociation
     {
     }
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationTypeBase
     {
         public virtual string Code => string.Empty;
@@ -62,7 +75,6 @@ namespace S100Framework.DomainModel
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureTypeBase
     {
         public virtual string Code => string.Empty;
@@ -100,31 +112,6 @@ namespace S100Framework.DomainModel
         public class featureBinding<TAssociation> where TAssociation : FeatureAssociation
         {
             public TAssociation? association { get; set; } = default;
-        }
-
-        public abstract record BindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] types)
-        {
-            public abstract string associationName { get; }
-        }
-
-        public abstract record InformationBindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] informationTypes) : BindingDescriptor(roleType, lower, upper, role, informationTypes)
-        {
-            public Type[] informationTypes => base.types;
-        }
-
-        public record InformationBindingDescriptor<TAssociation>(roleType roleType, int lower, int? upper, string role, Type[] informationTypes) : InformationBindingDescriptor(roleType, lower, upper, role, informationTypes) where TAssociation : InformationAssociation
-        {
-            public override string associationName => $"{typeof(TAssociation).Name}, {role}";
-        }
-
-        public abstract record FeatureBindingDescriptor(roleType roleType, int lower, int? upper, string role, Type[] featureTypes) : BindingDescriptor(roleType, lower, upper, role, featureTypes)
-        {
-            public Type[] featureTypes => base.types;
-        }
-
-        public record FeatureBindingDescriptor<TAssociation>(roleType roleType, int lower, int? upper, string role, Type[] featureTypes) : FeatureBindingDescriptor(roleType, lower, upper, role, featureTypes) where TAssociation : FeatureAssociation
-        {
-            public override string associationName => $"{typeof(TAssociation).Name}, {role}";
         }
 
     }
