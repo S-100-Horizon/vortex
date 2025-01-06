@@ -87,7 +87,8 @@ namespace S100Framework.Applications
                             obstruction.condition = default;
 
                             if (isValsouEmpty) {
-                                var featureCursor = QueryByGeometry(current.GetShape(),)
+                                // TODO: implement
+                                //var featureCursor = QueryByGeometry(current.GetShape(),)
                                 obstruction.defaultClearanceDepth = valsou;
 
                             }
