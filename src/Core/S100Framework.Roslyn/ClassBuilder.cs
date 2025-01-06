@@ -1511,6 +1511,7 @@ namespace S100Framework
 
             var prefixBuilder = new StringBuilder();
 
+            classBuilder.AppendLine($"\t\t\t[CategoryOrder(\"{code}\", 0)]");
             classBuilder.AppendLine("\t\t\t[CategoryOrder(\"InformationBindings\", 100)]");
             classBuilder.AppendLine("\t\t\t[CategoryOrder(\"FeatureBindings\", 200)]");
             classBuilder.AppendLine($"{prefix} class {code}ViewModel : ViewModelBase");

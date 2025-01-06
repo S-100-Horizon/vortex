@@ -104,6 +104,7 @@ namespace S100Framework.WPF.ViewModel.S903
     //    }
     //}
 
+    [CategoryOrder("Pile", 0)]
     public class S101_PileTestViewModel : PileViewModel
     {
         //  public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
