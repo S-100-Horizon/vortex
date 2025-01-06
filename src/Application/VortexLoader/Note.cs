@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 [assembly: InternalsVisibleTo("TestNisImporter")]
 
-namespace VortexLoader
+namespace S100Framework.Applications
 {
     internal sealed class Note
     {
@@ -31,10 +31,7 @@ namespace VortexLoader
             }
         }
 
-
         private static readonly Regex headerRegex = new Regex(@"^[A-Z0-9ÆØÅ\s\W]+$", RegexOptions.Compiled);
-
-
 
         internal Note(string filePath) {
             var lines = File.ReadAllLines(filePath, Encoding.Latin1);

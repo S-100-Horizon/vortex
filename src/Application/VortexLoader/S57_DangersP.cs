@@ -20,6 +20,12 @@ namespace S100Framework.Applications
             var ps = "S-101";
 
             var s = source.OpenDataset<FeatureClass>("DangersP");
+
+            var p = source.OpenDataset<FeatureClass>("Dredged");
+
+
+
+
             using var featureClass = target.OpenDataset<FeatureClass>("point");
             using var informationtype = target.OpenDataset<Table>("informationtype");
 
@@ -35,30 +41,31 @@ namespace S100Framework.Applications
 
 
                 Decimal valsou = -32767;
+                bool isValsouEmpty = true;
+
+                // The attribute default clearance depth must be populated with a value, which must not be an empty(null)
+                // value, only if the attribute value of sounding for the feature instance is populated with an empty(null) value
+                // and the attribute height, if an allowable attribute for the feature, is not populated.
+                // S-101 Annex A_DCEG Edition 1.5.0_Draft for Edition 2.0.0.pdf: p.771
+                Decimal defaultClearanceDepth = -32767;
 
                 if (DBNull.Value != current["VALSOU"] && current["VALSOU"] is not null) {
                     valsou = Convert.ToDecimal(current["VALSOU"]);
-                }
+                    isValsouEmpty = false;
+                } 
 
                 switch (subtype) {
                     case 1: { // CTNARE
-                            var cautionArea = new S100Framework.DomainModel.S101.FeatureTypes.CautionArea {
-                            };
-
-                            AddInformation(cautionArea.information, current);
-
-                            buffer["ps"] = ps;
-                            buffer["code"] = nameof(S100Framework.DomainModel.S101.FeatureTypes.UnderwaterAwashRock);
-                            buffer["json"] = System.Text.Json.JsonSerializer.Serialize(cautionArea);
-                            buffer["shape"] = current.GetShape();
-                            insert.Insert(buffer);
+                            // TODO: no instances in NIS
+                            throw new NotImplementedException();
                         }
-                        break;
+                        //break;
 
-                    case 10: { // FSHFAC
-
+                    case 10: { // FSHFAC Fishing facilities
+                            // TODO: no instances in NIS
+                            throw new NotImplementedException();
                         }
-                        break;
+                        //break;
 
                     case 20: { // OBSTRN
 
@@ -77,11 +84,13 @@ namespace S100Framework.Applications
                                 waterLevelEffect = waterLeveleffectCurrent
                             };
 
+                            obstruction.condition = default;
 
+                            if (isValsouEmpty) {
+                                var featureCursor = QueryByGeometry(current.GetShape(),)
+                                obstruction.defaultClearanceDepth = valsou;
 
-
-                            
-
+                            }
 
 
                             if (DBNull.Value != current["WATLEV"] && current["WATLEV"] is not null) {
