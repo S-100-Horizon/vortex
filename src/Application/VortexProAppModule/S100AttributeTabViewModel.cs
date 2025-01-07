@@ -6,7 +6,6 @@ using ArcGIS.Desktop.Editing.Attributes;
 using ArcGIS.Desktop.Framework;
 using ArcGIS.Desktop.Framework.Threading.Tasks;
 using ArcGIS.Desktop.Mapping;
-using S100Framework.Catalogues;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -396,14 +395,15 @@ namespace VortexProAppModule
                         "informationtype" => InformationTypeSelector,
                         "attributebinding" => (Inspector inspector, string schema) => {
                             return null;
-                        },
+                        }
+                        ,
                         "informationbinding" => throw new NotImplementedException(),
                         _ => throw new NotImplementedException(),
                     };
 
                     var type = selector(inspector, schema);
 
-                    if(type is null) {
+                    if (type is null) {
                         return default;
                     }
 

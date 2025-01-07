@@ -1,10 +1,5 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
-using CommandLine;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using static S100Framework.Applications.VortexLoader;
-using IO = System.IO;
 
 namespace S100Framework.Applications
 {

@@ -1,52 +1,61 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using S100Framework.DomainModel.S128;
+using S100Framework.DomainModel.S128.Associations.FeatureAssociations;
+using S100Framework.DomainModel.S128.Associations.InformationAssociations;
+using S100Framework.DomainModel.S128.ComplexAttributes;
+using S100Framework.DomainModel.S128.FeatureTypes;
+using S100Framework.DomainModel.S128.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using S100Framework.DomainModel;
-using S100Framework.DomainModel.S128;
-using S100Framework.DomainModel.S128.ComplexAttributes;
-using S100Framework.DomainModel.S128.InformationTypes;
-using S100Framework.DomainModel.S128.FeatureTypes;
-using S100Framework.DomainModel.S128.Associations.InformationAssociations;
-using S100Framework.DomainModel.S128.Associations.FeatureAssociations;
+using System.ComponentModel;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+
 
 namespace S100Framework.WPF.ViewModel.S128
 {
+
     internal static class Preamble
     {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S128.InformationTypes.CatalogueSectionHeader).Name, () =>
-        {
-            return new CatalogueSectionHeaderViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.ContactDetails).Name, () =>
-        {
-            return new ContactDetailsViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement).Name, () =>
-        {
-            return new IndicationOfCarriageRequirementViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.PriceInformation).Name, () =>
-        {
-            return new PriceInformationViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.ProducerInformation).Name, () =>
-        {
-            return new ProducerInformationViewModel();
-        } }, { typeof(DomainModel.S128.InformationTypes.DistributorInformation).Name, () =>
-        {
-            return new DistributorInformationViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.ElectronicProduct).Name, () =>
-        {
-            return new ElectronicProductViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.PhysicalProduct).Name, () =>
-        {
-            return new PhysicalProductViewModel();
-        } }, { typeof(DomainModel.S128.FeatureTypes.S100Service).Name, () =>
-        {
-            return new S100ServiceViewModel();
-        } }, });
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {
+            { typeof(DomainModel.S128.InformationTypes.CatalogueSectionHeader).Name, ()=> {
+                return new CatalogueSectionHeaderViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.InformationTypes.ContactDetails).Name, ()=> {
+                return new ContactDetailsViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement).Name, ()=> {
+                return new IndicationOfCarriageRequirementViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.InformationTypes.PriceInformation).Name, ()=> {
+                return new PriceInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.InformationTypes.ProducerInformation).Name, ()=> {
+                return new ProducerInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.InformationTypes.DistributorInformation).Name, ()=> {
+                return new DistributorInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.FeatureTypes.ElectronicProduct).Name, ()=> {
+                return new ElectronicProductViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.FeatureTypes.PhysicalProduct).Name, ()=> {
+                return new PhysicalProductViewModel();
+              }
+            },
+            { typeof(DomainModel.S128.FeatureTypes.S100Service).Name, ()=> {
+                return new S100ServiceViewModel();
+              }
+            },
+        });
     }
 
-    public class contactAddressViewModel : ViewModelBase
+    public partial class contactAddressViewModel : ViewModelBase
     {
         private String _administrativeDivision = string.Empty;
         [Category("contactAddress")]
@@ -146,7 +155,7 @@ namespace S100Framework.WPF.ViewModel.S128
             postalCode = this._postalCode,
         };
 
-        public contactAddressViewModel()
+        public contactAddressViewModel(IViewModelHost? host = null) : base(host)
         {
             deliveryPoint.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -155,7 +164,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
-    public class customPaperSizeViewModel : ViewModelBase
+    public partial class customPaperSizeViewModel : ViewModelBase
     {
         private Int32 _x;
         [Category("customPaperSize")]
@@ -210,12 +219,12 @@ namespace S100Framework.WPF.ViewModel.S128
             y = this._y,
         };
 
-        public customPaperSizeViewModel()
+        public customPaperSizeViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class defaultLocaleViewModel : ViewModelBase
+    public partial class defaultLocaleViewModel : ViewModelBase
     {
         private String _characterEncoding = string.Empty;
         [Category("defaultLocale")]
@@ -288,12 +297,12 @@ namespace S100Framework.WPF.ViewModel.S128
             language = this._language,
         };
 
-        public defaultLocaleViewModel()
+        public defaultLocaleViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class featureNameViewModel : ViewModelBase
+    public partial class featureNameViewModel : ViewModelBase
     {
         private String _language = string.Empty;
         [Category("featureName")]
@@ -366,14 +375,14 @@ namespace S100Framework.WPF.ViewModel.S128
             nameUsage = this._nameUsage,
         };
 
-        public featureNameViewModel()
+        public featureNameViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class informationViewModel : ViewModelBase
+    public partial class informationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         private String _fileLocator = string.Empty;
@@ -474,7 +483,7 @@ namespace S100Framework.WPF.ViewModel.S128
             text = this.text.ToList(),
         };
 
-        public informationViewModel()
+        public informationViewModel(IViewModelHost? host = null) : base(host)
         {
             text.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -483,7 +492,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
-    public class onlineResourceViewModel : ViewModelBase
+    public partial class onlineResourceViewModel : ViewModelBase
     {
         private String _applicationProfile = string.Empty;
         [Category("onlineResource")]
@@ -610,12 +619,12 @@ namespace S100Framework.WPF.ViewModel.S128
             protocolRequest = this._protocolRequest,
         };
 
-        public onlineResourceViewModel()
+        public onlineResourceViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class periodicDateRangeViewModel : ViewModelBase
+    public partial class periodicDateRangeViewModel : ViewModelBase
     {
         private DateOnly _dateEnd;
         [Category("periodicDateRange")]
@@ -670,14 +679,14 @@ namespace S100Framework.WPF.ViewModel.S128
             dateStart = this._dateStart,
         };
 
-        public periodicDateRangeViewModel()
+        public periodicDateRangeViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class pricingViewModel : ViewModelBase
+    public partial class pricingViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         private String _contractPeriod = string.Empty;
@@ -751,12 +760,12 @@ namespace S100Framework.WPF.ViewModel.S128
             price = this._price,
         };
 
-        public pricingViewModel()
+        public pricingViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class printSizeViewModel : ViewModelBase
+    public partial class printSizeViewModel : ViewModelBase
     {
         private iso216? _iso216 = default;
         [Category("printSize")]
@@ -817,12 +826,12 @@ namespace S100Framework.WPF.ViewModel.S128
             customPaperSize = this._customPaperSize?.Model,
         };
 
-        public printSizeViewModel()
+        public printSizeViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class productSpecificationViewModel : ViewModelBase
+    public partial class productSpecificationViewModel : ViewModelBase
     {
         private DateTime _date;
         [Category("productSpecification")]
@@ -913,12 +922,12 @@ namespace S100Framework.WPF.ViewModel.S128
             version = this._version,
         };
 
-        public productSpecificationViewModel()
+        public productSpecificationViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class supportFileSpecificationViewModel : ViewModelBase
+    public partial class supportFileSpecificationViewModel : ViewModelBase
     {
         private DateTime _date;
         [Category("supportFileSpecification")]
@@ -991,12 +1000,12 @@ namespace S100Framework.WPF.ViewModel.S128
             version = this._version,
         };
 
-        public supportFileSpecificationViewModel()
+        public supportFileSpecificationViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class serviceSpecificationViewModel : ViewModelBase
+    public partial class serviceSpecificationViewModel : ViewModelBase
     {
         private DateTime _date;
         [Category("serviceSpecification")]
@@ -1069,12 +1078,12 @@ namespace S100Framework.WPF.ViewModel.S128
             version = this._version,
         };
 
-        public serviceSpecificationViewModel()
+        public serviceSpecificationViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class sourceIndicationViewModel : ViewModelBase
+    public partial class sourceIndicationViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("sourceIndication")]
@@ -1192,7 +1201,7 @@ namespace S100Framework.WPF.ViewModel.S128
             featureName = this.featureName.ToList(),
         };
 
-        public sourceIndicationViewModel()
+        public sourceIndicationViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1203,7 +1212,7 @@ namespace S100Framework.WPF.ViewModel.S128
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class telecommunicationsViewModel : ViewModelBase
+    public partial class telecommunicationsViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         private String _contactInstructions = string.Empty;
@@ -1268,7 +1277,7 @@ namespace S100Framework.WPF.ViewModel.S128
             telecommunicationService = this.telecommunicationService.ToList(),
         };
 
-        public telecommunicationsViewModel()
+        public telecommunicationsViewModel(IViewModelHost? host = null) : base(host)
         {
             telecommunicationService.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1277,7 +1286,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
-    public class timeIntervalOfCycleViewModel : ViewModelBase
+    public partial class timeIntervalOfCycleViewModel : ViewModelBase
     {
         [Category("timeIntervalOfCycle")]
         public ObservableCollection<typeOfTimeIntervalUnit> typeOfTimeIntervalUnit { get; set; } = new();
@@ -1323,7 +1332,7 @@ namespace S100Framework.WPF.ViewModel.S128
             valueOfTime = this._valueOfTime,
         };
 
-        public timeIntervalOfCycleViewModel()
+        public timeIntervalOfCycleViewModel(IViewModelHost? host = null) : base(host)
         {
             typeOfTimeIntervalUnit.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1332,7 +1341,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
-    public class weekOfYearViewModel : ViewModelBase
+    public partial class weekOfYearViewModel : ViewModelBase
     {
         private Int32 _weekNumber;
         [Category("weekOfYear")]
@@ -1387,12 +1396,12 @@ namespace S100Framework.WPF.ViewModel.S128
             yearNumber = this._yearNumber,
         };
 
-        public weekOfYearViewModel()
+        public weekOfYearViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class issuanceCycleViewModel : ViewModelBase
+    public partial class issuanceCycleViewModel : ViewModelBase
     {
         private periodicDateRangeViewModel? _periodicDateRange;
         [Category("issuanceCycle")]
@@ -1460,12 +1469,12 @@ namespace S100Framework.WPF.ViewModel.S128
             timeIntervalOfCycle = this._timeIntervalOfCycle?.Model,
         };
 
-        public issuanceCycleViewModel()
+        public issuanceCycleViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class printInformationViewModel : ViewModelBase
+    public partial class printInformationViewModel : ViewModelBase
     {
         private String _printAgency = string.Empty;
         [Category("printInformation")]
@@ -1580,12 +1589,12 @@ namespace S100Framework.WPF.ViewModel.S128
             printSize = this._printSize?.Model,
         };
 
-        public printInformationViewModel()
+        public printInformationViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class supportFileViewModel : ViewModelBase
+    public partial class supportFileViewModel : ViewModelBase
     {
         private String _comment = string.Empty;
         [Category("supportFile")]
@@ -1833,12 +1842,12 @@ namespace S100Framework.WPF.ViewModel.S128
             supportFileSpecification = this._supportFileSpecification?.Model,
         };
 
-        public supportFileViewModel()
+        public supportFileViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class timeIntervalOfProductViewModel : ViewModelBase
+    public partial class timeIntervalOfProductViewModel : ViewModelBase
     {
         private DateTime _issueDate;
         [Category("timeIntervalOfProduct")]
@@ -1917,12 +1926,12 @@ namespace S100Framework.WPF.ViewModel.S128
             issuanceCycle = this._issuanceCycle?.Model,
         };
 
-        public timeIntervalOfProductViewModel()
+        public timeIntervalOfProductViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class referenceToNMViewModel : ViewModelBase
+    public partial class referenceToNMViewModel : ViewModelBase
     {
         private DateTime _publicationDate;
         [Category("referenceToNM")]
@@ -1983,12 +1992,12 @@ namespace S100Framework.WPF.ViewModel.S128
             weekOfYear = this._weekOfYear?.Model,
         };
 
-        public referenceToNMViewModel()
+        public referenceToNMViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class CatalogueSectionHeaderViewModel : ViewModelBase
+    public partial class CatalogueSectionHeaderViewModel : ViewModelBase
     {
         private Int32 _catalogueSectionNumber;
         [Category("CatalogueSectionHeader")]
@@ -2036,6 +2045,18 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<PriceOfNauticalProduct, CatalogueSectionHeader.thePriceInformationPriceOfNauticalProduct> associationPriceOfNauticalProduct { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ProductionDetails, CatalogueSectionHeader.theProducerProductionDetails> associationProductionDetails { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DistributionDetails, CatalogueSectionHeader.theDistributorDistributionDetails> associationDistributionDetails { get; set; } = new();
+
         public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance)
         {
             catalogueSectionNumber = instance.catalogueSectionNumber;
@@ -2067,12 +2088,12 @@ namespace S100Framework.WPF.ViewModel.S128
             information = this._information?.Model,
         };
 
-        public CatalogueSectionHeaderViewModel()
+        public CatalogueSectionHeaderViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class ContactDetailsViewModel : ViewModelBase
+    public partial class ContactDetailsViewModel : ViewModelBase
     {
         private String _contactInstructions = string.Empty;
         [Category("ContactDetails")]
@@ -2103,6 +2124,14 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("ContactDetails")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ProducerContact, ContactDetails.theProducerProducerContact> associationProducerContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DistributorContact, ContactDetails.theDistributorDistributorContact> associationDistributorContact { get; set; } = new();
 
         public void Load(DomainModel.S128.InformationTypes.ContactDetails instance)
         {
@@ -2154,7 +2183,7 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication = this.sourceIndication.ToList(),
         };
 
-        public ContactDetailsViewModel()
+        public ContactDetailsViewModel(IViewModelHost? host = null) : base(host)
         {
             contactAddress.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2179,7 +2208,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
-    public class IndicationOfCarriageRequirementViewModel : ViewModelBase
+    public partial class IndicationOfCarriageRequirementViewModel : ViewModelBase
     {
         private String _domesticCarriageRequirements = string.Empty;
         [Category("IndicationOfCarriageRequirement")]
@@ -2243,7 +2272,7 @@ namespace S100Framework.WPF.ViewModel.S128
             featureName = this.featureName.ToList(),
         };
 
-        public IndicationOfCarriageRequirementViewModel()
+        public IndicationOfCarriageRequirementViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2252,7 +2281,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
-    public class PriceInformationViewModel : ViewModelBase
+    public partial class PriceInformationViewModel : ViewModelBase
     {
         [Category("PriceInformation")]
         public ObservableCollection<information> information { get; set; } = new();
@@ -2265,6 +2294,10 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("PriceInformation")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<PriceOfNauticalProduct, PriceInformation.theCatalogueOfNauticalProductPriceOfNauticalProduct> associationPriceOfNauticalProduct { get; set; } = new();
 
         public void Load(DomainModel.S128.InformationTypes.PriceInformation instance)
         {
@@ -2307,7 +2340,7 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication = this.sourceIndication.ToList(),
         };
 
-        public PriceInformationViewModel()
+        public PriceInformationViewModel(IViewModelHost? host = null) : base(host)
         {
             information.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2328,7 +2361,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
-    public class ProducerInformationViewModel : ViewModelBase
+    public partial class ProducerInformationViewModel : ViewModelBase
     {
         private String _agencyResponsibleForProduction = string.Empty;
         [Category("ProducerInformation")]
@@ -2360,6 +2393,14 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ProducerContact, ProducerInformation.theContactDetailsProducerContact> associationProducerContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ProductionDetails, ProducerInformation.catalogueHeaderProductionDetails> associationProductionDetails { get; set; } = new();
+
         public void Load(DomainModel.S128.InformationTypes.ProducerInformation instance)
         {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -2383,12 +2424,12 @@ namespace S100Framework.WPF.ViewModel.S128
             agencyName = this._agencyName,
         };
 
-        public ProducerInformationViewModel()
+        public ProducerInformationViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class DistributorInformationViewModel : ViewModelBase
+    public partial class DistributorInformationViewModel : ViewModelBase
     {
         private String _distributorName = string.Empty;
         [Category("DistributorInformation")]
@@ -2404,6 +2445,14 @@ namespace S100Framework.WPF.ViewModel.S128
                 SetValue(ref _distributorName, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DistributionDetails, DistributorInformation.catalogueHeaderDistributionDetails> associationDistributionDetails { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<DistributorContact, DistributorInformation.theContactDetailsDistributorContact> associationDistributorContact { get; set; } = new();
 
         public void Load(DomainModel.S128.InformationTypes.DistributorInformation instance)
         {
@@ -2425,12 +2474,12 @@ namespace S100Framework.WPF.ViewModel.S128
             distributorName = this._distributorName,
         };
 
-        public DistributorInformationViewModel()
+        public DistributorInformationViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class ElectronicProductViewModel : ViewModelBase
+    public partial class ElectronicProductViewModel : ViewModelBase
     {
         private Boolean? _compressionFlag = default;
         [Category("ElectronicProduct")]
@@ -2698,7 +2747,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         private horizontalDatumEpsg? _horizontalDatumEpsg;
-        [DomainModel.CodeListAttribute(nameof(horizontalDatumEpsgList))]
+        [DomainModel.CodeList(nameof(horizontalDatumEpsgList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("NavigationalProduct")]
         public horizontalDatumEpsg? horizontalDatumEpsg
@@ -2851,6 +2900,10 @@ namespace S100Framework.WPF.ViewModel.S128
                 SetValue(ref _timeIntervalOfProduct, value);
             }
         }
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Correlated, NavigationalProduct.mainCorrelated> associationCorrelated { get; set; } = new();
 
         [Browsable(false)]
         public horizontalDatumEpsg[] horizontalDatumEpsgList => CodeList.horizontalDatumEpsgs.ToArray();
@@ -3021,7 +3074,7 @@ namespace S100Framework.WPF.ViewModel.S128
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
         };
 
-        public ElectronicProductViewModel()
+        public ElectronicProductViewModel(IViewModelHost? host = null) : base(host)
         {
             approximateGridResolution.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3058,7 +3111,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
-    public class PhysicalProductViewModel : ViewModelBase
+    public partial class PhysicalProductViewModel : ViewModelBase
     {
         private DateTime _editionDate;
         [Category("PhysicalProduct")]
@@ -3327,7 +3380,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
 
         private horizontalDatumEpsg? _horizontalDatumEpsg;
-        [DomainModel.CodeListAttribute(nameof(horizontalDatumEpsgList))]
+        [DomainModel.CodeList(nameof(horizontalDatumEpsgList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("NavigationalProduct")]
         public horizontalDatumEpsg? horizontalDatumEpsg
@@ -3480,6 +3533,10 @@ namespace S100Framework.WPF.ViewModel.S128
                 SetValue(ref _timeIntervalOfProduct, value);
             }
         }
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Correlated, NavigationalProduct.mainCorrelated> associationCorrelated { get; set; } = new();
 
         [Browsable(false)]
         public horizontalDatumEpsg[] horizontalDatumEpsgList => CodeList.horizontalDatumEpsgs.ToArray();
@@ -3656,7 +3713,7 @@ namespace S100Framework.WPF.ViewModel.S128
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
         };
 
-        public PhysicalProductViewModel()
+        public PhysicalProductViewModel(IViewModelHost? host = null) : base(host)
         {
             approximateGridResolution.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3693,7 +3750,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
-    public class S100ServiceViewModel : ViewModelBase
+    public partial class S100ServiceViewModel : ViewModelBase
     {
         private Boolean? _compressionFlag = default;
         [Category("S100Service")]
@@ -4025,7 +4082,7 @@ namespace S100Framework.WPF.ViewModel.S128
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
         };
 
-        public S100ServiceViewModel()
+        public S100ServiceViewModel(IViewModelHost? host = null) : base(host)
         {
             catalogueElementClassification.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {

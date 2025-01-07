@@ -1,136 +1,173 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
+using S100Framework.DomainModel.S131;
+using S100Framework.DomainModel.S131.Associations.FeatureAssociations;
+using S100Framework.DomainModel.S131.Associations.InformationAssociations;
+using S100Framework.DomainModel.S131.ComplexAttributes;
+using S100Framework.DomainModel.S131.FeatureTypes;
+using S100Framework.DomainModel.S131.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
-using S100Framework.DomainModel;
-using S100Framework.DomainModel.S131;
-using S100Framework.DomainModel.S131.ComplexAttributes;
-using S100Framework.DomainModel.S131.InformationTypes;
-using S100Framework.DomainModel.S131.FeatureTypes;
-using S100Framework.DomainModel.S131.Associations.InformationAssociations;
-using S100Framework.DomainModel.S131.Associations.FeatureAssociations;
+using System.ComponentModel;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+
 
 namespace S100Framework.WPF.ViewModel.S131
 {
+
     internal static class Preamble
     {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S131.InformationTypes.Applicability).Name, () =>
-        {
-            return new ApplicabilityViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Authority).Name, () =>
-        {
-            return new AuthorityViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.AvailablePortServices).Name, () =>
-        {
-            return new AvailablePortServicesViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.ContactDetails).Name, () =>
-        {
-            return new ContactDetailsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Entrance).Name, () =>
-        {
-            return new EntranceViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.NauticalInformation).Name, () =>
-        {
-            return new NauticalInformationViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.NonStandardWorkingDay).Name, () =>
-        {
-            return new NonStandardWorkingDayViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Recommendations).Name, () =>
-        {
-            return new RecommendationsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Regulations).Name, () =>
-        {
-            return new RegulationsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.Restrictions).Name, () =>
-        {
-            return new RestrictionsViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.ServiceHours).Name, () =>
-        {
-            return new ServiceHoursViewModel();
-        } }, { typeof(DomainModel.S131.InformationTypes.SpatialQuality).Name, () =>
-        {
-            return new SpatialQualityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.AnchorBerth).Name, () =>
-        {
-            return new AnchorBerthViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.AnchorageArea).Name, () =>
-        {
-            return new AnchorageAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Berth).Name, () =>
-        {
-            return new BerthViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.BerthPosition).Name, () =>
-        {
-            return new BerthPositionViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DockArea).Name, () =>
-        {
-            return new DockAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DryDock).Name, () =>
-        {
-            return new DryDockViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DumpingGround).Name, () =>
-        {
-            return new DumpingGroundViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.FloatingDock).Name, () =>
-        {
-            return new FloatingDockViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Gridiron).Name, () =>
-        {
-            return new GridironViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative).Name, () =>
-        {
-            return new HarbourAreaAdministrativeViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourAreaSection).Name, () =>
-        {
-            return new HarbourAreaSectionViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourBasin).Name, () =>
-        {
-            return new HarbourBasinViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.HarbourFacility).Name, () =>
-        {
-            return new HarbourFacilityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.MooringWarpingFacility).Name, () =>
-        {
-            return new MooringWarpingFacilityViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.OuterLimit).Name, () =>
-        {
-            return new OuterLimitViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.PilotBoardingPlace).Name, () =>
-        {
-            return new PilotBoardingPlaceViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.SeaplaneLandingArea).Name, () =>
-        {
-            return new SeaplaneLandingAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.Terminal).Name, () =>
-        {
-            return new TerminalViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.TurningBasin).Name, () =>
-        {
-            return new TurningBasinViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.WaterwayArea).Name, () =>
-        {
-            return new WaterwayAreaViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.DataCoverage).Name, () =>
-        {
-            return new DataCoverageViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData).Name, () =>
-        {
-            return new QualityOfNonBathymetricDataViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.SoundingDatum).Name, () =>
-        {
-            return new SoundingDatumViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.VerticalDatumOfData).Name, () =>
-        {
-            return new VerticalDatumOfDataViewModel();
-        } }, { typeof(DomainModel.S131.FeatureTypes.TextPlacement).Name, () =>
-        {
-            return new TextPlacementViewModel();
-        } }, });
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {
+            { typeof(DomainModel.S131.InformationTypes.Applicability).Name, ()=> {
+                return new ApplicabilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Authority).Name, ()=> {
+                return new AuthorityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.AvailablePortServices).Name, ()=> {
+                return new AvailablePortServicesViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.ContactDetails).Name, ()=> {
+                return new ContactDetailsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Entrance).Name, ()=> {
+                return new EntranceViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.NauticalInformation).Name, ()=> {
+                return new NauticalInformationViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.NonStandardWorkingDay).Name, ()=> {
+                return new NonStandardWorkingDayViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Recommendations).Name, ()=> {
+                return new RecommendationsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Regulations).Name, ()=> {
+                return new RegulationsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.Restrictions).Name, ()=> {
+                return new RestrictionsViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.ServiceHours).Name, ()=> {
+                return new ServiceHoursViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.InformationTypes.SpatialQuality).Name, ()=> {
+                return new SpatialQualityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.AnchorBerth).Name, ()=> {
+                return new AnchorBerthViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.AnchorageArea).Name, ()=> {
+                return new AnchorageAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.Berth).Name, ()=> {
+                return new BerthViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.BerthPosition).Name, ()=> {
+                return new BerthPositionViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DockArea).Name, ()=> {
+                return new DockAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DryDock).Name, ()=> {
+                return new DryDockViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DumpingGround).Name, ()=> {
+                return new DumpingGroundViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.FloatingDock).Name, ()=> {
+                return new FloatingDockViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.Gridiron).Name, ()=> {
+                return new GridironViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative).Name, ()=> {
+                return new HarbourAreaAdministrativeViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourAreaSection).Name, ()=> {
+                return new HarbourAreaSectionViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourBasin).Name, ()=> {
+                return new HarbourBasinViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.HarbourFacility).Name, ()=> {
+                return new HarbourFacilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.MooringWarpingFacility).Name, ()=> {
+                return new MooringWarpingFacilityViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.OuterLimit).Name, ()=> {
+                return new OuterLimitViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.PilotBoardingPlace).Name, ()=> {
+                return new PilotBoardingPlaceViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.SeaplaneLandingArea).Name, ()=> {
+                return new SeaplaneLandingAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.Terminal).Name, ()=> {
+                return new TerminalViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.TurningBasin).Name, ()=> {
+                return new TurningBasinViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.WaterwayArea).Name, ()=> {
+                return new WaterwayAreaViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.DataCoverage).Name, ()=> {
+                return new DataCoverageViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData).Name, ()=> {
+                return new QualityOfNonBathymetricDataViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.SoundingDatum).Name, ()=> {
+                return new SoundingDatumViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.VerticalDatumOfData).Name, ()=> {
+                return new VerticalDatumOfDataViewModel();
+              }
+            },
+            { typeof(DomainModel.S131.FeatureTypes.TextPlacement).Name, ()=> {
+                return new TextPlacementViewModel();
+              }
+            },
+        });
     }
 
-    public class contactAddressViewModel : ViewModelBase
+    public partial class contactAddressViewModel : ViewModelBase
     {
         [Category("contactAddress")]
         public ObservableCollection<String> deliveryPoint { get; set; } = new();
@@ -230,7 +267,7 @@ namespace S100Framework.WPF.ViewModel.S131
             postalCode = this._postalCode,
         };
 
-        public contactAddressViewModel()
+        public contactAddressViewModel(IViewModelHost? host = null) : base(host)
         {
             deliveryPoint.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -239,7 +276,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class featureNameViewModel : ViewModelBase
+    public partial class featureNameViewModel : ViewModelBase
     {
         private Boolean? _displayName = default;
         [Category("featureName")]
@@ -312,12 +349,12 @@ namespace S100Framework.WPF.ViewModel.S131
             name = this._name,
         };
 
-        public featureNameViewModel()
+        public featureNameViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class fixedDateRangeViewModel : ViewModelBase
+    public partial class fixedDateRangeViewModel : ViewModelBase
     {
         private DateOnly? _dateStart = default;
         [Category("fixedDateRange")]
@@ -372,12 +409,12 @@ namespace S100Framework.WPF.ViewModel.S131
             dateEnd = this._dateEnd,
         };
 
-        public fixedDateRangeViewModel()
+        public fixedDateRangeViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class frequencyPairViewModel : ViewModelBase
+    public partial class frequencyPairViewModel : ViewModelBase
     {
         [Category("frequencyPair")]
         public ObservableCollection<Int32> frequencyShoreStationTransmits { get; set; } = new();
@@ -423,7 +460,7 @@ namespace S100Framework.WPF.ViewModel.S131
             contactInstructions = this.contactInstructions.ToList(),
         };
 
-        public frequencyPairViewModel()
+        public frequencyPairViewModel(IViewModelHost? host = null) : base(host)
         {
             frequencyShoreStationTransmits.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -440,7 +477,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class horizontalPositionUncertaintyViewModel : ViewModelBase
+    public partial class horizontalPositionUncertaintyViewModel : ViewModelBase
     {
         private Decimal _uncertaintyFixed;
         [Category("horizontalPositionUncertainty")]
@@ -495,14 +532,14 @@ namespace S100Framework.WPF.ViewModel.S131
             uncertaintyVariableFactor = this._uncertaintyVariableFactor,
         };
 
-        public horizontalPositionUncertaintyViewModel()
+        public horizontalPositionUncertaintyViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class informationViewModel : ViewModelBase
+    public partial class informationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         private String _fileLocator = string.Empty;
@@ -603,7 +640,7 @@ namespace S100Framework.WPF.ViewModel.S131
             text = this._text,
         };
 
-        public informationViewModel()
+        public informationViewModel(IViewModelHost? host = null) : base(host)
         {
             headline.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -612,7 +649,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class onlineResourceViewModel : ViewModelBase
+    public partial class onlineResourceViewModel : ViewModelBase
     {
         private String _onlineResourceLinkageURL = string.Empty;
         [Category("onlineResource")]
@@ -757,14 +794,14 @@ namespace S100Framework.WPF.ViewModel.S131
             protocolRequest = this._protocolRequest,
         };
 
-        public onlineResourceViewModel()
+        public onlineResourceViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class orientationViewModel : ViewModelBase
+    public partial class orientationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         private Decimal? _orientationUncertainty = default;
@@ -820,12 +857,12 @@ namespace S100Framework.WPF.ViewModel.S131
             orientationValue = this._orientationValue,
         };
 
-        public orientationViewModel()
+        public orientationViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class periodicDateRangeViewModel : ViewModelBase
+    public partial class periodicDateRangeViewModel : ViewModelBase
     {
         private DateOnly _dateStart;
         [Category("periodicDateRange")]
@@ -880,15 +917,15 @@ namespace S100Framework.WPF.ViewModel.S131
             dateEnd = this._dateEnd,
         };
 
-        public periodicDateRangeViewModel()
+        public periodicDateRangeViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class rxNCodeViewModel : ViewModelBase
+    public partial class rxNCodeViewModel : ViewModelBase
     {
         private categoryOfRxN? _categoryOfRxN;
-        [DomainModel.CodeListAttribute(nameof(categoryOfRxNList))]
+        [DomainModel.CodeList(nameof(categoryOfRxNList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public categoryOfRxN? categoryOfRxN
@@ -905,7 +942,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         private actionOrActivity? _actionOrActivity;
-        [DomainModel.CodeListAttribute(nameof(actionOrActivityList))]
+        [DomainModel.CodeList(nameof(actionOrActivityList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public actionOrActivity? actionOrActivity
@@ -959,7 +996,7 @@ namespace S100Framework.WPF.ViewModel.S131
             headline = this.headline.ToList(),
         };
 
-        public rxNCodeViewModel()
+        public rxNCodeViewModel(IViewModelHost? host = null) : base(host)
         {
             headline.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -968,7 +1005,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class surveyDateRangeViewModel : ViewModelBase
+    public partial class surveyDateRangeViewModel : ViewModelBase
     {
         private DateOnly? _dateStart = default;
         [Category("surveyDateRange")]
@@ -1023,12 +1060,12 @@ namespace S100Framework.WPF.ViewModel.S131
             dateEnd = this._dateEnd,
         };
 
-        public surveyDateRangeViewModel()
+        public surveyDateRangeViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class textContentViewModel : ViewModelBase
+    public partial class textContentViewModel : ViewModelBase
     {
         private categoryOfText? _categoryOfText = default;
         [Category("textContent")]
@@ -1153,7 +1190,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public textContentViewModel()
+        public textContentViewModel(IViewModelHost? host = null) : base(host)
         {
             information.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1162,7 +1199,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class timeIntervalsByDayOfWeekViewModel : ViewModelBase
+    public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase
     {
         [Category("timeIntervalsByDayOfWeek")]
         public ObservableCollection<dayOfWeek> dayOfWeek { get; set; } = new();
@@ -1226,7 +1263,7 @@ namespace S100Framework.WPF.ViewModel.S131
             timeOfDayEnd = this.timeOfDayEnd.ToList(),
         };
 
-        public timeIntervalsByDayOfWeekViewModel()
+        public timeIntervalsByDayOfWeekViewModel(IViewModelHost? host = null) : base(host)
         {
             dayOfWeek.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1243,7 +1280,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class usefulMarkDescriptionViewModel : ViewModelBase
+    public partial class usefulMarkDescriptionViewModel : ViewModelBase
     {
         [Category("usefulMarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -1271,7 +1308,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public usefulMarkDescriptionViewModel()
+        public usefulMarkDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1280,7 +1317,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class verticalUncertaintyViewModel : ViewModelBase
+    public partial class verticalUncertaintyViewModel : ViewModelBase
     {
         private Decimal _uncertaintyFixed;
         [Category("verticalUncertainty")]
@@ -1335,12 +1372,12 @@ namespace S100Framework.WPF.ViewModel.S131
             uncertaintyVariableFactor = this._uncertaintyVariableFactor,
         };
 
-        public verticalUncertaintyViewModel()
+        public verticalUncertaintyViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class vesselsMeasurementsViewModel : ViewModelBase
+    public partial class vesselsMeasurementsViewModel : ViewModelBase
     {
         private comparisonOperator _comparisonOperator;
         [Category("vesselsMeasurements")]
@@ -1431,12 +1468,12 @@ namespace S100Framework.WPF.ViewModel.S131
             vesselsCharacteristicsUnit = this._vesselsCharacteristicsUnit,
         };
 
-        public vesselsMeasurementsViewModel()
+        public vesselsMeasurementsViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class weatherResourceViewModel : ViewModelBase
+    public partial class weatherResourceViewModel : ViewModelBase
     {
         private onlineResourceViewModel? _onlineResource;
         [Category("weatherResource")]
@@ -1522,12 +1559,12 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this._textContent?.Model,
         };
 
-        public weatherResourceViewModel()
+        public weatherResourceViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class bearingInformationViewModel : ViewModelBase
+    public partial class bearingInformationViewModel : ViewModelBase
     {
         private cardinalDirection? _cardinalDirection = default;
         [Category("bearingInformation")]
@@ -1624,7 +1661,7 @@ namespace S100Framework.WPF.ViewModel.S131
             orientation = this._orientation?.Model,
         };
 
-        public bearingInformationViewModel()
+        public bearingInformationViewModel(IViewModelHost? host = null) : base(host)
         {
             sectorBearing.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1637,7 +1674,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class cargoServicesDescriptionViewModel : ViewModelBase
+    public partial class cargoServicesDescriptionViewModel : ViewModelBase
     {
         [Category("cargoServicesDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -1665,7 +1702,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public cargoServicesDescriptionViewModel()
+        public cargoServicesDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1674,7 +1711,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class constructionInformationViewModel : ViewModelBase
+    public partial class constructionInformationViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("constructionInformation")]
@@ -1781,7 +1818,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public constructionInformationViewModel()
+        public constructionInformationViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1790,7 +1827,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class depthsDescriptionViewModel : ViewModelBase
+    public partial class depthsDescriptionViewModel : ViewModelBase
     {
         private categoryOfDepthsDescription _categoryOfDepthsDescription;
         [Category("depthsDescription")]
@@ -1836,7 +1873,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public depthsDescriptionViewModel()
+        public depthsDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1845,7 +1882,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class facilitiesLayoutDescriptionViewModel : ViewModelBase
+    public partial class facilitiesLayoutDescriptionViewModel : ViewModelBase
     {
         [Category("facilitiesLayoutDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -1873,7 +1910,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public facilitiesLayoutDescriptionViewModel()
+        public facilitiesLayoutDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1882,7 +1919,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class generalPortDescriptionViewModel : ViewModelBase
+    public partial class generalPortDescriptionViewModel : ViewModelBase
     {
         [Category("generalPortDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -1910,7 +1947,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public generalPortDescriptionViewModel()
+        public generalPortDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1921,7 +1958,7 @@ namespace S100Framework.WPF.ViewModel.S131
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class graphicViewModel : ViewModelBase
+    public partial class graphicViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         [Category("graphic")]
@@ -2028,7 +2065,7 @@ namespace S100Framework.WPF.ViewModel.S131
             bearingInformation = this._bearingInformation?.Model,
         };
 
-        public graphicViewModel()
+        public graphicViewModel(IViewModelHost? host = null) : base(host)
         {
             pictorialRepresentation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2037,7 +2074,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class landmarkDescriptionViewModel : ViewModelBase
+    public partial class landmarkDescriptionViewModel : ViewModelBase
     {
         [Category("landmarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -2065,7 +2102,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public landmarkDescriptionViewModel()
+        public landmarkDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2074,7 +2111,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class limitsDescriptionViewModel : ViewModelBase
+    public partial class limitsDescriptionViewModel : ViewModelBase
     {
         [Category("limitsDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -2102,7 +2139,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public limitsDescriptionViewModel()
+        public limitsDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2111,7 +2148,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class majorLightDescriptionViewModel : ViewModelBase
+    public partial class majorLightDescriptionViewModel : ViewModelBase
     {
         [Category("majorLightDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -2139,7 +2176,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public majorLightDescriptionViewModel()
+        public majorLightDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2148,7 +2185,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class markedByViewModel : ViewModelBase
+    public partial class markedByViewModel : ViewModelBase
     {
         [Category("markedBy")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -2176,7 +2213,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public markedByViewModel()
+        public markedByViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2185,7 +2222,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class offshoreMarkDescriptionViewModel : ViewModelBase
+    public partial class offshoreMarkDescriptionViewModel : ViewModelBase
     {
         [Category("offshoreMarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
@@ -2213,7 +2250,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public offshoreMarkDescriptionViewModel()
+        public offshoreMarkDescriptionViewModel(IViewModelHost? host = null) : base(host)
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2222,7 +2259,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class scheduleByDayOfWeekViewModel : ViewModelBase
+    public partial class scheduleByDayOfWeekViewModel : ViewModelBase
     {
         private categoryOfSchedule? _categoryOfSchedule = default;
         [Category("scheduleByDayOfWeek")]
@@ -2268,7 +2305,7 @@ namespace S100Framework.WPF.ViewModel.S131
             timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.ToList(),
         };
 
-        public scheduleByDayOfWeekViewModel()
+        public scheduleByDayOfWeekViewModel(IViewModelHost? host = null) : base(host)
         {
             timeIntervalsByDayOfWeek.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2277,7 +2314,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class spatialAccuracyViewModel : ViewModelBase
+    public partial class spatialAccuracyViewModel : ViewModelBase
     {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("spatialAccuracy")]
@@ -2370,14 +2407,14 @@ namespace S100Framework.WPF.ViewModel.S131
             verticalUncertainty = this._verticalUncertainty?.Model,
         };
 
-        public spatialAccuracyViewModel()
+        public spatialAccuracyViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
-    public class telecommunicationsViewModel : ViewModelBase
+    public partial class telecommunicationsViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
         private categoryOfCommunicationPreference? _categoryOfCommunicationPreference = default;
@@ -2502,7 +2539,7 @@ namespace S100Framework.WPF.ViewModel.S131
             scheduleByDayOfWeek = this._scheduleByDayOfWeek?.Model,
         };
 
-        public telecommunicationsViewModel()
+        public telecommunicationsViewModel(IViewModelHost? host = null) : base(host)
         {
             telecommunicationService.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2511,7 +2548,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class generalHarbourInformationViewModel : ViewModelBase
+    public partial class generalHarbourInformationViewModel : ViewModelBase
     {
         private generalPortDescriptionViewModel? _generalPortDescription;
         [Category("generalHarbourInformation")]
@@ -2664,7 +2701,7 @@ namespace S100Framework.WPF.ViewModel.S131
             weatherResource = this.weatherResource.ToList(),
         };
 
-        public generalHarbourInformationViewModel()
+        public generalHarbourInformationViewModel(IViewModelHost? host = null) : base(host)
         {
             weatherResource.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2673,7 +2710,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class ApplicabilityViewModel : ViewModelBase
+    public partial class ApplicabilityViewModel : ViewModelBase
     {
         private Boolean? _inBallast = default;
         [Category("Applicability")]
@@ -2697,7 +2734,7 @@ namespace S100Framework.WPF.ViewModel.S131
         public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = new();
 
         private categoryOfVessel? _categoryOfVessel;
-        [DomainModel.CodeListAttribute(nameof(categoryOfVesselList))]
+        [DomainModel.CodeList(nameof(categoryOfVesselList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("Applicability")]
         public categoryOfVessel? categoryOfVessel
@@ -2849,6 +2886,14 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<InclusionType, Applicability.theApplicableRxNInclusionType> associationInclusionType { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<PermissionType, Applicability.vslLocationPermissionType> associationPermissionType { get; set; } = new();
+
         [Browsable(false)]
         public categoryOfVessel[] categoryOfVesselList => CodeList.categoryOfVessels.ToArray();
 
@@ -2947,7 +2992,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public ApplicabilityViewModel()
+        public ApplicabilityViewModel(IViewModelHost? host = null) : base(host)
         {
             categoryOfCargo.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2980,7 +3025,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class AuthorityViewModel : ViewModelBase
+    public partial class AuthorityViewModel : ViewModelBase
     {
         private categoryOfAuthority _categoryOfAuthority;
         [Category("Authority")]
@@ -3083,6 +3128,18 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityContact, Authority.theContactDetailsAuthorityContact> associationAuthorityContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, Authority.theInformationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityHours, Authority.theServiceHoursAuthorityHours> associationAuthorityHours { get; set; } = new();
+
         public void Load(DomainModel.S131.InformationTypes.Authority instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -3148,7 +3205,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public AuthorityViewModel()
+        public AuthorityViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3165,7 +3222,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class AvailablePortServicesViewModel : ViewModelBase
+    public partial class AvailablePortServicesViewModel : ViewModelBase
     {
         [Category("AvailablePortServices")]
         public ObservableCollection<firefightingService> firefightingService { get; set; } = new();
@@ -3182,7 +3239,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AvailablePortServices")]
         public ObservableCollection<shipSanitationControl> shipSanitationControl { get; set; } = new();
 
-        [DomainModel.CodeListAttribute(nameof(transportConnectionList))]
+        [DomainModel.CodeList(nameof(transportConnectionList))]
         [Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]
         [Category("AvailablePortServices")]
         public ObservableCollection<transportConnection> transportConnection { get; set; } = new();
@@ -3193,7 +3250,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("AvailablePortServices")]
         public ObservableCollection<cargoService> cargoService { get; set; } = new();
 
-        [DomainModel.CodeListAttribute(nameof(securitySafetyEmergencyServiceList))]
+        [DomainModel.CodeList(nameof(securitySafetyEmergencyServiceList))]
         [Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]
         [Category("AvailablePortServices")]
         public ObservableCollection<securitySafetyEmergencyService> securitySafetyEmergencyService { get; set; } = new();
@@ -3426,7 +3483,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public AvailablePortServicesViewModel()
+        public AvailablePortServicesViewModel(IViewModelHost? host = null) : base(host)
         {
             firefightingService.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3491,7 +3548,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class ContactDetailsViewModel : ViewModelBase
+    public partial class ContactDetailsViewModel : ViewModelBase
     {
         private String _callName = string.Empty;
         [Category("ContactDetails")]
@@ -3659,6 +3716,10 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityContact, ContactDetails.theAuthorityAuthorityContact> associationAuthorityContact { get; set; } = new();
+
         public void Load(DomainModel.S131.InformationTypes.ContactDetails instance)
         {
             callName = instance.callName;
@@ -3769,7 +3830,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public ContactDetailsViewModel()
+        public ContactDetailsViewModel(IViewModelHost? host = null) : base(host)
         {
             communicationChannel.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3814,7 +3875,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class EntranceViewModel : ViewModelBase
+    public partial class EntranceViewModel : ViewModelBase
     {
         private String _entranceDescription = string.Empty;
         [Category("Entrance")]
@@ -4056,7 +4117,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public EntranceViewModel()
+        public EntranceViewModel(IViewModelHost? host = null) : base(host)
         {
             associatedFeatureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4101,7 +4162,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class NauticalInformationViewModel : ViewModelBase
+    public partial class NauticalInformationViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
@@ -4194,6 +4255,18 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<InclusionType, AbstractRxN.isApplicableToInclusionType> associationInclusionType { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, AbstractRxN.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AdditionalInformation, NauticalInformation.informationProvidedForAdditionalInformation> associationAdditionalInformation { get; set; } = new();
+
         public void Load(DomainModel.S131.InformationTypes.NauticalInformation instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -4262,7 +4335,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public NauticalInformationViewModel()
+        public NauticalInformationViewModel(IViewModelHost? host = null) : base(host)
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4287,7 +4360,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class NonStandardWorkingDayViewModel : ViewModelBase
+    public partial class NonStandardWorkingDayViewModel : ViewModelBase
     {
         [Category("NonStandardWorkingDay")]
         public ObservableCollection<DateOnly> dateFixed { get; set; } = new();
@@ -4439,7 +4512,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public NonStandardWorkingDayViewModel()
+        public NonStandardWorkingDayViewModel(IViewModelHost? host = null) : base(host)
         {
             dateFixed.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4468,7 +4541,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class RecommendationsViewModel : ViewModelBase
+    public partial class RecommendationsViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
@@ -4560,6 +4633,14 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<InclusionType, AbstractRxN.isApplicableToInclusionType> associationInclusionType { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, AbstractRxN.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
 
         public void Load(DomainModel.S131.InformationTypes.Recommendations instance)
         {
@@ -4629,7 +4710,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public RecommendationsViewModel()
+        public RecommendationsViewModel(IViewModelHost? host = null) : base(host)
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4654,7 +4735,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class RegulationsViewModel : ViewModelBase
+    public partial class RegulationsViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
@@ -4746,6 +4827,14 @@ namespace S100Framework.WPF.ViewModel.S131
                 SetValue(ref _reportedDate, value);
             }
         }
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<InclusionType, AbstractRxN.isApplicableToInclusionType> associationInclusionType { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, AbstractRxN.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
 
         public void Load(DomainModel.S131.InformationTypes.Regulations instance)
         {
@@ -4815,7 +4904,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public RegulationsViewModel()
+        public RegulationsViewModel(IViewModelHost? host = null) : base(host)
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4840,7 +4929,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class RestrictionsViewModel : ViewModelBase
+    public partial class RestrictionsViewModel : ViewModelBase
     {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
@@ -4933,6 +5022,14 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<InclusionType, AbstractRxN.isApplicableToInclusionType> associationInclusionType { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<RelatedOrganisation, AbstractRxN.theOrganisationRelatedOrganisation> associationRelatedOrganisation { get; set; } = new();
+
         public void Load(DomainModel.S131.InformationTypes.Restrictions instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -5001,7 +5098,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public RestrictionsViewModel()
+        public RestrictionsViewModel(IViewModelHost? host = null) : base(host)
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -5026,7 +5123,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class ServiceHoursViewModel : ViewModelBase
+    public partial class ServiceHoursViewModel : ViewModelBase
     {
         [Category("ServiceHours")]
         public ObservableCollection<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; } = new();
@@ -5104,6 +5201,14 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ExceptionalWorkday, ServiceHours.partialWorkingDayExceptionalWorkday> associationExceptionalWorkday { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<AuthorityHours, ServiceHours.theAuthority_srvHrsAuthorityHours> associationAuthorityHours { get; set; } = new();
+
         public void Load(DomainModel.S131.InformationTypes.ServiceHours instance)
         {
             scheduleByDayOfWeek.Clear();
@@ -5169,7 +5274,7 @@ namespace S100Framework.WPF.ViewModel.S131
             reportedDate = this._reportedDate,
         };
 
-        public ServiceHoursViewModel()
+        public ServiceHoursViewModel(IViewModelHost? host = null) : base(host)
         {
             scheduleByDayOfWeek.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -5194,7 +5299,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class SpatialQualityViewModel : ViewModelBase
+    public partial class SpatialQualityViewModel : ViewModelBase
     {
         private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement = default;
         [Category("SpatialQuality")]
@@ -5240,7 +5345,7 @@ namespace S100Framework.WPF.ViewModel.S131
             spatialAccuracy = this.spatialAccuracy.ToList(),
         };
 
-        public SpatialQualityViewModel()
+        public SpatialQualityViewModel(IViewModelHost? host = null) : base(host)
         {
             spatialAccuracy.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -5249,7 +5354,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class AnchorBerthViewModel : ViewModelBase
+    public partial class AnchorBerthViewModel : ViewModelBase
     {
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
@@ -5357,6 +5462,26 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, AnchorBerth.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, AnchorBerth.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<PrimaryAuxiliaryFacility, AnchorBerth.auxiliaryFacilityPrimaryAuxiliaryFacility> associationPrimaryAuxiliaryFacility { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.AnchorBerth instance)
         {
             locationMRN = instance.locationMRN;
@@ -5428,7 +5553,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public AnchorBerthViewModel()
+        public AnchorBerthViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -5453,7 +5578,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class AnchorageAreaViewModel : ViewModelBase
+    public partial class AnchorageAreaViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("AnchorageArea")]
@@ -5623,6 +5748,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, AnchorageArea.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, AnchorageArea.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.AnchorageArea instance)
         {
             depthsDescription = new();
@@ -5718,7 +5859,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public AnchorageAreaViewModel()
+        public AnchorageAreaViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -5743,7 +5884,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class BerthViewModel : ViewModelBase
+    public partial class BerthViewModel : ViewModelBase
     {
         private Decimal? _availableBerthingLength = default;
         [Category("Berth")]
@@ -6070,6 +6211,30 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, Berth.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, Berth.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Demarcation, Berth.demarcationIndicatorDemarcation> associationDemarcation { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, Berth.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.Berth instance)
         {
             availableBerthingLength = instance.availableBerthingLength;
@@ -6201,7 +6366,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public BerthViewModel()
+        public BerthViewModel(IViewModelHost? host = null) : base(host)
         {
             bollardNumber.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -6238,7 +6403,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class BerthPositionViewModel : ViewModelBase
+    public partial class BerthPositionViewModel : ViewModelBase
     {
         private Decimal? _availableBerthingLength = default;
         [Category("BerthPosition")]
@@ -6445,6 +6610,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Demarcation, BerthPosition.demarcatedFeatureDemarcation> compositionDemarcation { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<PrimaryAuxiliaryFacility, BerthPosition.auxiliaryFacilityPrimaryAuxiliaryFacility> associationPrimaryAuxiliaryFacility { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.BerthPosition instance)
         {
             availableBerthingLength = instance.availableBerthingLength;
@@ -6552,7 +6733,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public BerthPositionViewModel()
+        public BerthPositionViewModel(IViewModelHost? host = null) : base(host)
         {
             bollardNumber.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -6589,7 +6770,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class DockAreaViewModel : ViewModelBase
+    public partial class DockAreaViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("DockArea")]
@@ -6759,6 +6940,26 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, DockArea.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, DockArea.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, DockArea.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.DockArea instance)
         {
             depthsDescription = new();
@@ -6854,7 +7055,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public DockAreaViewModel()
+        public DockAreaViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -6879,7 +7080,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class DryDockViewModel : ViewModelBase
+    public partial class DryDockViewModel : ViewModelBase
     {
         private Decimal? _sillDepth = default;
         [Category("DryDock")]
@@ -7017,6 +7218,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, HarbourPhysicalInfrastructure.infrastructureLocationInfrastructure> associationInfrastructure { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, DryDock.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.DryDock instance)
         {
             sillDepth = instance.sillDepth;
@@ -7094,7 +7311,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public DryDockViewModel()
+        public DryDockViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -7119,7 +7336,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class DumpingGroundViewModel : ViewModelBase
+    public partial class DumpingGroundViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("DumpingGround")]
@@ -7289,6 +7506,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, DumpingGround.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, DumpingGround.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.DumpingGround instance)
         {
             depthsDescription = new();
@@ -7384,7 +7617,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public DumpingGroundViewModel()
+        public DumpingGroundViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -7409,7 +7642,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class FloatingDockViewModel : ViewModelBase
+    public partial class FloatingDockViewModel : ViewModelBase
     {
         private Decimal? _sillDepth = default;
         [Category("FloatingDock")]
@@ -7547,6 +7780,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, HarbourPhysicalInfrastructure.infrastructureLocationInfrastructure> associationInfrastructure { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, FloatingDock.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.FloatingDock instance)
         {
             sillDepth = instance.sillDepth;
@@ -7624,7 +7873,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public FloatingDockViewModel()
+        public FloatingDockViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -7649,7 +7898,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class GridironViewModel : ViewModelBase
+    public partial class GridironViewModel : ViewModelBase
     {
         private Decimal? _sillDepth = default;
         [Category("Gridiron")]
@@ -7787,6 +8036,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, HarbourPhysicalInfrastructure.infrastructureLocationInfrastructure> associationInfrastructure { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, Gridiron.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.Gridiron instance)
         {
             sillDepth = instance.sillDepth;
@@ -7864,7 +8129,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public GridironViewModel()
+        public GridironViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -7889,7 +8154,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class HarbourAreaAdministrativeViewModel : ViewModelBase
+    public partial class HarbourAreaAdministrativeViewModel : ViewModelBase
     {
         private String _uNLocationCode = string.Empty;
         [Category("HarbourAreaAdministrative")]
@@ -8076,6 +8341,30 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, HarbourAreaAdministrative.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, HarbourAreaAdministrative.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<JurisdictionalLimit, HarbourAreaAdministrative.limitExtentJurisdictionalLimit> associationJurisdictionalLimit { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, HarbourAreaAdministrative.layoutUnitLayoutDivision> associationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative instance)
         {
             uNLocationCode = instance.uNLocationCode;
@@ -8174,7 +8463,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public HarbourAreaAdministrativeViewModel()
+        public HarbourAreaAdministrativeViewModel(IViewModelHost? host = null) : base(host)
         {
             categoryOfHarbourFacility.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -8203,7 +8492,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class HarbourAreaSectionViewModel : ViewModelBase
+    public partial class HarbourAreaSectionViewModel : ViewModelBase
     {
         private categoryOfPortSection? _categoryOfPortSection = default;
         [Category("HarbourAreaSection")]
@@ -8360,6 +8649,42 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, HarbourAreaSection.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, HarbourAreaSection.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, HarbourAreaSection.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Subsection, HarbourAreaSection.constituteSubsection> aggregationSubsection { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Subsection, HarbourAreaSection.subUnitSubsection> associationSubsection { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, HarbourAreaSection.hasInfrastructureInfrastructure> associationInfrastructure { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, HarbourAreaSection.layoutUnitLayoutDivision> associationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaSection instance)
         {
             categoryOfPortSection = instance.categoryOfPortSection;
@@ -8452,7 +8777,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public HarbourAreaSectionViewModel()
+        public HarbourAreaSectionViewModel(IViewModelHost? host = null) : base(host)
         {
             categoryOfHarbourFacility.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -8481,7 +8806,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class HarbourBasinViewModel : ViewModelBase
+    public partial class HarbourBasinViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("HarbourBasin")]
@@ -8651,6 +8976,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, HarbourBasin.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, HarbourBasin.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.HarbourBasin instance)
         {
             depthsDescription = new();
@@ -8746,7 +9087,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public HarbourBasinViewModel()
+        public HarbourBasinViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -8771,7 +9112,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class HarbourFacilityViewModel : ViewModelBase
+    public partial class HarbourFacilityViewModel : ViewModelBase
     {
         [Category("HarbourFacility")]
         public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = new();
@@ -8897,6 +9238,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, HarbourPhysicalInfrastructure.infrastructureLocationInfrastructure> associationInfrastructure { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, HarbourFacility.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.HarbourFacility instance)
         {
             categoryOfHarbourFacility.Clear();
@@ -8977,7 +9334,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public HarbourFacilityViewModel()
+        public HarbourFacilityViewModel(IViewModelHost? host = null) : base(host)
         {
             categoryOfHarbourFacility.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -9006,7 +9363,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class MooringWarpingFacilityViewModel : ViewModelBase
+    public partial class MooringWarpingFacilityViewModel : ViewModelBase
     {
         private categoryOfMooringWarpingFacility _categoryOfMooringWarpingFacility;
         [Category("MooringWarpingFacility")]
@@ -9189,6 +9546,26 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, MooringWarpingFacility.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, MooringWarpingFacility.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<PrimaryAuxiliaryFacility, MooringWarpingFacility.primaryFacilityPrimaryAuxiliaryFacility> associationPrimaryAuxiliaryFacility { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.MooringWarpingFacility instance)
         {
             categoryOfMooringWarpingFacility = instance.categoryOfMooringWarpingFacility;
@@ -9275,7 +9652,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public MooringWarpingFacilityViewModel()
+        public MooringWarpingFacilityViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -9300,7 +9677,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class OuterLimitViewModel : ViewModelBase
+    public partial class OuterLimitViewModel : ViewModelBase
     {
         private limitsDescriptionViewModel? _limitsDescription;
         [Category("OuterLimit")]
@@ -9439,6 +9816,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LimitEntrance, OuterLimit.entranceReferenceLimitEntrance> associationLimitEntrance { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<JurisdictionalLimit, OuterLimit.limitReferenceJurisdictionalLimit> associationJurisdictionalLimit { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.OuterLimit instance)
         {
             limitsDescription = new();
@@ -9549,7 +9942,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public OuterLimitViewModel()
+        public OuterLimitViewModel(IViewModelHost? host = null) : base(host)
         {
             markedBy.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -9594,7 +9987,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class PilotBoardingPlaceViewModel : ViewModelBase
+    public partial class PilotBoardingPlaceViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("PilotBoardingPlace")]
@@ -9763,6 +10156,22 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, PilotBoardingPlace.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, PilotBoardingPlace.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
 
         public void Load(DomainModel.S131.FeatureTypes.PilotBoardingPlace instance)
         {
@@ -9859,7 +10268,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public PilotBoardingPlaceViewModel()
+        public PilotBoardingPlaceViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -9884,7 +10293,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class SeaplaneLandingAreaViewModel : ViewModelBase
+    public partial class SeaplaneLandingAreaViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("SeaplaneLandingArea")]
@@ -10054,6 +10463,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, SeaplaneLandingArea.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, SeaplaneLandingArea.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.SeaplaneLandingArea instance)
         {
             depthsDescription = new();
@@ -10149,7 +10574,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public SeaplaneLandingAreaViewModel()
+        public SeaplaneLandingAreaViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -10174,7 +10599,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class TerminalViewModel : ViewModelBase
+    public partial class TerminalViewModel : ViewModelBase
     {
         private String _portFacilityNumber = string.Empty;
         [Category("Terminal")]
@@ -10363,6 +10788,34 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceAvailability, Terminal.serviceDescriptionReferenceServiceAvailability> associationServiceAvailability { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, Terminal.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, Terminal.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, Terminal.layoutUnitLayoutDivision> associationLayoutDivision { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<Infrastructure, Terminal.hasInfrastructureInfrastructure> associationInfrastructure { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.Terminal instance)
         {
             portFacilityNumber = instance.portFacilityNumber;
@@ -10461,7 +10914,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public TerminalViewModel()
+        public TerminalViewModel(IViewModelHost? host = null) : base(host)
         {
             categoryOfCargo.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -10494,7 +10947,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class TurningBasinViewModel : ViewModelBase
+    public partial class TurningBasinViewModel : ViewModelBase
     {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("TurningBasin")]
@@ -10664,6 +11117,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, TurningBasin.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, TurningBasin.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.TurningBasin instance)
         {
             depthsDescription = new();
@@ -10759,7 +11228,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public TurningBasinViewModel()
+        public TurningBasinViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -10784,7 +11253,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class WaterwayAreaViewModel : ViewModelBase
+    public partial class WaterwayAreaViewModel : ViewModelBase
     {
         private categoryOfPortSection _categoryOfPortSection;
         [Category("WaterwayArea")]
@@ -10954,6 +11423,22 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceControl, SupervisedArea.controlAuthorityServiceControl> associationServiceControl { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<ServiceContact, OrganizationContactArea.theContactDetailsServiceContact> associationServiceContact { get; set; } = new();
+
+        [Category("InformationBindings")]
+        [ExpandableObject]
+        public InformationBindingViewModel<LocationHours, WaterwayArea.location_srvHrsLocationHours> associationLocationHours { get; set; } = new();
+
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<LayoutDivision, WaterwayArea.componentOfLayoutDivision> aggregationLayoutDivision { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.WaterwayArea instance)
         {
             categoryOfPortSection = instance.categoryOfPortSection;
@@ -11049,7 +11534,7 @@ namespace S100Framework.WPF.ViewModel.S131
             textContent = this.textContent.ToList(),
         };
 
-        public WaterwayAreaViewModel()
+        public WaterwayAreaViewModel(IViewModelHost? host = null) : base(host)
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -11074,7 +11559,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class DataCoverageViewModel : ViewModelBase
+    public partial class DataCoverageViewModel : ViewModelBase
     {
         private Int32 _maximumDisplayScale;
         [Category("DataCoverage")]
@@ -11129,12 +11614,12 @@ namespace S100Framework.WPF.ViewModel.S131
             minimumDisplayScale = this._minimumDisplayScale,
         };
 
-        public DataCoverageViewModel()
+        public DataCoverageViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }
 
-    public class QualityOfNonBathymetricDataViewModel : ViewModelBase
+    public partial class QualityOfNonBathymetricDataViewModel : ViewModelBase
     {
         private categoryOfTemporalVariation? _categoryOfTemporalVariation = default;
         [Category("QualityOfNonBathymetricData")]
@@ -11291,7 +11776,7 @@ namespace S100Framework.WPF.ViewModel.S131
             information = this.information.ToList(),
         };
 
-        public QualityOfNonBathymetricDataViewModel()
+        public QualityOfNonBathymetricDataViewModel(IViewModelHost? host = null) : base(host)
         {
             information.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -11300,7 +11785,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class SoundingDatumViewModel : ViewModelBase
+    public partial class SoundingDatumViewModel : ViewModelBase
     {
         private verticalDatum _verticalDatum;
         [Category("SoundingDatum")]
@@ -11346,7 +11831,7 @@ namespace S100Framework.WPF.ViewModel.S131
             information = this.information.ToList(),
         };
 
-        public SoundingDatumViewModel()
+        public SoundingDatumViewModel(IViewModelHost? host = null) : base(host)
         {
             information.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -11355,7 +11840,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class VerticalDatumOfDataViewModel : ViewModelBase
+    public partial class VerticalDatumOfDataViewModel : ViewModelBase
     {
         private verticalDatum _verticalDatum;
         [Category("VerticalDatumOfData")]
@@ -11401,7 +11886,7 @@ namespace S100Framework.WPF.ViewModel.S131
             information = this.information.ToList(),
         };
 
-        public VerticalDatumOfDataViewModel()
+        public VerticalDatumOfDataViewModel(IViewModelHost? host = null) : base(host)
         {
             information.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -11410,7 +11895,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class TextPlacementViewModel : ViewModelBase
+    public partial class TextPlacementViewModel : ViewModelBase
     {
         private Decimal _orientationValue;
         [Category("TextPlacement")]
@@ -11487,6 +11972,10 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
+        [Category("FeatureBindings")]
+        [ExpandableObject]
+        public FeatureBindingViewModel<TextAssociation, TextPlacement.positionsTextAssociation> associationTextAssociation { get; set; } = new();
+
         public void Load(DomainModel.S131.FeatureTypes.TextPlacement instance)
         {
             orientationValue = instance.orientationValue;
@@ -11519,7 +12008,7 @@ namespace S100Framework.WPF.ViewModel.S131
             scaleMinimum = this._scaleMinimum,
         };
 
-        public TextPlacementViewModel()
+        public TextPlacementViewModel(IViewModelHost? host = null) : base(host)
         {
         }
     }

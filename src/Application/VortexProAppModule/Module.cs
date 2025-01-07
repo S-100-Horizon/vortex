@@ -100,7 +100,7 @@ namespace VortexProAppModule
                 //if (!fcName.Equals(Module1.TaxParcelPolygonLayerName)) 
                 //    return;
 
-                var table = layer.GetTable();                
+                var table = layer.GetTable();
 
                 var join = table.IsJoinedTable() ? table.GetJoin() : default;
 
@@ -128,7 +128,7 @@ namespace VortexProAppModule
                 var table = layer.GetTable();
                 if (table is null)
                     return;
-                
+
                 var metadata = layer.GetMetadata();
                 if (!metadata.Contains("<keyword>vortex</keyword>"))
                     return;
@@ -147,7 +147,7 @@ namespace VortexProAppModule
                 // remember the registration
                 if (!RegisteredFeatureLayers.Contains(fcName)) {
                     RegisteredFeatureLayers.Add(fcName);
-                }                
+                }
             });
         }
 

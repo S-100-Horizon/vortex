@@ -1,6 +1,7 @@
-﻿using S100Framework.DomainModel.S101.FeatureTypes;
+﻿//#define S124
+
 using S100Framework.DomainModel.S124;
-using S100Framework.DomainModel.S901.FeatureTypes;
+using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -11,6 +12,8 @@ using System.Windows.Data;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
+
+
 namespace VortexConceptApplication
 {
     /// <summary>
@@ -19,7 +22,7 @@ namespace VortexConceptApplication
 
     //  https://github.com/RWS/Multiselect-ComboBox/tree/master/MultiSelectComboBox/MultiSelectComboBox.Example
 
-    public partial class MainWindow : Window, INotifyPropertyChanged
+    public partial class MainWindow : Window, INotifyPropertyChanged, IViewModelHost
     {
         public static object MockValue => new object();
 
@@ -85,8 +88,8 @@ namespace VortexConceptApplication
                 warningInformation = new S100Framework.DomainModel.S124.ComplexAttributes.warningInformation {
                 },                
             });
-#endif
-            var domailModel = new S100Framework.DomainModel.S901.FeatureTypes.QualityOfBathymetricDataCustom() {
+#else
+            var domainModelQualityOfBathymetricDataCustom = new S100Framework.DomainModel.S901.FeatureTypes.QualityOfBathymetricDataCustom() {
                 categoryOfTemporalVariation = S100Framework.DomainModel.S101.categoryOfTemporalVariation.LikelyToChangeButSignificantShoalingNotExpected,
                 dataAssessment = S100Framework.DomainModel.S101.dataAssessment.Assessed,
                 featuresDetected = new S100Framework.DomainModel.S101.ComplexAttributes.featuresDetected {
@@ -96,15 +99,45 @@ namespace VortexConceptApplication
                 fullSeafloorCoverageAchieved = true,
                 zoneOfConfidence = new List<S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence> {
                     new S100Framework.DomainModel.S101.ComplexAttributes.zoneOfConfidence {
-                        categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1                     
+                        categoryOfZoneOfConfidenceInData = S100Framework.DomainModel.S101.categoryOfZoneOfConfidenceInData.ZoneOfConfidenceA1
                     }
                 },
             };
 
-            var viewModel = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel {                
+            var domainModelUpdateInformation = new S100Framework.DomainModel.S101.FeatureTypes.UpdateInformation() {
+
             };
 
-            viewModel.Load(domailModel);
+
+            var domainModelVesselTrafficServiceArea = new S100Framework.DomainModel.S122.FeatureTypes.VesselTrafficServiceArea() {
+            };
+
+            var domainModelElectronicProduct = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct() {
+
+            };
+
+            //var viewModel = new S100Framework.WPF.ViewModel.S901.QualityOfBathymetricDataViewModel((IViewModelHost)this) {
+            //};
+
+            //var viewModel = new S100Framework.WPF.ViewModel.S901.UpdateInformationViewModel((IViewModelHost)this) {
+            //};
+
+            //viewModel.Load(domainModelUpdateInformation);
+
+            //var viewModel = new S100Framework.WPF.ViewModel.S922.VesselTrafficServiceAreaViewModel((IViewModelHost)this) {
+            //};
+
+            //viewModel.Load(domainModelVesselTrafficServiceArea);
+
+
+            var viewModel = new S100Framework.WPF.ViewModel.S128.ElectronicProductViewModel((IViewModelHost)this) {
+                //  Testing associations with attributes
+            };
+
+            viewModel.Load(domainModelElectronicProduct);
+
+
+#endif
 
             //this._propertyGrid.EditorDefinitions.Clear();
 
@@ -123,6 +156,22 @@ namespace VortexConceptApplication
             //editorTemplate.EditingTemplate = dt;
             //this._propertyGrid.EditorDefinitions.Add(editorTemplate);
 
+            //var editorTemplate = new EditorTemplateDefinition();
+            //PropertyDefinition propertyDefinition = new PropertyDefinition();
+            //propertyDefinition.TargetProperties.Add("ReferenceId");            
+            //editorTemplate.PropertyDefinitions.Add(propertyDefinition);
+
+            //FrameworkElementFactory fac = new FrameworkElementFactory(typeof(ComboBox));
+            //var bindingItemsSourceProperty = new Binding() { Source = Hello, Mode = BindingMode.OneWay };
+            //fac.SetBinding(ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            //DataTemplate dt = new DataTemplate { VisualTree = fac };
+            //dt.Seal();
+            //editorTemplate.EditingTemplate = dt;
+            //this._propertyGrid.EditorDefinitions.Add(editorTemplate);
+
+            //this._propertyGrid.Update();
+
 
             //var p = this._propertyGrid;
 
@@ -135,7 +184,18 @@ namespace VortexConceptApplication
             //};
 
             SelectedProperty = viewModel;
+
+            //SelectedProperty = new object[]{
+            //    viewModel,
+            //    viewModel,
+            //    viewModel
+            //};
         }
+
+        public string[] Hello => new[] {
+            "Hello3",
+            "Hello4"
+        };
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
             Logger.Current.Verbose("PreparePropertyItem = {propertyName}", e.PropertyItem.Name);
@@ -145,6 +205,12 @@ namespace VortexConceptApplication
             var propertyItem = e.Item as Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem;
             if (propertyItem == null)
                 return;
+
+            if (propertyItem.PropertyType.IsInterface)  // IViewModelHost
+                return;
+
+            //propertyItem.IsExpandable = true;
+            //return;
 
             if (!propertyItem.PropertyType.IsValueType && propertyItem.PropertyType != typeof(string) && !propertyItem.PropertyType.IsArray && !"System.Collections.Generic".Equals(propertyItem.PropertyType.Namespace)) {
 
@@ -156,6 +222,26 @@ namespace VortexConceptApplication
                     propertyItem.Value = Activator.CreateInstance(propertyItem.PropertyType);
                 }
             }
+        }
+
+        object IViewModelHost.GetSource(PropertyItem propertyItem) {
+
+            var type = propertyItem.Instance switch {
+                InformationBindingViewModel viewModel => viewModel.InformationType,
+                FeatureBindingViewModel viewModel => viewModel.FeatureType,
+                _ => throw new NotImplementedException(),
+            };
+
+            return new[] {
+                new {
+                    refId = "P1000",
+                    code = type!.Name,
+                },
+                new {
+                    refId = "P1001",
+                    code = type!.Name,
+                },
+            };
         }
     }
 

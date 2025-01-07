@@ -34,12 +34,22 @@
                             DisplayMemberPath="label"
                            ItemsSource="{Binding Items}">
         </xctk:CheckComboBox>
-        
+
         <xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
-               SelectedObject="{Binding SelectedProperty}" 
+               SelectedObject="{Binding SelectedProperty}"
                AutoGenerateProperties="True"                           
                UpdateTextBoxSourceOnEnterKey="True"
                ShowAdvancedOptions="True" PreparePropertyItem="_propertyGrid_PreparePropertyItem">
+            <!--<xctk:PropertyGrid.EditorDefinitions>
+                <xctk:EditorTemplateDefinition TargetProperties="ReferenceId">
+                    <xctk:EditorTemplateDefinition.EditingTemplate>
+                        <DataTemplate>
+                            <ComboBox ItemsSource="{Binding Instance.Hello}"/>
+                        </DataTemplate>
+                    </xctk:EditorTemplateDefinition.EditingTemplate>
+                </xctk:EditorTemplateDefinition>
+            </xctk:PropertyGrid.EditorDefinitions>-->
+            
             <!--<xctk:PropertyGrid.EditorDefinitions>
                 <xctk:EditorTemplateDefinition TargetProperties="navwarnTypeDetails">
                     <xctk:EditorTemplateDefinition.EditingTemplate>
