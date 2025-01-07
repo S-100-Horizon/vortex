@@ -39,6 +39,7 @@ namespace S100Framework.WPF.ViewModel.S924
         });
     }
 
+    [CategoryOrder("featureName", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class featureNameViewModel : ViewModelBase
@@ -105,6 +106,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("dateTimeRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class dateTimeRangeViewModel : ViewModelBase
@@ -156,6 +158,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("eNCFeatureReference", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class eNCFeatureReferenceViewModel : ViewModelBase
@@ -234,6 +237,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("featureReference", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class featureReferenceViewModel : ViewModelBase
@@ -312,6 +316,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("fixedDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class fixedDateRangeViewModel : ViewModelBase
@@ -365,6 +370,7 @@ namespace S100Framework.WPF.ViewModel.S924
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("information", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class informationViewModel : ViewModelBase
@@ -462,6 +468,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("warningInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class warningInformationViewModel : ViewModelBase
@@ -521,6 +528,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("chartAffected", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class chartAffectedViewModel : ViewModelBase
@@ -602,6 +610,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("affectedChartPublications", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class affectedChartPublicationsViewModel : ViewModelBase
@@ -704,6 +713,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("locationName", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class locationNameViewModel : ViewModelBase
@@ -755,6 +765,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("generalArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class generalAreaViewModel : ViewModelBase
@@ -805,6 +816,7 @@ namespace S100Framework.WPF.ViewModel.S924
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("locality", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class localityViewModel : ViewModelBase
@@ -854,6 +866,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("messageSeriesIdentifier", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class messageSeriesIdentifierViewModel : ViewModelBase
@@ -980,6 +993,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("nAVWARNTitle", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class nAVWARNTitleViewModel : ViewModelBase
@@ -1031,6 +1045,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("NAVWARNPreamble", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NAVWARNPreambleViewModel : ViewModelBase
@@ -1199,6 +1214,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("References", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ReferencesViewModel : ViewModelBase
@@ -1262,6 +1278,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("NAVWARNPart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NAVWARNPartViewModel : ViewModelBase
@@ -1394,6 +1411,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("NAVWARNAreaAffected", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NAVWARNAreaAffectedViewModel : ViewModelBase
@@ -1428,6 +1446,7 @@ namespace S100Framework.WPF.ViewModel.S924
         }
     }
 
+    [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TextPlacementViewModel : ViewModelBase

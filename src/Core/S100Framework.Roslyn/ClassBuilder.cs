@@ -34,7 +34,7 @@ namespace S100Framework
     {
         public const string S100FC_52 = "http://www.iho.int/S100FC/5.2";
 
-        private static Pluralizer pluralizer = new Pluralizer();
+        private static Pluralizer pluralizer = new();
 
         public static (string fc, string view, string common) CatalogueBuilder52(XDocument productSpecification) => CatalogueBuilder(productSpecification, S100FC_52);
 
@@ -898,6 +898,10 @@ namespace S100Framework
                                     postfix = " = [];";
                                 }
 
+                                foreach (var f in informationTypeRefs) {
+                                    builder.AppendLine($"\t\t\t[InformationType({f})]");
+                                }
+
                                 builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");
 
                                 viewModelBindingBuilder.AppendLine($"\t\t\tprivate InformationBindingViewModel<DomainModel.{productId}.Associations.InformationAssociations.{association}> _{role!}Of{association!} = new(typeof({code}).GetProperty(\"{role!}Of{association!}\")!.GetCustomAttributes<InformationTypeAttribute>());");
@@ -1088,6 +1092,10 @@ namespace S100Framework
                                     postfix = " = [];";
                                 }
 
+                                foreach (var f in informationTypeRefs) {
+                                    builder.AppendLine($"\t\t\t[InformationType({f})]");
+                                }
+
                                 builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");
 
                                 viewModelBindingBuilder.AppendLine($"\t\t\tprivate InformationBindingViewModel<DomainModel.{productId}.Associations.InformationAssociations.{association}> _{role!}Of{association!} = new(typeof({code}).GetProperty(\"{role!}Of{association!}\")!.GetCustomAttributes<InformationTypeAttribute>());");
@@ -1125,6 +1133,10 @@ namespace S100Framework
                                 if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
                                     prefix = $"List<featureBinding<Associations.FeatureAssociations.{association}>>";
                                     postfix = " = [];";
+                                }
+
+                                foreach (var f in featureTypeRefs) {
+                                    builder.AppendLine($"\t\t\t[FeatureType({f})]");
                                 }
 
                                 builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");

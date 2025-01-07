@@ -167,6 +167,7 @@ namespace S100Framework.WPF.ViewModel.S131
         });
     }
 
+    [CategoryOrder("contactAddress", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class contactAddressViewModel : ViewModelBase
@@ -278,6 +279,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("featureName", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class featureNameViewModel : ViewModelBase
@@ -358,6 +360,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("fixedDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class fixedDateRangeViewModel : ViewModelBase
@@ -420,6 +423,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("frequencyPair", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class frequencyPairViewModel : ViewModelBase
@@ -485,6 +489,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("horizontalPositionUncertainty", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class horizontalPositionUncertaintyViewModel : ViewModelBase
@@ -549,6 +554,7 @@ namespace S100Framework.WPF.ViewModel.S131
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("information", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class informationViewModel : ViewModelBase
@@ -661,6 +667,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("onlineResource", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class onlineResourceViewModel : ViewModelBase
@@ -815,6 +822,7 @@ namespace S100Framework.WPF.ViewModel.S131
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("orientation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class orientationViewModel : ViewModelBase
@@ -878,6 +886,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("periodicDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class periodicDateRangeViewModel : ViewModelBase
@@ -940,6 +949,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("rxNCode", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class rxNCodeViewModel : ViewModelBase
@@ -1025,6 +1035,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("surveyDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class surveyDateRangeViewModel : ViewModelBase
@@ -1087,6 +1098,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("textContent", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class textContentViewModel : ViewModelBase
@@ -1223,6 +1235,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("timeIntervalsByDayOfWeek", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase
@@ -1306,6 +1319,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("usefulMarkDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class usefulMarkDescriptionViewModel : ViewModelBase
@@ -1345,6 +1359,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("verticalUncertainty", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class verticalUncertaintyViewModel : ViewModelBase
@@ -1407,6 +1422,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("vesselsMeasurements", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class vesselsMeasurementsViewModel : ViewModelBase
@@ -1505,6 +1521,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("weatherResource", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class weatherResourceViewModel : ViewModelBase
@@ -1598,6 +1615,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("bearingInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class bearingInformationViewModel : ViewModelBase
@@ -1710,6 +1728,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("cargoServicesDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class cargoServicesDescriptionViewModel : ViewModelBase
@@ -1749,6 +1768,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("constructionInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class constructionInformationViewModel : ViewModelBase
@@ -1867,6 +1887,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("depthsDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class depthsDescriptionViewModel : ViewModelBase
@@ -1924,6 +1945,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("facilitiesLayoutDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class facilitiesLayoutDescriptionViewModel : ViewModelBase
@@ -1963,6 +1985,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("generalPortDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class generalPortDescriptionViewModel : ViewModelBase
@@ -2004,6 +2027,7 @@ namespace S100Framework.WPF.ViewModel.S131
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("graphic", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class graphicViewModel : ViewModelBase
@@ -2122,6 +2146,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("landmarkDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class landmarkDescriptionViewModel : ViewModelBase
@@ -2161,6 +2186,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("limitsDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class limitsDescriptionViewModel : ViewModelBase
@@ -2200,6 +2226,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("majorLightDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class majorLightDescriptionViewModel : ViewModelBase
@@ -2239,6 +2266,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("markedBy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class markedByViewModel : ViewModelBase
@@ -2278,6 +2306,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("offshoreMarkDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class offshoreMarkDescriptionViewModel : ViewModelBase
@@ -2317,6 +2346,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("scheduleByDayOfWeek", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class scheduleByDayOfWeekViewModel : ViewModelBase
@@ -2374,6 +2404,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("spatialAccuracy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class spatialAccuracyViewModel : ViewModelBase
@@ -2476,6 +2507,7 @@ namespace S100Framework.WPF.ViewModel.S131
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("telecommunications", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class telecommunicationsViewModel : ViewModelBase
@@ -2612,6 +2644,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("generalHarbourInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class generalHarbourInformationViewModel : ViewModelBase
@@ -2776,6 +2809,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("Applicability", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ApplicabilityViewModel : ViewModelBase
@@ -3133,6 +3167,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("Authority", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AuthorityViewModel : ViewModelBase
@@ -3384,6 +3419,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("AvailablePortServices", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AvailablePortServicesViewModel : ViewModelBase
@@ -3728,6 +3764,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("ContactDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ContactDetailsViewModel : ViewModelBase
@@ -4085,6 +4122,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("Entrance", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class EntranceViewModel : ViewModelBase
@@ -4390,6 +4428,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("NauticalInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NauticalInformationViewModel : ViewModelBase
@@ -4642,6 +4681,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("NonStandardWorkingDay", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NonStandardWorkingDayViewModel : ViewModelBase
@@ -4841,6 +4881,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("Recommendations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RecommendationsViewModel : ViewModelBase
@@ -5077,6 +5118,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("Regulations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RegulationsViewModel : ViewModelBase
@@ -5313,6 +5355,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("Restrictions", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RestrictionsViewModel : ViewModelBase
@@ -5549,6 +5592,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("ServiceHours", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ServiceHoursViewModel : ViewModelBase
@@ -5767,6 +5811,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("SpatialQuality", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SpatialQualityViewModel : ViewModelBase
@@ -5824,6 +5869,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("AnchorBerth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AnchorBerthViewModel : ViewModelBase
@@ -6174,6 +6220,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("AnchorageArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AnchorageAreaViewModel : ViewModelBase
@@ -6594,6 +6641,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("Berth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BerthViewModel : ViewModelBase
@@ -7251,6 +7299,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("BerthPosition", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BerthPositionViewModel : ViewModelBase
@@ -7732,6 +7781,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("DockArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DockAreaViewModel : ViewModelBase
@@ -8168,6 +8218,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("DryDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DryDockViewModel : ViewModelBase
@@ -8538,6 +8589,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("DumpingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DumpingGroundViewModel : ViewModelBase
@@ -8958,6 +9010,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("FloatingDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FloatingDockViewModel : ViewModelBase
@@ -9328,6 +9381,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("Gridiron", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class GridironViewModel : ViewModelBase
@@ -9698,6 +9752,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("HarbourAreaAdministrative", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class HarbourAreaAdministrativeViewModel : ViewModelBase
@@ -10174,6 +10229,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("HarbourAreaSection", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class HarbourAreaSectionViewModel : ViewModelBase
@@ -10662,6 +10718,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("HarbourBasin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class HarbourBasinViewModel : ViewModelBase
@@ -11082,6 +11139,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("HarbourFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class HarbourFacilityViewModel : ViewModelBase
@@ -11447,6 +11505,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("MooringWarpingFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MooringWarpingFacilityViewModel : ViewModelBase
@@ -11887,6 +11946,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("OuterLimit", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class OuterLimitViewModel : ViewModelBase
@@ -12311,6 +12371,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("PilotBoardingPlace", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PilotBoardingPlaceViewModel : ViewModelBase
@@ -12731,6 +12792,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("SeaplaneLandingArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SeaplaneLandingAreaViewModel : ViewModelBase
@@ -13151,6 +13213,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("Terminal", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TerminalViewModel : ViewModelBase
@@ -13649,6 +13712,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("TurningBasin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TurningBasinViewModel : ViewModelBase
@@ -14069,6 +14133,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("WaterwayArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class WaterwayAreaViewModel : ViewModelBase
@@ -14489,6 +14554,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("DataCoverage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DataCoverageViewModel : ViewModelBase
@@ -14551,6 +14617,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("QualityOfNonBathymetricData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class QualityOfNonBathymetricDataViewModel : ViewModelBase
@@ -14719,6 +14786,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("SoundingDatum", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SoundingDatumViewModel : ViewModelBase
@@ -14776,6 +14844,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("VerticalDatumOfData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class VerticalDatumOfDataViewModel : ViewModelBase
@@ -14833,6 +14902,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
+    [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TextPlacementViewModel : ViewModelBase

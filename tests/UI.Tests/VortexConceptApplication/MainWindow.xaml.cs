@@ -26,7 +26,7 @@ namespace VortexConceptApplication
 
     public partial class MainWindow : Window, INotifyPropertyChanged, IViewModelHost
     {
-        public static object MockValue => new object();
+        public static object MockValue => new();
 
         public event PropertyChangedEventHandler PropertyChanged;
 

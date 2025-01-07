@@ -2216,6 +2216,8 @@ namespace S100Framework.DomainModel.S124
 
             [Required()]
             public DateTime publicationTime { get; set; }
+
+            [InformationType(typeof(References))]
             public List<informationBinding<Associations.InformationAssociations.NWReferences>> theReferencesOfNWReferences { get; set; } = [];
             public override string Code => nameof(NAVWARNPreamble);
 
@@ -2274,8 +2276,14 @@ namespace S100Framework.DomainModel.S124
             [Required()]
             public warningInformation warningInformation { get; set; }
             public restriction? restriction { get; set; } = default;
+
+            [InformationType(typeof(NAVWARNPreamble))]
             public informationBinding<Associations.InformationAssociations.NWPreambleContent> headerOfNWPreambleContent { get; set; }
+
+            [FeatureType(typeof(NAVWARNAreaAffected))]
             public List<featureBinding<Associations.FeatureAssociations.AreaAffected>> affectsOfAreaAffected { get; set; } = [];
+
+            [FeatureType(typeof(TextPlacement))]
             public List<featureBinding<Associations.FeatureAssociations.TextAssociation>> positionsOfTextAssociation { get; set; } = [];
             public override string Code => nameof(NAVWARNPart);
 
@@ -2291,6 +2299,7 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNAreaAffected : FeatureTypeBase
         {
+            [FeatureType(typeof(NAVWARNPart))]
             public featureBinding<Associations.FeatureAssociations.AreaAffected> impactsOfAreaAffected { get; set; }
             public override string Code => nameof(NAVWARNAreaAffected);
 
@@ -2313,6 +2322,8 @@ namespace S100Framework.DomainModel.S124
             public Boolean? textRotation { get; set; } = default;
             public textType? textType { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
+
+            [FeatureType(typeof(NAVWARNPart))]
             public featureBinding<Associations.FeatureAssociations.TextAssociation>? identifiesOfTextAssociation { get; set; }
             public override string Code => nameof(TextPlacement);
 

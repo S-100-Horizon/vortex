@@ -2563,6 +2563,8 @@ namespace S100Framework.DomainModel.S131
             public String source { get; set; } = string.Empty;
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [InformationType(typeof(NauticalInformation))]
             public List<informationBinding<Associations.InformationAssociations.AdditionalInformation>> providesInformationOfAdditionalInformation { get; set; } = [];
             public override string Code => nameof(InformationType);
 
@@ -2578,7 +2580,11 @@ namespace S100Framework.DomainModel.S131
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
             public List<rxNCode> rxNCode { get; set; } = [];
             public List<textContent> textContent { get; set; } = [];
+
+            [InformationType(typeof(Applicability))]
             public List<informationBinding<Associations.InformationAssociations.InclusionType>> isApplicableToOfInclusionType { get; set; } = [];
+
+            [InformationType(typeof(Authority))]
             public List<informationBinding<Associations.InformationAssociations.RelatedOrganisation>> theOrganisationOfRelatedOrganisation { get; set; } = [];
             public override string Code => nameof(AbstractRxN);
 
@@ -2601,7 +2607,11 @@ namespace S100Framework.DomainModel.S131
             public String vesselPerformance { get; set; } = string.Empty;
             public List<information> information { get; set; } = [];
             public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
+
+            [InformationType(typeof(AbstractRxN))]
             public List<informationBinding<Associations.InformationAssociations.InclusionType>> theApplicableRxNOfInclusionType { get; set; } = [];
+
+            [InformationType(typeof(InformationType))]
             public List<informationBinding<Associations.InformationAssociations.PermissionType>> vslLocationOfPermissionType { get; set; } = [];
             public override string Code => nameof(Applicability);
 
@@ -2617,8 +2627,14 @@ namespace S100Framework.DomainModel.S131
             [Required()]
             public categoryOfAuthority categoryOfAuthority { get; set; }
             public textContent? textContent { get; set; }
+
+            [InformationType(typeof(ContactDetails))]
             public List<informationBinding<Associations.InformationAssociations.AuthorityContact>> theContactDetailsOfAuthorityContact { get; set; } = [];
+
+            [InformationType(typeof(AbstractRxN))]
             public List<informationBinding<Associations.InformationAssociations.RelatedOrganisation>> theInformationOfRelatedOrganisation { get; set; } = [];
+
+            [InformationType(typeof(ServiceHours))]
             public List<informationBinding<Associations.InformationAssociations.AuthorityHours>> theServiceHoursOfAuthorityHours { get; set; } = [];
             public override string Code => nameof(Authority);
 
@@ -2667,6 +2683,8 @@ namespace S100Framework.DomainModel.S131
             public String mMSICode { get; set; } = string.Empty;
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<telecommunications> telecommunications { get; set; } = [];
+
+            [InformationType(typeof(Authority))]
             public List<informationBinding<Associations.InformationAssociations.AuthorityContact>> theAuthorityOfAuthorityContact { get; set; } = [];
             public override string Code => nameof(ContactDetails);
 
@@ -2700,6 +2718,7 @@ namespace S100Framework.DomainModel.S131
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : AbstractRxN
         {
+            [InformationType(typeof(InformationType))]
             public List<informationBinding<Associations.InformationAssociations.AdditionalInformation>> informationProvidedForOfAdditionalInformation { get; set; } = [];
             public override string Code => nameof(NauticalInformation);
 
@@ -2762,7 +2781,11 @@ namespace S100Framework.DomainModel.S131
             [Required()]
             public List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
             public List<information> information { get; set; } = [];
+
+            [InformationType(typeof(NonStandardWorkingDay))]
             public List<informationBinding<Associations.InformationAssociations.ExceptionalWorkday>> partialWorkingDayOfExceptionalWorkday { get; set; } = [];
+
+            [InformationType(typeof(Authority))]
             public List<informationBinding<Associations.InformationAssociations.AuthorityHours>> theAuthority_srvHrsOfAuthorityHours { get; set; } = [];
             public override string Code => nameof(ServiceHours);
 
@@ -2809,9 +2832,17 @@ namespace S100Framework.DomainModel.S131
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
             public List<textContent> textContent { get; set; } = [];
+
+            [InformationType(typeof(Applicability))]
             public List<informationBinding<Associations.InformationAssociations.PermissionType>> permissionOfPermissionType { get; set; } = [];
+
+            [InformationType(typeof(AbstractRxN))]
             public List<informationBinding<Associations.InformationAssociations.AssociatedRxN>> theRxNOfAssociatedRxN { get; set; } = [];
+
+            [InformationType(typeof(NauticalInformation))]
             public List<informationBinding<Associations.InformationAssociations.AdditionalInformation>> providesInformationOfAdditionalInformation { get; set; } = [];
+
+            [FeatureType(typeof(TextPlacement))]
             public featureBinding<Associations.FeatureAssociations.TextAssociation>? positionsOfTextAssociation { get; set; }
             public override string Code => nameof(FeatureType);
 
@@ -2824,6 +2855,7 @@ namespace S100Framework.DomainModel.S131
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class OrganizationContactArea : FeatureType
         {
+            [InformationType(typeof(ContactDetails))]
             public List<informationBinding<Associations.InformationAssociations.ServiceContact>> theContactDetailsOfServiceContact { get; set; } = [];
             public override string Code => nameof(OrganizationContactArea);
 
@@ -2836,6 +2868,7 @@ namespace S100Framework.DomainModel.S131
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class SupervisedArea : OrganizationContactArea
         {
+            [InformationType(typeof(Authority))]
             public informationBinding<Associations.InformationAssociations.ServiceControl>? controlAuthorityOfServiceControl { get; set; }
             public override string Code => nameof(SupervisedArea);
 
@@ -2849,6 +2882,9 @@ namespace S100Framework.DomainModel.S131
         public abstract partial class HarbourPhysicalInfrastructure : SupervisedArea
         {
             public Decimal? verticalClearanceValue { get; set; } = default;
+
+            [FeatureType(typeof(HarbourAreaSection))]
+            [FeatureType(typeof(Terminal))]
             public featureBinding<Associations.FeatureAssociations.Infrastructure>? infrastructureLocationOfInfrastructure { get; set; }
             public override string Code => nameof(HarbourPhysicalInfrastructure);
 
@@ -2872,8 +2908,13 @@ namespace S100Framework.DomainModel.S131
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorBerth : Layout
         {
+            [InformationType(typeof(AvailablePortServices))]
             public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(MooringWarpingFacility))]
             public List<featureBinding<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>> auxiliaryFacilityOfPrimaryAuxiliaryFacility { get; set; } = [];
             public override string Code => nameof(AnchorBerth);
 
@@ -2890,7 +2931,11 @@ namespace S100Framework.DomainModel.S131
             public String locationByText { get; set; } = string.Empty;
             public markedBy? markedBy { get; set; }
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(AnchorageArea);
 
@@ -2920,9 +2965,18 @@ namespace S100Framework.DomainModel.S131
             public methodOfSecuring? methodOfSecuring { get; set; } = default;
             public String uNLocationCode { get; set; } = string.Empty;
             public String terminalIdentifier { get; set; } = string.Empty;
+
+            [InformationType(typeof(AvailablePortServices))]
             public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(BerthPosition))]
             public List<featureBinding<Associations.FeatureAssociations.Demarcation>> demarcationIndicatorOfDemarcation { get; set; } = [];
+
+            [FeatureType(typeof(HarbourAreaSection))]
+            [FeatureType(typeof(Terminal))]
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(Berth);
 
@@ -2945,7 +2999,11 @@ namespace S100Framework.DomainModel.S131
             public List<String> manifoldNumber { get; set; } = [];
             public String rampNumber { get; set; } = string.Empty;
             public String locationByText { get; set; } = string.Empty;
+
+            [FeatureType(typeof(Berth))]
             public featureBinding<Associations.FeatureAssociations.Demarcation> demarcatedFeatureOfDemarcation { get; set; }
+
+            [FeatureType(typeof(MooringWarpingFacility))]
             public List<featureBinding<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>> auxiliaryFacilityOfPrimaryAuxiliaryFacility { get; set; } = [];
             public override string Code => nameof(BerthPosition);
 
@@ -2962,8 +3020,14 @@ namespace S100Framework.DomainModel.S131
             public String locationByText { get; set; } = string.Empty;
             public markedBy? markedBy { get; set; }
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [InformationType(typeof(AvailablePortServices))]
             public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(DockArea);
 
@@ -2977,6 +3041,8 @@ namespace S100Framework.DomainModel.S131
         public partial class DryDock : HarbourPhysicalInfrastructure
         {
             public Decimal? sillDepth { get; set; } = default;
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(DryDock);
 
@@ -2993,7 +3059,11 @@ namespace S100Framework.DomainModel.S131
             public String locationByText { get; set; } = string.Empty;
             public markedBy? markedBy { get; set; }
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(DumpingGround);
 
@@ -3007,6 +3077,8 @@ namespace S100Framework.DomainModel.S131
         public partial class FloatingDock : HarbourPhysicalInfrastructure
         {
             public Decimal? sillDepth { get; set; } = default;
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(FloatingDock);
 
@@ -3020,6 +3092,8 @@ namespace S100Framework.DomainModel.S131
         public partial class Gridiron : HarbourPhysicalInfrastructure
         {
             public Decimal? sillDepth { get; set; } = default;
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(Gridiron);
 
@@ -3038,9 +3112,17 @@ namespace S100Framework.DomainModel.S131
             public iSPSLevel? iSPSLevel { get; set; } = default;
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = [];
             public generalHarbourInformation? generalHarbourInformation { get; set; }
+
+            [InformationType(typeof(AvailablePortServices))]
             public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(OuterLimit))]
             public featureBinding<Associations.FeatureAssociations.JurisdictionalLimit>? limitExtentOfJurisdictionalLimit { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public List<featureBinding<Associations.FeatureAssociations.LayoutDivision>> layoutUnitOfLayoutDivision { get; set; } = [];
             public override string Code => nameof(HarbourAreaAdministrative);
 
@@ -3057,12 +3139,35 @@ namespace S100Framework.DomainModel.S131
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = [];
             public iSPSLevel? iSPSLevel { get; set; } = default;
             public facilitiesLayoutDescription? facilitiesLayoutDescription { get; set; }
+
+            [InformationType(typeof(AvailablePortServices))]
             public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(HarbourAreaAdministrative))]
             public featureBinding<Associations.FeatureAssociations.LayoutDivision>? componentOfOfLayoutDivision { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public featureBinding<Associations.FeatureAssociations.Subsection>? constituteOfSubsection { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public List<featureBinding<Associations.FeatureAssociations.Subsection>> subUnitOfSubsection { get; set; } = [];
+
+            [FeatureType(typeof(HarbourPhysicalInfrastructure))]
             public List<featureBinding<Associations.FeatureAssociations.Infrastructure>> hasInfrastructureOfInfrastructure { get; set; } = [];
+
+            [FeatureType(typeof(AnchorageArea))]
+            [FeatureType(typeof(Berth))]
+            [FeatureType(typeof(DockArea))]
+            [FeatureType(typeof(DumpingGround))]
+            [FeatureType(typeof(HarbourBasin))]
+            [FeatureType(typeof(PilotBoardingPlace))]
+            [FeatureType(typeof(SeaplaneLandingArea))]
+            [FeatureType(typeof(Terminal))]
+            [FeatureType(typeof(TurningBasin))]
+            [FeatureType(typeof(WaterwayArea))]
             public List<featureBinding<Associations.FeatureAssociations.LayoutDivision>> layoutUnitOfLayoutDivision { get; set; } = [];
             public override string Code => nameof(HarbourAreaSection);
 
@@ -3079,7 +3184,11 @@ namespace S100Framework.DomainModel.S131
             public String locationByText { get; set; } = string.Empty;
             public markedBy? markedBy { get; set; }
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(HarbourBasin);
 
@@ -3094,6 +3203,8 @@ namespace S100Framework.DomainModel.S131
         {
             [Required()]
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(HarbourFacility);
 
@@ -3113,8 +3224,15 @@ namespace S100Framework.DomainModel.S131
             public String bollardDescription { get; set; } = string.Empty;
             public Decimal? bollardPull { get; set; } = default;
             public Boolean? heavingLinesFromShore { get; set; } = default;
+
+            [InformationType(typeof(AvailablePortServices))]
             public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(AnchorBerth))]
+            [FeatureType(typeof(BerthPosition))]
             public featureBinding<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>? primaryFacilityOfPrimaryAuxiliaryFacility { get; set; }
             public override string Code => nameof(MooringWarpingFacility);
 
@@ -3134,7 +3252,11 @@ namespace S100Framework.DomainModel.S131
             public List<offshoreMarkDescription> offshoreMarkDescription { get; set; } = [];
             public List<majorLightDescription> majorLightDescription { get; set; } = [];
             public List<usefulMarkDescription> usefulMarkDescription { get; set; } = [];
+
+            [InformationType(typeof(Entrance))]
             public informationBinding<Associations.InformationAssociations.LimitEntrance>? entranceReferenceOfLimitEntrance { get; set; }
+
+            [FeatureType(typeof(HarbourAreaAdministrative))]
             public featureBinding<Associations.FeatureAssociations.JurisdictionalLimit> limitReferenceOfJurisdictionalLimit { get; set; }
             public override string Code => nameof(OuterLimit);
 
@@ -3151,7 +3273,11 @@ namespace S100Framework.DomainModel.S131
             public String locationByText { get; set; } = string.Empty;
             public markedBy? markedBy { get; set; }
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(PilotBoardingPlace);
 
@@ -3168,7 +3294,11 @@ namespace S100Framework.DomainModel.S131
             public String locationByText { get; set; } = string.Empty;
             public markedBy? markedBy { get; set; }
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(SeaplaneLandingArea);
 
@@ -3188,10 +3318,20 @@ namespace S100Framework.DomainModel.S131
             public String terminalIdentifier { get; set; } = string.Empty;
             public String sMDGTerminalCode { get; set; } = string.Empty;
             public String uNLocationCode { get; set; } = string.Empty;
+
+            [InformationType(typeof(AvailablePortServices))]
             public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
+
+            [FeatureType(typeof(Berth))]
             public List<featureBinding<Associations.FeatureAssociations.LayoutDivision>> layoutUnitOfLayoutDivision { get; set; } = [];
+
+            [FeatureType(typeof(HarbourPhysicalInfrastructure))]
             public List<featureBinding<Associations.FeatureAssociations.Infrastructure>> hasInfrastructureOfInfrastructure { get; set; } = [];
             public override string Code => nameof(Terminal);
 
@@ -3208,7 +3348,11 @@ namespace S100Framework.DomainModel.S131
             public String locationByText { get; set; } = string.Empty;
             public markedBy? markedBy { get; set; }
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(TurningBasin);
 
@@ -3226,7 +3370,11 @@ namespace S100Framework.DomainModel.S131
             public depthsDescription? depthsDescription { get; set; }
             public String locationByText { get; set; } = string.Empty;
             public markedBy? markedBy { get; set; }
+
+            [InformationType(typeof(ServiceHours))]
             public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
+
+            [FeatureType(typeof(HarbourAreaSection))]
             public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(WaterwayArea);
 
@@ -3315,6 +3463,8 @@ namespace S100Framework.DomainModel.S131
             public Int32 textOffsetMm { get; set; }
             public textType? textType { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
+
+            [FeatureType(typeof(FeatureType))]
             public featureBinding<Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation { get; set; }
             public override string Code => nameof(TextPlacement);
 

@@ -8,7 +8,7 @@ namespace S100Framework.ArcGIS.Core
 {
     public static class Extension
     {
-        private static ConcurrentDictionary<int, SpatialReference> _spatialReferences = new ConcurrentDictionary<int, SpatialReference>();
+        private static ConcurrentDictionary<int, SpatialReference> _spatialReferences = new();
 
         public static Geometry? Shape(this S100Framework.GML.Dataset.FeatureType element) {
             var geometry = element.Geometry;

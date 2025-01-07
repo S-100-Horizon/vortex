@@ -16,7 +16,7 @@ namespace S100Framework.WPF
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected Dictionary<ViewModelBase, string> nestedProperties = new Dictionary<ViewModelBase, string>();
+        protected Dictionary<ViewModelBase, string> nestedProperties = new();
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

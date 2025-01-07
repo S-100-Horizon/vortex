@@ -55,6 +55,7 @@ namespace S100Framework.WPF.ViewModel.S128
         });
     }
 
+    [CategoryOrder("contactAddress", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class contactAddressViewModel : ViewModelBase
@@ -166,6 +167,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("customPaperSize", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class customPaperSizeViewModel : ViewModelBase
@@ -228,6 +230,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("defaultLocale", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class defaultLocaleViewModel : ViewModelBase
@@ -308,6 +311,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("featureName", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class featureNameViewModel : ViewModelBase
@@ -390,6 +394,7 @@ namespace S100Framework.WPF.ViewModel.S128
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("information", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class informationViewModel : ViewModelBase
@@ -502,6 +507,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("onlineResource", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class onlineResourceViewModel : ViewModelBase
@@ -636,6 +642,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("periodicDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class periodicDateRangeViewModel : ViewModelBase
@@ -700,6 +707,7 @@ namespace S100Framework.WPF.ViewModel.S128
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("pricing", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class pricingViewModel : ViewModelBase
@@ -781,6 +789,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("printSize", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class printSizeViewModel : ViewModelBase
@@ -849,6 +858,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("productSpecification", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class productSpecificationViewModel : ViewModelBase
@@ -947,6 +957,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("supportFileSpecification", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class supportFileSpecificationViewModel : ViewModelBase
@@ -1027,6 +1038,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("serviceSpecification", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class serviceSpecificationViewModel : ViewModelBase
@@ -1107,6 +1119,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("sourceIndication", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class sourceIndicationViewModel : ViewModelBase
@@ -1238,6 +1251,7 @@ namespace S100Framework.WPF.ViewModel.S128
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("telecommunications", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class telecommunicationsViewModel : ViewModelBase
@@ -1314,6 +1328,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("timeIntervalOfCycle", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class timeIntervalOfCycleViewModel : ViewModelBase
@@ -1371,6 +1386,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("weekOfYear", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class weekOfYearViewModel : ViewModelBase
@@ -1433,6 +1449,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("issuanceCycle", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class issuanceCycleViewModel : ViewModelBase
@@ -1508,6 +1525,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("printInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class printInformationViewModel : ViewModelBase
@@ -1630,6 +1648,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("supportFile", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class supportFileViewModel : ViewModelBase
@@ -1885,6 +1904,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("timeIntervalOfProduct", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class timeIntervalOfProductViewModel : ViewModelBase
@@ -1971,6 +1991,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("referenceToNM", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class referenceToNMViewModel : ViewModelBase
@@ -2039,6 +2060,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("CatalogueSectionHeader", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CatalogueSectionHeaderViewModel : ViewModelBase
@@ -2173,6 +2195,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("ContactDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ContactDetailsViewModel : ViewModelBase
@@ -2314,6 +2337,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("IndicationOfCarriageRequirement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class IndicationOfCarriageRequirementViewModel : ViewModelBase
@@ -2389,6 +2413,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("PriceInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PriceInformationViewModel : ViewModelBase
@@ -2483,6 +2508,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("ProducerInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ProducerInformationViewModel : ViewModelBase
@@ -2577,6 +2603,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("DistributorInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DistributorInformationViewModel : ViewModelBase
@@ -2653,6 +2680,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("ElectronicProduct", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ElectronicProductViewModel : ViewModelBase
@@ -3363,6 +3391,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("PhysicalProduct", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PhysicalProductViewModel : ViewModelBase
@@ -4080,6 +4109,7 @@ namespace S100Framework.WPF.ViewModel.S128
         }
     }
 
+    [CategoryOrder("S100Service", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class S100ServiceViewModel : ViewModelBase

@@ -12,7 +12,7 @@ namespace TestS100Framework
 {
     public static class Information
     {
-        public static Version Version => new Version("");
+        public static Version Version => new("");
     }
 
     namespace Test

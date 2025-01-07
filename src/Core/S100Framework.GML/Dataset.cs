@@ -9,7 +9,7 @@ namespace S100Framework.GML
 {
     public class Dataset
     {
-        private static Regex _substitute = new Regex(@"^S(?<number>\d+)$", RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase);
+        private static Regex _substitute = new(@"^S(?<number>\d+)$", RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase);
 
         private readonly XDocument _document;
 
@@ -30,7 +30,7 @@ namespace S100Framework.GML
             private readonly XElement _element;
             private readonly FeatureCatalogue _featureCatalogue;
 
-            public XElement XElement => new XElement(_element);
+            public XElement XElement => new(_element);
 
             public InformationType(XElement Member, FeatureCatalogue catalogue) {
                 _element = Member;
@@ -56,7 +56,7 @@ namespace S100Framework.GML
             private readonly FeatureCatalogue _featureCatalogue;
             private readonly XNamespace _namespace;
 
-            public XElement XElement => new XElement(_element);
+            public XElement XElement => new(_element);
 
             public FeatureType(XElement member, FeatureCatalogue catalogue) {
                 _element = member;

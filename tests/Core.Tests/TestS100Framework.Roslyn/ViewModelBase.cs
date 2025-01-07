@@ -24,7 +24,7 @@ namespace S100Framework.WPF.ViewModel
 
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected Dictionary<ViewModelBase, string> nestedProperties = new Dictionary<ViewModelBase, string>();
+        protected Dictionary<ViewModelBase, string> nestedProperties = new();
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -127,7 +127,7 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private TAssociation _association = new TAssociation();
+        private TAssociation _association = new();
 
         [PropertyOrder(30)]
         [ExpandableObject]
@@ -176,7 +176,7 @@ namespace S100Framework.WPF.ViewModel
             }
         }
 
-        private TAssociation _association = new TAssociation();
+        private TAssociation _association = new();
 
         [PropertyOrder(30)]
         [ExpandableObject]

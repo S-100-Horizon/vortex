@@ -2,7 +2,6 @@
 using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.WPF.ViewModel.S101;
-using System.Reflection;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel.S903

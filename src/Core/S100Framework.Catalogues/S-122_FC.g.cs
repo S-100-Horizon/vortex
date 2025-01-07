@@ -1832,6 +1832,8 @@ namespace S100Framework.DomainModel.S122
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
             public textContent? textContent { get; set; }
             public List<rxNCode> rxNCode { get; set; } = [];
+
+            [InformationType(typeof(Authority))]
             public List<informationBinding<Associations.InformationAssociations.RelatedOrganisation>> theOrganisationOfRelatedOrganisation { get; set; } = [];
             public override string Code => nameof(AbstractRxN);
 
@@ -1844,6 +1846,7 @@ namespace S100Framework.DomainModel.S122
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : AbstractRxN
         {
+            [InformationType(typeof(Authority))]
             public List<informationBinding<Associations.InformationAssociations.RelatedOrganisation>> theOrganisationOfRelatedOrganisation { get; set; } = [];
             public override string Code => nameof(NauticalInformation);
 
@@ -1892,8 +1895,14 @@ namespace S100Framework.DomainModel.S122
             [Required()]
             public categoryOfAuthority categoryOfAuthority { get; set; }
             public List<textContent> textContent { get; set; } = [];
+
+            [InformationType(typeof(AbstractRxN))]
             public List<informationBinding<Associations.InformationAssociations.RelatedOrganisation>> theInformationOfRelatedOrganisation { get; set; } = [];
+
+            [InformationType(typeof(ContactDetails))]
             public List<informationBinding<Associations.InformationAssociations.AuthorityContact>> theContactDetailsOfAuthorityContact { get; set; } = [];
+
+            [InformationType(typeof(ServiceHours))]
             public List<informationBinding<Associations.InformationAssociations.AuthorityHours>> theServiceHoursOfAuthorityHours { get; set; } = [];
             public override string Code => nameof(Authority);
 
@@ -1918,6 +1927,8 @@ namespace S100Framework.DomainModel.S122
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<telecommunications> telecommunications { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [InformationType(typeof(Authority))]
             public List<informationBinding<Associations.InformationAssociations.AuthorityContact>> theAuthorityOfAuthorityContact { get; set; } = [];
             public override string Code => nameof(ContactDetails);
 
@@ -1933,6 +1944,8 @@ namespace S100Framework.DomainModel.S122
             public List<DateOnly> dateFixed { get; set; } = [];
             public List<String> dateVariable { get; set; } = [];
             public List<information> information { get; set; } = [];
+
+            [InformationType(typeof(ServiceHours))]
             public List<informationBinding<Associations.InformationAssociations.ExceptionalWorkday>> theServiceHours_nsdyOfExceptionalWorkday { get; set; } = [];
             public override string Code => nameof(NonStandardWorkingDay);
 
@@ -1950,7 +1963,11 @@ namespace S100Framework.DomainModel.S122
 
             [Required()]
             public information information { get; set; }
+
+            [InformationType(typeof(Authority))]
             public List<informationBinding<Associations.InformationAssociations.AuthorityHours>> theAuthority_srvHrsOfAuthorityHours { get; set; } = [];
+
+            [InformationType(typeof(NonStandardWorkingDay))]
             public List<informationBinding<Associations.InformationAssociations.ExceptionalWorkday>> partialWorkingDayOfExceptionalWorkday { get; set; } = [];
             public override string Code => nameof(ServiceHours);
 
@@ -2005,7 +2022,11 @@ namespace S100Framework.DomainModel.S122
             public String source { get; set; } = string.Empty;
             public sourceType? sourceType { get; set; } = default;
             public DateOnly? reportedDate { get; set; } = default;
+
+            [InformationType(typeof(AbstractRxN))]
             public List<informationBinding<Associations.InformationAssociations.AssociatedRxN>> theRxNOfAssociatedRxN { get; set; } = [];
+
+            [InformationType(typeof(NauticalInformation))]
             public List<informationBinding<Associations.InformationAssociations.additionalInformation>> providesInformationOfadditionalInformation { get; set; } = [];
             public override string Code => nameof(FeatureType);
 
@@ -2045,6 +2066,8 @@ namespace S100Framework.DomainModel.S122
             public List<restriction> restriction { get; set; } = [];
             public List<status> status { get; set; } = [];
             public List<designation> designation { get; set; } = [];
+
+            [InformationType(typeof(Authority))]
             public List<informationBinding<Associations.InformationAssociations.ProtectedAreaAuthority>> responsibleAuthorityOfProtectedAreaAuthority { get; set; } = [];
             public override string Code => nameof(MarineProtectedArea);
 
@@ -2062,6 +2085,8 @@ namespace S100Framework.DomainModel.S122
         {
             [Required()]
             public categoryOfVesselTrafficService categoryOfVesselTrafficService { get; set; }
+
+            [InformationType(typeof(Authority))]
             public informationBinding<Associations.InformationAssociations.ServiceControl>? controlAuthorityOfServiceControl { get; set; }
             public override string Code => nameof(VesselTrafficServiceArea);
 

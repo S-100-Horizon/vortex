@@ -1217,8 +1217,14 @@ namespace S100Framework.DomainModel.S128
             public Int32 catalogueSectionNumber { get; set; }
             public String catalogueSectionTitle { get; set; } = string.Empty;
             public information? information { get; set; }
+
+            [InformationType(typeof(PriceInformation))]
             public List<informationBinding<Associations.InformationAssociations.PriceOfNauticalProduct>> thePriceInformationOfPriceOfNauticalProduct { get; set; } = [];
+
+            [InformationType(typeof(ProducerInformation))]
             public informationBinding<Associations.InformationAssociations.ProductionDetails>? theProducerOfProductionDetails { get; set; }
+
+            [InformationType(typeof(DistributorInformation))]
             public List<informationBinding<Associations.InformationAssociations.DistributionDetails>> theDistributorOfDistributionDetails { get; set; } = [];
             public override string Code => nameof(CatalogueSectionHeader);
 
@@ -1237,7 +1243,11 @@ namespace S100Framework.DomainModel.S128
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<telecommunications> telecommunications { get; set; } = [];
             public List<sourceIndication> sourceIndication { get; set; } = [];
+
+            [InformationType(typeof(ProducerInformation))]
             public informationBinding<Associations.InformationAssociations.ProducerContact>? theProducerOfProducerContact { get; set; }
+
+            [InformationType(typeof(DistributorInformation))]
             public informationBinding<Associations.InformationAssociations.DistributorContact>? theDistributorOfDistributorContact { get; set; }
             public override string Code => nameof(ContactDetails);
 
@@ -1269,6 +1279,8 @@ namespace S100Framework.DomainModel.S128
             public List<onlineResource> onlineResource { get; set; } = [];
             public List<pricing> pricing { get; set; } = [];
             public List<sourceIndication> sourceIndication { get; set; } = [];
+
+            [InformationType(typeof(CatalogueSectionHeader))]
             public List<informationBinding<Associations.InformationAssociations.PriceOfNauticalProduct>> theCatalogueOfNauticalProductOfPriceOfNauticalProduct { get; set; } = [];
             public override string Code => nameof(PriceInformation);
 
@@ -1283,7 +1295,11 @@ namespace S100Framework.DomainModel.S128
         {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public String agencyName { get; set; } = string.Empty;
+
+            [InformationType(typeof(ContactDetails))]
             public List<informationBinding<Associations.InformationAssociations.ProducerContact>> theContactDetailsOfProducerContact { get; set; } = [];
+
+            [InformationType(typeof(CatalogueSectionHeader))]
             public List<informationBinding<Associations.InformationAssociations.ProductionDetails>> catalogueHeaderOfProductionDetails { get; set; } = [];
             public override string Code => nameof(ProducerInformation);
 
@@ -1298,7 +1314,11 @@ namespace S100Framework.DomainModel.S128
         public partial class DistributorInformation : InformationTypeBase
         {
             public String distributorName { get; set; } = string.Empty;
+
+            [InformationType(typeof(CatalogueSectionHeader))]
             public List<informationBinding<Associations.InformationAssociations.DistributionDetails>> catalogueHeaderOfDistributionDetails { get; set; } = [];
+
+            [InformationType(typeof(ContactDetails))]
             public List<informationBinding<Associations.InformationAssociations.DistributorContact>> theContactDetailsOfDistributorContact { get; set; } = [];
             public override string Code => nameof(DistributorInformation);
 
@@ -1337,9 +1357,17 @@ namespace S100Framework.DomainModel.S128
             public sourceIndication? sourceIndication { get; set; }
             public List<supportFile> supportFile { get; set; } = [];
             public timeIntervalOfProduct? timeIntervalOfProduct { get; set; }
+
+            [InformationType(typeof(IndicationOfCarriageRequirement))]
             public List<informationBinding<Associations.InformationAssociations.CarriageRequirement>> theRequirementOfCarriageRequirement { get; set; } = [];
+
+            [InformationType(typeof(PriceInformation))]
             public List<informationBinding<Associations.InformationAssociations.PriceOfElement>> thePriceInformationOfPriceOfElement { get; set; } = [];
+
+            [InformationType(typeof(CatalogueSectionHeader))]
             public List<informationBinding<Associations.InformationAssociations.ProductPackage>> elementContainerOfProductPackage { get; set; } = [];
+
+            [FeatureType(typeof(CatalogueElement))]
             public List<featureBinding<Associations.FeatureAssociations.ProductMapping>> theReferenceOfProductMapping { get; set; } = [];
             public override string Code => nameof(CatalogueElement);
 
@@ -1369,6 +1397,8 @@ namespace S100Framework.DomainModel.S128
             public Int32? updateNumber { get; set; } = default;
             public horizontalDatumEpsg? horizontalDatumEpsg { get; set; }
             public verticalDatum? verticalDatum { get; set; } = default;
+
+            [FeatureType(typeof(NavigationalProduct))]
             public featureBinding<Associations.FeatureAssociations.Correlated> mainOfCorrelated { get; set; }
             public override string Code => nameof(NavigationalProduct);
 

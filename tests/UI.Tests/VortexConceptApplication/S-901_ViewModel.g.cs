@@ -1,18 +1,11 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using System.Collections.Immutable;
-using System.Collections.ObjectModel;
-using System.Reflection;
 using S100Framework.DomainModel;
-using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101.Associations.InformationAssociations;
-using S100Framework.DomainModel.S101.Associations.FeatureAssociations;
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Reflection;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 
@@ -805,6 +798,7 @@ namespace S100Framework.WPF.ViewModel.S901
         });
     }
 
+    [CategoryOrder("featureName", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class featureNameViewModel : ViewModelBase
@@ -871,6 +865,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("featuresDetected", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class featuresDetectedViewModel : ViewModelBase
@@ -937,6 +932,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("fixedDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class fixedDateRangeViewModel : ViewModelBase
@@ -988,6 +984,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("frequencyPair", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class frequencyPairViewModel : ViewModelBase
@@ -1039,6 +1036,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("horizontalClearanceFixed", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class horizontalClearanceFixedViewModel : ViewModelBase
@@ -1090,6 +1088,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("horizontalClearanceOpen", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class horizontalClearanceOpenViewModel : ViewModelBase
@@ -1141,6 +1140,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("horizontalPositionUncertainty", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class horizontalPositionUncertaintyViewModel : ViewModelBase
@@ -1194,6 +1194,7 @@ namespace S100Framework.WPF.ViewModel.S901
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("information", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class informationViewModel : ViewModelBase
@@ -1291,6 +1292,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("measuredDistanceValue", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class measuredDistanceValueViewModel : ViewModelBase
@@ -1357,6 +1359,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("multiplicityOfFeatures", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class multiplicityOfFeaturesViewModel : ViewModelBase
@@ -1408,6 +1411,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("onlineResource", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class onlineResourceViewModel : ViewModelBase
@@ -1476,6 +1480,7 @@ namespace S100Framework.WPF.ViewModel.S901
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("orientation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class orientationViewModel : ViewModelBase
@@ -1528,6 +1533,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("periodicDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class periodicDateRangeViewModel : ViewModelBase
@@ -1579,6 +1585,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("radarWaveLength", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class radarWaveLengthViewModel : ViewModelBase
@@ -1630,6 +1637,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("sectorInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorInformationViewModel : ViewModelBase
@@ -1681,6 +1689,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("sectorLimitOne", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitOneViewModel : ViewModelBase
@@ -1732,6 +1741,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("sectorLimitTwo", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitTwoViewModel : ViewModelBase
@@ -1783,6 +1793,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("shapeInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class shapeInformationViewModel : ViewModelBase
@@ -1834,6 +1845,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("signalSequence", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class signalSequenceViewModel : ViewModelBase
@@ -1887,6 +1899,7 @@ namespace S100Framework.WPF.ViewModel.S901
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("speed", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class speedViewModel : ViewModelBase
@@ -1939,6 +1952,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("surfaceCharacteristics", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class surfaceCharacteristicsViewModel : ViewModelBase
@@ -2002,6 +2016,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("surveyDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class surveyDateRangeViewModel : ViewModelBase
@@ -2055,6 +2070,7 @@ namespace S100Framework.WPF.ViewModel.S901
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("telecommunications", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class telecommunicationsViewModel : ViewModelBase
@@ -2122,6 +2138,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("tidalStreamValue", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class tidalStreamValueViewModel : ViewModelBase
@@ -2194,6 +2211,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("timeIntervalsByDayOfWeek", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase
@@ -2268,6 +2286,7 @@ namespace S100Framework.WPF.ViewModel.S901
 
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+    [CategoryOrder("topmark", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class topmarkViewModel : ViewModelBase
@@ -2344,6 +2363,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("valueOfLocalMagneticAnomaly", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class valueOfLocalMagneticAnomalyViewModel : ViewModelBase
@@ -2395,6 +2415,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("verticalUncertainty", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class verticalUncertaintyViewModel : ViewModelBase
@@ -2446,6 +2467,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("vesselSpeedLimit", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class vesselSpeedLimitViewModel : ViewModelBase
@@ -2512,6 +2534,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("zoneOfConfidence", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class zoneOfConfidenceViewModel : ViewModelBase
@@ -2610,6 +2633,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("directionalCharacter", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class directionalCharacterViewModel : ViewModelBase
@@ -2666,6 +2690,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("rhythmOfLight", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class rhythmOfLightViewModel : ViewModelBase
@@ -2741,6 +2766,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("scheduleByDayOfWeek", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class scheduleByDayOfWeekViewModel : ViewModelBase
@@ -2789,6 +2815,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("sectorLimit", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitViewModel : ViewModelBase
@@ -2851,6 +2878,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("spatialAccuracy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class spatialAccuracyViewModel : ViewModelBase
@@ -2934,6 +2962,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("tidalStreamPanelValues", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class tidalStreamPanelValuesViewModel : ViewModelBase
@@ -3012,6 +3041,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("verticalClearanceClosed", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class verticalClearanceClosedViewModel : ViewModelBase
@@ -3068,6 +3098,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("verticalClearanceFixed", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class verticalClearanceFixedViewModel : ViewModelBase
@@ -3124,6 +3155,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("verticalClearanceOpen", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class verticalClearanceOpenViewModel : ViewModelBase
@@ -3195,6 +3227,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("verticalClearanceSafe", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class verticalClearanceSafeViewModel : ViewModelBase
@@ -3251,6 +3284,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("lightSector", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class lightSectorViewModel : ViewModelBase
@@ -3380,6 +3414,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("sectorCharacteristics", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorCharacteristicsViewModel : ViewModelBase
@@ -3467,6 +3502,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("ContactDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ContactDetailsViewModel : ViewModelBase
@@ -3602,6 +3638,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("ServiceHours", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ServiceHoursViewModel : ViewModelBase
@@ -3680,6 +3717,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("NonStandardWorkingDay", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NonStandardWorkingDayViewModel : ViewModelBase
@@ -3770,6 +3808,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("NauticalInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NauticalInformationViewModel : ViewModelBase
@@ -3851,6 +3890,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SpatialQuality", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SpatialQualityViewModel : ViewModelBase
@@ -3899,6 +3939,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("QualityOfNonBathymetricData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class QualityOfNonBathymetricDataViewModel : ViewModelBase
@@ -4068,6 +4109,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DataCoverage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DataCoverageViewModel : ViewModelBase
@@ -4176,6 +4218,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("NavigationalSystemOfMarks", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NavigationalSystemOfMarksViewModel : ViewModelBase
@@ -4252,6 +4295,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LocalDirectionOfBuoyage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LocalDirectionOfBuoyageViewModel : ViewModelBase
@@ -4358,6 +4402,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("QualityOfBathymetricData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class QualityOfBathymetricDataViewModel : ViewModelBase
@@ -4561,6 +4606,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SoundingDatum", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SoundingDatumViewModel : ViewModelBase
@@ -4637,6 +4683,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("VerticalDatumOfData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class VerticalDatumOfDataViewModel : ViewModelBase
@@ -4713,6 +4760,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("QualityOfSurvey", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class QualityOfSurveyViewModel : ViewModelBase
@@ -5017,6 +5065,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("UpdateInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class UpdateInformationViewModel : ViewModelBase
@@ -5185,6 +5234,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("MagneticVariation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MagneticVariationViewModel : ViewModelBase
@@ -5319,6 +5369,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LocalMagneticAnomaly", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LocalMagneticAnomalyViewModel : ViewModelBase
@@ -5460,6 +5511,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Coastline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CoastlineViewModel : ViewModelBase
@@ -5658,6 +5710,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LandArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LandAreaViewModel : ViewModelBase
@@ -5830,6 +5883,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("IslandGroup", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class IslandGroupViewModel : ViewModelBase
@@ -5970,6 +6024,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LandElevation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LandElevationViewModel : ViewModelBase
@@ -6114,6 +6169,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("River", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RiverViewModel : ViewModelBase
@@ -6243,6 +6299,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Rapids", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RapidsViewModel : ViewModelBase
@@ -6372,6 +6429,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Waterfall", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class WaterfallViewModel : ViewModelBase
@@ -6516,6 +6574,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Lake", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LakeViewModel : ViewModelBase
@@ -6660,6 +6719,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LandRegion", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LandRegionViewModel : ViewModelBase
@@ -6813,6 +6873,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Vegetation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class VegetationViewModel : ViewModelBase
@@ -7002,6 +7063,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("IceArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class IceAreaViewModel : ViewModelBase
@@ -7230,6 +7292,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SlopingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SlopingGroundViewModel : ViewModelBase
@@ -7413,6 +7476,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SlopeTopline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SlopeToplineViewModel : ViewModelBase
@@ -7611,6 +7675,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Tideway", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TidewayViewModel : ViewModelBase
@@ -7725,6 +7790,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("BuiltUpArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BuiltUpAreaViewModel : ViewModelBase
@@ -7959,6 +8025,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Building", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BuildingViewModel : ViewModelBase
@@ -8346,6 +8413,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("AirportAirfield", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AirportAirfieldViewModel : ViewModelBase
@@ -8529,6 +8597,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Runway", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RunwayViewModel : ViewModelBase
@@ -8709,6 +8778,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Helipad", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class HelipadViewModel : ViewModelBase
@@ -8902,6 +8972,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Bridge", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BridgeViewModel : ViewModelBase
@@ -9274,6 +9345,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SpanFixed", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SpanFixedViewModel : ViewModelBase
@@ -9508,6 +9580,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SpanOpening", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SpanOpeningViewModel : ViewModelBase
@@ -9763,6 +9836,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Conveyor", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ConveyorViewModel : ViewModelBase
@@ -10167,6 +10241,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("CableOverhead", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CableOverheadViewModel : ViewModelBase
@@ -10495,6 +10570,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("PipelineOverhead", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PipelineOverheadViewModel : ViewModelBase
@@ -10812,6 +10888,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("PylonBridgeSupport", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PylonBridgeSupportViewModel : ViewModelBase
@@ -11206,6 +11283,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("FenceWall", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FenceWallViewModel : ViewModelBase
@@ -11491,6 +11569,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Railway", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RailwayViewModel : ViewModelBase
@@ -11662,6 +11741,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Road", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RoadViewModel : ViewModelBase
@@ -11845,6 +11925,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Tunnel", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TunnelViewModel : ViewModelBase
@@ -12073,6 +12154,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Landmark", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LandmarkViewModel : ViewModelBase
@@ -12482,6 +12564,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SiloTank", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SiloTankViewModel : ViewModelBase
@@ -12884,6 +12967,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("WindTurbine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class WindTurbineViewModel : ViewModelBase
@@ -13303,6 +13387,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("FortifiedStructure", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FortifiedStructureViewModel : ViewModelBase
@@ -13615,6 +13700,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("ProductionStorageArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ProductionStorageAreaViewModel : ViewModelBase
@@ -13909,6 +13995,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Checkpoint", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CheckpointViewModel : ViewModelBase
@@ -14050,6 +14137,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Hulk", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class HulkViewModel : ViewModelBase
@@ -14382,6 +14470,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Pile", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PileViewModel : ViewModelBase
@@ -14728,6 +14817,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Dyke", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DykeViewModel : ViewModelBase
@@ -14965,6 +15055,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("ShorelineConstruction", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ShorelineConstructionViewModel : ViewModelBase
@@ -15348,6 +15439,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("StructureOverNavigableWater", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class StructureOverNavigableWaterViewModel : ViewModelBase
@@ -15804,6 +15896,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Causeway", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CausewayViewModel : ViewModelBase
@@ -15987,6 +16080,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Canal", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CanalViewModel : ViewModelBase
@@ -16215,6 +16309,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DistanceMark", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DistanceMarkViewModel : ViewModelBase
@@ -16399,6 +16494,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Gate", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class GateViewModel : ViewModelBase
@@ -16672,6 +16768,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Dam", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DamViewModel : ViewModelBase
@@ -16963,6 +17060,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Crane", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CraneViewModel : ViewModelBase
@@ -17349,6 +17447,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Berth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BerthViewModel : ViewModelBase
@@ -17626,6 +17725,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Dolphin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DolphinViewModel : ViewModelBase
@@ -17995,6 +18095,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Bollard", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class BollardViewModel : ViewModelBase
@@ -18212,6 +18313,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DryDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DryDockViewModel : ViewModelBase
@@ -18512,6 +18614,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("FloatingDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FloatingDockViewModel : ViewModelBase
@@ -18892,6 +18995,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Pontoon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PontoonViewModel : ViewModelBase
@@ -19165,6 +19269,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DockArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DockAreaViewModel : ViewModelBase
@@ -19420,6 +19525,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Gridiron", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class GridironViewModel : ViewModelBase
@@ -19618,6 +19724,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LockBasin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LockBasinViewModel : ViewModelBase
@@ -19828,6 +19935,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("MooringTrot", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MooringTrotViewModel : ViewModelBase
@@ -19976,6 +20084,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SeaAreaNamedWaterArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SeaAreaNamedWaterAreaViewModel : ViewModelBase
@@ -20105,6 +20214,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("TidalStreamFloodEbb", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TidalStreamFloodEbbViewModel : ViewModelBase
@@ -20297,6 +20407,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("CurrentNonGravitational", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CurrentNonGravitationalViewModel : ViewModelBase
@@ -20501,6 +20612,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("WaterTurbulence", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class WaterTurbulenceViewModel : ViewModelBase
@@ -20630,6 +20742,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("TidalStreamPanelData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TidalStreamPanelDataViewModel : ViewModelBase
@@ -20786,6 +20899,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Sounding", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SoundingViewModel : ViewModelBase
@@ -20954,6 +21068,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DredgedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DredgedAreaViewModel : ViewModelBase
@@ -21198,6 +21313,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SweptArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SweptAreaViewModel : ViewModelBase
@@ -21343,6 +21459,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DepthContour", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DepthContourViewModel : ViewModelBase
@@ -21447,6 +21564,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DepthArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DepthAreaViewModel : ViewModelBase
@@ -21551,6 +21669,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DepthNoBottomFound", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DepthNoBottomFoundViewModel : ViewModelBase
@@ -21652,6 +21771,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("UnsurveyedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class UnsurveyedAreaViewModel : ViewModelBase
@@ -21726,6 +21846,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SeabedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SeabedAreaViewModel : ViewModelBase
@@ -21867,6 +21988,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("WeedKelp", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class WeedKelpViewModel : ViewModelBase
@@ -21996,6 +22118,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Seagrass", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SeagrassViewModel : ViewModelBase
@@ -22110,6 +22233,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Sandwave", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SandwaveViewModel : ViewModelBase
@@ -22214,6 +22338,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Spring", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SpringViewModel : ViewModelBase
@@ -22328,6 +22453,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("UnderwaterAwashRock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class UnderwaterAwashRockViewModel : ViewModelBase
@@ -22586,6 +22712,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Wreck", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class WreckViewModel : ViewModelBase
@@ -22914,6 +23041,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Obstruction", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ObstructionViewModel : ViewModelBase
@@ -23266,6 +23394,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("FoulGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FoulGroundViewModel : ViewModelBase
@@ -23467,6 +23596,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DiscolouredWater", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DiscolouredWaterViewModel : ViewModelBase
@@ -23571,6 +23701,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("FishingFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FishingFacilityViewModel : ViewModelBase
@@ -23795,6 +23926,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("MarineFarmCulture", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MarineFarmCultureViewModel : ViewModelBase
@@ -24101,6 +24233,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("OffshorePlatform", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class OffshorePlatformViewModel : ViewModelBase
@@ -24448,6 +24581,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("CableSubmarine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CableSubmarineViewModel : ViewModelBase
@@ -24653,6 +24787,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("CableArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CableAreaViewModel : ViewModelBase
@@ -24836,6 +24971,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("PipelineSubmarineOnLand", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PipelineSubmarineOnLandViewModel : ViewModelBase
@@ -25130,6 +25266,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SubmarinePipelineArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SubmarinePipelineAreaViewModel : ViewModelBase
@@ -25325,6 +25462,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("OffshoreProductionArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class OffshoreProductionAreaViewModel : ViewModelBase
@@ -25628,6 +25766,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("NavigationLine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NavigationLineViewModel : ViewModelBase
@@ -25826,6 +25965,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RecommendedTrack", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RecommendedTrackViewModel : ViewModelBase
@@ -26131,6 +26271,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RangeSystem", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RangeSystemViewModel : ViewModelBase
@@ -26320,6 +26461,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Fairway", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FairwayViewModel : ViewModelBase
@@ -26610,6 +26752,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("FairwaySystem", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FairwaySystemViewModel : ViewModelBase
@@ -26798,6 +26941,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RecommendedRouteCentreline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RecommendedRouteCentrelineViewModel : ViewModelBase
@@ -27088,6 +27232,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("TwoWayRoutePart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TwoWayRoutePartViewModel : ViewModelBase
@@ -27341,6 +27486,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("TwoWayRoute", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TwoWayRouteViewModel : ViewModelBase
@@ -27530,6 +27676,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RecommendedTrafficLanePart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RecommendedTrafficLanePartViewModel : ViewModelBase
@@ -27667,6 +27814,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DeepWaterRouteCentreline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DeepWaterRouteCentrelineViewModel : ViewModelBase
@@ -27960,6 +28108,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DeepWaterRoutePart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DeepWaterRoutePartViewModel : ViewModelBase
@@ -28262,6 +28411,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DeepWaterRoute", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DeepWaterRouteViewModel : ViewModelBase
@@ -28451,6 +28601,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("InshoreTrafficZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class InshoreTrafficZoneViewModel : ViewModelBase
@@ -28610,6 +28761,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("PrecautionaryArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PrecautionaryAreaViewModel : ViewModelBase
@@ -28809,6 +28961,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("TrafficSeparationSchemeLanePart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TrafficSeparationSchemeLanePartViewModel : ViewModelBase
@@ -28983,6 +29136,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SeparationZoneOrLine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SeparationZoneOrLineViewModel : ViewModelBase
@@ -29118,6 +29272,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("TrafficSeparationSchemeBoundary", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TrafficSeparationSchemeBoundaryViewModel : ViewModelBase
@@ -29253,6 +29408,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("TrafficSeparationSchemeCrossing", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TrafficSeparationSchemeCrossingViewModel : ViewModelBase
@@ -29412,6 +29568,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("TrafficSeparationSchemeRoundabout", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TrafficSeparationSchemeRoundaboutViewModel : ViewModelBase
@@ -29571,6 +29728,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("TrafficSeparationScheme", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TrafficSeparationSchemeViewModel : ViewModelBase
@@ -29788,6 +29946,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("ArchipelagicSeaLaneArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ArchipelagicSeaLaneAreaViewModel : ViewModelBase
@@ -29951,6 +30110,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("ArchipelagicSeaLaneAxis", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ArchipelagicSeaLaneAxisViewModel : ViewModelBase
@@ -30114,6 +30274,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("ArchipelagicSeaLane", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ArchipelagicSeaLaneViewModel : ViewModelBase
@@ -30303,6 +30464,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RadioCallingInPoint", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RadioCallingInPointViewModel : ViewModelBase
@@ -30501,6 +30663,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("FerryRoute", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FerryRouteViewModel : ViewModelBase
@@ -30672,6 +30835,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RadarLine", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RadarLineViewModel : ViewModelBase
@@ -30813,6 +30977,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RadarRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RadarRangeViewModel : ViewModelBase
@@ -30972,6 +31137,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RadarStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RadarStationViewModel : ViewModelBase
@@ -31179,6 +31345,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("AnchorageArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AnchorageAreaViewModel : ViewModelBase
@@ -31386,6 +31553,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("MooringArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MooringAreaViewModel : ViewModelBase
@@ -31611,6 +31779,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("AnchorBerth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AnchorBerthViewModel : ViewModelBase
@@ -31809,6 +31978,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SeaplaneLandingArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SeaplaneLandingAreaViewModel : ViewModelBase
@@ -31971,6 +32141,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("DumpingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DumpingGroundViewModel : ViewModelBase
@@ -32148,6 +32319,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("MilitaryPracticeArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MilitaryPracticeAreaViewModel : ViewModelBase
@@ -32358,6 +32530,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("AdministrationArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AdministrationAreaViewModel : ViewModelBase
@@ -32529,6 +32702,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("CargoTranshipmentArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CargoTranshipmentAreaViewModel : ViewModelBase
@@ -32712,6 +32886,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("CautionArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CautionAreaViewModel : ViewModelBase
@@ -32920,6 +33095,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("InformationArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class InformationAreaViewModel : ViewModelBase
@@ -33097,6 +33273,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("ContiguousZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ContiguousZoneViewModel : ViewModelBase
@@ -33234,6 +33411,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("ContinentalShelfArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ContinentalShelfAreaViewModel : ViewModelBase
@@ -33360,6 +33538,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("CustomZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CustomZoneViewModel : ViewModelBase
@@ -33464,6 +33643,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("ExclusiveEconomicZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ExclusiveEconomicZoneViewModel : ViewModelBase
@@ -33580,6 +33760,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("FisheryZone", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FisheryZoneViewModel : ViewModelBase
@@ -33721,6 +33902,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("FishingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FishingGroundViewModel : ViewModelBase
@@ -33883,6 +34065,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("FreePortArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FreePortAreaViewModel : ViewModelBase
@@ -34009,6 +34192,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("HarbourAreaAdministrative", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class HarbourAreaAdministrativeViewModel : ViewModelBase
@@ -34135,6 +34319,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LogPond", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LogPondViewModel : ViewModelBase
@@ -34273,6 +34458,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("OilBarrier", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class OilBarrierViewModel : ViewModelBase
@@ -34465,6 +34651,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("StraightTerritorialSeaBaseline", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class StraightTerritorialSeaBaselineViewModel : ViewModelBase
@@ -34569,6 +34756,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("TerritorialSeaArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TerritorialSeaAreaViewModel : ViewModelBase
@@ -34709,6 +34897,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SubmarineTransitLane", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SubmarineTransitLaneViewModel : ViewModelBase
@@ -34862,6 +35051,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("PilotageDistrict", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PilotageDistrictViewModel : ViewModelBase
@@ -35001,6 +35191,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("CollisionRegulationsLimit", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CollisionRegulationsLimitViewModel : ViewModelBase
@@ -35163,6 +35354,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("MarinePollutionRegulationsArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MarinePollutionRegulationsAreaViewModel : ViewModelBase
@@ -35292,6 +35484,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RestrictedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RestrictedAreaViewModel : ViewModelBase
@@ -35513,6 +35706,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LightAllAround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightAllAroundViewModel : ViewModelBase
@@ -35927,6 +36121,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LightSectored", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightSectoredViewModel : ViewModelBase
@@ -36245,6 +36440,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LightFogDetector", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightFogDetectorViewModel : ViewModelBase
@@ -36525,6 +36721,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LightAirObstruction", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightAirObstructionViewModel : ViewModelBase
@@ -36838,6 +37035,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LateralBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LateralBuoyViewModel : ViewModelBase
@@ -37186,6 +37384,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("CardinalBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CardinalBuoyViewModel : ViewModelBase
@@ -37534,6 +37733,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("IsolatedDangerBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class IsolatedDangerBuoyViewModel : ViewModelBase
@@ -37867,6 +38067,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SafeWaterBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SafeWaterBuoyViewModel : ViewModelBase
@@ -38200,6 +38401,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SpecialPurposeGeneralBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SpecialPurposeGeneralBuoyViewModel : ViewModelBase
@@ -38545,6 +38747,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("EmergencyWreckMarkingBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class EmergencyWreckMarkingBuoyViewModel : ViewModelBase
@@ -38841,6 +39044,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("InstallationBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class InstallationBuoyViewModel : ViewModelBase
@@ -39139,6 +39343,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("MooringBuoy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MooringBuoyViewModel : ViewModelBase
@@ -39466,6 +39671,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LateralBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LateralBeaconViewModel : ViewModelBase
@@ -39902,6 +40108,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("CardinalBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CardinalBeaconViewModel : ViewModelBase
@@ -40338,6 +40545,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("IsolatedDangerBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class IsolatedDangerBeaconViewModel : ViewModelBase
@@ -40759,6 +40967,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SafeWaterBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SafeWaterBeaconViewModel : ViewModelBase
@@ -41180,6 +41389,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SpecialPurposeGeneralBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SpecialPurposeGeneralBeaconViewModel : ViewModelBase
@@ -41613,6 +41823,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Daymark", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DaymarkViewModel : ViewModelBase
@@ -41990,6 +42201,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LightFloat", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightFloatViewModel : ViewModelBase
@@ -42338,6 +42550,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("LightVessel", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class LightVesselViewModel : ViewModelBase
@@ -42665,6 +42878,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Retroreflector", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RetroreflectorViewModel : ViewModelBase
@@ -42854,6 +43068,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RadarReflector", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RadarReflectorViewModel : ViewModelBase
@@ -43016,6 +43231,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("FogSignal", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class FogSignalViewModel : ViewModelBase
@@ -43290,6 +43506,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("PhysicalAISAidToNavigation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PhysicalAISAidToNavigationViewModel : ViewModelBase
@@ -43495,6 +43712,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("VirtualAISAidToNavigation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class VirtualAISAidToNavigationViewModel : ViewModelBase
@@ -43702,6 +43920,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RadioStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RadioStationViewModel : ViewModelBase
@@ -43936,6 +44155,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RadarTransponderBeacon", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RadarTransponderBeaconViewModel : ViewModelBase
@@ -44211,6 +44431,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("PilotBoardingPlace", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class PilotBoardingPlaceViewModel : ViewModelBase
@@ -44449,6 +44670,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("VesselTrafficServiceArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class VesselTrafficServiceAreaViewModel : ViewModelBase
@@ -44563,6 +44785,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("CoastGuardStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class CoastGuardStationViewModel : ViewModelBase
@@ -44749,6 +44972,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SignalStationWarning", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SignalStationWarningViewModel : ViewModelBase
@@ -44945,6 +45169,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SignalStationTraffic", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SignalStationTrafficViewModel : ViewModelBase
@@ -45141,6 +45366,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("RescueStation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RescueStationViewModel : ViewModelBase
@@ -45324,6 +45550,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("HarbourFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class HarbourFacilityViewModel : ViewModelBase
@@ -45603,6 +45830,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("SmallCraftFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class SmallCraftFacilityViewModel : ViewModelBase
@@ -45768,6 +45996,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TextPlacementViewModel : ViewModelBase
@@ -45874,6 +46103,7 @@ namespace S100Framework.WPF.ViewModel.S901
         }
     }
 
+    [CategoryOrder("Chart1Feature", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class Chart1FeatureViewModel : ViewModelBase
