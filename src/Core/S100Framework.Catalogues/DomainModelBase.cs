@@ -37,7 +37,7 @@ namespace S100Framework.DomainModel
     public class InformationTypeAttribute : System.Attribute
     {
         private Type _informationType;
-        public Type informationType => _informationType;
+        public Type InformationType => _informationType;
         public InformationTypeAttribute(Type informationType) {
             _informationType = informationType;
         }
