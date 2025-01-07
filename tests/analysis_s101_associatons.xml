@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<S100FC:S100_FC_FeatureCatalogue xmlns:S100FC="http://www.iho.int/S100FC/5.2" xmlns:S100Base="http://www.iho.int/S100Base/5.0" xmlns:S100CI="http://www.iho.int/S100CI/5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:S100CD="http://www.iho.int/S100CD/5.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.iho.int/S100FC/5.2 https://schemas.s100dev.net/schemas/S100/5.2.0/S100FC/20231214/S100FC.xsd">
+
+		<S100FC:S100_FC_Role>
+			<S100FC:name>The Structure</S100FC:name>
+			<S100FC:definition>A pointer to the feature that equipment feature(s) are supported by.</S100FC:definition>
+			<S100FC:code>theStructure</S100FC:code>
+		</S100FC:S100_FC_Role>
+		<S100FC:S100_FC_Role>
+			<S100FC:name>The Equipment</S100FC:name>
+			<S100FC:definition>A pointer to the feature(s) supported by a structure feature.</S100FC:definition>
+			<S100FC:code>theEquipment</S100FC:code>
+		</S100FC:S100_FC_Role>		
+
+		<S100FC:S100_FC_FeatureAssociation isAbstract="false">
+			<S100FC:name>Structure/equipment</S100FC:name>
+			<S100FC:definition>A feature association for the binding between a navigation aid equipment feature and the structure that supports it.</S100FC:definition>
+			<S100FC:code>StructureEquipment</S100FC:code>
+			<S100FC:definitionReference>
+				<S100FC:sourceIdentifier>9000003</S100FC:sourceIdentifier>
+				<S100FC:definitionSource ref="IHOREG" />
+			</S100FC:definitionReference>
+			<S100FC:role ref="theStructure" />
+			<S100FC:role ref="theEquipment" />
+		</S100FC:S100_FC_FeatureAssociation>
+		
+		<S100FC:S100_FC_FeatureType isAbstract="false">
+			<S100FC:name>Building</S100FC:name>
+			<S100FC:code>Building</S100FC:code>
+			<S100FC:featureBinding roleType="association">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="true" infinite="true" />
+				</S100FC:multiplicity>
+				<S100FC:association ref="StructureEquipment" />
+				<S100FC:role ref="theEquipment" />
+				<S100FC:featureType ref="Daymark" />
+				<S100FC:featureType ref="DistanceMark" />
+				<S100FC:featureType ref="FogSignal" />
+				<S100FC:featureType ref="Helipad" />
+				<S100FC:featureType ref="LightAllAround" />
+				<S100FC:featureType ref="LightFogDetector" />
+				<S100FC:featureType ref="PhysicalAISAidToNavigation" />
+				<S100FC:featureType ref="RadarTransponderBeacon" />
+				<S100FC:featureType ref="Retroreflector" />
+				<S100FC:featureType ref="SignalStationTraffic" />
+				<S100FC:featureType ref="SignalStationWarning" />
+				<S100FC:featureType ref="LightSectored" />
+				<S100FC:featureType ref="LightAirObstruction" />
+			</S100FC:featureBinding>
+		</S100FC:S100_FC_FeatureType>
+		
+		<S100FC:S100_FC_FeatureType isAbstract="false">
+			<S100FC:name>Daymark</S100FC:name>
+			<S100FC:code>Daymark</S100FC:code>
+			<S100FC:featureBinding roleType="composition">
+				<S100FC:multiplicity>
+					<S100Base:lower>0</S100Base:lower>
+					<S100Base:upper xsi:nil="false" infinite="false">1</S100Base:upper>
+				</S100FC:multiplicity>
+				<S100FC:association ref="StructureEquipment" />
+				<S100FC:role ref="theStructure" />
+				<S100FC:featureType ref="Bridge" />
+				<S100FC:featureType ref="Building" />
+				<S100FC:featureType ref="Crane" />
+				<S100FC:featureType ref="CardinalBeacon" />
+				<S100FC:featureType ref="CardinalBuoy" />
+				<S100FC:featureType ref="Conveyor" />
+				<S100FC:featureType ref="Dolphin" />
+				<S100FC:featureType ref="EmergencyWreckMarkingBuoy" />
+				<S100FC:featureType ref="FishingFacility" />
+				<S100FC:featureType ref="FloatingDock" />
+				<S100FC:featureType ref="FortifiedStructure" />
+				<S100FC:featureType ref="Hulk" />
+				<S100FC:featureType ref="InstallationBuoy" />
+				<S100FC:featureType ref="IsolatedDangerBeacon" />
+				<S100FC:featureType ref="IsolatedDangerBuoy" />
+				<S100FC:featureType ref="Landmark" />
+				<S100FC:featureType ref="LateralBeacon" />
+				<S100FC:featureType ref="LateralBuoy" />
+				<S100FC:featureType ref="LightFloat" />
+				<S100FC:featureType ref="LightVessel" />
+				<S100FC:featureType ref="MooringBuoy" />
+				<S100FC:featureType ref="OffshorePlatform" />
+				<S100FC:featureType ref="Pile" />
+				<S100FC:featureType ref="PipelineOverhead" />
+				<S100FC:featureType ref="Pontoon" />
+				<S100FC:featureType ref="PylonBridgeSupport" />
+				<S100FC:featureType ref="SafeWaterBeacon" />
+				<S100FC:featureType ref="SafeWaterBuoy" />
+				<S100FC:featureType ref="ShorelineConstruction" />
+				<S100FC:featureType ref="SiloTank" />
+				<S100FC:featureType ref="SpanFixed" />
+				<S100FC:featureType ref="SpanOpening" />
+				<S100FC:featureType ref="SpecialPurposeGeneralBeacon" />
+				<S100FC:featureType ref="SpecialPurposeGeneralBuoy" />
+				<S100FC:featureType ref="StructureOverNavigableWater" />
+				<S100FC:featureType ref="WindTurbine" />
+				<S100FC:featureType ref="Wreck" />
+			</S100FC:featureBinding>
+		</S100FC:S100_FC_FeatureType>			
+					
+</S100FC:S100_FC_FeatureCatalogue>				

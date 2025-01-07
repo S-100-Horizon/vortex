@@ -23,6 +23,8 @@ namespace TestS100Framework
         }
     }
 
+
+
     //public class informationBinding<T>
     //{
     //    public Type? Association { get; set; }

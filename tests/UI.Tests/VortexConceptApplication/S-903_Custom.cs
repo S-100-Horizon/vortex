@@ -1,5 +1,7 @@
-﻿using S100Framework.DomainModel;
+﻿using S100Framework.Catalogues;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.WPF.ViewModel.S101;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -41,67 +43,29 @@ namespace S100Framework.WPF.ViewModel.S903
         public featureBinding<DomainModel.S101.Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociationTest { get; set; }
     }
 
-    //public abstract class FeatureBindingViewModelTest : INotifyPropertyChanged
-    //{
-    //    private FeatureTypeAttribute[] _featureTypes;
+    public class StructureEquipment : FeatureAssociation
+    {
+        public StructureEquipment() {
+        }
+        public static Role[] Roles => new[] { Role.theStructure, Role.theEquipment };
 
-    //    [Browsable(false)]
-    //    public FeatureTypeAttribute[] featureTypes => _featureTypes;
+        public Type[] theStructures => new[] {
+            typeof(Bridge),
+            typeof(Building),
+            typeof(Crane),
+            typeof(CardinalBeacon),
+            //...
+        };
 
-    //    public FeatureBindingViewModelTest(IEnumerable<FeatureTypeAttribute> featureTypes) {
-    //        _featureTypes = featureTypes.ToArray();
-    //    }
+        public Type[] theEquipment => new[] {
+            typeof(Daymark),
+            typeof(DistanceMark),
+            typeof(FogSignal),
+            typeof(Helipad),
+            //...
+        };
+    }
 
-    //    public event PropertyChangedEventHandler? PropertyChanged;
-
-    //    protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-    //        PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-    //    }
-
-    //    protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-    //        if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-    //        if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-    //        backingFiled = value;
-    //        OnPropertyChanged(propertyName);
-    //    }
-    //}
-
-    //public class FeatureBindingViewModelTest<TAssociation> : FeatureBindingViewModelTest where TAssociation : FeatureAssociation, new()
-    //{
-    //    public FeatureBindingViewModelTest(IEnumerable<FeatureTypeAttribute> featureTypes) : base(featureTypes) {
-    //    }
-
-    //    private string? _refId;
-
-    //    [PropertyOrder(20)]
-    //    public string? RefId {
-    //        get { return _refId; }
-    //        set { this.SetValue(ref _refId, value); }
-    //    }
-
-    //    private string? _featureType;
-
-    //    [PropertyOrder(10)]
-    //    [Editor(typeof(FeatureTypeEditor), typeof(FeatureTypeEditor))]
-    //    public string? featureType {
-    //        get { return _featureType; }
-    //        set { 
-    //            this.SetValue(ref _featureType, value);
-    //            this.RefId = default;
-    //        }
-    //    }
-
-    //    private TAssociation _association = new TAssociation();
-
-    //    [PropertyOrder(30)]
-    //    [ExpandableObject]
-    //    //[Editor(typeof(AssociationEditor), typeof(AssociationEditor))]
-    //    public TAssociation association {
-    //        get { return _association; }
-    //        set { this.SetValue(ref _association, value); }
-    //    }
-    //}
 
     [CategoryOrder("Pile", 0)]
     public class S101_PileTestViewModel : PileViewModel
