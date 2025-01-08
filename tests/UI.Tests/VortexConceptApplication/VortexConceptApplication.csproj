@@ -11,6 +11,7 @@
   <ItemGroup>
     <Compile Remove="Editors.cs" />
     <Compile Remove="S-124_ViewModel.g.cs" />
+    <Compile Remove="S-902_Custom.cs" />
   </ItemGroup>
 
   <ItemGroup>

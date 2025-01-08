@@ -120,49 +120,63 @@ namespace S100Framework.WPF.Editors
         }
     }
 
-    public sealed class InformationTypeEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    public sealed class AssociationEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
-        public static Type[] Types { get; } = [typeof(DomainModel.S101.InformationTypes.SpatialQuality)];
-
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var viewModel = (BindingViewModel)propertyItem.Instance;
+            var viewModel = (InformationBindingViewModel)(propertyItem.Instance);
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                DisplayMemberPath = "Name",
+                DisplayMemberPath = "associationName",
             };
 
-            var bindingItemsSourceProperty = new Binding() { Source = viewModel.Types, Mode = BindingMode.OneWay };
+            //var bindingItemsSourceProperty = new Binding() { Source = viewModel.informationBindingDescriptors, Mode = BindingMode.OneWay };
+            //BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            //var bindingSelectedItemProperty = new Binding("informationBindingDescriptor") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            //BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            return comboBox;
+        }
+    }
+
+    public sealed class InformationTypeEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var viewModel = (InformationBindingViewModel)propertyItem.Instance;
+
+            var comboBox = new ComboBox {
+                Name = $"_comboBox{Guid.NewGuid():N}",
+                DisplayMemberPath = "InformationType.Name",
+            };
+
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.informationTypes, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
-            var bindingSelectedItemProperty = new Binding("InformationType") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            var bindingSelectedItemProperty = new Binding("informationType") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
             return comboBox;
-
         }
     }
 
     public sealed class FeatureTypeEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
-        public static Type[] Types { get; } = [typeof(DomainModel.S101.InformationTypes.SpatialQuality)];
-
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var viewModel = (BindingViewModel)propertyItem.Instance;
+            var viewModel = (FeatureBindingViewModel)propertyItem.Instance;
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                DisplayMemberPath = "Name",
+                DisplayMemberPath = "FeatureType.Name",
             };
 
-            var bindingItemsSourceProperty = new Binding() { Source = viewModel.Types, Mode = BindingMode.OneWay };
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.featureTypes, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
-            var bindingSelectedItemProperty = new Binding("FeatureType") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            var bindingSelectedItemProperty = new Binding("featureType") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
             return comboBox;
-
         }
     }
 

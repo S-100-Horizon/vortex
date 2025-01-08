@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.ComponentModel;
-
-namespace S100Framework.DomainModel
+﻿namespace S100Framework.DomainModel
 {
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
@@ -12,8 +8,7 @@ namespace S100Framework.DomainModel
 
         public string PropertyName => _propertyName;
 
-        public CodeListAttribute(string propertyName)
-        {
+        public CodeListAttribute(string propertyName) {
             _propertyName = propertyName;
         }
     }
@@ -26,8 +21,7 @@ namespace S100Framework.DomainModel
 
         public string RoleName => _roleName;
 
-        public RoleAttribute(string roleName)
-        {
+        public RoleAttribute(string roleName) {
             _roleName = roleName;
         }
     }
@@ -36,6 +30,28 @@ namespace S100Framework.DomainModel
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
     public class RequiredAttribute : System.Attribute
     {
+    }
+
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class InformationTypeAttribute : System.Attribute
+    {
+        private Type _informationType;
+        public Type informationType => _informationType;
+        public InformationTypeAttribute(Type informationType) {
+            _informationType = informationType;
+        }
+    }
+
+
+    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
+    public class FeatureTypeAttribute : System.Attribute
+    {
+        private Type _featureType;
+        public Type FeatureType => _featureType;
+        public FeatureTypeAttribute(Type featureType) {
+            _featureType = featureType;
+        }
     }
 
 
@@ -76,16 +92,30 @@ namespace S100Framework.DomainModel
             aggregation,
             composition,
         }
-        public interface informationBinding
+
+        public class informationBinding
         {
-            public static abstract Type[] informationTypes { get; }
             public string? RefId { get; set; }
+            public string? InformationType { get; set; }
         }
 
-        public interface featureBinding
+
+        public class informationBinding<TAssociation> where TAssociation : InformationAssociation
         {
-            public static abstract Type[] featureTypes { get; }
+            public TAssociation? association { get; set; } = default;
+        }
+
+
+        public class featureBinding
+        {
             public string? RefId { get; set; }
+            public string? FeatureType { get; set; }
+        }
+
+
+        public class featureBinding<TAssociation> where TAssociation : FeatureAssociation
+        {
+            public TAssociation? association { get; set; } = default;
         }
 
     }

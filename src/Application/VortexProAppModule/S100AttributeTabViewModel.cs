@@ -27,7 +27,7 @@ namespace VortexProAppModule
 
     internal class S100AttributeTabViewModel : AttributeTabEmbeddableControl
     {
-        static CultureInfo culture = new CultureInfo("en-GB", false);
+        static CultureInfo culture = new("en-GB", false);
 
         internal record SelectedTemplate(string Schema, string Code)
         {
@@ -42,13 +42,13 @@ namespace VortexProAppModule
 
         private SelectedType _selectedFeatureType = default;
 
-        private ObservableCollection<string> _schemas = new ObservableCollection<string>();
+        private ObservableCollection<string> _schemas = new();
 
         private string _selectedSchema = default;
 
         private object _selectedProperty = default;
 
-        private ObservableCollection<SelectedType> _featureTypes = new ObservableCollection<SelectedType>();
+        private ObservableCollection<SelectedType> _featureTypes = new();
 
         private bool _isSelectedSchemaEnabled = true;
 
