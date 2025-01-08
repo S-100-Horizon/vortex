@@ -107,6 +107,8 @@ namespace S100Framework.WPF.ViewModel
         public InformationBindingViewModel(IEnumerable<InformationTypeAttribute> informationTypes) : base(informationTypes) {
         }
 
+        public override string ToString() => typeof(TAssociation).Name;
+
         private string? _refId;
 
         [PropertyOrder(20)]
@@ -155,6 +157,8 @@ namespace S100Framework.WPF.ViewModel
     {
         public FeatureBindingViewModel(IEnumerable<FeatureTypeAttribute> featureTypes) : base(featureTypes) {
         }
+
+        public override string ToString() => typeof(TAssociation).Name;
 
         private string? _refId;
 

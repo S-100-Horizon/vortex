@@ -1145,6 +1145,7 @@ namespace S100Framework
 
                                 viewModelBindingBuilder.AppendLine("\t\t\t[Category(\"FeatureBindings\")]");
                                 viewModelBindingBuilder.AppendLine("\t\t\t[ExpandableObject]");
+                                //viewModelBindingBuilder.AppendLine($"\t\t\t[DisplayName({role})]");
                                 viewModelBindingBuilder.AppendLine($"\t\t\tpublic FeatureBindingViewModel<DomainModel.{productId}.Associations.FeatureAssociations.{association}> {role!}Of{association!} {{");
                                 viewModelBindingBuilder.AppendLine($"\t\t\t\tget {{ return _{role!}Of{association!}; }}");
                                 viewModelBindingBuilder.AppendLine($"\t\t\t\tset {{ base.SetValue(ref _{role!}Of{association!}, value); }}");
@@ -1155,50 +1156,10 @@ namespace S100Framework
 
                             if (informationBindingsList.Any()) {
                                 informationBindingTypes.Add(code);
-
-                                //if (superType is null || !informationBindingTypes.Contains(superType.Value)) {
-                                //    builder.AppendLine($"\t\t\tpublic static InformationBindingDescriptor[] InformationBindingDescriptors => new InformationBindingDescriptor[]");
-                                //}
-                                //else {
-                                //    builder.AppendLine($"\t\t\tpublic static new InformationBindingDescriptor[] InformationBindingDescriptors => {superType.Value}.InformationBindingDescriptors.Union(new InformationBindingDescriptor[]");
-                                //}
-                                //builder.AppendLine("\t\t\t{");
-                                //foreach (var i in informationBindingsList) {
-                                //    builder.AppendLine($"\t\t\t\t{i},");
-                                //}
-                                //if (superType is null || !informationBindingTypes.Contains(superType.Value))
-                                //    builder.AppendLine("\t\t\t};");
-                                //else
-                                //    builder.AppendLine("\t\t\t}).ToArray();");
-
-                                //if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                                //    viewModelBindingBuilder.AppendLine("\t\t\t[Browsable(false)]");
-                                //    viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingDescriptor[] InformationBindingDescriptors => {code}.InformationBindingDescriptors;");
-                                //}
                             }
 
                             if (featureBindingsList.Any()) {
                                 featureBindingTypes.Add(code);
-
-                                //if (superType is null || !featureBindingTypes.Contains(superType.Value)) {
-                                //    builder.AppendLine($"\t\t\tpublic static FeatureBindingDescriptor[] FeatureBindingDescriptors => new FeatureBindingDescriptor[]");
-                                //}
-                                //else {
-                                //    builder.AppendLine($"\t\t\tpublic static new FeatureBindingDescriptor[] FeatureBindingDescriptors => {superType.Value}.FeatureBindingDescriptors.Union(new FeatureBindingDescriptor[]");
-                                //}
-                                //builder.AppendLine("\t\t\t{");
-                                //foreach (var i in featureBindingsList) {
-                                //    builder.AppendLine($"\t\t\t\t{i},");
-                                //}
-                                //if (superType is null || !featureBindingTypes.Contains(superType.Value))
-                                //    builder.AppendLine("\t\t\t};");
-                                //else
-                                //    builder.AppendLine("\t\t\t}).ToArray();");
-
-                                //if (!attributes.HasFlag(TypeAttributes.Abstract)) {
-                                //    viewModelBindingBuilder.AppendLine("\t\t\t[Browsable(false)]");
-                                //    viewModelBindingBuilder.AppendLine($"\t\t\tpublic FeatureBindingDescriptor[] FeatureBindingDescriptors => {code}.FeatureBindingDescriptors;");
-                                //}
                             }
                         }));
 
