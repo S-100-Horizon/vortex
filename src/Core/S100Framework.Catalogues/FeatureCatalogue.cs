@@ -62,32 +62,32 @@ namespace S100Framework.Catalogues
         public static string Namespace(string ps, string types) => $"S100Framework.DomainModel.{ps.ToUpperInvariant().Replace("-", string.Empty)}.{types}";
 
         public static ImmutableArray<FeatureCatalogue> Catalogues => ImmutableArray.Create<FeatureCatalogue>(new FeatureCatalogue[]{
-            new FeatureCatalogue("S-101", DomainModel.S101.Information.Version) {
+            new("S-101", DomainModel.S101.Information.Version) {
                 Assembly = typeof(DomainModel.S101.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S101.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S101.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
             },
-            new FeatureCatalogue("S-122", DomainModel.S122.Information.Version) {
+            new("S-122", DomainModel.S122.Information.Version) {
                 Assembly = typeof(DomainModel.S122.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S122.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S122.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
             },
-            new FeatureCatalogue("S-124", DomainModel.S124.Information.Version) {
+            new("S-124", DomainModel.S124.Information.Version) {
                 Assembly = typeof(DomainModel.S124.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S124.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S124.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
             },
-            new FeatureCatalogue("S-128", DomainModel.S128.Information.Version) {
+            new("S-128", DomainModel.S128.Information.Version) {
                 Assembly = typeof(DomainModel.S128.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S128.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S128.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
             },
-            new FeatureCatalogue("S-131", DomainModel.S131.Information.Version) {
+            new("S-131", DomainModel.S131.Information.Version) {
                 Assembly = typeof(DomainModel.S131.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S131.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S131.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
             },
-            new FeatureCatalogue("S-201", DomainModel.S201.Information.Version) {
+            new("S-201", DomainModel.S201.Information.Version) {
                 Assembly = typeof(DomainModel.S201.Information).Assembly,
                 FeatureTypes = ImmutableArray.Create<FeatureType>(DomainModel.S201.Information.FeatureTypes.Select(e=>new FeatureType(e)).ToArray()),
                 InformationTypes = ImmutableArray.Create<InformationType>(DomainModel.S201.Information.InformationTypes.Select(e=>new InformationType(e)).ToArray())
