@@ -1,11 +1,15 @@
 ﻿#define prop
 //#define propfull
 
+using ArcGIS.Core.Internal.CIM;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
+using System.Xml.XPath;
 using Xunit.Abstractions;
+using static System.Formats.Asn1.AsnWriter;
 
 
 namespace TestS100Framework
@@ -98,6 +102,33 @@ namespace TestS100Framework
 
             [Fact]
             public void Test_Bindings() {
+            }
+
+            [Fact]
+            public void Test_FeatureBindings() {
+                var productSpecification = XDocument.Load(@".\Artifacts\S-101_FC_2.0.0.20241016.xml");
+
+                var navigator = productSpecification.CreateNavigator();
+                navigator.MoveToFollowing(XPathNodeType.Element);
+                var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+                var scope_S100 = scopes["S100FC"];
+
+                var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                foreach (var e in scopes)
+                    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+                var elements = productSpecification.XPathSelectElements("//S100FC:featureBinding", xmlNamespaceManager).ToList();
+
+                var islandAggregation = elements.Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals("IslandAggregation")).ToList();
+
+                var theCollection = islandAggregation.Where(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value.Equals("theCollection")).ToList();
+
+                var theComponent = islandAggregation.Where(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value.Equals("theComponent")).ToList();
+
+                Assert.Equal(2, theCollection.Count());
+                Assert.Single(theComponent);
+                System.Diagnostics.Debugger.Break();
             }
 
             [Fact]

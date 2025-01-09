@@ -67,6 +67,8 @@ namespace S100Framework.DomainModel
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationAssociation
     {
+        public abstract string Code { get; }
+        public abstract string[] Roles { get; }
     }
 
 
@@ -74,6 +76,8 @@ namespace S100Framework.DomainModel
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureAssociation
     {
+        public abstract string Code { get; }
+        public abstract string[] Roles { get; }
     }
 
 

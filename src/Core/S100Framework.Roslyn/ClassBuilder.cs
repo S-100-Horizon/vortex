@@ -551,14 +551,17 @@ namespace S100Framework
 
                         var bindingType = bindingTypeBuilder.CreateType();
 
-                        var roles = string.Join(",", e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => $"Role.{e.Attribute("ref")!.Value}"));
+                        //var roles = string.Join(",", e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => $"Role.{e.Attribute("ref")!.Value}"));
+                        var roles = string.Join(",", e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => $"\"{e.Attribute("ref")!.Value}\""));
                         classBuilder.AppendLine($"\t\tpublic class {code} : InformationAssociation");// where T : InformationType");
                         classBuilder.AppendLine($"\t\t{{");
+                        classBuilder.AppendLine($"\t\t\tpublic override string Code => \"{code}\";");
+                        classBuilder.AppendLine($"\t\t\tpublic override string[] Roles => [{roles}];");
                         classBuilder.AppendLine($"\t\t\tpublic {code}(){{");
                         var constructor = classBuilder.Length;
                         classBuilder.AppendLine($"\t\t\t}}");
 
-                        classBuilder.AppendLine($"\t\t\tpublic static Role[] Roles => new[]{{{roles}}};");
+//                        classBuilder.AppendLine($"\t\t\tpublic static Role[] Roles => new[]{{{roles}}};");
 
                         var constructorBuilder = new StringBuilder();
 
@@ -630,6 +633,7 @@ namespace S100Framework
                 {
                     classBuilder.AppendLine($"\tnamespace FeatureAssociations");
                     classBuilder.AppendLine("\t\t{");
+                    classBuilder.AppendLine($"\t\tusing S100Framework.DomainModel.{productId}.FeatureTypes;");
 
                     var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
 
@@ -678,14 +682,42 @@ namespace S100Framework
 
                         var bindingType = bindingTypeBuilder.CreateType();
 
-                        var roles = string.Join(",", e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => $"Role.{e.Attribute("ref")!.Value}"));
+                        //var roles = string.Join(",", e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => $"Role.{e.Attribute("ref")!.Value}"));
+                        var roles = string.Join(",", e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => $"\"{e.Attribute("ref")!.Value}\""));
                         classBuilder.AppendLine($"\t\tpublic class {code} : FeatureAssociation"); ;// where T : FeatureType");
                         classBuilder.AppendLine($"\t\t{{");
+
+                        classBuilder.AppendLine($"\t\t\tpublic override string Code => \"{code}\";");
+                        classBuilder.AppendLine($"\t\t\tpublic override string[] Roles => [{roles}];");
                         classBuilder.AppendLine($"\t\t\tpublic {code}(){{");
                         var constructor = classBuilder.Length;
                         classBuilder.AppendLine($"\t\t\t}}");
 
-                        classBuilder.AppendLine($"\t\t\tpublic static Role[] Roles => new[]{{{roles}}};");
+                        classBuilder.AppendLine($"");
+                        foreach(var role in e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => $"{e.Attribute("ref")!.Value}")) {
+                            var p = pluralizer.Pluralize(role);
+
+                            var association = productSpecification.XPathSelectElements("//S100FC:featureBinding", xmlNamespaceManager).Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals(code));
+
+                            var theCollection = association.Where(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value.Equals(role));
+
+                            var refTypes = theCollection.Elements(XName.Get("featureType", scope_S100)).Select(e => $"typeof({e.Attribute("ref")!.Value})").Distinct();
+
+                            classBuilder.AppendLine($"\t\t\tpublic Type[] {p} => [{string.Join(',',refTypes)}];");
+                        }
+
+                        
+                        classBuilder.AppendLine($"");
+                        classBuilder.AppendLine($"");
+
+
+                        /*
+                                public Type[] theCollections => [typeof(IslandGroup)];
+
+                                public Type[] theComponents => [typeof(LandArea),typeof(IslandGroup)];
+                         */
+
+                        //                        classBuilder.AppendLine($"\t\t\tpublic static Role[] Roles => new[]{{{roles}}};");
 
                         var constructorBuilder = new StringBuilder();
 
@@ -1271,11 +1303,15 @@ namespace S100Framework
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
             common.AppendLine("\tpublic abstract class InformationAssociation {");
+            common.AppendLine("\t\tpublic abstract string Code { get; }");
+            common.AppendLine("\t\tpublic abstract string[] Roles { get; }");
             common.AppendLine("\t}");
             common.AppendLine();
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
             common.AppendLine("\tpublic abstract class FeatureAssociation {");
+            common.AppendLine("\t\tpublic abstract string Code { get; }");
+            common.AppendLine("\t\tpublic abstract string[] Roles { get; }");
             common.AppendLine("\t}");
             common.AppendLine();
             common.AppendLine("\t[System.SerializableAttribute()]");
