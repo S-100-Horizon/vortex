@@ -17277,6 +17277,7 @@ namespace S100Framework.WPF.ViewModel.S101
         private FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> _theEquipmentOfStructureEquipment = new(typeof(Pile).GetProperty("theEquipmentOfStructureEquipment")!.GetCustomAttributes<FeatureTypeAttribute>());
         [Category("FeatureBindings")]
         [ExpandableObject]
+        //[DisplayName("theEquipment")]
         public FeatureBindingViewModel<DomainModel.S101.Associations.FeatureAssociations.StructureEquipment> theEquipmentOfStructureEquipment
         {
             get
