@@ -105,33 +105,6 @@ namespace TestS100Framework
             }
 
             [Fact]
-            public void Test_FeatureBindings() {
-                var productSpecification = XDocument.Load(@".\Artifacts\S-101_FC_2.0.0.20241016.xml");
-
-                var navigator = productSpecification.CreateNavigator();
-                navigator.MoveToFollowing(XPathNodeType.Element);
-                var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
-
-                var scope_S100 = scopes["S100FC"];
-
-                var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
-                foreach (var e in scopes)
-                    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
-
-                var elements = productSpecification.XPathSelectElements("//S100FC:featureBinding", xmlNamespaceManager).ToList();
-
-                var islandAggregation = elements.Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals("IslandAggregation")).ToList();
-
-                var theCollection = islandAggregation.Where(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value.Equals("theCollection")).ToList();
-
-                var theComponent = islandAggregation.Where(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value.Equals("theComponent")).ToList();
-
-                Assert.Equal(2, theCollection.Count());
-                Assert.Single(theComponent);
-                System.Diagnostics.Debugger.Break();
-            }
-
-            [Fact]
             public void Build_KnownFeatureCataloguesLocal() {
                 Build_S101();
 
@@ -259,6 +232,104 @@ namespace TestS100Framework
 
                 File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
             }
+
+            [Fact]
+            public void Test_FeatureBindings() {
+                var productSpecification = XDocument.Load(@".\Artifacts\S-101_FC_2.0.0.20241016.xml");
+
+                var navigator = productSpecification.CreateNavigator();
+                navigator.MoveToFollowing(XPathNodeType.Element);
+                var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+                var scope_S100 = scopes["S100FC"];
+
+                var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                foreach (var e in scopes)
+                    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+                var elements = productSpecification.XPathSelectElements("//S100FC:featureBinding", xmlNamespaceManager).ToList();
+
+                var islandAggregation = elements.Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals("IslandAggregation")).ToList();
+
+                var theCollection = islandAggregation.Where(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value.Equals("theCollection")).ToList();
+
+                var theComponent = islandAggregation.Where(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value.Equals("theComponent")).ToList();
+
+                Assert.Equal(2, theCollection.Count());
+                Assert.Single(theComponent);
+                System.Diagnostics.Debugger.Break();
+            }
+
+            [Fact]
+            public void Test_FeatureBindingEndpoints() {
+                var productSpecifications = new string[] { 
+                    @".\Artifacts\S-101_FC_2.0.0.20241016.xml",
+                    @".\Artifacts\jpS-122_FC_1.2.1.xml",
+                    @".\Artifacts\S-124FC_1.5_20240330.xml",
+                    @".\Artifacts\S-128_FC_Ed2.0.0.xml",
+                    @".\Artifacts\131_1_0_0_20230315_FC.xml",
+                };
+
+                foreach (var p in productSpecifications) {
+                    var endpoints = new List<featureBinding>();
+
+                    var productSpecification = XDocument.Load(p);
+
+                    var navigator = productSpecification.CreateNavigator();
+                    navigator.MoveToFollowing(XPathNodeType.Element);
+                    var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+                    var scope_S100 = scopes["S100FC"];
+
+                    var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                    foreach (var e in scopes)
+                        xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+                    var elements = productSpecification.XPathSelectElements("//S100FC:featureBinding", xmlNamespaceManager).ToList();
+
+                    foreach (var element in elements) {
+                        var roleType = element.Attribute("roleType")!.Value;
+
+                        var association = element.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
+                        var role = element.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
+
+                        var lower = int.Parse(element.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                        var upper = element.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+
+                        var u = default(int?);
+                        if (!(upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true"))) {
+                            u = int.Parse(upper!.Value);
+                        }
+
+                        var binding = new featureBinding(roleType, lower, u, association, role);
+                        endpoints.Add(binding);
+                    }
+
+                    var productId = productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
+
+                    _output.WriteLine($"{productId}");
+
+                    foreach (var endpoint in endpoints.GroupBy(e => e.association)) {
+                        //_output.WriteLine($"{endpoint.Key}");
+                        foreach (var role in endpoint.GroupBy(e => e.role)) {
+                            //_output.WriteLine($"\t{role.Key}");
+
+                            var lower = role.First().lower;
+                            var upper = role.First().upper;
+
+                            if(!role.All(e => e.lower == lower && e.upper == upper)) {
+                                foreach(var d in role.Distinct()) {
+                                    _output.WriteLine($"\t\t{endpoint.Key}: {d.roleType}, {d.role}, {d.lower}, {d.upper}");
+                                }
+                                
+                            }
+                        }
+                    }
+                    _output.WriteLine("");
+                }
+            }
+
+            public record featureBinding(string roleType, int lower, int? upper, string association, string role);
         }
     }
 }

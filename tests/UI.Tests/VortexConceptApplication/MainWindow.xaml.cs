@@ -147,7 +147,7 @@ namespace VortexConceptApplication
             };
 
             viewModel.Load(domainModel);
-#else
+#elif S903
             var domainModel = new S100Framework.WPF.ViewModel.S903.S101_PileTest() {
 
             };
@@ -159,6 +159,8 @@ namespace VortexConceptApplication
             };
 
             viewModel.Load(domainModel);
+#else
+            var viewModel = IslandAggregation.TestIslandGroup;
 #endif
 
             //this._propertyGrid.EditorDefinitions.Clear();
@@ -197,9 +199,9 @@ namespace VortexConceptApplication
 
             //var p = this._propertyGrid;
 
-            viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
-                Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
-            };
+            //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
+            //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
+            //};
 
             //viewModel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
             //    ;
