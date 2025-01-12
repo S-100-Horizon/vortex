@@ -260,7 +260,7 @@ namespace S100Framework
 
                         dictionaryTypes.Add(code, informationType);
 
-                        featureCatalogue.InformationTypes = featureCatalogue.InformationTypes.Add(new InformationType(code, name));
+                        featureCatalogue.InformationTypes = featureCatalogue.InformationTypes.Add(new InformationTypeId(code, name));
 
                         var listType = typeof(List<>).MakeGenericType(informationType);
                         dictionaryTypes.Add($"List<{code}>", listType);
@@ -345,7 +345,7 @@ namespace S100Framework
                         dictionaryTypes.Add(code, featureType);
 
                         if (!bool.Parse(e.Attribute("isAbstract")!.Value))
-                            featureCatalogue.FeatureTypes = featureCatalogue.FeatureTypes.Add(new FeatureType(code, name));
+                            featureCatalogue.FeatureTypes = featureCatalogue.FeatureTypes.Add(new FeatureTypeId(code, name));
                     }
                 } while (notFinished);
             }

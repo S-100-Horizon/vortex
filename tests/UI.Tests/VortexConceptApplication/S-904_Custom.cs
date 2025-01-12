@@ -1,18 +1,13 @@
-﻿using S100Framework.Catalogues;
-using S100Framework.DomainModel;
+﻿using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S201.FeatureTypes;
-using S100Framework.WPF.ViewModel.S101;
 using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
-using System.Windows;
-using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 using Xceed.Wpf.Toolkit.PropertyGrid;
-using System.Runtime.CompilerServices;
-using System.CodeDom;
+using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel.S903
 {
@@ -147,7 +142,7 @@ namespace S100Framework.WPF.ViewModel.S903
                         FeatureTypes = value.AssociationTypes,
                     },
                     _ => null,
-                };                
+                };
             }
         }
 

@@ -37,7 +37,7 @@ namespace S100Framework.DomainModel
     public class InformationTypeAttribute : System.Attribute
     {
         private Type _informationType;
-        public Type InformationType => _informationType;
+        public Type informationType => _informationType;
         public InformationTypeAttribute(Type informationType) {
             _informationType = informationType;
         }
@@ -56,21 +56,22 @@ namespace S100Framework.DomainModel
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationAssociation
     {
+        public abstract string Code { get; }
+        public abstract string[] Roles { get; }
     }
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureAssociation
     {
+        public abstract string Code { get; }
+        public abstract string[] Roles { get; }
     }
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationTypeBase
     {
         public virtual string Code => string.Empty;
@@ -78,7 +79,6 @@ namespace S100Framework.DomainModel
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureTypeBase
     {
         public virtual string Code => string.Empty;

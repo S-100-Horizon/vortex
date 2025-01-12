@@ -2144,40 +2144,55 @@ namespace S100Framework.DomainModel.S124
 
             public class NWPreambleContent : InformationAssociation
             {
+                public override string Code => "NWPreambleContent";
+                public override string[] Roles => ["theWarningPart", "header"];
                 public NWPreambleContent()
                 {
                 }
-                public static Role[] Roles => new[] { Role.theWarningPart, Role.header };
             }
 
 
             public class NWReferences : InformationAssociation
             {
+                public override string Code => "NWReferences";
+                public override string[] Roles => ["theWarning", "theReferences"];
                 public NWReferences()
                 {
                 }
-                public static Role[] Roles => new[] { Role.theWarning, Role.theReferences };
             }
 
         }
         namespace FeatureAssociations
         {
+            using S100Framework.DomainModel.S124.FeatureTypes;
 
             public class AreaAffected : FeatureAssociation
             {
+                public override string Code => "AreaAffected";
+                public override string[] Roles => ["affects", "impacts"];
                 public AreaAffected()
                 {
                 }
-                public static Role[] Roles => new[] { Role.affects, Role.impacts };
+
+                public Type[] affects => [typeof(NAVWARNAreaAffected)];
+                public Type[] impacts => [typeof(NAVWARNPart)];
+
+
             }
 
 
             public class TextAssociation : FeatureAssociation
             {
+                public override string Code => "TextAssociation";
+                public override string[] Roles => ["identifies", "positions"];
                 public TextAssociation()
                 {
                 }
-                public static Role[] Roles => new[] { Role.identifies, Role.positions };
+
+                public Type[] identifies => [typeof(NAVWARNPart)];
+                public Type[] positions => [typeof(TextPlacement)];
+
+
             }
 
         }
@@ -2190,7 +2205,6 @@ namespace S100Framework.DomainModel.S124
     {
         using ComplexAttributes;
         using DomainModel;
-        using S100Framework.DomainModel.Bindings;
 
 
         [System.Serializable()]
@@ -2216,9 +2230,6 @@ namespace S100Framework.DomainModel.S124
 
             [Required()]
             public DateTime publicationTime { get; set; }
-
-            [InformationType(typeof(References))]
-            public List<informationBinding<Associations.InformationAssociations.NWReferences>> theReferencesOfNWReferences { get; set; } = [];
             public override string Code => nameof(NAVWARNPreamble);
 
             public NAVWARNPreamble()
@@ -2262,7 +2273,6 @@ namespace S100Framework.DomainModel.S124
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
-        using S100Framework.DomainModel.Bindings;
 
 
         [System.Serializable()]
@@ -2276,15 +2286,6 @@ namespace S100Framework.DomainModel.S124
             [Required()]
             public warningInformation warningInformation { get; set; }
             public restriction? restriction { get; set; } = default;
-
-            [InformationType(typeof(NAVWARNPreamble))]
-            public informationBinding<Associations.InformationAssociations.NWPreambleContent> headerOfNWPreambleContent { get; set; }
-
-            [FeatureType(typeof(NAVWARNAreaAffected))]
-            public List<featureBinding<Associations.FeatureAssociations.AreaAffected>> affectsOfAreaAffected { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public List<featureBinding<Associations.FeatureAssociations.TextAssociation>> positionsOfTextAssociation { get; set; } = [];
             public override string Code => nameof(NAVWARNPart);
 
             public NAVWARNPart()
@@ -2299,8 +2300,6 @@ namespace S100Framework.DomainModel.S124
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NAVWARNAreaAffected : FeatureTypeBase
         {
-            [FeatureType(typeof(NAVWARNPart))]
-            public featureBinding<Associations.FeatureAssociations.AreaAffected> impactsOfAreaAffected { get; set; }
             public override string Code => nameof(NAVWARNAreaAffected);
 
             public NAVWARNAreaAffected()
@@ -2322,9 +2321,6 @@ namespace S100Framework.DomainModel.S124
             public Boolean? textRotation { get; set; } = default;
             public textType? textType { get; set; } = default;
             public Int32? scaleMinimum { get; set; } = default;
-
-            [FeatureType(typeof(NAVWARNPart))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? identifiesOfTextAssociation { get; set; }
             public override string Code => nameof(TextPlacement);
 
             public TextPlacement()

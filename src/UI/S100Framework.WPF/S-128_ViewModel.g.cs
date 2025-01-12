@@ -1,4 +1,4 @@
-using S100Framework.DomainModel;
+using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S128;
 using S100Framework.DomainModel.S128.ComplexAttributes;
 using S100Framework.DomainModel.S128.FeatureTypes;
@@ -6,7 +6,6 @@ using S100Framework.DomainModel.S128.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Reflection;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 
@@ -2111,54 +2110,6 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.PriceOfNauticalProduct> _thePriceInformationOfPriceOfNauticalProduct = new(typeof(CatalogueSectionHeader).GetProperty("thePriceInformationOfPriceOfNauticalProduct")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.PriceOfNauticalProduct> thePriceInformationOfPriceOfNauticalProduct
-        {
-            get
-            {
-                return _thePriceInformationOfPriceOfNauticalProduct;
-            }
-
-            set
-            {
-                base.SetValue(ref _thePriceInformationOfPriceOfNauticalProduct, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProductionDetails> _theProducerOfProductionDetails = new(typeof(CatalogueSectionHeader).GetProperty("theProducerOfProductionDetails")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProductionDetails> theProducerOfProductionDetails
-        {
-            get
-            {
-                return _theProducerOfProductionDetails;
-            }
-
-            set
-            {
-                base.SetValue(ref _theProducerOfProductionDetails, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.DistributionDetails> _theDistributorOfDistributionDetails = new(typeof(CatalogueSectionHeader).GetProperty("theDistributorOfDistributionDetails")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.DistributionDetails> theDistributorOfDistributionDetails
-        {
-            get
-            {
-                return _theDistributorOfDistributionDetails;
-            }
-
-            set
-            {
-                base.SetValue(ref _theDistributorOfDistributionDetails, value);
-            }
-        }
-
         public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance)
         {
             catalogueSectionNumber = instance.catalogueSectionNumber;
@@ -2229,38 +2180,6 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("ContactDetails")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProducerContact> _theProducerOfProducerContact = new(typeof(ContactDetails).GetProperty("theProducerOfProducerContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProducerContact> theProducerOfProducerContact
-        {
-            get
-            {
-                return _theProducerOfProducerContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theProducerOfProducerContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.DistributorContact> _theDistributorOfDistributorContact = new(typeof(ContactDetails).GetProperty("theDistributorOfDistributorContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.DistributorContact> theDistributorOfDistributorContact
-        {
-            get
-            {
-                return _theDistributorOfDistributorContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theDistributorOfDistributorContact, value);
-            }
-        }
 
         public void Load(DomainModel.S128.InformationTypes.ContactDetails instance)
         {
@@ -2430,22 +2349,6 @@ namespace S100Framework.WPF.ViewModel.S128
         [Category("PriceInformation")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
 
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.PriceOfNauticalProduct> _theCatalogueOfNauticalProductOfPriceOfNauticalProduct = new(typeof(PriceInformation).GetProperty("theCatalogueOfNauticalProductOfPriceOfNauticalProduct")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.PriceOfNauticalProduct> theCatalogueOfNauticalProductOfPriceOfNauticalProduct
-        {
-            get
-            {
-                return _theCatalogueOfNauticalProductOfPriceOfNauticalProduct;
-            }
-
-            set
-            {
-                base.SetValue(ref _theCatalogueOfNauticalProductOfPriceOfNauticalProduct, value);
-            }
-        }
-
         public void Load(DomainModel.S128.InformationTypes.PriceInformation instance)
         {
             information.Clear();
@@ -2543,38 +2446,6 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProducerContact> _theContactDetailsOfProducerContact = new(typeof(ProducerInformation).GetProperty("theContactDetailsOfProducerContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProducerContact> theContactDetailsOfProducerContact
-        {
-            get
-            {
-                return _theContactDetailsOfProducerContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfProducerContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProductionDetails> _catalogueHeaderOfProductionDetails = new(typeof(ProducerInformation).GetProperty("catalogueHeaderOfProductionDetails")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProductionDetails> catalogueHeaderOfProductionDetails
-        {
-            get
-            {
-                return _catalogueHeaderOfProductionDetails;
-            }
-
-            set
-            {
-                base.SetValue(ref _catalogueHeaderOfProductionDetails, value);
-            }
-        }
-
         public void Load(DomainModel.S128.InformationTypes.ProducerInformation instance)
         {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -2620,38 +2491,6 @@ namespace S100Framework.WPF.ViewModel.S128
             set
             {
                 SetValue(ref _distributorName, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.DistributionDetails> _catalogueHeaderOfDistributionDetails = new(typeof(DistributorInformation).GetProperty("catalogueHeaderOfDistributionDetails")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.DistributionDetails> catalogueHeaderOfDistributionDetails
-        {
-            get
-            {
-                return _catalogueHeaderOfDistributionDetails;
-            }
-
-            set
-            {
-                base.SetValue(ref _catalogueHeaderOfDistributionDetails, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.DistributorContact> _theContactDetailsOfDistributorContact = new(typeof(DistributorInformation).GetProperty("theContactDetailsOfDistributorContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.DistributorContact> theContactDetailsOfDistributorContact
-        {
-            get
-            {
-                return _theContactDetailsOfDistributorContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfDistributorContact, value);
             }
         }
 
@@ -3102,86 +2941,6 @@ namespace S100Framework.WPF.ViewModel.S128
             set
             {
                 SetValue(ref _timeIntervalOfProduct, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S128.Associations.FeatureAssociations.Correlated> _mainOfCorrelated = new(typeof(NavigationalProduct).GetProperty("mainOfCorrelated")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S128.Associations.FeatureAssociations.Correlated> mainOfCorrelated
-        {
-            get
-            {
-                return _mainOfCorrelated;
-            }
-
-            set
-            {
-                base.SetValue(ref _mainOfCorrelated, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.CarriageRequirement> _theRequirementOfCarriageRequirement = new(typeof(CatalogueElement).GetProperty("theRequirementOfCarriageRequirement")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.CarriageRequirement> theRequirementOfCarriageRequirement
-        {
-            get
-            {
-                return _theRequirementOfCarriageRequirement;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRequirementOfCarriageRequirement, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.PriceOfElement> _thePriceInformationOfPriceOfElement = new(typeof(CatalogueElement).GetProperty("thePriceInformationOfPriceOfElement")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.PriceOfElement> thePriceInformationOfPriceOfElement
-        {
-            get
-            {
-                return _thePriceInformationOfPriceOfElement;
-            }
-
-            set
-            {
-                base.SetValue(ref _thePriceInformationOfPriceOfElement, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProductPackage> _elementContainerOfProductPackage = new(typeof(CatalogueElement).GetProperty("elementContainerOfProductPackage")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProductPackage> elementContainerOfProductPackage
-        {
-            get
-            {
-                return _elementContainerOfProductPackage;
-            }
-
-            set
-            {
-                base.SetValue(ref _elementContainerOfProductPackage, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S128.Associations.FeatureAssociations.ProductMapping> _theReferenceOfProductMapping = new(typeof(CatalogueElement).GetProperty("theReferenceOfProductMapping")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S128.Associations.FeatureAssociations.ProductMapping> theReferenceOfProductMapping
-        {
-            get
-            {
-                return _theReferenceOfProductMapping;
-            }
-
-            set
-            {
-                base.SetValue(ref _theReferenceOfProductMapping, value);
             }
         }
 
@@ -3817,86 +3576,6 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private FeatureBindingViewModel<DomainModel.S128.Associations.FeatureAssociations.Correlated> _mainOfCorrelated = new(typeof(NavigationalProduct).GetProperty("mainOfCorrelated")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S128.Associations.FeatureAssociations.Correlated> mainOfCorrelated
-        {
-            get
-            {
-                return _mainOfCorrelated;
-            }
-
-            set
-            {
-                base.SetValue(ref _mainOfCorrelated, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.CarriageRequirement> _theRequirementOfCarriageRequirement = new(typeof(CatalogueElement).GetProperty("theRequirementOfCarriageRequirement")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.CarriageRequirement> theRequirementOfCarriageRequirement
-        {
-            get
-            {
-                return _theRequirementOfCarriageRequirement;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRequirementOfCarriageRequirement, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.PriceOfElement> _thePriceInformationOfPriceOfElement = new(typeof(CatalogueElement).GetProperty("thePriceInformationOfPriceOfElement")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.PriceOfElement> thePriceInformationOfPriceOfElement
-        {
-            get
-            {
-                return _thePriceInformationOfPriceOfElement;
-            }
-
-            set
-            {
-                base.SetValue(ref _thePriceInformationOfPriceOfElement, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProductPackage> _elementContainerOfProductPackage = new(typeof(CatalogueElement).GetProperty("elementContainerOfProductPackage")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProductPackage> elementContainerOfProductPackage
-        {
-            get
-            {
-                return _elementContainerOfProductPackage;
-            }
-
-            set
-            {
-                base.SetValue(ref _elementContainerOfProductPackage, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S128.Associations.FeatureAssociations.ProductMapping> _theReferenceOfProductMapping = new(typeof(CatalogueElement).GetProperty("theReferenceOfProductMapping")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S128.Associations.FeatureAssociations.ProductMapping> theReferenceOfProductMapping
-        {
-            get
-            {
-                return _theReferenceOfProductMapping;
-            }
-
-            set
-            {
-                base.SetValue(ref _theReferenceOfProductMapping, value);
-            }
-        }
-
         [Browsable(false)]
         public horizontalDatumEpsg[] horizontalDatumEpsgList => CodeList.horizontalDatumEpsgs.ToArray();
 
@@ -4329,70 +4008,6 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.CarriageRequirement> _theRequirementOfCarriageRequirement = new(typeof(CatalogueElement).GetProperty("theRequirementOfCarriageRequirement")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.CarriageRequirement> theRequirementOfCarriageRequirement
-        {
-            get
-            {
-                return _theRequirementOfCarriageRequirement;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRequirementOfCarriageRequirement, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.PriceOfElement> _thePriceInformationOfPriceOfElement = new(typeof(CatalogueElement).GetProperty("thePriceInformationOfPriceOfElement")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.PriceOfElement> thePriceInformationOfPriceOfElement
-        {
-            get
-            {
-                return _thePriceInformationOfPriceOfElement;
-            }
-
-            set
-            {
-                base.SetValue(ref _thePriceInformationOfPriceOfElement, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProductPackage> _elementContainerOfProductPackage = new(typeof(CatalogueElement).GetProperty("elementContainerOfProductPackage")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S128.Associations.InformationAssociations.ProductPackage> elementContainerOfProductPackage
-        {
-            get
-            {
-                return _elementContainerOfProductPackage;
-            }
-
-            set
-            {
-                base.SetValue(ref _elementContainerOfProductPackage, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S128.Associations.FeatureAssociations.ProductMapping> _theReferenceOfProductMapping = new(typeof(CatalogueElement).GetProperty("theReferenceOfProductMapping")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S128.Associations.FeatureAssociations.ProductMapping> theReferenceOfProductMapping
-        {
-            get
-            {
-                return _theReferenceOfProductMapping;
-            }
-
-            set
-            {
-                base.SetValue(ref _theReferenceOfProductMapping, value);
-            }
-        }
-
         public void Load(DomainModel.S128.FeatureTypes.S100Service instance)
         {
             compressionFlag = instance.compressionFlag;
@@ -4531,5 +4146,350 @@ namespace S100Framework.WPF.ViewModel.S128
                 OnPropertyChanged(nameof(supportFile));
             };
         }
+    }
+
+    public class CarriageRequirementViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "CarriageRequirement";
+        public override string[] Roles => ["theElement", "theRequirement"];
+
+        private InformationBinding? _theElement;
+        [ExpandableObject]
+        public InformationBinding? theElement
+        {
+            get { return _theElement; }
+            set { this.SetValue(ref _theElement, value); }
+        }
+        private InformationBinding? _theRequirement;
+        [ExpandableObject]
+        public InformationBinding? theRequirement
+        {
+            get { return _theRequirement; }
+            set { this.SetValue(ref _theRequirement, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => CarriageRequirementViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<CatalogueElement>() {
+                    roleType = roleType.association,
+                    role = "theRequirement",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(IndicationOfCarriageRequirement)],
+                },
+            };
+    }
+
+    public class DistributionDetailsViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "DistributionDetails";
+        public override string[] Roles => ["catalogueHeader", "theDistributor"];
+
+        private InformationBinding? _catalogueHeader;
+        [ExpandableObject]
+        public InformationBinding? catalogueHeader
+        {
+            get { return _catalogueHeader; }
+            set { this.SetValue(ref _catalogueHeader, value); }
+        }
+        private InformationBinding? _theDistributor;
+        [ExpandableObject]
+        public InformationBinding? theDistributor
+        {
+            get { return _theDistributor; }
+            set { this.SetValue(ref _theDistributor, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => DistributionDetailsViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<CatalogueSectionHeader>() {
+                    roleType = roleType.association,
+                    role = "theDistributor",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(DistributorInformation)],
+                },
+                new InformationAssociationConnector<DistributorInformation>() {
+                    roleType = roleType.association,
+                    role = "catalogueHeader",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(CatalogueSectionHeader)],
+                },
+            };
+    }
+
+    public class DistributorContactViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "DistributorContact";
+        public override string[] Roles => ["theDistributor", "theContactDetails"];
+
+        private InformationBinding? _theDistributor;
+        [ExpandableObject]
+        public InformationBinding? theDistributor
+        {
+            get { return _theDistributor; }
+            set { this.SetValue(ref _theDistributor, value); }
+        }
+        private InformationBinding? _theContactDetails;
+        [ExpandableObject]
+        public InformationBinding? theContactDetails
+        {
+            get { return _theContactDetails; }
+            set { this.SetValue(ref _theContactDetails, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => DistributorContactViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<ContactDetails>() {
+                    roleType = roleType.association,
+                    role = "theDistributor",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(DistributorInformation)],
+                },
+                new InformationAssociationConnector<DistributorInformation>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+            };
+    }
+
+    public class PriceOfElementViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "PriceOfElement";
+        public override string[] Roles => ["theCatalogueElement", "thePriceInformation"];
+
+        private InformationBinding? _theCatalogueElement;
+        [ExpandableObject]
+        public InformationBinding? theCatalogueElement
+        {
+            get { return _theCatalogueElement; }
+            set { this.SetValue(ref _theCatalogueElement, value); }
+        }
+        private InformationBinding? _thePriceInformation;
+        [ExpandableObject]
+        public InformationBinding? thePriceInformation
+        {
+            get { return _thePriceInformation; }
+            set { this.SetValue(ref _thePriceInformation, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => PriceOfElementViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<CatalogueElement>() {
+                    roleType = roleType.association,
+                    role = "thePriceInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(PriceInformation)],
+                },
+            };
+    }
+
+    public class PriceOfNauticalProductViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "PriceOfNauticalProduct";
+        public override string[] Roles => ["theCatalogueOfNauticalProduct", "thePriceInformation"];
+
+        private InformationBinding? _theCatalogueOfNauticalProduct;
+        [ExpandableObject]
+        public InformationBinding? theCatalogueOfNauticalProduct
+        {
+            get { return _theCatalogueOfNauticalProduct; }
+            set { this.SetValue(ref _theCatalogueOfNauticalProduct, value); }
+        }
+        private InformationBinding? _thePriceInformation;
+        [ExpandableObject]
+        public InformationBinding? thePriceInformation
+        {
+            get { return _thePriceInformation; }
+            set { this.SetValue(ref _thePriceInformation, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => PriceOfNauticalProductViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<CatalogueSectionHeader>() {
+                    roleType = roleType.association,
+                    role = "thePriceInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(PriceInformation)],
+                },
+                new InformationAssociationConnector<PriceInformation>() {
+                    roleType = roleType.association,
+                    role = "theCatalogueOfNauticalProduct",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(CatalogueSectionHeader)],
+                },
+            };
+    }
+
+    public class ProducerContactViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "ProducerContact";
+        public override string[] Roles => ["theProducer", "theContactDetails"];
+
+        private InformationBinding? _theProducer;
+        [ExpandableObject]
+        public InformationBinding? theProducer
+        {
+            get { return _theProducer; }
+            set { this.SetValue(ref _theProducer, value); }
+        }
+        private InformationBinding? _theContactDetails;
+        [ExpandableObject]
+        public InformationBinding? theContactDetails
+        {
+            get { return _theContactDetails; }
+            set { this.SetValue(ref _theContactDetails, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => ProducerContactViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<ContactDetails>() {
+                    roleType = roleType.association,
+                    role = "theProducer",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ProducerInformation)],
+                },
+                new InformationAssociationConnector<ProducerInformation>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+            };
+    }
+
+    public class ProductionDetailsViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "ProductionDetails";
+        public override string[] Roles => ["catalogueHeader", "theProducer"];
+
+        private InformationBinding? _catalogueHeader;
+        [ExpandableObject]
+        public InformationBinding? catalogueHeader
+        {
+            get { return _catalogueHeader; }
+            set { this.SetValue(ref _catalogueHeader, value); }
+        }
+        private InformationBinding? _theProducer;
+        [ExpandableObject]
+        public InformationBinding? theProducer
+        {
+            get { return _theProducer; }
+            set { this.SetValue(ref _theProducer, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => ProductionDetailsViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<CatalogueSectionHeader>() {
+                    roleType = roleType.association,
+                    role = "theProducer",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ProducerInformation)],
+                },
+                new InformationAssociationConnector<ProducerInformation>() {
+                    roleType = roleType.association,
+                    role = "catalogueHeader",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(CatalogueSectionHeader)],
+                },
+            };
+    }
+
+    public class ProductPackageViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "ProductPackage";
+        public override string[] Roles => ["theCatalogueElement", "elementContainer"];
+
+        private InformationBinding? _theCatalogueElement;
+        [ExpandableObject]
+        public InformationBinding? theCatalogueElement
+        {
+            get { return _theCatalogueElement; }
+            set { this.SetValue(ref _theCatalogueElement, value); }
+        }
+        private InformationBinding? _elementContainer;
+        [ExpandableObject]
+        public InformationBinding? elementContainer
+        {
+            get { return _elementContainer; }
+            set { this.SetValue(ref _elementContainer, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => ProductPackageViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<CatalogueElement>() {
+                    roleType = roleType.association,
+                    role = "elementContainer",
+                    Lower = 1,
+                    Upper = default,
+                    AssociationTypes = [typeof(CatalogueSectionHeader)],
+                },
+            };
+    }
+
+    public class ProductMappingViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "ProductMapping";
+        public override string[] Roles => ["theSource", "theReference"];
+
+        private FeatureBinding? _theSource;
+        [ExpandableObject]
+        public FeatureBinding? theSource
+        {
+            get { return _theSource; }
+            set { this.SetValue(ref _theSource, value); }
+        }
+        private FeatureBinding? _theReference;
+        [ExpandableObject]
+        public FeatureBinding? theReference
+        {
+            get { return _theReference; }
+            set { this.SetValue(ref _theReference, value); }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => ProductMappingViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<CatalogueElement>() {
+                    roleType = roleType.association,
+                    role = "theReference",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(CatalogueElement)],
+                },
+            };
+    }
+
+    public class CorrelatedViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "Correlated";
+        public override string[] Roles => ["main", "panel"];
+
+        private FeatureBinding? _main;
+        [ExpandableObject]
+        public FeatureBinding? main
+        {
+            get { return _main; }
+            set { this.SetValue(ref _main, value); }
+        }
+        private FeatureBinding? _panel;
+        [ExpandableObject]
+        public FeatureBinding? panel
+        {
+            get { return _panel; }
+            set { this.SetValue(ref _panel, value); }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => CorrelatedViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<NavigationalProduct>() {
+                    roleType = roleType.association,
+                    role = "main",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NavigationalProduct)],
+                },
+            };
     }
 }

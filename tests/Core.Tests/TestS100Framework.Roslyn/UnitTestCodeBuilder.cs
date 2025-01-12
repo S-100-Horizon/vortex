@@ -1,7 +1,6 @@
 ﻿#define prop
 //#define propfull
 
-using ArcGIS.Core.Internal.CIM;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -9,7 +8,6 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 using Xunit.Abstractions;
-using static System.Formats.Asn1.AsnWriter;
 
 
 namespace TestS100Framework
@@ -262,7 +260,7 @@ namespace TestS100Framework
 
             [Fact]
             public void Test_FeatureBindingEndpoints() {
-                var productSpecifications = new string[] { 
+                var productSpecifications = new string[] {
                     @".\Artifacts\S-101_FC_2.0.0.20241016.xml",
                     @".\Artifacts\jpS-122_FC_1.2.1.xml",
                     @".\Artifacts\S-124FC_1.5_20240330.xml",
@@ -317,11 +315,11 @@ namespace TestS100Framework
                             var lower = role.First().lower;
                             var upper = role.First().upper;
 
-                            if(!role.All(e => e.lower == lower && e.upper == upper)) {
-                                foreach(var d in role.Distinct()) {
+                            if (!role.All(e => e.lower == lower && e.upper == upper)) {
+                                foreach (var d in role.Distinct()) {
                                     _output.WriteLine($"\t\t{endpoint.Key}: {d.roleType}, {d.role}, {d.lower}, {d.upper}");
                                 }
-                                
+
                             }
                         }
                     }

@@ -74,133 +74,8 @@ namespace S100Framework.WPF.ViewModel
         public abstract void Load(T instance);
     }
 
-    public abstract class BindingViewModel : INotifyPropertyChanged
+    public abstract class AssociationViewModel : INotifyPropertyChanged
     {
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-
-        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
-            if (string.IsNullOrWhiteSpace(propertyName)) return;
-
-            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
-            backingFiled = value;
-            OnPropertyChanged(propertyName);
-        }
-    }
-
-    public abstract class InformationBindingViewModel : BindingViewModel
-    {
-        private InformationTypeAttribute[] _informationTypes;
-
-        [Browsable(false)]
-        public InformationTypeAttribute[] informationTypes => _informationTypes;
-
-        public InformationBindingViewModel(IEnumerable<InformationTypeAttribute> informationTypes) {
-            _informationTypes = informationTypes.ToArray();
-        }
-    }
-
-    public class InformationBindingViewModel<TAssociation> : InformationBindingViewModel where TAssociation : InformationAssociation, new()
-    {
-        public InformationBindingViewModel(IEnumerable<InformationTypeAttribute> informationTypes) : base(informationTypes) {
-        }
-
-        public override string ToString() => typeof(TAssociation).Name;
-
-        private string? _refId;
-
-        [PropertyOrder(20)]
-        public string? RefId {
-            get { return _refId; }
-            set { this.SetValue(ref _refId, value); }
-        }
-
-        private string? _informationType;
-
-        [PropertyOrder(10)]
-        [Editor(typeof(InformationTypeEditor), typeof(InformationTypeEditor))]
-        public string? informationType {
-            get { return _informationType; }
-            set {
-                this.SetValue(ref _informationType, value);
-                this.RefId = default;
-            }
-        }
-
-        private TAssociation _association = new();
-
-        [PropertyOrder(30)]
-        [ExpandableObject]
-        //[Editor(typeof(AssociationEditor), typeof(AssociationEditor))]
-        public TAssociation association {
-            get { return _association; }
-            set { this.SetValue(ref _association, value); }
-        }
-    }
-
-
-    public abstract class FeatureBindingViewModel : BindingViewModel
-    {
-        private FeatureTypeAttribute[] _featureTypes;
-
-        [Browsable(false)]
-        public FeatureTypeAttribute[] featureTypes => _featureTypes;
-
-        public FeatureBindingViewModel(IEnumerable<FeatureTypeAttribute> featureTypes) {
-            _featureTypes = featureTypes.ToArray();
-        }
-    }
-
-    public class FeatureBindingViewModel<TAssociation> : FeatureBindingViewModel where TAssociation : FeatureAssociation, new()
-    {
-        public FeatureBindingViewModel(IEnumerable<FeatureTypeAttribute> featureTypes) : base(featureTypes) {
-        }
-
-        public override string ToString() => typeof(TAssociation).Name;
-
-        private string? _refId;
-
-        [PropertyOrder(20)]
-        public string? RefId {
-            get { return _refId; }
-            set { this.SetValue(ref _refId, value); }
-        }
-
-        private string? _featureType;
-
-        [PropertyOrder(10)]
-        [Editor(typeof(FeatureTypeEditor), typeof(FeatureTypeEditor))]
-        public string? featureType {
-            get { return _featureType; }
-            set {
-                this.SetValue(ref _featureType, value);
-                this.RefId = default;
-            }
-        }
-
-        private TAssociation _association = new();
-
-        [PropertyOrder(30)]
-        [ExpandableObject]
-        //[Editor(typeof(AssociationEditor), typeof(AssociationEditor))]
-        public TAssociation association {
-            get { return _association; }
-            set { this.SetValue(ref _association, value); }
-        }
-    }
-
-
-
-
-
-
-
-
-
-    public abstract class FeatureAssociationViewModel : INotifyPropertyChanged {
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
@@ -220,9 +95,18 @@ namespace S100Framework.WPF.ViewModel
 
         [Browsable(false)]
         public abstract string[] Roles { get; }
+    }
 
+    public abstract class InformationAssociationViewModel : AssociationViewModel
+    {
         [Browsable(false)]
-        public abstract AssociationConnector[] associationConnectors { get; }
+        public abstract InformationAssociationConnector[] associationConnectorInformations { get; }
+    }
+
+    public abstract class FeatureAssociationViewModel : AssociationViewModel
+    {
+        [Browsable(false)]
+        public abstract FeatureAssociationConnector[] associationConnectorFeatures { get; }
     }
 
     public abstract class AssociationConnector
@@ -239,15 +123,51 @@ namespace S100Framework.WPF.ViewModel
 
         [PropertyOrder(2)]
         public int? Upper { get; set; } = default;
+    }
 
+    public abstract class InformationAssociationConnector : AssociationConnector
+    {
+        public abstract Type InformationType { get; }
+    }
+
+    public abstract class FeatureAssociationConnector : AssociationConnector
+    {
         public abstract Type FeatureType { get; }
     }
 
-    public class AssociationConnector<T> : AssociationConnector where T : FeatureTypeBase
+    public class InformationAssociationConnector<T> : InformationAssociationConnector where T : class
+    {
+        public override Type InformationType => typeof(T);
+
+        public string DisplayName => $"{typeof(T).Name}, {base.role}";
+    }
+
+    public class FeatureAssociationConnector<T> : FeatureAssociationConnector where T : FeatureTypeBase
     {
         public override Type FeatureType => typeof(T);
 
         public string DisplayName => $"{typeof(T).Name}, {base.role}";
+    }
+
+    public abstract class InformationBinding
+    {
+        [Browsable(false)]
+        public Type[] FeatureTypes { get; set; } = [];
+    }
+
+    public class InformationBindingSingle : InformationBinding
+    {
+        public string RefId { get; set; } = string.Empty;
+    }
+
+    public class InformationBindingOptional : InformationBinding
+    {
+        public string? RefId { get; set; } = default;
+    }
+
+    public class InformationBindingMulti : InformationBinding
+    {
+        public List<string> RefIds { get; set; } = new List<string>();
     }
 
     public abstract class FeatureBinding

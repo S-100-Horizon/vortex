@@ -1,4 +1,4 @@
-using S100Framework.DomainModel;
+using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S131;
 using S100Framework.DomainModel.S131.ComplexAttributes;
 using S100Framework.DomainModel.S131.FeatureTypes;
@@ -6,7 +6,6 @@ using S100Framework.DomainModel.S131.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Reflection;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 
@@ -2988,54 +2987,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(InformationType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.InclusionType> _theApplicableRxNOfInclusionType = new(typeof(Applicability).GetProperty("theApplicableRxNOfInclusionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.InclusionType> theApplicableRxNOfInclusionType
-        {
-            get
-            {
-                return _theApplicableRxNOfInclusionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _theApplicableRxNOfInclusionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _vslLocationOfPermissionType = new(typeof(Applicability).GetProperty("vslLocationOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> vslLocationOfPermissionType
-        {
-            get
-            {
-                return _vslLocationOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _vslLocationOfPermissionType, value);
-            }
-        }
-
         [Browsable(false)]
         public categoryOfVessel[] categoryOfVesselList => CodeList.categoryOfVessels.ToArray();
 
@@ -3273,70 +3224,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(InformationType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AuthorityContact> _theContactDetailsOfAuthorityContact = new(typeof(Authority).GetProperty("theContactDetailsOfAuthorityContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AuthorityContact> theContactDetailsOfAuthorityContact
-        {
-            get
-            {
-                return _theContactDetailsOfAuthorityContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfAuthorityContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation> _theInformationOfRelatedOrganisation = new(typeof(Authority).GetProperty("theInformationOfRelatedOrganisation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation> theInformationOfRelatedOrganisation
-        {
-            get
-            {
-                return _theInformationOfRelatedOrganisation;
-            }
-
-            set
-            {
-                base.SetValue(ref _theInformationOfRelatedOrganisation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AuthorityHours> _theServiceHoursOfAuthorityHours = new(typeof(Authority).GetProperty("theServiceHoursOfAuthorityHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AuthorityHours> theServiceHoursOfAuthorityHours
-        {
-            get
-            {
-                return _theServiceHoursOfAuthorityHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _theServiceHoursOfAuthorityHours, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.Authority instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -3546,22 +3433,6 @@ namespace S100Framework.WPF.ViewModel.S131
             set
             {
                 SetValue(ref _reportedDate, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(InformationType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
             }
         }
 
@@ -3935,38 +3806,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(InformationType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AuthorityContact> _theAuthorityOfAuthorityContact = new(typeof(ContactDetails).GetProperty("theAuthorityOfAuthorityContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AuthorityContact> theAuthorityOfAuthorityContact
-        {
-            get
-            {
-                return _theAuthorityOfAuthorityContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theAuthorityOfAuthorityContact, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.ContactDetails instance)
         {
             callName = instance.callName;
@@ -4263,22 +4102,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(InformationType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.Entrance instance)
         {
             entranceDescription = instance.entranceDescription;
@@ -4524,70 +4347,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.InclusionType> _isApplicableToOfInclusionType = new(typeof(AbstractRxN).GetProperty("isApplicableToOfInclusionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.InclusionType> isApplicableToOfInclusionType
-        {
-            get
-            {
-                return _isApplicableToOfInclusionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _isApplicableToOfInclusionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation> _theOrganisationOfRelatedOrganisation = new(typeof(AbstractRxN).GetProperty("theOrganisationOfRelatedOrganisation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation> theOrganisationOfRelatedOrganisation
-        {
-            get
-            {
-                return _theOrganisationOfRelatedOrganisation;
-            }
-
-            set
-            {
-                base.SetValue(ref _theOrganisationOfRelatedOrganisation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(InformationType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _informationProvidedForOfAdditionalInformation = new(typeof(NauticalInformation).GetProperty("informationProvidedForOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> informationProvidedForOfAdditionalInformation
-        {
-            get
-            {
-                return _informationProvidedForOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _informationProvidedForOfAdditionalInformation, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.NauticalInformation instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -4762,22 +4521,6 @@ namespace S100Framework.WPF.ViewModel.S131
             set
             {
                 SetValue(ref _reportedDate, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(InformationType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
             }
         }
 
@@ -4977,54 +4720,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.InclusionType> _isApplicableToOfInclusionType = new(typeof(AbstractRxN).GetProperty("isApplicableToOfInclusionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.InclusionType> isApplicableToOfInclusionType
-        {
-            get
-            {
-                return _isApplicableToOfInclusionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _isApplicableToOfInclusionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation> _theOrganisationOfRelatedOrganisation = new(typeof(AbstractRxN).GetProperty("theOrganisationOfRelatedOrganisation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation> theOrganisationOfRelatedOrganisation
-        {
-            get
-            {
-                return _theOrganisationOfRelatedOrganisation;
-            }
-
-            set
-            {
-                base.SetValue(ref _theOrganisationOfRelatedOrganisation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(InformationType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.Recommendations instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -5211,54 +4906,6 @@ namespace S100Framework.WPF.ViewModel.S131
             set
             {
                 SetValue(ref _reportedDate, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.InclusionType> _isApplicableToOfInclusionType = new(typeof(AbstractRxN).GetProperty("isApplicableToOfInclusionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.InclusionType> isApplicableToOfInclusionType
-        {
-            get
-            {
-                return _isApplicableToOfInclusionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _isApplicableToOfInclusionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation> _theOrganisationOfRelatedOrganisation = new(typeof(AbstractRxN).GetProperty("theOrganisationOfRelatedOrganisation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation> theOrganisationOfRelatedOrganisation
-        {
-            get
-            {
-                return _theOrganisationOfRelatedOrganisation;
-            }
-
-            set
-            {
-                base.SetValue(ref _theOrganisationOfRelatedOrganisation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(InformationType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
             }
         }
 
@@ -5451,54 +5098,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.InclusionType> _isApplicableToOfInclusionType = new(typeof(AbstractRxN).GetProperty("isApplicableToOfInclusionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.InclusionType> isApplicableToOfInclusionType
-        {
-            get
-            {
-                return _isApplicableToOfInclusionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _isApplicableToOfInclusionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation> _theOrganisationOfRelatedOrganisation = new(typeof(AbstractRxN).GetProperty("theOrganisationOfRelatedOrganisation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.RelatedOrganisation> theOrganisationOfRelatedOrganisation
-        {
-            get
-            {
-                return _theOrganisationOfRelatedOrganisation;
-            }
-
-            set
-            {
-                base.SetValue(ref _theOrganisationOfRelatedOrganisation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(InformationType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
         public void Load(DomainModel.S131.InformationTypes.Restrictions instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -5670,54 +5269,6 @@ namespace S100Framework.WPF.ViewModel.S131
             set
             {
                 SetValue(ref _reportedDate, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(InformationType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ExceptionalWorkday> _partialWorkingDayOfExceptionalWorkday = new(typeof(ServiceHours).GetProperty("partialWorkingDayOfExceptionalWorkday")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ExceptionalWorkday> partialWorkingDayOfExceptionalWorkday
-        {
-            get
-            {
-                return _partialWorkingDayOfExceptionalWorkday;
-            }
-
-            set
-            {
-                base.SetValue(ref _partialWorkingDayOfExceptionalWorkday, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AuthorityHours> _theAuthority_srvHrsOfAuthorityHours = new(typeof(ServiceHours).GetProperty("theAuthority_srvHrsOfAuthorityHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AuthorityHours> theAuthority_srvHrsOfAuthorityHours
-        {
-            get
-            {
-                return _theAuthority_srvHrsOfAuthorityHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _theAuthority_srvHrsOfAuthorityHours, value);
             }
         }
 
@@ -5979,150 +5530,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> _serviceDescriptionReferenceOfServiceAvailability = new(typeof(AnchorBerth).GetProperty("serviceDescriptionReferenceOfServiceAvailability")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> serviceDescriptionReferenceOfServiceAvailability
-        {
-            get
-            {
-                return _serviceDescriptionReferenceOfServiceAvailability;
-            }
-
-            set
-            {
-                base.SetValue(ref _serviceDescriptionReferenceOfServiceAvailability, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(AnchorBerth).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility> _auxiliaryFacilityOfPrimaryAuxiliaryFacility = new(typeof(AnchorBerth).GetProperty("auxiliaryFacilityOfPrimaryAuxiliaryFacility")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility> auxiliaryFacilityOfPrimaryAuxiliaryFacility
-        {
-            get
-            {
-                return _auxiliaryFacilityOfPrimaryAuxiliaryFacility;
-            }
-
-            set
-            {
-                base.SetValue(ref _auxiliaryFacilityOfPrimaryAuxiliaryFacility, value);
-            }
-        }
 
         public void Load(DomainModel.S131.FeatureTypes.AnchorBerth instance)
         {
@@ -6392,134 +5799,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(AnchorageArea).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _componentOfOfLayoutDivision = new(typeof(AnchorageArea).GetProperty("componentOfOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision
-        {
-            get
-            {
-                return _componentOfOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _componentOfOfLayoutDivision, value);
-            }
-        }
 
         public void Load(DomainModel.S131.FeatureTypes.AnchorageArea instance)
         {
@@ -6971,166 +6250,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> _serviceDescriptionReferenceOfServiceAvailability = new(typeof(Berth).GetProperty("serviceDescriptionReferenceOfServiceAvailability")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> serviceDescriptionReferenceOfServiceAvailability
-        {
-            get
-            {
-                return _serviceDescriptionReferenceOfServiceAvailability;
-            }
-
-            set
-            {
-                base.SetValue(ref _serviceDescriptionReferenceOfServiceAvailability, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(Berth).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Demarcation> _demarcationIndicatorOfDemarcation = new(typeof(Berth).GetProperty("demarcationIndicatorOfDemarcation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Demarcation> demarcationIndicatorOfDemarcation
-        {
-            get
-            {
-                return _demarcationIndicatorOfDemarcation;
-            }
-
-            set
-            {
-                base.SetValue(ref _demarcationIndicatorOfDemarcation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _componentOfOfLayoutDivision = new(typeof(Berth).GetProperty("componentOfOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision
-        {
-            get
-            {
-                return _componentOfOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _componentOfOfLayoutDivision, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.Berth instance)
         {
             availableBerthingLength = instance.availableBerthingLength;
@@ -7509,134 +6628,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Demarcation> _demarcatedFeatureOfDemarcation = new(typeof(BerthPosition).GetProperty("demarcatedFeatureOfDemarcation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Demarcation> demarcatedFeatureOfDemarcation
-        {
-            get
-            {
-                return _demarcatedFeatureOfDemarcation;
-            }
-
-            set
-            {
-                base.SetValue(ref _demarcatedFeatureOfDemarcation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility> _auxiliaryFacilityOfPrimaryAuxiliaryFacility = new(typeof(BerthPosition).GetProperty("auxiliaryFacilityOfPrimaryAuxiliaryFacility")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility> auxiliaryFacilityOfPrimaryAuxiliaryFacility
-        {
-            get
-            {
-                return _auxiliaryFacilityOfPrimaryAuxiliaryFacility;
-            }
-
-            set
-            {
-                base.SetValue(ref _auxiliaryFacilityOfPrimaryAuxiliaryFacility, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.BerthPosition instance)
         {
             availableBerthingLength = instance.availableBerthingLength;
@@ -7954,150 +6945,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> _serviceDescriptionReferenceOfServiceAvailability = new(typeof(DockArea).GetProperty("serviceDescriptionReferenceOfServiceAvailability")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> serviceDescriptionReferenceOfServiceAvailability
-        {
-            get
-            {
-                return _serviceDescriptionReferenceOfServiceAvailability;
-            }
-
-            set
-            {
-                base.SetValue(ref _serviceDescriptionReferenceOfServiceAvailability, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(DockArea).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _componentOfOfLayoutDivision = new(typeof(DockArea).GetProperty("componentOfOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision
-        {
-            get
-            {
-                return _componentOfOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _componentOfOfLayoutDivision, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.DockArea instance)
         {
             depthsDescription = new();
@@ -8358,134 +7205,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> _infrastructureLocationOfInfrastructure = new(typeof(HarbourPhysicalInfrastructure).GetProperty("infrastructureLocationOfInfrastructure")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> infrastructureLocationOfInfrastructure
-        {
-            get
-            {
-                return _infrastructureLocationOfInfrastructure;
-            }
-
-            set
-            {
-                base.SetValue(ref _infrastructureLocationOfInfrastructure, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(DryDock).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
 
         public void Load(DomainModel.S131.FeatureTypes.DryDock instance)
         {
@@ -8762,134 +7481,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(DumpingGround).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _componentOfOfLayoutDivision = new(typeof(DumpingGround).GetProperty("componentOfOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision
-        {
-            get
-            {
-                return _componentOfOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _componentOfOfLayoutDivision, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.DumpingGround instance)
         {
             depthsDescription = new();
@@ -9151,134 +7742,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> _infrastructureLocationOfInfrastructure = new(typeof(HarbourPhysicalInfrastructure).GetProperty("infrastructureLocationOfInfrastructure")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> infrastructureLocationOfInfrastructure
-        {
-            get
-            {
-                return _infrastructureLocationOfInfrastructure;
-            }
-
-            set
-            {
-                base.SetValue(ref _infrastructureLocationOfInfrastructure, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(FloatingDock).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.FloatingDock instance)
         {
             sillDepth = instance.sillDepth;
@@ -9521,134 +7984,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> _infrastructureLocationOfInfrastructure = new(typeof(HarbourPhysicalInfrastructure).GetProperty("infrastructureLocationOfInfrastructure")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> infrastructureLocationOfInfrastructure
-        {
-            get
-            {
-                return _infrastructureLocationOfInfrastructure;
-            }
-
-            set
-            {
-                base.SetValue(ref _infrastructureLocationOfInfrastructure, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(Gridiron).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
 
         public void Load(DomainModel.S131.FeatureTypes.Gridiron instance)
         {
@@ -9942,166 +8277,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> _serviceDescriptionReferenceOfServiceAvailability = new(typeof(HarbourAreaAdministrative).GetProperty("serviceDescriptionReferenceOfServiceAvailability")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> serviceDescriptionReferenceOfServiceAvailability
-        {
-            get
-            {
-                return _serviceDescriptionReferenceOfServiceAvailability;
-            }
-
-            set
-            {
-                base.SetValue(ref _serviceDescriptionReferenceOfServiceAvailability, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(HarbourAreaAdministrative).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.JurisdictionalLimit> _limitExtentOfJurisdictionalLimit = new(typeof(HarbourAreaAdministrative).GetProperty("limitExtentOfJurisdictionalLimit")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.JurisdictionalLimit> limitExtentOfJurisdictionalLimit
-        {
-            get
-            {
-                return _limitExtentOfJurisdictionalLimit;
-            }
-
-            set
-            {
-                base.SetValue(ref _limitExtentOfJurisdictionalLimit, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _layoutUnitOfLayoutDivision = new(typeof(HarbourAreaAdministrative).GetProperty("layoutUnitOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> layoutUnitOfLayoutDivision
-        {
-            get
-            {
-                return _layoutUnitOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _layoutUnitOfLayoutDivision, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative instance)
         {
             uNLocationCode = instance.uNLocationCode;
@@ -10388,214 +8563,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> _serviceDescriptionReferenceOfServiceAvailability = new(typeof(HarbourAreaSection).GetProperty("serviceDescriptionReferenceOfServiceAvailability")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> serviceDescriptionReferenceOfServiceAvailability
-        {
-            get
-            {
-                return _serviceDescriptionReferenceOfServiceAvailability;
-            }
-
-            set
-            {
-                base.SetValue(ref _serviceDescriptionReferenceOfServiceAvailability, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(HarbourAreaSection).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _componentOfOfLayoutDivision = new(typeof(HarbourAreaSection).GetProperty("componentOfOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision
-        {
-            get
-            {
-                return _componentOfOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _componentOfOfLayoutDivision, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Subsection> _constituteOfSubsection = new(typeof(HarbourAreaSection).GetProperty("constituteOfSubsection")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Subsection> constituteOfSubsection
-        {
-            get
-            {
-                return _constituteOfSubsection;
-            }
-
-            set
-            {
-                base.SetValue(ref _constituteOfSubsection, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Subsection> _subUnitOfSubsection = new(typeof(HarbourAreaSection).GetProperty("subUnitOfSubsection")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Subsection> subUnitOfSubsection
-        {
-            get
-            {
-                return _subUnitOfSubsection;
-            }
-
-            set
-            {
-                base.SetValue(ref _subUnitOfSubsection, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> _hasInfrastructureOfInfrastructure = new(typeof(HarbourAreaSection).GetProperty("hasInfrastructureOfInfrastructure")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> hasInfrastructureOfInfrastructure
-        {
-            get
-            {
-                return _hasInfrastructureOfInfrastructure;
-            }
-
-            set
-            {
-                base.SetValue(ref _hasInfrastructureOfInfrastructure, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _layoutUnitOfLayoutDivision = new(typeof(HarbourAreaSection).GetProperty("layoutUnitOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> layoutUnitOfLayoutDivision
-        {
-            get
-            {
-                return _layoutUnitOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _layoutUnitOfLayoutDivision, value);
-            }
-        }
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaSection instance)
         {
@@ -10891,134 +8858,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(HarbourBasin).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _componentOfOfLayoutDivision = new(typeof(HarbourBasin).GetProperty("componentOfOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision
-        {
-            get
-            {
-                return _componentOfOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _componentOfOfLayoutDivision, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.HarbourBasin instance)
         {
             depthsDescription = new();
@@ -11267,134 +9106,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> _infrastructureLocationOfInfrastructure = new(typeof(HarbourPhysicalInfrastructure).GetProperty("infrastructureLocationOfInfrastructure")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> infrastructureLocationOfInfrastructure
-        {
-            get
-            {
-                return _infrastructureLocationOfInfrastructure;
-            }
-
-            set
-            {
-                base.SetValue(ref _infrastructureLocationOfInfrastructure, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(HarbourFacility).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourFacility instance)
         {
@@ -11691,150 +9402,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> _serviceDescriptionReferenceOfServiceAvailability = new(typeof(MooringWarpingFacility).GetProperty("serviceDescriptionReferenceOfServiceAvailability")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> serviceDescriptionReferenceOfServiceAvailability
-        {
-            get
-            {
-                return _serviceDescriptionReferenceOfServiceAvailability;
-            }
-
-            set
-            {
-                base.SetValue(ref _serviceDescriptionReferenceOfServiceAvailability, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(MooringWarpingFacility).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility> _primaryFacilityOfPrimaryAuxiliaryFacility = new(typeof(MooringWarpingFacility).GetProperty("primaryFacilityOfPrimaryAuxiliaryFacility")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.PrimaryAuxiliaryFacility> primaryFacilityOfPrimaryAuxiliaryFacility
-        {
-            get
-            {
-                return _primaryFacilityOfPrimaryAuxiliaryFacility;
-            }
-
-            set
-            {
-                base.SetValue(ref _primaryFacilityOfPrimaryAuxiliaryFacility, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.MooringWarpingFacility instance)
         {
             categoryOfMooringWarpingFacility = instance.categoryOfMooringWarpingFacility;
@@ -12087,134 +9654,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LimitEntrance> _entranceReferenceOfLimitEntrance = new(typeof(OuterLimit).GetProperty("entranceReferenceOfLimitEntrance")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LimitEntrance> entranceReferenceOfLimitEntrance
-        {
-            get
-            {
-                return _entranceReferenceOfLimitEntrance;
-            }
-
-            set
-            {
-                base.SetValue(ref _entranceReferenceOfLimitEntrance, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.JurisdictionalLimit> _limitReferenceOfJurisdictionalLimit = new(typeof(OuterLimit).GetProperty("limitReferenceOfJurisdictionalLimit")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.JurisdictionalLimit> limitReferenceOfJurisdictionalLimit
-        {
-            get
-            {
-                return _limitReferenceOfJurisdictionalLimit;
-            }
-
-            set
-            {
-                base.SetValue(ref _limitReferenceOfJurisdictionalLimit, value);
-            }
-        }
 
         public void Load(DomainModel.S131.FeatureTypes.OuterLimit instance)
         {
@@ -12544,134 +9983,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(PilotBoardingPlace).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _componentOfOfLayoutDivision = new(typeof(PilotBoardingPlace).GetProperty("componentOfOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision
-        {
-            get
-            {
-                return _componentOfOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _componentOfOfLayoutDivision, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.PilotBoardingPlace instance)
         {
             depthsDescription = new();
@@ -12964,134 +10275,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(SeaplaneLandingArea).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _componentOfOfLayoutDivision = new(typeof(SeaplaneLandingArea).GetProperty("componentOfOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision
-        {
-            get
-            {
-                return _componentOfOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _componentOfOfLayoutDivision, value);
-            }
-        }
 
         public void Load(DomainModel.S131.FeatureTypes.SeaplaneLandingArea instance)
         {
@@ -13405,182 +10588,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> _serviceDescriptionReferenceOfServiceAvailability = new(typeof(Terminal).GetProperty("serviceDescriptionReferenceOfServiceAvailability")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceAvailability> serviceDescriptionReferenceOfServiceAvailability
-        {
-            get
-            {
-                return _serviceDescriptionReferenceOfServiceAvailability;
-            }
-
-            set
-            {
-                base.SetValue(ref _serviceDescriptionReferenceOfServiceAvailability, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(Terminal).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _componentOfOfLayoutDivision = new(typeof(Terminal).GetProperty("componentOfOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision
-        {
-            get
-            {
-                return _componentOfOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _componentOfOfLayoutDivision, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _layoutUnitOfLayoutDivision = new(typeof(Terminal).GetProperty("layoutUnitOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> layoutUnitOfLayoutDivision
-        {
-            get
-            {
-                return _layoutUnitOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _layoutUnitOfLayoutDivision, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> _hasInfrastructureOfInfrastructure = new(typeof(Terminal).GetProperty("hasInfrastructureOfInfrastructure")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.Infrastructure> hasInfrastructureOfInfrastructure
-        {
-            get
-            {
-                return _hasInfrastructureOfInfrastructure;
-            }
-
-            set
-            {
-                base.SetValue(ref _hasInfrastructureOfInfrastructure, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.Terminal instance)
         {
             portFacilityNumber = instance.portFacilityNumber;
@@ -13885,134 +10892,6 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(TurningBasin).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _componentOfOfLayoutDivision = new(typeof(TurningBasin).GetProperty("componentOfOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision
-        {
-            get
-            {
-                return _componentOfOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _componentOfOfLayoutDivision, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.TurningBasin instance)
         {
             depthsDescription = new();
@@ -14305,134 +11184,6 @@ namespace S100Framework.WPF.ViewModel.S131
 
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> _controlAuthorityOfServiceControl = new(typeof(SupervisedArea).GetProperty("controlAuthorityOfServiceControl")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceControl> controlAuthorityOfServiceControl
-        {
-            get
-            {
-                return _controlAuthorityOfServiceControl;
-            }
-
-            set
-            {
-                base.SetValue(ref _controlAuthorityOfServiceControl, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> _theContactDetailsOfServiceContact = new(typeof(OrganizationContactArea).GetProperty("theContactDetailsOfServiceContact")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.ServiceContact> theContactDetailsOfServiceContact
-        {
-            get
-            {
-                return _theContactDetailsOfServiceContact;
-            }
-
-            set
-            {
-                base.SetValue(ref _theContactDetailsOfServiceContact, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> _permissionOfPermissionType = new(typeof(FeatureType).GetProperty("permissionOfPermissionType")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.PermissionType> permissionOfPermissionType
-        {
-            get
-            {
-                return _permissionOfPermissionType;
-            }
-
-            set
-            {
-                base.SetValue(ref _permissionOfPermissionType, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> _theRxNOfAssociatedRxN = new(typeof(FeatureType).GetProperty("theRxNOfAssociatedRxN")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AssociatedRxN> theRxNOfAssociatedRxN
-        {
-            get
-            {
-                return _theRxNOfAssociatedRxN;
-            }
-
-            set
-            {
-                base.SetValue(ref _theRxNOfAssociatedRxN, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> _providesInformationOfAdditionalInformation = new(typeof(FeatureType).GetProperty("providesInformationOfAdditionalInformation")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.AdditionalInformation> providesInformationOfAdditionalInformation
-        {
-            get
-            {
-                return _providesInformationOfAdditionalInformation;
-            }
-
-            set
-            {
-                base.SetValue(ref _providesInformationOfAdditionalInformation, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(FeatureType).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> _location_srvHrsOfLocationHours = new(typeof(WaterwayArea).GetProperty("location_srvHrsOfLocationHours")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S131.Associations.InformationAssociations.LocationHours> location_srvHrsOfLocationHours
-        {
-            get
-            {
-                return _location_srvHrsOfLocationHours;
-            }
-
-            set
-            {
-                base.SetValue(ref _location_srvHrsOfLocationHours, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> _componentOfOfLayoutDivision = new(typeof(WaterwayArea).GetProperty("componentOfOfLayoutDivision")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision
-        {
-            get
-            {
-                return _componentOfOfLayoutDivision;
-            }
-
-            set
-            {
-                base.SetValue(ref _componentOfOfLayoutDivision, value);
-            }
-        }
 
         public void Load(DomainModel.S131.FeatureTypes.WaterwayArea instance)
         {
@@ -14982,22 +11733,6 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        private FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(TextPlacement).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S131.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
-
         public void Load(DomainModel.S131.FeatureTypes.TextPlacement instance)
         {
             orientationValue = instance.orientationValue;
@@ -15033,5 +11768,1006 @@ namespace S100Framework.WPF.ViewModel.S131
         public TextPlacementViewModel(IViewModelHost? host = null) : base(host)
         {
         }
+    }
+
+    public class AdditionalInformationViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "AdditionalInformation";
+        public override string[] Roles => ["providesInformation", "informationProvidedFor"];
+
+        private InformationBinding? _providesInformation;
+        [ExpandableObject]
+        public InformationBinding? providesInformation
+        {
+            get { return _providesInformation; }
+            set { this.SetValue(ref _providesInformation, value); }
+        }
+        private InformationBinding? _informationProvidedFor;
+        [ExpandableObject]
+        public InformationBinding? informationProvidedFor
+        {
+            get { return _informationProvidedFor; }
+            set { this.SetValue(ref _informationProvidedFor, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => AdditionalInformationViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<InformationType>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<NauticalInformation>() {
+                    roleType = roleType.association,
+                    role = "informationProvidedFor",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(InformationType)],
+                },
+                new InformationAssociationConnector<FeatureType>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+            };
+    }
+
+    public class AuthorityContactViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "AuthorityContact";
+        public override string[] Roles => ["theAuthority", "theContactDetails"];
+
+        private InformationBinding? _theAuthority;
+        [ExpandableObject]
+        public InformationBinding? theAuthority
+        {
+            get { return _theAuthority; }
+            set { this.SetValue(ref _theAuthority, value); }
+        }
+        private InformationBinding? _theContactDetails;
+        [ExpandableObject]
+        public InformationBinding? theContactDetails
+        {
+            get { return _theContactDetails; }
+            set { this.SetValue(ref _theContactDetails, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<ContactDetails>() {
+                    roleType = roleType.association,
+                    role = "theAuthority",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+            };
+    }
+
+    public class AuthorityHoursViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "AuthorityHours";
+        public override string[] Roles => ["theAuthority_srvHrs", "theServiceHours"];
+
+        private InformationBinding? _theAuthority_srvHrs;
+        [ExpandableObject]
+        public InformationBinding? theAuthority_srvHrs
+        {
+            get { return _theAuthority_srvHrs; }
+            set { this.SetValue(ref _theAuthority_srvHrs, value); }
+        }
+        private InformationBinding? _theServiceHours;
+        [ExpandableObject]
+        public InformationBinding? theServiceHours
+        {
+            get { return _theServiceHours; }
+            set { this.SetValue(ref _theServiceHours, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "theServiceHours",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<ServiceHours>() {
+                    roleType = roleType.association,
+                    role = "theAuthority_srvHrs",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+            };
+    }
+
+    public class AssociatedRxNViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "AssociatedRxN";
+        public override string[] Roles => ["appliesInLocation", "theRxN"];
+
+        private InformationBinding? _appliesInLocation;
+        [ExpandableObject]
+        public InformationBinding? appliesInLocation
+        {
+            get { return _appliesInLocation; }
+            set { this.SetValue(ref _appliesInLocation, value); }
+        }
+        private InformationBinding? _theRxN;
+        [ExpandableObject]
+        public InformationBinding? theRxN
+        {
+            get { return _theRxN; }
+            set { this.SetValue(ref _theRxN, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => AssociatedRxNViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<FeatureType>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AbstractRxN)],
+                },
+            };
+    }
+
+    public class ExceptionalWorkdayViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "ExceptionalWorkday";
+        public override string[] Roles => ["theServiceHours_nsdy", "partialWorkingDay"];
+
+        private InformationBinding? _theServiceHours_nsdy;
+        [ExpandableObject]
+        public InformationBinding? theServiceHours_nsdy
+        {
+            get { return _theServiceHours_nsdy; }
+            set { this.SetValue(ref _theServiceHours_nsdy, value); }
+        }
+        private InformationBinding? _partialWorkingDay;
+        [ExpandableObject]
+        public InformationBinding? partialWorkingDay
+        {
+            get { return _partialWorkingDay; }
+            set { this.SetValue(ref _partialWorkingDay, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => ExceptionalWorkdayViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<ServiceHours>() {
+                    roleType = roleType.association,
+                    role = "partialWorkingDay",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NonStandardWorkingDay)],
+                },
+            };
+    }
+
+    public class ServiceControlViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "ServiceControl";
+        public override string[] Roles => ["controlledService", "controlAuthority"];
+
+        private InformationBinding? _controlledService;
+        [ExpandableObject]
+        public InformationBinding? controlledService
+        {
+            get { return _controlledService; }
+            set { this.SetValue(ref _controlledService, value); }
+        }
+        private InformationBinding? _controlAuthority;
+        [ExpandableObject]
+        public InformationBinding? controlAuthority
+        {
+            get { return _controlAuthority; }
+            set { this.SetValue(ref _controlAuthority, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => ServiceControlViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<SupervisedArea>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+            };
+    }
+
+    public class ServiceContactViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "ServiceContact";
+        public override string[] Roles => ["servicePlace", "theContactDetails"];
+
+        private InformationBinding? _servicePlace;
+        [ExpandableObject]
+        public InformationBinding? servicePlace
+        {
+            get { return _servicePlace; }
+            set { this.SetValue(ref _servicePlace, value); }
+        }
+        private InformationBinding? _theContactDetails;
+        [ExpandableObject]
+        public InformationBinding? theContactDetails
+        {
+            get { return _theContactDetails; }
+            set { this.SetValue(ref _theContactDetails, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => ServiceContactViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<OrganizationContactArea>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+            };
+    }
+
+    public class LocationHoursViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "LocationHours";
+        public override string[] Roles => ["location_srvHrs", "facilityOperatingHours"];
+
+        private InformationBinding? _location_srvHrs;
+        [ExpandableObject]
+        public InformationBinding? location_srvHrs
+        {
+            get { return _location_srvHrs; }
+            set { this.SetValue(ref _location_srvHrs, value); }
+        }
+        private InformationBinding? _facilityOperatingHours;
+        [ExpandableObject]
+        public InformationBinding? facilityOperatingHours
+        {
+            get { return _facilityOperatingHours; }
+            set { this.SetValue(ref _facilityOperatingHours, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => LocationHoursViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<AnchorageArea>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<DockArea>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<DryDock>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<DumpingGround>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<FloatingDock>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Gridiron>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<HarbourBasin>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<HarbourFacility>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<MooringWarpingFacility>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<PilotBoardingPlace>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<SeaplaneLandingArea>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<TurningBasin>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<WaterwayArea>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+            };
+    }
+
+    public class RelatedOrganisationViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "RelatedOrganisation";
+        public override string[] Roles => ["theInformation", "theOrganisation"];
+
+        private InformationBinding? _theInformation;
+        [ExpandableObject]
+        public InformationBinding? theInformation
+        {
+            get { return _theInformation; }
+            set { this.SetValue(ref _theInformation, value); }
+        }
+        private InformationBinding? _theOrganisation;
+        [ExpandableObject]
+        public InformationBinding? theOrganisation
+        {
+            get { return _theOrganisation; }
+            set { this.SetValue(ref _theOrganisation, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<AbstractRxN>() {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AbstractRxN)],
+                },
+            };
+    }
+
+    public class InclusionTypeViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "InclusionType";
+        public override string[] Roles => ["theApplicableRxN", "isApplicableTo"];
+
+        private InformationBinding? _theApplicableRxN;
+        [ExpandableObject]
+        public InformationBinding? theApplicableRxN
+        {
+            get { return _theApplicableRxN; }
+            set { this.SetValue(ref _theApplicableRxN, value); }
+        }
+        private InformationBinding? _isApplicableTo;
+        [ExpandableObject]
+        public InformationBinding? isApplicableTo
+        {
+            get { return _isApplicableTo; }
+            set { this.SetValue(ref _isApplicableTo, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => InclusionTypeViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<AbstractRxN>() {
+                    roleType = roleType.association,
+                    role = "isApplicableTo",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<Applicability>() {
+                    roleType = roleType.association,
+                    role = "theApplicableRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AbstractRxN)],
+                },
+            };
+    }
+
+    public class PermissionTypeViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "PermissionType";
+        public override string[] Roles => ["vslLocation", "permission"];
+
+        private InformationBinding? _vslLocation;
+        [ExpandableObject]
+        public InformationBinding? vslLocation
+        {
+            get { return _vslLocation; }
+            set { this.SetValue(ref _vslLocation, value); }
+        }
+        private InformationBinding? _permission;
+        [ExpandableObject]
+        public InformationBinding? permission
+        {
+            get { return _permission; }
+            set { this.SetValue(ref _permission, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => PermissionTypeViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<Applicability>() {
+                    roleType = roleType.association,
+                    role = "vslLocation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(InformationType)],
+                },
+                new InformationAssociationConnector<FeatureType>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+            };
+    }
+
+    public class SpatialAssociationViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "SpatialAssociation";
+        public override string[] Roles => ["defines", "definedFor"];
+
+        private InformationBinding? _defines;
+        [ExpandableObject]
+        public InformationBinding? defines
+        {
+            get { return _defines; }
+            set { this.SetValue(ref _defines, value); }
+        }
+        private InformationBinding? _definedFor;
+        [ExpandableObject]
+        public InformationBinding? definedFor
+        {
+            get { return _definedFor; }
+            set { this.SetValue(ref _definedFor, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => SpatialAssociationViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+            };
+    }
+
+    public class LimitEntranceViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "LimitEntrance";
+        public override string[] Roles => ["entranceTo", "entranceReference"];
+
+        private InformationBinding? _entranceTo;
+        [ExpandableObject]
+        public InformationBinding? entranceTo
+        {
+            get { return _entranceTo; }
+            set { this.SetValue(ref _entranceTo, value); }
+        }
+        private InformationBinding? _entranceReference;
+        [ExpandableObject]
+        public InformationBinding? entranceReference
+        {
+            get { return _entranceReference; }
+            set { this.SetValue(ref _entranceReference, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => LimitEntranceViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<OuterLimit>() {
+                    roleType = roleType.association,
+                    role = "entranceReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Entrance)],
+                },
+            };
+    }
+
+    public class ServiceAvailabilityViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "ServiceAvailability";
+        public override string[] Roles => ["locationServed", "serviceDescriptionReference"];
+
+        private InformationBinding? _locationServed;
+        [ExpandableObject]
+        public InformationBinding? locationServed
+        {
+            get { return _locationServed; }
+            set { this.SetValue(ref _locationServed, value); }
+        }
+        private InformationBinding? _serviceDescriptionReference;
+        [ExpandableObject]
+        public InformationBinding? serviceDescriptionReference
+        {
+            get { return _serviceDescriptionReference; }
+            set { this.SetValue(ref _serviceDescriptionReference, value); }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => ServiceAvailabilityViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<DockArea>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<MooringWarpingFacility>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+            };
+    }
+
+    public class TextAssociationViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "TextAssociation";
+        public override string[] Roles => ["identifies", "positions"];
+
+        private FeatureBinding? _identifies;
+        [ExpandableObject]
+        public FeatureBinding? identifies
+        {
+            get { return _identifies; }
+            set { this.SetValue(ref _identifies, value); }
+        }
+        private FeatureBinding? _positions;
+        [ExpandableObject]
+        public FeatureBinding? positions
+        {
+            get { return _positions; }
+            set { this.SetValue(ref _positions, value); }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<FeatureType>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<TextPlacement>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(FeatureType)],
+                },
+            };
+    }
+
+    public class SubsectionViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "Subsection";
+        public override string[] Roles => ["subUnit", "constitute"];
+
+        private FeatureBinding? _subUnit;
+        [ExpandableObject]
+        public FeatureBinding? subUnit
+        {
+            get { return _subUnit; }
+            set { this.SetValue(ref _subUnit, value); }
+        }
+        private FeatureBinding? _constitute;
+        [ExpandableObject]
+        public FeatureBinding? constitute
+        {
+            get { return _constitute; }
+            set { this.SetValue(ref _constitute, value); }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => SubsectionViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.aggregation,
+                    role = "constitute",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "subUnit",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+            };
+    }
+
+    public class InfrastructureViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "Infrastructure";
+        public override string[] Roles => ["infrastructureLocation", "hasInfrastructure"];
+
+        private FeatureBinding? _infrastructureLocation;
+        [ExpandableObject]
+        public FeatureBinding? infrastructureLocation
+        {
+            get { return _infrastructureLocation; }
+            set { this.SetValue(ref _infrastructureLocation, value); }
+        }
+        private FeatureBinding? _hasInfrastructure;
+        [ExpandableObject]
+        public FeatureBinding? hasInfrastructure
+        {
+            get { return _hasInfrastructure; }
+            set { this.SetValue(ref _hasInfrastructure, value); }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => InfrastructureViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<HarbourPhysicalInfrastructure>() {
+                    roleType = roleType.association,
+                    role = "infrastructureLocation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection),typeof(Terminal)],
+                },
+                new FeatureAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "hasInfrastructure",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(HarbourPhysicalInfrastructure)],
+                },
+                new FeatureAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "hasInfrastructure",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(HarbourPhysicalInfrastructure)],
+                },
+            };
+    }
+
+    public class PrimaryAuxiliaryFacilityViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "PrimaryAuxiliaryFacility";
+        public override string[] Roles => ["primaryFacility", "auxiliaryFacility"];
+
+        private FeatureBinding? _primaryFacility;
+        [ExpandableObject]
+        public FeatureBinding? primaryFacility
+        {
+            get { return _primaryFacility; }
+            set { this.SetValue(ref _primaryFacility, value); }
+        }
+        private FeatureBinding? _auxiliaryFacility;
+        [ExpandableObject]
+        public FeatureBinding? auxiliaryFacility
+        {
+            get { return _auxiliaryFacility; }
+            set { this.SetValue(ref _auxiliaryFacility, value); }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => PrimaryAuxiliaryFacilityViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "auxiliaryFacility",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(MooringWarpingFacility)],
+                },
+                new FeatureAssociationConnector<BerthPosition>() {
+                    roleType = roleType.association,
+                    role = "auxiliaryFacility",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(MooringWarpingFacility)],
+                },
+                new FeatureAssociationConnector<MooringWarpingFacility>() {
+                    roleType = roleType.association,
+                    role = "primaryFacility",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AnchorBerth),typeof(BerthPosition)],
+                },
+            };
+    }
+
+    public class DemarcationViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "Demarcation";
+        public override string[] Roles => ["demarcationIndicator", "demarcatedFeature"];
+
+        private FeatureBinding? _demarcationIndicator;
+        [ExpandableObject]
+        public FeatureBinding? demarcationIndicator
+        {
+            get { return _demarcationIndicator; }
+            set { this.SetValue(ref _demarcationIndicator, value); }
+        }
+        private FeatureBinding? _demarcatedFeature;
+        [ExpandableObject]
+        public FeatureBinding? demarcatedFeature
+        {
+            get { return _demarcatedFeature; }
+            set { this.SetValue(ref _demarcatedFeature, value); }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => DemarcationViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "demarcationIndicator",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(BerthPosition)],
+                },
+                new FeatureAssociationConnector<BerthPosition>() {
+                    roleType = roleType.composition,
+                    role = "demarcatedFeature",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Berth)],
+                },
+            };
+    }
+
+    public class JurisdictionalLimitViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "JurisdictionalLimit";
+        public override string[] Roles => ["limitReference", "limitExtent"];
+
+        private FeatureBinding? _limitReference;
+        [ExpandableObject]
+        public FeatureBinding? limitReference
+        {
+            get { return _limitReference; }
+            set { this.SetValue(ref _limitReference, value); }
+        }
+        private FeatureBinding? _limitExtent;
+        [ExpandableObject]
+        public FeatureBinding? limitExtent
+        {
+            get { return _limitExtent; }
+            set { this.SetValue(ref _limitExtent, value); }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => JurisdictionalLimitViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "limitExtent",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(OuterLimit)],
+                },
+                new FeatureAssociationConnector<OuterLimit>() {
+                    roleType = roleType.association,
+                    role = "limitReference",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaAdministrative)],
+                },
+            };
+    }
+
+    public class LayoutDivisionViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "LayoutDivision";
+        public override string[] Roles => ["layoutUnit", "componentOf"];
+
+        private FeatureBinding? _layoutUnit;
+        [ExpandableObject]
+        public FeatureBinding? layoutUnit
+        {
+            get { return _layoutUnit; }
+            set { this.SetValue(ref _layoutUnit, value); }
+        }
+        private FeatureBinding? _componentOf;
+        [ExpandableObject]
+        public FeatureBinding? componentOf
+        {
+            get { return _componentOf; }
+            set { this.SetValue(ref _componentOf, value); }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => LayoutDivisionViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<AnchorageArea>() {
+                    roleType = roleType.aggregation,
+                    role = "componentOf",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<Berth>() {
+                    roleType = roleType.aggregation,
+                    role = "componentOf",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection),typeof(Terminal)],
+                },
+                new FeatureAssociationConnector<DockArea>() {
+                    roleType = roleType.aggregation,
+                    role = "componentOf",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<DumpingGround>() {
+                    roleType = roleType.aggregation,
+                    role = "componentOf",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "layoutUnit",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.aggregation,
+                    role = "componentOf",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaAdministrative)],
+                },
+                new FeatureAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "layoutUnit",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AnchorageArea),typeof(Berth),typeof(DockArea),typeof(DumpingGround),typeof(HarbourBasin),typeof(PilotBoardingPlace),typeof(SeaplaneLandingArea),typeof(Terminal),typeof(TurningBasin),typeof(WaterwayArea)],
+                },
+                new FeatureAssociationConnector<HarbourBasin>() {
+                    roleType = roleType.aggregation,
+                    role = "componentOf",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<PilotBoardingPlace>() {
+                    roleType = roleType.aggregation,
+                    role = "componentOf",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<SeaplaneLandingArea>() {
+                    roleType = roleType.aggregation,
+                    role = "componentOf",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<Terminal>() {
+                    roleType = roleType.aggregation,
+                    role = "componentOf",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "layoutUnit",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Berth)],
+                },
+                new FeatureAssociationConnector<TurningBasin>() {
+                    roleType = roleType.aggregation,
+                    role = "componentOf",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<WaterwayArea>() {
+                    roleType = roleType.aggregation,
+                    role = "componentOf",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+            };
     }
 }

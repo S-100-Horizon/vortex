@@ -1,8 +1,4 @@
-﻿using System;
-using System.Linq;
-using System.ComponentModel;
-
-namespace S100Framework.DomainModel
+﻿namespace S100Framework.DomainModel
 {
 
     [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = false)]
@@ -12,8 +8,7 @@ namespace S100Framework.DomainModel
 
         public string PropertyName => _propertyName;
 
-        public CodeListAttribute(string propertyName)
-        {
+        public CodeListAttribute(string propertyName) {
             _propertyName = propertyName;
         }
     }
@@ -26,8 +21,7 @@ namespace S100Framework.DomainModel
 
         public string RoleName => _roleName;
 
-        public RoleAttribute(string roleName)
-        {
+        public RoleAttribute(string roleName) {
             _roleName = roleName;
         }
     }
@@ -44,8 +38,7 @@ namespace S100Framework.DomainModel
     {
         private Type _informationType;
         public Type informationType => _informationType;
-        public InformationTypeAttribute(Type informationType)
-        {
+        public InformationTypeAttribute(Type informationType) {
             _informationType = informationType;
         }
     }
@@ -56,15 +49,13 @@ namespace S100Framework.DomainModel
     {
         private Type _featureType;
         public Type FeatureType => _featureType;
-        public FeatureTypeAttribute(Type featureType)
-        {
+        public FeatureTypeAttribute(Type featureType) {
             _featureType = featureType;
         }
     }
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationAssociation
     {
         public abstract string Code { get; }
@@ -73,7 +64,6 @@ namespace S100Framework.DomainModel
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureAssociation
     {
         public abstract string Code { get; }
@@ -82,7 +72,6 @@ namespace S100Framework.DomainModel
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationTypeBase
     {
         public virtual string Code => string.Empty;
@@ -90,7 +79,6 @@ namespace S100Framework.DomainModel
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureTypeBase
     {
         public virtual string Code => string.Empty;
