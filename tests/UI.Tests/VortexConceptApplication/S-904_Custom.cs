@@ -6,160 +6,202 @@ using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S201.FeatureTypes;
 using S100Framework.WPF.ViewModel.S101;
 using System.ComponentModel;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using Xceed.Wpf.Toolkit.PropertyGrid;
+using System.Runtime.CompilerServices;
+using System.CodeDom;
 
 namespace S100Framework.WPF.ViewModel.S903
 {
     public abstract class S100_FC_FeatureAssociation
     {
         public abstract string Code { get; }
+
+        [Browsable(false)]
         public abstract string[] Roles { get; }
 
-        public abstract S100_FC_AssociationEndpointDescriptor[] associationDescriptors { get; }
+        [Browsable(false)]
+        public abstract S100_FC_AssociationConnector[] associationConnectors { get; }
     }
 
-    public abstract class S100_FC_AssociationEndpointDescriptor
+    public abstract class S100_FC_AssociationConnector
     {
         public roleType roleType { get; set; }
 
         public string role { get; set; }
 
         [Browsable(false)]
-        public Type[] FeatureTypes { get; set; }
+        public Type[] AssociationTypes { get; set; } = [];
 
         [PropertyOrder(1)]
-        public abstract int Lower { get; }
+        public int Lower { get; set; } = 0;
 
         [PropertyOrder(2)]
-        public abstract int? Upper { get; }
-
-    }
-
-    public abstract class S100_FC_AssociationEndpointDescriptor<T> : S100_FC_AssociationEndpointDescriptor where T : FeatureTypeBase
-    {
-    }
-
-    public class S100_FC_S100_FC_AssociationEndpointSingleDescriptor<T> : S100_FC_AssociationEndpointDescriptor<T> where T : FeatureTypeBase
-    {
-        public string RefId { get; set; }
-
-        public override int Lower => 1;
-
-        public override int? Upper => 1;
-    }
-
-    public class S100_FC_S100_FC_AssociationEndpointOptionalDescriptor<T> : S100_FC_AssociationEndpointDescriptor<T> where T : FeatureTypeBase
-    {
-        public string? RefId { get; set; } = default;
-
-        public override int Lower => 0;
-
-        public override int? Upper => 1;
-    }
-
-    public class S100_FC_S100_FC_AssociationEndpointMultiDescriptor<T> : S100_FC_AssociationEndpointDescriptor<T> where T : FeatureTypeBase
-    {
-        private int _lower;
-        private int? _upper;
-
-        public S100_FC_S100_FC_AssociationEndpointMultiDescriptor(int lower, int? upper = default) {
-            _lower = lower;
-            _upper = upper;
-        }
-
-        public List<string> RefId { get; set; } = new();
-
-        public override int Lower => _lower;
-
-        public override int? Upper => _upper;
-    }
-
-
-
-    public class S100_FC_FeatureBinding
-    {
-        public roleType roleType { get; set; }
-        public int Lower { get; set; }
         public int? Upper { get; set; } = default;
 
-        public string Role { get; set; }
+        public abstract Type FeatureType { get; }
+    }
 
-        public Type[] FeatureTypes { get; set; }
+    public class S100_FC_AssociationConnector<T> : S100_FC_AssociationConnector where T : FeatureTypeBase
+    {
+        public override Type FeatureType => typeof(T);
+
+        public string DisplayName => $"{typeof(T).Name}, {base.role}";
+    }
+
+    public abstract class S100_FC_FeatureBinding
+    {
+        [Browsable(false)]
+        public Type[] FeatureTypes { get; set; } = [];
+    }
+
+    public class S100_FC_FeatureBindingSingle : S100_FC_FeatureBinding
+    {
+        public string RefId { get; set; } = string.Empty;
+    }
+
+    public class S100_FC_FeatureBindingOptional : S100_FC_FeatureBinding
+    {
+        public string? RefId { get; set; } = default;
+    }
+
+    public class S100_FC_FeatureBindingMulti : S100_FC_FeatureBinding
+    {
+        public List<string> RefIds { get; set; } = new List<string>();
     }
 
 
-    public abstract class S100_FC_AssociationEndpoint
+    public sealed class FeatureBindingEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var viewModel = (S100_FC_FeatureAssociation)propertyItem.Instance;
+
+            var comboBox = new ComboBox {
+                Name = $"_comboBox{Guid.NewGuid():N}",
+                DisplayMemberPath = "DisplayName",
+            };
+
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.associationConnectors, Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            //TODO: Dynamic read value from instance!!!!
+            //comboBox.SelectedIndex = 0;
+            return comboBox;
+        }
     }
 
-    public class S100_FC_AssociationEndpoint<T> : S100_FC_AssociationEndpoint where T : FeatureTypeBase
+    public class IslandAggregation : S100_FC_FeatureAssociation, INotifyPropertyChanged
     {
-        public Type FeatureType => typeof(T);
+        public event PropertyChangedEventHandler? PropertyChanged;
 
-        //RefID
-    }
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
 
-    public class IslandAggregation : S100_FC_FeatureAssociation
-    {
+        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            if (string.IsNullOrWhiteSpace(propertyName)) return;
+
+            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
+            backingFiled = value;
+            OnPropertyChanged(propertyName);
+        }
+
+        [PropertyOrder(0)]
         public override string Code => "IslandAggregation";
 
         public override string[] Roles => ["theCollection", "theComponent"];
 
-        //public S100_FC_FeatureBinding[] theCollection => new S100_FC_FeatureBinding[] { 
-        //    new S100_FC_FeatureBinding {
-        //        Lower = 0,
-        //        Upper = 1,
-        //        Role = "theCollection",
-        //        FeatureType = typeof(LandArea),
-        //    },
-        //    new S100_FC_FeatureBinding {
-        //        Lower = 0,
-        //        Upper = 1,
-        //        Role = "theCollection",
-        //        FeatureType = typeof(IslandGroup),
-        //    },
-        //};
+        private S100_FC_AssociationConnector? _associationConnector;
 
-        //public S100_FC_FeatureBinding[] theComponent => new S100_FC_FeatureBinding[] {
-        //    new S100_FC_FeatureBinding {
-        //        Lower = 0,
-        //        Upper = default,
-        //        Role = "theComponent",
-        //        FeatureType = typeof(IslandGroup),
-        //    },
-        //};
+        [Editor(typeof(FeatureBindingEditor), typeof(FeatureBindingEditor))]
+        [ExpandableObject]
+        public S100_FC_AssociationConnector? associationConnector {
+            get { return _associationConnector; }
+            set {
+                this.SetValue(ref _associationConnector, value);
 
-        //public Type[] theCollections => [typeof(IslandGroup)];
+                theCollection = null;
+                theComponent = null;
 
-        //public Type[] theComponents => [typeof(LandArea),typeof(IslandGroup)];
+                theComponent = value?.role switch {
+                    "theCollection" => new S100_FC_FeatureBindingMulti() {
+                        FeatureTypes = value.AssociationTypes,
+                    },
+                    "theComponent" => new S100_FC_FeatureBindingSingle() {
+                        FeatureTypes = [value.FeatureType],
+                    },
+                    _ => null,
+                };
+
+                theCollection = value?.role switch {
+                    "theCollection" => new S100_FC_FeatureBindingSingle() {
+                        FeatureTypes = [value.FeatureType]
+                    },
+                    "theComponent" => new S100_FC_FeatureBindingOptional() {
+                        FeatureTypes = value.AssociationTypes,
+                    },
+                    _ => null,
+                };                
+            }
+        }
+
+        private S100_FC_FeatureBinding? _theComponent;
 
         [ExpandableObject]
-        public S100_FC_AssociationEndpoint? theComponent { get; set; } = default;
+        public S100_FC_FeatureBinding? theComponent {
+            get { return _theComponent; }
+            set { this.SetValue(ref _theComponent, value); }
+        }
+
+        private S100_FC_FeatureBinding? _theCollection;
 
         [ExpandableObject]
-        public S100_FC_AssociationEndpoint? theCollection { get; set; } = default;
+        public S100_FC_FeatureBinding? theCollection {
+            get { return _theCollection; }
+            set { this.SetValue(ref _theCollection, value); }
+        }
 
+        public override S100_FC_AssociationConnector[] associationConnectors => IslandAggregation._associationConnectors;
 
-        public override S100_FC_AssociationEndpointDescriptor[] associationDescriptors => new S100_FC_AssociationEndpointDescriptor[] {
-            new S100_FC_S100_FC_AssociationEndpointOptionalDescriptor<LandArea>() {
+        public static S100_FC_AssociationConnector[] _associationConnectors => new S100_FC_AssociationConnector[] {
+            new S100_FC_AssociationConnector<LandArea>() {
                 roleType = roleType.aggregation,
-                role = nameof(theCollection),
-                FeatureTypes = [typeof(IslandGroup)],
+                role = "theCollection",
+                AssociationTypes = [typeof(IslandGroup)],
+                Lower = 0,
+                Upper = 1,
             },
-            new S100_FC_S100_FC_AssociationEndpointOptionalDescriptor<IslandGroup>() {
+            new S100_FC_AssociationConnector<IslandGroup>() {
                 roleType = roleType.aggregation,
-                role = nameof(theCollection),
-                FeatureTypes = [typeof(IslandGroup)],
+                role = "theCollection",
+                AssociationTypes = [typeof(IslandGroup)],
+                Lower = 0,
+                Upper = 1,
             },
-            new S100_FC_S100_FC_AssociationEndpointOptionalDescriptor<IslandGroup>() {
+            new S100_FC_AssociationConnector<IslandGroup>() {
                 roleType = roleType.association,
-                role = nameof(theComponent),
-                FeatureTypes = [typeof(LandArea),typeof(IslandGroup)],
+                role = "theComponent",
+                AssociationTypes = [typeof(LandArea),typeof(IslandGroup)],
+                Lower = 0,
+                Upper = default,
             },
         };
 
         public static IslandAggregation TestIslandGroup => new IslandAggregation() {
+            //theComponentConnector = _associationConnectors[2],
+            //theComponent = new S100_FC_FeatureBindingMulti<LandArea>() {
 
+            //},
+            //theCollectionConnector = _associationConnectors[0],
+            //theCollection = new S100_FC_FeatureBindingOptional<IslandGroup>() {
+
+            //},
         };
 
         /*

@@ -3,6 +3,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Formatting;
 using Pluralize.NET.Core;
+using System.Net;
 using System.Reflection;
 using System.Reflection.Emit;
 using System.Text;
@@ -76,7 +77,7 @@ namespace S100Framework
             viewBuilder.AppendLine("using System.Collections.ObjectModel;");
             viewBuilder.AppendLine("using System.Reflection;");
             viewBuilder.AppendLine("using S100Framework.DomainModel;");
-            viewBuilder.AppendLine("using S100Framework.DomainModel.Bindings;");
+            //viewBuilder.AppendLine("using S100Framework.DomainModel.Bindings;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId};");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.ComplexAttributes;");
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.InformationTypes;");
@@ -705,19 +706,9 @@ namespace S100Framework
 
                             classBuilder.AppendLine($"\t\t\tpublic Type[] {p} => [{string.Join(',',refTypes)}];");
                         }
-
                         
                         classBuilder.AppendLine($"");
                         classBuilder.AppendLine($"");
-
-
-                        /*
-                                public Type[] theCollections => [typeof(IslandGroup)];
-
-                                public Type[] theComponents => [typeof(LandArea),typeof(IslandGroup)];
-                         */
-
-                        //                        classBuilder.AppendLine($"\t\t\tpublic static Role[] Roles => new[]{{{roles}}};");
 
                         var constructorBuilder = new StringBuilder();
 
@@ -774,11 +765,7 @@ namespace S100Framework
 
                         classBuilder.Insert(constructor, constructorBuilder.ToString());
 
-                        dictionaryTypes.Add($"{code}", bindingType);
-
-                        //dictionaryTypes.Add($"{code}?", GetNullableType(bindingType));
-
-                        //dictionaryTypes.Add($"List<{code}>", typeof(List<>).MakeGenericType(bindingType));
+                        dictionaryTypes.Add($"{code}", bindingType);                                               
                     }
 
                     classBuilder.AppendLine("\t\t}");
@@ -793,9 +780,6 @@ namespace S100Framework
                 classBuilder.AppendLine("\t}");
             }
 
-            //var informationBindings = new Dictionary<string, string>();
-            //var featureBindings = new Dictionary<string, string>();
-
             var informationBindingTypes = new List<string>();
             var featureBindingTypes = new List<string>();
 
@@ -804,7 +788,7 @@ namespace S100Framework
             classBuilder.AppendLine("\t{");
             classBuilder.AppendLine("\t\tusing ComplexAttributes;");
             classBuilder.AppendLine("\t\tusing DomainModel;");
-            classBuilder.AppendLine("\t\tusing S100Framework.DomainModel.Bindings;");
+            //classBuilder.AppendLine("\t\tusing S100Framework.DomainModel.Bindings;");
             classBuilder.AppendLine();
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationType", xmlNamespaceManager);
@@ -905,52 +889,52 @@ namespace S100Framework
 
                         classBuilder.AppendLine(BuildClass(code, informationType, xmlNamespace, "S100Framework.DomainModel.InformationType", (builder) => {
                             //  informationBinding
-                            foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
-                                var roleType = informationBinding.Attribute("roleType")!.Value;
+                            //foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
+                            //    var roleType = informationBinding.Attribute("roleType")!.Value;
 
-                                var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value!;
-                                var role = informationBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value!;
+                            //    var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value!;
+                            //    var role = informationBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value!;
 
-                                var lower = int.Parse(informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                                var upper = informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                            //    var lower = int.Parse(informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                            //    var upper = informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
 
-                                var u = int.MaxValue;
-                                if (!(upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true"))) {
-                                    u = int.Parse(upper!.Value);
-                                }
+                            //    var u = int.MaxValue;
+                            //    if (!(upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true"))) {
+                            //        u = int.Parse(upper!.Value);
+                            //    }
 
-                                var informationTypeRefs = informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"typeof({e.Attribute("ref")!.Value})").ToArray();
+                            //    var informationTypeRefs = informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"typeof({e.Attribute("ref")!.Value})").ToArray();
 
-                                informationBindingsList.Add($"new InformationBindingDescriptor<Associations.InformationAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', informationTypeRefs)}])");
+                            //    informationBindingsList.Add($"new InformationBindingDescriptor<Associations.InformationAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', informationTypeRefs)}])");
 
-                                var prefix = lower > 0 ? $"informationBinding<Associations.InformationAssociations.{association}>" : $"informationBinding<Associations.InformationAssociations.{association}>?";
-                                var postfix = "";
-                                if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
-                                    prefix = $"List<informationBinding<Associations.InformationAssociations.{association}>>";
-                                    postfix = " = [];";
-                                }
+                            //    var prefix = lower > 0 ? $"informationBinding<Associations.InformationAssociations.{association}>" : $"informationBinding<Associations.InformationAssociations.{association}>?";
+                            //    var postfix = "";
+                            //    if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
+                            //        prefix = $"List<informationBinding<Associations.InformationAssociations.{association}>>";
+                            //        postfix = " = [];";
+                            //    }
 
-                                foreach (var f in informationTypeRefs) {
-                                    builder.AppendLine($"\t\t\t[InformationType({f})]");
-                                }
+                            //    foreach (var f in informationTypeRefs) {
+                            //        builder.AppendLine($"\t\t\t[InformationType({f})]");
+                            //    }
 
-                                builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");
+                            //    builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");
 
-                                viewModelBindingBuilder.AppendLine($"\t\t\tprivate InformationBindingViewModel<DomainModel.{productId}.Associations.InformationAssociations.{association}> _{role!}Of{association!} = new(typeof({code}).GetProperty(\"{role!}Of{association!}\")!.GetCustomAttributes<InformationTypeAttribute>());");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\tprivate InformationBindingViewModel<DomainModel.{productId}.Associations.InformationAssociations.{association}> _{role!}Of{association!} = new(typeof({code}).GetProperty(\"{role!}Of{association!}\")!.GetCustomAttributes<InformationTypeAttribute>());");
 
-                                viewModelBindingBuilder.AppendLine("\t\t\t[Category(\"InformationBindings\")]");
-                                viewModelBindingBuilder.AppendLine("\t\t\t[ExpandableObject]");
-                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<DomainModel.{productId}.Associations.InformationAssociations.{association}> {role!}Of{association!} {{");
-                                viewModelBindingBuilder.AppendLine($"\t\t\t\tget {{ return _{role!}Of{association!}; }}");
-                                viewModelBindingBuilder.AppendLine($"\t\t\t\tset {{ base.SetValue(ref _{role!}Of{association!}, value); }}");
-                                viewModelBindingBuilder.AppendLine("\t\t\t}");
-                            }
+                            //    viewModelBindingBuilder.AppendLine("\t\t\t[Category(\"InformationBindings\")]");
+                            //    viewModelBindingBuilder.AppendLine("\t\t\t[ExpandableObject]");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<DomainModel.{productId}.Associations.InformationAssociations.{association}> {role!}Of{association!} {{");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\t\tget {{ return _{role!}Of{association!}; }}");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\t\tset {{ base.SetValue(ref _{role!}Of{association!}, value); }}");
+                            //    viewModelBindingBuilder.AppendLine("\t\t\t}");
+                            //}
 
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
-                            if (informationBindingsList.Any()) {
-                                informationBindingTypes.Add(code);
-                            }
+                            //if (informationBindingsList.Any()) {
+                            //    informationBindingTypes.Add(code);
+                            //}
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
@@ -997,7 +981,7 @@ namespace S100Framework
             classBuilder.AppendLine("\t\tusing ComplexAttributes;");
             classBuilder.AppendLine("\t\tusing InformationTypes;");
             classBuilder.AppendLine("\t\tusing DomainModel;");
-            classBuilder.AppendLine("\t\tusing S100Framework.DomainModel.Bindings;");
+            //classBuilder.AppendLine("\t\tusing S100Framework.DomainModel.Bindings;");
             classBuilder.AppendLine();
             {
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
@@ -1099,100 +1083,100 @@ namespace S100Framework
 
                         classBuilder.AppendLine(BuildClass(code, featureType, xmlNamespace, "S100Framework.DomainModel.FeatureType", (builder) => {
                             //  informationBinding
-                            foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
-                                var roleType = informationBinding.Attribute("roleType")!.Value;
+                            //foreach (var informationBinding in e.XPathSelectElements("S100FC:informationBinding", xmlNamespaceManager)) {
+                            //    var roleType = informationBinding.Attribute("roleType")!.Value;
 
-                                var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value!;
-                                var role = informationBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value!;
+                            //    var association = informationBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value!;
+                            //    var role = informationBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value!;
 
-                                var lower = int.Parse(informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                                var upper = informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                            //    var lower = int.Parse(informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                            //    var upper = informationBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
 
-                                var u = int.MaxValue;
-                                if (!(upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true"))) {
-                                    u = int.Parse(upper!.Value);
-                                }
+                            //    var u = int.MaxValue;
+                            //    if (!(upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true"))) {
+                            //        u = int.Parse(upper!.Value);
+                            //    }
 
-                                var informationTypeRefs = informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"typeof({e.Attribute("ref")!.Value})").ToArray();
+                            //    var informationTypeRefs = informationBinding.Elements(XName.Get("informationType", scope_S100)).Select(e => $"typeof({e.Attribute("ref")!.Value})").ToArray();
 
-                                informationBindingsList.Add($"new InformationBindingDescriptor<Associations.InformationAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', informationTypeRefs)}])");
+                            //    informationBindingsList.Add($"new InformationBindingDescriptor<Associations.InformationAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', informationTypeRefs)}])");
 
-                                var prefix = lower > 0 ? $"informationBinding<Associations.InformationAssociations.{association}>" : $"informationBinding<Associations.InformationAssociations.{association}>?";
-                                var postfix = "";
-                                if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
-                                    prefix = $"List<informationBinding<Associations.InformationAssociations.{association}>>";
-                                    postfix = " = [];";
-                                }
+                            //    var prefix = lower > 0 ? $"informationBinding<Associations.InformationAssociations.{association}>" : $"informationBinding<Associations.InformationAssociations.{association}>?";
+                            //    var postfix = "";
+                            //    if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
+                            //        prefix = $"List<informationBinding<Associations.InformationAssociations.{association}>>";
+                            //        postfix = " = [];";
+                            //    }
 
-                                foreach (var f in informationTypeRefs) {
-                                    builder.AppendLine($"\t\t\t[InformationType({f})]");
-                                }
+                            //    foreach (var f in informationTypeRefs) {
+                            //        builder.AppendLine($"\t\t\t[InformationType({f})]");
+                            //    }
 
-                                builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");
+                            //    builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");
 
-                                viewModelBindingBuilder.AppendLine($"\t\t\tprivate InformationBindingViewModel<DomainModel.{productId}.Associations.InformationAssociations.{association}> _{role!}Of{association!} = new(typeof({code}).GetProperty(\"{role!}Of{association!}\")!.GetCustomAttributes<InformationTypeAttribute>());");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\tprivate InformationBindingViewModel<DomainModel.{productId}.Associations.InformationAssociations.{association}> _{role!}Of{association!} = new(typeof({code}).GetProperty(\"{role!}Of{association!}\")!.GetCustomAttributes<InformationTypeAttribute>());");
 
-                                viewModelBindingBuilder.AppendLine("\t\t\t[Category(\"InformationBindings\")]");
-                                viewModelBindingBuilder.AppendLine("\t\t\t[ExpandableObject]");
-                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<DomainModel.{productId}.Associations.InformationAssociations.{association}> {role!}Of{association!} {{");
-                                viewModelBindingBuilder.AppendLine($"\t\t\t\tget {{ return _{role!}Of{association!}; }}");
-                                viewModelBindingBuilder.AppendLine($"\t\t\t\tset {{ base.SetValue(ref _{role!}Of{association!}, value); }}");
-                                viewModelBindingBuilder.AppendLine("\t\t\t}");
-                            }
+                            //    viewModelBindingBuilder.AppendLine("\t\t\t[Category(\"InformationBindings\")]");
+                            //    viewModelBindingBuilder.AppendLine("\t\t\t[ExpandableObject]");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel<DomainModel.{productId}.Associations.InformationAssociations.{association}> {role!}Of{association!} {{");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\t\tget {{ return _{role!}Of{association!}; }}");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\t\tset {{ base.SetValue(ref _{role!}Of{association!}, value); }}");
+                            //    viewModelBindingBuilder.AppendLine("\t\t\t}");
+                            //}
 
                             //  featureBinding
-                            foreach (var featureBinding in e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
-                                var roleType = featureBinding.Attribute("roleType")!.Value;
+                            //foreach (var featureBinding in e.XPathSelectElements("S100FC:featureBinding", xmlNamespaceManager)) {
+                            //    var roleType = featureBinding.Attribute("roleType")!.Value;
 
-                                //var featureTypeRef = featureBinding.Element(XName.Get("featureType", scope_S100))!.Attribute("ref")!.Value!;
-                                var association = featureBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value!;
-                                var role = featureBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value!;
+                            //    //var featureTypeRef = featureBinding.Element(XName.Get("featureType", scope_S100))!.Attribute("ref")!.Value!;
+                            //    var association = featureBinding.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value!;
+                            //    var role = featureBinding.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value!;
 
-                                var lower = int.Parse(featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
-                                var upper = featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                            //    var lower = int.Parse(featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                            //    var upper = featureBinding.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
 
-                                var u = int.MaxValue;
-                                if (!(upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true"))) {
-                                    u = int.Parse(upper!.Value);
-                                }
+                            //    var u = int.MaxValue;
+                            //    if (!(upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true"))) {
+                            //        u = int.Parse(upper!.Value);
+                            //    }
 
-                                var featureTypeRefs = featureBinding.Elements(XName.Get("featureType", scope_S100)).Select(e => $"typeof({e.Attribute("ref")!.Value})").ToArray();
+                            //    var featureTypeRefs = featureBinding.Elements(XName.Get("featureType", scope_S100)).Select(e => $"typeof({e.Attribute("ref")!.Value})").ToArray();
 
-                                featureBindingsList.Add($"new FeatureBindingDescriptor<Associations.FeatureAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', featureTypeRefs)}])");
+                            //    featureBindingsList.Add($"new FeatureBindingDescriptor<Associations.FeatureAssociations.{association}>(roleType.{roleType}, {lower}, {u}, Role.{role}.ToString(), [{string.Join(',', featureTypeRefs)}])");
 
-                                var prefix = lower > 0 ? $"featureBinding<Associations.FeatureAssociations.{association}>" : $"featureBinding<Associations.FeatureAssociations.{association}>?";
-                                var postfix = "";
-                                if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
-                                    prefix = $"List<featureBinding<Associations.FeatureAssociations.{association}>>";
-                                    postfix = " = [];";
-                                }
+                            //    var prefix = lower > 0 ? $"featureBinding<Associations.FeatureAssociations.{association}>" : $"featureBinding<Associations.FeatureAssociations.{association}>?";
+                            //    var postfix = "";
+                            //    if (upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true")) {
+                            //        prefix = $"List<featureBinding<Associations.FeatureAssociations.{association}>>";
+                            //        postfix = " = [];";
+                            //    }
 
-                                foreach (var f in featureTypeRefs) {
-                                    builder.AppendLine($"\t\t\t[FeatureType({f})]");
-                                }
+                            //    foreach (var f in featureTypeRefs) {
+                            //        builder.AppendLine($"\t\t\t[FeatureType({f})]");
+                            //    }
 
-                                builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");
+                            //    builder.AppendLine($"\t\t\tpublic {prefix} {role!}Of{association!} {{get; set; }}{postfix}");
 
-                                viewModelBindingBuilder.AppendLine($"\t\t\tprivate FeatureBindingViewModel<DomainModel.{productId}.Associations.FeatureAssociations.{association}> _{role!}Of{association!} = new(typeof({code}).GetProperty(\"{role!}Of{association!}\")!.GetCustomAttributes<FeatureTypeAttribute>());");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\tprivate FeatureBindingViewModel<DomainModel.{productId}.Associations.FeatureAssociations.{association}> _{role!}Of{association!} = new(typeof({code}).GetProperty(\"{role!}Of{association!}\")!.GetCustomAttributes<FeatureTypeAttribute>());");
 
-                                viewModelBindingBuilder.AppendLine("\t\t\t[Category(\"FeatureBindings\")]");
-                                viewModelBindingBuilder.AppendLine("\t\t\t[ExpandableObject]");
-                                //viewModelBindingBuilder.AppendLine($"\t\t\t[DisplayName({role})]");
-                                viewModelBindingBuilder.AppendLine($"\t\t\tpublic FeatureBindingViewModel<DomainModel.{productId}.Associations.FeatureAssociations.{association}> {role!}Of{association!} {{");
-                                viewModelBindingBuilder.AppendLine($"\t\t\t\tget {{ return _{role!}Of{association!}; }}");
-                                viewModelBindingBuilder.AppendLine($"\t\t\t\tset {{ base.SetValue(ref _{role!}Of{association!}, value); }}");
-                                viewModelBindingBuilder.AppendLine("\t\t\t}");
-                            }
+                            //    viewModelBindingBuilder.AppendLine("\t\t\t[Category(\"FeatureBindings\")]");
+                            //    viewModelBindingBuilder.AppendLine("\t\t\t[ExpandableObject]");
+                            //    //viewModelBindingBuilder.AppendLine($"\t\t\t[DisplayName({role})]");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\tpublic FeatureBindingViewModel<DomainModel.{productId}.Associations.FeatureAssociations.{association}> {role!}Of{association!} {{");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\t\tget {{ return _{role!}Of{association!}; }}");
+                            //    viewModelBindingBuilder.AppendLine($"\t\t\t\tset {{ base.SetValue(ref _{role!}Of{association!}, value); }}");
+                            //    viewModelBindingBuilder.AppendLine("\t\t\t}");
+                            //}
 
                             builder.AppendLine($"\t\t\tpublic override string Code => nameof({code});");
 
-                            if (informationBindingsList.Any()) {
-                                informationBindingTypes.Add(code);
-                            }
+                            //if (informationBindingsList.Any()) {
+                            //    informationBindingTypes.Add(code);
+                            //}
 
-                            if (featureBindingsList.Any()) {
-                                featureBindingTypes.Add(code);
-                            }
+                            //if (featureBindingsList.Any()) {
+                            //    featureBindingTypes.Add(code);
+                            //}
                         }));
 
                         if (!attributes.HasFlag(TypeAttributes.Abstract)) {
@@ -1235,6 +1219,68 @@ namespace S100Framework
             creatorBuilder.AppendLine("\t}");
 
             classBuilder.Insert(informationPosition, staticBuilder.ToString());
+
+            //  Associations
+            {
+
+
+                var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
+
+                foreach (var e in elements) {
+                    var name = e.Element(XName.Get("name", scope_S100))!.Value;
+                    var definition = e.Element(XName.Get("definition", scope_S100))!.Value;
+                    var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                    var roles = e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => e.Attribute("ref")!.Value);
+
+                    viewBuilder.AppendLine($"\t\tpublic class {code}ViewModel : FeatureAssociationViewModel {{");
+                    viewBuilder.AppendLine($"\t\t\tpublic override string Code => \"{code}\";");
+                    viewBuilder.AppendLine($"\t\t\tpublic override string[] Roles => [{string.Join(',',roles.Select(e=>$"\"{e}\""))}];");
+                    viewBuilder.AppendLine();
+
+                    foreach (var r in roles) {
+                        viewBuilder.AppendLine($"\t\t\tprivate FeatureBinding? _{r};");
+                        viewBuilder.AppendLine($"\t\t\t[ExpandableObject]");
+                        viewBuilder.AppendLine($"\t\t\tpublic FeatureBinding? {r} {{");
+                        viewBuilder.AppendLine($"\t\t\t\tget {{ return _{r}; }}");
+                        viewBuilder.AppendLine($"\t\t\t\tset {{ this.SetValue(ref _{r}, value); }}");
+                        viewBuilder.AppendLine($"\t\t\t}}");
+                    }
+                    viewBuilder.AppendLine($"\t\t\tpublic override AssociationConnector[] associationConnectors => {code}ViewModel._associationConnectors;");
+                    viewBuilder.AppendLine($"\t\t\tpublic static AssociationConnector[] _associationConnectors => new AssociationConnector[] {{");
+
+                    var bindings = productSpecification.XPathSelectElements("//S100FC:featureBinding", xmlNamespaceManager).ToList();
+
+                    var associations = bindings.Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals(code)).ToList();
+
+                    foreach(var association in associations) {
+                        var featureType = association.Parent!.Element(XName.Get("code", scope_S100))!.Value;
+
+                        var roleType = association.Attribute("roleType")!.Value;
+                        var role = association.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
+                        var lower = int.Parse(association.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                        var upper = association.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+                        var u = "default";
+                        if (!(upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true"))) {
+                            u = $"{int.Parse(upper!.Value)}";
+                        }
+
+                        var featureTypeRefs = association.Elements(XName.Get("featureType", scope_S100)).Select(e => $"typeof({e.Attribute("ref")!.Value})").ToArray();
+
+                        viewBuilder.AppendLine($"\t\t\t\tnew AssociationConnector<{featureType}>() {{");
+                        viewBuilder.AppendLine($"\t\t\t\t\troleType = roleType.{roleType},");
+                        viewBuilder.AppendLine($"\t\t\t\t\trole = \"{role}\",");
+                        viewBuilder.AppendLine($"\t\t\t\t\tLower = {lower},");
+                        viewBuilder.AppendLine($"\t\t\t\t\tUpper = {u},");
+                        viewBuilder.AppendLine($"\t\t\t\t\tAssociationTypes = [{string.Join(',', featureTypeRefs)}],");
+                        viewBuilder.AppendLine($"\t\t\t\t}},");
+                    }
+
+                    viewBuilder.AppendLine($"\t\t\t}};");
+                    viewBuilder.AppendLine("\t\t}");
+                }
+            }
+
 
             viewBuilder.Insert(creatorPosition, creatorBuilder.ToString());
 

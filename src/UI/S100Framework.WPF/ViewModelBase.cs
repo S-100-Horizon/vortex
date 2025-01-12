@@ -102,6 +102,7 @@ namespace S100Framework.WPF.ViewModel
             _informationTypes = informationTypes.ToArray();
         }
     }
+
     public class InformationBindingViewModel<TAssociation> : InformationBindingViewModel where TAssociation : InformationAssociation, new()
     {
         public InformationBindingViewModel(IEnumerable<InformationTypeAttribute> informationTypes) : base(informationTypes) {
@@ -189,5 +190,84 @@ namespace S100Framework.WPF.ViewModel
             get { return _association; }
             set { this.SetValue(ref _association, value); }
         }
+    }
+
+
+
+
+
+
+
+
+
+    public abstract class FeatureAssociationViewModel : INotifyPropertyChanged {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            if (string.IsNullOrWhiteSpace(propertyName)) return;
+
+            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
+            backingFiled = value;
+            OnPropertyChanged(propertyName);
+        }
+
+        [PropertyOrder(0)]
+        public abstract string Code { get; }
+
+        [Browsable(false)]
+        public abstract string[] Roles { get; }
+
+        [Browsable(false)]
+        public abstract AssociationConnector[] associationConnectors { get; }
+    }
+
+    public abstract class AssociationConnector
+    {
+        public DomainModel.Bindings.roleType roleType { get; set; }
+
+        public string role { get; set; } = string.Empty;
+
+        [Browsable(false)]
+        public Type[] AssociationTypes { get; set; } = [];
+
+        [PropertyOrder(1)]
+        public int Lower { get; set; } = 0;
+
+        [PropertyOrder(2)]
+        public int? Upper { get; set; } = default;
+
+        public abstract Type FeatureType { get; }
+    }
+
+    public class AssociationConnector<T> : AssociationConnector where T : FeatureTypeBase
+    {
+        public override Type FeatureType => typeof(T);
+
+        public string DisplayName => $"{typeof(T).Name}, {base.role}";
+    }
+
+    public abstract class FeatureBinding
+    {
+        [Browsable(false)]
+        public Type[] FeatureTypes { get; set; } = [];
+    }
+
+    public class FeatureBindingSingle : FeatureBinding
+    {
+        public string RefId { get; set; } = string.Empty;
+    }
+
+    public class FeatureBindingOptional : FeatureBinding
+    {
+        public string? RefId { get; set; } = default;
+    }
+
+    public class FeatureBindingMulti : FeatureBinding
+    {
+        public List<string> RefIds { get; set; } = new List<string>();
     }
 }
