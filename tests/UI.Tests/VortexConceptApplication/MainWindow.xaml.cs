@@ -210,17 +210,42 @@ namespace VortexConceptApplication
 
             SelectedProperty = viewModel;
 
-            //SelectedProperty = new object[]{
-            //    viewModel,
-            //    viewModel,
-            //    viewModel
-            //};
-        }
+            var random = new Random();
 
-        public string[] Hello => new[] {
-            "Hello3",
-            "Hello4"
-        };
+            Handles.GetFeatures = (e) => {
+                var featureType = e?.FeatureType;
+                var featureTypes = e?.FeatureTypes;
+
+                //  featureTypes used in filter
+
+                var objectid = new List<string>();
+                for (int i = 0; i < random.Next(1, 8); i++) {
+                    var prefix = random.Next(0, 99) switch {
+                        < 30 => "P",
+                        < 60 => "C",
+                        _ => "S",
+                    };
+
+                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
+                }
+                return objectid.ToArray();
+            };
+
+            Handles.GetInformations = (e) => {
+                var informationType = e?.InformationType;
+                var informationTypes = e?.InformationTypes;
+
+                //  informationTypes used in filter
+
+                var objectid = new List<string>();
+                for (int i = 0; i < random.Next(1, 8); i++) {
+                    var prefix = "I";
+
+                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
+                }
+                return objectid.ToArray();
+            };
+        }
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
             Logger.Current.Verbose("PreparePropertyItem = {propertyName}", e.PropertyItem.Name);
