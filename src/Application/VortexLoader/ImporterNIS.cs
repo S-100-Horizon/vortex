@@ -1,4 +1,5 @@
-﻿using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.CIM;
+using ArcGIS.Core.Data;
 using CommandLine;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using static S100Framework.Applications.VortexLoader;
@@ -9,6 +10,8 @@ namespace S100Framework.Applications
     internal static partial class ImporterNIS
     {
         //  https://github.com/iho-ohi/S-57-to-S-101-conversion-sub-WG
+
+        static string _notesPath = "";
 
         public static bool Load(Geodatabase destination, ParserResult<Options> arguments) {
             Func<Geodatabase> createGeodatabase = () => { throw new NotImplementedException(); };
@@ -32,6 +35,11 @@ namespace S100Framework.Applications
                 if (!string.IsNullOrEmpty(o.Query)) {
                     filter.WhereClause = o.Query!.Trim();
                 }
+
+                if (!string.IsNullOrEmpty(o.NotesPath)) {
+                    _notesPath = o.NotesPath;
+                }
+
             });
 
             using Geodatabase source = createGeodatabase();
@@ -95,7 +103,107 @@ namespace S100Framework.Applications
         }
 
         private static void AddInformation(IList<information> information, Feature current) {
-            //TODO: information
+            // TODO: Still missing decision on how GST wants handling of both files and a copy of the file content.
+            // Sent to Nigel & Co.
+
+            if (DBNull.Value != current["NTXTDS"]) {
+                var ntxtds = Convert.ToString(current["NTXTDS"])?.Trim();
+                if (!string.IsNullOrEmpty(ntxtds)) {
+                    var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
+                    if (File.Exists(filePath)) {
+                        var note = new Note(filePath);
+                        string fileLocator = default;
+                        string fileReference = ntxtds;
+                        string language = "eng";
+
+                        var instance = new information {
+                            fileLocator = fileLocator,
+                            fileReference = fileReference,
+                            headline = note.Header,
+                            language = language,
+                            text = note.Content,
+                        };
+                        information.Add(instance);
+
+                    }
+                }
+            }
+
+            if (DBNull.Value != current["TXTDSC"]) {
+                var txtdsc = Convert.ToString(current["TXTDSC"])?.Trim();
+                if (!string.IsNullOrEmpty(txtdsc)) {
+                    var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
+                    if (File.Exists(filePath)) {
+                        var note = new Note(filePath);
+                        string fileLocator = default;
+                        string fileReference = txtdsc;
+                        string language = "eng";
+
+                        var instance = new information {
+                            fileLocator = fileLocator,
+                            fileReference = fileReference,
+                            headline = note.Header,
+                            language = language,
+                            text = note.Content,
+                        };
+                        information.Add(instance);
+
+                    }
+                }
+            }
+
+            if (DBNull.Value != current["INFORM"]) {
+                var inform = Convert.ToString(current["INFORM"])?.Trim();
+                if (!string.IsNullOrEmpty(inform)) {
+
+
+                    //https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
+                    // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
+
+                    string[] informs = inform != null ? inform.Split(';') : Array.Empty<string>();
+
+
+                    foreach (var value in informs) {
+                        string fileLocator = default;
+                        string fileReference = default;
+                        string language = "eng";
+
+                        var instance = new information {
+                            fileLocator = fileLocator,
+                            fileReference = fileReference,
+                            headline = default,
+                            language = language,
+                            text = value,
+                        };
+                        information.Add(instance);
+                    }
+                }
+            }
+            if (DBNull.Value != current["NINFOM"]) {
+                var ninfom = Convert.ToString(current["NINFOM"])?.Trim();
+
+                // https://geodatastyrelsen.atlassian.net/wiki/spaces/SOEKORT/pages/4404478463/S-65+Annex+B+Appendix+A+-+Impact+analysis
+                // Separate discrete information populated in INFORM using a standard separator such as semicolon “;”.
+                if (!string.IsNullOrEmpty(ninfom)) {
+
+                    string[] ninfoms = ninfom != null ? ninfom.Split(';') : Array.Empty<string>();
+
+                    foreach (var value in ninfoms) {
+                        string fileLocator = default;
+                        string fileReference = default;
+                        string language = "dan";
+
+                        var instance = new information {
+                            fileLocator = fileLocator,
+                            fileReference = fileReference,
+                            headline = default,
+                            language = language,
+                            text = value,
+                        };
+                        information.Add(instance);
+                    }
+                }
+            }
         }
 
         private static void NIS_ProductCoverage(Geodatabase source, Geodatabase target, QueryFilter filter) {
