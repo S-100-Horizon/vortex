@@ -2094,19 +2094,19 @@ namespace S100Framework.WPF.ViewModel.S124
         }
         public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
         public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
-                new FeatureAssociationConnector<NAVWARNPart>() {
-                    roleType = roleType.association,
-                    role = "positions",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(TextPlacement)],
-                },
                 new FeatureAssociationConnector<TextPlacement>() {
                     roleType = roleType.composition,
                     role = "identifies",
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NAVWARNPart)],
+                },
+                new FeatureAssociationConnector<NAVWARNPart>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(TextPlacement)],
                 },
             };
     }

@@ -5153,19 +5153,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
         public override InformationAssociationConnector[] associationConnectorInformations => ExceptionalWorkdayViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<NonStandardWorkingDay>() {
-                    roleType = roleType.association,
-                    role = "theServiceHours_nsdy",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
                 new InformationAssociationConnector<ServiceHours>() {
                     roleType = roleType.association,
                     role = "partialWorkingDay",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(NonStandardWorkingDay)],
+                },
+                new InformationAssociationConnector<NonStandardWorkingDay>() {
+                    roleType = roleType.association,
+                    role = "theServiceHours_nsdy",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ServiceHours)],
                 },
             };
     }
@@ -5406,6 +5406,13 @@ namespace S100Framework.WPF.ViewModel.S122
         }
         public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AbstractRxN)],
+                },
                 new InformationAssociationConnector<AbstractRxN>() {
                     roleType = roleType.association,
                     role = "theOrganisation",
@@ -5419,13 +5426,6 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
-                },
-                new InformationAssociationConnector<Authority>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(AbstractRxN)],
                 },
             };
     }
@@ -5652,19 +5652,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<Authority>() {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(ContactDetails)],
-                },
                 new InformationAssociationConnector<ContactDetails>() {
                     roleType = roleType.association,
                     role = "theAuthority",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
                 },
             };
     }
@@ -5741,19 +5741,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<Authority>() {
-                    roleType = roleType.association,
-                    role = "theServiceHours",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
                 new InformationAssociationConnector<ServiceHours>() {
                     roleType = roleType.association,
                     role = "theAuthority_srvHrs",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "theServiceHours",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ServiceHours)],
                 },
             };
     }

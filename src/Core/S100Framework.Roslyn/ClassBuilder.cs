@@ -1280,7 +1280,7 @@ namespace S100Framework
 
                     var associations = bindings.Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals(code)).ToList();
 
-                    foreach (var association in associations) {
+                    foreach (var association in associations.OrderBy(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value).ThenBy(e=>e.Parent!.Element(XName.Get("code", scope_S100))!.Value)) {
                         var featureType = association.Parent!.Element(XName.Get("code", scope_S100))!.Value;
 
                         var roleType = association.Attribute("roleType")!.Value;
@@ -1367,7 +1367,7 @@ namespace S100Framework
 
                     var associations = bindings.Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals(code)).ToList();
 
-                    foreach (var association in associations) {
+                    foreach (var association in associations.OrderBy(e=>e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value).ThenBy(e=>e.Parent!.Element(XName.Get("code", scope_S100))!.Value)) {
                         var featureType = association.Parent!.Element(XName.Get("code", scope_S100))!.Value;
 
                         var roleType = association.Attribute("roleType")!.Value;

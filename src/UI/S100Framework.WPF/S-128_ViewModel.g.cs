@@ -4302,19 +4302,19 @@ namespace S100Framework.WPF.ViewModel.S128
         }
         public override InformationAssociationConnector[] associationConnectorInformations => DistributionDetailsViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<CatalogueSectionHeader>() {
-                    roleType = roleType.association,
-                    role = "theDistributor",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(DistributorInformation)],
-                },
                 new InformationAssociationConnector<DistributorInformation>() {
                     roleType = roleType.association,
                     role = "catalogueHeader",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CatalogueSectionHeader)],
+                },
+                new InformationAssociationConnector<CatalogueSectionHeader>() {
+                    roleType = roleType.association,
+                    role = "theDistributor",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(DistributorInformation)],
                 },
             };
     }
@@ -4391,19 +4391,19 @@ namespace S100Framework.WPF.ViewModel.S128
         }
         public override InformationAssociationConnector[] associationConnectorInformations => DistributorContactViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<ContactDetails>() {
-                    roleType = roleType.association,
-                    role = "theDistributor",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(DistributorInformation)],
-                },
                 new InformationAssociationConnector<DistributorInformation>() {
                     roleType = roleType.association,
                     role = "theContactDetails",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<ContactDetails>() {
+                    roleType = roleType.association,
+                    role = "theDistributor",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(DistributorInformation)],
                 },
             };
     }
@@ -4562,19 +4562,19 @@ namespace S100Framework.WPF.ViewModel.S128
         }
         public override InformationAssociationConnector[] associationConnectorInformations => PriceOfNauticalProductViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<CatalogueSectionHeader>() {
-                    roleType = roleType.association,
-                    role = "thePriceInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(PriceInformation)],
-                },
                 new InformationAssociationConnector<PriceInformation>() {
                     roleType = roleType.association,
                     role = "theCatalogueOfNauticalProduct",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CatalogueSectionHeader)],
+                },
+                new InformationAssociationConnector<CatalogueSectionHeader>() {
+                    roleType = roleType.association,
+                    role = "thePriceInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(PriceInformation)],
                 },
             };
     }
@@ -4651,19 +4651,19 @@ namespace S100Framework.WPF.ViewModel.S128
         }
         public override InformationAssociationConnector[] associationConnectorInformations => ProducerContactViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<ContactDetails>() {
-                    roleType = roleType.association,
-                    role = "theProducer",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ProducerInformation)],
-                },
                 new InformationAssociationConnector<ProducerInformation>() {
                     roleType = roleType.association,
                     role = "theContactDetails",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<ContactDetails>() {
+                    roleType = roleType.association,
+                    role = "theProducer",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ProducerInformation)],
                 },
             };
     }
@@ -4740,19 +4740,19 @@ namespace S100Framework.WPF.ViewModel.S128
         }
         public override InformationAssociationConnector[] associationConnectorInformations => ProductionDetailsViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<CatalogueSectionHeader>() {
-                    roleType = roleType.association,
-                    role = "theProducer",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ProducerInformation)],
-                },
                 new InformationAssociationConnector<ProducerInformation>() {
                     roleType = roleType.association,
                     role = "catalogueHeader",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CatalogueSectionHeader)],
+                },
+                new InformationAssociationConnector<CatalogueSectionHeader>() {
+                    roleType = roleType.association,
+                    role = "theProducer",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ProducerInformation)],
                 },
             };
     }

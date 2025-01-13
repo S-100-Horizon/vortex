@@ -11842,13 +11842,6 @@ namespace S100Framework.WPF.ViewModel.S131
         }
         public override InformationAssociationConnector[] associationConnectorInformations => AdditionalInformationViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<InformationType>() {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
                 new InformationAssociationConnector<NauticalInformation>() {
                     roleType = roleType.association,
                     role = "informationProvidedFor",
@@ -11857,6 +11850,13 @@ namespace S100Framework.WPF.ViewModel.S131
                     AssociationTypes = [typeof(InformationType)],
                 },
                 new InformationAssociationConnector<FeatureType>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<InformationType>() {
                     roleType = roleType.association,
                     role = "providesInformation",
                     Lower = 0,
@@ -11938,19 +11938,19 @@ namespace S100Framework.WPF.ViewModel.S131
         }
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<Authority>() {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(ContactDetails)],
-                },
                 new InformationAssociationConnector<ContactDetails>() {
                     roleType = roleType.association,
                     role = "theAuthority",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
                 },
             };
     }
@@ -12027,19 +12027,19 @@ namespace S100Framework.WPF.ViewModel.S131
         }
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<Authority>() {
-                    roleType = roleType.association,
-                    role = "theServiceHours",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
                 new InformationAssociationConnector<ServiceHours>() {
                     roleType = roleType.association,
                     role = "theAuthority_srvHrs",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "theServiceHours",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ServiceHours)],
                 },
             };
     }
@@ -12444,14 +12444,14 @@ namespace S100Framework.WPF.ViewModel.S131
         }
         public override InformationAssociationConnector[] associationConnectorInformations => LocationHoursViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<AnchorBerth>() {
+                new InformationAssociationConnector<AnchorageArea>() {
                     roleType = roleType.association,
                     role = "location_srvHrs",
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ServiceHours)],
                 },
-                new InformationAssociationConnector<AnchorageArea>() {
+                new InformationAssociationConnector<AnchorBerth>() {
                     roleType = roleType.association,
                     role = "location_srvHrs",
                     Lower = 0,
@@ -12645,19 +12645,19 @@ namespace S100Framework.WPF.ViewModel.S131
         }
         public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<AbstractRxN>() {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
                 new InformationAssociationConnector<Authority>() {
                     roleType = roleType.association,
                     role = "theInformation",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(AbstractRxN)],
+                },
+                new InformationAssociationConnector<AbstractRxN>() {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
                 },
             };
     }
@@ -12823,19 +12823,19 @@ namespace S100Framework.WPF.ViewModel.S131
         }
         public override InformationAssociationConnector[] associationConnectorInformations => PermissionTypeViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<Applicability>() {
-                    roleType = roleType.association,
-                    role = "vslLocation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(InformationType)],
-                },
                 new InformationAssociationConnector<FeatureType>() {
                     roleType = roleType.association,
                     role = "permission",
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<Applicability>() {
+                    roleType = roleType.association,
+                    role = "vslLocation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(InformationType)],
                 },
             };
     }
@@ -13371,13 +13371,6 @@ namespace S100Framework.WPF.ViewModel.S131
         }
         public override FeatureAssociationConnector[] associationConnectorFeatures => InfrastructureViewModel._associationConnectorFeatures;
         public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
-                new FeatureAssociationConnector<HarbourPhysicalInfrastructure>() {
-                    roleType = roleType.association,
-                    role = "infrastructureLocation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(HarbourAreaSection),typeof(Terminal)],
-                },
                 new FeatureAssociationConnector<HarbourAreaSection>() {
                     roleType = roleType.association,
                     role = "hasInfrastructure",
@@ -13391,6 +13384,13 @@ namespace S100Framework.WPF.ViewModel.S131
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(HarbourPhysicalInfrastructure)],
+                },
+                new FeatureAssociationConnector<HarbourPhysicalInfrastructure>() {
+                    roleType = roleType.association,
+                    role = "infrastructureLocation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection),typeof(Terminal)],
                 },
             };
     }
@@ -13563,19 +13563,19 @@ namespace S100Framework.WPF.ViewModel.S131
         }
         public override FeatureAssociationConnector[] associationConnectorFeatures => DemarcationViewModel._associationConnectorFeatures;
         public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
-                new FeatureAssociationConnector<Berth>() {
-                    roleType = roleType.association,
-                    role = "demarcationIndicator",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(BerthPosition)],
-                },
                 new FeatureAssociationConnector<BerthPosition>() {
                     roleType = roleType.composition,
                     role = "demarcatedFeature",
                     Lower = 1,
                     Upper = 1,
                     AssociationTypes = [typeof(Berth)],
+                },
+                new FeatureAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "demarcationIndicator",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(BerthPosition)],
                 },
             };
     }
@@ -13769,26 +13769,12 @@ namespace S100Framework.WPF.ViewModel.S131
                     Upper = 1,
                     AssociationTypes = [typeof(HarbourAreaSection)],
                 },
-                new FeatureAssociationConnector<HarbourAreaAdministrative>() {
-                    roleType = roleType.association,
-                    role = "layoutUnit",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(HarbourAreaSection)],
-                },
                 new FeatureAssociationConnector<HarbourAreaSection>() {
                     roleType = roleType.aggregation,
                     role = "componentOf",
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(HarbourAreaAdministrative)],
-                },
-                new FeatureAssociationConnector<HarbourAreaSection>() {
-                    roleType = roleType.association,
-                    role = "layoutUnit",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(AnchorageArea),typeof(Berth),typeof(DockArea),typeof(DumpingGround),typeof(HarbourBasin),typeof(PilotBoardingPlace),typeof(SeaplaneLandingArea),typeof(Terminal),typeof(TurningBasin),typeof(WaterwayArea)],
                 },
                 new FeatureAssociationConnector<HarbourBasin>() {
                     roleType = roleType.aggregation,
@@ -13818,13 +13804,6 @@ namespace S100Framework.WPF.ViewModel.S131
                     Upper = 1,
                     AssociationTypes = [typeof(HarbourAreaSection)],
                 },
-                new FeatureAssociationConnector<Terminal>() {
-                    roleType = roleType.association,
-                    role = "layoutUnit",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Berth)],
-                },
                 new FeatureAssociationConnector<TurningBasin>() {
                     roleType = roleType.aggregation,
                     role = "componentOf",
@@ -13838,6 +13817,27 @@ namespace S100Framework.WPF.ViewModel.S131
                     Lower = 1,
                     Upper = 1,
                     AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "layoutUnit",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(HarbourAreaSection)],
+                },
+                new FeatureAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "layoutUnit",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AnchorageArea),typeof(Berth),typeof(DockArea),typeof(DumpingGround),typeof(HarbourBasin),typeof(PilotBoardingPlace),typeof(SeaplaneLandingArea),typeof(Terminal),typeof(TurningBasin),typeof(WaterwayArea)],
+                },
+                new FeatureAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "layoutUnit",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Berth)],
                 },
             };
     }

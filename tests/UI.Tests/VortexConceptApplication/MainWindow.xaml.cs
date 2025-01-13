@@ -159,7 +159,9 @@ namespace VortexConceptApplication
 
             viewModel.Load(domainModel);
 #else
-            var viewModel = IslandAggregation.TestIslandGroup;
+            //var viewModel = IslandAggregation.TestIslandGroup;
+
+            var viewModel = new S100Framework.WPF.ViewModel.S101.AidsToNavigationAssociationViewModel();
 #endif
 
             //this._propertyGrid.EditorDefinitions.Clear();
