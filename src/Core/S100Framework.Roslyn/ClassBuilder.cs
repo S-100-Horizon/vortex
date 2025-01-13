@@ -1243,6 +1243,36 @@ namespace S100Framework
                         viewBuilder.AppendLine($"\t\t\t\tset {{ this.SetValue(ref _{r}, value); }}");
                         viewBuilder.AppendLine($"\t\t\t}}");
                     }
+                    viewBuilder.AppendLine();
+                    viewBuilder.AppendLine($"\t\t\tpublic override InformationAssociationConnector? associationConnector {{");
+                    viewBuilder.AppendLine($"\t\t\t\tget {{ return _associationConnector; }}");
+                    viewBuilder.AppendLine($"\t\t\t\tset {{");
+                    viewBuilder.AppendLine($"\t\t\t\t\tthis.SetValue(ref _associationConnector, value);");
+                    foreach (var r in roles) {
+                        viewBuilder.AppendLine($"\t\t\t\t{r} = null;");
+
+                        viewBuilder.AppendLine($"\t\t\t\tif (value is not null) {{");
+                        viewBuilder.AppendLine($"\t\t\t\t\t{r} = value?.role switch {{");
+
+                        foreach (var s in roles.Where(e => !e.Equals(r))) {
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = value.AssociationTypes,");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new InformationBindingSingle {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = value.AssociationTypes,");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new InformationBindingOptional {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = value.AssociationTypes,");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
+                        }
+
+                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new InformationBindingSingle() {{");
+                        viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = [value!.InformationType],");
+                        viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
+
+                        viewBuilder.AppendLine($"\t\t\t\t\t}};");
+                        viewBuilder.AppendLine($"\t\t\t\t}}");
+                    }
+                    viewBuilder.AppendLine($"\t\t\t}}");
+                    viewBuilder.AppendLine($"\t\t}}");
                     viewBuilder.AppendLine($"\t\t\tpublic override InformationAssociationConnector[] associationConnectorInformations => {code}ViewModel._associationConnectorInformations;");
                     viewBuilder.AppendLine($"\t\t\tpublic static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {{");
 
@@ -1299,6 +1329,37 @@ namespace S100Framework
                         viewBuilder.AppendLine($"\t\t\t\tset {{ this.SetValue(ref _{r}, value); }}");
                         viewBuilder.AppendLine($"\t\t\t}}");
                     }
+                    viewBuilder.AppendLine();
+                    viewBuilder.AppendLine($"\t\t\tpublic override FeatureAssociationConnector? associationConnector {{");
+                    viewBuilder.AppendLine($"\t\t\t\tget {{ return _associationConnector; }}");
+                    viewBuilder.AppendLine($"\t\t\t\tset {{");
+                    viewBuilder.AppendLine($"\t\t\t\t\tthis.SetValue(ref _associationConnector, value);");
+                    foreach (var r in roles) {
+                        viewBuilder.AppendLine($"\t\t\t\t{r} = null;");
+
+                        viewBuilder.AppendLine($"\t\t\t\tif (value is not null) {{");
+                        viewBuilder.AppendLine($"\t\t\t\t\t{r} = value?.role switch {{");
+
+                        foreach (var s in roles.Where(e => !e.Equals(r))) {
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new FeatureBindingMulti {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new FeatureBindingSingle {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new FeatureBindingOptional {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
+                        }
+
+                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new FeatureBindingSingle() {{");
+                        viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = [value!.FeatureType],");
+                        viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
+
+                        viewBuilder.AppendLine($"\t\t\t\t\t}};");
+                        viewBuilder.AppendLine($"\t\t\t\t}}");
+                    }
+                    viewBuilder.AppendLine($"\t\t\t}}");
+                    viewBuilder.AppendLine($"\t\t}}");
+
                     viewBuilder.AppendLine($"\t\t\tpublic override FeatureAssociationConnector[] associationConnectorFeatures => {code}ViewModel._associationConnectorFeatures;");
                     viewBuilder.AppendLine($"\t\t\tpublic static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {{");
 

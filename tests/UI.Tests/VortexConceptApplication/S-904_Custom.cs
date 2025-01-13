@@ -125,7 +125,11 @@ namespace S100Framework.WPF.ViewModel.S903
                 theComponent = null;
 
                 theComponent = value?.role switch {
-                    "theCollection" => new S100_FC_FeatureBindingMulti() {
+                    "theCollection" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new S100_FC_FeatureBindingMulti {
+                        FeatureTypes = value.AssociationTypes,
+                    } : value.Lower > 0 ? new S100_FC_FeatureBindingSingle {
+                        FeatureTypes = value.AssociationTypes,
+                    } : new S100_FC_FeatureBindingOptional {
                         FeatureTypes = value.AssociationTypes,
                     },
                     "theComponent" => new S100_FC_FeatureBindingSingle() {

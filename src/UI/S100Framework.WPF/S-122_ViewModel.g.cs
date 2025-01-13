@@ -5018,6 +5018,57 @@ namespace S100Framework.WPF.ViewModel.S122
             get { return _appliesInLocation; }
             set { this.SetValue(ref _appliesInLocation, value); }
         }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theRxN = null;
+                if (value is not null)
+                {
+                    theRxN = value?.role switch
+                    {
+                        "appliesInLocation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                appliesInLocation = null;
+                if (value is not null)
+                {
+                    appliesInLocation = value?.role switch
+                    {
+                        "theRxN" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
         public override InformationAssociationConnector[] associationConnectorInformations => AssociatedRxNViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
                 new InformationAssociationConnector<FeatureType>() {
@@ -5048,6 +5099,57 @@ namespace S100Framework.WPF.ViewModel.S122
         {
             get { return _theServiceHours_nsdy; }
             set { this.SetValue(ref _theServiceHours_nsdy, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                partialWorkingDay = null;
+                if (value is not null)
+                {
+                    partialWorkingDay = value?.role switch
+                    {
+                        "theServiceHours_nsdy" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theServiceHours_nsdy = null;
+                if (value is not null)
+                {
+                    theServiceHours_nsdy = value?.role switch
+                    {
+                        "partialWorkingDay" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
         }
         public override InformationAssociationConnector[] associationConnectorInformations => ExceptionalWorkdayViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
@@ -5087,6 +5189,57 @@ namespace S100Framework.WPF.ViewModel.S122
             get { return _theMarineProtectedArea; }
             set { this.SetValue(ref _theMarineProtectedArea, value); }
         }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                responsibleAuthority = null;
+                if (value is not null)
+                {
+                    responsibleAuthority = value?.role switch
+                    {
+                        "theMarineProtectedArea" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theMarineProtectedArea = null;
+                if (value is not null)
+                {
+                    theMarineProtectedArea = value?.role switch
+                    {
+                        "responsibleAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
         public override InformationAssociationConnector[] associationConnectorInformations => ProtectedAreaAuthorityViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
                 new InformationAssociationConnector<MarineProtectedArea>() {
@@ -5118,6 +5271,57 @@ namespace S100Framework.WPF.ViewModel.S122
             get { return _controlledService; }
             set { this.SetValue(ref _controlledService, value); }
         }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                controlAuthority = null;
+                if (value is not null)
+                {
+                    controlAuthority = value?.role switch
+                    {
+                        "controlledService" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                controlledService = null;
+                if (value is not null)
+                {
+                    controlledService = value?.role switch
+                    {
+                        "controlAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceControlViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
                 new InformationAssociationConnector<VesselTrafficServiceArea>() {
@@ -5148,6 +5352,57 @@ namespace S100Framework.WPF.ViewModel.S122
         {
             get { return _theInformation; }
             set { this.SetValue(ref _theInformation, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theOrganisation = null;
+                if (value is not null)
+                {
+                    theOrganisation = value?.role switch
+                    {
+                        "theInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theInformation = null;
+                if (value is not null)
+                {
+                    theInformation = value?.role switch
+                    {
+                        "theOrganisation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
         }
         public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
@@ -5194,6 +5449,57 @@ namespace S100Framework.WPF.ViewModel.S122
             get { return _permission; }
             set { this.SetValue(ref _permission, value); }
         }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                vslLocation = null;
+                if (value is not null)
+                {
+                    vslLocation = value?.role switch
+                    {
+                        "permission" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                permission = null;
+                if (value is not null)
+                {
+                    permission = value?.role switch
+                    {
+                        "vslLocation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
         public override InformationAssociationConnector[] associationConnectorInformations => PermissionTypeViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
             };
@@ -5218,6 +5524,57 @@ namespace S100Framework.WPF.ViewModel.S122
             get { return _isApplicableTo; }
             set { this.SetValue(ref _isApplicableTo, value); }
         }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theApplicationRXN = null;
+                if (value is not null)
+                {
+                    theApplicationRXN = value?.role switch
+                    {
+                        "isApplicableTo" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                isApplicableTo = null;
+                if (value is not null)
+                {
+                    isApplicableTo = value?.role switch
+                    {
+                        "theApplicationRXN" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
         public override InformationAssociationConnector[] associationConnectorInformations => InclusionTypeViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
             };
@@ -5241,6 +5598,57 @@ namespace S100Framework.WPF.ViewModel.S122
         {
             get { return _theContactDetails; }
             set { this.SetValue(ref _theContactDetails, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theAuthority = null;
+                if (value is not null)
+                {
+                    theAuthority = value?.role switch
+                    {
+                        "theContactDetails" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theContactDetails = null;
+                if (value is not null)
+                {
+                    theContactDetails = value?.role switch
+                    {
+                        "theAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
         }
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
@@ -5280,6 +5688,57 @@ namespace S100Framework.WPF.ViewModel.S122
             get { return _theServiceHours; }
             set { this.SetValue(ref _theServiceHours, value); }
         }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theAuthority_srvHrs = null;
+                if (value is not null)
+                {
+                    theAuthority_srvHrs = value?.role switch
+                    {
+                        "theServiceHours" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theServiceHours = null;
+                if (value is not null)
+                {
+                    theServiceHours = value?.role switch
+                    {
+                        "theAuthority_srvHrs" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
                 new InformationAssociationConnector<Authority>() {
@@ -5317,6 +5776,57 @@ namespace S100Framework.WPF.ViewModel.S122
         {
             get { return _providesInformation; }
             set { this.SetValue(ref _providesInformation, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                informationProvidedFor = null;
+                if (value is not null)
+                {
+                    informationProvidedFor = value?.role switch
+                    {
+                        "providesInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                providesInformation = null;
+                if (value is not null)
+                {
+                    providesInformation = value?.role switch
+                    {
+                        "informationProvidedFor" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new InformationBindingSingle
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new InformationBindingOptional
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new InformationBindingSingle()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
         }
         public override InformationAssociationConnector[] associationConnectorInformations => additionalInformationViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {

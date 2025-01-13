@@ -1,4 +1,5 @@
 ﻿using S100Framework.DomainModel;
+using S100Framework.WPF.Editors;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -98,12 +99,24 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class InformationAssociationViewModel : AssociationViewModel
     {
+        protected InformationAssociationConnector? _associationConnector;
+
+        [Editor(typeof(InformationBindingEditor), typeof(InformationBindingEditor))]
+        [ExpandableObject]
+        public abstract InformationAssociationConnector? associationConnector { get; set; }
+
         [Browsable(false)]
         public abstract InformationAssociationConnector[] associationConnectorInformations { get; }
     }
 
     public abstract class FeatureAssociationViewModel : AssociationViewModel
     {
+        protected FeatureAssociationConnector? _associationConnector;
+
+        [Editor(typeof(FeatureBindingEditor), typeof(FeatureBindingEditor))]
+        [ExpandableObject]
+        public abstract FeatureAssociationConnector? associationConnector { get; set; }
+
         [Browsable(false)]
         public abstract FeatureAssociationConnector[] associationConnectorFeatures { get; }
     }
@@ -151,7 +164,7 @@ namespace S100Framework.WPF.ViewModel
     public abstract class InformationBinding
     {
         [Browsable(false)]
-        public Type[] FeatureTypes { get; set; } = [];
+        public Type[] InformationTypes { get; set; } = [];
     }
 
     public class InformationBindingSingle : InformationBinding
