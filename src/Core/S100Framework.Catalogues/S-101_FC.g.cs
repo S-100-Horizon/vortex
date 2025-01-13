@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 
+#nullable enable
 
 namespace S100Framework.DomainModel.S101
 {
@@ -3946,7 +3947,9 @@ namespace S100Framework.DomainModel.S101
         public partial class featureName
         {
             public String language { get; set; } = string.Empty;
+
             public String name { get; set; } = string.Empty;
+
             public nameUsage? nameUsage { get; set; } = default;
 
             public featureName()
@@ -3955,6 +3958,7 @@ namespace S100Framework.DomainModel.S101
                 name = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3965,6 +3969,7 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Boolean significantFeaturesDetected { get; set; }
+
             public Decimal? sizeOfFeaturesDetected { get; set; } = default;
 
             public featuresDetected()
@@ -3972,17 +3977,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class fixedDateRange
         {
             public DateOnly? dateEnd { get; set; } = default;
+
             public DateOnly? dateStart { get; set; } = default;
 
             public fixedDateRange()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3998,12 +4006,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class horizontalClearanceFixed
         {
             [Required()]
             public Decimal horizontalClearanceValue { get; set; }
+
             public Decimal? horizontalDistanceUncertainty { get; set; } = default;
 
             public horizontalClearanceFixed()
@@ -4011,12 +4021,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class horizontalClearanceOpen
         {
             [Required()]
             public Decimal horizontalClearanceValue { get; set; }
+
             public Decimal? horizontalDistanceUncertainty { get; set; } = default;
 
             public horizontalClearanceOpen()
@@ -4024,12 +4036,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class horizontalPositionUncertainty
         {
             [Required()]
             public Decimal uncertaintyFixed { get; set; }
+
             public Decimal? uncertaintyVariableFactor { get; set; } = default;
 
             public horizontalPositionUncertainty()
@@ -4037,17 +4051,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class information
 #pragma warning restore CS8981
         {
             public String fileLocator { get; set; } = string.Empty;
+
             public String fileReference { get; set; } = string.Empty;
+
             public String headline { get; set; } = string.Empty;
+
             public String language { get; set; } = string.Empty;
+
             public String text { get; set; } = string.Empty;
 
             public information()
@@ -4056,12 +4074,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class measuredDistanceValue
         {
             [Required()]
             public distanceUnitOfMeasurement distanceUnitOfMeasurement { get; set; }
+
             public String referenceLocation { get; set; } = string.Empty;
 
             [Required()]
@@ -4072,12 +4092,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class multiplicityOfFeatures
         {
             [Required()]
             public Boolean multiplicityKnown { get; set; }
+
             public Int32? numberOfFeatures { get; set; } = default;
 
             public multiplicityOfFeatures()
@@ -4085,12 +4107,15 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource
         {
             public String headline { get; set; } = string.Empty;
+
             public String linkage { get; set; } = string.Empty;
+
             public String nameOfResource { get; set; } = string.Empty;
 
             public onlineResource()
@@ -4099,10 +4124,10 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class orientation
 #pragma warning restore CS8981
         {
@@ -4115,6 +4140,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4131,6 +4157,7 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class radarWaveLength
@@ -4146,11 +4173,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorInformation
         {
             public String language { get; set; } = string.Empty;
+
             public String text { get; set; } = string.Empty;
 
             public sectorInformation()
@@ -4159,12 +4188,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorLimitOne
         {
             [Required()]
             public Decimal sectorBearing { get; set; }
+
             public Decimal? sectorLineLength { get; set; } = default;
 
             public sectorLimitOne()
@@ -4172,12 +4203,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorLimitTwo
         {
             [Required()]
             public Decimal sectorBearing { get; set; }
+
             public Decimal? sectorLineLength { get; set; } = default;
 
             public sectorLimitTwo()
@@ -4185,11 +4218,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class shapeInformation
         {
             public String language { get; set; } = string.Empty;
+
             public String text { get; set; } = string.Empty;
 
             public shapeInformation()
@@ -4197,6 +4232,7 @@ namespace S100Framework.DomainModel.S101
                 text = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4213,15 +4249,16 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class speed
 #pragma warning restore CS8981
         {
             [Required()]
             public Decimal speedMaximum { get; set; }
+
             public Decimal? speedMinimum { get; set; } = default;
 
             public speed()
@@ -4229,12 +4266,15 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class surfaceCharacteristics
         {
             public natureOfSurface? natureOfSurface { get; set; } = default;
+
             public List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms { get; set; } = [];
+
             public Int32? underlyingLayer { get; set; } = default;
 
             public surfaceCharacteristics()
@@ -4242,12 +4282,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class surveyDateRange
         {
             [Required()]
             public DateOnly dateEnd { get; set; }
+
             public DateOnly? dateStart { get; set; } = default;
 
             public surveyDateRange()
@@ -4255,15 +4297,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class telecommunications
 #pragma warning restore CS8981
         {
             public String contactInstructions { get; set; } = string.Empty;
+
             public String telecommunicationIdentifier { get; set; } = string.Empty;
+
             public telecommunicationService? telecommunicationService { get; set; } = default;
 
             public telecommunications()
@@ -4271,6 +4315,7 @@ namespace S100Framework.DomainModel.S101
                 telecommunicationIdentifier = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4294,13 +4339,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalsByDayOfWeek
         {
             public List<dayOfWeek> dayOfWeek { get; set; } = [];
+
             public Boolean? dayOfWeekIsRange { get; set; } = default;
+
             public List<TimeOnly> timeOfDayStart { get; set; } = [];
+
             public List<TimeOnly> timeOfDayEnd { get; set; } = [];
 
             public timeIntervalsByDayOfWeek()
@@ -4308,18 +4357,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class topmark
 #pragma warning restore CS8981
         {
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
 
             [Required()]
             public topmarkDaymarkShape topmarkDaymarkShape { get; set; }
+
             public List<shapeInformation> shapeInformation { get; set; } = [];
 
             public topmark()
@@ -4327,12 +4378,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class valueOfLocalMagneticAnomaly
         {
             [Required()]
             public Decimal magneticAnomalyValue { get; set; }
+
             public referenceDirection? referenceDirection { get; set; } = default;
 
             public valueOfLocalMagneticAnomaly()
@@ -4340,18 +4393,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalUncertainty
         {
             [Required()]
             public Decimal uncertaintyFixed { get; set; }
+
             public Decimal? uncertaintyVariableFactor { get; set; } = default;
 
             public verticalUncertainty()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4362,6 +4418,7 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public speedUnits speedUnits { get; set; }
+
             public String vesselClass { get; set; } = string.Empty;
 
             public vesselSpeedLimit()
@@ -4369,20 +4426,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class zoneOfConfidence
         {
             [Required()]
             public categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData { get; set; }
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public horizontalPositionUncertainty? horizontalPositionUncertainty { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public zoneOfConfidence()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4402,20 +4464,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class rhythmOfLight
         {
             [Required()]
             public lightCharacteristic lightCharacteristic { get; set; }
+
             public List<String> signalGroup { get; set; } = [];
+
             public Decimal? signalPeriod { get; set; } = default;
+
             public List<signalSequence> signalSequence { get; set; } = [];
 
             public rhythmOfLight()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4431,6 +4498,7 @@ namespace S100Framework.DomainModel.S101
                 timeIntervalsByDayOfWeek = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4455,18 +4523,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class spatialAccuracy
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public horizontalPositionUncertainty? horizontalPositionUncertainty { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public spatialAccuracy()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4477,6 +4549,7 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public referenceTideType referenceTideType { get; set; }
+
             public Decimal? streamDepth { get; set; } = default;
 
             [Required()]
@@ -4488,12 +4561,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceClosed
         {
             [Required()]
             public Decimal verticalClearanceValue { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public verticalClearanceClosed()
@@ -4501,12 +4576,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceFixed
         {
             [Required()]
             public Decimal verticalClearanceValue { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public verticalClearanceFixed()
@@ -4514,13 +4591,16 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceOpen
         {
             [Required()]
             public Boolean verticalClearanceUnlimited { get; set; }
+
             public Decimal? verticalClearanceValue { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public verticalClearanceOpen()
@@ -4528,12 +4608,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceSafe
         {
             [Required()]
             public Decimal verticalClearanceValue { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public verticalClearanceSafe()
@@ -4541,17 +4623,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class lightSector
         {
             [Required()]
             public List<colour> colour { get; set; }
+
             public directionalCharacter? directionalCharacter { get; set; }
+
             public List<lightVisibility> lightVisibility { get; set; } = [];
+
             public sectorLimit? sectorLimit { get; set; }
+
             public Decimal? valueOfNominalRange { get; set; } = default;
+
             public List<sectorInformation> sectorInformation { get; set; } = [];
+
             public Boolean? sectorArcExtension { get; set; } = default;
 
             public lightSector()
@@ -4559,6 +4648,7 @@ namespace S100Framework.DomainModel.S101
                 colour = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4569,8 +4659,11 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<lightSector> lightSector { get; set; }
+
             public List<String> signalGroup { get; set; } = [];
+
             public Decimal? signalPeriod { get; set; } = default;
+
             public List<signalSequence> signalSequence { get; set; } = [];
 
             public sectorCharacteristics()
@@ -4578,6 +4671,7 @@ namespace S100Framework.DomainModel.S101
                 lightSector = new();
             }
         }
+
     }
 
     public enum Role
@@ -4950,12 +5044,19 @@ namespace S100Framework.DomainModel.S101
         public partial class ContactDetails : InformationNode
         {
             public String callSign { get; set; } = string.Empty;
+
             public List<String> communicationChannel { get; set; } = [];
+
             public String contactInstructions { get; set; } = string.Empty;
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<frequencyPair> frequencyPair { get; set; } = [];
+
             public String mMSICode { get; set; } = string.Empty;
+
             public List<onlineResource> onlineResource { get; set; } = [];
+
             public List<telecommunications> telecommunications { get; set; } = [];
             public override string Code => nameof(ContactDetails);
 
@@ -4964,15 +5065,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ServiceHours : InformationNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(ServiceHours);
 
@@ -4982,14 +5086,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NonStandardWorkingDay : InformationNode
         {
             public List<DateOnly> dateFixed { get; set; } = [];
+
             public List<String> dateVariable { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(NonStandardWorkingDay);
 
@@ -4998,13 +5107,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : InformationNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(NauticalInformation);
 
@@ -5013,11 +5126,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpatialQuality : InformationNode
         {
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
+
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
             public override string Code => nameof(SpatialQuality);
 
@@ -5025,6 +5140,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
     }
 
     namespace FeatureTypes
@@ -5039,14 +5155,20 @@ namespace S100Framework.DomainModel.S101
         public partial class QualityOfNonBathymetricData : FeatureNode
         {
             public categoryOfTemporalVariation? categoryOfTemporalVariation { get; set; } = default;
+
             public Decimal? horizontalDistanceUncertainty { get; set; } = default;
 
             [Required()]
             public horizontalPositionUncertainty horizontalPositionUncertainty { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? orientationUncertainty { get; set; } = default;
+
             public surveyDateRange? surveyDateRange { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(QualityOfNonBathymetricData);
 
@@ -5059,11 +5181,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DataCoverage : FeatureNode
         {
             public Int32? drawingIndex { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
@@ -5074,6 +5198,7 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Int32 optimumDisplayScale { get; set; }
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DataCoverage);
 
@@ -5082,13 +5207,16 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NavigationalSystemOfMarks : FeatureNode
         {
             [Required()]
             public marksNavigationalSystemOf marksNavigationalSystemOf { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(NavigationalSystemOfMarks);
 
@@ -5096,6 +5224,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -5108,7 +5237,9 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(LocalDirectionOfBuoyage);
 
@@ -5116,6 +5247,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -5126,7 +5258,9 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public dataAssessment dataAssessment { get; set; }
+
             public Decimal? depthRangeMaximumValue { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
 
             [Required()]
@@ -5134,11 +5268,14 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Boolean fullSeafloorCoverageAchieved { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public surveyDateRange? surveyDateRange { get; set; }
 
             [Required()]
             public List<zoneOfConfidence> zoneOfConfidence { get; set; }
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(QualityOfBathymetricData);
 
@@ -5153,6 +5290,7 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SoundingDatum : FeatureNode
@@ -5161,6 +5299,7 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public verticalDatum verticalDatum { get; set; }
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SoundingDatum);
 
@@ -5168,6 +5307,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -5177,6 +5317,7 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public verticalDatum verticalDatum { get; set; }
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(VerticalDatumOfData);
 
@@ -5185,23 +5326,37 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class QualityOfSurvey : FeatureNode
         {
             public Decimal? depthRangeMaximumValue { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public featuresDetected? featuresDetected { get; set; }
+
             public Boolean? fullSeafloorCoverageAchieved { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? lineSpacingMaximum { get; set; } = default;
+
             public Int32? lineSpacingMinimum { get; set; } = default;
+
             public Int32? measurementDistanceMaximum { get; set; } = default;
+
             public Int32? measurementDistanceMinimum { get; set; } = default;
+
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public Int32? scaleValueMaximum { get; set; } = default;
+
             public Int32? scaleValueMinimum { get; set; } = default;
+
             public String surveyAuthority { get; set; } = string.Empty;
 
             [Required()]
@@ -5209,7 +5364,9 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<surveyType> surveyType { get; set; }
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(QualityOfSurvey);
 
@@ -5224,11 +5381,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class UpdateInformation : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
@@ -5236,8 +5395,11 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public updateType updateType { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public String source { get; set; } = string.Empty;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(UpdateInformation);
 
@@ -5245,6 +5407,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -5260,7 +5423,9 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Decimal valueOfMagneticVariation { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(MagneticVariation);
 
@@ -5269,17 +5434,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LocalMagneticAnomaly : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
 
             [Required()]
             public List<valueOfLocalMagneticAnomaly> valueOfLocalMagneticAnomaly { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(LocalMagneticAnomaly);
 
@@ -5289,19 +5459,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Coastline : FeatureNode
         {
             public categoryOfCoastline? categoryOfCoastline { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(Coastline);
 
@@ -5310,16 +5490,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LandArea : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(LandArea);
 
@@ -5328,14 +5515,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IslandGroup : FeatureNode
         {
             [Required()]
             public List<featureName> featureName { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(IslandGroup);
 
@@ -5345,16 +5536,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LandElevation : FeatureNode
         {
             [Required()]
             public Decimal elevation { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(LandElevation);
 
@@ -5363,14 +5560,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class River : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(River);
 
@@ -5379,14 +5581,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Rapids : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Rapids);
 
@@ -5395,15 +5602,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Waterfall : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Waterfall);
 
@@ -5412,15 +5625,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Lake : FeatureNode
         {
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Lake);
 
@@ -5429,16 +5648,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LandRegion : FeatureNode
         {
             public List<categoryOfLandRegion> categoryOfLandRegion { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(LandRegion);
 
@@ -5447,19 +5673,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Vegetation : FeatureNode
         {
             [Required()]
             public categoryOfVegetation categoryOfVegetation { get; set; }
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Vegetation);
 
@@ -5468,22 +5703,34 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IceArea : FeatureNode
         {
             [Required()]
             public categoryOfIce categoryOfIce { get; set; }
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(IceArea);
 
@@ -5492,18 +5739,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SlopingGround : FeatureNode
         {
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SlopingGround);
 
@@ -5512,19 +5768,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SlopeTopline : FeatureNode
         {
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SlopeTopline);
 
@@ -5533,13 +5799,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Tideway : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Tideway);
 
@@ -5548,21 +5818,33 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class BuiltUpArea : FeatureNode
         {
             public categoryOfBuiltUpArea? categoryOfBuiltUpArea { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
             public override string Code => nameof(BuiltUpArea);
 
@@ -5571,29 +5853,49 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Building : FeatureNode
         {
             public buildingShape? buildingShape { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public List<function> function { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
             public override string Code => nameof(Building);
 
@@ -5602,18 +5904,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AirportAirfield : FeatureNode
         {
             public List<categoryOfAirportAirfield> categoryOfAirportAirfield { get; set; } = [];
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(AirportAirfield);
 
@@ -5622,18 +5933,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Runway : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Runway);
 
@@ -5642,18 +5962,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Helipad : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Helipad);
 
@@ -5662,28 +5991,47 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Bridge : FeatureNode
         {
             public bridgeConstruction? bridgeConstruction { get; set; } = default;
+
             public List<bridgeFunction> bridgeFunction { get; set; } = [];
+
             public categoryOfOpeningBridge? categoryOfOpeningBridge { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? openingBridge { get; set; } = default;
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(Bridge);
 
@@ -5692,19 +6040,26 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpanFixed : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public verticalClearanceFixed verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(SpanFixed);
 
@@ -5717,12 +6072,15 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SpanOpening : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
@@ -5730,9 +6088,13 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public verticalClearanceOpen verticalClearanceOpen { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(SpanOpening);
 
@@ -5749,30 +6111,51 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Conveyor : FeatureNode
         {
             public categoryOfConveyor? categoryOfConveyor { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? liftingCapacity { get; set; } = default;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(Conveyor);
 
@@ -5781,25 +6164,41 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CableOverhead : FeatureNode
         {
             public categoryOfCable? categoryOfCable { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? iceFactor { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalClearanceSafe? verticalClearanceSafe { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(CableOverhead);
 
@@ -5808,24 +6207,39 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PipelineOverhead : FeatureNode
         {
             public categoryOfPipelinePipe? categoryOfPipelinePipe { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(PipelineOverhead);
 
@@ -5834,29 +6248,48 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PylonBridgeSupport : FeatureNode
         {
             [Required()]
             public categoryOfPylon categoryOfPylon { get; set; }
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(PylonBridgeSupport);
 
@@ -5865,25 +6298,41 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FenceWall : FeatureNode
         {
             public categoryOfFence? categoryOfFence { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(FenceWall);
 
@@ -5892,17 +6341,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Railway : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Railway);
 
@@ -5911,18 +6368,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Road : FeatureNode
         {
             public categoryOfRoad? categoryOfRoad { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Road);
 
@@ -5931,20 +6397,31 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Tunnel : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(Tunnel);
 
@@ -5953,33 +6430,53 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Landmark : FeatureNode
         {
             [Required()]
             public List<categoryOfLandmark> categoryOfLandmark { get; set; }
+
             public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = [];
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public List<function> function { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
 
             [Required()]
             public visualProminence visualProminence { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
             public override string Code => nameof(Landmark);
 
@@ -5989,30 +6486,51 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SiloTank : FeatureNode
         {
             public buildingShape? buildingShape { get; set; } = default;
+
             public categoryOfSiloTank? categoryOfSiloTank { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
             public override string Code => nameof(SiloTank);
 
@@ -6021,31 +6539,53 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class WindTurbine : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
             public override string Code => nameof(WindTurbine);
 
@@ -6054,24 +6594,39 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FortifiedStructure : FeatureNode
         {
             public categoryOfFortifiedStructure? categoryOfFortifiedStructure { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
             public override string Code => nameof(FortifiedStructure);
 
@@ -6080,26 +6635,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ProductionStorageArea : FeatureNode
         {
             [Required()]
             public categoryOfProductionArea categoryOfProductionArea { get; set; }
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(ProductionStorageArea);
 
@@ -6108,15 +6679,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Checkpoint : FeatureNode
         {
             public categoryOfCheckpoint? categoryOfCheckpoint { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Checkpoint);
 
@@ -6125,26 +6702,43 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Hulk : FeatureNode
         {
             public List<categoryOfHulk> categoryOfHulk { get; set; } = [];
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(Hulk);
 
@@ -6153,25 +6747,41 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Pile : FeatureNode
         {
             public categoryOfPile? categoryOfPile { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(Pile);
 
@@ -6180,21 +6790,33 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Dyke : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Dyke);
 
@@ -6203,29 +6825,49 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ShorelineConstruction : FeatureNode
         {
             public categoryOfShorelineConstruction? categoryOfShorelineConstruction { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(ShorelineConstruction);
 
@@ -6234,37 +6876,59 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class StructureOverNavigableWater : FeatureNode
         {
             public List<categoryOfStructure> categoryOfStructure { get; set; } = [];
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
 
             [Required()]
             public horizontalClearanceFixed horizontalClearanceFixed { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public product? product { get; set; } = default;
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
 
             [Required()]
             public verticalClearanceFixed verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(StructureOverNavigableWater);
 
@@ -6281,18 +6945,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Causeway : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Causeway);
 
@@ -6301,20 +6974,31 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Canal : FeatureNode
         {
             public categoryOfCanal? categoryOfCanal { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Canal);
 
@@ -6323,19 +7007,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DistanceMark : FeatureNode
         {
             [Required()]
             public Boolean distanceMarkVisible { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public measuredDistanceValue measuredDistanceValue { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DistanceMark);
 
@@ -6349,23 +7039,37 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Gate : FeatureNode
         {
             public categoryOfGate? categoryOfGate { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public horizontalClearanceOpen? horizontalClearanceOpen { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceOpen? verticalClearanceOpen { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Gate);
 
@@ -6374,25 +7078,41 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Dam : FeatureNode
         {
             public categoryOfDam? categoryOfDam { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Dam);
 
@@ -6401,29 +7121,49 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Crane : FeatureNode
         {
             public categoryOfCrane? categoryOfCrane { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? liftingCapacity { get; set; } = default;
+
             public orientation? orientation { get; set; }
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public Decimal? radius { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
             public override string Code => nameof(Crane);
 
@@ -6431,6 +7171,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -6440,17 +7181,29 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<featureName> featureName { get; set; }
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalClearanceLength { get; set; } = default;
+
             public Decimal? horizontalClearanceWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Decimal? minimumBerthDepth { get; set; } = default;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Berth);
 
@@ -6460,29 +7213,48 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Dolphin : FeatureNode
         {
             [Required()]
             public List<categoryOfDolphin> categoryOfDolphin { get; set; }
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(Dolphin);
 
@@ -6492,19 +7264,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Bollard : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(Bollard);
 
@@ -6513,25 +7295,41 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DryDock : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalClearanceLength { get; set; } = default;
+
             public Decimal? horizontalClearanceWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DryDock);
 
@@ -6540,29 +7338,49 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FloatingDock : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalClearanceLength { get; set; } = default;
+
             public Decimal? horizontalClearanceWidth { get; set; } = default;
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? liftingCapacity { get; set; } = default;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(FloatingDock);
 
@@ -6571,21 +7389,33 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Pontoon : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(Pontoon);
 
@@ -6594,22 +7424,35 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DockArea : FeatureNode
         {
             public categoryOfDock? categoryOfDock { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public Decimal? horizontalClearanceLength { get; set; } = default;
+
             public Decimal? horizontalClearanceWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DockArea);
 
@@ -6618,19 +7461,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Gridiron : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Gridiron);
 
@@ -6639,19 +7492,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LockBasin : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(LockBasin);
 
@@ -6660,14 +7523,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MooringTrot : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(MooringTrot);
 
@@ -6676,14 +7544,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeaAreaNamedWaterArea : FeatureNode
         {
             public categoryOfSeaArea? categoryOfSeaArea { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SeaAreaNamedWaterArea);
 
@@ -6692,14 +7565,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TidalStreamFloodEbb : FeatureNode
         {
             [Required()]
             public categoryOfTidalStream categoryOfTidalStream { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
@@ -6707,7 +7584,9 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public speed speed { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(TidalStreamFloodEbb);
 
@@ -6724,22 +7603,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CurrentNonGravitational : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public orientation orientation { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public speed speed { get; set; }
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(CurrentNonGravitational);
 
@@ -6756,15 +7642,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class WaterTurbulence : FeatureNode
         {
             [Required()]
             public categoryOfWaterTurbulence categoryOfWaterTurbulence { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(WaterTurbulence);
 
@@ -6773,18 +7664,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TidalStreamPanelData : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String stationName { get; set; } = string.Empty;
+
             public String stationNumber { get; set; } = string.Empty;
 
             [Required()]
             public List<tidalStreamPanelValues> tidalStreamPanelValues { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(TidalStreamPanelData);
 
@@ -6795,17 +7692,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Sounding : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public status? status { get; set; } = default;
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Sounding);
 
@@ -6814,22 +7719,34 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DredgedArea : FeatureNode
         {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
+
             public Decimal? depthRangeMaximumValue { get; set; } = default;
+
             public DateOnly? dredgedDate { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement { get; set; } = default;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DredgedArea);
 
@@ -6838,15 +7755,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SweptArea : FeatureNode
         {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? sweptDate { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SweptArea);
 
@@ -6854,6 +7776,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -6863,7 +7786,9 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Decimal valueOfDepthContour { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DepthContour);
 
@@ -6871,6 +7796,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -6881,7 +7807,9 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Decimal depthRangeMaximumValue { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DepthArea);
 
@@ -6890,13 +7818,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DepthNoBottomFound : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DepthNoBottomFound);
 
@@ -6905,11 +7837,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class UnsurveyedArea : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(UnsurveyedArea);
 
@@ -6918,17 +7852,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeabedArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public List<surfaceCharacteristics> surfaceCharacteristics { get; set; }
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SeabedArea);
 
@@ -6938,14 +7877,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class WeedKelp : FeatureNode
         {
             public categoryOfWeedKelp? categoryOfWeedKelp { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(WeedKelp);
 
@@ -6954,13 +7898,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Seagrass : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Seagrass);
 
@@ -6969,13 +7917,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Sandwave : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Sandwave);
 
@@ -6984,13 +7936,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Spring : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Spring);
 
@@ -6999,17 +7955,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class UnderwaterAwashRock : FeatureNode
         {
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public natureOfSurface? natureOfSurface { get; set; } = default;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public status? status { get; set; } = default;
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [Required()]
@@ -7017,8 +7981,11 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public Decimal? defaultClearanceDepth { get; set; } = default;
 
             [Required()]
@@ -7030,28 +7997,44 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Wreck : FeatureNode
         {
             public categoryOfWreck? categoryOfWreck { get; set; } = default;
+
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public Decimal? valueOfSounding { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
 
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Decimal? defaultClearanceDepth { get; set; } = default;
 
             [Required()]
@@ -7063,30 +8046,48 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Obstruction : FeatureNode
         {
             public categoryOfObstruction? categoryOfObstruction { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
             public List<product> product { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public Decimal? valueOfSounding { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
 
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public Decimal? defaultClearanceDepth { get; set; } = default;
 
             [Required()]
@@ -7098,19 +8099,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FoulGround : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public Decimal? valueOfSounding { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(FoulGround);
 
@@ -7119,13 +8130,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DiscolouredWater : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DiscolouredWater);
 
@@ -7134,19 +8149,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FishingFacility : FeatureNode
         {
             public categoryOfFishingFacility? categoryOfFishingFacility { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(FishingFacility);
 
@@ -7155,28 +8180,44 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MarineFarmCulture : FeatureNode
         {
             public categoryOfMarineFarmCulture? categoryOfMarineFarmCulture { get; set; } = default;
+
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfSounding { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(MarineFarmCulture);
 
@@ -7185,27 +8226,45 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class OffshorePlatform : FeatureNode
         {
             public categoryOfOffshorePlatform? categoryOfOffshorePlatform { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? flareStack { get; set; } = default;
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(OffshorePlatform);
 
@@ -7214,18 +8273,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CableSubmarine : FeatureNode
         {
             public Decimal? buriedDepth { get; set; } = default;
+
             public categoryOfCable? categoryOfCable { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(CableSubmarine);
 
@@ -7234,18 +8302,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CableArea : FeatureNode
         {
             public List<categoryOfCable> categoryOfCable { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(CableArea);
 
@@ -7254,25 +8331,41 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PipelineSubmarineOnLand : FeatureNode
         {
             public Decimal? buriedDepth { get; set; } = default;
+
             public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
+
             public condition? condition { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public Decimal? depthRangeMaximumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<product> product { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(PipelineSubmarineOnLand);
 
@@ -7281,19 +8374,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SubmarinePipelineArea : FeatureNode
         {
             public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<product> product { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SubmarinePipelineArea);
 
@@ -7302,26 +8405,43 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class OffshoreProductionArea : FeatureNode
         {
             public categoryOfOffshoreProductionArea? categoryOfOffshoreProductionArea { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(OffshoreProductionArea);
 
@@ -7330,21 +8450,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NavigationLine : FeatureNode
         {
             [Required()]
             public categoryOfNavigationLine categoryOfNavigationLine { get; set; }
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? measuredDistance { get; set; } = default;
 
             [Required()]
             public orientation orientation { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(NavigationLine);
 
@@ -7357,29 +8485,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RecommendedTrack : FeatureNode
         {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [Required()]
             public trafficFlow trafficFlow { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RecommendedTrack);
 
@@ -7388,15 +8529,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RangeSystem : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RangeSystem);
 
@@ -7405,23 +8552,37 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Fairway : FeatureNode
         {
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Decimal? orientationValue { get; set; } = default;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public trafficFlow? trafficFlow { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Fairway);
 
@@ -7430,16 +8591,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FairwaySystem : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(FairwaySystem);
 
@@ -7448,24 +8616,38 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RecommendedRouteCentreline : FeatureNode
         {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? orientationValue { get; set; } = default;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public trafficFlow? trafficFlow { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RecommendedRouteCentreline);
 
@@ -7474,25 +8656,35 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TwoWayRoutePart : FeatureNode
         {
             public Boolean? basedOnFixedMarks { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [Required()]
             public trafficFlow trafficFlow { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(TwoWayRoutePart);
 
@@ -7501,15 +8693,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TwoWayRoute : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(TwoWayRoute);
 
@@ -7518,17 +8716,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RecommendedTrafficLanePart : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RecommendedTrafficLanePart);
 
@@ -7537,28 +8740,40 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DeepWaterRouteCentreline : FeatureNode
         {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? iMOAdopted { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [Required()]
             public trafficFlow trafficFlow { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DeepWaterRouteCentreline);
 
@@ -7567,29 +8782,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DeepWaterRoutePart : FeatureNode
         {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? iMOAdopted { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [Required()]
             public trafficFlow trafficFlow { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DeepWaterRoutePart);
 
@@ -7598,15 +8826,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DeepWaterRoute : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? iMOAdopted { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DeepWaterRoute);
 
@@ -7615,16 +8849,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class InshoreTrafficZone : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(InshoreTrafficZone);
 
@@ -7633,17 +8874,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PrecautionaryArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? iMOAdopted { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
 
             [Required()]
@@ -7656,17 +8905,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationSchemeLanePart : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? orientationValue { get; set; } = default;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeLanePart);
 
@@ -7675,14 +8932,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeparationZoneOrLine : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SeparationZoneOrLine);
 
@@ -7691,14 +8953,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationSchemeBoundary : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeBoundary);
 
@@ -7707,16 +8974,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationSchemeCrossing : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeCrossing);
 
@@ -7725,16 +8999,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationSchemeRoundabout : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeRoundabout);
 
@@ -7743,16 +9024,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TrafficSeparationScheme : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? iMOAdopted { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(TrafficSeparationScheme);
 
@@ -7761,15 +9049,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ArchipelagicSeaLaneArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(ArchipelagicSeaLaneArea);
 
@@ -7778,15 +9072,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ArchipelagicSeaLaneAxis : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(ArchipelagicSeaLaneAxis);
 
@@ -7795,15 +9095,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ArchipelagicSeaLane : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(ArchipelagicSeaLane);
 
@@ -7813,21 +9119,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadioCallingInPoint : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<Decimal> orientationValue { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
 
             [Required()]
             public trafficFlow trafficFlow { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RadioCallingInPoint);
 
@@ -7836,18 +9151,26 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FerryRoute : FeatureNode
         {
             [Required()]
             public List<categoryOfFerry> categoryOfFerry { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(FerryRoute);
 
@@ -7857,17 +9180,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarLine : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RadarLine);
 
@@ -7876,16 +9204,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarRange : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RadarRange);
 
@@ -7894,20 +9229,31 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarStation : FeatureNode
         {
             public String callSign { get; set; } = string.Empty;
+
             public List<categoryOfRadarStation> categoryOfRadarStation { get; set; } = [];
+
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfMaximumRange { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RadarStation);
 
@@ -7916,20 +9262,31 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorageArea : FeatureNode
         {
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
+
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(AnchorageArea);
 
@@ -7938,21 +9295,33 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MooringArea : FeatureNode
         {
             public List<categoryOfMooringArea> categoryOfMooringArea { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Decimal? maximumPermittedVesselLength { get; set; } = default;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
             public override string Code => nameof(MooringArea);
 
@@ -7961,19 +9330,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorBerth : FeatureNode
         {
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
+
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Decimal? radius { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(AnchorBerth);
 
@@ -7982,17 +9361,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeaplaneLandingArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SeaplaneLandingArea);
 
@@ -8001,18 +9388,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DumpingGround : FeatureNode
         {
             public List<categoryOfDumpingGround> categoryOfDumpingGround { get; set; } = [];
+
             public DateOnly? dateDisused { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DumpingGround);
 
@@ -8021,20 +9417,31 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MilitaryPracticeArea : FeatureNode
         {
             public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(MilitaryPracticeArea);
 
@@ -8042,6 +9449,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -8051,11 +9459,17 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public jurisdiction jurisdiction { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<String> nationality { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(AdministrationArea);
 
@@ -8064,18 +9478,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CargoTranshipmentArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(CargoTranshipmentArea);
 
@@ -8084,18 +9507,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CautionArea : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(CautionArea);
 
@@ -8104,17 +9536,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class InformationArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(InformationArea);
 
@@ -8123,17 +9563,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContiguousZone : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? inDispute { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public List<String> nationality { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(ContiguousZone);
 
@@ -8143,16 +9588,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContinentalShelfArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public List<String> nationality { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(ContinentalShelfArea);
 
@@ -8162,13 +9611,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CustomZone : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(CustomZone);
 
@@ -8178,16 +9631,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ExclusiveEconomicZone : FeatureNode
         {
             public Boolean? inDispute { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public List<String> nationality { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(ExclusiveEconomicZone);
 
@@ -8197,15 +9654,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FisheryZone : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(FisheryZone);
 
@@ -8215,17 +9678,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FishingGround : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(FishingGround);
 
@@ -8234,14 +9705,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FreePortArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(FreePortArea);
 
@@ -8250,14 +9726,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourAreaAdministrative : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(HarbourAreaAdministrative);
 
@@ -8266,15 +9747,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LogPond : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(LogPond);
 
@@ -8283,18 +9770,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class OilBarrier : FeatureNode
         {
             public categoryOfOilBarrier? categoryOfOilBarrier { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(OilBarrier);
 
@@ -8303,13 +9799,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class StraightTerritorialSeaBaseline : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(StraightTerritorialSeaBaseline);
 
@@ -8319,18 +9819,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TerritorialSeaArea : FeatureNode
         {
             public Boolean? inDispute { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public List<String> nationality { get; set; }
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(TerritorialSeaArea);
 
@@ -8340,16 +9846,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SubmarineTransitLane : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SubmarineTransitLane);
 
@@ -8358,14 +9871,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PilotageDistrict : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(PilotageDistrict);
 
@@ -8374,16 +9892,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CollisionRegulationsLimit : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public String regulationCitation { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(CollisionRegulationsLimit);
 
@@ -8392,14 +9917,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MarinePollutionRegulationsArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String regulationCitation { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(MarinePollutionRegulationsArea);
 
@@ -8408,21 +9938,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RestrictedArea : FeatureNode
         {
             public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public List<restriction> restriction { get; set; }
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RestrictedArea);
 
@@ -8432,6 +9971,7 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightAllAround : FeatureNode
@@ -8440,26 +9980,44 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Int32? flareBearing { get; set; } = default;
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public lightVisibility? lightVisibility { get; set; } = default;
+
             public Boolean? majorLight { get; set; } = default;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public rhythmOfLight rhythmOfLight { get; set; }
+
             public signalGeneration? signalGeneration { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfNominalRange { get; set; } = default;
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(LightAllAround);
 
@@ -8473,26 +10031,40 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightSectored : FeatureNode
         {
             public List<categoryOfLight> categoryOfLight { get; set; } = [];
+
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public List<sectorCharacteristics> sectorCharacteristics { get; set; }
+
             public signalGeneration? signalGeneration { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(LightSectored);
 
@@ -8502,23 +10074,37 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightFogDetector : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Int32? flareBearing { get; set; } = default;
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public rhythmOfLight? rhythmOfLight { get; set; }
+
             public signalGeneration? signalGeneration { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(LightFogDetector);
 
@@ -8527,25 +10113,41 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightAirObstruction : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
+
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Int32? flareBearing { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? height { get; set; } = default;
+
             public List<lightVisibility> lightVisibility { get; set; } = [];
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public rhythmOfLight? rhythmOfLight { get; set; }
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfNominalRange { get; set; } = default;
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(LightAirObstruction);
 
@@ -8553,6 +10155,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -8566,19 +10169,33 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(LateralBuoy);
 
@@ -8587,6 +10204,7 @@ namespace S100Framework.DomainModel.S101
                 colour = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -8600,19 +10218,33 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(CardinalBuoy);
 
@@ -8621,6 +10253,7 @@ namespace S100Framework.DomainModel.S101
                 colour = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -8631,19 +10264,33 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(IsolatedDangerBuoy);
 
@@ -8652,6 +10299,7 @@ namespace S100Framework.DomainModel.S101
                 colour = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -8662,19 +10310,33 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(SafeWaterBuoy);
 
@@ -8683,6 +10345,7 @@ namespace S100Framework.DomainModel.S101
                 colour = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -8696,19 +10359,33 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
@@ -8719,6 +10396,7 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class EmergencyWreckMarkingBuoy : FeatureNode
@@ -8728,17 +10406,29 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(EmergencyWreckMarkingBuoy);
 
@@ -8748,28 +10438,43 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class InstallationBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
+
             public categoryOfInstallationBuoy? categoryOfInstallationBuoy { get; set; } = default;
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(InstallationBuoy);
 
@@ -8779,26 +10484,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MooringBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Decimal? maximumPermittedVesselLength { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Boolean? visitorsMooring { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(MooringBuoy);
 
@@ -8806,6 +10527,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -8819,24 +10541,43 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? height { get; set; } = default;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(LateralBeacon);
 
@@ -8845,6 +10586,7 @@ namespace S100Framework.DomainModel.S101
                 colour = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -8858,24 +10600,43 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(CardinalBeacon);
 
@@ -8884,6 +10645,7 @@ namespace S100Framework.DomainModel.S101
                 colour = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -8894,24 +10656,43 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(IsolatedDangerBeacon);
 
@@ -8920,6 +10701,7 @@ namespace S100Framework.DomainModel.S101
                 colour = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -8930,24 +10712,43 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(SafeWaterBeacon);
 
@@ -8956,6 +10757,7 @@ namespace S100Framework.DomainModel.S101
                 colour = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -8969,24 +10771,43 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
@@ -8997,6 +10818,7 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Daymark : FeatureNode
@@ -9005,23 +10827,38 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
 
             [Required()]
             public topmarkDaymarkShape topmarkDaymarkShape { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public List<shapeInformation> shapeInformation { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(Daymark);
 
@@ -9031,27 +10868,44 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightFloat : FeatureNode
         {
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(LightFloat);
 
@@ -9061,26 +10915,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class LightVessel : FeatureNode
         {
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(LightVessel);
 
@@ -9090,18 +10960,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Retroreflector : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(Retroreflector);
 
@@ -9110,16 +10989,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarReflector : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RadarReflector);
 
@@ -9128,24 +11014,38 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FogSignal : FeatureNode
         {
             [Required()]
             public categoryOfFogSignal categoryOfFogSignal { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Int32? signalFrequency { get; set; } = default;
+
             public signalGeneration? signalGeneration { get; set; } = default;
+
             public String signalGroup { get; set; } = string.Empty;
+
             public Decimal? signalPeriod { get; set; } = default;
+
             public List<signalSequence> signalSequence { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfMaximumRange { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(FogSignal);
 
@@ -9154,18 +11054,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PhysicalAISAidToNavigation : FeatureNode
         {
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String mMSICode { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(PhysicalAISAidToNavigation);
 
@@ -9174,21 +11083,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class VirtualAISAidToNavigation : FeatureNode
         {
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String mMSICode { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public status? status { get; set; } = default;
 
             [Required()]
             public virtualAISAidToNavigationType virtualAISAidToNavigationType { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(VirtualAISAidToNavigation);
 
@@ -9197,21 +11115,33 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadioStation : FeatureNode
         {
             public String callSign { get; set; } = string.Empty;
+
             public List<categoryOfRadioStation> categoryOfRadioStation { get; set; } = [];
+
             public List<String> communicationChannel { get; set; } = [];
+
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public frequencyPair? frequencyPair { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RadioStation);
 
@@ -9220,23 +11150,36 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RadarTransponderBeacon : FeatureNode
         {
             [Required()]
             public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<radarWaveLength> radarWaveLength { get; set; } = [];
+
             public sectorLimit? sectorLimit { get; set; }
+
             public String signalGroup { get; set; } = string.Empty;
+
             public List<signalSequence> signalSequence { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfMaximumRange { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RadarTransponderBeacon);
 
@@ -9245,21 +11188,33 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PilotBoardingPlace : FeatureNode
         {
             public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace { get; set; } = default;
+
             public categoryOfPreference? categoryOfPreference { get; set; } = default;
+
             public List<String> communicationChannel { get; set; } = [];
+
             public List<String> destination { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<pilotMovement> pilotMovement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(PilotBoardingPlace);
 
@@ -9268,13 +11223,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class VesselTrafficServiceArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(VesselTrafficServiceArea);
 
@@ -9283,18 +11242,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class CoastGuardStation : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Boolean? isMRCC { get; set; } = default;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(CoastGuardStation);
 
@@ -9303,19 +11271,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SignalStationWarning : FeatureNode
         {
             [Required()]
             public List<categoryOfSignalStationWarning> categoryOfSignalStationWarning { get; set; }
+
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SignalStationWarning);
 
@@ -9325,19 +11302,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SignalStationTraffic : FeatureNode
         {
             [Required()]
             public List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic { get; set; }
+
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SignalStationTraffic);
 
@@ -9347,18 +11333,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RescueStation : FeatureNode
         {
             public List<categoryOfRescueStation> categoryOfRescueStation { get; set; } = [];
+
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(RescueStation);
 
@@ -9367,26 +11362,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourFacility : FeatureNode
         {
             [Required()]
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
+
             public List<String> communicationChannel { get; set; } = [];
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public product? product { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(HarbourFacility);
 
@@ -9396,18 +11407,26 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SmallCraftFacility : FeatureNode
         {
             [Required()]
             public List<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(SmallCraftFacility);
 
@@ -9416,6 +11435,7 @@ namespace S100Framework.DomainModel.S101
                 categoryOfSmallCraftFacility = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -9426,10 +11446,12 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Int32 textOffsetDistance { get; set; }
+
             public Boolean? textRotation { get; set; } = default;
 
             [Required()]
             public List<textType> textType { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
             public override string Code => nameof(TextPlacement);
 
@@ -9439,11 +11461,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Chart1Feature : FeatureNode
         {
             public List<String> drawingInstruction { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
             public override string Code => nameof(Chart1Feature);
 
@@ -9451,5 +11475,6 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
     }
 }

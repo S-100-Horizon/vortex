@@ -1,5 +1,4 @@
-﻿using ArcGIS.Core.CIM;
-using ArcGIS.Core.Data;
+﻿using ArcGIS.Core.Data;
 using CommandLine;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using static S100Framework.Applications.VortexLoader;

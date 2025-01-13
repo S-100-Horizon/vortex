@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Include="..\..\..\src\UI\S100Framework.WPF\Editors.cs" Link="Editors.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Include="..\..\..\artifacts\Product Specifications\S-101 Electronic Navigational Chart\1.2.3\S-101_FC_1.2.3.xml" Link="Artifacts\S-101_FC_1.2.3.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

@@ -2,7 +2,6 @@
 
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF.ViewModel;
-using S100Framework.WPF.ViewModel.S903;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -274,7 +273,7 @@ namespace VortexConceptApplication
                     }
                 }
             }
-        }    
+        }
     }
 
     public class CodeListComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor

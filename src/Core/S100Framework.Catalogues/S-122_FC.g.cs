@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 
+#nullable enable
 
 namespace S100Framework.DomainModel.S122
 {
@@ -1314,9 +1315,13 @@ namespace S100Framework.DomainModel.S122
         public partial class contactAddress
         {
             public String deliveryPoint { get; set; } = string.Empty;
+
             public String cityName { get; set; } = string.Empty;
+
             public String administrativeDivision { get; set; } = string.Empty;
+
             public String countryName { get; set; } = string.Empty;
+
             public String postalCode { get; set; } = string.Empty;
 
             public contactAddress()
@@ -1324,12 +1329,15 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureName
         {
             public Boolean? displayName { get; set; } = default;
+
             public String language { get; set; } = string.Empty;
+
             public String name { get; set; } = string.Empty;
 
             public featureName()
@@ -1339,11 +1347,13 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class fixedDateRange
         {
             public DateOnly? dateStart { get; set; } = default;
+
             public DateOnly? dateEnd { get; set; } = default;
 
             public fixedDateRange()
@@ -1351,11 +1361,13 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class frequencyPair
         {
             public Int32? frequencyShoreStationReceives { get; set; } = default;
+
             public Int32? frequencyShoreStationTransmits { get; set; } = default;
 
             public frequencyPair()
@@ -1363,17 +1375,21 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class information
 #pragma warning restore CS8981
         {
             public String fileLocator { get; set; } = string.Empty;
+
             public String fileReference { get; set; } = string.Empty;
+
             public String headline { get; set; } = string.Empty;
+
             public String language { get; set; } = string.Empty;
+
             public String text { get; set; } = string.Empty;
 
             public information()
@@ -1381,16 +1397,23 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource
         {
             public String onlineResourceLinkageURL { get; set; } = string.Empty;
+
             public String protocol { get; set; } = string.Empty;
+
             public String applicationProfile { get; set; } = string.Empty;
+
             public String nameOfResource { get; set; } = string.Empty;
+
             public String onlineResourceDescription { get; set; } = string.Empty;
+
             public String protocolRequest { get; set; } = string.Empty;
+
             public onlineFunction? onlineFunction { get; set; } = default;
 
             public onlineResource()
@@ -1399,10 +1422,10 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class orientation
 #pragma warning restore CS8981
         {
@@ -1415,6 +1438,7 @@ namespace S100Framework.DomainModel.S122
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1431,12 +1455,15 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class rxNCode
         {
             public categoryOfRxN? categoryOfRxN { get; set; }
+
             public actionOrActivity? actionOrActivity { get; set; }
+
             public String headline { get; set; } = string.Empty;
 
             public rxNCode()
@@ -1444,12 +1471,14 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorLimitOne
         {
             [Required()]
             public Decimal sectorBearing { get; set; }
+
             public Int32? sectorLineLength { get; set; } = default;
 
             public sectorLimitOne()
@@ -1457,12 +1486,14 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorLimitTwo
         {
             [Required()]
             public Decimal sectorBearing { get; set; }
+
             public Int32? sectorLineLength { get; set; } = default;
 
             public sectorLimitTwo()
@@ -1470,13 +1501,17 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class textContent
         {
             public categoryOfText? categoryOfText { get; set; } = default;
+
             public String source { get; set; } = string.Empty;
+
             public sourceType? sourceType { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
 
             public textContent()
@@ -1484,19 +1519,24 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalsByDayOfWeek
         {
             public List<dayOfWeek> dayOfWeek { get; set; } = [];
+
             public Boolean? dayOfWeekIsRange { get; set; } = default;
+
             public List<TimeOnly> timeOfDayEnd { get; set; } = [];
+
             public List<TimeOnly> timeOfDayStart { get; set; } = [];
 
             public timeIntervalsByDayOfWeek()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1519,16 +1559,19 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class designation
 #pragma warning restore CS8981
         {
             public String designationScheme { get; set; } = string.Empty;
+
             public String designationIdentifier { get; set; } = string.Empty;
+
             public jurisdiction? jurisdiction { get; set; } = default;
+
             public String text { get; set; } = string.Empty;
 
             public designation()
@@ -1536,14 +1579,19 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class bearingInformation
         {
             public cardinalDirection? cardinalDirection { get; set; } = default;
+
             public Decimal? distance { get; set; } = default;
+
             public List<Decimal> sectorBearing { get; set; } = [];
+
             public List<information> information { get; set; } = [];
+
             public orientation? orientation { get; set; }
 
             public bearingInformation()
@@ -1551,18 +1599,22 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class graphic
 #pragma warning restore CS8981
         {
             [Required()]
             public List<String> pictorialRepresentation { get; set; }
+
             public String pictureCaption { get; set; } = string.Empty;
+
             public DateTime? sourceDate { get; set; } = default;
+
             public String pictureInformation { get; set; } = string.Empty;
+
             public bearingInformation? bearingInformation { get; set; }
 
             public graphic()
@@ -1570,6 +1622,7 @@ namespace S100Framework.DomainModel.S122
                 pictorialRepresentation = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1585,6 +1638,7 @@ namespace S100Framework.DomainModel.S122
                 timeIntervalsByDayOfWeek = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1609,18 +1663,23 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class telecommunications
 #pragma warning restore CS8981
         {
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
+
             public String contactInstructions { get; set; } = string.Empty;
+
             public String telecomCarrier { get; set; } = string.Empty;
+
             public String telecommunicationIdentifier { get; set; } = string.Empty;
+
             public telecommunicationService? telecommunicationService { get; set; } = default;
+
             public scheduleByDayOfWeek? scheduleByDayOfWeek { get; set; }
 
             public telecommunications()
@@ -1628,6 +1687,7 @@ namespace S100Framework.DomainModel.S122
                 telecommunicationIdentifier = string.Empty;
             }
         }
+
     }
 
     public enum Role
@@ -1822,11 +1882,17 @@ namespace S100Framework.DomainModel.S122
         public partial class InformationType : InformationNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<graphic> graphic { get; set; } = [];
+
             public String source { get; set; } = string.Empty;
+
             public sourceType? sourceType { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
             public override string Code => nameof(InformationType);
 
@@ -1835,12 +1901,15 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AbstractRxN : InformationType
         {
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
+
             public textContent? textContent { get; set; }
+
             public List<rxNCode> rxNCode { get; set; } = [];
             public override string Code => nameof(AbstractRxN);
 
@@ -1848,6 +1917,7 @@ namespace S100Framework.DomainModel.S122
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1860,6 +1930,7 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Regulations : AbstractRxN
@@ -1870,6 +1941,7 @@ namespace S100Framework.DomainModel.S122
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1882,6 +1954,7 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Recommendations : AbstractRxN
@@ -1893,12 +1966,14 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Authority : InformationType
         {
             [Required()]
             public categoryOfAuthority categoryOfAuthority { get; set; }
+
             public List<textContent> textContent { get; set; } = [];
             public override string Code => nameof(Authority);
 
@@ -1907,21 +1982,33 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContactDetails : AbstractRxN
         {
             public String callName { get; set; } = string.Empty;
+
             public String callSign { get; set; } = string.Empty;
+
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
+
             public List<String> communicationChannel { get; set; } = [];
+
             public String contactInstructions { get; set; } = string.Empty;
+
             public String mMSICode { get; set; } = string.Empty;
+
             public List<Int32> signalFrequency { get; set; } = [];
+
             public List<contactAddress> contactAddress { get; set; } = [];
+
             public List<frequencyPair> frequencyPair { get; set; } = [];
+
             public List<onlineResource> onlineResource { get; set; } = [];
+
             public List<telecommunications> telecommunications { get; set; } = [];
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(ContactDetails);
 
@@ -1930,12 +2017,15 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NonStandardWorkingDay : InformationType
         {
             public List<DateOnly> dateFixed { get; set; } = [];
+
             public List<String> dateVariable { get; set; } = [];
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(NonStandardWorkingDay);
 
@@ -1943,6 +2033,7 @@ namespace S100Framework.DomainModel.S122
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1964,19 +2055,29 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Applicability : InformationType
         {
             public Boolean? inBallast { get; set; } = default;
+
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
+
             public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = [];
+
             public categoryOfVessel? categoryOfVessel { get; set; }
+
             public categoryOfVesselRegistry? categoryOfVesselRegistry { get; set; } = default;
+
             public logicalConnectives? logicalConnectives { get; set; } = default;
+
             public Int32? thicknessOfIceCapability { get; set; } = default;
+
             public String vesselPerformance { get; set; } = string.Empty;
+
             public List<information> information { get; set; } = [];
+
             public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
             public override string Code => nameof(Applicability);
 
@@ -1984,6 +2085,7 @@ namespace S100Framework.DomainModel.S122
             {
             }
         }
+
     }
 
     namespace FeatureTypes
@@ -1998,12 +2100,19 @@ namespace S100Framework.DomainModel.S122
         public abstract partial class FeatureType : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<textContent> textContent { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String source { get; set; } = string.Empty;
+
             public sourceType? sourceType { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
             public override string Code => nameof(FeatureType);
 
@@ -2013,6 +2122,7 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class RestrictedArea : FeatureType
@@ -2021,6 +2131,7 @@ namespace S100Framework.DomainModel.S122
 
             [Required()]
             public List<restriction> restriction { get; set; }
+
             public List<status> status { get; set; } = [];
             public override string Code => nameof(RestrictedArea);
 
@@ -2030,18 +2141,23 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MarineProtectedArea : FeatureType
         {
             [Required()]
             public categoryOfMarineProtectedArea categoryOfMarineProtectedArea { get; set; }
+
             public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
 
             [Required()]
             public jurisdiction jurisdiction { get; set; }
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<designation> designation { get; set; } = [];
             public override string Code => nameof(MarineProtectedArea);
 
@@ -2052,6 +2168,7 @@ namespace S100Framework.DomainModel.S122
                 };
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2066,6 +2183,7 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DataCoverage : FeatureNode
@@ -2077,6 +2195,7 @@ namespace S100Framework.DomainModel.S122
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TextPlacement : FeatureNode
@@ -2087,5 +2206,6 @@ namespace S100Framework.DomainModel.S122
             {
             }
         }
+
     }
 }

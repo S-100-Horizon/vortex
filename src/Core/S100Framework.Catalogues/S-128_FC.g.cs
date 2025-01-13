@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 
+#nullable enable
 
 namespace S100Framework.DomainModel.S128
 {
@@ -698,15 +699,20 @@ namespace S100Framework.DomainModel.S128
         public partial class contactAddress
         {
             public String administrativeDivision { get; set; } = string.Empty;
+
             public String cityName { get; set; } = string.Empty;
+
             public String countryName { get; set; } = string.Empty;
+
             public List<String> deliveryPoint { get; set; } = [];
+
             public String postalCode { get; set; } = string.Empty;
 
             public contactAddress()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -723,12 +729,15 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class defaultLocale
         {
             public String characterEncoding { get; set; } = string.Empty;
+
             public String countryName { get; set; } = string.Empty;
+
             public String language { get; set; } = string.Empty;
 
             public defaultLocale()
@@ -738,12 +747,15 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureName
         {
             public String language { get; set; } = string.Empty;
+
             public String name { get; set; } = string.Empty;
+
             public nameUsage? nameUsage { get; set; } = default;
 
             public featureName()
@@ -752,17 +764,21 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class information
 #pragma warning restore CS8981
         {
             public String fileLocator { get; set; } = string.Empty;
+
             public String fileReference { get; set; } = string.Empty;
+
             public String headline { get; set; } = string.Empty;
+
             public String language { get; set; } = string.Empty;
+
             public List<String> text { get; set; } = [];
 
             public information()
@@ -770,15 +786,21 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource
         {
             public String applicationProfile { get; set; } = string.Empty;
+
             public String linkage { get; set; } = string.Empty;
+
             public String nameOfResource { get; set; } = string.Empty;
+
             public String onlineDescription { get; set; } = string.Empty;
+
             public String protocol { get; set; } = string.Empty;
+
             public String protocolRequest { get; set; } = string.Empty;
 
             public onlineResource()
@@ -786,6 +808,7 @@ namespace S100Framework.DomainModel.S128
                 linkage = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -802,14 +825,15 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class pricing
 #pragma warning restore CS8981
         {
             public String contractPeriod { get; set; } = string.Empty;
+
             public String currency { get; set; } = string.Empty;
 
             [Required()]
@@ -821,11 +845,13 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class printSize
         {
             public iso216? iso216 { get; set; } = default;
+
             public customPaperSize? customPaperSize { get; set; }
 
             public printSize()
@@ -833,14 +859,18 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class productSpecification
         {
             [Required()]
             public DateTime date { get; set; }
+
             public String ISSN { get; set; } = string.Empty;
+
             public String name { get; set; } = string.Empty;
+
             public String version { get; set; } = string.Empty;
 
             public productSpecification()
@@ -850,13 +880,16 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class supportFileSpecification
         {
             [Required()]
             public DateTime date { get; set; }
+
             public String name { get; set; } = string.Empty;
+
             public String version { get; set; } = string.Empty;
 
             public supportFileSpecification()
@@ -866,13 +899,16 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class serviceSpecification
         {
             [Required()]
             public DateTime date { get; set; }
+
             public String name { get; set; } = string.Empty;
+
             public String version { get; set; } = string.Empty;
 
             public serviceSpecification()
@@ -882,15 +918,21 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sourceIndication
         {
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
+
             public String countryName { get; set; } = string.Empty;
+
             public DateTime? reportedDate { get; set; } = default;
+
             public String source { get; set; } = string.Empty;
+
             public sourceType? sourceType { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
 
             public sourceIndication()
@@ -898,15 +940,17 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class telecommunications
 #pragma warning restore CS8981
         {
             public String contactInstructions { get; set; } = string.Empty;
+
             public String telecommunicationIdentifier { get; set; } = string.Empty;
+
             public List<telecommunicationService> telecommunicationService { get; set; } = [];
 
             public telecommunications()
@@ -915,6 +959,7 @@ namespace S100Framework.DomainModel.S128
                 telecommunicationIdentifier = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -932,6 +977,7 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class weekOfYear
@@ -947,11 +993,13 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class issuanceCycle
         {
             public periodicDateRange? periodicDateRange { get; set; }
+
             public timeIntervalOfCycle? timeIntervalOfCycle { get; set; }
 
             public issuanceCycle()
@@ -959,13 +1007,17 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class printInformation
         {
             public String printAgency { get; set; } = string.Empty;
+
             public String printNation { get; set; } = string.Empty;
+
             public String rePrintEdition { get; set; } = string.Empty;
+
             public String rePrintNation { get; set; } = string.Empty;
 
             [Required()]
@@ -979,6 +1031,7 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class supportFile
@@ -987,11 +1040,17 @@ namespace S100Framework.DomainModel.S128
 
             [Required()]
             public digitalSignatureReference digitalSignatureReference { get; set; }
+
             public String digitalSignatureValue { get; set; } = string.Empty;
+
             public Int32? editionNumber { get; set; } = default;
+
             public String fileLocator { get; set; } = string.Empty;
+
             public String fileName { get; set; } = string.Empty;
+
             public DateTime? issueDate { get; set; } = default;
+
             public String otherDataTypeDescription { get; set; } = string.Empty;
 
             [Required()]
@@ -1024,13 +1083,16 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalOfProduct
         {
             [Required()]
             public DateTime issueDate { get; set; }
+
             public DateTime? expirationDate { get; set; } = default;
+
             public issuanceCycle? issuanceCycle { get; set; }
 
             public timeIntervalOfProduct()
@@ -1038,18 +1100,21 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class referenceToNM
         {
             [Required()]
             public DateTime publicationDate { get; set; }
+
             public weekOfYear? weekOfYear { get; set; }
 
             public referenceToNM()
             {
             }
         }
+
     }
 
     public enum Role
@@ -1235,7 +1300,9 @@ namespace S100Framework.DomainModel.S128
         {
             [Required()]
             public Int32 catalogueSectionNumber { get; set; }
+
             public String catalogueSectionTitle { get; set; } = string.Empty;
+
             public information? information { get; set; }
             public override string Code => nameof(CatalogueSectionHeader);
 
@@ -1244,15 +1311,21 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContactDetails : InformationNode
         {
             public String contactInstructions { get; set; } = string.Empty;
+
             public List<contactAddress> contactAddress { get; set; } = [];
+
             public List<information> information { get; set; } = [];
+
             public List<onlineResource> onlineResource { get; set; } = [];
+
             public List<telecommunications> telecommunications { get; set; } = [];
+
             public List<sourceIndication> sourceIndication { get; set; } = [];
             public override string Code => nameof(ContactDetails);
 
@@ -1262,12 +1335,15 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class IndicationOfCarriageRequirement : InformationNode
         {
             public String domesticCarriageRequirements { get; set; } = string.Empty;
+
             public String internationalCarriageRequirements { get; set; } = string.Empty;
+
             public List<featureName> featureName { get; set; } = [];
             public override string Code => nameof(IndicationOfCarriageRequirement);
 
@@ -1276,13 +1352,17 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PriceInformation : InformationNode
         {
             public List<information> information { get; set; } = [];
+
             public List<onlineResource> onlineResource { get; set; } = [];
+
             public List<pricing> pricing { get; set; } = [];
+
             public List<sourceIndication> sourceIndication { get; set; } = [];
             public override string Code => nameof(PriceInformation);
 
@@ -1291,11 +1371,13 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ProducerInformation : InformationNode
         {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
+
             public String agencyName { get; set; } = string.Empty;
             public override string Code => nameof(ProducerInformation);
 
@@ -1304,6 +1386,7 @@ namespace S100Framework.DomainModel.S128
                 agencyResponsibleForProduction = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1317,6 +1400,7 @@ namespace S100Framework.DomainModel.S128
                 distributorName = string.Empty;
             }
         }
+
     }
 
     namespace FeatureTypes
@@ -1334,17 +1418,26 @@ namespace S100Framework.DomainModel.S128
 
             [Required()]
             public List<catalogueElementClassification> catalogueElementClassification { get; set; }
+
             public String catalogueElementIdentifier { get; set; } = string.Empty;
+
             public String classification { get; set; } = string.Empty;
+
             public List<IMOMaritimeService> IMOMaritimeService { get; set; } = [];
 
             [Required()]
             public Boolean notForNavigation { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public List<information> information { get; set; } = [];
+
             public onlineResource? onlineResource { get; set; }
+
             public sourceIndication? sourceIndication { get; set; }
+
             public List<supportFile> supportFile { get; set; } = [];
+
             public timeIntervalOfProduct? timeIntervalOfProduct { get; set; }
             public override string Code => nameof(CatalogueElement);
 
@@ -1354,25 +1447,41 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class NavigationalProduct : CatalogueElement
         {
             public List<Decimal> approximateGridResolution { get; set; } = [];
+
             public List<Int32> compilationScale { get; set; } = [];
+
             public distributionStatus? distributionStatus { get; set; } = default;
+
             public Int32? editionNumber { get; set; } = default;
+
             public Int32? maximumDisplayScale { get; set; } = default;
+
             public Int32? minimumDisplayScale { get; set; } = default;
+
             public List<navigationPurpose> navigationPurpose { get; set; } = [];
+
             public String optimumDisplayScale { get; set; } = string.Empty;
+
             public String originalProductNumber { get; set; } = string.Empty;
+
             public String producerNation { get; set; } = string.Empty;
+
             public String productNumber { get; set; } = string.Empty;
+
             public specificUsage? specificUsage { get; set; } = default;
+
             public DateTime? updateDate { get; set; } = default;
+
             public Int32? updateNumber { get; set; } = default;
+
             public horizontalDatumEpsg? horizontalDatumEpsg { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
             public override string Code => nameof(NavigationalProduct);
 
@@ -1381,19 +1490,23 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ElectronicProduct : NavigationalProduct
         {
             public Boolean? compressionFlag { get; set; } = default;
+
             public String datasetName { get; set; } = string.Empty;
 
             [Required()]
             public DateTime issueDate { get; set; }
+
             public TimeOnly? issueTime { get; set; } = default;
 
             [Required()]
             public typeOfProductFormat typeOfProductFormat { get; set; }
+
             public productSpecification? productSpecification { get; set; }
             public override string Code => nameof(ElectronicProduct);
 
@@ -1402,16 +1515,22 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PhysicalProduct : NavigationalProduct
         {
             [Required()]
             public DateTime editionDate { get; set; }
+
             public String isbn { get; set; } = string.Empty;
+
             public String publicationNumber { get; set; } = string.Empty;
+
             public String typeOfPaper { get; set; } = string.Empty;
+
             public printInformation? printInformation { get; set; }
+
             public referenceToNM? referenceToNM { get; set; }
             public override string Code => nameof(PhysicalProduct);
 
@@ -1420,17 +1539,22 @@ namespace S100Framework.DomainModel.S128
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class S100Service : CatalogueElement
         {
             public Boolean? compressionFlag { get; set; } = default;
+
             public String serviceName { get; set; } = string.Empty;
+
             public serviceStatus? serviceStatus { get; set; } = default;
 
             [Required()]
             public typeOfProductFormat typeOfProductFormat { get; set; }
+
             public serviceSpecification? serviceSpecification { get; set; }
+
             public productSpecification? productSpecification { get; set; }
             public override string Code => nameof(S100Service);
 
@@ -1438,5 +1562,6 @@ namespace S100Framework.DomainModel.S128
             {
             }
         }
+
     }
 }

@@ -1,13 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
-using CommandLine;
 using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using System;
-using static S100Framework.Applications.VortexLoader;
-using static System.Net.WebRequestMethods;
-using IO = System.IO;
 
 namespace S100Framework.Applications
 {
@@ -16,7 +8,7 @@ namespace S100Framework.Applications
         private static void S57_DangersP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             Console.WriteLine("DangersP");
 
-            
+
             var ps = "S-101";
 
             var s = source.OpenDataset<FeatureClass>("DangersP");
@@ -43,29 +35,23 @@ namespace S100Framework.Applications
                 Decimal valsou = -32767;
                 bool isValsouEmpty = true;
 
-                // The attribute default clearance depth must be populated with a value, which must not be an empty(null)
-                // value, only if the attribute value of sounding for the feature instance is populated with an empty(null) value
-                // and the attribute height, if an allowable attribute for the feature, is not populated.
-                // S-101 Annex A_DCEG Edition 1.5.0_Draft for Edition 2.0.0.pdf: p.771
-                Decimal defaultClearanceDepth = -32767;
-
                 if (DBNull.Value != current["VALSOU"] && current["VALSOU"] is not null) {
                     valsou = Convert.ToDecimal(current["VALSOU"]);
                     isValsouEmpty = false;
-                } 
+                }
 
                 switch (subtype) {
                     case 1: { // CTNARE
                             // TODO: no instances in NIS
                             throw new NotImplementedException();
                         }
-                        //break;
+                    //break;
 
                     case 10: { // FSHFAC Fishing facilities
                             // TODO: no instances in NIS
                             throw new NotImplementedException();
                         }
-                        //break;
+                    //break;
 
                     case 20: { // OBSTRN
 
@@ -125,7 +111,7 @@ namespace S100Framework.Applications
                             insert.Insert(buffer);
                         }
                         break;
-                        
+
                     case 35: { // UWTROC
                             var uwtroc = new S100Framework.DomainModel.S101.FeatureTypes.UnderwaterAwashRock {
                                 surroundingDepth = 0,
@@ -165,7 +151,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 40: { // WATTUR
-                            
+
                         }
                         break;
 

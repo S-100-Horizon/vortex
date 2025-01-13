@@ -58,6 +58,7 @@ namespace S100Framework
             classBuilder.AppendLine("using System.Collections.Immutable;");
             classBuilder.AppendLine("using System.Linq;");
             classBuilder.AppendLine();
+            classBuilder.AppendLine("#nullable enable");
             classBuilder.AppendLine();
             classBuilder.AppendLine($"namespace S100Framework.DomainModel.{productId}");
             classBuilder.AppendLine("{");
@@ -85,6 +86,7 @@ namespace S100Framework
             viewBuilder.AppendLine($"using S100Framework.DomainModel.{productId}.Associations.FeatureAssociations;");
             viewBuilder.AppendLine($"using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;");
             viewBuilder.AppendLine();
+            viewBuilder.AppendLine("#nullable enable");
             viewBuilder.AppendLine();
             viewBuilder.AppendLine($"namespace S100Framework.WPF.ViewModel.{productId}");
             viewBuilder.AppendLine("{");
@@ -1236,9 +1238,9 @@ namespace S100Framework
                     viewBuilder.AppendLine();
 
                     foreach (var r in roles) {
-                        viewBuilder.AppendLine($"\t\t\tprivate InformationBinding? _{r};");
+                        viewBuilder.AppendLine($"\t\t\tprivate InformationBindingViewModel? _{r};");
                         viewBuilder.AppendLine($"\t\t\t[ExpandableObject]");
-                        viewBuilder.AppendLine($"\t\t\tpublic InformationBinding? {r} {{");
+                        viewBuilder.AppendLine($"\t\t\tpublic InformationBindingViewModel? {r} {{");
                         viewBuilder.AppendLine($"\t\t\t\tget {{ return _{r}; }}");
                         viewBuilder.AppendLine($"\t\t\t\tset {{ this.SetValue(ref _{r}, value); }}");
                         viewBuilder.AppendLine($"\t\t\t}}");
@@ -1255,16 +1257,16 @@ namespace S100Framework
                         viewBuilder.AppendLine($"\t\t\t\t\t{r} = value?.role switch {{");
 
                         foreach (var s in roles.Where(e => !e.Equals(r))) {
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new InformationBindingMulti {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel {{");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = value.AssociationTypes,");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new InformationBindingSingle {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new SingleInformationBindingViewModel {{");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = value.AssociationTypes,");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new InformationBindingOptional {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new OptionalInformationBindingViewModel {{");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = value.AssociationTypes,");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
                         }
 
-                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new InformationBindingSingle() {{");
+                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new SingleInformationBindingViewModel() {{");
                         viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = [value!.InformationType],");
                         viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
 
@@ -1322,9 +1324,9 @@ namespace S100Framework
                     viewBuilder.AppendLine();
 
                     foreach (var r in roles) {
-                        viewBuilder.AppendLine($"\t\t\tprivate FeatureBinding? _{r};");
+                        viewBuilder.AppendLine($"\t\t\tprivate FeatureBindingViewModel? _{r};");
                         viewBuilder.AppendLine($"\t\t\t[ExpandableObject]");
-                        viewBuilder.AppendLine($"\t\t\tpublic FeatureBinding? {r} {{");
+                        viewBuilder.AppendLine($"\t\t\tpublic FeatureBindingViewModel? {r} {{");
                         viewBuilder.AppendLine($"\t\t\t\tget {{ return _{r}; }}");
                         viewBuilder.AppendLine($"\t\t\t\tset {{ this.SetValue(ref _{r}, value); }}");
                         viewBuilder.AppendLine($"\t\t\t}}");
@@ -1341,16 +1343,16 @@ namespace S100Framework
                         viewBuilder.AppendLine($"\t\t\t\t\t{r} = value?.role switch {{");
 
                         foreach (var s in roles.Where(e => !e.Equals(r))) {
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new FeatureBindingMulti {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel {{");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new FeatureBindingSingle {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new SingleFeatureBindingViewModel {{");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new FeatureBindingOptional {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new OptionalFeatureBindingViewModel {{");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
                         }
 
-                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new FeatureBindingSingle() {{");
+                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new SingleFeatureBindingViewModel() {{");
                         viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = [value!.FeatureType],");
                         viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
 
@@ -1535,16 +1537,20 @@ namespace S100Framework
                 .WithChangedOption(FormattingOptions.TabSize, LanguageNames.CSharp, 4)
                 .WithChangedOption(FormattingOptions.UseTabs, LanguageNames.CSharp, false);
 
-            var rootDomain = CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd()).GetRoot();
-            var rootViewModel = CSharpSyntaxTree.ParseText(viewBuilder.ToString().TrimEnd()).GetRoot();
-            var rootCommon = CSharpSyntaxTree.ParseText(common.ToString().TrimEnd()).GetRoot();
+            var rootDomainSyntax = CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd());
+            var rootDomain = rootDomainSyntax.GetRoot();
+
+            var rootViewSyntax = CSharpSyntaxTree.ParseText(viewBuilder.ToString().TrimEnd());
+            var rootViewModel = rootViewSyntax.GetRoot();
+
+            var rootCommonSyntax = CSharpSyntaxTree.ParseText(common.ToString().TrimEnd());
+            var rootCommon = rootCommonSyntax.GetRoot();
 
             var rootDomainModified = rootDomain.EnsureOpeningBrace().EnsureNewline()!;
 
             var rootViewModelModified = rootViewModel.EnsureOpeningBrace().EnsureNewline()!;
 
             var rootCommonModified = rootCommon.EnsureOpeningBrace().EnsureNewline()!;
-
 
             return (
                 Formatter.Format(rootDomainModified, workspace, options).ToFullString(),
@@ -1665,7 +1671,8 @@ namespace S100Framework
 
             classBuilder.AppendLine("\t\t}");
 
-            return CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd(Environment.NewLine.ToCharArray())).GetRoot().NormalizeWhitespace().ToFullString();
+            return classBuilder.ToString();
+            //return CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd(Environment.NewLine.ToCharArray())).GetRoot().NormalizeWhitespace().ToFullString();
         }
 
         private static void BuildInformationBindings(string code, string xmlNamespace, XElement e, StringBuilder builder) {
@@ -1796,7 +1803,7 @@ namespace S100Framework
                         loadBuilder.AppendLine($"\t\t\t\tforeach(var e in instance.{p.Name})");
                         loadBuilder.AppendLine($"\t\t\t\t\t{p.Name}.Add(e);");
 
-                        constructorBuilder.AppendLine($"\t\t\t{p.Name}.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
+                        constructorBuilder.AppendLine($"\t\t\t{p.Name}.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {{");
                         constructorBuilder.AppendLine($"\t\t\t\tOnPropertyChanged(nameof({p.Name}));");
                         constructorBuilder.AppendLine($"\t\t\t}};");
 
@@ -1878,7 +1885,11 @@ namespace S100Framework
 
             classBuilder.AppendLine("\t}");
 
-            return CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd(Environment.NewLine.ToCharArray())).GetRoot().NormalizeWhitespace().ToFullString();
+
+            var root = CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd()).GetRoot();
+
+            return classBuilder.ToString();
+            //return CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd(Environment.NewLine.ToCharArray())).GetRoot().NormalizeWhitespace().ToFullString();
         }
 
         private static string GetPropertyType(Type p) {

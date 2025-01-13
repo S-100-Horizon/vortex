@@ -9,9 +9,9 @@ namespace S100Framework.WPF.ViewModel
 {
     public static class Handles
     {
-        public static Func<InformationBinding?, string[]?> GetInformations { get; set; } = (e) => { return default; };
+        public static Func<InformationBindingViewModel?, string[]?> GetInformations { get; set; } = (e) => { return default; };
 
-        public static Func<FeatureBinding?, string[]?> GetFeatures { get; set; } = (e) => { return default; };
+        public static Func<FeatureBindingViewModel?, string[]?> GetFeatures { get; set; } = (e) => { return default; };
     }
 
 
@@ -19,7 +19,7 @@ namespace S100Framework.WPF.ViewModel
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
-        protected Dictionary<ViewModelBase, string> nestedProperties = [];
+        protected Dictionary<ViewModelBase, string> nestedProperties = new();
 
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
@@ -156,7 +156,7 @@ namespace S100Framework.WPF.ViewModel
         public string DisplayName => $"{typeof(T).Name}, {base.role}";
     }
 
-    public abstract class InformationBinding : INotifyPropertyChanged
+    public abstract class InformationBindingViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -193,25 +193,25 @@ namespace S100Framework.WPF.ViewModel
         public Type[] InformationTypes { get; set; } = [];
     }
 
-    public class InformationBindingSingle : InformationBinding
+    public class SingleInformationBindingViewModel : InformationBindingViewModel
     {
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
         public string RefId { get; set; } = string.Empty;
     }
 
-    public class InformationBindingOptional : InformationBinding
+    public class OptionalInformationBindingViewModel : InformationBindingViewModel
     {
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
         public string? RefId { get; set; } = default;
     }
 
-    public class InformationBindingMulti : InformationBinding
+    public class MultiInformationBindingViewModel : InformationBindingViewModel
     {
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public List<string> RefIds { get; set; } = new List<string>();
+        public ObservableCollection<string> RefId { get; set; } = new ObservableCollection<string>();
     }
 
-    public abstract class FeatureBinding : INotifyPropertyChanged
+    public abstract class FeatureBindingViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
 
@@ -248,7 +248,7 @@ namespace S100Framework.WPF.ViewModel
         public Type[] FeatureTypes { get; set; } = [];
     }
 
-    public class FeatureBindingSingle : FeatureBinding
+    public class SingleFeatureBindingViewModel : FeatureBindingViewModel
     {
         private string _refId = string.Empty;
 
@@ -259,7 +259,7 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-    public class FeatureBindingOptional : FeatureBinding
+    public class OptionalFeatureBindingViewModel : FeatureBindingViewModel
     {
         private string? _refId = string.Empty;
 
@@ -270,7 +270,7 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-    public class FeatureBindingMulti : FeatureBinding
+    public class MultiFeatureBindingViewModel : FeatureBindingViewModel
     {
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
         public ObservableCollection<string> RefId { get; set; } = new ObservableCollection<string>();

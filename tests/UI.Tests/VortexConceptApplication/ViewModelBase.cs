@@ -1,5 +1,4 @@
-﻿using S100Framework.WPF.ViewModel;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace S100Framework.WPF
