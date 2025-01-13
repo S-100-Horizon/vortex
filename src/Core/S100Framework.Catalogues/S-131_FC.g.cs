@@ -2610,7 +2610,7 @@ namespace S100Framework.DomainModel.S131
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class InformationType : InformationTypeBase
+        public abstract partial class InformationType : InformationNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -2818,7 +2818,7 @@ namespace S100Framework.DomainModel.S131
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpatialQuality : InformationTypeBase
+        public partial class SpatialQuality : InformationNode
         {
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
@@ -2839,7 +2839,7 @@ namespace S100Framework.DomainModel.S131
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class FeatureType : FeatureTypeBase
+        public abstract partial class FeatureType : FeatureNode
         {
             public String locationMRN { get; set; } = string.Empty;
             public String globalLocationNumber { get; set; } = string.Empty;
@@ -3222,7 +3222,7 @@ namespace S100Framework.DomainModel.S131
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DataCoverage : FeatureTypeBase
+        public partial class DataCoverage : FeatureNode
         {
             [Required()]
             public Int32 maximumDisplayScale { get; set; }
@@ -3238,7 +3238,7 @@ namespace S100Framework.DomainModel.S131
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfNonBathymetricData : FeatureTypeBase
+        public partial class QualityOfNonBathymetricData : FeatureNode
         {
             public categoryOfTemporalVariation? categoryOfTemporalVariation { get; set; } = default;
             public Decimal? horizontalDistanceUncertainty { get; set; } = default;
@@ -3262,7 +3262,7 @@ namespace S100Framework.DomainModel.S131
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SoundingDatum : FeatureTypeBase
+        public partial class SoundingDatum : FeatureNode
         {
             [Required()]
             public verticalDatum verticalDatum { get; set; }
@@ -3276,7 +3276,7 @@ namespace S100Framework.DomainModel.S131
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VerticalDatumOfData : FeatureTypeBase
+        public partial class VerticalDatumOfData : FeatureNode
         {
             [Required()]
             public verticalDatum verticalDatum { get; set; }
@@ -3290,7 +3290,7 @@ namespace S100Framework.DomainModel.S131
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement : FeatureTypeBase
+        public partial class TextPlacement : FeatureNode
         {
             [Required()]
             public Decimal orientationValue { get; set; }

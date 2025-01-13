@@ -1,5 +1,4 @@
 ﻿using S100Framework.DomainModel;
-using S100Framework.WPF.Editors;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
@@ -135,14 +134,14 @@ namespace S100Framework.WPF.ViewModel
         public abstract Type FeatureType { get; }
     }
 
-    public class InformationAssociationConnector<T> : InformationAssociationConnector where T : class
+    public class InformationAssociationConnector<T> : InformationAssociationConnector where T : Node
     {
         public override Type InformationType => typeof(T);
 
         public string DisplayName => $"{typeof(T).Name}, {base.role}";
     }
 
-    public class FeatureAssociationConnector<T> : FeatureAssociationConnector where T : FeatureTypeBase
+    public class FeatureAssociationConnector<T> : FeatureAssociationConnector where T : FeatureNode
     {
         public override Type FeatureType => typeof(T);
 

@@ -40,7 +40,7 @@ namespace S100Framework.WPF.ViewModel.S903
         public abstract Type FeatureType { get; }
     }
 
-    public class S100_FC_AssociationConnector<T> : S100_FC_AssociationConnector where T : FeatureTypeBase
+    public class S100_FC_AssociationConnector<T> : S100_FC_AssociationConnector where T : FeatureNode
     {
         public override Type FeatureType => typeof(T);
 

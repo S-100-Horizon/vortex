@@ -4947,7 +4947,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContactDetails : InformationTypeBase
+        public partial class ContactDetails : InformationNode
         {
             public String callSign { get; set; } = string.Empty;
             public List<String> communicationChannel { get; set; } = [];
@@ -4966,7 +4966,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ServiceHours : InformationTypeBase
+        public partial class ServiceHours : InformationNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
@@ -4984,7 +4984,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NonStandardWorkingDay : InformationTypeBase
+        public partial class NonStandardWorkingDay : InformationNode
         {
             public List<DateOnly> dateFixed { get; set; } = [];
             public List<String> dateVariable { get; set; } = [];
@@ -5000,7 +5000,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NauticalInformation : InformationTypeBase
+        public partial class NauticalInformation : InformationNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
@@ -5015,7 +5015,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpatialQuality : InformationTypeBase
+        public partial class SpatialQuality : InformationNode
         {
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
@@ -5036,7 +5036,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfNonBathymetricData : FeatureTypeBase
+        public partial class QualityOfNonBathymetricData : FeatureNode
         {
             public categoryOfTemporalVariation? categoryOfTemporalVariation { get; set; } = default;
             public Decimal? horizontalDistanceUncertainty { get; set; } = default;
@@ -5061,7 +5061,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DataCoverage : FeatureTypeBase
+        public partial class DataCoverage : FeatureNode
         {
             public Int32? drawingIndex { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5084,7 +5084,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NavigationalSystemOfMarks : FeatureTypeBase
+        public partial class NavigationalSystemOfMarks : FeatureNode
         {
             [Required()]
             public marksNavigationalSystemOf marksNavigationalSystemOf { get; set; }
@@ -5099,7 +5099,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LocalDirectionOfBuoyage : FeatureTypeBase
+        public partial class LocalDirectionOfBuoyage : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -5119,7 +5119,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfBathymetricData : FeatureTypeBase
+        public partial class QualityOfBathymetricData : FeatureNode
         {
             [Required()]
             public categoryOfTemporalVariation categoryOfTemporalVariation { get; set; }
@@ -5155,7 +5155,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SoundingDatum : FeatureTypeBase
+        public partial class SoundingDatum : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -5171,7 +5171,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VerticalDatumOfData : FeatureTypeBase
+        public partial class VerticalDatumOfData : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -5187,7 +5187,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfSurvey : FeatureTypeBase
+        public partial class QualityOfSurvey : FeatureNode
         {
             public Decimal? depthRangeMaximumValue { get; set; } = default;
             public Decimal? depthRangeMinimumValue { get; set; } = default;
@@ -5226,7 +5226,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UpdateInformation : FeatureTypeBase
+        public partial class UpdateInformation : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5248,7 +5248,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MagneticVariation : FeatureTypeBase
+        public partial class MagneticVariation : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -5271,7 +5271,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LocalMagneticAnomaly : FeatureTypeBase
+        public partial class LocalMagneticAnomaly : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5291,7 +5291,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Coastline : FeatureTypeBase
+        public partial class Coastline : FeatureNode
         {
             public categoryOfCoastline? categoryOfCoastline { get; set; } = default;
             public List<colour> colour { get; set; } = [];
@@ -5312,7 +5312,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandArea : FeatureTypeBase
+        public partial class LandArea : FeatureNode
         {
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -5330,7 +5330,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IslandGroup : FeatureTypeBase
+        public partial class IslandGroup : FeatureNode
         {
             [Required()]
             public List<featureName> featureName { get; set; }
@@ -5347,7 +5347,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandElevation : FeatureTypeBase
+        public partial class LandElevation : FeatureNode
         {
             [Required()]
             public Decimal elevation { get; set; }
@@ -5365,7 +5365,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class River : FeatureTypeBase
+        public partial class River : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5381,7 +5381,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Rapids : FeatureTypeBase
+        public partial class Rapids : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5397,7 +5397,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Waterfall : FeatureTypeBase
+        public partial class Waterfall : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5414,7 +5414,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Lake : FeatureTypeBase
+        public partial class Lake : FeatureNode
         {
             public Decimal? elevation { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -5431,7 +5431,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandRegion : FeatureTypeBase
+        public partial class LandRegion : FeatureNode
         {
             public List<categoryOfLandRegion> categoryOfLandRegion { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -5449,7 +5449,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Vegetation : FeatureTypeBase
+        public partial class Vegetation : FeatureNode
         {
             [Required()]
             public categoryOfVegetation categoryOfVegetation { get; set; }
@@ -5470,7 +5470,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IceArea : FeatureTypeBase
+        public partial class IceArea : FeatureNode
         {
             [Required()]
             public categoryOfIce categoryOfIce { get; set; }
@@ -5494,7 +5494,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SlopingGround : FeatureTypeBase
+        public partial class SlopingGround : FeatureNode
         {
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
             public List<colour> colour { get; set; } = [];
@@ -5514,7 +5514,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SlopeTopline : FeatureTypeBase
+        public partial class SlopeTopline : FeatureNode
         {
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
             public List<colour> colour { get; set; } = [];
@@ -5535,7 +5535,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Tideway : FeatureTypeBase
+        public partial class Tideway : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -5550,7 +5550,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class BuiltUpArea : FeatureTypeBase
+        public partial class BuiltUpArea : FeatureNode
         {
             public categoryOfBuiltUpArea? categoryOfBuiltUpArea { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -5573,7 +5573,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Building : FeatureTypeBase
+        public partial class Building : FeatureNode
         {
             public buildingShape? buildingShape { get; set; } = default;
             public List<colour> colour { get; set; } = [];
@@ -5604,7 +5604,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AirportAirfield : FeatureTypeBase
+        public partial class AirportAirfield : FeatureNode
         {
             public List<categoryOfAirportAirfield> categoryOfAirportAirfield { get; set; } = [];
             public condition? condition { get; set; } = default;
@@ -5624,7 +5624,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Runway : FeatureTypeBase
+        public partial class Runway : FeatureNode
         {
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -5644,7 +5644,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Helipad : FeatureTypeBase
+        public partial class Helipad : FeatureNode
         {
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -5664,7 +5664,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Bridge : FeatureTypeBase
+        public partial class Bridge : FeatureNode
         {
             public bridgeConstruction? bridgeConstruction { get; set; } = default;
             public List<bridgeFunction> bridgeFunction { get; set; } = [];
@@ -5694,7 +5694,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpanFixed : FeatureTypeBase
+        public partial class SpanFixed : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
@@ -5719,7 +5719,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpanOpening : FeatureTypeBase
+        public partial class SpanOpening : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
@@ -5751,7 +5751,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Conveyor : FeatureTypeBase
+        public partial class Conveyor : FeatureNode
         {
             public categoryOfConveyor? categoryOfConveyor { get; set; } = default;
             public List<colour> colour { get; set; } = [];
@@ -5783,7 +5783,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableOverhead : FeatureTypeBase
+        public partial class CableOverhead : FeatureNode
         {
             public categoryOfCable? categoryOfCable { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -5810,7 +5810,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PipelineOverhead : FeatureTypeBase
+        public partial class PipelineOverhead : FeatureNode
         {
             public categoryOfPipelinePipe? categoryOfPipelinePipe { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -5836,7 +5836,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PylonBridgeSupport : FeatureTypeBase
+        public partial class PylonBridgeSupport : FeatureNode
         {
             [Required()]
             public categoryOfPylon categoryOfPylon { get; set; }
@@ -5867,7 +5867,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FenceWall : FeatureTypeBase
+        public partial class FenceWall : FeatureNode
         {
             public categoryOfFence? categoryOfFence { get; set; } = default;
             public List<colour> colour { get; set; } = [];
@@ -5894,7 +5894,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Railway : FeatureTypeBase
+        public partial class Railway : FeatureNode
         {
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -5913,7 +5913,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Road : FeatureTypeBase
+        public partial class Road : FeatureNode
         {
             public categoryOfRoad? categoryOfRoad { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -5933,7 +5933,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Tunnel : FeatureTypeBase
+        public partial class Tunnel : FeatureNode
         {
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -5955,7 +5955,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Landmark : FeatureTypeBase
+        public partial class Landmark : FeatureNode
         {
             [Required()]
             public List<categoryOfLandmark> categoryOfLandmark { get; set; }
@@ -5991,7 +5991,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SiloTank : FeatureTypeBase
+        public partial class SiloTank : FeatureNode
         {
             public buildingShape? buildingShape { get; set; } = default;
             public categoryOfSiloTank? categoryOfSiloTank { get; set; } = default;
@@ -6023,7 +6023,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WindTurbine : FeatureTypeBase
+        public partial class WindTurbine : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
             public colourPattern? colourPattern { get; set; } = default;
@@ -6056,7 +6056,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FortifiedStructure : FeatureTypeBase
+        public partial class FortifiedStructure : FeatureNode
         {
             public categoryOfFortifiedStructure? categoryOfFortifiedStructure { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -6082,7 +6082,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ProductionStorageArea : FeatureTypeBase
+        public partial class ProductionStorageArea : FeatureNode
         {
             [Required()]
             public categoryOfProductionArea categoryOfProductionArea { get; set; }
@@ -6110,7 +6110,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Checkpoint : FeatureTypeBase
+        public partial class Checkpoint : FeatureNode
         {
             public categoryOfCheckpoint? categoryOfCheckpoint { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -6127,7 +6127,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Hulk : FeatureTypeBase
+        public partial class Hulk : FeatureNode
         {
             public List<categoryOfHulk> categoryOfHulk { get; set; } = [];
             public List<colour> colour { get; set; } = [];
@@ -6155,7 +6155,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Pile : FeatureTypeBase
+        public partial class Pile : FeatureNode
         {
             public categoryOfPile? categoryOfPile { get; set; } = default;
             public List<colour> colour { get; set; } = [];
@@ -6182,7 +6182,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dyke : FeatureTypeBase
+        public partial class Dyke : FeatureNode
         {
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -6205,7 +6205,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ShorelineConstruction : FeatureTypeBase
+        public partial class ShorelineConstruction : FeatureNode
         {
             public categoryOfShorelineConstruction? categoryOfShorelineConstruction { get; set; } = default;
             public List<colour> colour { get; set; } = [];
@@ -6236,7 +6236,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class StructureOverNavigableWater : FeatureTypeBase
+        public partial class StructureOverNavigableWater : FeatureNode
         {
             public List<categoryOfStructure> categoryOfStructure { get; set; } = [];
             public List<colour> colour { get; set; } = [];
@@ -6283,7 +6283,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Causeway : FeatureTypeBase
+        public partial class Causeway : FeatureNode
         {
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -6303,7 +6303,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Canal : FeatureTypeBase
+        public partial class Canal : FeatureNode
         {
             public categoryOfCanal? categoryOfCanal { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -6325,7 +6325,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DistanceMark : FeatureTypeBase
+        public partial class DistanceMark : FeatureNode
         {
             [Required()]
             public Boolean distanceMarkVisible { get; set; }
@@ -6351,7 +6351,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Gate : FeatureTypeBase
+        public partial class Gate : FeatureNode
         {
             public categoryOfGate? categoryOfGate { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -6376,7 +6376,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dam : FeatureTypeBase
+        public partial class Dam : FeatureNode
         {
             public categoryOfDam? categoryOfDam { get; set; } = default;
             public List<colour> colour { get; set; } = [];
@@ -6403,7 +6403,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Crane : FeatureTypeBase
+        public partial class Crane : FeatureNode
         {
             public categoryOfCrane? categoryOfCrane { get; set; } = default;
             public List<colour> colour { get; set; } = [];
@@ -6434,7 +6434,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Berth : FeatureTypeBase
+        public partial class Berth : FeatureNode
         {
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
@@ -6462,7 +6462,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dolphin : FeatureTypeBase
+        public partial class Dolphin : FeatureNode
         {
             [Required()]
             public List<categoryOfDolphin> categoryOfDolphin { get; set; }
@@ -6494,7 +6494,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Bollard : FeatureTypeBase
+        public partial class Bollard : FeatureNode
         {
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -6515,7 +6515,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DryDock : FeatureTypeBase
+        public partial class DryDock : FeatureNode
         {
             public condition? condition { get; set; } = default;
             public Decimal? depthRangeMinimumValue { get; set; } = default;
@@ -6542,7 +6542,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FloatingDock : FeatureTypeBase
+        public partial class FloatingDock : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
             public colourPattern? colourPattern { get; set; } = default;
@@ -6573,7 +6573,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Pontoon : FeatureTypeBase
+        public partial class Pontoon : FeatureNode
         {
             public condition? condition { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -6596,7 +6596,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DockArea : FeatureTypeBase
+        public partial class DockArea : FeatureNode
         {
             public categoryOfDock? categoryOfDock { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -6620,7 +6620,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Gridiron : FeatureTypeBase
+        public partial class Gridiron : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public Decimal? horizontalLength { get; set; } = default;
@@ -6641,7 +6641,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LockBasin : FeatureTypeBase
+        public partial class LockBasin : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6662,7 +6662,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringTrot : FeatureTypeBase
+        public partial class MooringTrot : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6678,7 +6678,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeaAreaNamedWaterArea : FeatureTypeBase
+        public partial class SeaAreaNamedWaterArea : FeatureNode
         {
             public categoryOfSeaArea? categoryOfSeaArea { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -6694,7 +6694,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TidalStreamFloodEbb : FeatureTypeBase
+        public partial class TidalStreamFloodEbb : FeatureNode
         {
             [Required()]
             public categoryOfTidalStream categoryOfTidalStream { get; set; }
@@ -6726,7 +6726,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CurrentNonGravitational : FeatureTypeBase
+        public partial class CurrentNonGravitational : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -6758,7 +6758,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WaterTurbulence : FeatureTypeBase
+        public partial class WaterTurbulence : FeatureNode
         {
             [Required()]
             public categoryOfWaterTurbulence categoryOfWaterTurbulence { get; set; }
@@ -6775,7 +6775,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TidalStreamPanelData : FeatureTypeBase
+        public partial class TidalStreamPanelData : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -6797,7 +6797,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Sounding : FeatureTypeBase
+        public partial class Sounding : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -6816,7 +6816,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DredgedArea : FeatureTypeBase
+        public partial class DredgedArea : FeatureNode
         {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
@@ -6840,7 +6840,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SweptArea : FeatureTypeBase
+        public partial class SweptArea : FeatureNode
         {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
@@ -6857,7 +6857,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthContour : FeatureTypeBase
+        public partial class DepthContour : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -6874,7 +6874,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthArea : FeatureTypeBase
+        public partial class DepthArea : FeatureNode
         {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
@@ -6892,7 +6892,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthNoBottomFound : FeatureTypeBase
+        public partial class DepthNoBottomFound : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
@@ -6907,7 +6907,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UnsurveyedArea : FeatureTypeBase
+        public partial class UnsurveyedArea : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public List<information> information { get; set; } = [];
@@ -6920,7 +6920,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeabedArea : FeatureTypeBase
+        public partial class SeabedArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -6940,7 +6940,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WeedKelp : FeatureTypeBase
+        public partial class WeedKelp : FeatureNode
         {
             public categoryOfWeedKelp? categoryOfWeedKelp { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -6956,7 +6956,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Seagrass : FeatureTypeBase
+        public partial class Seagrass : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -6971,7 +6971,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Sandwave : FeatureTypeBase
+        public partial class Sandwave : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public Decimal? verticalLength { get; set; } = default;
@@ -6986,7 +6986,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Spring : FeatureTypeBase
+        public partial class Spring : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -7001,7 +7001,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UnderwaterAwashRock : FeatureTypeBase
+        public partial class UnderwaterAwashRock : FeatureNode
         {
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -7032,7 +7032,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Wreck : FeatureTypeBase
+        public partial class Wreck : FeatureNode
         {
             public categoryOfWreck? categoryOfWreck { get; set; } = default;
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
@@ -7065,7 +7065,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Obstruction : FeatureTypeBase
+        public partial class Obstruction : FeatureNode
         {
             public categoryOfObstruction? categoryOfObstruction { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -7100,7 +7100,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FoulGround : FeatureTypeBase
+        public partial class FoulGround : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -7121,7 +7121,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DiscolouredWater : FeatureTypeBase
+        public partial class DiscolouredWater : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public DateOnly? reportedDate { get; set; } = default;
@@ -7136,7 +7136,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FishingFacility : FeatureTypeBase
+        public partial class FishingFacility : FeatureNode
         {
             public categoryOfFishingFacility? categoryOfFishingFacility { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -7157,7 +7157,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MarineFarmCulture : FeatureTypeBase
+        public partial class MarineFarmCulture : FeatureNode
         {
             public categoryOfMarineFarmCulture? categoryOfMarineFarmCulture { get; set; } = default;
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
@@ -7187,7 +7187,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OffshorePlatform : FeatureTypeBase
+        public partial class OffshorePlatform : FeatureNode
         {
             public categoryOfOffshorePlatform? categoryOfOffshorePlatform { get; set; } = default;
             public List<colour> colour { get; set; } = [];
@@ -7216,7 +7216,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableSubmarine : FeatureTypeBase
+        public partial class CableSubmarine : FeatureNode
         {
             public Decimal? buriedDepth { get; set; } = default;
             public categoryOfCable? categoryOfCable { get; set; } = default;
@@ -7236,7 +7236,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableArea : FeatureTypeBase
+        public partial class CableArea : FeatureNode
         {
             public List<categoryOfCable> categoryOfCable { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -7256,7 +7256,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PipelineSubmarineOnLand : FeatureTypeBase
+        public partial class PipelineSubmarineOnLand : FeatureNode
         {
             public Decimal? buriedDepth { get; set; } = default;
             public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
@@ -7283,7 +7283,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SubmarinePipelineArea : FeatureTypeBase
+        public partial class SubmarinePipelineArea : FeatureNode
         {
             public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -7304,7 +7304,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OffshoreProductionArea : FeatureTypeBase
+        public partial class OffshoreProductionArea : FeatureNode
         {
             public categoryOfOffshoreProductionArea? categoryOfOffshoreProductionArea { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -7332,7 +7332,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NavigationLine : FeatureTypeBase
+        public partial class NavigationLine : FeatureNode
         {
             [Required()]
             public categoryOfNavigationLine categoryOfNavigationLine { get; set; }
@@ -7359,7 +7359,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedTrack : FeatureTypeBase
+        public partial class RecommendedTrack : FeatureNode
         {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
@@ -7390,7 +7390,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RangeSystem : FeatureTypeBase
+        public partial class RangeSystem : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7407,7 +7407,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Fairway : FeatureTypeBase
+        public partial class Fairway : FeatureNode
         {
             public Decimal? depthRangeMinimumValue { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -7432,7 +7432,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FairwaySystem : FeatureTypeBase
+        public partial class FairwaySystem : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7450,7 +7450,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedRouteCentreline : FeatureTypeBase
+        public partial class RecommendedRouteCentreline : FeatureNode
         {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
@@ -7476,7 +7476,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TwoWayRoutePart : FeatureTypeBase
+        public partial class TwoWayRoutePart : FeatureNode
         {
             public Boolean? basedOnFixedMarks { get; set; } = default;
             public Decimal? depthRangeMinimumValue { get; set; } = default;
@@ -7503,7 +7503,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TwoWayRoute : FeatureTypeBase
+        public partial class TwoWayRoute : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7520,7 +7520,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedTrafficLanePart : FeatureTypeBase
+        public partial class RecommendedTrafficLanePart : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -7539,7 +7539,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRouteCentreline : FeatureTypeBase
+        public partial class DeepWaterRouteCentreline : FeatureNode
         {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
@@ -7569,7 +7569,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRoutePart : FeatureTypeBase
+        public partial class DeepWaterRoutePart : FeatureNode
         {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
@@ -7600,7 +7600,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRoute : FeatureTypeBase
+        public partial class DeepWaterRoute : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7617,7 +7617,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InshoreTrafficZone : FeatureTypeBase
+        public partial class InshoreTrafficZone : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -7635,7 +7635,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PrecautionaryArea : FeatureTypeBase
+        public partial class PrecautionaryArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7658,7 +7658,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeLanePart : FeatureTypeBase
+        public partial class TrafficSeparationSchemeLanePart : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -7677,7 +7677,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeparationZoneOrLine : FeatureTypeBase
+        public partial class SeparationZoneOrLine : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -7693,7 +7693,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeBoundary : FeatureTypeBase
+        public partial class TrafficSeparationSchemeBoundary : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -7709,7 +7709,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeCrossing : FeatureTypeBase
+        public partial class TrafficSeparationSchemeCrossing : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -7727,7 +7727,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeRoundabout : FeatureTypeBase
+        public partial class TrafficSeparationSchemeRoundabout : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -7745,7 +7745,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationScheme : FeatureTypeBase
+        public partial class TrafficSeparationScheme : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7763,7 +7763,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLaneArea : FeatureTypeBase
+        public partial class ArchipelagicSeaLaneArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7780,7 +7780,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLaneAxis : FeatureTypeBase
+        public partial class ArchipelagicSeaLaneAxis : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7797,7 +7797,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLane : FeatureTypeBase
+        public partial class ArchipelagicSeaLane : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -7815,7 +7815,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadioCallingInPoint : FeatureTypeBase
+        public partial class RadioCallingInPoint : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -7838,7 +7838,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FerryRoute : FeatureTypeBase
+        public partial class FerryRoute : FeatureNode
         {
             [Required()]
             public List<categoryOfFerry> categoryOfFerry { get; set; }
@@ -7859,7 +7859,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarLine : FeatureTypeBase
+        public partial class RadarLine : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -7878,7 +7878,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarRange : FeatureTypeBase
+        public partial class RadarRange : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -7896,7 +7896,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarStation : FeatureTypeBase
+        public partial class RadarStation : FeatureNode
         {
             public String callSign { get; set; } = string.Empty;
             public List<categoryOfRadarStation> categoryOfRadarStation { get; set; } = [];
@@ -7918,7 +7918,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AnchorageArea : FeatureTypeBase
+        public partial class AnchorageArea : FeatureNode
         {
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
@@ -7940,7 +7940,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringArea : FeatureTypeBase
+        public partial class MooringArea : FeatureNode
         {
             public List<categoryOfMooringArea> categoryOfMooringArea { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -7963,7 +7963,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AnchorBerth : FeatureTypeBase
+        public partial class AnchorBerth : FeatureNode
         {
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
@@ -7984,7 +7984,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeaplaneLandingArea : FeatureTypeBase
+        public partial class SeaplaneLandingArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8003,7 +8003,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DumpingGround : FeatureTypeBase
+        public partial class DumpingGround : FeatureNode
         {
             public List<categoryOfDumpingGround> categoryOfDumpingGround { get; set; } = [];
             public DateOnly? dateDisused { get; set; } = default;
@@ -8023,7 +8023,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MilitaryPracticeArea : FeatureTypeBase
+        public partial class MilitaryPracticeArea : FeatureNode
         {
             public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -8045,7 +8045,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AdministrationArea : FeatureTypeBase
+        public partial class AdministrationArea : FeatureNode
         {
             public Boolean? inDispute { get; set; } = default;
 
@@ -8066,7 +8066,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CargoTranshipmentArea : FeatureTypeBase
+        public partial class CargoTranshipmentArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -8086,7 +8086,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CautionArea : FeatureTypeBase
+        public partial class CautionArea : FeatureNode
         {
             public condition? condition { get; set; } = default;
             public fixedDateRange? fixedDateRange { get; set; }
@@ -8106,7 +8106,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InformationArea : FeatureTypeBase
+        public partial class InformationArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -8125,7 +8125,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContiguousZone : FeatureTypeBase
+        public partial class ContiguousZone : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public Boolean? inDispute { get; set; } = default;
@@ -8145,7 +8145,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContinentalShelfArea : FeatureTypeBase
+        public partial class ContinentalShelfArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8164,7 +8164,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CustomZone : FeatureTypeBase
+        public partial class CustomZone : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public String nationality { get; set; } = string.Empty;
@@ -8180,7 +8180,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ExclusiveEconomicZone : FeatureTypeBase
+        public partial class ExclusiveEconomicZone : FeatureNode
         {
             public Boolean? inDispute { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8199,7 +8199,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FisheryZone : FeatureTypeBase
+        public partial class FisheryZone : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8217,7 +8217,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FishingGround : FeatureTypeBase
+        public partial class FishingGround : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8236,7 +8236,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FreePortArea : FeatureTypeBase
+        public partial class FreePortArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8252,7 +8252,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class HarbourAreaAdministrative : FeatureTypeBase
+        public partial class HarbourAreaAdministrative : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8268,7 +8268,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LogPond : FeatureTypeBase
+        public partial class LogPond : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8285,7 +8285,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OilBarrier : FeatureTypeBase
+        public partial class OilBarrier : FeatureNode
         {
             public categoryOfOilBarrier? categoryOfOilBarrier { get; set; } = default;
             public condition? condition { get; set; } = default;
@@ -8305,7 +8305,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class StraightTerritorialSeaBaseline : FeatureTypeBase
+        public partial class StraightTerritorialSeaBaseline : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
             public String nationality { get; set; } = string.Empty;
@@ -8321,7 +8321,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TerritorialSeaArea : FeatureTypeBase
+        public partial class TerritorialSeaArea : FeatureNode
         {
             public Boolean? inDispute { get; set; } = default;
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8342,7 +8342,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SubmarineTransitLane : FeatureTypeBase
+        public partial class SubmarineTransitLane : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8360,7 +8360,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PilotageDistrict : FeatureTypeBase
+        public partial class PilotageDistrict : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -8376,7 +8376,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CollisionRegulationsLimit : FeatureTypeBase
+        public partial class CollisionRegulationsLimit : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -8394,7 +8394,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MarinePollutionRegulationsArea : FeatureTypeBase
+        public partial class MarinePollutionRegulationsArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -8410,7 +8410,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RestrictedArea : FeatureTypeBase
+        public partial class RestrictedArea : FeatureNode
         {
             public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -8434,7 +8434,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightAllAround : FeatureTypeBase
+        public partial class LightAllAround : FeatureNode
         {
             public List<categoryOfLight> categoryOfLight { get; set; } = [];
 
@@ -8475,7 +8475,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightSectored : FeatureTypeBase
+        public partial class LightSectored : FeatureNode
         {
             public List<categoryOfLight> categoryOfLight { get; set; } = [];
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
@@ -8504,7 +8504,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightFogDetector : FeatureTypeBase
+        public partial class LightFogDetector : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -8529,7 +8529,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightAirObstruction : FeatureTypeBase
+        public partial class LightAirObstruction : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
@@ -8556,7 +8556,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LateralBuoy : FeatureTypeBase
+        public partial class LateralBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
@@ -8590,7 +8590,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CardinalBuoy : FeatureTypeBase
+        public partial class CardinalBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
@@ -8624,7 +8624,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IsolatedDangerBuoy : FeatureTypeBase
+        public partial class IsolatedDangerBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
@@ -8655,7 +8655,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SafeWaterBuoy : FeatureTypeBase
+        public partial class SafeWaterBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
@@ -8686,7 +8686,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpecialPurposeGeneralBuoy : FeatureTypeBase
+        public partial class SpecialPurposeGeneralBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
@@ -8721,7 +8721,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class EmergencyWreckMarkingBuoy : FeatureTypeBase
+        public partial class EmergencyWreckMarkingBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
@@ -8750,7 +8750,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InstallationBuoy : FeatureTypeBase
+        public partial class InstallationBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
@@ -8781,7 +8781,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringBuoy : FeatureTypeBase
+        public partial class MooringBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
@@ -8809,7 +8809,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LateralBeacon : FeatureTypeBase
+        public partial class LateralBeacon : FeatureNode
         {
             [Required()]
             public beaconShape beaconShape { get; set; }
@@ -8848,7 +8848,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CardinalBeacon : FeatureTypeBase
+        public partial class CardinalBeacon : FeatureNode
         {
             [Required()]
             public beaconShape beaconShape { get; set; }
@@ -8887,7 +8887,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IsolatedDangerBeacon : FeatureTypeBase
+        public partial class IsolatedDangerBeacon : FeatureNode
         {
             [Required()]
             public beaconShape beaconShape { get; set; }
@@ -8923,7 +8923,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SafeWaterBeacon : FeatureTypeBase
+        public partial class SafeWaterBeacon : FeatureNode
         {
             [Required()]
             public beaconShape beaconShape { get; set; }
@@ -8959,7 +8959,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpecialPurposeGeneralBeacon : FeatureTypeBase
+        public partial class SpecialPurposeGeneralBeacon : FeatureNode
         {
             [Required()]
             public beaconShape beaconShape { get; set; }
@@ -8999,7 +8999,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Daymark : FeatureTypeBase
+        public partial class Daymark : FeatureNode
         {
             public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = [];
 
@@ -9033,7 +9033,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightFloat : FeatureTypeBase
+        public partial class LightFloat : FeatureNode
         {
             [Required()]
             public List<colour> colour { get; set; }
@@ -9063,7 +9063,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightVessel : FeatureTypeBase
+        public partial class LightVessel : FeatureNode
         {
             [Required()]
             public List<colour> colour { get; set; }
@@ -9092,7 +9092,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Retroreflector : FeatureTypeBase
+        public partial class Retroreflector : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
             public colourPattern? colourPattern { get; set; } = default;
@@ -9112,7 +9112,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarReflector : FeatureTypeBase
+        public partial class RadarReflector : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
             public Decimal? height { get; set; } = default;
@@ -9130,7 +9130,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FogSignal : FeatureTypeBase
+        public partial class FogSignal : FeatureNode
         {
             [Required()]
             public categoryOfFogSignal categoryOfFogSignal { get; set; }
@@ -9156,7 +9156,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PhysicalAISAidToNavigation : FeatureTypeBase
+        public partial class PhysicalAISAidToNavigation : FeatureNode
         {
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -9176,7 +9176,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VirtualAISAidToNavigation : FeatureTypeBase
+        public partial class VirtualAISAidToNavigation : FeatureNode
         {
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
             public List<featureName> featureName { get; set; } = [];
@@ -9199,7 +9199,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadioStation : FeatureTypeBase
+        public partial class RadioStation : FeatureNode
         {
             public String callSign { get; set; } = string.Empty;
             public List<categoryOfRadioStation> categoryOfRadioStation { get; set; } = [];
@@ -9222,7 +9222,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarTransponderBeacon : FeatureTypeBase
+        public partial class RadarTransponderBeacon : FeatureNode
         {
             [Required()]
             public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; set; }
@@ -9247,7 +9247,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PilotBoardingPlace : FeatureTypeBase
+        public partial class PilotBoardingPlace : FeatureNode
         {
             public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace { get; set; } = default;
             public categoryOfPreference? categoryOfPreference { get; set; } = default;
@@ -9270,7 +9270,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VesselTrafficServiceArea : FeatureTypeBase
+        public partial class VesselTrafficServiceArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public String interoperabilityIdentifier { get; set; } = string.Empty;
@@ -9285,7 +9285,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CoastGuardStation : FeatureTypeBase
+        public partial class CoastGuardStation : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];
@@ -9305,7 +9305,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SignalStationWarning : FeatureTypeBase
+        public partial class SignalStationWarning : FeatureNode
         {
             [Required()]
             public List<categoryOfSignalStationWarning> categoryOfSignalStationWarning { get; set; }
@@ -9327,7 +9327,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SignalStationTraffic : FeatureTypeBase
+        public partial class SignalStationTraffic : FeatureNode
         {
             [Required()]
             public List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic { get; set; }
@@ -9349,7 +9349,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RescueStation : FeatureTypeBase
+        public partial class RescueStation : FeatureNode
         {
             public List<categoryOfRescueStation> categoryOfRescueStation { get; set; } = [];
             public List<String> communicationChannel { get; set; } = [];
@@ -9369,7 +9369,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class HarbourFacility : FeatureTypeBase
+        public partial class HarbourFacility : FeatureNode
         {
             [Required()]
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
@@ -9398,7 +9398,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SmallCraftFacility : FeatureTypeBase
+        public partial class SmallCraftFacility : FeatureNode
         {
             [Required()]
             public List<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility { get; set; }
@@ -9419,7 +9419,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement : FeatureTypeBase
+        public partial class TextPlacement : FeatureNode
         {
             [Required()]
             public Int32 textOffsetBearing { get; set; }
@@ -9441,7 +9441,7 @@ namespace S100Framework.DomainModel.S101
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Chart1Feature : FeatureTypeBase
+        public partial class Chart1Feature : FeatureNode
         {
             public List<String> drawingInstruction { get; set; } = [];
             public List<featureName> featureName { get; set; } = [];

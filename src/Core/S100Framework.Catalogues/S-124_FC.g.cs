@@ -2209,7 +2209,7 @@ namespace S100Framework.DomainModel.S124
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNPreamble : InformationTypeBase
+        public partial class NAVWARNPreamble : InformationNode
         {
             public List<affectedChartPublications> affectedChartPublications { get; set; } = [];
 
@@ -2251,7 +2251,7 @@ namespace S100Framework.DomainModel.S124
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class References : InformationTypeBase
+        public partial class References : InformationNode
         {
             public List<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = [];
 
@@ -2277,7 +2277,7 @@ namespace S100Framework.DomainModel.S124
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNPart : FeatureTypeBase
+        public partial class NAVWARNPart : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public List<featureReference> featureReference { get; set; } = [];
@@ -2298,7 +2298,7 @@ namespace S100Framework.DomainModel.S124
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNAreaAffected : FeatureTypeBase
+        public partial class NAVWARNAreaAffected : FeatureNode
         {
             public override string Code => nameof(NAVWARNAreaAffected);
 
@@ -2309,7 +2309,7 @@ namespace S100Framework.DomainModel.S124
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement : FeatureTypeBase
+        public partial class TextPlacement : FeatureNode
         {
             public String text { get; set; } = string.Empty;
 

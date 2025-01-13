@@ -1819,7 +1819,7 @@ namespace S100Framework.DomainModel.S122
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InformationType : InformationTypeBase
+        public partial class InformationType : InformationNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -1995,7 +1995,7 @@ namespace S100Framework.DomainModel.S122
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class FeatureType : FeatureTypeBase
+        public abstract partial class FeatureType : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
             public fixedDateRange? fixedDateRange { get; set; }
@@ -2068,7 +2068,7 @@ namespace S100Framework.DomainModel.S122
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DataCoverage : FeatureTypeBase
+        public partial class DataCoverage : FeatureNode
         {
             public override string Code => nameof(DataCoverage);
 
@@ -2079,7 +2079,7 @@ namespace S100Framework.DomainModel.S122
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement : FeatureTypeBase
+        public partial class TextPlacement : FeatureNode
         {
             public override string Code => nameof(TextPlacement);
 

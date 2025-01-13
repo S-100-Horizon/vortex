@@ -1,11 +1,18 @@
+using System;
+using System.Linq;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using System.Collections.Immutable;
+using System.Collections.ObjectModel;
+using System.Reflection;
+using S100Framework.DomainModel;
 using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.DomainModel.S101.InformationTypes;
-using System.Collections.Immutable;
-using System.Collections.ObjectModel;
-using System.ComponentModel;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S101.Associations.InformationAssociations;
+using S100Framework.DomainModel.S101.Associations.FeatureAssociations;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 

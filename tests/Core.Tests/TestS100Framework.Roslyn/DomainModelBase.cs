@@ -33,28 +33,6 @@
     }
 
 
-    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
-    public class InformationTypeAttribute : System.Attribute
-    {
-        private Type _informationType;
-        public Type informationType => _informationType;
-        public InformationTypeAttribute(Type informationType) {
-            _informationType = informationType;
-        }
-    }
-
-
-    [System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]
-    public class FeatureTypeAttribute : System.Attribute
-    {
-        private Type _featureType;
-        public Type FeatureType => _featureType;
-        public FeatureTypeAttribute(Type featureType) {
-            _featureType = featureType;
-        }
-    }
-
-
     [System.SerializableAttribute()]
     public abstract class InformationAssociation
     {
@@ -72,16 +50,21 @@
 
 
     [System.SerializableAttribute()]
-    public abstract class InformationTypeBase
+    public abstract class Node
     {
         public virtual string Code => string.Empty;
     }
 
 
     [System.SerializableAttribute()]
-    public abstract class FeatureTypeBase
+    public abstract class InformationNode : Node
     {
-        public virtual string Code => string.Empty;
+    }
+
+
+    [System.SerializableAttribute()]
+    public abstract class FeatureNode : Node
+    {
     }
 
     namespace Bindings

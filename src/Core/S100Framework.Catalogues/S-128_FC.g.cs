@@ -1231,7 +1231,7 @@ namespace S100Framework.DomainModel.S128
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CatalogueSectionHeader : InformationTypeBase
+        public partial class CatalogueSectionHeader : InformationNode
         {
             [Required()]
             public Int32 catalogueSectionNumber { get; set; }
@@ -1246,7 +1246,7 @@ namespace S100Framework.DomainModel.S128
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContactDetails : InformationTypeBase
+        public partial class ContactDetails : InformationNode
         {
             public String contactInstructions { get; set; } = string.Empty;
             public List<contactAddress> contactAddress { get; set; } = [];
@@ -1264,7 +1264,7 @@ namespace S100Framework.DomainModel.S128
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IndicationOfCarriageRequirement : InformationTypeBase
+        public partial class IndicationOfCarriageRequirement : InformationNode
         {
             public String domesticCarriageRequirements { get; set; } = string.Empty;
             public String internationalCarriageRequirements { get; set; } = string.Empty;
@@ -1278,7 +1278,7 @@ namespace S100Framework.DomainModel.S128
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PriceInformation : InformationTypeBase
+        public partial class PriceInformation : InformationNode
         {
             public List<information> information { get; set; } = [];
             public List<onlineResource> onlineResource { get; set; } = [];
@@ -1293,7 +1293,7 @@ namespace S100Framework.DomainModel.S128
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ProducerInformation : InformationTypeBase
+        public partial class ProducerInformation : InformationNode
         {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
             public String agencyName { get; set; } = string.Empty;
@@ -1307,7 +1307,7 @@ namespace S100Framework.DomainModel.S128
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DistributorInformation : InformationTypeBase
+        public partial class DistributorInformation : InformationNode
         {
             public String distributorName { get; set; } = string.Empty;
             public override string Code => nameof(DistributorInformation);
@@ -1328,7 +1328,7 @@ namespace S100Framework.DomainModel.S128
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class CatalogueElement : FeatureTypeBase
+        public abstract partial class CatalogueElement : FeatureNode
         {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
 

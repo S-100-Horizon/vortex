@@ -795,7 +795,7 @@ namespace S100Framework
                 Type informationTypeBase;
                 {
                     var attributes = TypeAttributes.Public | TypeAttributes.Class | /*TypeAttributes.AutoClass |*/ TypeAttributes.AutoLayout | TypeAttributes.Abstract;
-                    var informationTypeBuilder = moduleBuilder.DefineType($"S100Framework.DomainModel.InformationTypeBase", attributes);
+                    var informationTypeBuilder = moduleBuilder.DefineType($"S100Framework.DomainModel.InformationNode", attributes);
 
                     informationTypeBase = informationTypeBuilder.CreateType();
                 }
@@ -988,7 +988,7 @@ namespace S100Framework
                 Type featureTypeBase;
                 {
                     var attributes = TypeAttributes.Public | TypeAttributes.Class | /*TypeAttributes.AutoClass |*/ TypeAttributes.AutoLayout | TypeAttributes.Abstract;
-                    var featureTypeBuilder = moduleBuilder.DefineType($"S100Framework.DomainModel.FeatureTypeBase", attributes);
+                    var featureTypeBuilder = moduleBuilder.DefineType($"S100Framework.DomainModel.FeatureNode", attributes);
 
                     featureTypeBase = featureTypeBuilder.CreateType();
                 }
@@ -1377,27 +1377,27 @@ namespace S100Framework
             common.AppendLine("\t}");
             common.AppendLine();
 
-            common.AppendLine("\t[System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]");
-            common.AppendLine("\tpublic class InformationTypeAttribute : System.Attribute");
-            common.AppendLine("\t{");
-            common.AppendLine("\t\tprivate Type _informationType;");
-            common.AppendLine("\t\tpublic Type informationType => _informationType;");
-            common.AppendLine("\t\tpublic InformationTypeAttribute(Type informationType) {");
-            common.AppendLine("\t\t\t_informationType = informationType;");
-            common.AppendLine("\t\t}");
-            common.AppendLine("\t}");
-            common.AppendLine();
+            //common.AppendLine("\t[System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]");
+            //common.AppendLine("\tpublic class InformationTypeAttribute : System.Attribute");
+            //common.AppendLine("\t{");
+            //common.AppendLine("\t\tprivate Type _informationType;");
+            //common.AppendLine("\t\tpublic Type informationType => _informationType;");
+            //common.AppendLine("\t\tpublic InformationTypeAttribute(Type informationType) {");
+            //common.AppendLine("\t\t\t_informationType = informationType;");
+            //common.AppendLine("\t\t}");
+            //common.AppendLine("\t}");
+            //common.AppendLine();
 
-            common.AppendLine("\t[System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]");
-            common.AppendLine("\tpublic class FeatureTypeAttribute : System.Attribute");
-            common.AppendLine("\t{");
-            common.AppendLine("\t\tprivate Type _featureType;");
-            common.AppendLine("\t\tpublic Type FeatureType => _featureType;");
-            common.AppendLine("\t\tpublic FeatureTypeAttribute(Type featureType) {");
-            common.AppendLine("\t\t\t_featureType = featureType;");
-            common.AppendLine("\t\t}");
-            common.AppendLine("\t}");
-            common.AppendLine();
+            //common.AppendLine("\t[System.AttributeUsage(System.AttributeTargets.Property, AllowMultiple = true)]");
+            //common.AppendLine("\tpublic class FeatureTypeAttribute : System.Attribute");
+            //common.AppendLine("\t{");
+            //common.AppendLine("\t\tprivate Type _featureType;");
+            //common.AppendLine("\t\tpublic Type FeatureType => _featureType;");
+            //common.AppendLine("\t\tpublic FeatureTypeAttribute(Type featureType) {");
+            //common.AppendLine("\t\t\t_featureType = featureType;");
+            //common.AppendLine("\t\t}");
+            //common.AppendLine("\t}");
+            //common.AppendLine();
 
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
@@ -1415,14 +1415,18 @@ namespace S100Framework
             common.AppendLine();
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
-            common.AppendLine("\tpublic abstract class InformationTypeBase {");
+            common.AppendLine("\tpublic abstract class Node {");
             common.AppendLine("\t\tpublic virtual string Code => string.Empty;");
             common.AppendLine("\t}");
             common.AppendLine();
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
-            common.AppendLine("\tpublic abstract class FeatureTypeBase {");
-            common.AppendLine("\t\tpublic virtual string Code => string.Empty;");
+            common.AppendLine("\tpublic abstract class InformationNode : Node {");
+            common.AppendLine("\t}");
+            common.AppendLine();
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\tpublic abstract class FeatureNode : Node {");
             common.AppendLine("\t}");
             common.AppendLine();
 
