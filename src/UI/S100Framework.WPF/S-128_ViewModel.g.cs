@@ -4430,13 +4430,6 @@ namespace S100Framework.WPF.ViewModel.S128
         public override string Code => "ProductMapping";
         public override string[] Roles => ["theSource", "theReference"];
 
-        private FeatureBindingViewModel? _theSource;
-        [ExpandableObject]
-        public FeatureBindingViewModel? theSource
-        {
-            get { return _theSource; }
-            set { this.SetValue(ref _theSource, value); }
-        }
         private FeatureBindingViewModel? _theReference;
         [ExpandableObject]
         public FeatureBindingViewModel? theReference
@@ -4451,27 +4444,6 @@ namespace S100Framework.WPF.ViewModel.S128
             set
             {
                 this.SetValue(ref _associationConnector, value);
-                theSource = null;
-                if (value is not null)
-                {
-                    theSource = value?.role switch
-                    {
-                        "theReference" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : new OptionalFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel()
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
-                    };
-                }
                 theReference = null;
                 if (value is not null)
                 {
@@ -4519,13 +4491,6 @@ namespace S100Framework.WPF.ViewModel.S128
             get { return _main; }
             set { this.SetValue(ref _main, value); }
         }
-        private FeatureBindingViewModel? _panel;
-        [ExpandableObject]
-        public FeatureBindingViewModel? panel
-        {
-            get { return _panel; }
-            set { this.SetValue(ref _panel, value); }
-        }
 
         public override FeatureAssociationConnector? associationConnector
         {
@@ -4539,27 +4504,6 @@ namespace S100Framework.WPF.ViewModel.S128
                     main = value?.role switch
                     {
                         "panel" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : new OptionalFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel()
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
-                    };
-                }
-                panel = null;
-                if (value is not null)
-                {
-                    panel = value?.role switch
-                    {
-                        "main" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
                         {
                             FeatureTypes = value.AssociationTypes,
                         } : value.Lower > 0 ? new SingleFeatureBindingViewModel

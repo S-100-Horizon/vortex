@@ -12206,13 +12206,6 @@ namespace S100Framework.WPF.ViewModel.S131
         public override string Code => "TextAssociation";
         public override string[] Roles => ["identifies", "positions"];
 
-        private FeatureBindingViewModel? _identifies;
-        [ExpandableObject]
-        public FeatureBindingViewModel? identifies
-        {
-            get { return _identifies; }
-            set { this.SetValue(ref _identifies, value); }
-        }
         private FeatureBindingViewModel? _positions;
         [ExpandableObject]
         public FeatureBindingViewModel? positions
@@ -12227,27 +12220,6 @@ namespace S100Framework.WPF.ViewModel.S131
             set
             {
                 this.SetValue(ref _associationConnector, value);
-                identifies = null;
-                if (value is not null)
-                {
-                    identifies = value?.role switch
-                    {
-                        "positions" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : new OptionalFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel()
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
-                    };
-                }
                 positions = null;
                 if (value is not null)
                 {

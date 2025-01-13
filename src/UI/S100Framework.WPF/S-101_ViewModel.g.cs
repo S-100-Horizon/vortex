@@ -44397,13 +44397,6 @@ namespace S100Framework.WPF.ViewModel.S101
             get { return _theUpdate; }
             set { this.SetValue(ref _theUpdate, value); }
         }
-        private FeatureBindingViewModel? _theUpdatedObject;
-        [ExpandableObject]
-        public FeatureBindingViewModel? theUpdatedObject
-        {
-            get { return _theUpdatedObject; }
-            set { this.SetValue(ref _theUpdatedObject, value); }
-        }
 
         public override FeatureAssociationConnector? associationConnector
         {
@@ -44417,27 +44410,6 @@ namespace S100Framework.WPF.ViewModel.S101
                     theUpdate = value?.role switch
                     {
                         "theUpdatedObject" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : new OptionalFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel()
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
-                    };
-                }
-                theUpdatedObject = null;
-                if (value is not null)
-                {
-                    theUpdatedObject = value?.role switch
-                    {
-                        "theUpdate" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
                         {
                             FeatureTypes = value.AssociationTypes,
                         } : value.Lower > 0 ? new SingleFeatureBindingViewModel
