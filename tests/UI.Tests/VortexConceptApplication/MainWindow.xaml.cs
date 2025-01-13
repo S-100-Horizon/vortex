@@ -23,7 +23,7 @@ namespace VortexConceptApplication
 
     //  https://github.com/RWS/Multiselect-ComboBox/tree/master/MultiSelectComboBox/MultiSelectComboBox.Example
 
-    public partial class MainWindow : Window, INotifyPropertyChanged, IViewModelHost
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public static object MockValue => new();
 
@@ -274,28 +274,7 @@ namespace VortexConceptApplication
                     }
                 }
             }
-        }
-
-        object IViewModelHost.GetSource(PropertyItem propertyItem) {
-
-            //var type = propertyItem.Instance switch {
-            //    InformationBindingViewModel viewModel => viewModel.InformationType,
-            //    FeatureBindingViewModel viewModel => viewModel.FeatureType,
-            //    _ => throw new NotImplementedException(),
-            //};
-
-            return null;
-            //return {
-            //    //new {
-            //    //    refId = "P1000",
-            //    //    code = type!.Name,
-            //    //},
-            //    //new {
-            //    //    refId = "P1001",
-            //    //    code = type!.Name,
-            //    //},
-            //};
-        }
+        }    
     }
 
     public class CodeListComboEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor

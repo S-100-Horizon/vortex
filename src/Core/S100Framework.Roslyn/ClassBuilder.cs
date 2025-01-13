@@ -1280,7 +1280,7 @@ namespace S100Framework
 
                     var associations = bindings.Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals(code)).ToList();
 
-                    foreach (var association in associations.OrderBy(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value).ThenBy(e=>e.Parent!.Element(XName.Get("code", scope_S100))!.Value)) {
+                    foreach (var association in associations.OrderBy(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value).ThenBy(e => e.Parent!.Element(XName.Get("code", scope_S100))!.Value)) {
                         var featureType = association.Parent!.Element(XName.Get("code", scope_S100))!.Value;
 
                         var roleType = association.Attribute("roleType")!.Value;
@@ -1367,7 +1367,7 @@ namespace S100Framework
 
                     var associations = bindings.Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals(code)).ToList();
 
-                    foreach (var association in associations.OrderBy(e=>e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value).ThenBy(e=>e.Parent!.Element(XName.Get("code", scope_S100))!.Value)) {
+                    foreach (var association in associations.OrderBy(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value).ThenBy(e => e.Parent!.Element(XName.Get("code", scope_S100))!.Value)) {
                         var featureType = association.Parent!.Element(XName.Get("code", scope_S100))!.Value;
 
                         var roleType = association.Attribute("roleType")!.Value;
@@ -1700,7 +1700,7 @@ namespace S100Framework
             var modelBuilder = new StringBuilder();
 
             var constructorBuilder = new StringBuilder();
-            constructorBuilder.AppendLine($"\t\tpublic {code}ViewModel(IViewModelHost? host = null) : base(host) {{");
+            constructorBuilder.AppendLine($"\t\tpublic {code}ViewModel() : base() {{");
 
             serializeBuilder.AppendLine($"\t\t\tvar instance = new {classNamespace}.{code} {{");
 
@@ -1996,6 +1996,30 @@ namespace S100Framework
                     }
                     return rewritten.WithLeadingTrivia(leadingTrivia);
                 });
+        }
+
+        public static SyntaxNode? RemoveUsings(this SyntaxNode? root, SemanticModel semanticModel) {
+            if (root is null)
+                return root;
+
+            // Find and remove unused using directives
+            var unusedUsings = new List<UsingDirectiveSyntax>();
+            var usings = root.DescendantNodes().OfType<UsingDirectiveSyntax>();
+
+            foreach (var usingDirective in usings) {
+                // Check if the namespace or type in the using directive is used
+                var symbolInfo = semanticModel.GetSymbolInfo(usingDirective.Name);
+                var symbol = symbolInfo.Symbol;
+
+                // If the symbol is not used, add it to the unused list
+                if (symbol == null) {
+                    unusedUsings.Add(usingDirective);
+                }
+            }
+
+            // Remove unused using directives
+            var rootWithoutUnusedUsings = root.RemoveNodes(unusedUsings, SyntaxRemoveOptions.KeepNoTrivia);
+            return rootWithoutUnusedUsings;
         }
     }
 }

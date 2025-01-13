@@ -194,7 +194,7 @@ namespace S100Framework.WPF.ViewModel.S122
             postalCode = this._postalCode,
         };
 
-        public contactAddressViewModel(IViewModelHost? host = null) : base(host)
+        public contactAddressViewModel() : base()
         {
         }
     }
@@ -275,7 +275,7 @@ namespace S100Framework.WPF.ViewModel.S122
             name = this._name,
         };
 
-        public featureNameViewModel(IViewModelHost? host = null) : base(host)
+        public featureNameViewModel() : base()
         {
         }
     }
@@ -338,7 +338,7 @@ namespace S100Framework.WPF.ViewModel.S122
             dateEnd = this._dateEnd,
         };
 
-        public fixedDateRangeViewModel(IViewModelHost? host = null) : base(host)
+        public fixedDateRangeViewModel() : base()
         {
         }
     }
@@ -401,7 +401,7 @@ namespace S100Framework.WPF.ViewModel.S122
             frequencyShoreStationTransmits = this._frequencyShoreStationTransmits,
         };
 
-        public frequencyPairViewModel(IViewModelHost? host = null) : base(host)
+        public frequencyPairViewModel() : base()
         {
         }
     }
@@ -521,7 +521,7 @@ namespace S100Framework.WPF.ViewModel.S122
             text = this._text,
         };
 
-        public informationViewModel(IViewModelHost? host = null) : base(host)
+        public informationViewModel() : base()
         {
         }
     }
@@ -674,7 +674,7 @@ namespace S100Framework.WPF.ViewModel.S122
             onlineFunction = this._onlineFunction,
         };
 
-        public onlineResourceViewModel(IViewModelHost? host = null) : base(host)
+        public onlineResourceViewModel() : base()
         {
         }
     }
@@ -740,7 +740,7 @@ namespace S100Framework.WPF.ViewModel.S122
             orientationValue = this._orientationValue,
         };
 
-        public orientationViewModel(IViewModelHost? host = null) : base(host)
+        public orientationViewModel() : base()
         {
         }
     }
@@ -803,7 +803,7 @@ namespace S100Framework.WPF.ViewModel.S122
             dateEnd = this._dateEnd,
         };
 
-        public periodicDateRangeViewModel(IViewModelHost? host = null) : base(host)
+        public periodicDateRangeViewModel() : base()
         {
         }
     }
@@ -894,7 +894,7 @@ namespace S100Framework.WPF.ViewModel.S122
             headline = this._headline,
         };
 
-        public rxNCodeViewModel(IViewModelHost? host = null) : base(host)
+        public rxNCodeViewModel() : base()
         {
         }
     }
@@ -957,7 +957,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sectorLineLength = this._sectorLineLength,
         };
 
-        public sectorLimitOneViewModel(IViewModelHost? host = null) : base(host)
+        public sectorLimitOneViewModel() : base()
         {
         }
     }
@@ -1020,7 +1020,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sectorLineLength = this._sectorLineLength,
         };
 
-        public sectorLimitTwoViewModel(IViewModelHost? host = null) : base(host)
+        public sectorLimitTwoViewModel() : base()
         {
         }
     }
@@ -1119,7 +1119,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public textContentViewModel(IViewModelHost? host = null) : base(host)
+        public textContentViewModel() : base()
         {
         }
     }
@@ -1191,7 +1191,7 @@ namespace S100Framework.WPF.ViewModel.S122
             timeOfDayStart = this.timeOfDayStart.ToList(),
         };
 
-        public timeIntervalsByDayOfWeekViewModel(IViewModelHost? host = null) : base(host)
+        public timeIntervalsByDayOfWeekViewModel() : base()
         {
             dayOfWeek.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1302,7 +1302,7 @@ namespace S100Framework.WPF.ViewModel.S122
             comparisonOperator = this._comparisonOperator,
         };
 
-        public vesselsMeasurementsViewModel(IViewModelHost? host = null) : base(host)
+        public vesselsMeasurementsViewModel() : base()
         {
         }
     }
@@ -1404,7 +1404,7 @@ namespace S100Framework.WPF.ViewModel.S122
             text = this._text,
         };
 
-        public designationViewModel(IViewModelHost? host = null) : base(host)
+        public designationViewModel() : base()
         {
         }
     }
@@ -1509,7 +1509,7 @@ namespace S100Framework.WPF.ViewModel.S122
             orientation = this._orientation?.Model,
         };
 
-        public bearingInformationViewModel(IViewModelHost? host = null) : base(host)
+        public bearingInformationViewModel() : base()
         {
             sectorBearing.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1634,7 +1634,7 @@ namespace S100Framework.WPF.ViewModel.S122
             bearingInformation = this._bearingInformation?.Model,
         };
 
-        public graphicViewModel(IViewModelHost? host = null) : base(host)
+        public graphicViewModel() : base()
         {
             pictorialRepresentation.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1692,7 +1692,7 @@ namespace S100Framework.WPF.ViewModel.S122
             timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.ToList(),
         };
 
-        public scheduleByDayOfWeekViewModel(IViewModelHost? host = null) : base(host)
+        public scheduleByDayOfWeekViewModel() : base()
         {
             timeIntervalsByDayOfWeek.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1772,7 +1772,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sectorLimitTwo = this._sectorLimitTwo?.Model,
         };
 
-        public sectorLimitViewModel(IViewModelHost? host = null) : base(host)
+        public sectorLimitViewModel() : base()
         {
         }
     }
@@ -1916,7 +1916,7 @@ namespace S100Framework.WPF.ViewModel.S122
             scheduleByDayOfWeek = this._scheduleByDayOfWeek?.Model,
         };
 
-        public telecommunicationsViewModel(IViewModelHost? host = null) : base(host)
+        public telecommunicationsViewModel() : base()
         {
         }
     }
@@ -2049,7 +2049,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public InformationTypeViewModel(IViewModelHost? host = null) : base(host)
+        public InformationTypeViewModel() : base()
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2246,7 +2246,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public AbstractRxNViewModel(IViewModelHost? host = null) : base(host)
+        public AbstractRxNViewModel() : base()
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2447,7 +2447,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public NauticalInformationViewModel(IViewModelHost? host = null) : base(host)
+        public NauticalInformationViewModel() : base()
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2648,7 +2648,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public RegulationsViewModel(IViewModelHost? host = null) : base(host)
+        public RegulationsViewModel() : base()
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2849,7 +2849,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public RestrictionsViewModel(IViewModelHost? host = null) : base(host)
+        public RestrictionsViewModel() : base()
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3050,7 +3050,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public RecommendationsViewModel(IViewModelHost? host = null) : base(host)
+        public RecommendationsViewModel() : base()
         {
             rxNCode.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3226,7 +3226,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public AuthorityViewModel(IViewModelHost? host = null) : base(host)
+        public AuthorityViewModel() : base()
         {
             textContent.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3580,7 +3580,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public ContactDetailsViewModel(IViewModelHost? host = null) : base(host)
+        public ContactDetailsViewModel() : base()
         {
             communicationChannel.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3784,7 +3784,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public NonStandardWorkingDayViewModel(IViewModelHost? host = null) : base(host)
+        public NonStandardWorkingDayViewModel() : base()
         {
             dateFixed.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3975,7 +3975,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public ServiceHoursViewModel(IViewModelHost? host = null) : base(host)
+        public ServiceHoursViewModel() : base()
         {
             scheduleByDayOfWeek.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4273,7 +4273,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public ApplicabilityViewModel(IViewModelHost? host = null) : base(host)
+        public ApplicabilityViewModel() : base()
         {
             categoryOfCargo.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4479,7 +4479,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public RestrictedAreaViewModel(IViewModelHost? host = null) : base(host)
+        public RestrictedAreaViewModel() : base()
         {
             categoryOfRestrictedArea.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4731,7 +4731,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public MarineProtectedAreaViewModel(IViewModelHost? host = null) : base(host)
+        public MarineProtectedAreaViewModel() : base()
         {
             categoryOfRestrictedArea.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4928,7 +4928,7 @@ namespace S100Framework.WPF.ViewModel.S122
             reportedDate = this._reportedDate,
         };
 
-        public VesselTrafficServiceAreaViewModel(IViewModelHost? host = null) : base(host)
+        public VesselTrafficServiceAreaViewModel() : base()
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4967,7 +4967,7 @@ namespace S100Framework.WPF.ViewModel.S122
         {
         };
 
-        public DataCoverageViewModel(IViewModelHost? host = null) : base(host)
+        public DataCoverageViewModel() : base()
         {
         }
     }
@@ -4994,7 +4994,7 @@ namespace S100Framework.WPF.ViewModel.S122
         {
         };
 
-        public TextPlacementViewModel(IViewModelHost? host = null) : base(host)
+        public TextPlacementViewModel() : base()
         {
         }
     }

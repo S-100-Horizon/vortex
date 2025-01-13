@@ -51,41 +51,41 @@ namespace S100Framework.WPF.Editors
         }
     }
 
-    public sealed class BindingConnectorEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
-    {
-        //public DomainModel.Bindings.informationBinding[] informationBindingsItems => new DomainModel.Bindings.informationBinding[] {
-        //        NAVWARNPart.headerNAVWARNPreamble,
-        //    };
+    //public sealed class BindingConnectorEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    //{
+    //    //public DomainModel.Bindings.informationBinding[] informationBindingsItems => new DomainModel.Bindings.informationBinding[] {
+    //    //        NAVWARNPart.headerNAVWARNPreamble,
+    //    //    };
 
-        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
-            if (propertyItem.Instance is ViewModelBase) {
+    //    public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
+    //        if (propertyItem.Instance is ViewModelBase) {
 
-                var viewModel = (ViewModelBase)propertyItem.Instance;
+    //            var viewModel = (ViewModelBase)propertyItem.Instance;
 
-                if (viewModel.Host is not null) {
-                    var comboBox = new ComboBox {
-                        Name = $"_comboBox{Guid.NewGuid():N}",
-                        DisplayMemberPath = "Name",
-                    };
+    //            if (viewModel.Host is not null) {
+    //                var comboBox = new ComboBox {
+    //                    Name = $"_comboBox{Guid.NewGuid():N}",
+    //                    DisplayMemberPath = "Name",
+    //                };
 
-                    var bindingItemsSourceProperty = new Binding() { Source = viewModel.Host.GetSource(propertyItem), Mode = BindingMode.OneWay };
-                    BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+    //                var bindingItemsSourceProperty = new Binding() { Source = viewModel.Host.GetSource(propertyItem), Mode = BindingMode.OneWay };
+    //                BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
-                    return comboBox;
-                }
-            }
-            var text = propertyItem.DisplayName;
+    //                return comboBox;
+    //            }
+    //        }
+    //        var text = propertyItem.DisplayName;
 
-            var connector = (dynamic)propertyItem.Instance;
+    //        var connector = (dynamic)propertyItem.Instance;
 
-            //if (connector.informationBinding is null)
-            //    text += " null";
-            return new Label {
-                Content = text,
-                IsEnabled = true,
-            };
-        }
-    }
+    //        //if (connector.informationBinding is null)
+    //        //    text += " null";
+    //        return new Label {
+    //            Content = text,
+    //            IsEnabled = true,
+    //        };
+    //    }
+    //}
 
     public sealed class RefIdEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {

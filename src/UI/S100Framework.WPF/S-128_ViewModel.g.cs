@@ -157,7 +157,7 @@ namespace S100Framework.WPF.ViewModel.S128
             postalCode = this._postalCode,
         };
 
-        public contactAddressViewModel(IViewModelHost? host = null) : base(host)
+        public contactAddressViewModel() : base()
         {
             deliveryPoint.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -224,7 +224,7 @@ namespace S100Framework.WPF.ViewModel.S128
             y = this._y,
         };
 
-        public customPaperSizeViewModel(IViewModelHost? host = null) : base(host)
+        public customPaperSizeViewModel() : base()
         {
         }
     }
@@ -305,7 +305,7 @@ namespace S100Framework.WPF.ViewModel.S128
             language = this._language,
         };
 
-        public defaultLocaleViewModel(IViewModelHost? host = null) : base(host)
+        public defaultLocaleViewModel() : base()
         {
         }
     }
@@ -386,7 +386,7 @@ namespace S100Framework.WPF.ViewModel.S128
             nameUsage = this._nameUsage,
         };
 
-        public featureNameViewModel(IViewModelHost? host = null) : base(host)
+        public featureNameViewModel() : base()
         {
         }
     }
@@ -497,7 +497,7 @@ namespace S100Framework.WPF.ViewModel.S128
             text = this.text.ToList(),
         };
 
-        public informationViewModel(IViewModelHost? host = null) : base(host)
+        public informationViewModel() : base()
         {
             text.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -636,7 +636,7 @@ namespace S100Framework.WPF.ViewModel.S128
             protocolRequest = this._protocolRequest,
         };
 
-        public onlineResourceViewModel(IViewModelHost? host = null) : base(host)
+        public onlineResourceViewModel() : base()
         {
         }
     }
@@ -699,7 +699,7 @@ namespace S100Framework.WPF.ViewModel.S128
             dateStart = this._dateStart,
         };
 
-        public periodicDateRangeViewModel(IViewModelHost? host = null) : base(host)
+        public periodicDateRangeViewModel() : base()
         {
         }
     }
@@ -783,7 +783,7 @@ namespace S100Framework.WPF.ViewModel.S128
             price = this._price,
         };
 
-        public pricingViewModel(IViewModelHost? host = null) : base(host)
+        public pricingViewModel() : base()
         {
         }
     }
@@ -852,7 +852,7 @@ namespace S100Framework.WPF.ViewModel.S128
             customPaperSize = this._customPaperSize?.Model,
         };
 
-        public printSizeViewModel(IViewModelHost? host = null) : base(host)
+        public printSizeViewModel() : base()
         {
         }
     }
@@ -951,7 +951,7 @@ namespace S100Framework.WPF.ViewModel.S128
             version = this._version,
         };
 
-        public productSpecificationViewModel(IViewModelHost? host = null) : base(host)
+        public productSpecificationViewModel() : base()
         {
         }
     }
@@ -1032,7 +1032,7 @@ namespace S100Framework.WPF.ViewModel.S128
             version = this._version,
         };
 
-        public supportFileSpecificationViewModel(IViewModelHost? host = null) : base(host)
+        public supportFileSpecificationViewModel() : base()
         {
         }
     }
@@ -1113,7 +1113,7 @@ namespace S100Framework.WPF.ViewModel.S128
             version = this._version,
         };
 
-        public serviceSpecificationViewModel(IViewModelHost? host = null) : base(host)
+        public serviceSpecificationViewModel() : base()
         {
         }
     }
@@ -1239,7 +1239,7 @@ namespace S100Framework.WPF.ViewModel.S128
             featureName = this.featureName.ToList(),
         };
 
-        public sourceIndicationViewModel(IViewModelHost? host = null) : base(host)
+        public sourceIndicationViewModel() : base()
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1318,7 +1318,7 @@ namespace S100Framework.WPF.ViewModel.S128
             telecommunicationService = this.telecommunicationService.ToList(),
         };
 
-        public telecommunicationsViewModel(IViewModelHost? host = null) : base(host)
+        public telecommunicationsViewModel() : base()
         {
             telecommunicationService.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1376,7 +1376,7 @@ namespace S100Framework.WPF.ViewModel.S128
             valueOfTime = this._valueOfTime,
         };
 
-        public timeIntervalOfCycleViewModel(IViewModelHost? host = null) : base(host)
+        public timeIntervalOfCycleViewModel() : base()
         {
             typeOfTimeIntervalUnit.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -1443,7 +1443,7 @@ namespace S100Framework.WPF.ViewModel.S128
             yearNumber = this._yearNumber,
         };
 
-        public weekOfYearViewModel(IViewModelHost? host = null) : base(host)
+        public weekOfYearViewModel() : base()
         {
         }
     }
@@ -1519,7 +1519,7 @@ namespace S100Framework.WPF.ViewModel.S128
             timeIntervalOfCycle = this._timeIntervalOfCycle?.Model,
         };
 
-        public issuanceCycleViewModel(IViewModelHost? host = null) : base(host)
+        public issuanceCycleViewModel() : base()
         {
         }
     }
@@ -1642,7 +1642,7 @@ namespace S100Framework.WPF.ViewModel.S128
             printSize = this._printSize?.Model,
         };
 
-        public printInformationViewModel(IViewModelHost? host = null) : base(host)
+        public printInformationViewModel() : base()
         {
         }
     }
@@ -1898,7 +1898,7 @@ namespace S100Framework.WPF.ViewModel.S128
             supportFileSpecification = this._supportFileSpecification?.Model,
         };
 
-        public supportFileViewModel(IViewModelHost? host = null) : base(host)
+        public supportFileViewModel() : base()
         {
         }
     }
@@ -1985,7 +1985,7 @@ namespace S100Framework.WPF.ViewModel.S128
             issuanceCycle = this._issuanceCycle?.Model,
         };
 
-        public timeIntervalOfProductViewModel(IViewModelHost? host = null) : base(host)
+        public timeIntervalOfProductViewModel() : base()
         {
         }
     }
@@ -2054,7 +2054,7 @@ namespace S100Framework.WPF.ViewModel.S128
             weekOfYear = this._weekOfYear?.Model,
         };
 
-        public referenceToNMViewModel(IViewModelHost? host = null) : base(host)
+        public referenceToNMViewModel() : base()
         {
         }
     }
@@ -2141,7 +2141,7 @@ namespace S100Framework.WPF.ViewModel.S128
             information = this._information?.Model,
         };
 
-        public CatalogueSectionHeaderViewModel(IViewModelHost? host = null) : base(host)
+        public CatalogueSectionHeaderViewModel() : base()
         {
         }
     }
@@ -2231,7 +2231,7 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication = this.sourceIndication.ToList(),
         };
 
-        public ContactDetailsViewModel(IViewModelHost? host = null) : base(host)
+        public ContactDetailsViewModel() : base()
         {
             contactAddress.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2323,7 +2323,7 @@ namespace S100Framework.WPF.ViewModel.S128
             featureName = this.featureName.ToList(),
         };
 
-        public IndicationOfCarriageRequirementViewModel(IViewModelHost? host = null) : base(host)
+        public IndicationOfCarriageRequirementViewModel() : base()
         {
             featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2390,7 +2390,7 @@ namespace S100Framework.WPF.ViewModel.S128
             sourceIndication = this.sourceIndication.ToList(),
         };
 
-        public PriceInformationViewModel(IViewModelHost? host = null) : base(host)
+        public PriceInformationViewModel() : base()
         {
             information.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -2469,7 +2469,7 @@ namespace S100Framework.WPF.ViewModel.S128
             agencyName = this._agencyName,
         };
 
-        public ProducerInformationViewModel(IViewModelHost? host = null) : base(host)
+        public ProducerInformationViewModel() : base()
         {
         }
     }
@@ -2514,7 +2514,7 @@ namespace S100Framework.WPF.ViewModel.S128
             distributorName = this._distributorName,
         };
 
-        public DistributorInformationViewModel(IViewModelHost? host = null) : base(host)
+        public DistributorInformationViewModel() : base()
         {
         }
     }
@@ -3113,7 +3113,7 @@ namespace S100Framework.WPF.ViewModel.S128
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
         };
 
-        public ElectronicProductViewModel(IViewModelHost? host = null) : base(host)
+        public ElectronicProductViewModel() : base()
         {
             approximateGridResolution.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -3751,7 +3751,7 @@ namespace S100Framework.WPF.ViewModel.S128
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
         };
 
-        public PhysicalProductViewModel(IViewModelHost? host = null) : base(host)
+        public PhysicalProductViewModel() : base()
         {
             approximateGridResolution.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
@@ -4123,7 +4123,7 @@ namespace S100Framework.WPF.ViewModel.S128
             timeIntervalOfProduct = this._timeIntervalOfProduct?.Model,
         };
 
-        public S100ServiceViewModel(IViewModelHost? host = null) : base(host)
+        public S100ServiceViewModel() : base()
         {
             catalogueElementClassification.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {

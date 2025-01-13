@@ -6,14 +6,6 @@ namespace S100Framework.WPF
 {
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
-        private IViewModelHost? _host;
-
-        public IViewModelHost? Host => _host;
-
-        public ViewModelBase(IViewModelHost? host = null) {
-            _host = host;
-        }
-
         public event PropertyChangedEventHandler? PropertyChanged;
 
         protected Dictionary<ViewModelBase, string> nestedProperties = new();

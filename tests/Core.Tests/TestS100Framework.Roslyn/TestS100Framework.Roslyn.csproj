@@ -17,7 +17,6 @@
 
   <ItemGroup>
     <Compile Include="..\..\..\src\UI\S100Framework.WPF\Editors.cs" Link="Editors.cs" />
-    <Compile Include="..\..\..\src\UI\S100Framework.WPF\ViewModelBase.cs" Link="ViewModelBase.cs" />
   </ItemGroup>
 
   <ItemGroup>
