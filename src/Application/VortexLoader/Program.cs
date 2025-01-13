@@ -2,7 +2,7 @@
 using ArcGIS.Core.Geometry;
 using CommandLine;
 using S100Framework.ArcGIS.Core;
-using Serilog;
+using VortexLoader;
 using System.Text.Json;
 using System.Text.RegularExpressions;
 using Esri = ArcGIS.Core.Hosting.Host;
@@ -18,7 +18,7 @@ namespace S100Framework.Applications
 
         //  --query "PLTS_COMP_SCALE = 22000"
 
-        private static Serilog.Core.Logger? _logger;
+        //private static Serilog.Core.Logger? _logger;
 
         private static Regex _substitute = new(@"^S(?<number>\d+)$", RegexOptions.Singleline | RegexOptions.CultureInvariant | RegexOptions.IgnorePatternWhitespace | RegexOptions.IgnoreCase);
 
@@ -55,31 +55,10 @@ namespace S100Framework.Applications
             var arguments = Parser.Default.ParseArguments<Options>(args)
                                .WithParsed<Options>(o => {
                                    command = o.Command.ToUpperInvariant();
-
-                                   LoggerConfiguration configuration;
-                                   if (o.Verbose) {
-                                       configuration = new LoggerConfiguration()
-                                                            .MinimumLevel.Verbose()
-                                                            .Enrich.WithExceptionData()
-                                                            .Enrich.WithProperty("MachineName", Environment.MachineName);
-                                   }
-                                   else {
-                                       configuration = new LoggerConfiguration()
-                                                            .MinimumLevel.Information()
-                                                            .Enrich.WithExceptionData()
-                                                            .Enrich.WithProperty("MachineName", Environment.MachineName);
-                                   }
-                                   configuration = configuration.WriteTo.File(
-                                           System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Vortex", "Loader", "Loader-.log"),
-                                           rollingInterval: RollingInterval.Day,
-                                           shared: true,
-                                           outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}");
-
-                                   _logger = configuration.CreateLogger();
                                });
 
             AppDomain.CurrentDomain.UnhandledException += (sender, e) => {
-                _logger?.Fatal((Exception)e.ExceptionObject, "UnhandledException");
+                Logger.Current.Fatal((Exception)e.ExceptionObject, "UnhandledException");
             };
 
             if (arguments.Errors.Any())

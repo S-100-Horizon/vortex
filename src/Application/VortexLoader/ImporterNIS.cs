@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
 using CommandLine;
+using Microsoft.Extensions.Logging;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
@@ -124,7 +125,6 @@ namespace S100Framework.Applications
                             text = note.Content,
                         };
                         information.Add(instance);
-
                     }
                 }
             }
