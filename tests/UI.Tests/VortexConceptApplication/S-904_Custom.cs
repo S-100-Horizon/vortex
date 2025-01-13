@@ -9,7 +9,7 @@ using System.Windows.Data;
 using Xceed.Wpf.Toolkit.PropertyGrid;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
-namespace S100Framework.WPF.ViewModel.S903
+namespace S100Framework.WPF.ViewModel.S904
 {
     public abstract class S100_FC_FeatureAssociation
     {

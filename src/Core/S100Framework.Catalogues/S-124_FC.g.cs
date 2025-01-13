@@ -2177,60 +2177,10 @@ namespace S100Framework.DomainModel.S124
     {
         namespace InformationAssociations
         {
-
-            public class NWPreambleContent : InformationAssociation
-            {
-                public override string Code => "NWPreambleContent";
-                public override string[] Roles => ["theWarningPart", "header"];
-                public NWPreambleContent()
-                {
-                }
-            }
-
-
-            public class NWReferences : InformationAssociation
-            {
-                public override string Code => "NWReferences";
-                public override string[] Roles => ["theWarning", "theReferences"];
-                public NWReferences()
-                {
-                }
-            }
-
         }
         namespace FeatureAssociations
         {
             using S100Framework.DomainModel.S124.FeatureTypes;
-
-            public class AreaAffected : FeatureAssociation
-            {
-                public override string Code => "AreaAffected";
-                public override string[] Roles => ["affects", "impacts"];
-                public AreaAffected()
-                {
-                }
-
-                public Type[] affects => [typeof(NAVWARNAreaAffected)];
-                public Type[] impacts => [typeof(NAVWARNPart)];
-
-
-            }
-
-
-            public class TextAssociation : FeatureAssociation
-            {
-                public override string Code => "TextAssociation";
-                public override string[] Roles => ["identifies", "positions"];
-                public TextAssociation()
-                {
-                }
-
-                public Type[] identifies => [typeof(NAVWARNPart)];
-                public Type[] positions => [typeof(TextPlacement)];
-
-
-            }
-
         }
     }
 

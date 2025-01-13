@@ -1,7 +1,3 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-
 namespace S100Framework.DomainModel
 {
 
@@ -12,8 +8,7 @@ namespace S100Framework.DomainModel
 
         public string PropertyName => _propertyName;
 
-        public CodeListAttribute(string propertyName)
-        {
+        public CodeListAttribute(string propertyName) {
             _propertyName = propertyName;
         }
     }
@@ -26,8 +21,7 @@ namespace S100Framework.DomainModel
 
         public string RoleName => _roleName;
 
-        public RoleAttribute(string roleName)
-        {
+        public RoleAttribute(string roleName) {
             _roleName = roleName;
         }
     }
@@ -40,25 +34,6 @@ namespace S100Framework.DomainModel
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    public abstract class InformationAssociation
-    {
-        public abstract string Code { get; }
-        public abstract string[] Roles { get; }
-    }
-
-
-    [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-    public abstract class FeatureAssociation
-    {
-        public abstract string Code { get; }
-        public abstract string[] Roles { get; }
-    }
-
-
-    [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class Node
     {
         public virtual string Code => string.Empty;
@@ -66,14 +41,12 @@ namespace S100Framework.DomainModel
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationNode : Node
     {
     }
 
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureNode : Node
     {
     }
@@ -86,31 +59,5 @@ namespace S100Framework.DomainModel
             aggregation,
             composition,
         }
-
-        public class informationBinding
-        {
-            public string? RefId { get; set; }
-            public string? InformationType { get; set; }
-        }
-
-
-        public class informationBinding<TAssociation> where TAssociation : InformationAssociation
-        {
-            public TAssociation? association { get; set; } = default;
-        }
-
-
-        public class featureBinding
-        {
-            public string? RefId { get; set; }
-            public string? FeatureType { get; set; }
-        }
-
-
-        public class featureBinding<TAssociation> where TAssociation : FeatureAssociation
-        {
-            public TAssociation? association { get; set; } = default;
-        }
-
     }
 }
