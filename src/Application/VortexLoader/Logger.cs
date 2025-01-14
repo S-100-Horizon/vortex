@@ -15,15 +15,18 @@ namespace VortexLoader
         Warning = 3,
         Error = 4,
         Fatal = 5,
-        DataIssue = 6  // Custom log level
+        DataObject = 6,  
+        DataTotalCount = 7  
     }
 
-    // Step 2: Custom log level extension methods
     public static class CustomLogLevels
     {
         // Helper method to log DataIssue level
-        public static void DataIssue(this ILogger logger, string message) {
-            logger.Write(LogLevel.DataIssue.ToLogLevel(), message);
+        public static void DataObject(this ILogger logger, string message) {
+            logger.Write(LogLevel.DataObject.ToLogLevel(), message);
+        }
+        public static void DataTotalCount(this ILogger logger, string message) {
+            logger.Write(LogLevel.DataTotalCount.ToLogLevel(), message);
         }
 
         // Convert custom LogLevel enum to LogEventLevel
@@ -35,7 +38,8 @@ namespace VortexLoader
                 LogLevel.Warning => LogEventLevel.Warning,
                 LogLevel.Error => LogEventLevel.Error,
                 LogLevel.Fatal => LogEventLevel.Fatal,
-                LogLevel.DataIssue => (LogEventLevel)6,  // Custom level mapping
+                LogLevel.DataObject => (LogEventLevel)6,      
+                LogLevel.DataTotalCount => (LogEventLevel)7,  
                 _ => throw new ArgumentOutOfRangeException()
             };
         }
@@ -43,48 +47,37 @@ namespace VortexLoader
 
     internal static class Logger
     {
-
-        public enum Issue
-        {
-            MissingValue,
-            DataTypeMismatch
-        }
-
         private static Serilog.Core.Logger _logger;
         
         public static ILogger Current => _logger;
 
-        private const string outputTemplate = "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}";
-
-
-        public static void DataIssue(this ILogger logger, int objectId, string tableName, Issue issue) {
-            // Log the issue with structured information
-            _logger.Information("ObjectId: {ObjectId}, Table: {TableName}, Issue: {Issue}", objectId, tableName, issue);
-        }
-
         static Logger() {
             _logger = new LoggerConfiguration()
-                                    .MinimumLevel.Verbose()
-                                    .Enrich.WithExceptionData()
-                                    .Enrich.WithProperty("MachineName", Environment.MachineName)
-
-            .WriteTo.File(
-                    System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Vortex", "Loader", "Loader-DataIssues.log"),
+                .MinimumLevel.Verbose()  
+                .WriteTo.Logger(lc => lc
+                    .Filter.ByIncludingOnly(e => e.Level < (LogEventLevel)6)
+                    .Enrich.WithExceptionData()
+                    .WriteTo.File(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Vortex", "Loader", "Loader-System.log"),
                     rollingInterval: RollingInterval.Day,
                     shared: true,
-                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}").
-                    
-            Filter.ByExcluding(logEvent => logEvent.Level < (LogEventLevel)6)
+                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}"))
 
-            .WriteTo.File(
-                    System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Vortex", "Loader", "Loader-.log"),
+                .WriteTo.Logger(lc => lc
+                    .Filter.ByIncludingOnly(e => e.Level == (LogEventLevel)6)
+                    .WriteTo.File(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Vortex", "Loader", "Loader-DataObjects.log"),
                     rollingInterval: RollingInterval.Day,
                     shared: true,
-                    outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}",
-                    restrictedToMinimumLevel: (LogEventLevel)6
-            )
+                    outputTemplate: "{Message:lj}{NewLine}"))
 
-            .CreateLogger();
+                .WriteTo.Logger(lc => lc
+                    .Filter.ByIncludingOnly(e => e.Level == (LogEventLevel)7)
+                    .WriteTo.File(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Vortex", "Loader", "Loader-DataTotalCount.log"),
+                    rollingInterval: RollingInterval.Day,
+                    shared: true,
+                    outputTemplate: "{Message:lj}{NewLine}"))
+
+                .CreateLogger();
+
         }
     }
 }
