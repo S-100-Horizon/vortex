@@ -17,8 +17,7 @@ namespace S100Framework.Applications
     internal static partial class ImporterNIS
     {
         private static void S57_DangersP(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            Logger.Current.Debug("DangersP");
-
+            var tableName = "DangersP";
 
             var ps = "S-101";
 
@@ -33,19 +32,25 @@ namespace S100Framework.Applications
             using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = dangersp.Search(filter, true);
+            int recordCount = 0;
+            int convertedCount = 0;
             while (cursor.MoveNext()) {
+                recordCount += 1;
+
                 var feature = (Feature)cursor.Current;
 
                 var current = new DangersP(feature);
 
-                var subtype = current.FCSUBTYPE.HasValue ? current.FCSUBTYPE.Value : default;
-                var catObs = current.CATOBS.HasValue ? current.CATOBS.Value : default;
-                var valsou = current.VALSOU.HasValue ? current.VALSOU.Value : default;
-                var watlev = current.WATLEV.HasValue ? current.WATLEV.Value : default;
-                var plts_comp_scale = current.PLTS_COMP_SCALE.HasValue ? current.PLTS_COMP_SCALE.Value : default;
+                var objectid = current.OBJECTID ?? default;
+                var globalid = current.GLOBALID;
+                var subtype = current.FCSUBTYPE ?? default;
+                var catObs = current.CATOBS ?? -32767;
+                var valsou = current.VALSOU ?? default;
+                var watlev = current.WATLEV ?? default;
+                var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
+                var longname = current.LNAM;
 
                 bool isValsouEmpty = !current.VALSOU.HasValue;
-
 
                 // The attribute default clearance depth must be populated with a value, which must not be an empty(null)
                 // value, only if the attribute value of sounding for the feature instance is populated with an empty(null) value
@@ -67,14 +72,16 @@ namespace S100Framework.Applications
                         //break;
 
                     case 20: { // OBSTRN
-                            
+                            if (catObs == default) {
+                                Logger.Current.DataError(objectid, tableName, longname, $"Unknown catobs: {catObs}");
+                                continue;
+                            }
+
                             // Foul ground
                             if (catObs == 7) {
                                 var foulGround = new FoulGround();
-
+                                
                                 //foulGround.verticalUncertainty = 
-
-
                                 AddFeatureName(foulGround.featureName, feature);
                                 AddInformation(foulGround.information, feature);
                                 buffer["ps"] = ps;
@@ -82,6 +89,8 @@ namespace S100Framework.Applications
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(foulGround);
                                 buffer["shape"] = feature.GetShape();
                                 insert.Insert(buffer);
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(foulGround));
+                                convertedCount++;
                                 break;
                             }
 
@@ -105,7 +114,7 @@ namespace S100Framework.Applications
 
                             obstruction.condition = default;
 
-                            
+
                             obstruction.categoryOfObstruction = Convert.ToInt32(catObs) switch {
                                 1 => categoryOfObstruction.SnagStump,
                                 2 => categoryOfObstruction.Wellhead,
@@ -132,8 +141,10 @@ namespace S100Framework.Applications
                                 // TODO: QUESTION: how to handle -32767 on a required attribute without an S-101 equivalent "unknown". Illegal value assigned. MUST be fixed.
 
                                 _ => throw new IndexOutOfRangeException(),
+
                             };
-                            
+
+
 
 
 
@@ -170,6 +181,8 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(obstruction);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(obstruction));
+                            convertedCount++;
                         }
                         break;
                         
@@ -208,6 +221,9 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(uwtroc);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(uwtroc));
+                            convertedCount++;
+
                         }
                         break;
 
@@ -253,14 +269,18 @@ namespace S100Framework.Applications
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(wreck);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(wreck));
+                            convertedCount++;
+
                         }
 
                         break;
                 }
 
-
+                
 
             }
+            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
 
     }

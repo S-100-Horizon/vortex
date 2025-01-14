@@ -69,7 +69,7 @@ namespace S100Framework.Applications
             S57_NaturalFeaturesA(source, destination, filter);
 
             //  SoundingsP
-            S57_SoundingsP(source, destination, filter);
+            //S57_SoundingsP(source, destination, filter);
 
             //  SoundingsP
             S57_DangersP(source, destination, filter);

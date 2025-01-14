@@ -1,51 +1,87 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Data.UtilityNetwork;
 using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using Serilog;
+using VortexLoader;
+using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
         private static void S57_NaturalFeaturesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            Console.WriteLine("NaturalFeaturesA");
-
-            using var s = source.OpenDataset<FeatureClass>("NaturalFeaturesA");
+            var tableName = "NaturalFeaturesA";
+            
+            using var s = source.OpenDataset<FeatureClass>(tableName);
             using var surface = target.OpenDataset<FeatureClass>("surface");
 
             using var bufferSurface = surface.CreateRowBuffer();
             using var insertSurface = surface.CreateInsertCursor();
 
             using var cursor = s.Search(filter, true);
-            while (cursor.MoveNext()) {
-                var current = (Feature)cursor.Current;
-                var subtype = Convert.ToInt32(current["FCSubtype"]);
 
-                switch (subtype) {
+            var convertedCount = 0;
+            var recordCount = 1;
+
+
+            while (cursor.MoveNext()) {
+                recordCount += 1;
+                var feature = (Feature)cursor.Current;
+                var current = new NaturalFeaturesA(feature);
+
+                var objectid = current.OBJECTID ?? default;
+                var globalid = current.GLOBALID;
+                var subtype = current.FCSUBTYPE ?? default;
+                var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
+                var longname = current.LNAM;
+                var status = current.STATUS;
+                var condtn = current.CONDTN;
+                var watlev = current.WATLEV ?? default;
+                var catlnd = current.CATLND ?? default;
+                var natsur = current.NATSUR ?? default;
+                var catsea = current.CATSEA ?? default;
+                var catslo = current.CATSLO ?? default;
+                var colour = current.COLOUR ?? default;
+                var conrad = current.CONRAD ?? default;
+                var convis = current.CONVIS ?? default;
+                var catveg = current.CATVEG ?? default;
+                var elevat = current.ELEVAT ?? default;
+                var height = current.HEIGHT ?? default;
+                var verlen = current.VERLEN ?? default;
+
+
+
+                    switch (subtype) {
                     case 1: { //  LAKARE
                             var lakare = new S100Framework.DomainModel.S101.FeatureTypes.Lake {
                                 elevation = null,
                                 status = null,
                                 scaleMinimum = null,
                             };
-                            if (DBNull.Value != current["ELEVAT"]) {
-                                lakare.elevation = Convert.ToDecimal(current["ELEVAT"]);
+                            if (elevat !=  default) {
+                                lakare.elevation = elevat;
                             }
-                            if (DBNull.Value != current["PLTS_COMP_SCALE"] && current["PLTS_COMP_SCALE"] is not null) {
-                                lakare.scaleMinimum = Convert.ToInt32(current["PLTS_COMP_SCALE"]);
+
+                            if (plts_comp_scale != default) {
+                                lakare.scaleMinimum = plts_comp_scale;
                             }
-                            if (DBNull.Value != current["STATUS"]) {
-                                var status = Convert.ToString(current["STATUS"]);
+                            
+                            if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
                                     //TODO: STATUS
                                 }
                             }
-                            AddFeatureName(lakare.featureName, current);
-                            AddInformation(lakare.information, current);
+                            AddFeatureName(lakare.featureName, feature);
+                            AddInformation(lakare.information, feature);
 
                             bufferSurface["ps"] = "S-101";
                             bufferSurface["code"] = "Lake";
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(lakare);
-                            bufferSurface["shape"] = current.GetShape();
+                            bufferSurface["shape"] = current.SHAPE;
                             var oid = insertSurface.Insert(bufferSurface);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(lakare));
+                            convertedCount++;
 
                             /* S-57 allows for LAKARE to be covered by the Group 1 objects LNDARE or UNSARE, however in
                                S-101 all Lake features must be covered by the Skin of the Earth feature Land Area. During the
@@ -65,8 +101,8 @@ namespace S100Framework.Applications
                                 status = null,
                                 scaleMinimum = null,
                             };
-                            if (DBNull.Value != current["CONDTN"] && current["CONDTN"] is not null) {
-                                lndare.condition = Convert.ToInt32(current["CONDTN"]) switch {
+                            if (condtn != default) {
+                                lndare.condition = condtn switch {
                                     1 => condition.UnderConstruction,   //  under construction
                                     2 => condition.Ruined,   //  ruined
                                     3 => condition.UnderReclamation,   //  under reclamation                                    
@@ -76,11 +112,10 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (DBNull.Value != current["PLTS_COMP_SCALE"] && current["PLTS_COMP_SCALE"] is not null) {
-                                lndare.scaleMinimum = Convert.ToInt32(current["PLTS_COMP_SCALE"]);
+                            if (plts_comp_scale != default) {
+                                lndare.scaleMinimum = plts_comp_scale;
                             }
-                            if (DBNull.Value != current["STATUS"]) {
-                                var status = Convert.ToString(current["STATUS"]);
+                            if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
                                     /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
                                        other than the allowable values will not be converted across to S-101. Data Producers are advised to
@@ -89,14 +124,16 @@ namespace S100Framework.Applications
                                     //TODO: STATUS
                                 }
                             }
-                            AddFeatureName(lndare.featureName, current);
-                            AddInformation(lndare.information, current);
+                            AddFeatureName(lndare.featureName, feature);
+                            AddInformation(lndare.information, feature);
 
                             bufferSurface["ps"] = "S-101";
                             bufferSurface["code"] = "LandArea";
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(lndare);
-                            bufferSurface["shape"] = current.GetShape();
+                            bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(lndare));
+                            convertedCount++;
                         }
                         break;
 
@@ -107,8 +144,8 @@ namespace S100Framework.Applications
                                 waterLevelEffect = null,
                                 scaleMinimum = null,
                             };
-                            if (DBNull.Value != current["WATLEV"] && current["WATLEV"] is not null) {
-                                lndrgn.waterLevelEffect = Convert.ToInt32(current["WATLEV"]) switch {
+                            if (watlev != default) {
+                                lndrgn.waterLevelEffect = watlev switch {
                                     1 => waterLevelEffect.PartlySubmergedAtHighWater,  // partly submerged at high water
                                     2 => waterLevelEffect.AlwaysDry,  // always dry
                                     3 => throw new IndexOutOfRangeException(),  // always under water/submerged
@@ -120,30 +157,31 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (DBNull.Value != current["PLTS_COMP_SCALE"] && current["PLTS_COMP_SCALE"] is not null) {
-                                lndrgn.scaleMinimum = Convert.ToInt32(current["PLTS_COMP_SCALE"]);
+                            if (plts_comp_scale != default) {
+                                lndrgn.scaleMinimum = plts_comp_scale;
                             }
-                            if (DBNull.Value != current["CATLND"]) {
-                                var status = Convert.ToString(current["CATLND"]);
+                            if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
                                     //TODO: CATLND
                                 }
                             }
-                            if (DBNull.Value != current["NATSUR"]) {
-                                var status = Convert.ToString(current["NATSUR"]);
+                            if (natsur != default) {
                                 if (!string.IsNullOrEmpty(status)) {
                                     //TODO: NATSUR
                                 }
                             }
 
-                            AddFeatureName(lndrgn.featureName, current);
-                            AddInformation(lndrgn.information, current);
+                            AddFeatureName(lndrgn.featureName, feature);
+                            AddInformation(lndrgn.information, feature);
 
                             bufferSurface["ps"] = "S-101";
                             bufferSurface["code"] = "LandRegion";
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(lndrgn);
-                            bufferSurface["shape"] = current.GetShape();
+                            bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(lndrgn));
+                            convertedCount++;
+
                         }
                         break;
 
@@ -157,24 +195,25 @@ namespace S100Framework.Applications
                                 status = null,
                                 scaleMinimum = null,
                             };
-                            if (DBNull.Value != current["PLTS_COMP_SCALE"] && current["PLTS_COMP_SCALE"] is not null) {
-                                river.scaleMinimum = Convert.ToInt32(current["PLTS_COMP_SCALE"]);
+                            if (plts_comp_scale != default) {
+                                river.scaleMinimum = plts_comp_scale;
                             }
-                            if (DBNull.Value != current["STATUS"]) {
-                                var status = Convert.ToString(current["STATUS"]);
+                            if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
                                     //TODO: STATUS
                                 }
                             }
 
-                            AddFeatureName(river.featureName, current);
-                            AddInformation(river.information, current);
+                            AddFeatureName(river.featureName, feature);
+                            AddInformation(river.information, feature);
 
                             bufferSurface["ps"] = "S-101";
                             bufferSurface["code"] = "River";
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(river);
-                            bufferSurface["shape"] = current.GetShape();
+                            bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(river));
+                            convertedCount++;
 
                             /* S-57 allows for RIVERS of geometric primitive area to be covered by the Group 1 objects LNDARE
                                or UNSARE, however in S-101 all Rivers of geometric primitive area must be covered by the Skin
@@ -198,8 +237,8 @@ namespace S100Framework.Applications
                                 categoryOfSeaArea = null,
                                 scaleMinimum = null,
                             };
-                            if (DBNull.Value != current["CATSEA"] && current["CATSEA"] is not null) {
-                                seaareanamedwaterarea.categoryOfSeaArea = Convert.ToInt32(current["CATSEA"]) switch {
+                            if (catsea != default) {
+                                seaareanamedwaterarea.categoryOfSeaArea = catsea switch {
                                     2 => categoryOfSeaArea.Gat,  // gat
                                     3 => categoryOfSeaArea.Bank,  // bank
                                     4 => categoryOfSeaArea.Deep,  // deep
@@ -257,18 +296,21 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (DBNull.Value != current["PLTS_COMP_SCALE"] && current["PLTS_COMP_SCALE"] is not null) {
-                                seaareanamedwaterarea.scaleMinimum = Convert.ToInt32(current["PLTS_COMP_SCALE"]);
+                            if (plts_comp_scale != default) {
+                                seaareanamedwaterarea.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(seaareanamedwaterarea.featureName, current);
-                            AddInformation(seaareanamedwaterarea.information, current);
+                            AddFeatureName(seaareanamedwaterarea.featureName, feature);
+                            AddInformation(seaareanamedwaterarea.information, feature);
 
                             bufferSurface["ps"] = "S-101";
                             bufferSurface["code"] = "SeaAreaNamedWaterArea";
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(seaareanamedwaterarea);
-                            bufferSurface["shape"] = current.GetShape();
+                            bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(seaareanamedwaterarea));
+                            convertedCount++;
+
                         }
                         break;
 
@@ -279,8 +321,8 @@ namespace S100Framework.Applications
                                 visualProminence = null,
                                 scaleMinimum = null,
                             };
-                            if (DBNull.Value != current["CATSEA"] && current["CATSLO"] is not null) {
-                                slopingground.categoryOfSlope = Convert.ToInt32(current["CATSLO"]) switch {
+                            if (catslo != default) {
+                                slopingground.categoryOfSlope = catslo switch {
                                     1 => categoryOfSlope.Cutting,  // cutting
                                     2 => categoryOfSlope.Embankment,  // embankment
                                     3 => categoryOfSlope.Dune,  // dune
@@ -292,8 +334,7 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (DBNull.Value != current["COLOUR"]) {
-                                var colour = Convert.ToString(current["COLOUR"]);
+                            if (colour != default) {
                                 if (!string.IsNullOrEmpty(colour)) {
                                     foreach (var c in colour.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
                                         DomainModel.S101.colour? e = c.ToLowerInvariant() switch {
@@ -314,8 +355,7 @@ namespace S100Framework.Applications
                                     }
                                 }
                             }
-                            if (DBNull.Value != current["NATSUR"]) {
-                                var natsur = Convert.ToString(current["NATSUR"]);
+                            if (natsur != default) {
                                 if (!string.IsNullOrEmpty(natsur)) {
                                     foreach (var c in natsur.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
                                         DomainModel.S101.natureOfSurface? e = c.ToLowerInvariant() switch {
@@ -333,8 +373,7 @@ namespace S100Framework.Applications
                                     }
                                 }
                             }
-                            if (DBNull.Value != current["CONRAD"] && current["CONRAD"] is not null) {
-                                var conrad = Convert.ToInt32(current["CONRAD"]);
+                            if (conrad != default) {
                                 slopingground.radarConspicuous = conrad switch {
                                     1 => true,  // radar conspicuous
                                     2 => false, // not radar conspicuous
@@ -343,8 +382,7 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (DBNull.Value != current["CONVIS"] && current["CONVIS"] is not null) {
-                                var convis = Convert.ToInt32(current["CONVIS"]);
+                            if (convis != default) {
                                 slopingground.visualProminence = convis switch {
                                     1 => DomainModel.S101.visualProminence.VisuallyConspicuous,  // visually conspicuous
                                     2 => DomainModel.S101.visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
@@ -352,23 +390,26 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (DBNull.Value != current["PLTS_COMP_SCALE"] && current["PLTS_COMP_SCALE"] is not null) {
-                                slopingground.scaleMinimum = Convert.ToInt32(current["PLTS_COMP_SCALE"]);
+                            if (plts_comp_scale != default) {
+                                slopingground.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(slopingground.featureName, current);
-                            AddInformation(slopingground.information, current);
+                            AddFeatureName(slopingground.featureName, feature);
+                            AddInformation(slopingground.information, feature);
 
                             bufferSurface["ps"] = "S-101";
                             bufferSurface["code"] = "SlopingGround";
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(slopingground);
-                            bufferSurface["shape"] = current.GetShape();
+                            bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(slopingground));
+                            convertedCount++;
+
                         }
                         break;
 
                     case 35: {    // VEGATN
-                            var categoryOfVegetation = Convert.ToString(current["CATVEG"])?.ToLowerInvariant() switch {
+                            var categoryOfVegetation = catveg.ToLowerInvariant() switch {
                                 "3" => DomainModel.S101.categoryOfVegetation.Bush,
                                 "4" => DomainModel.S101.categoryOfVegetation.DeciduousWood,
                                 "5" => DomainModel.S101.categoryOfVegetation.ConiferousWood,
@@ -386,17 +427,17 @@ namespace S100Framework.Applications
                                 verticalLength = null,
                                 scaleMinimum = null,
                             };
-                            if (DBNull.Value != current["ELEVAT"]) {
-                                vegetation.elevation = Convert.ToDecimal(current["ELEVAT"]);
+                            if (elevat != default) {
+                                vegetation.elevation = elevat;
                             }
-                            if (DBNull.Value != current["HEIGHT"]) {
-                                vegetation.height = Convert.ToDecimal(current["HEIGHT"]);
+                            if (height != default) {
+                                vegetation.height = height;
                             }
-                            if (DBNull.Value != current["VERLEN"]) {
-                                vegetation.verticalLength = Convert.ToDecimal(current["VERLEN"]);
+                            if (verlen != default) {
+                                vegetation.verticalLength = verlen;
                             }
-                            if (DBNull.Value != current["CONVIS"] && current["CONVIS"] is not null) {
-                                var convis = Convert.ToInt32(current["CONVIS"]);
+
+                            if (convis != default) {
                                 vegetation.visualProminence = convis switch {
                                     1 => DomainModel.S101.visualProminence.VisuallyConspicuous,  // visually conspicuous
                                     2 => DomainModel.S101.visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
@@ -404,22 +445,27 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (DBNull.Value != current["PLTS_COMP_SCALE"] && current["PLTS_COMP_SCALE"] is not null) {
-                                vegetation.scaleMinimum = Convert.ToInt32(current["PLTS_COMP_SCALE"]);
+                            if (plts_comp_scale != default) {
+                                vegetation.scaleMinimum = plts_comp_scale;
                             }
 
-                            AddFeatureName(vegetation.featureName, current);
-                            AddInformation(vegetation.information, current);
+                            AddFeatureName(vegetation.featureName, feature);
+                            AddInformation(vegetation.information, feature);
 
                             bufferSurface["ps"] = "S-101";
                             bufferSurface["code"] = "Vegetation";
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(vegetation);
-                            bufferSurface["shape"] = current.GetShape();
+                            bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(vegetation));
+                            convertedCount++;
+
                         }
                         break;
                 }
             }
+            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
+
         }
     }
 }
