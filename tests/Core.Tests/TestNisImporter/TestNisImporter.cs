@@ -47,9 +47,7 @@ namespace TestNisImporter
             var sortedDict = new SortedDictionary<int, string>();
 
             foreach (var subtype in subtypes) {
-                // Each subtype has an ID and a description
                 sortedDict.Add(subtype.GetCode(),subtype.GetName());
-               
             }
 
             foreach (var keyValuePair in sortedDict) {
@@ -57,9 +55,7 @@ namespace TestNisImporter
                 csSubtypes.AppendLine($"\t\t}}");
                 csSubtypes.AppendLine($"\t\tbreak;");
             }
-
             Console.WriteLine(csSubtypes.ToString());
-
         }
         
         [Fact]

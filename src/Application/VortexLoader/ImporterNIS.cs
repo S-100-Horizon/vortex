@@ -63,6 +63,9 @@ namespace S100Framework.Applications
             }
 
             //  DepthsA
+            S57_AidsToNavigationP(source, destination, filter);
+
+            //  DepthsA
             S57_DepthsA(source, destination, filter);
 
             //  DepthsA

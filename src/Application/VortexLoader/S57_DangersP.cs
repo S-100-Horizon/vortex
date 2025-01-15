@@ -187,6 +187,7 @@ namespace S100Framework.Applications
                         break;
                         
                     case 35: { // UWTROC
+                            // TODO: surrounding depth, valueofsounding
                             var uwtroc = new S100Framework.DomainModel.S101.FeatureTypes.UnderwaterAwashRock {
                                 surroundingDepth = 0,
                                 valueOfSounding = 0,
@@ -228,9 +229,10 @@ namespace S100Framework.Applications
                         break;
 
                     case 40: { // WATTUR
-                            
+                            // TODO: no instances in NIS
+                            throw new NotImplementedException();
+
                         }
-                        break;
 
                     case 45: { // WRECKS
                             waterLevelEffect waterLeveleffectCurrent = default;
