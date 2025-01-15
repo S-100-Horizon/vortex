@@ -34,6 +34,35 @@ namespace TestNisImporter
         }
 
         [Fact]
+        public void GenerateSubtypes() {
+            var sourcePath = @$"{Environment.GetEnvironmentVariable("OneDrive")}\ArcGIS\Projects\Vortex\replica.gdb";
+            var source = new Geodatabase(new FileGeodatabaseConnectionPath(new Uri(IO.Path.GetFullPath(sourcePath))));
+
+            StringBuilder csSubtypes = new StringBuilder();
+
+            var featureClass = source.OpenDataset<FeatureClass>("AidsToNavigationP");
+
+            var subtypes = featureClass.GetDefinition().GetSubtypes();
+
+            var sortedDict = new SortedDictionary<int, string>();
+
+            foreach (var subtype in subtypes) {
+                // Each subtype has an ID and a description
+                sortedDict.Add(subtype.GetCode(),subtype.GetName());
+               
+            }
+
+            foreach (var keyValuePair in sortedDict) {
+                csSubtypes.AppendLine($"\t\tcase {keyValuePair.Key}: {{ // {keyValuePair.Value}");
+                csSubtypes.AppendLine($"\t\t}}");
+                csSubtypes.AppendLine($"\t\tbreak;");
+            }
+
+            Console.WriteLine(csSubtypes.ToString());
+
+        }
+        
+        [Fact]
         public void GenerateNisModel() {
             var featureclasses = new List<string> { "PLTS_SpatialAttributeL",
                                             "TidesAndVariationsA",
@@ -197,5 +226,9 @@ namespace TestNisImporter
             
 
         }
+
+
+
+
     }
 }
