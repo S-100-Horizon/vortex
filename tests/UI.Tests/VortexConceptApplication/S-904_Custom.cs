@@ -192,7 +192,7 @@ namespace S100Framework.WPF.ViewModel.S904
             },
         };
 
-        public static IslandAggregation TestIslandGroup => new IslandAggregation() {
+        public static IslandAggregation TestIslandGroup => new() {
             //theComponentConnector = _associationConnectors[2],
             //theComponent = new S100_FC_FeatureBindingMulti<LandArea>() {
 

@@ -1624,170 +1624,6 @@ namespace S100Framework.WPF.ViewModel.S124
     }
 
 
-    public class NWPreambleContentViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "NWPreambleContent";
-        public override string[] Roles => ["theWarningPart", "header"];
-
-        private InformationBindingViewModel? _theWarningPart;
-        [ExpandableObject]
-        public InformationBindingViewModel? theWarningPart
-        {
-            get { return _theWarningPart; }
-            set { this.SetValue(ref _theWarningPart, value); }
-        }
-        private InformationBindingViewModel? _header;
-        [ExpandableObject]
-        public InformationBindingViewModel? header
-        {
-            get { return _header; }
-            set { this.SetValue(ref _header, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                theWarningPart = null;
-                if (value is not null)
-                {
-                    theWarningPart = value?.role switch
-                    {
-                        "header" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                header = null;
-                if (value is not null)
-                {
-                    header = value?.role switch
-                    {
-                        "theWarningPart" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => NWPreambleContentViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<NAVWARNPart>() {
-                    roleType = roleType.association,
-                    role = "header",
-                    Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NAVWARNPreamble)],
-                },
-            };
-    }
-
-    public class NWReferencesViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "NWReferences";
-        public override string[] Roles => ["theWarning", "theReferences"];
-
-        private InformationBindingViewModel? _theWarning;
-        [ExpandableObject]
-        public InformationBindingViewModel? theWarning
-        {
-            get { return _theWarning; }
-            set { this.SetValue(ref _theWarning, value); }
-        }
-        private InformationBindingViewModel? _theReferences;
-        [ExpandableObject]
-        public InformationBindingViewModel? theReferences
-        {
-            get { return _theReferences; }
-            set { this.SetValue(ref _theReferences, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                theWarning = null;
-                if (value is not null)
-                {
-                    theWarning = value?.role switch
-                    {
-                        "theReferences" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                theReferences = null;
-                if (value is not null)
-                {
-                    theReferences = value?.role switch
-                    {
-                        "theWarning" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => NWReferencesViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<NAVWARNPreamble>() {
-                    roleType = roleType.association,
-                    role = "theReferences",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(References)],
-                },
-            };
-    }
-
     public class AreaAffectedViewModel : FeatureAssociationViewModel
     {
         public override string Code => "AreaAffected";
@@ -1962,6 +1798,170 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(TextPlacement)],
+                },
+            };
+    }
+
+    public class NWPreambleContentViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "NWPreambleContent";
+        public override string[] Roles => ["theWarningPart", "header"];
+
+        private InformationBindingViewModel? _theWarningPart;
+        [ExpandableObject]
+        public InformationBindingViewModel? theWarningPart
+        {
+            get { return _theWarningPart; }
+            set { this.SetValue(ref _theWarningPart, value); }
+        }
+        private InformationBindingViewModel? _header;
+        [ExpandableObject]
+        public InformationBindingViewModel? header
+        {
+            get { return _header; }
+            set { this.SetValue(ref _header, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theWarningPart = null;
+                if (value is not null)
+                {
+                    theWarningPart = value?.role switch
+                    {
+                        "header" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                header = null;
+                if (value is not null)
+                {
+                    header = value?.role switch
+                    {
+                        "theWarningPart" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => NWPreambleContentViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<NAVWARNPart>() {
+                    roleType = roleType.association,
+                    role = "header",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NAVWARNPreamble)],
+                },
+            };
+    }
+
+    public class NWReferencesViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "NWReferences";
+        public override string[] Roles => ["theWarning", "theReferences"];
+
+        private InformationBindingViewModel? _theWarning;
+        [ExpandableObject]
+        public InformationBindingViewModel? theWarning
+        {
+            get { return _theWarning; }
+            set { this.SetValue(ref _theWarning, value); }
+        }
+        private InformationBindingViewModel? _theReferences;
+        [ExpandableObject]
+        public InformationBindingViewModel? theReferences
+        {
+            get { return _theReferences; }
+            set { this.SetValue(ref _theReferences, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theWarning = null;
+                if (value is not null)
+                {
+                    theWarning = value?.role switch
+                    {
+                        "theReferences" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theReferences = null;
+                if (value is not null)
+                {
+                    theReferences = value?.role switch
+                    {
+                        "theWarning" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => NWReferencesViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<NAVWARNPreamble>() {
+                    roleType = roleType.association,
+                    role = "theReferences",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(References)],
                 },
             };
     }

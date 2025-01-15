@@ -10850,1357 +10850,6 @@ namespace S100Framework.WPF.ViewModel.S131
     }
 
 
-    public class AdditionalInformationViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "AdditionalInformation";
-        public override string[] Roles => ["providesInformation", "informationProvidedFor"];
-
-        private InformationBindingViewModel? _providesInformation;
-        [ExpandableObject]
-        public InformationBindingViewModel? providesInformation
-        {
-            get { return _providesInformation; }
-            set { this.SetValue(ref _providesInformation, value); }
-        }
-        private InformationBindingViewModel? _informationProvidedFor;
-        [ExpandableObject]
-        public InformationBindingViewModel? informationProvidedFor
-        {
-            get { return _informationProvidedFor; }
-            set { this.SetValue(ref _informationProvidedFor, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                providesInformation = null;
-                if (value is not null)
-                {
-                    providesInformation = value?.role switch
-                    {
-                        "informationProvidedFor" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                informationProvidedFor = null;
-                if (value is not null)
-                {
-                    informationProvidedFor = value?.role switch
-                    {
-                        "providesInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => AdditionalInformationViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<NauticalInformation>() {
-                    roleType = roleType.association,
-                    role = "informationProvidedFor",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(InformationType)],
-                },
-                new InformationAssociationConnector<FeatureType>() {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<InformationType>() {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-            };
-    }
-
-    public class AuthorityContactViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "AuthorityContact";
-        public override string[] Roles => ["theAuthority", "theContactDetails"];
-
-        private InformationBindingViewModel? _theAuthority;
-        [ExpandableObject]
-        public InformationBindingViewModel? theAuthority
-        {
-            get { return _theAuthority; }
-            set { this.SetValue(ref _theAuthority, value); }
-        }
-        private InformationBindingViewModel? _theContactDetails;
-        [ExpandableObject]
-        public InformationBindingViewModel? theContactDetails
-        {
-            get { return _theContactDetails; }
-            set { this.SetValue(ref _theContactDetails, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                theAuthority = null;
-                if (value is not null)
-                {
-                    theAuthority = value?.role switch
-                    {
-                        "theContactDetails" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                theContactDetails = null;
-                if (value is not null)
-                {
-                    theContactDetails = value?.role switch
-                    {
-                        "theAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<ContactDetails>() {
-                    roleType = roleType.association,
-                    role = "theAuthority",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-                new InformationAssociationConnector<Authority>() {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(ContactDetails)],
-                },
-            };
-    }
-
-    public class AuthorityHoursViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "AuthorityHours";
-        public override string[] Roles => ["theAuthority_srvHrs", "theServiceHours"];
-
-        private InformationBindingViewModel? _theAuthority_srvHrs;
-        [ExpandableObject]
-        public InformationBindingViewModel? theAuthority_srvHrs
-        {
-            get { return _theAuthority_srvHrs; }
-            set { this.SetValue(ref _theAuthority_srvHrs, value); }
-        }
-        private InformationBindingViewModel? _theServiceHours;
-        [ExpandableObject]
-        public InformationBindingViewModel? theServiceHours
-        {
-            get { return _theServiceHours; }
-            set { this.SetValue(ref _theServiceHours, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                theAuthority_srvHrs = null;
-                if (value is not null)
-                {
-                    theAuthority_srvHrs = value?.role switch
-                    {
-                        "theServiceHours" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                theServiceHours = null;
-                if (value is not null)
-                {
-                    theServiceHours = value?.role switch
-                    {
-                        "theAuthority_srvHrs" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<ServiceHours>() {
-                    roleType = roleType.association,
-                    role = "theAuthority_srvHrs",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-                new InformationAssociationConnector<Authority>() {
-                    roleType = roleType.association,
-                    role = "theServiceHours",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-            };
-    }
-
-    public class AssociatedRxNViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "AssociatedRxN";
-        public override string[] Roles => ["appliesInLocation", "theRxN"];
-
-        private InformationBindingViewModel? _appliesInLocation;
-        [ExpandableObject]
-        public InformationBindingViewModel? appliesInLocation
-        {
-            get { return _appliesInLocation; }
-            set { this.SetValue(ref _appliesInLocation, value); }
-        }
-        private InformationBindingViewModel? _theRxN;
-        [ExpandableObject]
-        public InformationBindingViewModel? theRxN
-        {
-            get { return _theRxN; }
-            set { this.SetValue(ref _theRxN, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                appliesInLocation = null;
-                if (value is not null)
-                {
-                    appliesInLocation = value?.role switch
-                    {
-                        "theRxN" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                theRxN = null;
-                if (value is not null)
-                {
-                    theRxN = value?.role switch
-                    {
-                        "appliesInLocation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => AssociatedRxNViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<FeatureType>() {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(AbstractRxN)],
-                },
-            };
-    }
-
-    public class ExceptionalWorkdayViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "ExceptionalWorkday";
-        public override string[] Roles => ["theServiceHours_nsdy", "partialWorkingDay"];
-
-        private InformationBindingViewModel? _theServiceHours_nsdy;
-        [ExpandableObject]
-        public InformationBindingViewModel? theServiceHours_nsdy
-        {
-            get { return _theServiceHours_nsdy; }
-            set { this.SetValue(ref _theServiceHours_nsdy, value); }
-        }
-        private InformationBindingViewModel? _partialWorkingDay;
-        [ExpandableObject]
-        public InformationBindingViewModel? partialWorkingDay
-        {
-            get { return _partialWorkingDay; }
-            set { this.SetValue(ref _partialWorkingDay, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                theServiceHours_nsdy = null;
-                if (value is not null)
-                {
-                    theServiceHours_nsdy = value?.role switch
-                    {
-                        "partialWorkingDay" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                partialWorkingDay = null;
-                if (value is not null)
-                {
-                    partialWorkingDay = value?.role switch
-                    {
-                        "theServiceHours_nsdy" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => ExceptionalWorkdayViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<ServiceHours>() {
-                    roleType = roleType.association,
-                    role = "partialWorkingDay",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(NonStandardWorkingDay)],
-                },
-            };
-    }
-
-    public class ServiceControlViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "ServiceControl";
-        public override string[] Roles => ["controlledService", "controlAuthority"];
-
-        private InformationBindingViewModel? _controlledService;
-        [ExpandableObject]
-        public InformationBindingViewModel? controlledService
-        {
-            get { return _controlledService; }
-            set { this.SetValue(ref _controlledService, value); }
-        }
-        private InformationBindingViewModel? _controlAuthority;
-        [ExpandableObject]
-        public InformationBindingViewModel? controlAuthority
-        {
-            get { return _controlAuthority; }
-            set { this.SetValue(ref _controlAuthority, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                controlledService = null;
-                if (value is not null)
-                {
-                    controlledService = value?.role switch
-                    {
-                        "controlAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                controlAuthority = null;
-                if (value is not null)
-                {
-                    controlAuthority = value?.role switch
-                    {
-                        "controlledService" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => ServiceControlViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<SupervisedArea>() {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(Authority)],
-                },
-            };
-    }
-
-    public class ServiceContactViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "ServiceContact";
-        public override string[] Roles => ["servicePlace", "theContactDetails"];
-
-        private InformationBindingViewModel? _servicePlace;
-        [ExpandableObject]
-        public InformationBindingViewModel? servicePlace
-        {
-            get { return _servicePlace; }
-            set { this.SetValue(ref _servicePlace, value); }
-        }
-        private InformationBindingViewModel? _theContactDetails;
-        [ExpandableObject]
-        public InformationBindingViewModel? theContactDetails
-        {
-            get { return _theContactDetails; }
-            set { this.SetValue(ref _theContactDetails, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                servicePlace = null;
-                if (value is not null)
-                {
-                    servicePlace = value?.role switch
-                    {
-                        "theContactDetails" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                theContactDetails = null;
-                if (value is not null)
-                {
-                    theContactDetails = value?.role switch
-                    {
-                        "servicePlace" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => ServiceContactViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<OrganizationContactArea>() {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(ContactDetails)],
-                },
-            };
-    }
-
-    public class LocationHoursViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "LocationHours";
-        public override string[] Roles => ["location_srvHrs", "facilityOperatingHours"];
-
-        private InformationBindingViewModel? _location_srvHrs;
-        [ExpandableObject]
-        public InformationBindingViewModel? location_srvHrs
-        {
-            get { return _location_srvHrs; }
-            set { this.SetValue(ref _location_srvHrs, value); }
-        }
-        private InformationBindingViewModel? _facilityOperatingHours;
-        [ExpandableObject]
-        public InformationBindingViewModel? facilityOperatingHours
-        {
-            get { return _facilityOperatingHours; }
-            set { this.SetValue(ref _facilityOperatingHours, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                location_srvHrs = null;
-                if (value is not null)
-                {
-                    location_srvHrs = value?.role switch
-                    {
-                        "facilityOperatingHours" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                facilityOperatingHours = null;
-                if (value is not null)
-                {
-                    facilityOperatingHours = value?.role switch
-                    {
-                        "location_srvHrs" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => LocationHoursViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<AnchorageArea>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<AnchorBerth>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<Berth>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<DockArea>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<DryDock>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<DumpingGround>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<FloatingDock>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<Gridiron>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<HarbourAreaAdministrative>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<HarbourAreaSection>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<HarbourBasin>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<HarbourFacility>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<MooringWarpingFacility>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<PilotBoardingPlace>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<SeaplaneLandingArea>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<Terminal>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<TurningBasin>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<WaterwayArea>() {
-                    roleType = roleType.association,
-                    role = "location_srvHrs",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-            };
-    }
-
-    public class RelatedOrganisationViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "RelatedOrganisation";
-        public override string[] Roles => ["theInformation", "theOrganisation"];
-
-        private InformationBindingViewModel? _theInformation;
-        [ExpandableObject]
-        public InformationBindingViewModel? theInformation
-        {
-            get { return _theInformation; }
-            set { this.SetValue(ref _theInformation, value); }
-        }
-        private InformationBindingViewModel? _theOrganisation;
-        [ExpandableObject]
-        public InformationBindingViewModel? theOrganisation
-        {
-            get { return _theOrganisation; }
-            set { this.SetValue(ref _theOrganisation, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                theInformation = null;
-                if (value is not null)
-                {
-                    theInformation = value?.role switch
-                    {
-                        "theOrganisation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                theOrganisation = null;
-                if (value is not null)
-                {
-                    theOrganisation = value?.role switch
-                    {
-                        "theInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<Authority>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(AbstractRxN)],
-                },
-                new InformationAssociationConnector<AbstractRxN>() {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-            };
-    }
-
-    public class InclusionTypeViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "InclusionType";
-        public override string[] Roles => ["theApplicableRxN", "isApplicableTo"];
-
-        private InformationBindingViewModel? _theApplicableRxN;
-        [ExpandableObject]
-        public InformationBindingViewModel? theApplicableRxN
-        {
-            get { return _theApplicableRxN; }
-            set { this.SetValue(ref _theApplicableRxN, value); }
-        }
-        private InformationBindingViewModel? _isApplicableTo;
-        [ExpandableObject]
-        public InformationBindingViewModel? isApplicableTo
-        {
-            get { return _isApplicableTo; }
-            set { this.SetValue(ref _isApplicableTo, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                theApplicableRxN = null;
-                if (value is not null)
-                {
-                    theApplicableRxN = value?.role switch
-                    {
-                        "isApplicableTo" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                isApplicableTo = null;
-                if (value is not null)
-                {
-                    isApplicableTo = value?.role switch
-                    {
-                        "theApplicableRxN" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => InclusionTypeViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<AbstractRxN>() {
-                    roleType = roleType.association,
-                    role = "isApplicableTo",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Applicability)],
-                },
-                new InformationAssociationConnector<Applicability>() {
-                    roleType = roleType.association,
-                    role = "theApplicableRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(AbstractRxN)],
-                },
-            };
-    }
-
-    public class PermissionTypeViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "PermissionType";
-        public override string[] Roles => ["vslLocation", "permission"];
-
-        private InformationBindingViewModel? _vslLocation;
-        [ExpandableObject]
-        public InformationBindingViewModel? vslLocation
-        {
-            get { return _vslLocation; }
-            set { this.SetValue(ref _vslLocation, value); }
-        }
-        private InformationBindingViewModel? _permission;
-        [ExpandableObject]
-        public InformationBindingViewModel? permission
-        {
-            get { return _permission; }
-            set { this.SetValue(ref _permission, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                vslLocation = null;
-                if (value is not null)
-                {
-                    vslLocation = value?.role switch
-                    {
-                        "permission" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                permission = null;
-                if (value is not null)
-                {
-                    permission = value?.role switch
-                    {
-                        "vslLocation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => PermissionTypeViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<FeatureType>() {
-                    roleType = roleType.association,
-                    role = "permission",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Applicability)],
-                },
-                new InformationAssociationConnector<Applicability>() {
-                    roleType = roleType.association,
-                    role = "vslLocation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(InformationType)],
-                },
-            };
-    }
-
-    public class SpatialAssociationViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "SpatialAssociation";
-        public override string[] Roles => ["defines", "definedFor"];
-
-        private InformationBindingViewModel? _defines;
-        [ExpandableObject]
-        public InformationBindingViewModel? defines
-        {
-            get { return _defines; }
-            set { this.SetValue(ref _defines, value); }
-        }
-        private InformationBindingViewModel? _definedFor;
-        [ExpandableObject]
-        public InformationBindingViewModel? definedFor
-        {
-            get { return _definedFor; }
-            set { this.SetValue(ref _definedFor, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                defines = null;
-                if (value is not null)
-                {
-                    defines = value?.role switch
-                    {
-                        "definedFor" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                definedFor = null;
-                if (value is not null)
-                {
-                    definedFor = value?.role switch
-                    {
-                        "defines" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => SpatialAssociationViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-            };
-    }
-
-    public class LimitEntranceViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "LimitEntrance";
-        public override string[] Roles => ["entranceTo", "entranceReference"];
-
-        private InformationBindingViewModel? _entranceTo;
-        [ExpandableObject]
-        public InformationBindingViewModel? entranceTo
-        {
-            get { return _entranceTo; }
-            set { this.SetValue(ref _entranceTo, value); }
-        }
-        private InformationBindingViewModel? _entranceReference;
-        [ExpandableObject]
-        public InformationBindingViewModel? entranceReference
-        {
-            get { return _entranceReference; }
-            set { this.SetValue(ref _entranceReference, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                entranceTo = null;
-                if (value is not null)
-                {
-                    entranceTo = value?.role switch
-                    {
-                        "entranceReference" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                entranceReference = null;
-                if (value is not null)
-                {
-                    entranceReference = value?.role switch
-                    {
-                        "entranceTo" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => LimitEntranceViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<OuterLimit>() {
-                    roleType = roleType.association,
-                    role = "entranceReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(Entrance)],
-                },
-            };
-    }
-
-    public class ServiceAvailabilityViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "ServiceAvailability";
-        public override string[] Roles => ["locationServed", "serviceDescriptionReference"];
-
-        private InformationBindingViewModel? _locationServed;
-        [ExpandableObject]
-        public InformationBindingViewModel? locationServed
-        {
-            get { return _locationServed; }
-            set { this.SetValue(ref _locationServed, value); }
-        }
-        private InformationBindingViewModel? _serviceDescriptionReference;
-        [ExpandableObject]
-        public InformationBindingViewModel? serviceDescriptionReference
-        {
-            get { return _serviceDescriptionReference; }
-            set { this.SetValue(ref _serviceDescriptionReference, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                locationServed = null;
-                if (value is not null)
-                {
-                    locationServed = value?.role switch
-                    {
-                        "serviceDescriptionReference" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-                serviceDescriptionReference = null;
-                if (value is not null)
-                {
-                    serviceDescriptionReference = value?.role switch
-                    {
-                        "locationServed" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => ServiceAvailabilityViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<AnchorBerth>() {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(AvailablePortServices)],
-                },
-                new InformationAssociationConnector<Berth>() {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(AvailablePortServices)],
-                },
-                new InformationAssociationConnector<DockArea>() {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(AvailablePortServices)],
-                },
-                new InformationAssociationConnector<HarbourAreaAdministrative>() {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(AvailablePortServices)],
-                },
-                new InformationAssociationConnector<HarbourAreaSection>() {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(AvailablePortServices)],
-                },
-                new InformationAssociationConnector<MooringWarpingFacility>() {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(AvailablePortServices)],
-                },
-                new InformationAssociationConnector<Terminal>() {
-                    roleType = roleType.association,
-                    role = "serviceDescriptionReference",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(AvailablePortServices)],
-                },
-            };
-    }
-
     public class TextAssociationViewModel : FeatureAssociationViewModel
     {
         public override string Code => "TextAssociation";
@@ -12245,7 +10894,140 @@ namespace S100Framework.WPF.ViewModel.S131
         }
         public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
         public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
-                new FeatureAssociationConnector<FeatureType>() {
+                new FeatureAssociationConnector<DryDock>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<FloatingDock>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<Gridiron>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<HarbourFacility>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<AnchorageArea>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<BerthPosition>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<DockArea>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<DumpingGround>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<HarbourBasin>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<MooringWarpingFacility>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<OuterLimit>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<PilotBoardingPlace>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<SeaplaneLandingArea>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<TurningBasin>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+                new FeatureAssociationConnector<WaterwayArea>() {
                     roleType = roleType.association,
                     role = "positions",
                     Lower = 0,
@@ -12257,7 +11039,7 @@ namespace S100Framework.WPF.ViewModel.S131
                     role = "positions",
                     Lower = 1,
                     Upper = 1,
-                    AssociationTypes = [typeof(FeatureType)],
+                    AssociationTypes = [typeof(DryDock),typeof(FloatingDock),typeof(Gridiron),typeof(HarbourFacility),typeof(AnchorBerth),typeof(AnchorageArea),typeof(Berth),typeof(BerthPosition),typeof(DockArea),typeof(DumpingGround),typeof(HarbourAreaAdministrative),typeof(HarbourAreaSection),typeof(HarbourBasin),typeof(MooringWarpingFacility),typeof(OuterLimit),typeof(PilotBoardingPlace),typeof(SeaplaneLandingArea),typeof(Terminal),typeof(TurningBasin),typeof(WaterwayArea)],
                 },
             };
     }
@@ -12428,16 +11210,37 @@ namespace S100Framework.WPF.ViewModel.S131
                     role = "hasInfrastructure",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(HarbourPhysicalInfrastructure)],
+                    AssociationTypes = [typeof(DryDock),typeof(FloatingDock),typeof(Gridiron),typeof(HarbourFacility)],
                 },
                 new FeatureAssociationConnector<Terminal>() {
                     roleType = roleType.association,
                     role = "hasInfrastructure",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(HarbourPhysicalInfrastructure)],
+                    AssociationTypes = [typeof(DryDock),typeof(FloatingDock),typeof(Gridiron),typeof(HarbourFacility)],
                 },
-                new FeatureAssociationConnector<HarbourPhysicalInfrastructure>() {
+                new FeatureAssociationConnector<DryDock>() {
+                    roleType = roleType.association,
+                    role = "infrastructureLocation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection),typeof(Terminal)],
+                },
+                new FeatureAssociationConnector<FloatingDock>() {
+                    roleType = roleType.association,
+                    role = "infrastructureLocation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection),typeof(Terminal)],
+                },
+                new FeatureAssociationConnector<Gridiron>() {
+                    roleType = roleType.association,
+                    role = "infrastructureLocation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(HarbourAreaSection),typeof(Terminal)],
+                },
+                new FeatureAssociationConnector<HarbourFacility>() {
                     roleType = roleType.association,
                     role = "infrastructureLocation",
                     Lower = 0,
@@ -12890,6 +11693,2134 @@ namespace S100Framework.WPF.ViewModel.S131
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Berth)],
+                },
+            };
+    }
+
+    public class AdditionalInformationViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "AdditionalInformation";
+        public override string[] Roles => ["providesInformation", "informationProvidedFor"];
+
+        private InformationBindingViewModel? _providesInformation;
+        [ExpandableObject]
+        public InformationBindingViewModel? providesInformation
+        {
+            get { return _providesInformation; }
+            set { this.SetValue(ref _providesInformation, value); }
+        }
+        private InformationBindingViewModel? _informationProvidedFor;
+        [ExpandableObject]
+        public InformationBindingViewModel? informationProvidedFor
+        {
+            get { return _informationProvidedFor; }
+            set { this.SetValue(ref _informationProvidedFor, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                providesInformation = null;
+                if (value is not null)
+                {
+                    providesInformation = value?.role switch
+                    {
+                        "informationProvidedFor" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                informationProvidedFor = null;
+                if (value is not null)
+                {
+                    informationProvidedFor = value?.role switch
+                    {
+                        "providesInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => AdditionalInformationViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<NauticalInformation>() {
+                    roleType = roleType.association,
+                    role = "informationProvidedFor",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions),typeof(Applicability),typeof(Authority),typeof(AvailablePortServices),typeof(ContactDetails),typeof(Entrance),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<DryDock>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<FloatingDock>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Gridiron>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<HarbourFacility>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<AnchorageArea>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<BerthPosition>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DockArea>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DumpingGround>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<HarbourBasin>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<MooringWarpingFacility>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<OuterLimit>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<PilotBoardingPlace>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SeaplaneLandingArea>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<TurningBasin>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<WaterwayArea>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<NauticalInformation>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Recommendations>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Regulations>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Restrictions>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Applicability>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<AvailablePortServices>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<ContactDetails>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Entrance>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<NonStandardWorkingDay>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<ServiceHours>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+            };
+    }
+
+    public class AuthorityContactViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "AuthorityContact";
+        public override string[] Roles => ["theAuthority", "theContactDetails"];
+
+        private InformationBindingViewModel? _theAuthority;
+        [ExpandableObject]
+        public InformationBindingViewModel? theAuthority
+        {
+            get { return _theAuthority; }
+            set { this.SetValue(ref _theAuthority, value); }
+        }
+        private InformationBindingViewModel? _theContactDetails;
+        [ExpandableObject]
+        public InformationBindingViewModel? theContactDetails
+        {
+            get { return _theContactDetails; }
+            set { this.SetValue(ref _theContactDetails, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theAuthority = null;
+                if (value is not null)
+                {
+                    theAuthority = value?.role switch
+                    {
+                        "theContactDetails" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theContactDetails = null;
+                if (value is not null)
+                {
+                    theContactDetails = value?.role switch
+                    {
+                        "theAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<ContactDetails>() {
+                    roleType = roleType.association,
+                    role = "theAuthority",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+            };
+    }
+
+    public class AuthorityHoursViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "AuthorityHours";
+        public override string[] Roles => ["theAuthority_srvHrs", "theServiceHours"];
+
+        private InformationBindingViewModel? _theAuthority_srvHrs;
+        [ExpandableObject]
+        public InformationBindingViewModel? theAuthority_srvHrs
+        {
+            get { return _theAuthority_srvHrs; }
+            set { this.SetValue(ref _theAuthority_srvHrs, value); }
+        }
+        private InformationBindingViewModel? _theServiceHours;
+        [ExpandableObject]
+        public InformationBindingViewModel? theServiceHours
+        {
+            get { return _theServiceHours; }
+            set { this.SetValue(ref _theServiceHours, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theAuthority_srvHrs = null;
+                if (value is not null)
+                {
+                    theAuthority_srvHrs = value?.role switch
+                    {
+                        "theServiceHours" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theServiceHours = null;
+                if (value is not null)
+                {
+                    theServiceHours = value?.role switch
+                    {
+                        "theAuthority_srvHrs" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<ServiceHours>() {
+                    roleType = roleType.association,
+                    role = "theAuthority_srvHrs",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "theServiceHours",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+            };
+    }
+
+    public class AssociatedRxNViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "AssociatedRxN";
+        public override string[] Roles => ["appliesInLocation", "theRxN"];
+
+        private InformationBindingViewModel? _appliesInLocation;
+        [ExpandableObject]
+        public InformationBindingViewModel? appliesInLocation
+        {
+            get { return _appliesInLocation; }
+            set { this.SetValue(ref _appliesInLocation, value); }
+        }
+        private InformationBindingViewModel? _theRxN;
+        [ExpandableObject]
+        public InformationBindingViewModel? theRxN
+        {
+            get { return _theRxN; }
+            set { this.SetValue(ref _theRxN, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                appliesInLocation = null;
+                if (value is not null)
+                {
+                    appliesInLocation = value?.role switch
+                    {
+                        "theRxN" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theRxN = null;
+                if (value is not null)
+                {
+                    theRxN = value?.role switch
+                    {
+                        "appliesInLocation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => AssociatedRxNViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<DryDock>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<FloatingDock>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<Gridiron>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<HarbourFacility>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<AnchorageArea>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<BerthPosition>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<DockArea>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<DumpingGround>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<HarbourBasin>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<MooringWarpingFacility>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<OuterLimit>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<PilotBoardingPlace>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<SeaplaneLandingArea>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<TurningBasin>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<WaterwayArea>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+            };
+    }
+
+    public class ExceptionalWorkdayViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "ExceptionalWorkday";
+        public override string[] Roles => ["theServiceHours_nsdy", "partialWorkingDay"];
+
+        private InformationBindingViewModel? _theServiceHours_nsdy;
+        [ExpandableObject]
+        public InformationBindingViewModel? theServiceHours_nsdy
+        {
+            get { return _theServiceHours_nsdy; }
+            set { this.SetValue(ref _theServiceHours_nsdy, value); }
+        }
+        private InformationBindingViewModel? _partialWorkingDay;
+        [ExpandableObject]
+        public InformationBindingViewModel? partialWorkingDay
+        {
+            get { return _partialWorkingDay; }
+            set { this.SetValue(ref _partialWorkingDay, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theServiceHours_nsdy = null;
+                if (value is not null)
+                {
+                    theServiceHours_nsdy = value?.role switch
+                    {
+                        "partialWorkingDay" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                partialWorkingDay = null;
+                if (value is not null)
+                {
+                    partialWorkingDay = value?.role switch
+                    {
+                        "theServiceHours_nsdy" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => ExceptionalWorkdayViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<ServiceHours>() {
+                    roleType = roleType.association,
+                    role = "partialWorkingDay",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NonStandardWorkingDay)],
+                },
+            };
+    }
+
+    public class ServiceControlViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "ServiceControl";
+        public override string[] Roles => ["controlledService", "controlAuthority"];
+
+        private InformationBindingViewModel? _controlledService;
+        [ExpandableObject]
+        public InformationBindingViewModel? controlledService
+        {
+            get { return _controlledService; }
+            set { this.SetValue(ref _controlledService, value); }
+        }
+        private InformationBindingViewModel? _controlAuthority;
+        [ExpandableObject]
+        public InformationBindingViewModel? controlAuthority
+        {
+            get { return _controlAuthority; }
+            set { this.SetValue(ref _controlAuthority, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                controlledService = null;
+                if (value is not null)
+                {
+                    controlledService = value?.role switch
+                    {
+                        "controlAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                controlAuthority = null;
+                if (value is not null)
+                {
+                    controlAuthority = value?.role switch
+                    {
+                        "controlledService" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => ServiceControlViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<DryDock>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<FloatingDock>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Gridiron>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<HarbourFacility>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<AnchorageArea>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<BerthPosition>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<DockArea>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<DumpingGround>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<HarbourBasin>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<MooringWarpingFacility>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<OuterLimit>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<PilotBoardingPlace>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<SeaplaneLandingArea>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<TurningBasin>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<WaterwayArea>() {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                },
+            };
+    }
+
+    public class ServiceContactViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "ServiceContact";
+        public override string[] Roles => ["servicePlace", "theContactDetails"];
+
+        private InformationBindingViewModel? _servicePlace;
+        [ExpandableObject]
+        public InformationBindingViewModel? servicePlace
+        {
+            get { return _servicePlace; }
+            set { this.SetValue(ref _servicePlace, value); }
+        }
+        private InformationBindingViewModel? _theContactDetails;
+        [ExpandableObject]
+        public InformationBindingViewModel? theContactDetails
+        {
+            get { return _theContactDetails; }
+            set { this.SetValue(ref _theContactDetails, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                servicePlace = null;
+                if (value is not null)
+                {
+                    servicePlace = value?.role switch
+                    {
+                        "theContactDetails" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theContactDetails = null;
+                if (value is not null)
+                {
+                    theContactDetails = value?.role switch
+                    {
+                        "servicePlace" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => ServiceContactViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<DryDock>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<FloatingDock>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<Gridiron>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<HarbourFacility>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<AnchorageArea>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<BerthPosition>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<DockArea>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<DumpingGround>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<HarbourBasin>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<MooringWarpingFacility>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<OuterLimit>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<PilotBoardingPlace>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<SeaplaneLandingArea>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<TurningBasin>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<WaterwayArea>() {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                },
+            };
+    }
+
+    public class LocationHoursViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "LocationHours";
+        public override string[] Roles => ["location_srvHrs", "facilityOperatingHours"];
+
+        private InformationBindingViewModel? _location_srvHrs;
+        [ExpandableObject]
+        public InformationBindingViewModel? location_srvHrs
+        {
+            get { return _location_srvHrs; }
+            set { this.SetValue(ref _location_srvHrs, value); }
+        }
+        private InformationBindingViewModel? _facilityOperatingHours;
+        [ExpandableObject]
+        public InformationBindingViewModel? facilityOperatingHours
+        {
+            get { return _facilityOperatingHours; }
+            set { this.SetValue(ref _facilityOperatingHours, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                location_srvHrs = null;
+                if (value is not null)
+                {
+                    location_srvHrs = value?.role switch
+                    {
+                        "facilityOperatingHours" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                facilityOperatingHours = null;
+                if (value is not null)
+                {
+                    facilityOperatingHours = value?.role switch
+                    {
+                        "location_srvHrs" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => LocationHoursViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<AnchorageArea>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<DockArea>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<DryDock>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<DumpingGround>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<FloatingDock>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Gridiron>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<HarbourBasin>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<HarbourFacility>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<MooringWarpingFacility>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<PilotBoardingPlace>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<SeaplaneLandingArea>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<TurningBasin>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<WaterwayArea>() {
+                    roleType = roleType.association,
+                    role = "location_srvHrs",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ServiceHours)],
+                },
+            };
+    }
+
+    public class RelatedOrganisationViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "RelatedOrganisation";
+        public override string[] Roles => ["theInformation", "theOrganisation"];
+
+        private InformationBindingViewModel? _theInformation;
+        [ExpandableObject]
+        public InformationBindingViewModel? theInformation
+        {
+            get { return _theInformation; }
+            set { this.SetValue(ref _theInformation, value); }
+        }
+        private InformationBindingViewModel? _theOrganisation;
+        [ExpandableObject]
+        public InformationBindingViewModel? theOrganisation
+        {
+            get { return _theOrganisation; }
+            set { this.SetValue(ref _theOrganisation, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theInformation = null;
+                if (value is not null)
+                {
+                    theInformation = value?.role switch
+                    {
+                        "theOrganisation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theOrganisation = null;
+                if (value is not null)
+                {
+                    theOrganisation = value?.role switch
+                    {
+                        "theInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<Authority>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+                new InformationAssociationConnector<NauticalInformation>() {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Recommendations>() {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Regulations>() {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Restrictions>() {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+            };
+    }
+
+    public class InclusionTypeViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "InclusionType";
+        public override string[] Roles => ["theApplicableRxN", "isApplicableTo"];
+
+        private InformationBindingViewModel? _theApplicableRxN;
+        [ExpandableObject]
+        public InformationBindingViewModel? theApplicableRxN
+        {
+            get { return _theApplicableRxN; }
+            set { this.SetValue(ref _theApplicableRxN, value); }
+        }
+        private InformationBindingViewModel? _isApplicableTo;
+        [ExpandableObject]
+        public InformationBindingViewModel? isApplicableTo
+        {
+            get { return _isApplicableTo; }
+            set { this.SetValue(ref _isApplicableTo, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theApplicableRxN = null;
+                if (value is not null)
+                {
+                    theApplicableRxN = value?.role switch
+                    {
+                        "isApplicableTo" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                isApplicableTo = null;
+                if (value is not null)
+                {
+                    isApplicableTo = value?.role switch
+                    {
+                        "theApplicableRxN" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => InclusionTypeViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<NauticalInformation>() {
+                    roleType = roleType.association,
+                    role = "isApplicableTo",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<Recommendations>() {
+                    roleType = roleType.association,
+                    role = "isApplicableTo",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<Regulations>() {
+                    roleType = roleType.association,
+                    role = "isApplicableTo",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<Restrictions>() {
+                    roleType = roleType.association,
+                    role = "isApplicableTo",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<Applicability>() {
+                    roleType = roleType.association,
+                    role = "theApplicableRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions)],
+                },
+            };
+    }
+
+    public class PermissionTypeViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "PermissionType";
+        public override string[] Roles => ["vslLocation", "permission"];
+
+        private InformationBindingViewModel? _vslLocation;
+        [ExpandableObject]
+        public InformationBindingViewModel? vslLocation
+        {
+            get { return _vslLocation; }
+            set { this.SetValue(ref _vslLocation, value); }
+        }
+        private InformationBindingViewModel? _permission;
+        [ExpandableObject]
+        public InformationBindingViewModel? permission
+        {
+            get { return _permission; }
+            set { this.SetValue(ref _permission, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                vslLocation = null;
+                if (value is not null)
+                {
+                    vslLocation = value?.role switch
+                    {
+                        "permission" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                permission = null;
+                if (value is not null)
+                {
+                    permission = value?.role switch
+                    {
+                        "vslLocation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => PermissionTypeViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<DryDock>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<FloatingDock>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<Gridiron>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<HarbourFacility>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<AnchorageArea>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<BerthPosition>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<DockArea>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<DumpingGround>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<HarbourBasin>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<MooringWarpingFacility>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<OuterLimit>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<PilotBoardingPlace>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<SeaplaneLandingArea>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<TurningBasin>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<WaterwayArea>() {
+                    roleType = roleType.association,
+                    role = "permission",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Applicability)],
+                },
+                new InformationAssociationConnector<Applicability>() {
+                    roleType = roleType.association,
+                    role = "vslLocation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation),typeof(Recommendations),typeof(Regulations),typeof(Restrictions),typeof(Applicability),typeof(Authority),typeof(AvailablePortServices),typeof(ContactDetails),typeof(Entrance),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+            };
+    }
+
+    public class SpatialAssociationViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "SpatialAssociation";
+        public override string[] Roles => ["defines", "definedFor"];
+
+        private InformationBindingViewModel? _defines;
+        [ExpandableObject]
+        public InformationBindingViewModel? defines
+        {
+            get { return _defines; }
+            set { this.SetValue(ref _defines, value); }
+        }
+        private InformationBindingViewModel? _definedFor;
+        [ExpandableObject]
+        public InformationBindingViewModel? definedFor
+        {
+            get { return _definedFor; }
+            set { this.SetValue(ref _definedFor, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                defines = null;
+                if (value is not null)
+                {
+                    defines = value?.role switch
+                    {
+                        "definedFor" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                definedFor = null;
+                if (value is not null)
+                {
+                    definedFor = value?.role switch
+                    {
+                        "defines" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => SpatialAssociationViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+            };
+    }
+
+    public class LimitEntranceViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "LimitEntrance";
+        public override string[] Roles => ["entranceTo", "entranceReference"];
+
+        private InformationBindingViewModel? _entranceTo;
+        [ExpandableObject]
+        public InformationBindingViewModel? entranceTo
+        {
+            get { return _entranceTo; }
+            set { this.SetValue(ref _entranceTo, value); }
+        }
+        private InformationBindingViewModel? _entranceReference;
+        [ExpandableObject]
+        public InformationBindingViewModel? entranceReference
+        {
+            get { return _entranceReference; }
+            set { this.SetValue(ref _entranceReference, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                entranceTo = null;
+                if (value is not null)
+                {
+                    entranceTo = value?.role switch
+                    {
+                        "entranceReference" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                entranceReference = null;
+                if (value is not null)
+                {
+                    entranceReference = value?.role switch
+                    {
+                        "entranceTo" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => LimitEntranceViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<OuterLimit>() {
+                    roleType = roleType.association,
+                    role = "entranceReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Entrance)],
+                },
+            };
+    }
+
+    public class ServiceAvailabilityViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "ServiceAvailability";
+        public override string[] Roles => ["locationServed", "serviceDescriptionReference"];
+
+        private InformationBindingViewModel? _locationServed;
+        [ExpandableObject]
+        public InformationBindingViewModel? locationServed
+        {
+            get { return _locationServed; }
+            set { this.SetValue(ref _locationServed, value); }
+        }
+        private InformationBindingViewModel? _serviceDescriptionReference;
+        [ExpandableObject]
+        public InformationBindingViewModel? serviceDescriptionReference
+        {
+            get { return _serviceDescriptionReference; }
+            set { this.SetValue(ref _serviceDescriptionReference, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                locationServed = null;
+                if (value is not null)
+                {
+                    locationServed = value?.role switch
+                    {
+                        "serviceDescriptionReference" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                serviceDescriptionReference = null;
+                if (value is not null)
+                {
+                    serviceDescriptionReference = value?.role switch
+                    {
+                        "locationServed" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => ServiceAvailabilityViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<DockArea>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<HarbourAreaSection>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<MooringWarpingFacility>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
+                },
+                new InformationAssociationConnector<Terminal>() {
+                    roleType = roleType.association,
+                    role = "serviceDescriptionReference",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(AvailablePortServices)],
                 },
             };
     }

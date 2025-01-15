@@ -39324,1377 +39324,6 @@ namespace S100Framework.WPF.ViewModel.S101
     }
 
 
-    public class AdditionalInformationViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "AdditionalInformation";
-        public override string[] Roles => ["theInformation"];
-
-        private InformationBindingViewModel? _theInformation;
-        [ExpandableObject]
-        public InformationBindingViewModel? theInformation
-        {
-            get { return _theInformation; }
-            set { this.SetValue(ref _theInformation, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                theInformation = null;
-                if (value is not null)
-                {
-                    theInformation = value?.role switch
-                    {
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => AdditionalInformationViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<AdministrationArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<AirportAirfield>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<AnchorageArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<AnchorBerth>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<ArchipelagicSeaLane>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<ArchipelagicSeaLaneArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<ArchipelagicSeaLaneAxis>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Berth>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<Bollard>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Bridge>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<Building>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<BuiltUpArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<CableArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<CableOverhead>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<CableSubmarine>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Canal>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<CardinalBeacon>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<CardinalBuoy>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<CargoTranshipmentArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Causeway>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<CautionArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Checkpoint>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<CoastGuardStation>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<Coastline>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<CollisionRegulationsLimit>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<ContiguousZone>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<ContinentalShelfArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Conveyor>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<Crane>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<CurrentNonGravitational>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<CustomZone>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Dam>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Daymark>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<DeepWaterRoute>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<DeepWaterRouteCentreline>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<DeepWaterRoutePart>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<DepthArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<DepthContour>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<DepthNoBottomFound>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<DiscolouredWater>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<DistanceMark>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<DockArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<Dolphin>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<DredgedArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<DryDock>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<DumpingGround>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Dyke>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<EmergencyWreckMarkingBuoy>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<ExclusiveEconomicZone>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Fairway>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<FairwaySystem>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<FenceWall>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<FerryRoute>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<FisheryZone>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<FishingFacility>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<FishingGround>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<FloatingDock>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<FogSignal>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<FortifiedStructure>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<FoulGround>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<FreePortArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Gate>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<Gridiron>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<HarbourAreaAdministrative>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<HarbourFacility>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Helipad>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<Hulk>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<IceArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<InformationArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<InshoreTrafficZone>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<InstallationBuoy>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<IslandGroup>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<IsolatedDangerBeacon>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<IsolatedDangerBuoy>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Lake>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LandArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LandElevation>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Landmark>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<LandRegion>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LateralBeacon>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LateralBuoy>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LightAirObstruction>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LightAllAround>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LightFloat>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LightFogDetector>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LightSectored>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LightVessel>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LocalMagneticAnomaly>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<LockBasin>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<LogPond>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<MagneticVariation>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<MarineFarmCulture>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<MarinePollutionRegulationsArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<MilitaryPracticeArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<MooringArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<MooringBuoy>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<MooringTrot>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<NavigationLine>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Obstruction>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<OffshorePlatform>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<OffshoreProductionArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<OilBarrier>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<PhysicalAISAidToNavigation>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Pile>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<PilotageDistrict>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<PilotBoardingPlace>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<PipelineOverhead>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<PipelineSubmarineOnLand>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Pontoon>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<PrecautionaryArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<ProductionStorageArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<PylonBridgeSupport>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RadarLine>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RadarRange>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RadarReflector>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RadarStation>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RadarTransponderBeacon>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RadioCallingInPoint>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<RadioStation>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Railway>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RangeSystem>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Rapids>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RecommendedRouteCentreline>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RecommendedTrack>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RecommendedTrafficLanePart>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RescueStation>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<RestrictedArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Retroreflector>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<River>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Road>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Runway>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<SafeWaterBeacon>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SafeWaterBuoy>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Sandwave>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SeaAreaNamedWaterArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SeabedArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Seagrass>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SeaplaneLandingArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<SeparationZoneOrLine>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<ShorelineConstruction>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SignalStationTraffic>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SignalStationWarning>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SiloTank>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SlopeTopline>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SlopingGround>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SmallCraftFacility>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Sounding>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SpanFixed>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<SpanOpening>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
-                },
-                new InformationAssociationConnector<SpecialPurposeGeneralBeacon>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SpecialPurposeGeneralBuoy>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Spring>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<StraightTerritorialSeaBaseline>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<StructureOverNavigableWater>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SubmarinePipelineArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SubmarineTransitLane>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<SweptArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<TerritorialSeaArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<TidalStreamFloodEbb>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<TidalStreamPanelData>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Tideway>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<TrafficSeparationScheme>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<TrafficSeparationSchemeBoundary>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<TrafficSeparationSchemeCrossing>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<TrafficSeparationSchemeLanePart>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<TrafficSeparationSchemeRoundabout>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Tunnel>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<TwoWayRoute>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<TwoWayRoutePart>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<UnderwaterAwashRock>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<UnsurveyedArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Vegetation>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<VesselTrafficServiceArea>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<VirtualAISAidToNavigation>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Waterfall>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<WaterTurbulence>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<WeedKelp>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<WindTurbine>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<Wreck>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-            };
-    }
-
-    public class QualityOfBathymetricDataCompositionViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "QualityOfBathymetricDataComposition";
-        public override string[] Roles => ["theQualityInformation"];
-
-        private InformationBindingViewModel? _theQualityInformation;
-        [ExpandableObject]
-        public InformationBindingViewModel? theQualityInformation
-        {
-            get { return _theQualityInformation; }
-            set { this.SetValue(ref _theQualityInformation, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                theQualityInformation = null;
-                if (value is not null)
-                {
-                    theQualityInformation = value?.role switch
-                    {
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => QualityOfBathymetricDataCompositionViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<QualityOfBathymetricData>() {
-                    roleType = roleType.association,
-                    role = "theQualityInformation",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(SpatialQuality)],
-                },
-            };
-    }
-
-    public class SpatialAssociationViewModel : InformationAssociationViewModel
-    {
-        public override string Code => "SpatialAssociation";
-        public override string[] Roles => ["theQualityInformation"];
-
-        private InformationBindingViewModel? _theQualityInformation;
-        [ExpandableObject]
-        public InformationBindingViewModel? theQualityInformation
-        {
-            get { return _theQualityInformation; }
-            set { this.SetValue(ref _theQualityInformation, value); }
-        }
-
-        public override InformationAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                theQualityInformation = null;
-                if (value is not null)
-                {
-                    theQualityInformation = value?.role switch
-                    {
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
-                    };
-                }
-            }
-        }
-        public override InformationAssociationConnector[] associationConnectorInformations => SpatialAssociationViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-            };
-    }
-
     public class AidsToNavigationAssociationViewModel : FeatureAssociationViewModel
     {
         public override string Code => "AidsToNavigationAssociation";
@@ -44390,6 +43019,13 @@ namespace S100Framework.WPF.ViewModel.S101
             get { return _theUpdate; }
             set { this.SetValue(ref _theUpdate, value); }
         }
+        private FeatureBindingViewModel? _theUpdatedObject;
+        [ExpandableObject]
+        public FeatureBindingViewModel? theUpdatedObject
+        {
+            get { return _theUpdatedObject; }
+            set { this.SetValue(ref _theUpdatedObject, value); }
+        }
 
         public override FeatureAssociationConnector? associationConnector
         {
@@ -44403,6 +43039,27 @@ namespace S100Framework.WPF.ViewModel.S101
                     theUpdate = value?.role switch
                     {
                         "theUpdatedObject" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : new OptionalFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleFeatureBindingViewModel()
+                        {
+                            FeatureTypes = [value!.FeatureType],
+                        },
+                    };
+                }
+                theUpdatedObject = null;
+                if (value is not null)
+                {
+                    theUpdatedObject = value?.role switch
+                    {
+                        "theUpdate" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
                         {
                             FeatureTypes = value.AssociationTypes,
                         } : value.Lower > 0 ? new SingleFeatureBindingViewModel
@@ -45666,7 +44323,7 @@ namespace S100Framework.WPF.ViewModel.S101
                     role = "theUpdate",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(AdministrationArea),typeof(AirportAirfield),typeof(AnchorBerth),typeof(AnchorageArea),typeof(ArchipelagicSeaLane),typeof(ArchipelagicSeaLaneArea),typeof(ArchipelagicSeaLaneAxis),typeof(Berth),typeof(Bollard),typeof(Bridge),typeof(Building),typeof(BuiltUpArea),typeof(CableArea),typeof(CableOverhead),typeof(CableSubmarine),typeof(Canal),typeof(CardinalBeacon),typeof(CardinalBuoy),typeof(CargoTranshipmentArea),typeof(Causeway),typeof(CautionArea),typeof(Checkpoint),typeof(CoastGuardStation),typeof(Coastline),typeof(CollisionRegulationsLimit),typeof(ContiguousZone),typeof(ContinentalShelfArea),typeof(Conveyor),typeof(Crane),typeof(CurrentNonGravitational),typeof(CustomZone),typeof(Dam),typeof(Daymark),typeof(DeepWaterRoute),typeof(DeepWaterRouteCentreline),typeof(DeepWaterRoutePart),typeof(DepthArea),typeof(DepthContour),typeof(DepthNoBottomFound),typeof(DiscolouredWater),typeof(DistanceMark),typeof(DockArea),typeof(Dolphin),typeof(DredgedArea),typeof(DryDock),typeof(DumpingGround),typeof(Dyke),typeof(EmergencyWreckMarkingBuoy),typeof(ExclusiveEconomicZone),typeof(Fairway),typeof(FairwaySystem),typeof(FenceWall),typeof(FerryRoute),typeof(FisheryZone),typeof(FishingFacility),typeof(FishingGround),typeof(FloatingDock),typeof(FogSignal),typeof(FortifiedStructure),typeof(FoulGround),typeof(FreePortArea),typeof(Gate),typeof(Gridiron),typeof(HarbourAreaAdministrative),typeof(HarbourFacility),typeof(Helipad),typeof(Hulk),typeof(IceArea),typeof(InformationArea),typeof(InshoreTrafficZone),typeof(InstallationBuoy),typeof(IslandGroup),typeof(IsolatedDangerBeacon),typeof(IsolatedDangerBuoy),typeof(Lake),typeof(LandArea),typeof(LandElevation),typeof(LandRegion),typeof(Landmark),typeof(LateralBeacon),typeof(LateralBuoy),typeof(LightAirObstruction),typeof(LightAllAround),typeof(LightFloat),typeof(LightFogDetector),typeof(LightSectored),typeof(LightVessel),typeof(LocalDirectionOfBuoyage),typeof(LocalMagneticAnomaly),typeof(LockBasin),typeof(LogPond),typeof(MagneticVariation),typeof(MarineFarmCulture),typeof(MarinePollutionRegulationsArea),typeof(MilitaryPracticeArea),typeof(MooringArea),typeof(MooringBuoy),typeof(MooringTrot),typeof(NavigationLine),typeof(NavigationalSystemOfMarks),typeof(Obstruction),typeof(OffshorePlatform),typeof(OffshoreProductionArea),typeof(OilBarrier),typeof(PhysicalAISAidToNavigation),typeof(Pile),typeof(PilotBoardingPlace),typeof(PilotageDistrict),typeof(PipelineOverhead),typeof(PipelineSubmarineOnLand),typeof(Pontoon),typeof(PrecautionaryArea),typeof(ProductionStorageArea),typeof(PylonBridgeSupport),typeof(QualityOfBathymetricData),typeof(QualityOfNonBathymetricData),typeof(QualityOfSurvey),typeof(RadarLine),typeof(RadarRange),typeof(RadarReflector),typeof(RadarStation),typeof(RadarTransponderBeacon),typeof(RadioCallingInPoint),typeof(RadioStation),typeof(Railway),typeof(RangeSystem),typeof(Rapids),typeof(RecommendedRouteCentreline),typeof(RecommendedTrack),typeof(RecommendedTrafficLanePart),typeof(RescueStation),typeof(RestrictedArea),typeof(Retroreflector),typeof(River),typeof(Road),typeof(Runway),typeof(SafeWaterBeacon),typeof(SafeWaterBuoy),typeof(Sandwave),typeof(SeaAreaNamedWaterArea),typeof(SeabedArea),typeof(Seagrass),typeof(SeaplaneLandingArea),typeof(SeparationZoneOrLine),typeof(ShorelineConstruction),typeof(SignalStationTraffic),typeof(SignalStationWarning),typeof(SiloTank),typeof(SmallCraftFacility),typeof(SlopeTopline),typeof(SlopingGround),typeof(Sounding),typeof(SoundingDatum),typeof(SpanFixed),typeof(SpanOpening),typeof(SpecialPurposeGeneralBeacon),typeof(SpecialPurposeGeneralBuoy),typeof(Spring),typeof(StraightTerritorialSeaBaseline),typeof(StructureOverNavigableWater),typeof(SubmarinePipelineArea),typeof(SubmarineTransitLane),typeof(SweptArea),typeof(TerritorialSeaArea),typeof(TidalStreamPanelData),typeof(TidalStreamFloodEbb),typeof(Tideway),typeof(TrafficSeparationScheme),typeof(TrafficSeparationSchemeBoundary),typeof(TrafficSeparationSchemeCrossing),typeof(TrafficSeparationSchemeLanePart),typeof(TrafficSeparationSchemeRoundabout),typeof(Tunnel),typeof(TwoWayRoute),typeof(TwoWayRoutePart),typeof(UnderwaterAwashRock),typeof(UnsurveyedArea),typeof(UpdateInformation),typeof(Vegetation),typeof(VerticalDatumOfData),typeof(VesselTrafficServiceArea),typeof(VirtualAISAidToNavigation),typeof(WaterTurbulence),typeof(Waterfall),typeof(WeedKelp),typeof(WindTurbine),typeof(Wreck)],
+                    AssociationTypes = [typeof(UpdateInformation)],
                 },
                 new FeatureAssociationConnector<Vegetation>() {
                     roleType = roleType.association,
@@ -45731,6 +44388,1384 @@ namespace S100Framework.WPF.ViewModel.S101
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
                 },
+                new FeatureAssociationConnector<UpdateInformation>() {
+                    roleType = roleType.association,
+                    role = "theUpdatedObject",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AdministrationArea),typeof(AirportAirfield),typeof(AnchorBerth),typeof(AnchorageArea),typeof(ArchipelagicSeaLane),typeof(ArchipelagicSeaLaneArea),typeof(ArchipelagicSeaLaneAxis),typeof(Berth),typeof(Bollard),typeof(Bridge),typeof(Building),typeof(BuiltUpArea),typeof(CableArea),typeof(CableOverhead),typeof(CableSubmarine),typeof(Canal),typeof(CardinalBeacon),typeof(CardinalBuoy),typeof(CargoTranshipmentArea),typeof(Causeway),typeof(CautionArea),typeof(Checkpoint),typeof(CoastGuardStation),typeof(Coastline),typeof(CollisionRegulationsLimit),typeof(ContiguousZone),typeof(ContinentalShelfArea),typeof(Conveyor),typeof(Crane),typeof(CurrentNonGravitational),typeof(CustomZone),typeof(Dam),typeof(Daymark),typeof(DeepWaterRoute),typeof(DeepWaterRouteCentreline),typeof(DeepWaterRoutePart),typeof(DepthArea),typeof(DepthContour),typeof(DepthNoBottomFound),typeof(DiscolouredWater),typeof(DistanceMark),typeof(DockArea),typeof(Dolphin),typeof(DredgedArea),typeof(DryDock),typeof(DumpingGround),typeof(Dyke),typeof(EmergencyWreckMarkingBuoy),typeof(ExclusiveEconomicZone),typeof(Fairway),typeof(FairwaySystem),typeof(FenceWall),typeof(FerryRoute),typeof(FisheryZone),typeof(FishingFacility),typeof(FishingGround),typeof(FloatingDock),typeof(FogSignal),typeof(FortifiedStructure),typeof(FoulGround),typeof(FreePortArea),typeof(Gate),typeof(Gridiron),typeof(HarbourAreaAdministrative),typeof(HarbourFacility),typeof(Helipad),typeof(Hulk),typeof(IceArea),typeof(InformationArea),typeof(InshoreTrafficZone),typeof(InstallationBuoy),typeof(IslandGroup),typeof(IsolatedDangerBeacon),typeof(IsolatedDangerBuoy),typeof(Lake),typeof(LandArea),typeof(LandElevation),typeof(LandRegion),typeof(Landmark),typeof(LateralBeacon),typeof(LateralBuoy),typeof(LightAirObstruction),typeof(LightAllAround),typeof(LightFloat),typeof(LightFogDetector),typeof(LightSectored),typeof(LightVessel),typeof(LocalDirectionOfBuoyage),typeof(LocalMagneticAnomaly),typeof(LockBasin),typeof(LogPond),typeof(MagneticVariation),typeof(MarineFarmCulture),typeof(MarinePollutionRegulationsArea),typeof(MilitaryPracticeArea),typeof(MooringArea),typeof(MooringBuoy),typeof(MooringTrot),typeof(NavigationLine),typeof(NavigationalSystemOfMarks),typeof(Obstruction),typeof(OffshorePlatform),typeof(OffshoreProductionArea),typeof(OilBarrier),typeof(PhysicalAISAidToNavigation),typeof(Pile),typeof(PilotBoardingPlace),typeof(PilotageDistrict),typeof(PipelineOverhead),typeof(PipelineSubmarineOnLand),typeof(Pontoon),typeof(PrecautionaryArea),typeof(ProductionStorageArea),typeof(PylonBridgeSupport),typeof(QualityOfBathymetricData),typeof(QualityOfNonBathymetricData),typeof(QualityOfSurvey),typeof(RadarLine),typeof(RadarRange),typeof(RadarReflector),typeof(RadarStation),typeof(RadarTransponderBeacon),typeof(RadioCallingInPoint),typeof(RadioStation),typeof(Railway),typeof(RangeSystem),typeof(Rapids),typeof(RecommendedRouteCentreline),typeof(RecommendedTrack),typeof(RecommendedTrafficLanePart),typeof(RescueStation),typeof(RestrictedArea),typeof(Retroreflector),typeof(River),typeof(Road),typeof(Runway),typeof(SafeWaterBeacon),typeof(SafeWaterBuoy),typeof(Sandwave),typeof(SeaAreaNamedWaterArea),typeof(SeabedArea),typeof(Seagrass),typeof(SeaplaneLandingArea),typeof(SeparationZoneOrLine),typeof(ShorelineConstruction),typeof(SignalStationTraffic),typeof(SignalStationWarning),typeof(SiloTank),typeof(SmallCraftFacility),typeof(SlopeTopline),typeof(SlopingGround),typeof(Sounding),typeof(SoundingDatum),typeof(SpanFixed),typeof(SpanOpening),typeof(SpecialPurposeGeneralBeacon),typeof(SpecialPurposeGeneralBuoy),typeof(Spring),typeof(StraightTerritorialSeaBaseline),typeof(StructureOverNavigableWater),typeof(SubmarinePipelineArea),typeof(SubmarineTransitLane),typeof(SweptArea),typeof(TerritorialSeaArea),typeof(TidalStreamPanelData),typeof(TidalStreamFloodEbb),typeof(Tideway),typeof(TrafficSeparationScheme),typeof(TrafficSeparationSchemeBoundary),typeof(TrafficSeparationSchemeCrossing),typeof(TrafficSeparationSchemeLanePart),typeof(TrafficSeparationSchemeRoundabout),typeof(Tunnel),typeof(TwoWayRoute),typeof(TwoWayRoutePart),typeof(UnderwaterAwashRock),typeof(UnsurveyedArea),typeof(UpdateInformation),typeof(Vegetation),typeof(VerticalDatumOfData),typeof(VesselTrafficServiceArea),typeof(VirtualAISAidToNavigation),typeof(WaterTurbulence),typeof(Waterfall),typeof(WeedKelp),typeof(WindTurbine),typeof(Wreck)],
+                },
+            };
+    }
+
+    public class AdditionalInformationViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "AdditionalInformation";
+        public override string[] Roles => ["theInformation"];
+
+        private InformationBindingViewModel? _theInformation;
+        [ExpandableObject]
+        public InformationBindingViewModel? theInformation
+        {
+            get { return _theInformation; }
+            set { this.SetValue(ref _theInformation, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theInformation = null;
+                if (value is not null)
+                {
+                    theInformation = value?.role switch
+                    {
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => AdditionalInformationViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<AdministrationArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<AirportAirfield>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<AnchorageArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<AnchorBerth>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<ArchipelagicSeaLane>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<ArchipelagicSeaLaneArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<ArchipelagicSeaLaneAxis>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Berth>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Bollard>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Bridge>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Building>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<BuiltUpArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<CableArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<CableOverhead>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<CableSubmarine>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Canal>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<CardinalBeacon>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<CardinalBuoy>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<CargoTranshipmentArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Causeway>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<CautionArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Checkpoint>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<CoastGuardStation>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Coastline>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<CollisionRegulationsLimit>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<ContiguousZone>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<ContinentalShelfArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Conveyor>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Crane>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<CurrentNonGravitational>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<CustomZone>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Dam>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Daymark>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DeepWaterRoute>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DeepWaterRouteCentreline>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DeepWaterRoutePart>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DepthArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DepthContour>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DepthNoBottomFound>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DiscolouredWater>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DistanceMark>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DockArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Dolphin>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DredgedArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<DryDock>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<DumpingGround>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Dyke>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<EmergencyWreckMarkingBuoy>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<ExclusiveEconomicZone>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Fairway>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<FairwaySystem>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<FenceWall>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<FerryRoute>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<FisheryZone>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<FishingFacility>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<FishingGround>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<FloatingDock>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<FogSignal>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<FortifiedStructure>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<FoulGround>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<FreePortArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Gate>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Gridiron>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<HarbourAreaAdministrative>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<HarbourFacility>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Helipad>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<Hulk>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<IceArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<InformationArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<InshoreTrafficZone>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<InstallationBuoy>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<IslandGroup>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<IsolatedDangerBeacon>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<IsolatedDangerBuoy>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Lake>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LandArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LandElevation>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Landmark>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<LandRegion>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LateralBeacon>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LateralBuoy>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LightAirObstruction>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LightAllAround>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LightFloat>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LightFogDetector>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LightSectored>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LightVessel>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LocalMagneticAnomaly>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<LockBasin>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<LogPond>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<MagneticVariation>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<MarineFarmCulture>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<MarinePollutionRegulationsArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<MilitaryPracticeArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<MooringArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<MooringBuoy>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<MooringTrot>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<NavigationLine>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Obstruction>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<OffshorePlatform>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<OffshoreProductionArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<OilBarrier>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<PhysicalAISAidToNavigation>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Pile>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<PilotageDistrict>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<PilotBoardingPlace>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<PipelineOverhead>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<PipelineSubmarineOnLand>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Pontoon>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<PrecautionaryArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<ProductionStorageArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<PylonBridgeSupport>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RadarLine>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RadarRange>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RadarReflector>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RadarStation>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RadarTransponderBeacon>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RadioCallingInPoint>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<RadioStation>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Railway>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RangeSystem>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Rapids>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RecommendedRouteCentreline>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RecommendedTrack>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RecommendedTrafficLanePart>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RescueStation>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<RestrictedArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Retroreflector>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<River>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Road>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Runway>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<SafeWaterBeacon>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SafeWaterBuoy>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Sandwave>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SeaAreaNamedWaterArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SeabedArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Seagrass>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SeaplaneLandingArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<SeparationZoneOrLine>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<ShorelineConstruction>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SignalStationTraffic>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SignalStationWarning>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SiloTank>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SlopeTopline>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SlopingGround>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SmallCraftFacility>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Sounding>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SpanFixed>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<SpanOpening>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation),typeof(NonStandardWorkingDay),typeof(ServiceHours)],
+                },
+                new InformationAssociationConnector<SpecialPurposeGeneralBeacon>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SpecialPurposeGeneralBuoy>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Spring>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<StraightTerritorialSeaBaseline>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<StructureOverNavigableWater>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SubmarinePipelineArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SubmarineTransitLane>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<SweptArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<TerritorialSeaArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<TidalStreamFloodEbb>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<TidalStreamPanelData>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Tideway>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<TrafficSeparationScheme>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<TrafficSeparationSchemeBoundary>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<TrafficSeparationSchemeCrossing>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<TrafficSeparationSchemeLanePart>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<TrafficSeparationSchemeRoundabout>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Tunnel>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<TwoWayRoute>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<TwoWayRoutePart>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<UnderwaterAwashRock>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<UnsurveyedArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Vegetation>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<VesselTrafficServiceArea>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<VirtualAISAidToNavigation>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Waterfall>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<WaterTurbulence>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<WeedKelp>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<WindTurbine>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ContactDetails),typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<Wreck>() {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+            };
+    }
+
+    public class QualityOfBathymetricDataCompositionViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "QualityOfBathymetricDataComposition";
+        public override string[] Roles => ["theQualityInformation"];
+
+        private InformationBindingViewModel? _theQualityInformation;
+        [ExpandableObject]
+        public InformationBindingViewModel? theQualityInformation
+        {
+            get { return _theQualityInformation; }
+            set { this.SetValue(ref _theQualityInformation, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theQualityInformation = null;
+                if (value is not null)
+                {
+                    theQualityInformation = value?.role switch
+                    {
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => QualityOfBathymetricDataCompositionViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<QualityOfBathymetricData>() {
+                    roleType = roleType.association,
+                    role = "theQualityInformation",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(SpatialQuality)],
+                },
+            };
+    }
+
+    public class SpatialAssociationViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "SpatialAssociation";
+        public override string[] Roles => ["theQualityInformation"];
+
+        private InformationBindingViewModel? _theQualityInformation;
+        [ExpandableObject]
+        public InformationBindingViewModel? theQualityInformation
+        {
+            get { return _theQualityInformation; }
+            set { this.SetValue(ref _theQualityInformation, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theQualityInformation = null;
+                if (value is not null)
+                {
+                    theQualityInformation = value?.role switch
+                    {
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => SpatialAssociationViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
             };
     }
 }

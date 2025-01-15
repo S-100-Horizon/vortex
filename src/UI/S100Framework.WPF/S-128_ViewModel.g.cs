@@ -3734,6 +3734,135 @@ namespace S100Framework.WPF.ViewModel.S128
     }
 
 
+    public class ProductMappingViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "ProductMapping";
+        public override string[] Roles => ["theSource", "theReference"];
+
+        private FeatureBindingViewModel? _theReference;
+        [ExpandableObject]
+        public FeatureBindingViewModel? theReference
+        {
+            get { return _theReference; }
+            set { this.SetValue(ref _theReference, value); }
+        }
+
+        public override FeatureAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theReference = null;
+                if (value is not null)
+                {
+                    theReference = value?.role switch
+                    {
+                        "theSource" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : new OptionalFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleFeatureBindingViewModel()
+                        {
+                            FeatureTypes = [value!.FeatureType],
+                        },
+                    };
+                }
+            }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => ProductMappingViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<ElectronicProduct>() {
+                    roleType = roleType.association,
+                    role = "theReference",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ElectronicProduct),typeof(PhysicalProduct),typeof(S100Service)],
+                },
+                new FeatureAssociationConnector<PhysicalProduct>() {
+                    roleType = roleType.association,
+                    role = "theReference",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ElectronicProduct),typeof(PhysicalProduct),typeof(S100Service)],
+                },
+                new FeatureAssociationConnector<S100Service>() {
+                    roleType = roleType.association,
+                    role = "theReference",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ElectronicProduct),typeof(PhysicalProduct),typeof(S100Service)],
+                },
+            };
+    }
+
+    public class CorrelatedViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "Correlated";
+        public override string[] Roles => ["main", "panel"];
+
+        private FeatureBindingViewModel? _main;
+        [ExpandableObject]
+        public FeatureBindingViewModel? main
+        {
+            get { return _main; }
+            set { this.SetValue(ref _main, value); }
+        }
+
+        public override FeatureAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                main = null;
+                if (value is not null)
+                {
+                    main = value?.role switch
+                    {
+                        "panel" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : new OptionalFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleFeatureBindingViewModel()
+                        {
+                            FeatureTypes = [value!.FeatureType],
+                        },
+                    };
+                }
+            }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => CorrelatedViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<ElectronicProduct>() {
+                    roleType = roleType.association,
+                    role = "main",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ElectronicProduct),typeof(PhysicalProduct)],
+                },
+                new FeatureAssociationConnector<PhysicalProduct>() {
+                    roleType = roleType.association,
+                    role = "main",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(ElectronicProduct),typeof(PhysicalProduct)],
+                },
+            };
+    }
+
     public class CarriageRequirementViewModel : InformationAssociationViewModel
     {
         public override string Code => "CarriageRequirement";
@@ -3806,7 +3935,21 @@ namespace S100Framework.WPF.ViewModel.S128
         }
         public override InformationAssociationConnector[] associationConnectorInformations => CarriageRequirementViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<CatalogueElement>() {
+                new InformationAssociationConnector<ElectronicProduct>() {
+                    roleType = roleType.association,
+                    role = "theRequirement",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(IndicationOfCarriageRequirement)],
+                },
+                new InformationAssociationConnector<PhysicalProduct>() {
+                    roleType = roleType.association,
+                    role = "theRequirement",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(IndicationOfCarriageRequirement)],
+                },
+                new InformationAssociationConnector<S100Service>() {
                     roleType = roleType.association,
                     role = "theRequirement",
                     Lower = 0,
@@ -4066,7 +4209,21 @@ namespace S100Framework.WPF.ViewModel.S128
         }
         public override InformationAssociationConnector[] associationConnectorInformations => PriceOfElementViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<CatalogueElement>() {
+                new InformationAssociationConnector<ElectronicProduct>() {
+                    roleType = roleType.association,
+                    role = "thePriceInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(PriceInformation)],
+                },
+                new InformationAssociationConnector<PhysicalProduct>() {
+                    roleType = roleType.association,
+                    role = "thePriceInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(PriceInformation)],
+                },
+                new InformationAssociationConnector<S100Service>() {
                     roleType = roleType.association,
                     role = "thePriceInformation",
                     Lower = 0,
@@ -4415,120 +4572,26 @@ namespace S100Framework.WPF.ViewModel.S128
         }
         public override InformationAssociationConnector[] associationConnectorInformations => ProductPackageViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<CatalogueElement>() {
+                new InformationAssociationConnector<ElectronicProduct>() {
                     roleType = roleType.association,
                     role = "elementContainer",
                     Lower = 1,
                     Upper = default,
                     AssociationTypes = [typeof(CatalogueSectionHeader)],
                 },
-            };
-    }
-
-    public class ProductMappingViewModel : FeatureAssociationViewModel
-    {
-        public override string Code => "ProductMapping";
-        public override string[] Roles => ["theSource", "theReference"];
-
-        private FeatureBindingViewModel? _theReference;
-        [ExpandableObject]
-        public FeatureBindingViewModel? theReference
-        {
-            get { return _theReference; }
-            set { this.SetValue(ref _theReference, value); }
-        }
-
-        public override FeatureAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                theReference = null;
-                if (value is not null)
-                {
-                    theReference = value?.role switch
-                    {
-                        "theSource" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : new OptionalFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel()
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
-                    };
-                }
-            }
-        }
-        public override FeatureAssociationConnector[] associationConnectorFeatures => ProductMappingViewModel._associationConnectorFeatures;
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
-                new FeatureAssociationConnector<CatalogueElement>() {
+                new InformationAssociationConnector<PhysicalProduct>() {
                     roleType = roleType.association,
-                    role = "theReference",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(CatalogueElement)],
-                },
-            };
-    }
-
-    public class CorrelatedViewModel : FeatureAssociationViewModel
-    {
-        public override string Code => "Correlated";
-        public override string[] Roles => ["main", "panel"];
-
-        private FeatureBindingViewModel? _main;
-        [ExpandableObject]
-        public FeatureBindingViewModel? main
-        {
-            get { return _main; }
-            set { this.SetValue(ref _main, value); }
-        }
-
-        public override FeatureAssociationConnector? associationConnector
-        {
-            get { return _associationConnector; }
-            set
-            {
-                this.SetValue(ref _associationConnector, value);
-                main = null;
-                if (value is not null)
-                {
-                    main = value?.role switch
-                    {
-                        "panel" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        } : new OptionalFeatureBindingViewModel
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel()
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
-                    };
-                }
-            }
-        }
-        public override FeatureAssociationConnector[] associationConnectorFeatures => CorrelatedViewModel._associationConnectorFeatures;
-        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
-                new FeatureAssociationConnector<NavigationalProduct>() {
-                    roleType = roleType.association,
-                    role = "main",
+                    role = "elementContainer",
                     Lower = 1,
-                    Upper = 1,
-                    AssociationTypes = [typeof(NavigationalProduct)],
+                    Upper = default,
+                    AssociationTypes = [typeof(CatalogueSectionHeader)],
+                },
+                new InformationAssociationConnector<S100Service>() {
+                    roleType = roleType.association,
+                    role = "elementContainer",
+                    Lower = 1,
+                    Upper = default,
+                    AssociationTypes = [typeof(CatalogueSectionHeader)],
                 },
             };
     }

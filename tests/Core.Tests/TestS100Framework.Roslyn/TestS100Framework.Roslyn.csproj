@@ -16,16 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-101 Electronic Navigational Chart\1.2.3\S-101_FC_1.2.3.xml" Link="Artifacts\S-101_FC_1.2.3.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-101 Electronic Navigational Chart\1.5.0\S-101_FC_1.5.0.xml" Link="Artifacts\S-101_FC_1.5.0.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
     <Content Include="..\..\..\artifacts\Product Specifications\S-101 Electronic Navigational Chart\2.0.0\FeatureCatalogue.xml" Link="Artifacts\FeatureCatalogue.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="..\..\..\artifacts\Product Specifications\S-101 Electronic Navigational Chart\2.0.0\S-101_FC_2.0.0.20241016.xml" Link="Artifacts\S-101_FC_2.0.0.20241016.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="..\..\..\artifacts\Product Specifications\S-122 Marine Protected Areas\1.2.1\01_Feature Catalogue\S-122_FC_1.2.1.xml" Link="Artifacts\S-122_FC_1.2.1.xml">
