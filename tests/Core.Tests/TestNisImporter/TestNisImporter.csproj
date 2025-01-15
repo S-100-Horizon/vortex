@@ -22,10 +22,10 @@
 
   <ItemGroup>
     <Reference Include="ArcGIS.Core">
-      <HintPath>..\..\..\..\..\Program Files\ArcGIS\Pro\bin\ArcGIS.Core.dll</HintPath>
+      <HintPath>C:\Program Files\ArcGIS\Pro\bin\ArcGIS.Core.dll</HintPath>
     </Reference>
     <Reference Include="ArcGIS.CoreHost">
-      <HintPath>..\..\..\..\..\Program Files\ArcGIS\Pro\bin\ArcGIS.CoreHost.dll</HintPath>
+      <HintPath>C:\Program Files\ArcGIS\Pro\bin\ArcGIS.CoreHost.dll</HintPath>
     </Reference>
   </ItemGroup>
 
