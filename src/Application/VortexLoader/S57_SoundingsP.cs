@@ -49,7 +49,7 @@ namespace S100Framework.Applications
 
                         var shape = current.SHAPE as MapPoint;
                         if (shape == default) {
-                            Logger.Current.DataError(objectid, tableName, longname, "");
+                            Logger.Current.DataError(objectid, tableName, longname, Strings.ERR_NULL_SHAPE);
                             continue;
                         }
 
