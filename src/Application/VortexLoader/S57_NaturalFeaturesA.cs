@@ -1,9 +1,6 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Data.UtilityNetwork;
 using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using Serilog;
-using VortexLoader;
 using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
@@ -22,7 +19,7 @@ namespace S100Framework.Applications
             using var cursor = s.Search(filter, true);
 
             var convertedCount = 0;
-            var recordCount = 1;
+            var recordCount = 0;
 
 
             while (cursor.MoveNext()) {
@@ -34,9 +31,9 @@ namespace S100Framework.Applications
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
-                var longname = current.LNAM;
-                var status = current.STATUS;
-                var condtn = current.CONDTN;
+                var longname = current.LNAM ?? Strings.UNKNOWN;
+                var status = current.STATUS ?? default;
+                var condtn = current.CONDTN ?? default;
                 var watlev = current.WATLEV ?? default;
                 var catlnd = current.CATLND ?? default;
                 var natsur = current.NATSUR ?? default;
@@ -409,7 +406,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 35: {    // VEGATN
-                            var categoryOfVegetation = catveg.ToLowerInvariant() switch {
+                            var categoryOfVegetation = catveg?.ToLowerInvariant() switch {
                                 "3" => DomainModel.S101.categoryOfVegetation.Bush,
                                 "4" => DomainModel.S101.categoryOfVegetation.DeciduousWood,
                                 "5" => DomainModel.S101.categoryOfVegetation.ConiferousWood,

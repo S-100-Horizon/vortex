@@ -48,7 +48,7 @@ namespace S100Framework.Applications
                 var valsou = current.VALSOU ?? default;
                 var watlev = current.WATLEV ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
-                var longname = current.LNAM;
+                var longname = current.LNAM ?? Strings.UNKNOWN;
 
                 bool isValsouEmpty = !current.VALSOU.HasValue;
 
@@ -56,7 +56,7 @@ namespace S100Framework.Applications
                 // value, only if the attribute value of sounding for the feature instance is populated with an empty(null) value
                 // and the attribute height, if an allowable attribute for the feature, is not populated.
                 // S-101 Annex A_DCEG Edition 1.5.0_Draft for Edition 2.0.0.pdf: p.771
-                Decimal defaultClearanceDepth = -32767;
+                //Decimal defaultClearanceDepth = -32767;
 
                 switch (subtype) {
                     case 1: { // CTNARE

@@ -31,22 +31,22 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
-
+                
                 var drval1 = current.DRVAL1 ?? default;
                 var drval2 = current.DRVAL2 ?? default(decimal?);
-                var sordat = current.SORDAT;
+                var sordat = current.SORDAT ?? default;
 
-                var longname = current.LNAM;
-                var restrn = current.RESTRN;
-                var quasou = current.QUASOU;
-                var tecsou = current.TECSOU;
+                var longname = current.LNAM ?? Strings.UNKNOWN;
+                var restrn = current.RESTRN ?? default;
+                var quasou = current.QUASOU ?? default;
+                var tecsou = current.TECSOU ?? default;
 
                 switch (subtype) {
                     case 1: {     // DEPARE
 
                             var deptharea = new S100Framework.DomainModel.S101.FeatureTypes.DepthArea {
                                 depthRangeMinimumValue = drval1,
-                                depthRangeMaximumValue = drval2.Value,
+                                depthRangeMaximumValue = drval2.GetValueOrDefault(),
                             };
 
                             buffer["ps"] = "S-101";

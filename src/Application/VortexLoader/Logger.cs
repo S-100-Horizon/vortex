@@ -2,8 +2,9 @@
 using Serilog.Core;
 using Serilog.Events;
 
-namespace VortexLoader
+namespace S100Framework.Applications
 {
+    
 
     public enum LogLevel
     {
@@ -24,6 +25,9 @@ namespace VortexLoader
 
         public DynamicFileSink(string logDirectory) {
             _logDirectory = logDirectory;
+            if (!System.IO.Directory.Exists(logDirectory)) {
+                System.IO.Directory.CreateDirectory(_logDirectory);
+            }
         }
 
         public void Emit(LogEvent logEvent) {
@@ -31,7 +35,7 @@ namespace VortexLoader
                 ? logEvent.Properties["TableName"].ToString().Trim('"')
                 : throw new Exception("TableName not supplied");  
 
-            var filePath = Path.Combine(_logDirectory, $"Loader_DataObject_{logFileName}_.log");
+            var filePath = Path.Combine(_logDirectory, $"Loader_DataObject_{logFileName}.log");
 
             using (var writer = new StreamWriter(filePath, true)) {
                 writer.WriteLine($"{logEvent.RenderMessage()}");
@@ -82,8 +86,10 @@ namespace VortexLoader
 
     internal static class Logger
     {
+        private static string _dateTimeString = DateTime.Now.ToString("yyyyMMdd-HHmmss");
         private static Serilog.Core.Logger _logger;
-        
+        private static string _logDir = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+
         public static ILogger Current => _logger;
 
         static Logger() {
@@ -92,27 +98,27 @@ namespace VortexLoader
                 .WriteTo.Logger(lc => lc
                     .Filter.ByIncludingOnly(e => e.Level < (LogEventLevel)6)
                     .Enrich.WithExceptionData()
-                    .WriteTo.File(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Vortex", "Loader", "Loader_System_.log"),
-                    rollingInterval: RollingInterval.Day,
+                    .WriteTo.File(System.IO.Path.Combine(_logDir, @"Vortex", "Loader",$"{_dateTimeString}", "Loader_System.log"),
+                    rollingInterval: RollingInterval.Infinite,
                     shared: true,
                     outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}"))
 
                 .WriteTo.Logger(lc => lc
                     .Filter.ByIncludingOnly(e => e.Level == (LogEventLevel)6)
-                    .WriteTo.Sink(new DynamicFileSink(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Vortex", "Loader"))))
+                    .WriteTo.Sink(new DynamicFileSink(System.IO.Path.Combine(_logDir, @"Vortex", "Loader", $"{_dateTimeString}"))))
 
                 .WriteTo.Logger(lc => lc
                     .WriteTo.Console()
                     .Filter.ByIncludingOnly(e => e.Level == (LogEventLevel)7)
-                    .WriteTo.File(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Vortex", "Loader", "Loader_DataTotalCount_.log"),
-                    rollingInterval: RollingInterval.Day,
+                    .WriteTo.File(System.IO.Path.Combine(_logDir, @"Vortex", "Loader", $"{_dateTimeString}", $"Loader_DataTotalCount.log"),
+                    rollingInterval: RollingInterval.Infinite,
                     shared: true,
                     outputTemplate: "{Message:lj}{NewLine}"))
 
                 .WriteTo.Logger(lc => lc
                     .Filter.ByIncludingOnly(e => e.Level == (LogEventLevel)8)
-                    .WriteTo.File(System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), @"Vortex", "Loader", "Loader_DataError_.log"),
-                    rollingInterval: RollingInterval.Day,
+                    .WriteTo.File(System.IO.Path.Combine(_logDir, @"Vortex", "Loader", $"{_dateTimeString}", "Loader_DataError.log"),
+                    rollingInterval: RollingInterval.Infinite,
                     shared: true,
                     outputTemplate: "{Message:lj}{NewLine}"))
 

@@ -69,7 +69,7 @@ namespace S100Framework.Applications
             S57_NaturalFeaturesA(source, destination, filter);
 
             //  SoundingsP
-            //S57_SoundingsP(source, destination, filter);
+            S57_SoundingsP(source, destination, filter);
 
             //  SoundingsP
             S57_DangersP(source, destination, filter);
@@ -113,7 +113,7 @@ namespace S100Framework.Applications
                     var filePath = System.IO.Path.Combine(_notesPath, ntxtds);
                     if (File.Exists(filePath)) {
                         var note = new Note(filePath);
-                        string fileLocator = default;
+                        string? fileLocator = default;
                         string fileReference = ntxtds;
                         string language = "eng";
 
@@ -135,7 +135,7 @@ namespace S100Framework.Applications
                     var filePath = System.IO.Path.Combine(_notesPath, txtdsc);
                     if (File.Exists(filePath)) {
                         var note = new Note(filePath);
-                        string fileLocator = default;
+                        string? fileLocator = default;
                         string fileReference = txtdsc;
                         string language = "eng";
 
@@ -164,8 +164,8 @@ namespace S100Framework.Applications
 
 
                     foreach (var value in informs) {
-                        string fileLocator = default;
-                        string fileReference = default;
+                        string? fileLocator = default;
+                        string? fileReference = default;
                         string language = "eng";
 
                         var instance = new information {
@@ -189,8 +189,8 @@ namespace S100Framework.Applications
                     string[] ninfoms = ninfom != null ? ninfom.Split(';') : Array.Empty<string>();
 
                     foreach (var value in ninfoms) {
-                        string fileLocator = default;
-                        string fileReference = default;
+                        string? fileLocator = default;
+                        string? fileReference = default;
                         string language = "dan";
 
                         var instance = new information {

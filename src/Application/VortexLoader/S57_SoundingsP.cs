@@ -1,12 +1,13 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
 {
     internal static partial class ImporterNIS
     {
         private static void S57_SoundingsP(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            Console.WriteLine("SoundingsP");
+            var tableName = "SoundingsP";
 
             using var s = source.OpenDataset<FeatureClass>("SoundingsP");
             using var pointset = target.OpenDataset<FeatureClass>("pointset");
@@ -16,64 +17,88 @@ namespace S100Framework.Applications
             using var insertPointset = pointset.CreateInsertCursor();
 
             using var cursor = s.Search(filter, true);
+
+            var convertedCount = 0;
+            var recordCount = 0;
+
+
             while (cursor.MoveNext()) {
-                var current = (Feature)cursor.Current;
-                var subtype = Convert.ToInt32(current["FCSubtype"]);
+                recordCount += 1;
+
+                var feature = (Feature)cursor.Current;
+                var current = new SoundingsP(feature);
+
+                var objectid = current.OBJECTID ?? default;
+                var globalid = current.GLOBALID;
+                var longname = current.LNAM ?? Strings.UNKNOWN;
+                var subtype = current.FCSUBTYPE ?? default;
+                var depth = current.DEPTH ?? default;
+                var quasou = current.QUASOU ?? default;
+                var quapos = current.P_QUAPOS ?? default;
+                var tecsou = current.TECSOU ?? default;
+                var objnam = current.OBJNAM ?? default;
+                var nobjnm = current.NOBJNM ?? default;
+
+
 
                 switch (subtype) {
                     case 1:
-                        var depth = Convert.ToDouble(current["DEPTH"]);
-                        int? quasou = DBNull.Value == current["QUASOU"] || string.IsNullOrEmpty(Convert.ToString(current["QUASOU"])) ? null : Convert.ToInt32(current["QUASOU"]);
-                        int? quapos = DBNull.Value == current["P_QUAPOS"] || string.IsNullOrEmpty(Convert.ToString(current["P_QUAPOS"])) ? null : Convert.ToInt32(current["P_QUAPOS"]);
-
                         bufferPointset["ps"] = "S-101";
                         bufferPointset["code"] = "Sounding";
 
-                        var shape = (MapPoint)current.GetShape();
-                        var mappoint = MapPointBuilderEx.CreateMapPoint(shape.X, shape.Y, depth, shape.SpatialReference);
+
+                        var shape = current.SHAPE as MapPoint;
+                        if (shape == default) {
+                            Logger.Current.DataError(objectid, tableName, longname, "");
+                            continue;
+                        }
+
+                        var mappoint = MapPointBuilderEx.CreateMapPoint(shape.X, shape.Y, Convert.ToDouble(depth), shape.SpatialReference);
                         bufferPointset["shape"] = MultipointBuilderEx.CreateMultipoint(mappoint);
 
-                        if (!quasou.HasValue || quasou != 5) {
+                        if (quasou == default || !string.Equals(quasou, "5", StringComparison.InvariantCultureIgnoreCase)) {
                             var sounding = new S100Framework.DomainModel.S101.FeatureTypes.Sounding {
                             };
-                            if (quasou.HasValue) {
+                            if (quasou != default) {
                                 sounding.qualityOfVerticalMeasurement = new List<S100Framework.DomainModel.S101.qualityOfVerticalMeasurement> {
-                                            (S100Framework.DomainModel.S101.qualityOfVerticalMeasurement)quasou
+                                            (S100Framework.DomainModel.S101.qualityOfVerticalMeasurement)Enum.Parse(typeof(S100Framework.DomainModel.S101.qualityOfVerticalMeasurement), quasou)
                                         };
                             }
-                            if (DBNull.Value != current["TECSOU"] && !string.IsNullOrEmpty(Convert.ToString(current["TECSOU"]))) {
+                            if (tecsou != default && !string.IsNullOrEmpty(tecsou)) {
                                 sounding.techniqueOfVerticalMeasurement = new List<S100Framework.DomainModel.S101.techniqueOfVerticalMeasurement> {
-                                            (S100Framework.DomainModel.S101.techniqueOfVerticalMeasurement)Convert.ToInt32(current["TECSOU"])
+                                            (S100Framework.DomainModel.S101.techniqueOfVerticalMeasurement)Enum.Parse(typeof(S100Framework.DomainModel.S101.techniqueOfVerticalMeasurement), tecsou)
                                         };
                             }
-                            if (DBNull.Value != current["OBJNAM"]) {
-                                var objnam = Convert.ToString(current["OBJNAM"])?.Trim();
-                                if (!string.IsNullOrEmpty(objnam)) {
+                            if (objnam != default) {
+                                
+                                if (!string.IsNullOrEmpty(objnam.Trim())) {
                                     sounding.featureName.Add(new DomainModel.S101.ComplexAttributes.featureName {
                                         language = "eng",
                                         nameUsage = null,
-                                        name = objnam,
+                                        name = objnam.Trim(),
                                     });
                                 }
                             }
-                            if (DBNull.Value != current["NOBJNM"]) {
-                                var nobjnm = Convert.ToString(current["NOBJNM"])?.Trim();
-                                if (!string.IsNullOrEmpty(nobjnm)) {
+                            if (nobjnm != default) {
+                                
+                                if (!string.IsNullOrEmpty(nobjnm.Trim())) {
                                     sounding.featureName.Add(new DomainModel.S101.ComplexAttributes.featureName {
                                         language = "dk",
                                         nameUsage = DomainModel.S101.nameUsage.AlternateNameDisplay,
-                                        name = nobjnm,
+                                        name = nobjnm.Trim(),
                                     });
                                 }
                             }
 
-                            AddFeatureName(sounding.featureName, current);
-                            AddInformation(sounding.information, current);
+                            AddFeatureName(sounding.featureName, feature);
+                            AddInformation(sounding.information, feature);
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding);
                             var oid = insertPointset.Insert(bufferPointset);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding));
+                            convertedCount++;
 
-                            if (quapos.HasValue && quapos == 4) {
+                            if (quapos != default && quapos == 4) {
                                 /*  SOUNDG with attribute QUAPOS = 4 (approximate) will also be converted to an instance of the S101 Information type Spatial Quality (see S-101 DCEG clause 24.5), attribute quality of horizontal
                                     measurement = 4 (approximate), associated to the geometry of the Sounding feature using the
                                     association Spatial Association. */
@@ -95,14 +120,18 @@ namespace S100Framework.Applications
                                 EXPSOU, NOBJNM, OBJNAM, SOUACC and STATUS will not be converted. It is considered that
                                 these attributes are not relevant for Depth – No Bottom Found in S-101. */
                             var instance = new S100Framework.DomainModel.S101.FeatureTypes.DepthNoBottomFound {
+
                             };
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             var oid = insertPointset.Insert(bufferPointset);
+                            Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                            convertedCount++;
                         }
                         break;
                 }
             }
+            Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
     }
 }
