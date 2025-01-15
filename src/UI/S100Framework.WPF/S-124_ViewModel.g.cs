@@ -1,4 +1,4 @@
-using S100Framework.DomainModel;
+using S100Framework.DomainModel.Bindings;
 using S100Framework.DomainModel.S124;
 using S100Framework.DomainModel.S124.ComplexAttributes;
 using S100Framework.DomainModel.S124.FeatureTypes;
@@ -6,9 +6,9 @@ using S100Framework.DomainModel.S124.InformationTypes;
 using System.Collections.Immutable;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Reflection;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
+#nullable enable
 
 namespace S100Framework.WPF.ViewModel.S124
 {
@@ -44,15 +44,13 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("FeatureBindings", 200)]
     public partial class featureNameViewModel : ViewModelBase
     {
+
         private String _language = string.Empty;
+
         [Category("featureName")]
         public String language
         {
-            get
-            {
-                return _language;
-            }
-
+            get { return _language; }
             set
             {
                 SetValue(ref _language, value);
@@ -60,14 +58,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _name = string.Empty;
+
         [Category("featureName")]
         public String name
         {
-            get
-            {
-                return _name;
-            }
-
+            get { return _name; }
             set
             {
                 SetValue(ref _name, value);
@@ -75,14 +70,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private nameUsage? _nameUsage = default;
+
         [Category("featureName")]
         public nameUsage? nameUsage
         {
-            get
-            {
-                return _nameUsage;
-            }
-
+            get { return _nameUsage; }
             set
             {
                 SetValue(ref _nameUsage, value);
@@ -106,7 +98,6 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.featureName Model => new()
         {
@@ -114,26 +105,25 @@ namespace S100Framework.WPF.ViewModel.S124
             name = this._name,
             nameUsage = this._nameUsage,
         };
-
-        public featureNameViewModel(IViewModelHost? host = null) : base(host)
+        public featureNameViewModel() : base()
         {
         }
+
     }
+
 
     [CategoryOrder("dateTimeRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class dateTimeRangeViewModel : ViewModelBase
     {
+
         private DateTime _dateTimeEnd;
+
         [Category("dateTimeRange")]
         public DateTime dateTimeEnd
         {
-            get
-            {
-                return _dateTimeEnd;
-            }
-
+            get { return _dateTimeEnd; }
             set
             {
                 SetValue(ref _dateTimeEnd, value);
@@ -141,14 +131,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private DateTime _dateTimeStart;
+
         [Category("dateTimeRange")]
         public DateTime dateTimeStart
         {
-            get
-            {
-                return _dateTimeStart;
-            }
-
+            get { return _dateTimeStart; }
             set
             {
                 SetValue(ref _dateTimeStart, value);
@@ -170,33 +157,31 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.dateTimeRange Model => new()
         {
             dateTimeEnd = this._dateTimeEnd,
             dateTimeStart = this._dateTimeStart,
         };
-
-        public dateTimeRangeViewModel(IViewModelHost? host = null) : base(host)
+        public dateTimeRangeViewModel() : base()
         {
         }
+
     }
+
 
     [CategoryOrder("eNCFeatureReference", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class eNCFeatureReferenceViewModel : ViewModelBase
     {
+
         private String _editionNumber = string.Empty;
+
         [Category("eNCFeatureReference")]
         public String editionNumber
         {
-            get
-            {
-                return _editionNumber;
-            }
-
+            get { return _editionNumber; }
             set
             {
                 SetValue(ref _editionNumber, value);
@@ -204,14 +189,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _eNCName = string.Empty;
+
         [Category("eNCFeatureReference")]
         public String eNCName
         {
-            get
-            {
-                return _eNCName;
-            }
-
+            get { return _eNCName; }
             set
             {
                 SetValue(ref _eNCName, value);
@@ -222,14 +204,11 @@ namespace S100Framework.WPF.ViewModel.S124
         public ObservableCollection<String> featureObjectIdentifier { get; set; } = new();
 
         private String _updateNumber = string.Empty;
+
         [Category("eNCFeatureReference")]
         public String updateNumber
         {
-            get
-            {
-                return _updateNumber;
-            }
-
+            get { return _updateNumber; }
             set
             {
                 SetValue(ref _updateNumber, value);
@@ -258,7 +237,6 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.eNCFeatureReference Model => new()
         {
@@ -267,34 +245,33 @@ namespace S100Framework.WPF.ViewModel.S124
             featureObjectIdentifier = this.featureObjectIdentifier.ToList(),
             updateNumber = this._updateNumber,
         };
-
-        public eNCFeatureReferenceViewModel(IViewModelHost? host = null) : base(host)
+        public eNCFeatureReferenceViewModel() : base()
         {
-            featureObjectIdentifier.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            featureObjectIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureObjectIdentifier));
             };
         }
+
     }
+
 
     [CategoryOrder("featureReference", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class featureReferenceViewModel : ViewModelBase
     {
+
         [Category("featureReference")]
         public ObservableCollection<String> featureIdentifier { get; set; } = new();
 
         private dateTimeRangeViewModel _dateTimeRange;
+
         [Category("featureReference")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public dateTimeRangeViewModel dateTimeRange
         {
-            get
-            {
-                return _dateTimeRange;
-            }
-
+            get { return _dateTimeRange; }
             set
             {
                 SetValue(ref _dateTimeRange, value);
@@ -319,7 +296,6 @@ namespace S100Framework.WPF.ViewModel.S124
                 dateTimeRange = new();
                 dateTimeRange.Load(instance.dateTimeRange);
             }
-
             atoNNumber.Clear();
             if (instance.atoNNumber is not null)
                 foreach (var e in instance.atoNNumber)
@@ -341,7 +317,6 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.featureReference Model => new()
         {
@@ -350,38 +325,37 @@ namespace S100Framework.WPF.ViewModel.S124
             atoNNumber = this.atoNNumber.ToList(),
             eNCFeatureReference = this.eNCFeatureReference.ToList(),
         };
-
-        public featureReferenceViewModel(IViewModelHost? host = null) : base(host)
+        public featureReferenceViewModel() : base()
         {
-            featureIdentifier.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            featureIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureIdentifier));
             };
-            atoNNumber.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            atoNNumber.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(atoNNumber));
             };
-            eNCFeatureReference.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            eNCFeatureReference.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(eNCFeatureReference));
             };
         }
+
     }
+
 
     [CategoryOrder("fixedDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class fixedDateRangeViewModel : ViewModelBase
     {
+
         private DateOnly? _dateEnd = default;
+
         [Category("fixedDateRange")]
         public DateOnly? dateEnd
         {
-            get
-            {
-                return _dateEnd;
-            }
-
+            get { return _dateEnd; }
             set
             {
                 SetValue(ref _dateEnd, value);
@@ -389,14 +363,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private DateOnly? _dateStart = default;
+
         [Category("fixedDateRange")]
         public DateOnly? dateStart
         {
-            get
-            {
-                return _dateStart;
-            }
-
+            get { return _dateStart; }
             set
             {
                 SetValue(ref _dateStart, value);
@@ -418,36 +389,33 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.fixedDateRange Model => new()
         {
             dateEnd = this._dateEnd,
             dateStart = this._dateStart,
         };
-
-        public fixedDateRangeViewModel(IViewModelHost? host = null) : base(host)
+        public fixedDateRangeViewModel() : base()
         {
         }
+
     }
 
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
     [CategoryOrder("information", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class informationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
+
         private String _fileLocator = string.Empty;
+
         [Category("information")]
         public String fileLocator
         {
-            get
-            {
-                return _fileLocator;
-            }
-
+            get { return _fileLocator; }
             set
             {
                 SetValue(ref _fileLocator, value);
@@ -455,14 +423,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _fileReference = string.Empty;
+
         [Category("information")]
         public String fileReference
         {
-            get
-            {
-                return _fileReference;
-            }
-
+            get { return _fileReference; }
             set
             {
                 SetValue(ref _fileReference, value);
@@ -470,14 +435,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _headline = string.Empty;
+
         [Category("information")]
         public String headline
         {
-            get
-            {
-                return _headline;
-            }
-
+            get { return _headline; }
             set
             {
                 SetValue(ref _headline, value);
@@ -485,14 +447,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _language = string.Empty;
+
         [Category("information")]
         public String language
         {
-            get
-            {
-                return _language;
-            }
-
+            get { return _language; }
             set
             {
                 SetValue(ref _language, value);
@@ -500,14 +459,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _text = string.Empty;
+
         [Category("information")]
         public String text
         {
-            get
-            {
-                return _text;
-            }
-
+            get { return _text; }
             set
             {
                 SetValue(ref _text, value);
@@ -535,7 +491,6 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.information Model => new()
         {
@@ -545,27 +500,26 @@ namespace S100Framework.WPF.ViewModel.S124
             language = this._language,
             text = this._text,
         };
-
-        public informationViewModel(IViewModelHost? host = null) : base(host)
+        public informationViewModel() : base()
         {
         }
+
     }
+
 
     [CategoryOrder("warningInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class warningInformationViewModel : ViewModelBase
     {
+
         private informationViewModel? _information;
+
         [Category("warningInformation")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public informationViewModel? information
         {
-            get
-            {
-                return _information;
-            }
-
+            get { return _information; }
             set
             {
                 SetValue(ref _information, value);
@@ -576,7 +530,6 @@ namespace S100Framework.WPF.ViewModel.S124
         [Editor(typeof(Editors.CodeListCheckComboEditor), typeof(Editors.CodeListCheckComboEditor))]
         [Category("warningInformation")]
         public ObservableCollection<navwarnTypeDetails> navwarnTypeDetails { get; set; } = new();
-
         [Browsable(false)]
         public navwarnTypeDetails[] navwarnTypeDetailsList => CodeList.navwarnTypeDetails.ToArray();
 
@@ -588,7 +541,6 @@ namespace S100Framework.WPF.ViewModel.S124
                 information = new();
                 information.Load(instance.information);
             }
-
             navwarnTypeDetails.Clear();
             if (instance.navwarnTypeDetails is not null)
                 foreach (var e in instance.navwarnTypeDetails)
@@ -604,37 +556,35 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.warningInformation Model => new()
         {
             information = this._information?.Model,
             navwarnTypeDetails = this.navwarnTypeDetails.ToList(),
         };
-
-        public warningInformationViewModel(IViewModelHost? host = null) : base(host)
+        public warningInformationViewModel() : base()
         {
-            navwarnTypeDetails.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            navwarnTypeDetails.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(navwarnTypeDetails));
             };
         }
+
     }
+
 
     [CategoryOrder("chartAffected", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class chartAffectedViewModel : ViewModelBase
     {
+
         private String _chartNumber = string.Empty;
+
         [Category("chartAffected")]
         public String chartNumber
         {
-            get
-            {
-                return _chartNumber;
-            }
-
+            get { return _chartNumber; }
             set
             {
                 SetValue(ref _chartNumber, value);
@@ -642,14 +592,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _chartPlanNumber = string.Empty;
+
         [Category("chartAffected")]
         public String chartPlanNumber
         {
-            get
-            {
-                return _chartPlanNumber;
-            }
-
+            get { return _chartPlanNumber; }
             set
             {
                 SetValue(ref _chartPlanNumber, value);
@@ -657,14 +604,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private DateTime _editionDate;
+
         [Category("chartAffected")]
         public DateTime editionDate
         {
-            get
-            {
-                return _editionDate;
-            }
-
+            get { return _editionDate; }
             set
             {
                 SetValue(ref _editionDate, value);
@@ -672,14 +616,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private DateTime? _lastNoticeDate = default;
+
         [Category("chartAffected")]
         public DateTime? lastNoticeDate
         {
-            get
-            {
-                return _lastNoticeDate;
-            }
-
+            get { return _lastNoticeDate; }
             set
             {
                 SetValue(ref _lastNoticeDate, value);
@@ -705,7 +646,6 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.chartAffected Model => new()
         {
@@ -714,27 +654,26 @@ namespace S100Framework.WPF.ViewModel.S124
             editionDate = this._editionDate,
             lastNoticeDate = this._lastNoticeDate,
         };
-
-        public chartAffectedViewModel(IViewModelHost? host = null) : base(host)
+        public chartAffectedViewModel() : base()
         {
         }
+
     }
+
 
     [CategoryOrder("affectedChartPublications", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class affectedChartPublicationsViewModel : ViewModelBase
     {
+
         private chartAffectedViewModel? _chartAffected;
+
         [Category("affectedChartPublications")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public chartAffectedViewModel? chartAffected
         {
-            get
-            {
-                return _chartAffected;
-            }
-
+            get { return _chartAffected; }
             set
             {
                 SetValue(ref _chartAffected, value);
@@ -742,14 +681,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _chartPublicationIdentifier = string.Empty;
+
         [Category("affectedChartPublications")]
         public String chartPublicationIdentifier
         {
-            get
-            {
-                return _chartPublicationIdentifier;
-            }
-
+            get { return _chartPublicationIdentifier; }
             set
             {
                 SetValue(ref _chartPublicationIdentifier, value);
@@ -757,14 +693,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _internationalChartAffected = string.Empty;
+
         [Category("affectedChartPublications")]
         public String internationalChartAffected
         {
-            get
-            {
-                return _internationalChartAffected;
-            }
-
+            get { return _internationalChartAffected; }
             set
             {
                 SetValue(ref _internationalChartAffected, value);
@@ -772,14 +705,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _language = string.Empty;
+
         [Category("affectedChartPublications")]
         public String language
         {
-            get
-            {
-                return _language;
-            }
-
+            get { return _language; }
             set
             {
                 SetValue(ref _language, value);
@@ -787,14 +717,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _publicationAffected = string.Empty;
+
         [Category("affectedChartPublications")]
         public String publicationAffected
         {
-            get
-            {
-                return _publicationAffected;
-            }
-
+            get { return _publicationAffected; }
             set
             {
                 SetValue(ref _publicationAffected, value);
@@ -809,7 +736,6 @@ namespace S100Framework.WPF.ViewModel.S124
                 chartAffected = new();
                 chartAffected.Load(instance.chartAffected);
             }
-
             chartPublicationIdentifier = instance.chartPublicationIdentifier;
             internationalChartAffected = instance.internationalChartAffected;
             language = instance.language;
@@ -828,7 +754,6 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.affectedChartPublications Model => new()
         {
@@ -838,26 +763,25 @@ namespace S100Framework.WPF.ViewModel.S124
             language = this._language,
             publicationAffected = this._publicationAffected,
         };
-
-        public affectedChartPublicationsViewModel(IViewModelHost? host = null) : base(host)
+        public affectedChartPublicationsViewModel() : base()
         {
         }
+
     }
+
 
     [CategoryOrder("locationName", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class locationNameViewModel : ViewModelBase
     {
+
         private String _language = string.Empty;
+
         [Category("locationName")]
         public String language
         {
-            get
-            {
-                return _language;
-            }
-
+            get { return _language; }
             set
             {
                 SetValue(ref _language, value);
@@ -865,14 +789,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _text = string.Empty;
+
         [Category("locationName")]
         public String text
         {
-            get
-            {
-                return _text;
-            }
-
+            get { return _text; }
             set
             {
                 SetValue(ref _text, value);
@@ -894,33 +815,31 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.locationName Model => new()
         {
             language = this._language,
             text = this._text,
         };
-
-        public locationNameViewModel(IViewModelHost? host = null) : base(host)
+        public locationNameViewModel() : base()
         {
         }
+
     }
+
 
     [CategoryOrder("generalArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class generalAreaViewModel : ViewModelBase
     {
+
         private String _localityIdentifier = string.Empty;
+
         [Category("generalArea")]
         public String localityIdentifier
         {
-            get
-            {
-                return _localityIdentifier;
-            }
-
+            get { return _localityIdentifier; }
             set
             {
                 SetValue(ref _localityIdentifier, value);
@@ -948,40 +867,37 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.generalArea Model => new()
         {
             localityIdentifier = this._localityIdentifier,
             locationName = this.locationName.ToList(),
         };
-
-        public generalAreaViewModel(IViewModelHost? host = null) : base(host)
+        public generalAreaViewModel() : base()
         {
-            locationName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            locationName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(locationName));
             };
         }
+
     }
 
-#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
 
+#pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
     [CategoryOrder("locality", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class localityViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
+
         private String _localityIdentifier = string.Empty;
+
         [Category("locality")]
         public String localityIdentifier
         {
-            get
-            {
-                return _localityIdentifier;
-            }
-
+            get { return _localityIdentifier; }
             set
             {
                 SetValue(ref _localityIdentifier, value);
@@ -1009,37 +925,35 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.locality Model => new()
         {
             localityIdentifier = this._localityIdentifier,
             locationName = this.locationName.ToList(),
         };
-
-        public localityViewModel(IViewModelHost? host = null) : base(host)
+        public localityViewModel() : base()
         {
-            locationName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            locationName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(locationName));
             };
         }
+
     }
+
 
     [CategoryOrder("messageSeriesIdentifier", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class messageSeriesIdentifierViewModel : ViewModelBase
     {
+
         private String _agencyResponsibleForProduction = string.Empty;
+
         [Category("messageSeriesIdentifier")]
         public String agencyResponsibleForProduction
         {
-            get
-            {
-                return _agencyResponsibleForProduction;
-            }
-
+            get { return _agencyResponsibleForProduction; }
             set
             {
                 SetValue(ref _agencyResponsibleForProduction, value);
@@ -1047,14 +961,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _countryName = string.Empty;
+
         [Category("messageSeriesIdentifier")]
         public String countryName
         {
-            get
-            {
-                return _countryName;
-            }
-
+            get { return _countryName; }
             set
             {
                 SetValue(ref _countryName, value);
@@ -1062,14 +973,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _nameOfSeries = string.Empty;
+
         [Category("messageSeriesIdentifier")]
         public String nameOfSeries
         {
-            get
-            {
-                return _nameOfSeries;
-            }
-
+            get { return _nameOfSeries; }
             set
             {
                 SetValue(ref _nameOfSeries, value);
@@ -1077,14 +985,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _warningIdentifier = string.Empty;
+
         [Category("messageSeriesIdentifier")]
         public String warningIdentifier
         {
-            get
-            {
-                return _warningIdentifier;
-            }
-
+            get { return _warningIdentifier; }
             set
             {
                 SetValue(ref _warningIdentifier, value);
@@ -1092,14 +997,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private Int32 _warningNumber;
+
         [Category("messageSeriesIdentifier")]
         public Int32 warningNumber
         {
-            get
-            {
-                return _warningNumber;
-            }
-
+            get { return _warningNumber; }
             set
             {
                 SetValue(ref _warningNumber, value);
@@ -1107,14 +1009,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private warningType _warningType;
+
         [Category("messageSeriesIdentifier")]
         public warningType warningType
         {
-            get
-            {
-                return _warningType;
-            }
-
+            get { return _warningType; }
             set
             {
                 SetValue(ref _warningType, value);
@@ -1122,14 +1021,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private Int32 _year;
+
         [Category("messageSeriesIdentifier")]
         public Int32 year
         {
-            get
-            {
-                return _year;
-            }
-
+            get { return _year; }
             set
             {
                 SetValue(ref _year, value);
@@ -1161,7 +1057,6 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.messageSeriesIdentifier Model => new()
         {
@@ -1173,26 +1068,25 @@ namespace S100Framework.WPF.ViewModel.S124
             warningType = this._warningType,
             year = this._year,
         };
-
-        public messageSeriesIdentifierViewModel(IViewModelHost? host = null) : base(host)
+        public messageSeriesIdentifierViewModel() : base()
         {
         }
+
     }
+
 
     [CategoryOrder("nAVWARNTitle", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class nAVWARNTitleViewModel : ViewModelBase
     {
+
         private String _language = string.Empty;
+
         [Category("nAVWARNTitle")]
         public String language
         {
-            get
-            {
-                return _language;
-            }
-
+            get { return _language; }
             set
             {
                 SetValue(ref _language, value);
@@ -1200,14 +1094,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private String _text = string.Empty;
+
         [Category("nAVWARNTitle")]
         public String text
         {
-            get
-            {
-                return _text;
-            }
-
+            get { return _text; }
             set
             {
                 SetValue(ref _text, value);
@@ -1229,24 +1120,25 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.ComplexAttributes.nAVWARNTitle Model => new()
         {
             language = this._language,
             text = this._text,
         };
-
-        public nAVWARNTitleViewModel(IViewModelHost? host = null) : base(host)
+        public nAVWARNTitleViewModel() : base()
         {
         }
+
     }
+
 
     [CategoryOrder("NAVWARNPreamble", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NAVWARNPreambleViewModel : ViewModelBase
     {
+
         [Category("NAVWARNPreamble")]
         public ObservableCollection<affectedChartPublications> affectedChartPublications { get; set; } = new();
 
@@ -1257,15 +1149,12 @@ namespace S100Framework.WPF.ViewModel.S124
         public ObservableCollection<locality> locality { get; set; } = new();
 
         private messageSeriesIdentifierViewModel _messageSeriesIdentifier;
+
         [Category("NAVWARNPreamble")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public messageSeriesIdentifierViewModel messageSeriesIdentifier
         {
-            get
-            {
-                return _messageSeriesIdentifier;
-            }
-
+            get { return _messageSeriesIdentifier; }
             set
             {
                 SetValue(ref _messageSeriesIdentifier, value);
@@ -1276,14 +1165,11 @@ namespace S100Framework.WPF.ViewModel.S124
         public ObservableCollection<nAVWARNTitle> nAVWARNTitle { get; set; } = new();
 
         private DateTime? _cancellationDate = default;
+
         [Category("NAVWARNPreamble")]
         public DateTime? cancellationDate
         {
-            get
-            {
-                return _cancellationDate;
-            }
-
+            get { return _cancellationDate; }
             set
             {
                 SetValue(ref _cancellationDate, value);
@@ -1291,14 +1177,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private Boolean _intService;
+
         [Category("NAVWARNPreamble")]
         public Boolean intService
         {
-            get
-            {
-                return _intService;
-            }
-
+            get { return _intService; }
             set
             {
                 SetValue(ref _intService, value);
@@ -1306,16 +1189,13 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private navwarnTypeGeneral _navwarnTypeGeneral;
+
         [DomainModel.CodeList(nameof(navwarnTypeGeneralList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("NAVWARNPreamble")]
         public navwarnTypeGeneral navwarnTypeGeneral
         {
-            get
-            {
-                return _navwarnTypeGeneral;
-            }
-
+            get { return _navwarnTypeGeneral; }
             set
             {
                 SetValue(ref _navwarnTypeGeneral, value);
@@ -1323,33 +1203,14 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private DateTime _publicationTime;
+
         [Category("NAVWARNPreamble")]
         public DateTime publicationTime
         {
-            get
-            {
-                return _publicationTime;
-            }
-
+            get { return _publicationTime; }
             set
             {
                 SetValue(ref _publicationTime, value);
-            }
-        }
-
-        private InformationBindingViewModel<DomainModel.S124.Associations.InformationAssociations.NWReferences> _theReferencesOfNWReferences = new(typeof(NAVWARNPreamble).GetProperty("theReferencesOfNWReferences")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S124.Associations.InformationAssociations.NWReferences> theReferencesOfNWReferences
-        {
-            get
-            {
-                return _theReferencesOfNWReferences;
-            }
-
-            set
-            {
-                base.SetValue(ref _theReferencesOfNWReferences, value);
             }
         }
 
@@ -1376,7 +1237,6 @@ namespace S100Framework.WPF.ViewModel.S124
                 messageSeriesIdentifier = new();
                 messageSeriesIdentifier.Load(instance.messageSeriesIdentifier);
             }
-
             nAVWARNTitle.Clear();
             if (instance.nAVWARNTitle is not null)
                 foreach (var e in instance.nAVWARNTitle)
@@ -1403,7 +1263,6 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.InformationTypes.NAVWARNPreamble Model => new()
         {
@@ -1417,45 +1276,44 @@ namespace S100Framework.WPF.ViewModel.S124
             navwarnTypeGeneral = this._navwarnTypeGeneral,
             publicationTime = this._publicationTime,
         };
-
-        public NAVWARNPreambleViewModel(IViewModelHost? host = null) : base(host)
+        public NAVWARNPreambleViewModel() : base()
         {
-            affectedChartPublications.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            affectedChartPublications.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(affectedChartPublications));
             };
-            generalArea.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            generalArea.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(generalArea));
             };
-            locality.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            locality.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(locality));
             };
-            nAVWARNTitle.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            nAVWARNTitle.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(nAVWARNTitle));
             };
         }
+
     }
+
 
     [CategoryOrder("References", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ReferencesViewModel : ViewModelBase
     {
+
         [Category("References")]
         public ObservableCollection<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = new();
 
         private Boolean _noMessageOnHand;
+
         [Category("References")]
         public Boolean noMessageOnHand
         {
-            get
-            {
-                return _noMessageOnHand;
-            }
-
+            get { return _noMessageOnHand; }
             set
             {
                 SetValue(ref _noMessageOnHand, value);
@@ -1463,19 +1321,17 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private referenceCategory _referenceCategory;
+
         [Category("References")]
         public referenceCategory referenceCategory
         {
-            get
-            {
-                return _referenceCategory;
-            }
-
+            get { return _referenceCategory; }
             set
             {
                 SetValue(ref _referenceCategory, value);
             }
         }
+
 
         public void Load(DomainModel.S124.InformationTypes.References instance)
         {
@@ -1497,7 +1353,6 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.InformationTypes.References Model => new()
         {
@@ -1505,21 +1360,23 @@ namespace S100Framework.WPF.ViewModel.S124
             noMessageOnHand = this._noMessageOnHand,
             referenceCategory = this._referenceCategory,
         };
-
-        public ReferencesViewModel(IViewModelHost? host = null) : base(host)
+        public ReferencesViewModel() : base()
         {
-            messageSeriesIdentifier.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            messageSeriesIdentifier.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(messageSeriesIdentifier));
             };
         }
+
     }
+
 
     [CategoryOrder("NAVWARNPart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NAVWARNPartViewModel : ViewModelBase
     {
+
         [Category("NAVWARNPart")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -1530,15 +1387,12 @@ namespace S100Framework.WPF.ViewModel.S124
         public ObservableCollection<fixedDateRange> fixedDateRange { get; set; } = new();
 
         private warningInformationViewModel _warningInformation;
+
         [Category("NAVWARNPart")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public warningInformationViewModel warningInformation
         {
-            get
-            {
-                return _warningInformation;
-            }
-
+            get { return _warningInformation; }
             set
             {
                 SetValue(ref _warningInformation, value);
@@ -1546,67 +1400,17 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private restriction? _restriction = default;
+
         [Category("NAVWARNPart")]
         public restriction? restriction
         {
-            get
-            {
-                return _restriction;
-            }
-
+            get { return _restriction; }
             set
             {
                 SetValue(ref _restriction, value);
             }
         }
 
-        private InformationBindingViewModel<DomainModel.S124.Associations.InformationAssociations.NWPreambleContent> _headerOfNWPreambleContent = new(typeof(NAVWARNPart).GetProperty("headerOfNWPreambleContent")!.GetCustomAttributes<InformationTypeAttribute>());
-        [Category("InformationBindings")]
-        [ExpandableObject]
-        public InformationBindingViewModel<DomainModel.S124.Associations.InformationAssociations.NWPreambleContent> headerOfNWPreambleContent
-        {
-            get
-            {
-                return _headerOfNWPreambleContent;
-            }
-
-            set
-            {
-                base.SetValue(ref _headerOfNWPreambleContent, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.AreaAffected> _affectsOfAreaAffected = new(typeof(NAVWARNPart).GetProperty("affectsOfAreaAffected")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.AreaAffected> affectsOfAreaAffected
-        {
-            get
-            {
-                return _affectsOfAreaAffected;
-            }
-
-            set
-            {
-                base.SetValue(ref _affectsOfAreaAffected, value);
-            }
-        }
-
-        private FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.TextAssociation> _positionsOfTextAssociation = new(typeof(NAVWARNPart).GetProperty("positionsOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation
-        {
-            get
-            {
-                return _positionsOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _positionsOfTextAssociation, value);
-            }
-        }
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance)
         {
@@ -1628,7 +1432,6 @@ namespace S100Framework.WPF.ViewModel.S124
                 warningInformation = new();
                 warningInformation.Load(instance.warningInformation);
             }
-
             restriction = instance.restriction;
         }
 
@@ -1644,7 +1447,6 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.FeatureTypes.NAVWARNPart Model => new()
         {
@@ -1654,44 +1456,32 @@ namespace S100Framework.WPF.ViewModel.S124
             warningInformation = this._warningInformation?.Model,
             restriction = this._restriction,
         };
-
-        public NAVWARNPartViewModel(IViewModelHost? host = null) : base(host)
+        public NAVWARNPartViewModel() : base()
         {
-            featureName.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureName));
             };
-            featureReference.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            featureReference.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(featureReference));
             };
-            fixedDateRange.CollectionChanged += (object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
+            fixedDateRange.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
             {
                 OnPropertyChanged(nameof(fixedDateRange));
             };
         }
+
     }
+
 
     [CategoryOrder("NAVWARNAreaAffected", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NAVWARNAreaAffectedViewModel : ViewModelBase
     {
-        private FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.AreaAffected> _impactsOfAreaAffected = new(typeof(NAVWARNAreaAffected).GetProperty("impactsOfAreaAffected")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.AreaAffected> impactsOfAreaAffected
-        {
-            get
-            {
-                return _impactsOfAreaAffected;
-            }
 
-            set
-            {
-                base.SetValue(ref _impactsOfAreaAffected, value);
-            }
-        }
+
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected instance)
         {
@@ -1704,31 +1494,29 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.FeatureTypes.NAVWARNAreaAffected Model => new()
         {
         };
-
-        public NAVWARNAreaAffectedViewModel(IViewModelHost? host = null) : base(host)
+        public NAVWARNAreaAffectedViewModel() : base()
         {
         }
+
     }
+
 
     [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TextPlacementViewModel : ViewModelBase
     {
+
         private String _text = string.Empty;
+
         [Category("TextPlacement")]
         public String text
         {
-            get
-            {
-                return _text;
-            }
-
+            get { return _text; }
             set
             {
                 SetValue(ref _text, value);
@@ -1736,14 +1524,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private Int32 _textOffsetBearing;
+
         [Category("TextPlacement")]
         public Int32 textOffsetBearing
         {
-            get
-            {
-                return _textOffsetBearing;
-            }
-
+            get { return _textOffsetBearing; }
             set
             {
                 SetValue(ref _textOffsetBearing, value);
@@ -1751,14 +1536,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private Int32 _textOffsetDistance;
+
         [Category("TextPlacement")]
         public Int32 textOffsetDistance
         {
-            get
-            {
-                return _textOffsetDistance;
-            }
-
+            get { return _textOffsetDistance; }
             set
             {
                 SetValue(ref _textOffsetDistance, value);
@@ -1766,14 +1548,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private Boolean? _textRotation = default;
+
         [Category("TextPlacement")]
         public Boolean? textRotation
         {
-            get
-            {
-                return _textRotation;
-            }
-
+            get { return _textRotation; }
             set
             {
                 SetValue(ref _textRotation, value);
@@ -1781,14 +1560,11 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private textType? _textType = default;
+
         [Category("TextPlacement")]
         public textType? textType
         {
-            get
-            {
-                return _textType;
-            }
-
+            get { return _textType; }
             set
             {
                 SetValue(ref _textType, value);
@@ -1796,35 +1572,17 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         private Int32? _scaleMinimum = default;
+
         [Category("TextPlacement")]
         public Int32? scaleMinimum
         {
-            get
-            {
-                return _scaleMinimum;
-            }
-
+            get { return _scaleMinimum; }
             set
             {
                 SetValue(ref _scaleMinimum, value);
             }
         }
 
-        private FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.TextAssociation> _identifiesOfTextAssociation = new(typeof(TextPlacement).GetProperty("identifiesOfTextAssociation")!.GetCustomAttributes<FeatureTypeAttribute>());
-        [Category("FeatureBindings")]
-        [ExpandableObject]
-        public FeatureBindingViewModel<DomainModel.S124.Associations.FeatureAssociations.TextAssociation> identifiesOfTextAssociation
-        {
-            get
-            {
-                return _identifiesOfTextAssociation;
-            }
-
-            set
-            {
-                base.SetValue(ref _identifiesOfTextAssociation, value);
-            }
-        }
 
         public void Load(DomainModel.S124.FeatureTypes.TextPlacement instance)
         {
@@ -1849,7 +1607,6 @@ namespace S100Framework.WPF.ViewModel.S124
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
-
         [Browsable(false)]
         public DomainModel.S124.FeatureTypes.TextPlacement Model => new()
         {
@@ -1860,9 +1617,352 @@ namespace S100Framework.WPF.ViewModel.S124
             textType = this._textType,
             scaleMinimum = this._scaleMinimum,
         };
-
-        public TextPlacementViewModel(IViewModelHost? host = null) : base(host)
+        public TextPlacementViewModel() : base()
         {
         }
+
+    }
+
+
+    public class AreaAffectedViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "AreaAffected";
+        public override string[] Roles => ["affects", "impacts"];
+
+        private FeatureBindingViewModel? _affects;
+        [ExpandableObject]
+        public FeatureBindingViewModel? affects
+        {
+            get { return _affects; }
+            set { this.SetValue(ref _affects, value); }
+        }
+        private FeatureBindingViewModel? _impacts;
+        [ExpandableObject]
+        public FeatureBindingViewModel? impacts
+        {
+            get { return _impacts; }
+            set { this.SetValue(ref _impacts, value); }
+        }
+
+        public override FeatureAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                affects = null;
+                if (value is not null)
+                {
+                    affects = value?.role switch
+                    {
+                        "impacts" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : new OptionalFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleFeatureBindingViewModel()
+                        {
+                            FeatureTypes = [value!.FeatureType],
+                        },
+                    };
+                }
+                impacts = null;
+                if (value is not null)
+                {
+                    impacts = value?.role switch
+                    {
+                        "affects" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : new OptionalFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleFeatureBindingViewModel()
+                        {
+                            FeatureTypes = [value!.FeatureType],
+                        },
+                    };
+                }
+            }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => AreaAffectedViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<NAVWARNPart>() {
+                    roleType = roleType.association,
+                    role = "affects",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NAVWARNAreaAffected)],
+                },
+                new FeatureAssociationConnector<NAVWARNAreaAffected>() {
+                    roleType = roleType.association,
+                    role = "impacts",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NAVWARNPart)],
+                },
+            };
+    }
+
+    public class TextAssociationViewModel : FeatureAssociationViewModel
+    {
+        public override string Code => "TextAssociation";
+        public override string[] Roles => ["identifies", "positions"];
+
+        private FeatureBindingViewModel? _identifies;
+        [ExpandableObject]
+        public FeatureBindingViewModel? identifies
+        {
+            get { return _identifies; }
+            set { this.SetValue(ref _identifies, value); }
+        }
+        private FeatureBindingViewModel? _positions;
+        [ExpandableObject]
+        public FeatureBindingViewModel? positions
+        {
+            get { return _positions; }
+            set { this.SetValue(ref _positions, value); }
+        }
+
+        public override FeatureAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                identifies = null;
+                if (value is not null)
+                {
+                    identifies = value?.role switch
+                    {
+                        "positions" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : new OptionalFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleFeatureBindingViewModel()
+                        {
+                            FeatureTypes = [value!.FeatureType],
+                        },
+                    };
+                }
+                positions = null;
+                if (value is not null)
+                {
+                    positions = value?.role switch
+                    {
+                        "identifies" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        } : new OptionalFeatureBindingViewModel
+                        {
+                            FeatureTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleFeatureBindingViewModel()
+                        {
+                            FeatureTypes = [value!.FeatureType],
+                        },
+                    };
+                }
+            }
+        }
+        public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
+        public static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {
+                new FeatureAssociationConnector<TextPlacement>() {
+                    roleType = roleType.composition,
+                    role = "identifies",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NAVWARNPart)],
+                },
+                new FeatureAssociationConnector<NAVWARNPart>() {
+                    roleType = roleType.association,
+                    role = "positions",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(TextPlacement)],
+                },
+            };
+    }
+
+    public class NWPreambleContentViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "NWPreambleContent";
+        public override string[] Roles => ["theWarningPart", "header"];
+
+        private InformationBindingViewModel? _theWarningPart;
+        [ExpandableObject]
+        public InformationBindingViewModel? theWarningPart
+        {
+            get { return _theWarningPart; }
+            set { this.SetValue(ref _theWarningPart, value); }
+        }
+        private InformationBindingViewModel? _header;
+        [ExpandableObject]
+        public InformationBindingViewModel? header
+        {
+            get { return _header; }
+            set { this.SetValue(ref _header, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theWarningPart = null;
+                if (value is not null)
+                {
+                    theWarningPart = value?.role switch
+                    {
+                        "header" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                header = null;
+                if (value is not null)
+                {
+                    header = value?.role switch
+                    {
+                        "theWarningPart" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => NWPreambleContentViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<NAVWARNPart>() {
+                    roleType = roleType.association,
+                    role = "header",
+                    Lower = 1,
+                    Upper = 1,
+                    AssociationTypes = [typeof(NAVWARNPreamble)],
+                },
+            };
+    }
+
+    public class NWReferencesViewModel : InformationAssociationViewModel
+    {
+        public override string Code => "NWReferences";
+        public override string[] Roles => ["theWarning", "theReferences"];
+
+        private InformationBindingViewModel? _theWarning;
+        [ExpandableObject]
+        public InformationBindingViewModel? theWarning
+        {
+            get { return _theWarning; }
+            set { this.SetValue(ref _theWarning, value); }
+        }
+        private InformationBindingViewModel? _theReferences;
+        [ExpandableObject]
+        public InformationBindingViewModel? theReferences
+        {
+            get { return _theReferences; }
+            set { this.SetValue(ref _theReferences, value); }
+        }
+
+        public override InformationAssociationConnector? associationConnector
+        {
+            get { return _associationConnector; }
+            set
+            {
+                this.SetValue(ref _associationConnector, value);
+                theWarning = null;
+                if (value is not null)
+                {
+                    theWarning = value?.role switch
+                    {
+                        "theReferences" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+                theReferences = null;
+                if (value is not null)
+                {
+                    theReferences = value?.role switch
+                    {
+                        "theWarning" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        } : new OptionalInformationBindingViewModel
+                        {
+                            InformationTypes = value.AssociationTypes,
+                        },
+                        _ => new SingleInformationBindingViewModel()
+                        {
+                            InformationTypes = [value!.InformationType],
+                        },
+                    };
+                }
+            }
+        }
+        public override InformationAssociationConnector[] associationConnectorInformations => NWReferencesViewModel._associationConnectorInformations;
+        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
+                new InformationAssociationConnector<NAVWARNPreamble>() {
+                    roleType = roleType.association,
+                    role = "theReferences",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(References)],
+                },
+            };
     }
 }

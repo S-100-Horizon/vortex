@@ -1,10 +1,13 @@
 ﻿#define prop
 //#define propfull
 
+using S100Framework;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Text;
+using System.Xml;
 using System.Xml.Linq;
+using System.Xml.XPath;
 using Xunit.Abstractions;
 
 
@@ -22,6 +25,8 @@ namespace TestS100Framework
             public int? Value { get; set; }
         }
     }
+
+
 
     //public class informationBinding<T>
     //{
@@ -76,6 +81,14 @@ namespace TestS100Framework
     {
         public class UnitTestCodeBuilder
         {
+            static string[] productSpecifications = new string[] {
+                    @".\Artifacts\FeatureCatalogue.xml",
+                    @".\Artifacts\jpS-122_FC_1.2.1.xml",
+                    @".\Artifacts\S-124FC_1.5_20240330.xml",
+                    @".\Artifacts\S-128_FC_Ed2.0.0.xml",
+                    @".\Artifacts\131_1_0_0_20230315_FC.xml",
+                };
+
             private readonly ITestOutputHelper _output;
 
             public UnitTestCodeBuilder(ITestOutputHelper output) {
@@ -147,7 +160,7 @@ namespace TestS100Framework
                 var type1 = typeof(Test.NullableTest);
                 var type2 = typeof(bool?);
 
-                var s100 = XDocument.Load(@".\Artifacts\S-101_FC_2.0.0.20241016.xml");
+                var s100 = XDocument.Load(@".\Artifacts\FeatureCatalogue.xml");
 
                 var content = S100Framework.ClassBuilder.CatalogueBuilder52(s100);
 
@@ -226,6 +239,194 @@ namespace TestS100Framework
 
                 File.WriteAllText(@".\..\..\..\DomainModelBase.cs", content.common, Encoding.UTF8);
             }
+
+            [Fact]
+            public void Test_FeatureBindings() {
+                var productSpecification = XDocument.Load(@".\Artifacts\FeatureCatalogue.xml");
+
+                var navigator = productSpecification.CreateNavigator();
+                navigator.MoveToFollowing(XPathNodeType.Element);
+                var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+                var scope_S100 = scopes["S100FC"];
+
+                var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                foreach (var e in scopes)
+                    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+                var elements = productSpecification.XPathSelectElements("//S100FC:featureBinding", xmlNamespaceManager).ToList();
+
+                var islandAggregation = elements.Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals("IslandAggregation")).ToList();
+
+                var theCollection = islandAggregation.Where(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value.Equals("theCollection")).ToList();
+
+                var theComponent = islandAggregation.Where(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value.Equals("theComponent")).ToList();
+
+                Assert.Equal(2, theCollection.Count());
+                Assert.Single(theComponent);
+                System.Diagnostics.Debugger.Break();
+            }
+
+            [Fact]
+            public void Test_FeatureBindingEndpoints() {
+                foreach (var p in productSpecifications) {
+                    var endpoints = new List<featureBinding>();
+
+                    var productSpecification = XDocument.Load(p);
+
+                    var navigator = productSpecification.CreateNavigator();
+                    navigator.MoveToFollowing(XPathNodeType.Element);
+                    var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+                    var scope_S100 = scopes["S100FC"];
+
+                    var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                    foreach (var e in scopes)
+                        xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+                    var elements = productSpecification.XPathSelectElements("//S100FC:featureBinding", xmlNamespaceManager).ToList();
+
+                    foreach (var element in elements) {
+                        var roleType = element.Attribute("roleType")!.Value;
+
+                        var association = element.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value;
+                        var role = element.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
+
+                        var lower = int.Parse(element.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
+                        var upper = element.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
+
+                        var u = default(int?);
+                        if (!(upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true"))) {
+                            u = int.Parse(upper!.Value);
+                        }
+
+                        var binding = new featureBinding(roleType, lower, u, association, role);
+                        endpoints.Add(binding);
+                    }
+
+                    var productId = productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
+
+                    _output.WriteLine($"{productId}");
+
+                    foreach (var endpoint in endpoints.GroupBy(e => e.association)) {
+                        //_output.WriteLine($"{endpoint.Key}");
+                        foreach (var role in endpoint.GroupBy(e => e.role)) {
+                            //_output.WriteLine($"\t{role.Key}");
+
+                            var lower = role.First().lower;
+                            var upper = role.First().upper;
+
+                            if (!role.All(e => e.lower == lower && e.upper == upper)) {
+                                foreach (var d in role.Distinct()) {
+                                    _output.WriteLine($"\t\t{endpoint.Key}: {d.roleType}, {d.role}, {d.lower}, {d.upper}");
+                                }
+
+                            }
+                        }
+                    }
+                    _output.WriteLine("");
+                }
+            }
+
+            [Fact]
+            public void Test_RoleUsage() {
+                foreach (var p in productSpecifications) {
+                    var endpoints = new List<featureBinding>();
+
+                    var productSpecification = XDocument.Load(p);
+
+                    var navigator = productSpecification.CreateNavigator();
+                    navigator.MoveToFollowing(XPathNodeType.Element);
+                    var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+                    var scope_S100 = scopes["S100FC"];
+
+                    var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                    foreach (var e in scopes)
+                        xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+                    var productId = productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
+                    var versionNumber = productSpecification.XPathSelectElement("//S100FC:versionNumber", xmlNamespaceManager)!.Value;
+
+                    _output.WriteLine($"--- {productId}, {versionNumber} --------------------------------------------------------");
+
+                    var informationAssociations = productSpecification.XPathSelectElements("//S100FC:S100_FC_InformationAssociation", xmlNamespaceManager);
+
+                    foreach (var e in informationAssociations) {
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        var roles = e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => e.Attribute("ref")!.Value);
+
+                        foreach (var r in roles) {
+                            var features = productSpecification.XPathSelectElements($"//S100FC:informationBinding/S100FC:role[@ref=\"{r}\"]", xmlNamespaceManager);
+                            if (!features.Any()) {
+                                _output.WriteLine($"\tinformationBinding: {code}, {r}");
+                            }
+                        }
+                    }
+
+
+                    var featureAssociations = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
+
+                    foreach (var e in featureAssociations) {
+                        var code = e.Element(XName.Get("code", scope_S100))!.Value;
+
+                        var roles = e.XPathSelectElements("S100FC:role", xmlNamespaceManager).Select(e => e.Attribute("ref")!.Value);
+
+                        foreach (var r in roles) {
+                            var features = productSpecification.XPathSelectElements($"//S100FC:S100_FC_FeatureType/S100FC:featureBinding/S100FC:role[@ref=\"{r}\"]", xmlNamespaceManager);
+                            if (!features.Any()) {
+                                _output.WriteLine($"\t    featureBinding: {code}, {r}");
+                            }
+                        }
+                    }
+
+                    _output.WriteLine("");
+                }
+            }
+
+            [Fact]
+            public void Test_Hierarchy() {
+                var productSpecification = XDocument.Load(@".\Artifacts\131_1_0_0_20230315_FC.xml");
+
+                var navigator = productSpecification.CreateNavigator();
+                navigator.MoveToFollowing(XPathNodeType.Element);
+                var scopes = navigator.GetNamespacesInScope(XmlNamespaceScope.All);
+
+                var scope_S100 = scopes["S100FC"];
+
+                var xmlNamespaceManager = new XmlNamespaceManager(new NameTable());
+                foreach (var e in scopes)
+                    xmlNamespaceManager.AddNamespace(e.Key, e.Value);
+
+                var productId = productSpecification.XPathSelectElement("//S100FC:productId", xmlNamespaceManager)!.Value.Replace("-", string.Empty).ToUpperInvariant();
+                var versionNumber = productSpecification.XPathSelectElement("//S100FC:versionNumber", xmlNamespaceManager)!.Value;
+
+                var featureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
+
+                var features = new List<S100Framework.ClassBuilder.featureType>();
+
+                foreach (var f in featureTypes) {
+                    var name = f.Element(XName.Get("name", scope_S100))!.Value;
+                    var code = f.Element(XName.Get("code", scope_S100))!.Value;
+
+                    var superType = f.Elements(XName.Get("superType", scope_S100)).FirstOrDefault()?.Value;
+
+                    var isAbstract = f.Attribute("isAbstract") != default && bool.Parse(f.Attribute("isAbstract")!.Value);
+
+                    features.Add(new S100Framework.ClassBuilder.featureType(code, superType, isAbstract));
+                }
+
+                features = features.OrderByDescending(e => e.isAbstract ? 1 : 0).ThenByDescending(e => e.superType is null ? 1 : 0).ToList();
+
+                var hierarchyFeatureType = features.Hierarchy("FeatureType").ToList();
+
+                System.Diagnostics.Debugger.Break();
+            }
+
+            //public record featureType(string code, string? superType, bool isAbstract);
+
+            public record featureBinding(string roleType, int lower, int? upper, string association, string role);
         }
     }
 }

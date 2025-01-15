@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 
+#nullable enable
 
 namespace S100Framework.DomainModel.S124
 {
@@ -1885,7 +1886,9 @@ namespace S100Framework.DomainModel.S124
         public partial class featureName
         {
             public String language { get; set; } = string.Empty;
+
             public String name { get; set; } = string.Empty;
+
             public nameUsage? nameUsage { get; set; } = default;
 
             public featureName()
@@ -1894,6 +1897,7 @@ namespace S100Framework.DomainModel.S124
                 name = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1910,15 +1914,18 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class eNCFeatureReference
         {
             public String editionNumber { get; set; } = string.Empty;
+
             public String eNCName { get; set; } = string.Empty;
 
             [Required()]
             public List<String> featureObjectIdentifier { get; set; }
+
             public String updateNumber { get; set; } = string.Empty;
 
             public eNCFeatureReference()
@@ -1930,6 +1937,7 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureReference
@@ -1938,7 +1946,9 @@ namespace S100Framework.DomainModel.S124
 
             [Required()]
             public dateTimeRange dateTimeRange { get; set; }
+
             public List<String> atoNNumber { get; set; } = [];
+
             public List<eNCFeatureReference> eNCFeatureReference { get; set; } = [];
 
             public featureReference()
@@ -1951,11 +1961,13 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class fixedDateRange
         {
             public DateOnly? dateEnd { get; set; } = default;
+
             public DateOnly? dateStart { get; set; } = default;
 
             public fixedDateRange()
@@ -1963,17 +1975,21 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class information
 #pragma warning restore CS8981
         {
             public String fileLocator { get; set; } = string.Empty;
+
             public String fileReference { get; set; } = string.Empty;
+
             public String headline { get; set; } = string.Empty;
+
             public String language { get; set; } = string.Empty;
+
             public String text { get; set; } = string.Empty;
 
             public information()
@@ -1981,11 +1997,13 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class warningInformation
         {
             public information? information { get; set; }
+
             public List<navwarnTypeDetails> navwarnTypeDetails { get; set; } = [];
 
             public warningInformation()
@@ -1993,15 +2011,18 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class chartAffected
         {
             public String chartNumber { get; set; } = string.Empty;
+
             public String chartPlanNumber { get; set; } = string.Empty;
 
             [Required()]
             public DateTime editionDate { get; set; }
+
             public DateTime? lastNoticeDate { get; set; } = default;
 
             public chartAffected()
@@ -2010,14 +2031,19 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class affectedChartPublications
         {
             public chartAffected? chartAffected { get; set; }
+
             public String chartPublicationIdentifier { get; set; } = string.Empty;
+
             public String internationalChartAffected { get; set; } = string.Empty;
+
             public String language { get; set; } = string.Empty;
+
             public String publicationAffected { get; set; } = string.Empty;
 
             public affectedChartPublications()
@@ -2025,11 +2051,13 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class locationName
         {
             public String language { get; set; } = string.Empty;
+
             public String text { get; set; } = string.Empty;
 
             public locationName()
@@ -2037,6 +2065,7 @@ namespace S100Framework.DomainModel.S124
                 text = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2053,10 +2082,10 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class locality
 #pragma warning restore CS8981
         {
@@ -2071,13 +2100,17 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class messageSeriesIdentifier
         {
             public String agencyResponsibleForProduction { get; set; } = string.Empty;
+
             public String countryName { get; set; } = string.Empty;
+
             public String nameOfSeries { get; set; } = string.Empty;
+
             public String warningIdentifier { get; set; } = string.Empty;
 
             [Required()]
@@ -2096,11 +2129,13 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class nAVWARNTitle
         {
             public String language { get; set; } = string.Empty;
+
             public String text { get; set; } = string.Empty;
 
             public nAVWARNTitle()
@@ -2108,6 +2143,7 @@ namespace S100Framework.DomainModel.S124
                 text = string.Empty;
             }
         }
+
     }
 
     public enum Role
@@ -2141,45 +2177,10 @@ namespace S100Framework.DomainModel.S124
     {
         namespace InformationAssociations
         {
-
-            public class NWPreambleContent : InformationAssociation
-            {
-                public NWPreambleContent()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theWarningPart, Role.header };
-            }
-
-
-            public class NWReferences : InformationAssociation
-            {
-                public NWReferences()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theWarning, Role.theReferences };
-            }
-
         }
         namespace FeatureAssociations
         {
-
-            public class AreaAffected : FeatureAssociation
-            {
-                public AreaAffected()
-                {
-                }
-                public static Role[] Roles => new[] { Role.affects, Role.impacts };
-            }
-
-
-            public class TextAssociation : FeatureAssociation
-            {
-                public TextAssociation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.identifies, Role.positions };
-            }
-
+            using S100Framework.DomainModel.S124.FeatureTypes;
         }
     }
 
@@ -2190,22 +2191,24 @@ namespace S100Framework.DomainModel.S124
     {
         using ComplexAttributes;
         using DomainModel;
-        using S100Framework.DomainModel.Bindings;
 
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNPreamble : InformationTypeBase
+        public partial class NAVWARNPreamble : InformationNode
         {
             public List<affectedChartPublications> affectedChartPublications { get; set; } = [];
 
             [Required()]
             public List<generalArea> generalArea { get; set; }
+
             public List<locality> locality { get; set; } = [];
 
             [Required()]
             public messageSeriesIdentifier messageSeriesIdentifier { get; set; }
+
             public List<nAVWARNTitle> nAVWARNTitle { get; set; } = [];
+
             public DateTime? cancellationDate { get; set; } = default;
 
             [Required()]
@@ -2216,9 +2219,6 @@ namespace S100Framework.DomainModel.S124
 
             [Required()]
             public DateTime publicationTime { get; set; }
-
-            [InformationType(typeof(References))]
-            public List<informationBinding<Associations.InformationAssociations.NWReferences>> theReferencesOfNWReferences { get; set; } = [];
             public override string Code => nameof(NAVWARNPreamble);
 
             public NAVWARNPreamble()
@@ -2238,9 +2238,10 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class References : InformationTypeBase
+        public partial class References : InformationNode
         {
             public List<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = [];
 
@@ -2255,6 +2256,7 @@ namespace S100Framework.DomainModel.S124
             {
             }
         }
+
     }
 
     namespace FeatureTypes
@@ -2262,29 +2264,22 @@ namespace S100Framework.DomainModel.S124
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
-        using S100Framework.DomainModel.Bindings;
 
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNPart : FeatureTypeBase
+        public partial class NAVWARNPart : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public List<featureReference> featureReference { get; set; } = [];
+
             public List<fixedDateRange> fixedDateRange { get; set; } = [];
 
             [Required()]
             public warningInformation warningInformation { get; set; }
+
             public restriction? restriction { get; set; } = default;
-
-            [InformationType(typeof(NAVWARNPreamble))]
-            public informationBinding<Associations.InformationAssociations.NWPreambleContent> headerOfNWPreambleContent { get; set; }
-
-            [FeatureType(typeof(NAVWARNAreaAffected))]
-            public List<featureBinding<Associations.FeatureAssociations.AreaAffected>> affectsOfAreaAffected { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public List<featureBinding<Associations.FeatureAssociations.TextAssociation>> positionsOfTextAssociation { get; set; } = [];
             public override string Code => nameof(NAVWARNPart);
 
             public NAVWARNPart()
@@ -2295,12 +2290,11 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NAVWARNAreaAffected : FeatureTypeBase
+        public partial class NAVWARNAreaAffected : FeatureNode
         {
-            [FeatureType(typeof(NAVWARNPart))]
-            public featureBinding<Associations.FeatureAssociations.AreaAffected> impactsOfAreaAffected { get; set; }
             public override string Code => nameof(NAVWARNAreaAffected);
 
             public NAVWARNAreaAffected()
@@ -2308,9 +2302,10 @@ namespace S100Framework.DomainModel.S124
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement : FeatureTypeBase
+        public partial class TextPlacement : FeatureNode
         {
             public String text { get; set; } = string.Empty;
 
@@ -2319,17 +2314,18 @@ namespace S100Framework.DomainModel.S124
 
             [Required()]
             public Int32 textOffsetDistance { get; set; }
-            public Boolean? textRotation { get; set; } = default;
-            public textType? textType { get; set; } = default;
-            public Int32? scaleMinimum { get; set; } = default;
 
-            [FeatureType(typeof(NAVWARNPart))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? identifiesOfTextAssociation { get; set; }
+            public Boolean? textRotation { get; set; } = default;
+
+            public textType? textType { get; set; } = default;
+
+            public Int32? scaleMinimum { get; set; } = default;
             public override string Code => nameof(TextPlacement);
 
             public TextPlacement()
             {
             }
         }
+
     }
 }

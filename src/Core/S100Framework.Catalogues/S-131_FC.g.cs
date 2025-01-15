@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 
+#nullable enable
 
 namespace S100Framework.DomainModel.S131
 {
@@ -1730,9 +1731,13 @@ namespace S100Framework.DomainModel.S131
         public partial class contactAddress
         {
             public List<String> deliveryPoint { get; set; } = [];
+
             public String cityName { get; set; } = string.Empty;
+
             public String administrativeDivision { get; set; } = string.Empty;
+
             public String countryName { get; set; } = string.Empty;
+
             public String postalCode { get; set; } = string.Empty;
 
             public contactAddress()
@@ -1740,12 +1745,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class featureName
         {
             public Boolean? displayName { get; set; } = default;
+
             public String language { get; set; } = string.Empty;
+
             public String name { get; set; } = string.Empty;
 
             public featureName()
@@ -1754,11 +1762,13 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class fixedDateRange
         {
             public DateOnly? dateStart { get; set; } = default;
+
             public DateOnly? dateEnd { get; set; } = default;
 
             public fixedDateRange()
@@ -1766,12 +1776,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class frequencyPair
         {
             public List<Int32> frequencyShoreStationTransmits { get; set; } = [];
+
             public List<Int32> frequencyShoreStationReceives { get; set; } = [];
+
             public List<String> contactInstructions { get; set; } = [];
 
             public frequencyPair()
@@ -1779,12 +1792,14 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class horizontalPositionUncertainty
         {
             [Required()]
             public Decimal uncertaintyFixed { get; set; }
+
             public Decimal? uncertaintyVariableFactor { get; set; } = default;
 
             public horizontalPositionUncertainty()
@@ -1792,17 +1807,21 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class information
 #pragma warning restore CS8981
         {
             public String fileLocator { get; set; } = string.Empty;
+
             public String fileReference { get; set; } = string.Empty;
+
             public List<String> headline { get; set; } = [];
+
             public String language { get; set; } = string.Empty;
+
             public String text { get; set; } = string.Empty;
 
             public information()
@@ -1810,16 +1829,23 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource
         {
             public String onlineResourceLinkageURL { get; set; } = string.Empty;
+
             public String protocol { get; set; } = string.Empty;
+
             public String applicationProfile { get; set; } = string.Empty;
+
             public String nameOfResource { get; set; } = string.Empty;
+
             public String onlineResourceDescription { get; set; } = string.Empty;
+
             public onlineFunction? onlineFunction { get; set; } = default;
+
             public String protocolRequest { get; set; } = string.Empty;
 
             public onlineResource()
@@ -1828,10 +1854,10 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class orientation
 #pragma warning restore CS8981
         {
@@ -1844,6 +1870,7 @@ namespace S100Framework.DomainModel.S131
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1860,18 +1887,22 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class rxNCode
         {
             public categoryOfRxN? categoryOfRxN { get; set; }
+
             public actionOrActivity? actionOrActivity { get; set; }
+
             public List<String> headline { get; set; } = [];
 
             public rxNCode()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1887,15 +1918,21 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class textContent
         {
             public categoryOfText? categoryOfText { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public onlineResource? onlineResource { get; set; }
+
             public String source { get; set; } = string.Empty;
+
             public sourceType? sourceType { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
 
             public textContent()
@@ -1903,19 +1940,24 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalsByDayOfWeek
         {
             public List<dayOfWeek> dayOfWeek { get; set; } = [];
+
             public Boolean? dayOfWeekIsRange { get; set; } = default;
+
             public List<TimeOnly> timeOfDayStart { get; set; } = [];
+
             public List<TimeOnly> timeOfDayEnd { get; set; } = [];
 
             public timeIntervalsByDayOfWeek()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1930,18 +1972,21 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalUncertainty
         {
             [Required()]
             public Decimal uncertaintyFixed { get; set; }
+
             public Decimal? uncertaintyVariableFactor { get; set; } = default;
 
             public verticalUncertainty()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1964,12 +2009,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class weatherResource
         {
             public onlineResource? onlineResource { get; set; }
+
             public dynamicResource? dynamicResource { get; set; } = default;
+
             public textContent? textContent { get; set; }
 
             public weatherResource()
@@ -1977,20 +2025,26 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class bearingInformation
         {
             public cardinalDirection? cardinalDirection { get; set; } = default;
+
             public Decimal? distance { get; set; } = default;
+
             public List<Decimal> sectorBearing { get; set; } = [];
+
             public List<information> information { get; set; } = [];
+
             public orientation? orientation { get; set; }
 
             public bearingInformation()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2005,14 +2059,19 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class constructionInformation
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public condition? condition { get; set; } = default;
+
             public String development { get; set; } = string.Empty;
+
             public String locationByText { get; set; } = string.Empty;
+
             public List<textContent> textContent { get; set; } = [];
 
             public constructionInformation()
@@ -2020,6 +2079,7 @@ namespace S100Framework.DomainModel.S131
                 development = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2037,6 +2097,7 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class facilitiesLayoutDescription
@@ -2049,6 +2110,7 @@ namespace S100Framework.DomainModel.S131
                 textContent = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2063,18 +2125,22 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class graphic
 #pragma warning restore CS8981
         {
             [Required()]
             public List<String> pictorialRepresentation { get; set; }
+
             public String pictureCaption { get; set; } = string.Empty;
+
             public DateTime? sourceDate { get; set; } = default;
+
             public String pictureInformation { get; set; } = string.Empty;
+
             public bearingInformation? bearingInformation { get; set; }
 
             public graphic()
@@ -2082,6 +2148,7 @@ namespace S100Framework.DomainModel.S131
                 pictorialRepresentation = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2096,6 +2163,7 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class limitsDescription
@@ -2108,6 +2176,7 @@ namespace S100Framework.DomainModel.S131
                 textContent = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2122,6 +2191,7 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class markedBy
@@ -2135,6 +2205,7 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class offshoreMarkDescription
@@ -2147,6 +2218,7 @@ namespace S100Framework.DomainModel.S131
                 textContent = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2163,12 +2235,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class spatialAccuracy
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public horizontalPositionUncertainty? horizontalPositionUncertainty { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public spatialAccuracy()
@@ -2176,18 +2251,23 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class telecommunications
 #pragma warning restore CS8981
         {
             public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
+
             public String telecommunicationIdentifier { get; set; } = string.Empty;
+
             public String telecommunicationCarrier { get; set; } = string.Empty;
+
             public String contactInstructions { get; set; } = string.Empty;
+
             public List<telecommunicationService> telecommunicationService { get; set; } = [];
+
             public scheduleByDayOfWeek? scheduleByDayOfWeek { get; set; }
 
             public telecommunications()
@@ -2196,21 +2276,28 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class generalHarbourInformation
         {
             public generalPortDescription? generalPortDescription { get; set; }
+
             public facilitiesLayoutDescription? facilitiesLayoutDescription { get; set; }
+
             public limitsDescription? limitsDescription { get; set; }
+
             public constructionInformation? constructionInformation { get; set; }
+
             public cargoServicesDescription? cargoServicesDescription { get; set; }
+
             public List<weatherResource> weatherResource { get; set; } = [];
 
             public generalHarbourInformation()
             {
             }
         }
+
     }
 
     public enum Role
@@ -2343,202 +2430,10 @@ namespace S100Framework.DomainModel.S131
     {
         namespace InformationAssociations
         {
-
-            public class AdditionalInformation : InformationAssociation
-            {
-                public AdditionalInformation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.providesInformation, Role.informationProvidedFor };
-            }
-
-
-            public class AuthorityContact : InformationAssociation
-            {
-                public AuthorityContact()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theAuthority, Role.theContactDetails };
-            }
-
-
-            public class AuthorityHours : InformationAssociation
-            {
-                public AuthorityHours()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theAuthority_srvHrs, Role.theServiceHours };
-            }
-
-
-            public class AssociatedRxN : InformationAssociation
-            {
-                public AssociatedRxN()
-                {
-                }
-                public static Role[] Roles => new[] { Role.appliesInLocation, Role.theRxN };
-            }
-
-
-            public class ExceptionalWorkday : InformationAssociation
-            {
-                public ExceptionalWorkday()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theServiceHours_nsdy, Role.partialWorkingDay };
-            }
-
-
-            public class ServiceControl : InformationAssociation
-            {
-                public ServiceControl()
-                {
-                }
-                public static Role[] Roles => new[] { Role.controlledService, Role.controlAuthority };
-            }
-
-
-            public class ServiceContact : InformationAssociation
-            {
-                public ServiceContact()
-                {
-                }
-                public static Role[] Roles => new[] { Role.servicePlace, Role.theContactDetails };
-            }
-
-
-            public class LocationHours : InformationAssociation
-            {
-                public LocationHours()
-                {
-                }
-                public static Role[] Roles => new[] { Role.location_srvHrs, Role.facilityOperatingHours };
-            }
-
-
-            public class RelatedOrganisation : InformationAssociation
-            {
-                public RelatedOrganisation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theInformation, Role.theOrganisation };
-            }
-
-
-            public class InclusionType : InformationAssociation
-            {
-                public InclusionType()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theApplicableRxN, Role.isApplicableTo };
-                [Required()]
-                public membership membership { get; set; }
-            }
-
-
-            public class PermissionType : InformationAssociation
-            {
-                public PermissionType()
-                {
-                }
-                public static Role[] Roles => new[] { Role.vslLocation, Role.permission };
-                [Required()]
-                public categoryOfRelationship categoryOfRelationship { get; set; }
-            }
-
-
-            public class SpatialAssociation : InformationAssociation
-            {
-                public SpatialAssociation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.defines, Role.definedFor };
-            }
-
-
-            public class LimitEntrance : InformationAssociation
-            {
-                public LimitEntrance()
-                {
-                }
-                public static Role[] Roles => new[] { Role.entranceTo, Role.entranceReference };
-            }
-
-
-            public class ServiceAvailability : InformationAssociation
-            {
-                public ServiceAvailability()
-                {
-                }
-                public static Role[] Roles => new[] { Role.locationServed, Role.serviceDescriptionReference };
-            }
-
         }
         namespace FeatureAssociations
         {
-
-            public class TextAssociation : FeatureAssociation
-            {
-                public TextAssociation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.identifies, Role.positions };
-            }
-
-
-            public class Subsection : FeatureAssociation
-            {
-                public Subsection()
-                {
-                }
-                public static Role[] Roles => new[] { Role.subUnit, Role.constitute };
-            }
-
-
-            public class Infrastructure : FeatureAssociation
-            {
-                public Infrastructure()
-                {
-                }
-                public static Role[] Roles => new[] { Role.infrastructureLocation, Role.hasInfrastructure };
-            }
-
-
-            public class PrimaryAuxiliaryFacility : FeatureAssociation
-            {
-                public PrimaryAuxiliaryFacility()
-                {
-                }
-                public static Role[] Roles => new[] { Role.primaryFacility, Role.auxiliaryFacility };
-            }
-
-
-            public class Demarcation : FeatureAssociation
-            {
-                public Demarcation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.demarcationIndicator, Role.demarcatedFeature };
-            }
-
-
-            public class JurisdictionalLimit : FeatureAssociation
-            {
-                public JurisdictionalLimit()
-                {
-                }
-                public static Role[] Roles => new[] { Role.limitReference, Role.limitExtent };
-            }
-
-
-            public class LayoutDivision : FeatureAssociation
-            {
-                public LayoutDivision()
-                {
-                }
-                public static Role[] Roles => new[] { Role.layoutUnit, Role.componentOf };
-            }
-
+            using S100Framework.DomainModel.S131.FeatureTypes;
         }
     }
 
@@ -2549,23 +2444,25 @@ namespace S100Framework.DomainModel.S131
     {
         using ComplexAttributes;
         using DomainModel;
-        using S100Framework.DomainModel.Bindings;
 
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class InformationType : InformationTypeBase
+        public abstract partial class InformationType : InformationNode
         {
             public List<featureName> featureName { get; set; } = [];
-            public fixedDateRange? fixedDateRange { get; set; }
-            public List<periodicDateRange> periodicDateRange { get; set; } = [];
-            public List<graphic> graphic { get; set; } = [];
-            public String source { get; set; } = string.Empty;
-            public sourceType? sourceType { get; set; } = default;
-            public DateOnly? reportedDate { get; set; } = default;
 
-            [InformationType(typeof(NauticalInformation))]
-            public List<informationBinding<Associations.InformationAssociations.AdditionalInformation>> providesInformationOfAdditionalInformation { get; set; } = [];
+            public fixedDateRange? fixedDateRange { get; set; }
+
+            public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
+            public List<graphic> graphic { get; set; } = [];
+
+            public String source { get; set; } = string.Empty;
+
+            public sourceType? sourceType { get; set; } = default;
+
+            public DateOnly? reportedDate { get; set; } = default;
             public override string Code => nameof(InformationType);
 
             public InformationType()
@@ -2573,19 +2470,16 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class AbstractRxN : InformationType
         {
             public categoryOfAuthority? categoryOfAuthority { get; set; } = default;
+
             public List<rxNCode> rxNCode { get; set; } = [];
+
             public List<textContent> textContent { get; set; } = [];
-
-            [InformationType(typeof(Applicability))]
-            public List<informationBinding<Associations.InformationAssociations.InclusionType>> isApplicableToOfInclusionType { get; set; } = [];
-
-            [InformationType(typeof(Authority))]
-            public List<informationBinding<Associations.InformationAssociations.RelatedOrganisation>> theOrganisationOfRelatedOrganisation { get; set; } = [];
             public override string Code => nameof(AbstractRxN);
 
             public AbstractRxN()
@@ -2593,26 +2487,30 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Applicability : InformationType
         {
             public Boolean? inBallast { get; set; } = default;
+
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
+
             public List<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = [];
+
             public categoryOfVessel? categoryOfVessel { get; set; }
+
             public categoryOfVesselRegistry? categoryOfVesselRegistry { get; set; } = default;
+
             public logicalConnectives? logicalConnectives { get; set; } = default;
+
             public Int32? thicknessOfIceCapability { get; set; } = default;
+
             public String vesselPerformance { get; set; } = string.Empty;
+
             public List<information> information { get; set; } = [];
+
             public List<vesselsMeasurements> vesselsMeasurements { get; set; } = [];
-
-            [InformationType(typeof(AbstractRxN))]
-            public List<informationBinding<Associations.InformationAssociations.InclusionType>> theApplicableRxNOfInclusionType { get; set; } = [];
-
-            [InformationType(typeof(InformationType))]
-            public List<informationBinding<Associations.InformationAssociations.PermissionType>> vslLocationOfPermissionType { get; set; } = [];
             public override string Code => nameof(Applicability);
 
             public Applicability()
@@ -2620,22 +2518,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Authority : InformationType
         {
             [Required()]
             public categoryOfAuthority categoryOfAuthority { get; set; }
+
             public textContent? textContent { get; set; }
-
-            [InformationType(typeof(ContactDetails))]
-            public List<informationBinding<Associations.InformationAssociations.AuthorityContact>> theContactDetailsOfAuthorityContact { get; set; } = [];
-
-            [InformationType(typeof(AbstractRxN))]
-            public List<informationBinding<Associations.InformationAssociations.RelatedOrganisation>> theInformationOfRelatedOrganisation { get; set; } = [];
-
-            [InformationType(typeof(ServiceHours))]
-            public List<informationBinding<Associations.InformationAssociations.AuthorityHours>> theServiceHoursOfAuthorityHours { get; set; } = [];
             public override string Code => nameof(Authority);
 
             public Authority()
@@ -2643,22 +2534,35 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AvailablePortServices : InformationType
         {
             public List<firefightingService> firefightingService { get; set; } = [];
+
             public List<medicalService> medicalService { get; set; } = [];
+
             public List<repairService> repairService { get; set; } = [];
+
             public List<technicalPortService> technicalPortService { get; set; } = [];
+
             public List<shipSanitationControl> shipSanitationControl { get; set; } = [];
+
             public List<transportConnection> transportConnection { get; set; } = [];
+
             public List<berthingAssistance> berthingAssistance { get; set; } = [];
+
             public List<cargoService> cargoService { get; set; } = [];
+
             public List<securitySafetyEmergencyService> securitySafetyEmergencyService { get; set; } = [];
+
             public List<wasteDisposalService> wasteDisposalService { get; set; } = [];
+
             public List<supplyService> supplyService { get; set; } = [];
+
             public String tugInformation { get; set; } = string.Empty;
+
             public List<textContent> textContent { get; set; } = [];
             public override string Code => nameof(AvailablePortServices);
 
@@ -2667,25 +2571,34 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ContactDetails : InformationType
         {
             public String callName { get; set; } = string.Empty;
-            public String callSign { get; set; } = string.Empty;
-            public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
-            public List<String> communicationChannel { get; set; } = [];
-            public List<contactAddress> contactAddress { get; set; } = [];
-            public String contactInstructions { get; set; } = string.Empty;
-            public List<Int32> signalFrequency { get; set; } = [];
-            public List<frequencyPair> frequencyPair { get; set; } = [];
-            public List<information> information { get; set; } = [];
-            public String mMSICode { get; set; } = string.Empty;
-            public List<onlineResource> onlineResource { get; set; } = [];
-            public List<telecommunications> telecommunications { get; set; } = [];
 
-            [InformationType(typeof(Authority))]
-            public List<informationBinding<Associations.InformationAssociations.AuthorityContact>> theAuthorityOfAuthorityContact { get; set; } = [];
+            public String callSign { get; set; } = string.Empty;
+
+            public categoryOfCommunicationPreference? categoryOfCommunicationPreference { get; set; } = default;
+
+            public List<String> communicationChannel { get; set; } = [];
+
+            public List<contactAddress> contactAddress { get; set; } = [];
+
+            public String contactInstructions { get; set; } = string.Empty;
+
+            public List<Int32> signalFrequency { get; set; } = [];
+
+            public List<frequencyPair> frequencyPair { get; set; } = [];
+
+            public List<information> information { get; set; } = [];
+
+            public String mMSICode { get; set; } = string.Empty;
+
+            public List<onlineResource> onlineResource { get; set; } = [];
+
+            public List<telecommunications> telecommunications { get; set; } = [];
             public override string Code => nameof(ContactDetails);
 
             public ContactDetails()
@@ -2693,19 +2606,29 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Entrance : InformationType
         {
             public String entranceDescription { get; set; } = string.Empty;
+
             public List<String> associatedFeatureName { get; set; } = [];
+
             public String localKnowledgeDescription { get; set; } = string.Empty;
+
             public String approachDescription { get; set; } = string.Empty;
+
             public List<markedBy> markedBy { get; set; } = [];
+
             public List<landmarkDescription> landmarkDescription { get; set; } = [];
+
             public List<offshoreMarkDescription> offshoreMarkDescription { get; set; } = [];
+
             public List<majorLightDescription> majorLightDescription { get; set; } = [];
+
             public List<usefulMarkDescription> usefulMarkDescription { get; set; } = [];
+
             public List<textContent> textContent { get; set; } = [];
             public override string Code => nameof(Entrance);
 
@@ -2714,12 +2637,11 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NauticalInformation : AbstractRxN
         {
-            [InformationType(typeof(InformationType))]
-            public List<informationBinding<Associations.InformationAssociations.AdditionalInformation>> informationProvidedForOfAdditionalInformation { get; set; } = [];
             public override string Code => nameof(NauticalInformation);
 
             public NauticalInformation()
@@ -2727,12 +2649,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class NonStandardWorkingDay : InformationType
         {
             public List<DateOnly> dateFixed { get; set; } = [];
+
             public List<String> dateVariable { get; set; } = [];
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(NonStandardWorkingDay);
 
@@ -2740,6 +2665,7 @@ namespace S100Framework.DomainModel.S131
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2752,6 +2678,7 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Regulations : AbstractRxN
@@ -2762,6 +2689,7 @@ namespace S100Framework.DomainModel.S131
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2774,19 +2702,15 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class ServiceHours : InformationType
         {
             [Required()]
             public List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NonStandardWorkingDay))]
-            public List<informationBinding<Associations.InformationAssociations.ExceptionalWorkday>> partialWorkingDayOfExceptionalWorkday { get; set; } = [];
-
-            [InformationType(typeof(Authority))]
-            public List<informationBinding<Associations.InformationAssociations.AuthorityHours>> theAuthority_srvHrsOfAuthorityHours { get; set; } = [];
             public override string Code => nameof(ServiceHours);
 
             public ServiceHours()
@@ -2795,11 +2719,13 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpatialQuality : InformationTypeBase
+        public partial class SpatialQuality : InformationNode
         {
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
+
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
             public override string Code => nameof(SpatialQuality);
 
@@ -2807,6 +2733,7 @@ namespace S100Framework.DomainModel.S131
             {
             }
         }
+
     }
 
     namespace FeatureTypes
@@ -2814,36 +2741,33 @@ namespace S100Framework.DomainModel.S131
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
-        using S100Framework.DomainModel.Bindings;
 
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public abstract partial class FeatureType : FeatureTypeBase
+        public abstract partial class FeatureType : FeatureNode
         {
             public String locationMRN { get; set; } = string.Empty;
+
             public String globalLocationNumber { get; set; } = string.Empty;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<rxNCode> rxNCode { get; set; } = [];
+
             public List<graphic> graphic { get; set; } = [];
+
             public String source { get; set; } = string.Empty;
+
             public sourceType? sourceType { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<textContent> textContent { get; set; } = [];
-
-            [InformationType(typeof(Applicability))]
-            public List<informationBinding<Associations.InformationAssociations.PermissionType>> permissionOfPermissionType { get; set; } = [];
-
-            [InformationType(typeof(AbstractRxN))]
-            public List<informationBinding<Associations.InformationAssociations.AssociatedRxN>> theRxNOfAssociatedRxN { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public List<informationBinding<Associations.InformationAssociations.AdditionalInformation>> providesInformationOfAdditionalInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? positionsOfTextAssociation { get; set; }
             public override string Code => nameof(FeatureType);
 
             public FeatureType()
@@ -2851,12 +2775,11 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class OrganizationContactArea : FeatureType
         {
-            [InformationType(typeof(ContactDetails))]
-            public List<informationBinding<Associations.InformationAssociations.ServiceContact>> theContactDetailsOfServiceContact { get; set; } = [];
             public override string Code => nameof(OrganizationContactArea);
 
             public OrganizationContactArea()
@@ -2864,12 +2787,11 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class SupervisedArea : OrganizationContactArea
         {
-            [InformationType(typeof(Authority))]
-            public informationBinding<Associations.InformationAssociations.ServiceControl>? controlAuthorityOfServiceControl { get; set; }
             public override string Code => nameof(SupervisedArea);
 
             public SupervisedArea()
@@ -2877,21 +2799,19 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public abstract partial class HarbourPhysicalInfrastructure : SupervisedArea
         {
             public Decimal? verticalClearanceValue { get; set; } = default;
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            [FeatureType(typeof(Terminal))]
-            public featureBinding<Associations.FeatureAssociations.Infrastructure>? infrastructureLocationOfInfrastructure { get; set; }
             public override string Code => nameof(HarbourPhysicalInfrastructure);
 
             public HarbourPhysicalInfrastructure()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -2904,18 +2824,11 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorBerth : Layout
         {
-            [InformationType(typeof(AvailablePortServices))]
-            public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(MooringWarpingFacility))]
-            public List<featureBinding<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>> auxiliaryFacilityOfPrimaryAuxiliaryFacility { get; set; } = [];
             public override string Code => nameof(AnchorBerth);
 
             public AnchorBerth()
@@ -2923,20 +2836,18 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class AnchorageArea : Layout
         {
             public depthsDescription? depthsDescription { get; set; }
+
             public String locationByText { get; set; } = string.Empty;
+
             public markedBy? markedBy { get; set; }
+
             public iSPSLevel? iSPSLevel { get; set; } = default;
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(AnchorageArea);
 
             public AnchorageArea()
@@ -2944,40 +2855,44 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Berth : Layout
         {
             public Decimal? availableBerthingLength { get; set; } = default;
+
             public String bollardDescription { get; set; } = string.Empty;
+
             public Decimal? bollardPull { get; set; } = default;
+
             public Decimal? minimumBerthDepth { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public Boolean? cathodicProtectionSystem { get; set; } = default;
+
             public categoryOfBerthLocation? categoryOfBerthLocation { get; set; } = default;
+
             public String portFacilityNumber { get; set; } = string.Empty;
+
             public List<String> bollardNumber { get; set; } = [];
+
             public String gLNExtension { get; set; } = string.Empty;
+
             public List<String> metreMarkNumber { get; set; } = [];
+
             public List<String> manifoldNumber { get; set; } = [];
+
             public String rampNumber { get; set; } = string.Empty;
+
             public String locationByText { get; set; } = string.Empty;
+
             public methodOfSecuring? methodOfSecuring { get; set; } = default;
+
             public String uNLocationCode { get; set; } = string.Empty;
+
             public String terminalIdentifier { get; set; } = string.Empty;
-
-            [InformationType(typeof(AvailablePortServices))]
-            public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(BerthPosition))]
-            public List<featureBinding<Associations.FeatureAssociations.Demarcation>> demarcationIndicatorOfDemarcation { get; set; } = [];
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            [FeatureType(typeof(Terminal))]
-            public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(Berth);
 
             public Berth()
@@ -2986,25 +2901,28 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class BerthPosition : Layout
         {
             public Decimal? availableBerthingLength { get; set; } = default;
+
             public String bollardDescription { get; set; } = string.Empty;
+
             public Decimal? bollardPull { get; set; } = default;
+
             public List<String> bollardNumber { get; set; } = [];
+
             public String gLNExtension { get; set; } = string.Empty;
+
             public List<String> metreMarkNumber { get; set; } = [];
+
             public List<String> manifoldNumber { get; set; } = [];
+
             public String rampNumber { get; set; } = string.Empty;
+
             public String locationByText { get; set; } = string.Empty;
-
-            [FeatureType(typeof(Berth))]
-            public featureBinding<Associations.FeatureAssociations.Demarcation> demarcatedFeatureOfDemarcation { get; set; }
-
-            [FeatureType(typeof(MooringWarpingFacility))]
-            public List<featureBinding<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>> auxiliaryFacilityOfPrimaryAuxiliaryFacility { get; set; } = [];
             public override string Code => nameof(BerthPosition);
 
             public BerthPosition()
@@ -3012,23 +2930,18 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DockArea : Layout
         {
             public depthsDescription? depthsDescription { get; set; }
+
             public String locationByText { get; set; } = string.Empty;
+
             public markedBy? markedBy { get; set; }
+
             public iSPSLevel? iSPSLevel { get; set; } = default;
-
-            [InformationType(typeof(AvailablePortServices))]
-            public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(DockArea);
 
             public DockArea()
@@ -3036,14 +2949,12 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DryDock : HarbourPhysicalInfrastructure
         {
             public Decimal? sillDepth { get; set; } = default;
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(DryDock);
 
             public DryDock()
@@ -3051,20 +2962,18 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class DumpingGround : Layout
         {
             public depthsDescription? depthsDescription { get; set; }
+
             public String locationByText { get; set; } = string.Empty;
+
             public markedBy? markedBy { get; set; }
+
             public iSPSLevel? iSPSLevel { get; set; } = default;
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(DumpingGround);
 
             public DumpingGround()
@@ -3072,14 +2981,12 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class FloatingDock : HarbourPhysicalInfrastructure
         {
             public Decimal? sillDepth { get; set; } = default;
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(FloatingDock);
 
             public FloatingDock()
@@ -3087,14 +2994,12 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Gridiron : HarbourPhysicalInfrastructure
         {
             public Decimal? sillDepth { get; set; } = default;
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(Gridiron);
 
             public Gridiron()
@@ -3102,28 +3007,22 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourAreaAdministrative : Layout
         {
             public String uNLocationCode { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public String applicableLoadLineZone { get; set; } = string.Empty;
+
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = [];
+
             public generalHarbourInformation? generalHarbourInformation { get; set; }
-
-            [InformationType(typeof(AvailablePortServices))]
-            public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(OuterLimit))]
-            public featureBinding<Associations.FeatureAssociations.JurisdictionalLimit>? limitExtentOfJurisdictionalLimit { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public List<featureBinding<Associations.FeatureAssociations.LayoutDivision>> layoutUnitOfLayoutDivision { get; set; } = [];
             public override string Code => nameof(HarbourAreaAdministrative);
 
             public HarbourAreaAdministrative()
@@ -3131,44 +3030,18 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourAreaSection : Layout
         {
             public categoryOfPortSection? categoryOfPortSection { get; set; } = default;
+
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = [];
+
             public iSPSLevel? iSPSLevel { get; set; } = default;
+
             public facilitiesLayoutDescription? facilitiesLayoutDescription { get; set; }
-
-            [InformationType(typeof(AvailablePortServices))]
-            public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(HarbourAreaAdministrative))]
-            public featureBinding<Associations.FeatureAssociations.LayoutDivision>? componentOfOfLayoutDivision { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public featureBinding<Associations.FeatureAssociations.Subsection>? constituteOfSubsection { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public List<featureBinding<Associations.FeatureAssociations.Subsection>> subUnitOfSubsection { get; set; } = [];
-
-            [FeatureType(typeof(HarbourPhysicalInfrastructure))]
-            public List<featureBinding<Associations.FeatureAssociations.Infrastructure>> hasInfrastructureOfInfrastructure { get; set; } = [];
-
-            [FeatureType(typeof(AnchorageArea))]
-            [FeatureType(typeof(Berth))]
-            [FeatureType(typeof(DockArea))]
-            [FeatureType(typeof(DumpingGround))]
-            [FeatureType(typeof(HarbourBasin))]
-            [FeatureType(typeof(PilotBoardingPlace))]
-            [FeatureType(typeof(SeaplaneLandingArea))]
-            [FeatureType(typeof(Terminal))]
-            [FeatureType(typeof(TurningBasin))]
-            [FeatureType(typeof(WaterwayArea))]
-            public List<featureBinding<Associations.FeatureAssociations.LayoutDivision>> layoutUnitOfLayoutDivision { get; set; } = [];
             public override string Code => nameof(HarbourAreaSection);
 
             public HarbourAreaSection()
@@ -3176,20 +3049,18 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourBasin : Layout
         {
             public depthsDescription? depthsDescription { get; set; }
+
             public String locationByText { get; set; } = string.Empty;
+
             public markedBy? markedBy { get; set; }
+
             public iSPSLevel? iSPSLevel { get; set; } = default;
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(HarbourBasin);
 
             public HarbourBasin()
@@ -3197,15 +3068,13 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class HarbourFacility : HarbourPhysicalInfrastructure
         {
             [Required()]
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
             public override string Code => nameof(HarbourFacility);
 
             public HarbourFacility()
@@ -3214,26 +3083,21 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class MooringWarpingFacility : Layout
         {
             [Required()]
             public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility { get; set; }
+
             public String iDCode { get; set; } = string.Empty;
+
             public String bollardDescription { get; set; } = string.Empty;
+
             public Decimal? bollardPull { get; set; } = default;
+
             public Boolean? heavingLinesFromShore { get; set; } = default;
-
-            [InformationType(typeof(AvailablePortServices))]
-            public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(AnchorBerth))]
-            [FeatureType(typeof(BerthPosition))]
-            public featureBinding<Associations.FeatureAssociations.PrimaryAuxiliaryFacility>? primaryFacilityOfPrimaryAuxiliaryFacility { get; set; }
             public override string Code => nameof(MooringWarpingFacility);
 
             public MooringWarpingFacility()
@@ -3242,22 +3106,22 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class OuterLimit : Layout
         {
             public limitsDescription? limitsDescription { get; set; }
+
             public List<markedBy> markedBy { get; set; } = [];
+
             public List<landmarkDescription> landmarkDescription { get; set; } = [];
+
             public List<offshoreMarkDescription> offshoreMarkDescription { get; set; } = [];
+
             public List<majorLightDescription> majorLightDescription { get; set; } = [];
+
             public List<usefulMarkDescription> usefulMarkDescription { get; set; } = [];
-
-            [InformationType(typeof(Entrance))]
-            public informationBinding<Associations.InformationAssociations.LimitEntrance>? entranceReferenceOfLimitEntrance { get; set; }
-
-            [FeatureType(typeof(HarbourAreaAdministrative))]
-            public featureBinding<Associations.FeatureAssociations.JurisdictionalLimit> limitReferenceOfJurisdictionalLimit { get; set; }
             public override string Code => nameof(OuterLimit);
 
             public OuterLimit()
@@ -3265,20 +3129,18 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class PilotBoardingPlace : Layout
         {
             public depthsDescription? depthsDescription { get; set; }
+
             public String locationByText { get; set; } = string.Empty;
+
             public markedBy? markedBy { get; set; }
+
             public iSPSLevel? iSPSLevel { get; set; } = default;
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(PilotBoardingPlace);
 
             public PilotBoardingPlace()
@@ -3286,20 +3148,18 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class SeaplaneLandingArea : Layout
         {
             public depthsDescription? depthsDescription { get; set; }
+
             public String locationByText { get; set; } = string.Empty;
+
             public markedBy? markedBy { get; set; }
+
             public iSPSLevel? iSPSLevel { get; set; } = default;
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(SeaplaneLandingArea);
 
             public SeaplaneLandingArea()
@@ -3307,32 +3167,24 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class Terminal : Layout
         {
             public String portFacilityNumber { get; set; } = string.Empty;
+
             public categoryOfHarbourFacility? categoryOfHarbourFacility { get; set; } = default;
+
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
+
             public List<product> product { get; set; } = [];
+
             public String terminalIdentifier { get; set; } = string.Empty;
+
             public String sMDGTerminalCode { get; set; } = string.Empty;
+
             public String uNLocationCode { get; set; } = string.Empty;
-
-            [InformationType(typeof(AvailablePortServices))]
-            public informationBinding<Associations.InformationAssociations.ServiceAvailability>? serviceDescriptionReferenceOfServiceAvailability { get; set; }
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
-
-            [FeatureType(typeof(Berth))]
-            public List<featureBinding<Associations.FeatureAssociations.LayoutDivision>> layoutUnitOfLayoutDivision { get; set; } = [];
-
-            [FeatureType(typeof(HarbourPhysicalInfrastructure))]
-            public List<featureBinding<Associations.FeatureAssociations.Infrastructure>> hasInfrastructureOfInfrastructure { get; set; } = [];
             public override string Code => nameof(Terminal);
 
             public Terminal()
@@ -3340,20 +3192,18 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class TurningBasin : Layout
         {
             public depthsDescription? depthsDescription { get; set; }
+
             public String locationByText { get; set; } = string.Empty;
+
             public markedBy? markedBy { get; set; }
+
             public iSPSLevel? iSPSLevel { get; set; } = default;
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(TurningBasin);
 
             public TurningBasin()
@@ -3361,21 +3211,19 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class WaterwayArea : Layout
         {
             [Required()]
             public categoryOfPortSection categoryOfPortSection { get; set; }
+
             public depthsDescription? depthsDescription { get; set; }
+
             public String locationByText { get; set; } = string.Empty;
+
             public markedBy? markedBy { get; set; }
-
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.LocationHours>? location_srvHrsOfLocationHours { get; set; }
-
-            [FeatureType(typeof(HarbourAreaSection))]
-            public featureBinding<Associations.FeatureAssociations.LayoutDivision> componentOfOfLayoutDivision { get; set; }
             public override string Code => nameof(WaterwayArea);
 
             public WaterwayArea()
@@ -3383,9 +3231,10 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DataCoverage : FeatureTypeBase
+        public partial class DataCoverage : FeatureNode
         {
             [Required()]
             public Int32 maximumDisplayScale { get; set; }
@@ -3399,18 +3248,24 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfNonBathymetricData : FeatureTypeBase
+        public partial class QualityOfNonBathymetricData : FeatureNode
         {
             public categoryOfTemporalVariation? categoryOfTemporalVariation { get; set; } = default;
+
             public Decimal? horizontalDistanceUncertainty { get; set; } = default;
 
             [Required()]
             public horizontalPositionUncertainty horizontalPositionUncertainty { get; set; }
+
             public Decimal? orientationUncertainty { get; set; } = default;
+
             public surveyDateRange? surveyDateRange { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(QualityOfNonBathymetricData);
 
@@ -3423,12 +3278,14 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SoundingDatum : FeatureTypeBase
+        public partial class SoundingDatum : FeatureNode
         {
             [Required()]
             public verticalDatum verticalDatum { get; set; }
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(SoundingDatum);
 
@@ -3437,12 +3294,14 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VerticalDatumOfData : FeatureTypeBase
+        public partial class VerticalDatumOfData : FeatureNode
         {
             [Required()]
             public verticalDatum verticalDatum { get; set; }
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(VerticalDatumOfData);
 
@@ -3451,26 +3310,28 @@ namespace S100Framework.DomainModel.S131
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement : FeatureTypeBase
+        public partial class TextPlacement : FeatureNode
         {
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public String text { get; set; } = string.Empty;
 
             [Required()]
             public Int32 textOffsetMm { get; set; }
-            public textType? textType { get; set; } = default;
-            public Int32? scaleMinimum { get; set; } = default;
 
-            [FeatureType(typeof(FeatureType))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation> positionsOfTextAssociation { get; set; }
+            public textType? textType { get; set; } = default;
+
+            public Int32? scaleMinimum { get; set; } = default;
             public override string Code => nameof(TextPlacement);
 
             public TextPlacement()
             {
             }
         }
+
     }
 }

@@ -3,9 +3,9 @@ using System.Reflection;
 
 namespace S100Framework
 {
-    public record FeatureType(string Code, string Name);
+    public record FeatureTypeId(string Code, string Name);
 
-    public record InformationType(string Code, string Name);
+    public record InformationTypeId(string Code, string Name);
 
     public sealed class FeatureCatalogue
     {
@@ -20,8 +20,8 @@ namespace S100Framework
 
         public Assembly? Assembly { get; set; } = null;
 
-        public ImmutableArray<FeatureType> FeatureTypes { get; set; } = ImmutableArray<FeatureType>.Empty;
+        public ImmutableArray<InformationTypeId> InformationTypes { get; set; } = ImmutableArray<InformationTypeId>.Empty;
 
-        public ImmutableArray<InformationType> InformationTypes { get; set; } = ImmutableArray<InformationType>.Empty;
+        public ImmutableArray<FeatureTypeId> FeatureTypes { get; set; } = ImmutableArray<FeatureTypeId>.Empty;
     }
 }

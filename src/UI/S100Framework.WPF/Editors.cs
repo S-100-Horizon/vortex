@@ -50,135 +50,120 @@ namespace S100Framework.WPF.Editors
         }
     }
 
-    public sealed class BindingConnectorEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
-    {
-        //public DomainModel.Bindings.informationBinding[] informationBindingsItems => new DomainModel.Bindings.informationBinding[] {
-        //        NAVWARNPart.headerNAVWARNPreamble,
-        //    };
-
-        public FrameworkElement ResolveEditor(Xceed.Wpf.Toolkit.PropertyGrid.PropertyItem propertyItem) {
-            if (propertyItem.Instance is ViewModelBase) {
-
-                var viewModel = (ViewModelBase)propertyItem.Instance;
-
-                if (viewModel.Host is not null) {
-                    var comboBox = new ComboBox {
-                        Name = $"_comboBox{Guid.NewGuid():N}",
-                        DisplayMemberPath = "Name",
-                    };
-
-                    var bindingItemsSourceProperty = new Binding() { Source = viewModel.Host.GetSource(propertyItem), Mode = BindingMode.OneWay };
-                    BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
-
-                    return comboBox;
-                }
-            }
-            var text = propertyItem.DisplayName;
-
-            var connector = (dynamic)propertyItem.Instance;
-
-            //if (connector.informationBinding is null)
-            //    text += " null";
-            return new Label {
-                Content = text,
-                IsEnabled = true,
-            };
-        }
-    }
-
     public sealed class RefIdEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-
-            var propertyGrid = propertyItem.FindRootPropertyGrid(); // ((PropertyItemBase)propertyItem.ParentElement).ParentElement as PropertyGrid;
-
-            var modelBase = propertyGrid?.SelectedObject as ViewModelBase;
-
-            if (modelBase is not null) {
-                var sources = modelBase.Host!.GetSource(propertyItem);
-
-                var comboBox = new ComboBox {
-                    Name = $"_comboBox{Guid.NewGuid():N}",
-                    DisplayMemberPath = "refId",
-                };
-
-                var bindingItemsSourceProperty = new Binding() { Source = sources, Mode = BindingMode.OneWay };
-                BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
-
-                var bindingSelectedItemProperty = new Binding("RefId") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-                BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
-
-                return comboBox;
-            }
-
-            var text = propertyItem.DisplayName;
-
-            return new Label {
-                Content = text,
-                IsEnabled = true,
+            var source = propertyItem.Instance switch {
+                FeatureBindingViewModel e => e.RefIds,
+                InformationBindingViewModel e => e.RefIds,
+                _ => throw new NotSupportedException()
             };
-        }
-    }
-
-    public sealed class AssociationEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
-    {
-        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var viewModel = (InformationBindingViewModel)(propertyItem.Instance);
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                DisplayMemberPath = "associationName",
+                //DisplayMemberPath = "refId",
             };
 
-            //var bindingItemsSourceProperty = new Binding() { Source = viewModel.informationBindingDescriptors, Mode = BindingMode.OneWay };
-            //BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+            var bindingItemsSourceProperty = new Binding() { Source = source, Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
-            //var bindingSelectedItemProperty = new Binding("informationBindingDescriptor") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
-            //BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+            var bindingSelectedItemProperty = new Binding("RefId") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
+            //TODO: Dynamic read value from instance!!!!
+            //comboBox.SelectedIndex = 0;
             return comboBox;
         }
     }
 
-    public sealed class InformationTypeEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    public sealed class InformationConnectorEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var viewModel = (InformationAssociationViewModel)propertyItem.Instance;
+
+            var comboBox = new ComboBox {
+                Name = $"_comboBox{Guid.NewGuid():N}",
+                DisplayMemberPath = "DisplayName",
+            };
+
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.associationConnectorInformations, Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            //TODO: Dynamic read value from instance!!!!
+            //comboBox.SelectedIndex = 0;
+            return comboBox;
+        }
+    }
+
+    public sealed class FeatureConnectorEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    {
+        public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
+            var viewModel = (FeatureAssociationViewModel)propertyItem.Instance;
+
+            var comboBox = new ComboBox {
+                Name = $"_comboBox{Guid.NewGuid():N}",
+                DisplayMemberPath = "DisplayName",
+            };
+
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.associationConnectorFeatures, Mode = BindingMode.OneWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
+
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
+
+            //TODO: Dynamic read value from instance!!!!
+            //comboBox.SelectedIndex = 0;
+            return comboBox;
+        }
+    }
+
+    public sealed class InformationBindingEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
             var viewModel = (InformationBindingViewModel)propertyItem.Instance;
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                DisplayMemberPath = "InformationType.Name",
+                DisplayMemberPath = "Name",
             };
 
-            var bindingItemsSourceProperty = new Binding() { Source = viewModel.informationTypes, Mode = BindingMode.OneWay };
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.InformationType, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
-            var bindingSelectedItemProperty = new Binding("informationType") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
+            //TODO: Dynamic read value from instance!!!!
+            //comboBox.SelectedIndex = 0;
             return comboBox;
         }
     }
 
-    public sealed class FeatureTypeEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
+    public sealed class FeatureBindingEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
             var viewModel = (FeatureBindingViewModel)propertyItem.Instance;
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                DisplayMemberPath = "FeatureType.Name",
+                DisplayMemberPath = "Name",
             };
 
-            var bindingItemsSourceProperty = new Binding() { Source = viewModel.featureTypes, Mode = BindingMode.OneWay };
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.FeatureTypes, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
-            var bindingSelectedItemProperty = new Binding("featureType") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
+            var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
+            //TODO: Dynamic read value from instance!!!!
+            //comboBox.SelectedIndex = 0;
             return comboBox;
         }
     }
+
 
     public static class Extensions
     {

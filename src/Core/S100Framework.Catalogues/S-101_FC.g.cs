@@ -2,6 +2,7 @@ using System;
 using System.Collections.Immutable;
 using System.Linq;
 
+#nullable enable
 
 namespace S100Framework.DomainModel.S101
 {
@@ -3946,7 +3947,9 @@ namespace S100Framework.DomainModel.S101
         public partial class featureName
         {
             public String language { get; set; } = string.Empty;
+
             public String name { get; set; } = string.Empty;
+
             public nameUsage? nameUsage { get; set; } = default;
 
             public featureName()
@@ -3955,6 +3958,7 @@ namespace S100Framework.DomainModel.S101
                 name = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3965,6 +3969,7 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Boolean significantFeaturesDetected { get; set; }
+
             public Decimal? sizeOfFeaturesDetected { get; set; } = default;
 
             public featuresDetected()
@@ -3972,17 +3977,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class fixedDateRange
         {
             public DateOnly? dateEnd { get; set; } = default;
+
             public DateOnly? dateStart { get; set; } = default;
 
             public fixedDateRange()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -3998,12 +4006,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class horizontalClearanceFixed
         {
             [Required()]
             public Decimal horizontalClearanceValue { get; set; }
+
             public Decimal? horizontalDistanceUncertainty { get; set; } = default;
 
             public horizontalClearanceFixed()
@@ -4011,12 +4021,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class horizontalClearanceOpen
         {
             [Required()]
             public Decimal horizontalClearanceValue { get; set; }
+
             public Decimal? horizontalDistanceUncertainty { get; set; } = default;
 
             public horizontalClearanceOpen()
@@ -4024,12 +4036,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class horizontalPositionUncertainty
         {
             [Required()]
             public Decimal uncertaintyFixed { get; set; }
+
             public Decimal? uncertaintyVariableFactor { get; set; } = default;
 
             public horizontalPositionUncertainty()
@@ -4037,17 +4051,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class information
 #pragma warning restore CS8981
         {
             public String fileLocator { get; set; } = string.Empty;
+
             public String fileReference { get; set; } = string.Empty;
+
             public String headline { get; set; } = string.Empty;
+
             public String language { get; set; } = string.Empty;
+
             public String text { get; set; } = string.Empty;
 
             public information()
@@ -4056,12 +4074,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class measuredDistanceValue
         {
             [Required()]
             public distanceUnitOfMeasurement distanceUnitOfMeasurement { get; set; }
+
             public String referenceLocation { get; set; } = string.Empty;
 
             [Required()]
@@ -4072,12 +4092,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class multiplicityOfFeatures
         {
             [Required()]
             public Boolean multiplicityKnown { get; set; }
+
             public Int32? numberOfFeatures { get; set; } = default;
 
             public multiplicityOfFeatures()
@@ -4085,12 +4107,15 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class onlineResource
         {
             public String headline { get; set; } = string.Empty;
+
             public String linkage { get; set; } = string.Empty;
+
             public String nameOfResource { get; set; } = string.Empty;
 
             public onlineResource()
@@ -4099,10 +4124,10 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class orientation
 #pragma warning restore CS8981
         {
@@ -4115,6 +4140,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4131,6 +4157,7 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class radarWaveLength
@@ -4146,11 +4173,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorInformation
         {
             public String language { get; set; } = string.Empty;
+
             public String text { get; set; } = string.Empty;
 
             public sectorInformation()
@@ -4159,12 +4188,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorLimitOne
         {
             [Required()]
             public Decimal sectorBearing { get; set; }
+
             public Decimal? sectorLineLength { get; set; } = default;
 
             public sectorLimitOne()
@@ -4172,12 +4203,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class sectorLimitTwo
         {
             [Required()]
             public Decimal sectorBearing { get; set; }
+
             public Decimal? sectorLineLength { get; set; } = default;
 
             public sectorLimitTwo()
@@ -4185,11 +4218,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class shapeInformation
         {
             public String language { get; set; } = string.Empty;
+
             public String text { get; set; } = string.Empty;
 
             public shapeInformation()
@@ -4197,6 +4232,7 @@ namespace S100Framework.DomainModel.S101
                 text = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4213,15 +4249,16 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class speed
 #pragma warning restore CS8981
         {
             [Required()]
             public Decimal speedMaximum { get; set; }
+
             public Decimal? speedMinimum { get; set; } = default;
 
             public speed()
@@ -4229,12 +4266,15 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class surfaceCharacteristics
         {
             public natureOfSurface? natureOfSurface { get; set; } = default;
+
             public List<natureOfSurfaceQualifyingTerms> natureOfSurfaceQualifyingTerms { get; set; } = [];
+
             public Int32? underlyingLayer { get; set; } = default;
 
             public surfaceCharacteristics()
@@ -4242,12 +4282,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class surveyDateRange
         {
             [Required()]
             public DateOnly dateEnd { get; set; }
+
             public DateOnly? dateStart { get; set; } = default;
 
             public surveyDateRange()
@@ -4255,15 +4297,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class telecommunications
 #pragma warning restore CS8981
         {
             public String contactInstructions { get; set; } = string.Empty;
+
             public String telecommunicationIdentifier { get; set; } = string.Empty;
+
             public telecommunicationService? telecommunicationService { get; set; } = default;
 
             public telecommunications()
@@ -4271,6 +4315,7 @@ namespace S100Framework.DomainModel.S101
                 telecommunicationIdentifier = string.Empty;
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4294,13 +4339,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class timeIntervalsByDayOfWeek
         {
             public List<dayOfWeek> dayOfWeek { get; set; } = [];
+
             public Boolean? dayOfWeekIsRange { get; set; } = default;
+
             public List<TimeOnly> timeOfDayStart { get; set; } = [];
+
             public List<TimeOnly> timeOfDayEnd { get; set; } = [];
 
             public timeIntervalsByDayOfWeek()
@@ -4308,18 +4357,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
-
         public partial class topmark
 #pragma warning restore CS8981
         {
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
 
             [Required()]
             public topmarkDaymarkShape topmarkDaymarkShape { get; set; }
+
             public List<shapeInformation> shapeInformation { get; set; } = [];
 
             public topmark()
@@ -4327,12 +4378,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class valueOfLocalMagneticAnomaly
         {
             [Required()]
             public Decimal magneticAnomalyValue { get; set; }
+
             public referenceDirection? referenceDirection { get; set; } = default;
 
             public valueOfLocalMagneticAnomaly()
@@ -4340,18 +4393,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalUncertainty
         {
             [Required()]
             public Decimal uncertaintyFixed { get; set; }
+
             public Decimal? uncertaintyVariableFactor { get; set; } = default;
 
             public verticalUncertainty()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4362,6 +4418,7 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public speedUnits speedUnits { get; set; }
+
             public String vesselClass { get; set; } = string.Empty;
 
             public vesselSpeedLimit()
@@ -4369,20 +4426,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class zoneOfConfidence
         {
             [Required()]
             public categoryOfZoneOfConfidenceInData categoryOfZoneOfConfidenceInData { get; set; }
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public horizontalPositionUncertainty? horizontalPositionUncertainty { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public zoneOfConfidence()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4402,20 +4464,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class rhythmOfLight
         {
             [Required()]
             public lightCharacteristic lightCharacteristic { get; set; }
+
             public List<String> signalGroup { get; set; } = [];
+
             public Decimal? signalPeriod { get; set; } = default;
+
             public List<signalSequence> signalSequence { get; set; } = [];
 
             public rhythmOfLight()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4431,6 +4498,7 @@ namespace S100Framework.DomainModel.S101
                 timeIntervalsByDayOfWeek = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4455,18 +4523,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class spatialAccuracy
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public horizontalPositionUncertainty? horizontalPositionUncertainty { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public spatialAccuracy()
             {
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4477,6 +4549,7 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public referenceTideType referenceTideType { get; set; }
+
             public Decimal? streamDepth { get; set; } = default;
 
             [Required()]
@@ -4488,12 +4561,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceClosed
         {
             [Required()]
             public Decimal verticalClearanceValue { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public verticalClearanceClosed()
@@ -4501,12 +4576,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceFixed
         {
             [Required()]
             public Decimal verticalClearanceValue { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public verticalClearanceFixed()
@@ -4514,13 +4591,16 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceOpen
         {
             [Required()]
             public Boolean verticalClearanceUnlimited { get; set; }
+
             public Decimal? verticalClearanceValue { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public verticalClearanceOpen()
@@ -4528,12 +4608,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class verticalClearanceSafe
         {
             [Required()]
             public Decimal verticalClearanceValue { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
 
             public verticalClearanceSafe()
@@ -4541,17 +4623,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
         public partial class lightSector
         {
             [Required()]
             public List<colour> colour { get; set; }
+
             public directionalCharacter? directionalCharacter { get; set; }
+
             public List<lightVisibility> lightVisibility { get; set; } = [];
+
             public sectorLimit? sectorLimit { get; set; }
+
             public Decimal? valueOfNominalRange { get; set; } = default;
+
             public List<sectorInformation> sectorInformation { get; set; } = [];
+
             public Boolean? sectorArcExtension { get; set; } = default;
 
             public lightSector()
@@ -4559,6 +4648,7 @@ namespace S100Framework.DomainModel.S101
                 colour = new();
             }
         }
+
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -4569,8 +4659,11 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<lightSector> lightSector { get; set; }
+
             public List<String> signalGroup { get; set; } = [];
+
             public Decimal? signalPeriod { get; set; } = default;
+
             public List<signalSequence> signalSequence { get; set; } = [];
 
             public sectorCharacteristics()
@@ -4578,6 +4671,7 @@ namespace S100Framework.DomainModel.S101
                 lightSector = new();
             }
         }
+
     }
 
     public enum Role
@@ -4629,198 +4723,10 @@ namespace S100Framework.DomainModel.S101
     {
         namespace InformationAssociations
         {
-
-            public class AdditionalInformation : InformationAssociation
-            {
-                public AdditionalInformation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theInformation };
-            }
-
-
-            public class QualityOfBathymetricDataComposition : InformationAssociation
-            {
-                public QualityOfBathymetricDataComposition()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theQualityInformation };
-            }
-
-
-            public class SpatialAssociation : InformationAssociation
-            {
-                public SpatialAssociation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theQualityInformation };
-            }
-
         }
         namespace FeatureAssociations
         {
-
-            public class AidsToNavigationAssociation : FeatureAssociation
-            {
-                public AidsToNavigationAssociation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class ASLAggregation : FeatureAssociation
-            {
-                public ASLAggregation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class BridgeAggregation : FeatureAssociation
-            {
-                public BridgeAggregation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class CautionAreaAssociation : FeatureAssociation
-            {
-                public CautionAreaAssociation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class DeepWaterRouteAggregation : FeatureAssociation
-            {
-                public DeepWaterRouteAggregation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class FairwayAggregation : FeatureAssociation
-            {
-                public FairwayAggregation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class FairwayAuxiliary : FeatureAssociation
-            {
-                public FairwayAuxiliary()
-                {
-                }
-                public static Role[] Roles => new[] { Role.thePrimaryFeature, Role.theAuxiliaryFeature };
-            }
-
-
-            public class IslandAggregation : FeatureAssociation
-            {
-                public IslandAggregation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class MooringTrotAggregation : FeatureAssociation
-            {
-                public MooringTrotAggregation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class PilotageDistrictAssociation : FeatureAssociation
-            {
-                public PilotageDistrictAssociation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class RangeSystemAggregation : FeatureAssociation
-            {
-                public RangeSystemAggregation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class RoofedStructureAggregation : FeatureAssociation
-            {
-                public RoofedStructureAggregation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theRoofedStructure, Role.theSupport };
-            }
-
-
-            public class StructureEquipment : FeatureAssociation
-            {
-                public StructureEquipment()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theStructure, Role.theEquipment };
-            }
-
-
-            public class TextAssociation : FeatureAssociation
-            {
-                public TextAssociation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCartographicText, Role.thePositionProvider };
-            }
-
-
-            public class TrafficSeparationSchemeAggregation : FeatureAssociation
-            {
-                public TrafficSeparationSchemeAggregation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class TwoWayRouteAggregation : FeatureAssociation
-            {
-                public TwoWayRouteAggregation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class UpdateAggregation : FeatureAssociation
-            {
-                public UpdateAggregation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theCollection, Role.theComponent };
-            }
-
-
-            public class UpdatedInformation : FeatureAssociation
-            {
-                public UpdatedInformation()
-                {
-                }
-                public static Role[] Roles => new[] { Role.theUpdate, Role.theUpdatedObject };
-            }
-
+            using S100Framework.DomainModel.S101.FeatureTypes;
         }
     }
 
@@ -4831,20 +4737,26 @@ namespace S100Framework.DomainModel.S101
     {
         using ComplexAttributes;
         using DomainModel;
-        using S100Framework.DomainModel.Bindings;
 
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContactDetails : InformationTypeBase
+        public partial class ContactDetails : InformationNode
         {
             public String callSign { get; set; } = string.Empty;
+
             public List<String> communicationChannel { get; set; } = [];
+
             public String contactInstructions { get; set; } = string.Empty;
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<frequencyPair> frequencyPair { get; set; } = [];
+
             public String mMSICode { get; set; } = string.Empty;
+
             public List<onlineResource> onlineResource { get; set; } = [];
+
             public List<telecommunications> telecommunications { get; set; } = [];
             public override string Code => nameof(ContactDetails);
 
@@ -4853,15 +4765,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ServiceHours : InformationTypeBase
+        public partial class ServiceHours : InformationNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public List<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; }
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(ServiceHours);
 
@@ -4871,14 +4786,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NonStandardWorkingDay : InformationTypeBase
+        public partial class NonStandardWorkingDay : InformationNode
         {
             public List<DateOnly> dateFixed { get; set; } = [];
+
             public List<String> dateVariable { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(NonStandardWorkingDay);
 
@@ -4887,13 +4807,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NauticalInformation : InformationTypeBase
+        public partial class NauticalInformation : InformationNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
             public override string Code => nameof(NauticalInformation);
 
@@ -4902,11 +4826,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpatialQuality : InformationTypeBase
+        public partial class SpatialQuality : InformationNode
         {
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
+
             public List<spatialAccuracy> spatialAccuracy { get; set; } = [];
             public override string Code => nameof(SpatialQuality);
 
@@ -4914,6 +4840,7 @@ namespace S100Framework.DomainModel.S101
             {
             }
         }
+
     }
 
     namespace FeatureTypes
@@ -4921,26 +4848,28 @@ namespace S100Framework.DomainModel.S101
         using ComplexAttributes;
         using InformationTypes;
         using DomainModel;
-        using S100Framework.DomainModel.Bindings;
 
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfNonBathymetricData : FeatureTypeBase
+        public partial class QualityOfNonBathymetricData : FeatureNode
         {
             public categoryOfTemporalVariation? categoryOfTemporalVariation { get; set; } = default;
+
             public Decimal? horizontalDistanceUncertainty { get; set; } = default;
 
             [Required()]
             public horizontalPositionUncertainty horizontalPositionUncertainty { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
-            public Decimal? orientationUncertainty { get; set; } = default;
-            public surveyDateRange? surveyDateRange { get; set; }
-            public verticalUncertainty? verticalUncertainty { get; set; }
-            public List<information> information { get; set; } = [];
 
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
+            public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            public Decimal? orientationUncertainty { get; set; } = default;
+
+            public surveyDateRange? surveyDateRange { get; set; }
+
+            public verticalUncertainty? verticalUncertainty { get; set; }
+
+            public List<information> information { get; set; } = [];
             public override string Code => nameof(QualityOfNonBathymetricData);
 
             public QualityOfNonBathymetricData()
@@ -4952,11 +4881,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DataCoverage : FeatureTypeBase
+        public partial class DataCoverage : FeatureNode
         {
             public Int32? drawingIndex { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
@@ -4967,6 +4898,7 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Int32 optimumDisplayScale { get; set; }
+
             public List<information> information { get; set; } = [];
             public override string Code => nameof(DataCoverage);
 
@@ -4975,17 +4907,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NavigationalSystemOfMarks : FeatureTypeBase
+        public partial class NavigationalSystemOfMarks : FeatureNode
         {
             [Required()]
             public marksNavigationalSystemOf marksNavigationalSystemOf { get; set; }
-            public String interoperabilityIdentifier { get; set; } = string.Empty;
-            public List<information> information { get; set; } = [];
 
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
+            public String interoperabilityIdentifier { get; set; } = string.Empty;
+
+            public List<information> information { get; set; } = [];
             public override string Code => nameof(NavigationalSystemOfMarks);
 
             public NavigationalSystemOfMarks()
@@ -4993,9 +4925,10 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LocalDirectionOfBuoyage : FeatureTypeBase
+        public partial class LocalDirectionOfBuoyage : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -5004,11 +4937,10 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Decimal orientationValue { get; set; }
-            public Int32? scaleMinimum { get; set; } = default;
-            public List<information> information { get; set; } = [];
 
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
+            public Int32? scaleMinimum { get; set; } = default;
+
+            public List<information> information { get; set; } = [];
             public override string Code => nameof(LocalDirectionOfBuoyage);
 
             public LocalDirectionOfBuoyage()
@@ -5016,16 +4948,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfBathymetricData : FeatureTypeBase
+        public partial class QualityOfBathymetricData : FeatureNode
         {
             [Required()]
             public categoryOfTemporalVariation categoryOfTemporalVariation { get; set; }
 
             [Required()]
             public dataAssessment dataAssessment { get; set; }
+
             public Decimal? depthRangeMaximumValue { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
 
             [Required()]
@@ -5033,18 +4968,15 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Boolean fullSeafloorCoverageAchieved { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public surveyDateRange? surveyDateRange { get; set; }
 
             [Required()]
             public List<zoneOfConfidence> zoneOfConfidence { get; set; }
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(SpatialQuality))]
-            public informationBinding<Associations.InformationAssociations.QualityOfBathymetricDataComposition>? theQualityInformationOfQualityOfBathymetricDataComposition { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(QualityOfBathymetricData);
 
             public QualityOfBathymetricData()
@@ -5058,18 +4990,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SoundingDatum : FeatureTypeBase
+        public partial class SoundingDatum : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public verticalDatum verticalDatum { get; set; }
-            public List<information> information { get; set; } = [];
 
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
+            public List<information> information { get; set; } = [];
             public override string Code => nameof(SoundingDatum);
 
             public SoundingDatum()
@@ -5077,18 +5008,17 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VerticalDatumOfData : FeatureTypeBase
+        public partial class VerticalDatumOfData : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public verticalDatum verticalDatum { get; set; }
-            public List<information> information { get; set; } = [];
 
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
+            public List<information> information { get; set; } = [];
             public override string Code => nameof(VerticalDatumOfData);
 
             public VerticalDatumOfData()
@@ -5096,23 +5026,37 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class QualityOfSurvey : FeatureTypeBase
+        public partial class QualityOfSurvey : FeatureNode
         {
             public Decimal? depthRangeMaximumValue { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public featuresDetected? featuresDetected { get; set; }
+
             public Boolean? fullSeafloorCoverageAchieved { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? lineSpacingMaximum { get; set; } = default;
+
             public Int32? lineSpacingMinimum { get; set; } = default;
+
             public Int32? measurementDistanceMaximum { get; set; } = default;
+
             public Int32? measurementDistanceMinimum { get; set; } = default;
+
             public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement { get; set; } = default;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public Int32? scaleValueMaximum { get; set; } = default;
+
             public Int32? scaleValueMinimum { get; set; } = default;
+
             public String surveyAuthority { get; set; } = string.Empty;
 
             [Required()]
@@ -5120,11 +5064,10 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<surveyType> surveyType { get; set; }
-            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
-            public List<information> information { get; set; } = [];
 
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
+            public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
+            public List<information> information { get; set; } = [];
             public override string Code => nameof(QualityOfSurvey);
 
             public QualityOfSurvey()
@@ -5138,11 +5081,13 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UpdateInformation : FeatureTypeBase
+        public partial class UpdateInformation : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
@@ -5150,204 +5095,12 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public updateType updateType { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public String source { get; set; } = string.Empty;
+
             public List<information> information { get; set; } = [];
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdateAggregation>> theComponentOfUpdateAggregation { get; set; } = [];
-
-            [FeatureType(typeof(UpdateInformation))]
-            public featureBinding<Associations.FeatureAssociations.UpdateAggregation>? theCollectionOfUpdateAggregation { get; set; }
-
-            [FeatureType(typeof(AdministrationArea))]
-            [FeatureType(typeof(AirportAirfield))]
-            [FeatureType(typeof(AnchorBerth))]
-            [FeatureType(typeof(AnchorageArea))]
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(ArchipelagicSeaLaneArea))]
-            [FeatureType(typeof(ArchipelagicSeaLaneAxis))]
-            [FeatureType(typeof(Berth))]
-            [FeatureType(typeof(Bollard))]
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(BuiltUpArea))]
-            [FeatureType(typeof(CableArea))]
-            [FeatureType(typeof(CableOverhead))]
-            [FeatureType(typeof(CableSubmarine))]
-            [FeatureType(typeof(Canal))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(CargoTranshipmentArea))]
-            [FeatureType(typeof(Causeway))]
-            [FeatureType(typeof(CautionArea))]
-            [FeatureType(typeof(Checkpoint))]
-            [FeatureType(typeof(CoastGuardStation))]
-            [FeatureType(typeof(Coastline))]
-            [FeatureType(typeof(CollisionRegulationsLimit))]
-            [FeatureType(typeof(ContiguousZone))]
-            [FeatureType(typeof(ContinentalShelfArea))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CurrentNonGravitational))]
-            [FeatureType(typeof(CustomZone))]
-            [FeatureType(typeof(Dam))]
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(DeepWaterRouteCentreline))]
-            [FeatureType(typeof(DeepWaterRoutePart))]
-            [FeatureType(typeof(DepthArea))]
-            [FeatureType(typeof(DepthContour))]
-            [FeatureType(typeof(DepthNoBottomFound))]
-            [FeatureType(typeof(DiscolouredWater))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(DockArea))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(DredgedArea))]
-            [FeatureType(typeof(DryDock))]
-            [FeatureType(typeof(DumpingGround))]
-            [FeatureType(typeof(Dyke))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(ExclusiveEconomicZone))]
-            [FeatureType(typeof(Fairway))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(FenceWall))]
-            [FeatureType(typeof(FerryRoute))]
-            [FeatureType(typeof(FisheryZone))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FishingGround))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(FoulGround))]
-            [FeatureType(typeof(FreePortArea))]
-            [FeatureType(typeof(Gate))]
-            [FeatureType(typeof(Gridiron))]
-            [FeatureType(typeof(HarbourAreaAdministrative))]
-            [FeatureType(typeof(HarbourFacility))]
-            [FeatureType(typeof(Helipad))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(IceArea))]
-            [FeatureType(typeof(InformationArea))]
-            [FeatureType(typeof(InshoreTrafficZone))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IslandGroup))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Lake))]
-            [FeatureType(typeof(LandArea))]
-            [FeatureType(typeof(LandElevation))]
-            [FeatureType(typeof(LandRegion))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightAirObstruction))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(LocalDirectionOfBuoyage))]
-            [FeatureType(typeof(LocalMagneticAnomaly))]
-            [FeatureType(typeof(LockBasin))]
-            [FeatureType(typeof(LogPond))]
-            [FeatureType(typeof(MagneticVariation))]
-            [FeatureType(typeof(MarineFarmCulture))]
-            [FeatureType(typeof(MarinePollutionRegulationsArea))]
-            [FeatureType(typeof(MilitaryPracticeArea))]
-            [FeatureType(typeof(MooringArea))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(MooringTrot))]
-            [FeatureType(typeof(NavigationLine))]
-            [FeatureType(typeof(NavigationalSystemOfMarks))]
-            [FeatureType(typeof(Obstruction))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(OffshoreProductionArea))]
-            [FeatureType(typeof(OilBarrier))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PilotBoardingPlace))]
-            [FeatureType(typeof(PilotageDistrict))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(PipelineSubmarineOnLand))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PrecautionaryArea))]
-            [FeatureType(typeof(ProductionStorageArea))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(QualityOfBathymetricData))]
-            [FeatureType(typeof(QualityOfNonBathymetricData))]
-            [FeatureType(typeof(QualityOfSurvey))]
-            [FeatureType(typeof(RadarLine))]
-            [FeatureType(typeof(RadarRange))]
-            [FeatureType(typeof(RadarReflector))]
-            [FeatureType(typeof(RadarStation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(RadioCallingInPoint))]
-            [FeatureType(typeof(RadioStation))]
-            [FeatureType(typeof(Railway))]
-            [FeatureType(typeof(RangeSystem))]
-            [FeatureType(typeof(Rapids))]
-            [FeatureType(typeof(RecommendedRouteCentreline))]
-            [FeatureType(typeof(RecommendedTrack))]
-            [FeatureType(typeof(RecommendedTrafficLanePart))]
-            [FeatureType(typeof(RescueStation))]
-            [FeatureType(typeof(RestrictedArea))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(River))]
-            [FeatureType(typeof(Road))]
-            [FeatureType(typeof(Runway))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(Sandwave))]
-            [FeatureType(typeof(SeaAreaNamedWaterArea))]
-            [FeatureType(typeof(SeabedArea))]
-            [FeatureType(typeof(Seagrass))]
-            [FeatureType(typeof(SeaplaneLandingArea))]
-            [FeatureType(typeof(SeparationZoneOrLine))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SmallCraftFacility))]
-            [FeatureType(typeof(SlopeTopline))]
-            [FeatureType(typeof(SlopingGround))]
-            [FeatureType(typeof(Sounding))]
-            [FeatureType(typeof(SoundingDatum))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(Spring))]
-            [FeatureType(typeof(StraightTerritorialSeaBaseline))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(SubmarinePipelineArea))]
-            [FeatureType(typeof(SubmarineTransitLane))]
-            [FeatureType(typeof(SweptArea))]
-            [FeatureType(typeof(TerritorialSeaArea))]
-            [FeatureType(typeof(TidalStreamPanelData))]
-            [FeatureType(typeof(TidalStreamFloodEbb))]
-            [FeatureType(typeof(Tideway))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TrafficSeparationSchemeBoundary))]
-            [FeatureType(typeof(TrafficSeparationSchemeCrossing))]
-            [FeatureType(typeof(TrafficSeparationSchemeLanePart))]
-            [FeatureType(typeof(TrafficSeparationSchemeRoundabout))]
-            [FeatureType(typeof(Tunnel))]
-            [FeatureType(typeof(TwoWayRoute))]
-            [FeatureType(typeof(TwoWayRoutePart))]
-            [FeatureType(typeof(UnderwaterAwashRock))]
-            [FeatureType(typeof(UnsurveyedArea))]
-            [FeatureType(typeof(UpdateInformation))]
-            [FeatureType(typeof(Vegetation))]
-            [FeatureType(typeof(VerticalDatumOfData))]
-            [FeatureType(typeof(VesselTrafficServiceArea))]
-            [FeatureType(typeof(VirtualAISAidToNavigation))]
-            [FeatureType(typeof(WaterTurbulence))]
-            [FeatureType(typeof(Waterfall))]
-            [FeatureType(typeof(WeedKelp))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(UpdateInformation);
 
             public UpdateInformation()
@@ -5355,9 +5108,10 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MagneticVariation : FeatureTypeBase
+        public partial class MagneticVariation : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
@@ -5369,14 +5123,10 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public Decimal valueOfMagneticVariation { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(MagneticVariation);
 
             public MagneticVariation()
@@ -5384,27 +5134,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LocalMagneticAnomaly : FeatureTypeBase
+        public partial class LocalMagneticAnomaly : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
 
             [Required()]
             public List<valueOfLocalMagneticAnomaly> valueOfLocalMagneticAnomaly { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LocalMagneticAnomaly);
 
             public LocalMagneticAnomaly()
@@ -5413,29 +5159,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Coastline : FeatureTypeBase
+        public partial class Coastline : FeatureNode
         {
             public categoryOfCoastline? categoryOfCoastline { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Coastline);
 
             public Coastline()
@@ -5443,29 +5190,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandArea : FeatureTypeBase
+        public partial class LandArea : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(IslandGroup))]
-            public featureBinding<Associations.FeatureAssociations.IslandAggregation>? theCollectionOfIslandAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LandArea);
 
             public LandArea()
@@ -5473,31 +5215,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IslandGroup : FeatureTypeBase
+        public partial class IslandGroup : FeatureNode
         {
             [Required()]
             public List<featureName> featureName { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(LandArea))]
-            [FeatureType(typeof(IslandGroup))]
-            public List<featureBinding<Associations.FeatureAssociations.IslandAggregation>> theComponentOfIslandAggregation { get; set; } = [];
-
-            [FeatureType(typeof(IslandGroup))]
-            public featureBinding<Associations.FeatureAssociations.IslandAggregation>? theCollectionOfIslandAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(IslandGroup);
 
             public IslandGroup()
@@ -5506,26 +5236,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandElevation : FeatureTypeBase
+        public partial class LandElevation : FeatureNode
         {
             [Required()]
             public Decimal elevation { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LandElevation);
 
             public LandElevation()
@@ -5533,24 +5260,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class River : FeatureTypeBase
+        public partial class River : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(River);
 
             public River()
@@ -5558,24 +5281,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Rapids : FeatureTypeBase
+        public partial class Rapids : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Rapids);
 
             public Rapids()
@@ -5583,25 +5302,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Waterfall : FeatureTypeBase
+        public partial class Waterfall : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Waterfall);
 
             public Waterfall()
@@ -5609,25 +5325,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Lake : FeatureTypeBase
+        public partial class Lake : FeatureNode
         {
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Lake);
 
             public Lake()
@@ -5635,27 +5348,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LandRegion : FeatureTypeBase
+        public partial class LandRegion : FeatureNode
         {
             public List<categoryOfLandRegion> categoryOfLandRegion { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LandRegion);
 
             public LandRegion()
@@ -5663,29 +5373,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Vegetation : FeatureTypeBase
+        public partial class Vegetation : FeatureNode
         {
             [Required()]
             public categoryOfVegetation categoryOfVegetation { get; set; }
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Vegetation);
 
             public Vegetation()
@@ -5693,32 +5403,35 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IceArea : FeatureTypeBase
+        public partial class IceArea : FeatureNode
         {
             [Required()]
             public categoryOfIce categoryOfIce { get; set; }
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(IceArea);
 
             public IceArea()
@@ -5726,28 +5439,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SlopingGround : FeatureTypeBase
+        public partial class SlopingGround : FeatureNode
         {
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SlopingGround);
 
             public SlopingGround()
@@ -5755,29 +5468,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SlopeTopline : FeatureTypeBase
+        public partial class SlopeTopline : FeatureNode
         {
             public categoryOfSlope? categoryOfSlope { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SlopeTopline);
 
             public SlopeTopline()
@@ -5785,23 +5499,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Tideway : FeatureTypeBase
+        public partial class Tideway : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Tideway);
 
             public Tideway()
@@ -5809,31 +5518,34 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class BuiltUpArea : FeatureTypeBase
+        public partial class BuiltUpArea : FeatureNode
         {
             public categoryOfBuiltUpArea? categoryOfBuiltUpArea { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(BuiltUpArea);
 
             public BuiltUpArea()
@@ -5841,66 +5553,50 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Building : FeatureTypeBase
+        public partial class Building : FeatureNode
         {
             public buildingShape? buildingShape { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public List<function> function { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(Helipad))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(LightAirObstruction))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Building);
 
             public Building()
@@ -5908,31 +5604,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AirportAirfield : FeatureTypeBase
+        public partial class AirportAirfield : FeatureNode
         {
             public List<categoryOfAirportAirfield> categoryOfAirportAirfield { get; set; } = [];
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(AirportAirfield);
 
             public AirportAirfield()
@@ -5940,31 +5633,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Runway : FeatureTypeBase
+        public partial class Runway : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Runway);
 
             public Runway()
@@ -5972,36 +5662,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Helipad : FeatureTypeBase
+        public partial class Helipad : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(OffshorePlatform))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Helipad);
 
             public Helipad()
@@ -6009,66 +5691,48 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Bridge : FeatureTypeBase
+        public partial class Bridge : FeatureNode
         {
             public bridgeConstruction? bridgeConstruction { get; set; } = default;
+
             public List<bridgeFunction> bridgeFunction { get; set; } = [];
+
             public categoryOfOpeningBridge? categoryOfOpeningBridge { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? openingBridge { get; set; } = default;
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            public List<featureBinding<Associations.FeatureAssociations.BridgeAggregation>> theComponentOfBridgeAggregation { get; set; } = [];
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(LightAirObstruction))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Bridge);
 
             public Bridge()
@@ -6076,54 +5740,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpanFixed : FeatureTypeBase
+        public partial class SpanFixed : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public verticalClearanceFixed verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            public featureBinding<Associations.FeatureAssociations.BridgeAggregation>? theCollectionOfBridgeAggregation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(LightAirObstruction))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(SpanFixed);
 
             public SpanFixed()
@@ -6135,12 +5772,15 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpanOpening : FeatureTypeBase
+        public partial class SpanOpening : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
@@ -6148,44 +5788,14 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public verticalClearanceOpen verticalClearanceOpen { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            public featureBinding<Associations.FeatureAssociations.BridgeAggregation>? theCollectionOfBridgeAggregation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(LightAirObstruction))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(SpanOpening);
 
             public SpanOpening()
@@ -6201,62 +5811,52 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Conveyor : FeatureTypeBase
+        public partial class Conveyor : FeatureNode
         {
             public categoryOfConveyor? categoryOfConveyor { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? liftingCapacity { get; set; } = default;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(LightAirObstruction))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Conveyor);
 
             public Conveyor()
@@ -6264,39 +5864,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableOverhead : FeatureTypeBase
+        public partial class CableOverhead : FeatureNode
         {
             public categoryOfCable? categoryOfCable { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? iceFactor { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalClearanceSafe? verticalClearanceSafe { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(RadarReflector))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(CableOverhead);
 
             public CableOverhead()
@@ -6304,54 +5907,40 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PipelineOverhead : FeatureTypeBase
+        public partial class PipelineOverhead : FeatureNode
         {
             public categoryOfPipelinePipe? categoryOfPipelinePipe { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(RadarReflector))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(PipelineOverhead);
 
             public PipelineOverhead()
@@ -6359,65 +5948,49 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PylonBridgeSupport : FeatureTypeBase
+        public partial class PylonBridgeSupport : FeatureNode
         {
             [Required()]
             public categoryOfPylon categoryOfPylon { get; set; }
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            public featureBinding<Associations.FeatureAssociations.BridgeAggregation>? theCollectionOfBridgeAggregation { get; set; }
-
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            public featureBinding<Associations.FeatureAssociations.RoofedStructureAggregation>? theRoofedStructureOfRoofedStructureAggregation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Bollard))]
-            [FeatureType(typeof(LightAirObstruction))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(PylonBridgeSupport);
 
             public PylonBridgeSupport()
@@ -6425,35 +5998,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FenceWall : FeatureTypeBase
+        public partial class FenceWall : FeatureNode
         {
             public categoryOfFence? categoryOfFence { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(FenceWall);
 
             public FenceWall()
@@ -6461,28 +6041,26 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Railway : FeatureTypeBase
+        public partial class Railway : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Railway);
 
             public Railway()
@@ -6490,28 +6068,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Road : FeatureTypeBase
+        public partial class Road : FeatureNode
         {
             public categoryOfRoad? categoryOfRoad { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Road);
 
             public Road()
@@ -6519,31 +6097,32 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Tunnel : FeatureTypeBase
+        public partial class Tunnel : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Tunnel);
 
             public Tunnel()
@@ -6551,74 +6130,54 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Landmark : FeatureTypeBase
+        public partial class Landmark : FeatureNode
         {
             [Required()]
             public List<categoryOfLandmark> categoryOfLandmark { get; set; }
+
             public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = [];
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public List<function> function { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
 
             [Required()]
             public visualProminence visualProminence { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(Helipad))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Bollard))]
-            [FeatureType(typeof(LightAirObstruction))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Landmark);
 
             public Landmark()
@@ -6627,63 +6186,52 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SiloTank : FeatureTypeBase
+        public partial class SiloTank : FeatureNode
         {
             public buildingShape? buildingShape { get; set; } = default;
+
             public categoryOfSiloTank? categoryOfSiloTank { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SiloTank);
 
             public SiloTank()
@@ -6691,62 +6239,54 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WindTurbine : FeatureTypeBase
+        public partial class WindTurbine : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(LightAirObstruction))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(WindTurbine);
 
             public WindTurbine()
@@ -6754,57 +6294,40 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FortifiedStructure : FeatureTypeBase
+        public partial class FortifiedStructure : FeatureNode
         {
             public categoryOfFortifiedStructure? categoryOfFortifiedStructure { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Bollard))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(FortifiedStructure);
 
             public FortifiedStructure()
@@ -6812,39 +6335,43 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ProductionStorageArea : FeatureTypeBase
+        public partial class ProductionStorageArea : FeatureNode
         {
             [Required()]
             public categoryOfProductionArea categoryOfProductionArea { get; set; }
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(ProductionStorageArea);
 
             public ProductionStorageArea()
@@ -6852,28 +6379,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Checkpoint : FeatureTypeBase
+        public partial class Checkpoint : FeatureNode
         {
             public categoryOfCheckpoint? categoryOfCheckpoint { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Checkpoint);
 
             public Checkpoint()
@@ -6881,54 +6402,44 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Hulk : FeatureTypeBase
+        public partial class Hulk : FeatureNode
         {
             public List<categoryOfHulk> categoryOfHulk { get; set; } = [];
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(Bollard))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Hulk);
 
             public Hulk()
@@ -6936,62 +6447,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Pile : FeatureTypeBase
+        public partial class Pile : FeatureNode
         {
             public categoryOfPile? categoryOfPile { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Bollard))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Pile);
 
             public Pile()
@@ -6999,31 +6490,34 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dyke : FeatureTypeBase
+        public partial class Dyke : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Dyke);
 
             public Dyke()
@@ -7031,58 +6525,50 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ShorelineConstruction : FeatureTypeBase
+        public partial class ShorelineConstruction : FeatureNode
         {
             public categoryOfShorelineConstruction? categoryOfShorelineConstruction { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Bollard))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(ShorelineConstruction);
 
             public ShorelineConstruction()
@@ -7090,68 +6576,60 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class StructureOverNavigableWater : FeatureTypeBase
+        public partial class StructureOverNavigableWater : FeatureNode
         {
             public List<categoryOfStructure> categoryOfStructure { get; set; } = [];
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
 
             [Required()]
             public horizontalClearanceFixed horizontalClearanceFixed { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public product? product { get; set; } = default;
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
 
             [Required()]
             public verticalClearanceFixed verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(PylonBridgeSupport))]
-            public List<featureBinding<Associations.FeatureAssociations.RoofedStructureAggregation>> theSupportOfRoofedStructureAggregation { get; set; } = [];
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(StructureOverNavigableWater);
 
             public StructureOverNavigableWater()
@@ -7167,28 +6645,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Causeway : FeatureTypeBase
+        public partial class Causeway : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Causeway);
 
             public Causeway()
@@ -7196,30 +6674,32 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Canal : FeatureTypeBase
+        public partial class Canal : FeatureNode
         {
             public categoryOfCanal? categoryOfCanal { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Canal);
 
             public Canal()
@@ -7227,69 +6707,26 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DistanceMark : FeatureTypeBase
+        public partial class DistanceMark : FeatureNode
         {
             [Required()]
             public Boolean distanceMarkVisible { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public measuredDistanceValue measuredDistanceValue { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            [FeatureType(typeof(Daymark))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(DistanceMark);
 
             public DistanceMark()
@@ -7302,36 +6739,38 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Gate : FeatureTypeBase
+        public partial class Gate : FeatureNode
         {
             public categoryOfGate? categoryOfGate { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public horizontalClearanceOpen? horizontalClearanceOpen { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceOpen? verticalClearanceOpen { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Gate);
 
             public Gate()
@@ -7339,35 +6778,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dam : FeatureTypeBase
+        public partial class Dam : FeatureNode
         {
             public categoryOfDam? categoryOfDam { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Dam);
 
             public Dam()
@@ -7375,62 +6821,50 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Crane : FeatureTypeBase
+        public partial class Crane : FeatureNode
         {
             public categoryOfCrane? categoryOfCrane { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? liftingCapacity { get; set; } = default;
+
             public orientation? orientation { get; set; }
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public Decimal? radius { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalClearanceFixed? verticalClearanceFixed { get; set; }
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Boolean? inTheWater { get; set; } = default;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(LightAirObstruction))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Crane);
 
             public Crane()
@@ -7438,41 +6872,39 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Berth : FeatureTypeBase
+        public partial class Berth : FeatureNode
         {
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
 
             [Required()]
             public List<featureName> featureName { get; set; }
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalClearanceLength { get; set; } = default;
+
             public Decimal? horizontalClearanceWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Decimal? minimumBerthDepth { get; set; } = default;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(MooringTrot))]
-            public featureBinding<Associations.FeatureAssociations.MooringTrotAggregation>? theCollectionOfMooringTrotAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Berth);
 
             public Berth()
@@ -7481,63 +6913,49 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Dolphin : FeatureTypeBase
+        public partial class Dolphin : FeatureNode
         {
             [Required()]
             public List<categoryOfDolphin> categoryOfDolphin { get; set; }
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Bollard))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Dolphin);
 
             public Dolphin()
@@ -7546,39 +6964,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Bollard : FeatureTypeBase
+        public partial class Bollard : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Bollard);
 
             public Bollard()
@@ -7586,38 +6995,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DryDock : FeatureTypeBase
+        public partial class DryDock : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalClearanceLength { get; set; } = default;
+
             public Decimal? horizontalClearanceWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(DryDock);
 
             public DryDock()
@@ -7625,59 +7038,50 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FloatingDock : FeatureTypeBase
+        public partial class FloatingDock : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalClearanceLength { get; set; } = default;
+
             public Decimal? horizontalClearanceWidth { get; set; } = default;
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? liftingCapacity { get; set; } = default;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(FloatingDock);
 
             public FloatingDock()
@@ -7685,51 +7089,34 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Pontoon : FeatureTypeBase
+        public partial class Pontoon : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            public featureBinding<Associations.FeatureAssociations.BridgeAggregation>? theCollectionOfBridgeAggregation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Pontoon);
 
             public Pontoon()
@@ -7737,35 +7124,36 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DockArea : FeatureTypeBase
+        public partial class DockArea : FeatureNode
         {
             public categoryOfDock? categoryOfDock { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public Decimal? horizontalClearanceLength { get; set; } = default;
+
             public Decimal? horizontalClearanceWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(DockArea);
 
             public DockArea()
@@ -7773,29 +7161,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Gridiron : FeatureTypeBase
+        public partial class Gridiron : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Gridiron);
 
             public Gridiron()
@@ -7803,32 +7192,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LockBasin : FeatureTypeBase
+        public partial class LockBasin : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public horizontalClearanceFixed? horizontalClearanceFixed { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LockBasin);
 
             public LockBasin()
@@ -7836,31 +7223,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringTrot : FeatureTypeBase
+        public partial class MooringTrot : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Berth))]
-            [FeatureType(typeof(CableSubmarine))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(Obstruction))]
-            public List<featureBinding<Associations.FeatureAssociations.MooringTrotAggregation>> theComponentOfMooringTrotAggregation { get; set; } = [];
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(MooringTrot);
 
             public MooringTrot()
@@ -7868,24 +7244,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeaAreaNamedWaterArea : FeatureTypeBase
+        public partial class SeaAreaNamedWaterArea : FeatureNode
         {
             public categoryOfSeaArea? categoryOfSeaArea { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SeaAreaNamedWaterArea);
 
             public SeaAreaNamedWaterArea()
@@ -7893,14 +7265,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TidalStreamFloodEbb : FeatureTypeBase
+        public partial class TidalStreamFloodEbb : FeatureNode
         {
             [Required()]
             public categoryOfTidalStream categoryOfTidalStream { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
@@ -7908,17 +7284,10 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public speed speed { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(TidalStreamFloodEbb);
 
             public TidalStreamFloodEbb()
@@ -7934,32 +7303,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CurrentNonGravitational : FeatureTypeBase
+        public partial class CurrentNonGravitational : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public orientation orientation { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public speed speed { get; set; }
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(CurrentNonGravitational);
 
             public CurrentNonGravitational()
@@ -7975,25 +7342,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WaterTurbulence : FeatureTypeBase
+        public partial class WaterTurbulence : FeatureNode
         {
             [Required()]
             public categoryOfWaterTurbulence categoryOfWaterTurbulence { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(WaterTurbulence);
 
             public WaterTurbulence()
@@ -8001,28 +7364,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TidalStreamPanelData : FeatureTypeBase
+        public partial class TidalStreamPanelData : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String stationName { get; set; } = string.Empty;
+
             public String stationNumber { get; set; } = string.Empty;
 
             [Required()]
             public List<tidalStreamPanelValues> tidalStreamPanelValues { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(TidalStreamPanelData);
 
             public TidalStreamPanelData()
@@ -8032,27 +7392,26 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Sounding : FeatureTypeBase
+        public partial class Sounding : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public status? status { get; set; } = default;
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Sounding);
 
             public Sounding()
@@ -8060,35 +7419,35 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DredgedArea : FeatureTypeBase
+        public partial class DredgedArea : FeatureNode
         {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
+
             public Decimal? depthRangeMaximumValue { get; set; } = default;
+
             public DateOnly? dredgedDate { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public qualityOfVerticalMeasurement? qualityOfVerticalMeasurement { get; set; } = default;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(DredgedArea);
 
             public DredgedArea()
@@ -8096,28 +7455,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SweptArea : FeatureTypeBase
+        public partial class SweptArea : FeatureNode
         {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? sweptDate { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SweptArea);
 
             public SweptArea()
@@ -8125,22 +7477,19 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthContour : FeatureTypeBase
+        public partial class DepthContour : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public Decimal valueOfDepthContour { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(DepthContour);
 
             public DepthContour()
@@ -8148,23 +7497,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthArea : FeatureTypeBase
+        public partial class DepthArea : FeatureNode
         {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
 
             [Required()]
             public Decimal depthRangeMaximumValue { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(DepthArea);
 
             public DepthArea()
@@ -8172,20 +7518,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DepthNoBottomFound : FeatureTypeBase
+        public partial class DepthNoBottomFound : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(DepthNoBottomFound);
 
             public DepthNoBottomFound()
@@ -8193,18 +7537,14 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UnsurveyedArea : FeatureTypeBase
+        public partial class UnsurveyedArea : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(UnsurveyedArea);
 
             public UnsurveyedArea()
@@ -8212,27 +7552,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeabedArea : FeatureTypeBase
+        public partial class SeabedArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public List<surfaceCharacteristics> surfaceCharacteristics { get; set; }
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SeabedArea);
 
             public SeabedArea()
@@ -8241,24 +7577,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class WeedKelp : FeatureTypeBase
+        public partial class WeedKelp : FeatureNode
         {
             public categoryOfWeedKelp? categoryOfWeedKelp { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(WeedKelp);
 
             public WeedKelp()
@@ -8266,23 +7598,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Seagrass : FeatureTypeBase
+        public partial class Seagrass : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Seagrass);
 
             public Seagrass()
@@ -8290,20 +7617,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Sandwave : FeatureTypeBase
+        public partial class Sandwave : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(Sandwave);
 
             public Sandwave()
@@ -8311,23 +7636,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Spring : FeatureTypeBase
+        public partial class Spring : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Spring);
 
             public Spring()
@@ -8335,17 +7655,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class UnderwaterAwashRock : FeatureTypeBase
+        public partial class UnderwaterAwashRock : FeatureNode
         {
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public natureOfSurface? natureOfSurface { get; set; } = default;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public status? status { get; set; } = default;
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [Required()]
@@ -8353,21 +7681,15 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public Decimal? defaultClearanceDepth { get; set; } = default;
 
             [Required()]
             public Decimal surroundingDepth { get; set; }
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(UnderwaterAwashRock);
 
             public UnderwaterAwashRock()
@@ -8375,54 +7697,48 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Wreck : FeatureTypeBase
+        public partial class Wreck : FeatureNode
         {
             public categoryOfWreck? categoryOfWreck { get; set; } = default;
+
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public Decimal? valueOfSounding { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
 
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
+
             public Decimal? defaultClearanceDepth { get; set; } = default;
 
             [Required()]
             public Decimal surroundingDepth { get; set; }
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Wreck);
 
             public Wreck()
@@ -8430,46 +7746,52 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Obstruction : FeatureTypeBase
+        public partial class Obstruction : FeatureNode
         {
             public categoryOfObstruction? categoryOfObstruction { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public List<natureOfSurface> natureOfSurface { get; set; } = [];
+
             public List<product> product { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public Decimal? valueOfSounding { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
 
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public Decimal? defaultClearanceDepth { get; set; } = default;
 
             [Required()]
             public Decimal surroundingDepth { get; set; }
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(MooringTrot))]
-            public featureBinding<Associations.FeatureAssociations.MooringTrotAggregation>? theCollectionOfMooringTrotAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Obstruction);
 
             public Obstruction()
@@ -8477,29 +7799,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FoulGround : FeatureTypeBase
+        public partial class FoulGround : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public Decimal? valueOfSounding { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(FoulGround);
 
             public FoulGround()
@@ -8507,20 +7830,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DiscolouredWater : FeatureTypeBase
+        public partial class DiscolouredWater : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(DiscolouredWater);
 
             public DiscolouredWater()
@@ -8528,49 +7849,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FishingFacility : FeatureTypeBase
+        public partial class FishingFacility : FeatureNode
         {
             public categoryOfFishingFacility? categoryOfFishingFacility { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(FishingFacility);
 
             public FishingFacility()
@@ -8578,39 +7880,45 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MarineFarmCulture : FeatureTypeBase
+        public partial class MarineFarmCulture : FeatureNode
         {
             public categoryOfMarineFarmCulture? categoryOfMarineFarmCulture { get; set; } = default;
+
             public expositionOfSounding? expositionOfSounding { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfSounding { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
 
             [Required()]
             public waterLevelEffect waterLevelEffect { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(MarineFarmCulture);
 
             public MarineFarmCulture()
@@ -8618,60 +7926,46 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OffshorePlatform : FeatureTypeBase
+        public partial class OffshorePlatform : FeatureNode
         {
             public categoryOfOffshorePlatform? categoryOfOffshorePlatform { get; set; } = default;
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? flareStack { get; set; } = default;
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(Helipad))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Bollard))]
-            [FeatureType(typeof(LightAirObstruction))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(OffshorePlatform);
 
             public OffshorePlatform()
@@ -8679,32 +7973,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableSubmarine : FeatureTypeBase
+        public partial class CableSubmarine : FeatureNode
         {
             public Decimal? buriedDepth { get; set; } = default;
+
             public categoryOfCable? categoryOfCable { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(MooringTrot))]
-            public featureBinding<Associations.FeatureAssociations.MooringTrotAggregation>? theCollectionOfMooringTrotAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(CableSubmarine);
 
             public CableSubmarine()
@@ -8712,29 +8002,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CableArea : FeatureTypeBase
+        public partial class CableArea : FeatureNode
         {
             public List<categoryOfCable> categoryOfCable { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(CableArea);
 
             public CableArea()
@@ -8742,36 +8031,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PipelineSubmarineOnLand : FeatureTypeBase
+        public partial class PipelineSubmarineOnLand : FeatureNode
         {
             public Decimal? buriedDepth { get; set; } = default;
+
             public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
+
             public condition? condition { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public Decimal? depthRangeMaximumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<product> product { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(PipelineSubmarineOnLand);
 
             public PipelineSubmarineOnLand()
@@ -8779,30 +8074,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SubmarinePipelineArea : FeatureTypeBase
+        public partial class SubmarinePipelineArea : FeatureNode
         {
             public List<categoryOfPipelinePipe> categoryOfPipelinePipe { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<product> product { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SubmarinePipelineArea);
 
             public SubmarinePipelineArea()
@@ -8810,37 +8105,44 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OffshoreProductionArea : FeatureTypeBase
+        public partial class OffshoreProductionArea : FeatureNode
         {
             public categoryOfOffshoreProductionArea? categoryOfOffshoreProductionArea { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public waterLevelEffect? waterLevelEffect { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(OffshoreProductionArea);
 
             public OffshoreProductionArea()
@@ -8848,31 +8150,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class NavigationLine : FeatureTypeBase
+        public partial class NavigationLine : FeatureNode
         {
             [Required()]
             public categoryOfNavigationLine categoryOfNavigationLine { get; set; }
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? measuredDistance { get; set; } = default;
 
             [Required()]
             public orientation orientation { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(NavigationLine);
 
             public NavigationLine()
@@ -8884,45 +8185,43 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedTrack : FeatureTypeBase
+        public partial class RecommendedTrack : FeatureNode
         {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [Required()]
             public trafficFlow trafficFlow { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
             public override string Code => nameof(RecommendedTrack);
 
             public RecommendedTrack()
@@ -8930,52 +8229,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RangeSystem : FeatureTypeBase
+        public partial class RangeSystem : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(NavigationLine))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(RangeSystem))]
-            [FeatureType(typeof(RecommendedRouteCentreline))]
-            [FeatureType(typeof(RecommendedTrack))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            public List<featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>> theComponentOfRangeSystemAggregation { get; set; } = [];
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(RangeSystem);
 
             public RangeSystem()
@@ -8983,60 +8252,38 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Fairway : FeatureTypeBase
+        public partial class Fairway : FeatureNode
         {
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Decimal? orientationValue { get; set; } = default;
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public trafficFlow? trafficFlow { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(FairwaySystem))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAggregation>? theCollectionOfFairwayAggregation { get; set; }
-
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(CautionArea))]
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DredgedArea))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(RangeSystem))]
-            [FeatureType(typeof(RecommendedRouteCentreline))]
-            [FeatureType(typeof(RecommendedTrack))]
-            [FeatureType(typeof(RestrictedArea))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(SweptArea))]
-            public List<featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>> theAuxiliaryFeatureOfFairwayAuxiliary { get; set; } = [];
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Fairway);
 
             public Fairway()
@@ -9044,67 +8291,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FairwaySystem : FeatureTypeBase
+        public partial class FairwaySystem : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            public List<featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>> theComponentOfAidsToNavigationAssociation { get; set; } = [];
-
-            [FeatureType(typeof(Fairway))]
-            public List<featureBinding<Associations.FeatureAssociations.FairwayAggregation>> theComponentOfFairwayAggregation { get; set; } = [];
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(FairwaySystem);
 
             public FairwaySystem()
@@ -9112,40 +8316,39 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedRouteCentreline : FeatureTypeBase
+        public partial class RecommendedRouteCentreline : FeatureNode
         {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? orientationValue { get; set; } = default;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
+
             public trafficFlow? trafficFlow { get; set; } = default;
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(RecommendedRouteCentreline);
 
             public RecommendedRouteCentreline()
@@ -9153,38 +8356,36 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TwoWayRoutePart : FeatureTypeBase
+        public partial class TwoWayRoutePart : FeatureNode
         {
             public Boolean? basedOnFixedMarks { get; set; } = default;
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [Required()]
             public trafficFlow trafficFlow { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.TwoWayRouteAggregation>? theCollectionOfTwoWayRouteAggregation { get; set; }
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TwoWayRoutePart);
 
             public TwoWayRoutePart()
@@ -9192,69 +8393,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TwoWayRoute : FeatureTypeBase
+        public partial class TwoWayRoute : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            public List<featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>> theComponentOfAidsToNavigationAssociation { get; set; } = [];
-
-            [FeatureType(typeof(TwoWayRoutePart))]
-            public List<featureBinding<Associations.FeatureAssociations.TwoWayRouteAggregation>> theComponentOfTwoWayRouteAggregation { get; set; } = [];
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(TwoWayRoute);
 
             public TwoWayRoute()
@@ -9262,24 +8416,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RecommendedTrafficLanePart : FeatureTypeBase
+        public partial class RecommendedTrafficLanePart : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(RecommendedTrafficLanePart);
 
             public RecommendedTrafficLanePart()
@@ -9287,44 +8440,41 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRouteCentreline : FeatureTypeBase
+        public partial class DeepWaterRouteCentreline : FeatureNode
         {
             [Required()]
             public Boolean basedOnFixedMarks { get; set; }
+
             public Decimal? depthRangeMinimumValue { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? iMOAdopted { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [Required()]
             public trafficFlow trafficFlow { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            public featureBinding<Associations.FeatureAssociations.DeepWaterRouteAggregation>? theCollectionOfDeepWaterRouteAggregation { get; set; }
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(DeepWaterRouteCentreline);
 
             public DeepWaterRouteCentreline()
@@ -9332,45 +8482,43 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRoutePart : FeatureTypeBase
+        public partial class DeepWaterRoutePart : FeatureNode
         {
             [Required()]
             public Decimal depthRangeMinimumValue { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? iMOAdopted { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<qualityOfVerticalMeasurement> qualityOfVerticalMeasurement { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<techniqueOfVerticalMeasurement> techniqueOfVerticalMeasurement { get; set; } = [];
 
             [Required()]
             public trafficFlow trafficFlow { get; set; }
+
             public verticalUncertainty? verticalUncertainty { get; set; }
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            public featureBinding<Associations.FeatureAssociations.DeepWaterRouteAggregation>? theCollectionOfDeepWaterRouteAggregation { get; set; }
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(DeepWaterRoutePart);
 
             public DeepWaterRoutePart()
@@ -9378,59 +8526,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DeepWaterRoute : FeatureTypeBase
+        public partial class DeepWaterRoute : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? iMOAdopted { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(WindTurbine))]
-            public List<featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>> theComponentOfAidsToNavigationAssociation { get; set; } = [];
-
-            [FeatureType(typeof(DeepWaterRouteCentreline))]
-            [FeatureType(typeof(DeepWaterRoutePart))]
-            public List<featureBinding<Associations.FeatureAssociations.DeepWaterRouteAggregation>> theComponentOfDeepWaterRouteAggregation { get; set; } = [];
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(DeepWaterRoute);
 
             public DeepWaterRoute()
@@ -9438,26 +8549,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InshoreTrafficZone : FeatureTypeBase
+        public partial class InshoreTrafficZone : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(InshoreTrafficZone);
 
             public InshoreTrafficZone()
@@ -9465,33 +8574,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PrecautionaryArea : FeatureTypeBase
+        public partial class PrecautionaryArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? iMOAdopted { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
 
             [Required()]
             public List<information> information { get; set; }
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(PrecautionaryArea);
 
             public PrecautionaryArea()
@@ -9500,27 +8605,26 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeLanePart : FeatureTypeBase
+        public partial class TrafficSeparationSchemeLanePart : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? orientationValue { get; set; } = default;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeLanePart);
 
             public TrafficSeparationSchemeLanePart()
@@ -9528,24 +8632,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeparationZoneOrLine : FeatureTypeBase
+        public partial class SeparationZoneOrLine : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(SeparationZoneOrLine);
 
             public SeparationZoneOrLine()
@@ -9553,24 +8653,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeBoundary : FeatureTypeBase
+        public partial class TrafficSeparationSchemeBoundary : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeBoundary);
 
             public TrafficSeparationSchemeBoundary()
@@ -9578,26 +8674,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeCrossing : FeatureTypeBase
+        public partial class TrafficSeparationSchemeCrossing : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeCrossing);
 
             public TrafficSeparationSchemeCrossing()
@@ -9605,26 +8699,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationSchemeRoundabout : FeatureTypeBase
+        public partial class TrafficSeparationSchemeRoundabout : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TrafficSeparationSchemeRoundabout);
 
             public TrafficSeparationSchemeRoundabout()
@@ -9632,86 +8724,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TrafficSeparationScheme : FeatureTypeBase
+        public partial class TrafficSeparationScheme : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? iMOAdopted { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            public List<featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>> theComponentOfAidsToNavigationAssociation { get; set; } = [];
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(DeepWaterRouteCentreline))]
-            [FeatureType(typeof(DeepWaterRoutePart))]
-            [FeatureType(typeof(InshoreTrafficZone))]
-            [FeatureType(typeof(PrecautionaryArea))]
-            [FeatureType(typeof(RestrictedArea))]
-            [FeatureType(typeof(SeparationZoneOrLine))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TrafficSeparationSchemeBoundary))]
-            [FeatureType(typeof(TrafficSeparationSchemeCrossing))]
-            [FeatureType(typeof(TrafficSeparationSchemeLanePart))]
-            [FeatureType(typeof(TrafficSeparationSchemeRoundabout))]
-            [FeatureType(typeof(TwoWayRoute))]
-            [FeatureType(typeof(TwoWayRoutePart))]
-            public List<featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>> theComponentOfTrafficSeparationSchemeAggregation { get; set; } = [];
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(CautionArea))]
-            public featureBinding<Associations.FeatureAssociations.CautionAreaAssociation>? theCollectionOfCautionAreaAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(TrafficSeparationScheme);
 
             public TrafficSeparationScheme()
@@ -9719,28 +8749,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLaneArea : FeatureTypeBase
+        public partial class ArchipelagicSeaLaneArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            public featureBinding<Associations.FeatureAssociations.ASLAggregation>? theCollectionOfASLAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(ArchipelagicSeaLaneArea);
 
             public ArchipelagicSeaLaneArea()
@@ -9748,28 +8772,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLaneAxis : FeatureTypeBase
+        public partial class ArchipelagicSeaLaneAxis : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            public featureBinding<Associations.FeatureAssociations.ASLAggregation>? theCollectionOfASLAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(ArchipelagicSeaLaneAxis);
 
             public ArchipelagicSeaLaneAxis()
@@ -9777,49 +8795,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ArchipelagicSeaLane : FeatureTypeBase
+        public partial class ArchipelagicSeaLane : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            public List<featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>> theComponentOfAidsToNavigationAssociation { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLaneArea))]
-            [FeatureType(typeof(ArchipelagicSeaLaneAxis))]
-            public List<featureBinding<Associations.FeatureAssociations.ASLAggregation>> theComponentOfASLAggregation { get; set; } = [];
-
-            [FeatureType(typeof(CautionArea))]
-            public featureBinding<Associations.FeatureAssociations.CautionAreaAssociation>? theCollectionOfCautionAreaAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(ArchipelagicSeaLane);
 
             public ArchipelagicSeaLane()
@@ -9828,34 +8819,31 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadioCallingInPoint : FeatureTypeBase
+        public partial class RadioCallingInPoint : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<Decimal> orientationValue { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
 
             [Required()]
             public trafficFlow trafficFlow { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(RadioCallingInPoint);
 
             public RadioCallingInPoint()
@@ -9863,28 +8851,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FerryRoute : FeatureTypeBase
+        public partial class FerryRoute : FeatureNode
         {
             [Required()]
             public List<categoryOfFerry> categoryOfFerry { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(FerryRoute);
 
             public FerryRoute()
@@ -9893,27 +8880,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarLine : FeatureTypeBase
+        public partial class RadarLine : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public Decimal orientationValue { get; set; }
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(RadarLine);
 
             public RadarLine()
@@ -9921,27 +8904,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarRange : FeatureTypeBase
+        public partial class RadarRange : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(RadarRange);
 
             public RadarRange()
@@ -9949,31 +8929,32 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarStation : FeatureTypeBase
+        public partial class RadarStation : FeatureNode
         {
             public String callSign { get; set; } = string.Empty;
+
             public List<categoryOfRadarStation> categoryOfRadarStation { get; set; } = [];
+
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfMaximumRange { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(RadarStation);
 
             public RadarStation()
@@ -9981,33 +8962,32 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AnchorageArea : FeatureTypeBase
+        public partial class AnchorageArea : FeatureNode
         {
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
+
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(AnchorageArea);
 
             public AnchorageArea()
@@ -10015,34 +8995,34 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringArea : FeatureTypeBase
+        public partial class MooringArea : FeatureNode
         {
             public List<categoryOfMooringArea> categoryOfMooringArea { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Decimal? maximumPermittedVesselLength { get; set; } = default;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(MooringArea);
 
             public MooringArea()
@@ -10050,32 +9030,30 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AnchorBerth : FeatureTypeBase
+        public partial class AnchorBerth : FeatureNode
         {
             public List<categoryOfAnchorage> categoryOfAnchorage { get; set; } = [];
+
             public List<categoryOfCargo> categoryOfCargo { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Decimal? radius { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(AnchorBerth);
 
             public AnchorBerth()
@@ -10083,30 +9061,26 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SeaplaneLandingArea : FeatureTypeBase
+        public partial class SeaplaneLandingArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SeaplaneLandingArea);
 
             public SeaplaneLandingArea()
@@ -10114,28 +9088,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class DumpingGround : FeatureTypeBase
+        public partial class DumpingGround : FeatureNode
         {
             public List<categoryOfDumpingGround> categoryOfDumpingGround { get; set; } = [];
+
             public DateOnly? dateDisused { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(DumpingGround);
 
             public DumpingGround()
@@ -10143,30 +9117,32 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MilitaryPracticeArea : FeatureTypeBase
+        public partial class MilitaryPracticeArea : FeatureNode
         {
             public List<categoryOfMilitaryPracticeArea> categoryOfMilitaryPracticeArea { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(MilitaryPracticeArea);
 
             public MilitaryPracticeArea()
@@ -10174,30 +9150,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class AdministrationArea : FeatureTypeBase
+        public partial class AdministrationArea : FeatureNode
         {
             public Boolean? inDispute { get; set; } = default;
 
             [Required()]
             public jurisdiction jurisdiction { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<String> nationality { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(AdministrationArea);
 
             public AdministrationArea()
@@ -10205,28 +9178,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CargoTranshipmentArea : FeatureTypeBase
+        public partial class CargoTranshipmentArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(CargoTranshipmentArea);
 
             public CargoTranshipmentArea()
@@ -10234,32 +9207,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CautionArea : FeatureTypeBase
+        public partial class CautionArea : FeatureNode
         {
             public condition? condition { get; set; } = default;
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public List<featureBinding<Associations.FeatureAssociations.CautionAreaAssociation>> theComponentOfCautionAreaAssociation { get; set; } = [];
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(CautionArea);
 
             public CautionArea()
@@ -10267,27 +9236,26 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InformationArea : FeatureTypeBase
+        public partial class InformationArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(InformationArea);
 
             public InformationArea()
@@ -10295,24 +9263,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContiguousZone : FeatureTypeBase
+        public partial class ContiguousZone : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Boolean? inDispute { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public List<String> nationality { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(ContiguousZone);
 
             public ContiguousZone()
@@ -10321,26 +9288,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ContinentalShelfArea : FeatureTypeBase
+        public partial class ContinentalShelfArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public List<String> nationality { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(ContinentalShelfArea);
 
             public ContinentalShelfArea()
@@ -10349,20 +9311,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CustomZone : FeatureTypeBase
+        public partial class CustomZone : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(CustomZone);
 
             public CustomZone()
@@ -10371,23 +9331,21 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class ExclusiveEconomicZone : FeatureTypeBase
+        public partial class ExclusiveEconomicZone : FeatureNode
         {
             public Boolean? inDispute { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public List<String> nationality { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(ExclusiveEconomicZone);
 
             public ExclusiveEconomicZone()
@@ -10396,25 +9354,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FisheryZone : FeatureTypeBase
+        public partial class FisheryZone : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(FisheryZone);
 
             public FisheryZone()
@@ -10423,27 +9378,26 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FishingGround : FeatureTypeBase
+        public partial class FishingGround : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(FishingGround);
 
             public FishingGround()
@@ -10451,24 +9405,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FreePortArea : FeatureTypeBase
+        public partial class FreePortArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(FreePortArea);
 
             public FreePortArea()
@@ -10476,25 +9426,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class HarbourAreaAdministrative : FeatureTypeBase
+        public partial class HarbourAreaAdministrative : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(HarbourAreaAdministrative);
 
             public HarbourAreaAdministrative()
@@ -10502,25 +9447,22 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LogPond : FeatureTypeBase
+        public partial class LogPond : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LogPond);
 
             public LogPond()
@@ -10528,28 +9470,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class OilBarrier : FeatureTypeBase
+        public partial class OilBarrier : FeatureNode
         {
             public categoryOfOilBarrier? categoryOfOilBarrier { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(OilBarrier);
 
             public OilBarrier()
@@ -10557,20 +9499,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class StraightTerritorialSeaBaseline : FeatureTypeBase
+        public partial class StraightTerritorialSeaBaseline : FeatureNode
         {
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(StraightTerritorialSeaBaseline);
 
             public StraightTerritorialSeaBaseline()
@@ -10579,25 +9519,25 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TerritorialSeaArea : FeatureTypeBase
+        public partial class TerritorialSeaArea : FeatureNode
         {
             public Boolean? inDispute { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
 
             [Required()]
             public List<String> nationality { get; set; }
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(TerritorialSeaArea);
 
             public TerritorialSeaArea()
@@ -10606,26 +9546,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SubmarineTransitLane : FeatureTypeBase
+        public partial class SubmarineTransitLane : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String nationality { get; set; } = string.Empty;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SubmarineTransitLane);
 
             public SubmarineTransitLane()
@@ -10633,28 +9571,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PilotageDistrict : FeatureTypeBase
+        public partial class PilotageDistrict : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(PilotBoardingPlace))]
-            public List<featureBinding<Associations.FeatureAssociations.PilotageDistrictAssociation>> theComponentOfPilotageDistrictAssociation { get; set; } = [];
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(PilotageDistrict);
 
             public PilotageDistrict()
@@ -10662,26 +9592,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CollisionRegulationsLimit : FeatureTypeBase
+        public partial class CollisionRegulationsLimit : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public String regulationCitation { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(CollisionRegulationsLimit);
 
             public CollisionRegulationsLimit()
@@ -10689,24 +9617,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MarinePollutionRegulationsArea : FeatureTypeBase
+        public partial class MarinePollutionRegulationsArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String regulationCitation { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(MarinePollutionRegulationsArea);
 
             public MarinePollutionRegulationsArea()
@@ -10714,37 +9638,31 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RestrictedArea : FeatureTypeBase
+        public partial class RestrictedArea : FeatureNode
         {
             public List<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public List<restriction> restriction { get; set; }
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            public featureBinding<Associations.FeatureAssociations.TrafficSeparationSchemeAggregation>? theCollectionOfTrafficSeparationSchemeAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(RestrictedArea);
 
             public RestrictedArea()
@@ -10753,99 +9671,54 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightAllAround : FeatureTypeBase
+        public partial class LightAllAround : FeatureNode
         {
             public List<categoryOfLight> categoryOfLight { get; set; } = [];
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Int32? flareBearing { get; set; } = default;
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public lightVisibility? lightVisibility { get; set; } = default;
+
             public Boolean? majorLight { get; set; } = default;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public rhythmOfLight rhythmOfLight { get; set; }
+
             public signalGeneration? signalGeneration { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfNominalRange { get; set; } = default;
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Daymark))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAirObstruction))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LightAllAround);
 
             public LightAllAround()
@@ -10858,78 +9731,41 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightSectored : FeatureTypeBase
+        public partial class LightSectored : FeatureNode
         {
             public List<categoryOfLight> categoryOfLight { get; set; } = [];
+
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
 
             [Required()]
             public List<sectorCharacteristics> sectorCharacteristics { get; set; }
+
             public signalGeneration? signalGeneration { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAirObstruction))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Daymark))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LightSectored);
 
             public LightSectored()
@@ -10938,75 +9774,38 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightFogDetector : FeatureTypeBase
+        public partial class LightFogDetector : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Int32? flareBearing { get; set; } = default;
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public rhythmOfLight? rhythmOfLight { get; set; }
+
             public signalGeneration? signalGeneration { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Daymark))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LightFogDetector);
 
             public LightFogDetector()
@@ -11014,49 +9813,42 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightAirObstruction : FeatureTypeBase
+        public partial class LightAirObstruction : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
+
             public exhibitionConditionOfLight? exhibitionConditionOfLight { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Int32? flareBearing { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? height { get; set; } = default;
+
             public List<lightVisibility> lightVisibility { get; set; } = [];
+
             public multiplicityOfFeatures? multiplicityOfFeatures { get; set; }
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public rhythmOfLight? rhythmOfLight { get; set; }
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfNominalRange { get; set; } = default;
+
             public verticalDatum? verticalDatum { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightSectored))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LightAirObstruction);
 
             public LightAirObstruction()
@@ -11064,9 +9856,10 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LateralBuoy : FeatureTypeBase
+        public partial class LateralBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
@@ -11076,52 +9869,34 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LateralBuoy);
 
             public LateralBuoy()
@@ -11130,9 +9905,10 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CardinalBuoy : FeatureTypeBase
+        public partial class CardinalBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
@@ -11142,52 +9918,34 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(CardinalBuoy);
 
             public CardinalBuoy()
@@ -11196,61 +9954,44 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IsolatedDangerBuoy : FeatureTypeBase
+        public partial class IsolatedDangerBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(IsolatedDangerBuoy);
 
             public IsolatedDangerBuoy()
@@ -11259,61 +10000,44 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SafeWaterBuoy : FeatureTypeBase
+        public partial class SafeWaterBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SafeWaterBuoy);
 
             public SafeWaterBuoy()
@@ -11322,9 +10046,10 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpecialPurposeGeneralBuoy : FeatureTypeBase
+        public partial class SpecialPurposeGeneralBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
@@ -11334,52 +10059,34 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SpecialPurposeGeneralBuoy);
 
             public SpecialPurposeGeneralBuoy()
@@ -11389,56 +10096,40 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class EmergencyWreckMarkingBuoy : FeatureTypeBase
+        public partial class EmergencyWreckMarkingBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(EmergencyWreckMarkingBuoy);
 
             public EmergencyWreckMarkingBuoy()
@@ -11447,51 +10138,44 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class InstallationBuoy : FeatureTypeBase
+        public partial class InstallationBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
+
             public categoryOfInstallationBuoy? categoryOfInstallationBuoy { get; set; } = default;
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<product> product { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(InstallationBuoy);
 
             public InstallationBuoy()
@@ -11500,58 +10184,43 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class MooringBuoy : FeatureTypeBase
+        public partial class MooringBuoy : FeatureNode
         {
             [Required()]
             public buoyShape buoyShape { get; set; }
+
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? maximumPermittedDraught { get; set; } = default;
+
             public Decimal? maximumPermittedVesselLength { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public Boolean? visitorsMooring { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(MooringTrot))]
-            public featureBinding<Associations.FeatureAssociations.MooringTrotAggregation>? theCollectionOfMooringTrotAggregation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(MooringBuoy);
 
             public MooringBuoy()
@@ -11559,9 +10228,10 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LateralBeacon : FeatureTypeBase
+        public partial class LateralBeacon : FeatureNode
         {
             [Required()]
             public beaconShape beaconShape { get; set; }
@@ -11571,61 +10241,44 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Decimal? height { get; set; } = default;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LateralBeacon);
 
             public LateralBeacon()
@@ -11634,9 +10287,10 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CardinalBeacon : FeatureTypeBase
+        public partial class CardinalBeacon : FeatureNode
         {
             [Required()]
             public beaconShape beaconShape { get; set; }
@@ -11646,61 +10300,44 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(CardinalBeacon);
 
             public CardinalBeacon()
@@ -11709,70 +10346,54 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class IsolatedDangerBeacon : FeatureTypeBase
+        public partial class IsolatedDangerBeacon : FeatureNode
         {
             [Required()]
             public beaconShape beaconShape { get; set; }
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(IsolatedDangerBeacon);
 
             public IsolatedDangerBeacon()
@@ -11781,70 +10402,54 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SafeWaterBeacon : FeatureTypeBase
+        public partial class SafeWaterBeacon : FeatureNode
         {
             [Required()]
             public beaconShape beaconShape { get; set; }
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SafeWaterBeacon);
 
             public SafeWaterBeacon()
@@ -11853,9 +10458,10 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SpecialPurposeGeneralBeacon : FeatureTypeBase
+        public partial class SpecialPurposeGeneralBeacon : FeatureNode
         {
             [Required()]
             public beaconShape beaconShape { get; set; }
@@ -11865,61 +10471,44 @@ namespace S100Framework.DomainModel.S101
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public condition? condition { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public marksNavigationalSystemOf? marksNavigationalSystemOf { get; set; } = default;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(LightSectored))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SpecialPurposeGeneralBeacon);
 
             public SpecialPurposeGeneralBeacon()
@@ -11929,106 +10518,48 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Daymark : FeatureTypeBase
+        public partial class Daymark : FeatureNode
         {
             public List<categoryOfSpecialPurposeMark> categoryOfSpecialPurposeMark { get; set; } = [];
 
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public Decimal? elevation { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
 
             [Required()]
             public topmarkDaymarkShape topmarkDaymarkShape { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public List<shapeInformation> shapeInformation { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(Daymark);
 
             public Daymark()
@@ -12037,60 +10568,45 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightFloat : FeatureTypeBase
+        public partial class LightFloat : FeatureNode
         {
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public topmark? topmark { get; set; }
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LightFloat);
 
             public LightFloat()
@@ -12099,59 +10615,43 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class LightVessel : FeatureTypeBase
+        public partial class LightVessel : FeatureNode
         {
             [Required()]
             public List<colour> colour { get; set; }
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? horizontalLength { get; set; } = default;
+
             public Decimal? horizontalWidth { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Boolean? radarConspicuous { get; set; } = default;
+
             public List<status> status { get; set; } = [];
+
             public Decimal? verticalLength { get; set; } = default;
+
             public visualProminence? visualProminence { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(Retroreflector))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            public List<featureBinding<Associations.FeatureAssociations.StructureEquipment>> theEquipmentOfStructureEquipment { get; set; } = [];
-
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(TwoWayRoute))]
-            public featureBinding<Associations.FeatureAssociations.AidsToNavigationAssociation>? theCollectionOfAidsToNavigationAssociation { get; set; }
-
-            [FeatureType(typeof(Fairway))]
-            public featureBinding<Associations.FeatureAssociations.FairwayAuxiliary>? thePrimaryFeatureOfFairwayAuxiliary { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(LightVessel);
 
             public LightVessel()
@@ -12160,67 +10660,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Retroreflector : FeatureTypeBase
+        public partial class Retroreflector : FeatureNode
         {
             public List<colour> colour { get; set; } = [];
+
             public colourPattern? colourPattern { get; set; } = default;
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Daymark))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(Retroreflector);
 
             public Retroreflector()
@@ -12228,27 +10689,24 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarReflector : FeatureTypeBase
+        public partial class RadarReflector : FeatureNode
         {
             public fixedDateRange? fixedDateRange { get; set; }
+
             public Decimal? height { get; set; } = default;
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(CableOverhead))]
-            [FeatureType(typeof(PipelineOverhead))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
             public override string Code => nameof(RadarReflector);
 
             public RadarReflector()
@@ -12256,77 +10714,39 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class FogSignal : FeatureTypeBase
+        public partial class FogSignal : FeatureNode
         {
             [Required()]
             public categoryOfFogSignal categoryOfFogSignal { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public Int32? signalFrequency { get; set; } = default;
+
             public signalGeneration? signalGeneration { get; set; } = default;
+
             public String signalGroup { get; set; } = string.Empty;
+
             public Decimal? signalPeriod { get; set; } = default;
+
             public List<signalSequence> signalSequence { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfMaximumRange { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Daymark))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(FogSignal);
 
             public FogSignal()
@@ -12334,68 +10754,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PhysicalAISAidToNavigation : FeatureTypeBase
+        public partial class PhysicalAISAidToNavigation : FeatureNode
         {
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String mMSICode { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public status? status { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            [FeatureType(typeof(Daymark))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(PhysicalAISAidToNavigation);
 
             public PhysicalAISAidToNavigation()
@@ -12403,31 +10783,31 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VirtualAISAidToNavigation : FeatureTypeBase
+        public partial class VirtualAISAidToNavigation : FeatureNode
         {
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public String mMSICode { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public status? status { get; set; } = default;
 
             [Required()]
             public virtualAISAidToNavigationType virtualAISAidToNavigationType { get; set; }
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(VirtualAISAidToNavigation);
 
             public VirtualAISAidToNavigation()
@@ -12435,32 +10815,34 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadioStation : FeatureTypeBase
+        public partial class RadioStation : FeatureNode
         {
             public String callSign { get; set; } = string.Empty;
+
             public List<categoryOfRadioStation> categoryOfRadioStation { get; set; } = [];
+
             public List<String> communicationChannel { get; set; } = [];
+
             public Decimal? estimatedRangeOfTransmission { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public frequencyPair? frequencyPair { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(RadioStation);
 
             public RadioStation()
@@ -12468,78 +10850,37 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RadarTransponderBeacon : FeatureTypeBase
+        public partial class RadarTransponderBeacon : FeatureNode
         {
             [Required()]
             public categoryOfRadarTransponderBeacon categoryOfRadarTransponderBeacon { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<radarWaveLength> radarWaveLength { get; set; } = [];
+
             public sectorLimit? sectorLimit { get; set; }
+
             public String signalGroup { get; set; } = string.Empty;
+
             public List<signalSequence> signalSequence { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Decimal? valueOfMaximumRange { get; set; } = default;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(Daymark))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
-
-            [FeatureType(typeof(RangeSystem))]
-            public featureBinding<Associations.FeatureAssociations.RangeSystemAggregation>? theCollectionOfRangeSystemAggregation { get; set; }
             public override string Code => nameof(RadarTransponderBeacon);
 
             public RadarTransponderBeacon()
@@ -12547,35 +10888,34 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class PilotBoardingPlace : FeatureTypeBase
+        public partial class PilotBoardingPlace : FeatureNode
         {
             public categoryOfPilotBoardingPlace? categoryOfPilotBoardingPlace { get; set; } = default;
+
             public categoryOfPreference? categoryOfPreference { get; set; } = default;
+
             public List<String> communicationChannel { get; set; } = [];
+
             public List<String> destination { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<pilotMovement> pilotMovement { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(PilotageDistrict))]
-            public featureBinding<Associations.FeatureAssociations.PilotageDistrictAssociation>? theCollectionOfPilotageDistrictAssociation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(PilotBoardingPlace);
 
             public PilotBoardingPlace()
@@ -12583,24 +10923,18 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class VesselTrafficServiceArea : FeatureTypeBase
+        public partial class VesselTrafficServiceArea : FeatureNode
         {
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(VesselTrafficServiceArea);
 
             public VesselTrafficServiceArea()
@@ -12608,31 +10942,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class CoastGuardStation : FeatureTypeBase
+        public partial class CoastGuardStation : FeatureNode
         {
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public Boolean? isMRCC { get; set; } = default;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            [InformationType(typeof(NonStandardWorkingDay))]
-            [InformationType(typeof(ServiceHours))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(CoastGuardStation);
 
             public CoastGuardStation()
@@ -12640,70 +10971,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SignalStationWarning : FeatureTypeBase
+        public partial class SignalStationWarning : FeatureNode
         {
             [Required()]
             public List<categoryOfSignalStationWarning> categoryOfSignalStationWarning { get; set; }
+
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            [FeatureType(typeof(Daymark))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SignalStationWarning);
 
             public SignalStationWarning()
@@ -12712,70 +11002,29 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SignalStationTraffic : FeatureTypeBase
+        public partial class SignalStationTraffic : FeatureNode
         {
             [Required()]
             public List<categoryOfSignalStationTraffic> categoryOfSignalStationTraffic { get; set; }
+
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            [FeatureType(typeof(Daymark))]
-            public featureBinding<Associations.FeatureAssociations.StructureEquipment>? theStructureOfStructureEquipment { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SignalStationTraffic);
 
             public SignalStationTraffic()
@@ -12784,29 +11033,28 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class RescueStation : FeatureTypeBase
+        public partial class RescueStation : FeatureNode
         {
             public List<categoryOfRescueStation> categoryOfRescueStation { get; set; } = [];
+
             public List<String> communicationChannel { get; set; } = [];
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(RescueStation);
 
             public RescueStation()
@@ -12814,37 +11062,43 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class HarbourFacility : FeatureTypeBase
+        public partial class HarbourFacility : FeatureNode
         {
             [Required()]
             public List<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; }
+
             public List<String> communicationChannel { get; set; } = [];
+
             public condition? condition { get; set; } = default;
+
             public List<featureName> featureName { get; set; } = [];
+
             public fixedDateRange? fixedDateRange { get; set; }
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<natureOfConstruction> natureOfConstruction { get; set; } = [];
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public product? product { get; set; } = default;
+
             public DateOnly? reportedDate { get; set; } = default;
+
             public List<restriction> restriction { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public List<vesselSpeedLimit> vesselSpeedLimit { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(HarbourFacility);
 
             public HarbourFacility()
@@ -12853,29 +11107,27 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class SmallCraftFacility : FeatureTypeBase
+        public partial class SmallCraftFacility : FeatureNode
         {
             [Required()]
             public List<categoryOfSmallCraftFacility> categoryOfSmallCraftFacility { get; set; }
+
             public List<featureName> featureName { get; set; } = [];
+
             public String interoperabilityIdentifier { get; set; } = string.Empty;
+
             public List<periodicDateRange> periodicDateRange { get; set; } = [];
+
             public List<status> status { get; set; } = [];
+
             public Int32? scaleMinimum { get; set; } = default;
+
             public List<information> information { get; set; } = [];
+
             public String pictorialRepresentation { get; set; } = string.Empty;
-
-            [InformationType(typeof(ContactDetails))]
-            [InformationType(typeof(NauticalInformation))]
-            public informationBinding<Associations.InformationAssociations.AdditionalInformation>? theInformationOfAdditionalInformation { get; set; }
-
-            [FeatureType(typeof(UpdateInformation))]
-            public List<featureBinding<Associations.FeatureAssociations.UpdatedInformation>> theUpdateOfUpdatedInformation { get; set; } = [];
-
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
             public override string Code => nameof(SmallCraftFacility);
 
             public SmallCraftFacility()
@@ -12884,178 +11136,23 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class TextPlacement : FeatureTypeBase
+        public partial class TextPlacement : FeatureNode
         {
             [Required()]
             public Int32 textOffsetBearing { get; set; }
 
             [Required()]
             public Int32 textOffsetDistance { get; set; }
+
             public Boolean? textRotation { get; set; } = default;
 
             [Required()]
             public List<textType> textType { get; set; }
-            public Int32? scaleMinimum { get; set; } = default;
 
-            [FeatureType(typeof(AdministrationArea))]
-            [FeatureType(typeof(AirportAirfield))]
-            [FeatureType(typeof(AnchorBerth))]
-            [FeatureType(typeof(AnchorageArea))]
-            [FeatureType(typeof(ArchipelagicSeaLane))]
-            [FeatureType(typeof(ArchipelagicSeaLaneArea))]
-            [FeatureType(typeof(ArchipelagicSeaLaneAxis))]
-            [FeatureType(typeof(Berth))]
-            [FeatureType(typeof(Bollard))]
-            [FeatureType(typeof(Bridge))]
-            [FeatureType(typeof(Building))]
-            [FeatureType(typeof(BuiltUpArea))]
-            [FeatureType(typeof(CableArea))]
-            [FeatureType(typeof(CableOverhead))]
-            [FeatureType(typeof(CableSubmarine))]
-            [FeatureType(typeof(Canal))]
-            [FeatureType(typeof(CardinalBuoy))]
-            [FeatureType(typeof(CardinalBeacon))]
-            [FeatureType(typeof(CargoTranshipmentArea))]
-            [FeatureType(typeof(Causeway))]
-            [FeatureType(typeof(Chart1Feature))]
-            [FeatureType(typeof(Checkpoint))]
-            [FeatureType(typeof(CoastGuardStation))]
-            [FeatureType(typeof(Coastline))]
-            [FeatureType(typeof(CollisionRegulationsLimit))]
-            [FeatureType(typeof(ContinentalShelfArea))]
-            [FeatureType(typeof(Conveyor))]
-            [FeatureType(typeof(Crane))]
-            [FeatureType(typeof(CurrentNonGravitational))]
-            [FeatureType(typeof(Dam))]
-            [FeatureType(typeof(Daymark))]
-            [FeatureType(typeof(DeepWaterRoute))]
-            [FeatureType(typeof(DeepWaterRouteCentreline))]
-            [FeatureType(typeof(DeepWaterRoutePart))]
-            [FeatureType(typeof(DistanceMark))]
-            [FeatureType(typeof(DockArea))]
-            [FeatureType(typeof(Dolphin))]
-            [FeatureType(typeof(DredgedArea))]
-            [FeatureType(typeof(DryDock))]
-            [FeatureType(typeof(DumpingGround))]
-            [FeatureType(typeof(Dyke))]
-            [FeatureType(typeof(EmergencyWreckMarkingBuoy))]
-            [FeatureType(typeof(Fairway))]
-            [FeatureType(typeof(FairwaySystem))]
-            [FeatureType(typeof(FenceWall))]
-            [FeatureType(typeof(FerryRoute))]
-            [FeatureType(typeof(FisheryZone))]
-            [FeatureType(typeof(FishingFacility))]
-            [FeatureType(typeof(FishingGround))]
-            [FeatureType(typeof(FloatingDock))]
-            [FeatureType(typeof(FogSignal))]
-            [FeatureType(typeof(FortifiedStructure))]
-            [FeatureType(typeof(FoulGround))]
-            [FeatureType(typeof(FreePortArea))]
-            [FeatureType(typeof(Gate))]
-            [FeatureType(typeof(Gridiron))]
-            [FeatureType(typeof(HarbourAreaAdministrative))]
-            [FeatureType(typeof(HarbourFacility))]
-            [FeatureType(typeof(Helipad))]
-            [FeatureType(typeof(Hulk))]
-            [FeatureType(typeof(IceArea))]
-            [FeatureType(typeof(InformationArea))]
-            [FeatureType(typeof(InstallationBuoy))]
-            [FeatureType(typeof(IslandGroup))]
-            [FeatureType(typeof(IsolatedDangerBeacon))]
-            [FeatureType(typeof(IsolatedDangerBuoy))]
-            [FeatureType(typeof(Lake))]
-            [FeatureType(typeof(LandArea))]
-            [FeatureType(typeof(LandElevation))]
-            [FeatureType(typeof(LandRegion))]
-            [FeatureType(typeof(Landmark))]
-            [FeatureType(typeof(LateralBeacon))]
-            [FeatureType(typeof(LateralBuoy))]
-            [FeatureType(typeof(LightAirObstruction))]
-            [FeatureType(typeof(LightAllAround))]
-            [FeatureType(typeof(LightFloat))]
-            [FeatureType(typeof(LightFogDetector))]
-            [FeatureType(typeof(LightSectored))]
-            [FeatureType(typeof(LightVessel))]
-            [FeatureType(typeof(LocalMagneticAnomaly))]
-            [FeatureType(typeof(LockBasin))]
-            [FeatureType(typeof(LogPond))]
-            [FeatureType(typeof(MarineFarmCulture))]
-            [FeatureType(typeof(MarinePollutionRegulationsArea))]
-            [FeatureType(typeof(MilitaryPracticeArea))]
-            [FeatureType(typeof(MooringArea))]
-            [FeatureType(typeof(MooringBuoy))]
-            [FeatureType(typeof(MooringTrot))]
-            [FeatureType(typeof(Obstruction))]
-            [FeatureType(typeof(OffshorePlatform))]
-            [FeatureType(typeof(OffshoreProductionArea))]
-            [FeatureType(typeof(OilBarrier))]
-            [FeatureType(typeof(PhysicalAISAidToNavigation))]
-            [FeatureType(typeof(Pile))]
-            [FeatureType(typeof(PilotBoardingPlace))]
-            [FeatureType(typeof(PilotageDistrict))]
-            [FeatureType(typeof(PipelineOverhead))]
-            [FeatureType(typeof(PipelineSubmarineOnLand))]
-            [FeatureType(typeof(Pontoon))]
-            [FeatureType(typeof(PrecautionaryArea))]
-            [FeatureType(typeof(ProductionStorageArea))]
-            [FeatureType(typeof(PylonBridgeSupport))]
-            [FeatureType(typeof(RadarLine))]
-            [FeatureType(typeof(RadarRange))]
-            [FeatureType(typeof(RadarStation))]
-            [FeatureType(typeof(RadarTransponderBeacon))]
-            [FeatureType(typeof(RadioCallingInPoint))]
-            [FeatureType(typeof(RadioStation))]
-            [FeatureType(typeof(Railway))]
-            [FeatureType(typeof(RangeSystem))]
-            [FeatureType(typeof(Rapids))]
-            [FeatureType(typeof(RecommendedRouteCentreline))]
-            [FeatureType(typeof(RecommendedTrack))]
-            [FeatureType(typeof(RescueStation))]
-            [FeatureType(typeof(RestrictedArea))]
-            [FeatureType(typeof(River))]
-            [FeatureType(typeof(Road))]
-            [FeatureType(typeof(Runway))]
-            [FeatureType(typeof(SafeWaterBeacon))]
-            [FeatureType(typeof(SafeWaterBuoy))]
-            [FeatureType(typeof(SeaAreaNamedWaterArea))]
-            [FeatureType(typeof(SeabedArea))]
-            [FeatureType(typeof(Seagrass))]
-            [FeatureType(typeof(SeaplaneLandingArea))]
-            [FeatureType(typeof(ShorelineConstruction))]
-            [FeatureType(typeof(SignalStationTraffic))]
-            [FeatureType(typeof(SignalStationWarning))]
-            [FeatureType(typeof(SiloTank))]
-            [FeatureType(typeof(SlopeTopline))]
-            [FeatureType(typeof(SlopingGround))]
-            [FeatureType(typeof(SmallCraftFacility))]
-            [FeatureType(typeof(Sounding))]
-            [FeatureType(typeof(SpanFixed))]
-            [FeatureType(typeof(SpanOpening))]
-            [FeatureType(typeof(SpecialPurposeGeneralBeacon))]
-            [FeatureType(typeof(SpecialPurposeGeneralBuoy))]
-            [FeatureType(typeof(Spring))]
-            [FeatureType(typeof(StructureOverNavigableWater))]
-            [FeatureType(typeof(SubmarinePipelineArea))]
-            [FeatureType(typeof(SubmarineTransitLane))]
-            [FeatureType(typeof(SweptArea))]
-            [FeatureType(typeof(TidalStreamFloodEbb))]
-            [FeatureType(typeof(TidalStreamPanelData))]
-            [FeatureType(typeof(Tideway))]
-            [FeatureType(typeof(TrafficSeparationScheme))]
-            [FeatureType(typeof(Tunnel))]
-            [FeatureType(typeof(TwoWayRoute))]
-            [FeatureType(typeof(UnderwaterAwashRock))]
-            [FeatureType(typeof(Vegetation))]
-            [FeatureType(typeof(VesselTrafficServiceArea))]
-            [FeatureType(typeof(VirtualAISAidToNavigation))]
-            [FeatureType(typeof(WaterTurbulence))]
-            [FeatureType(typeof(Waterfall))]
-            [FeatureType(typeof(WeedKelp))]
-            [FeatureType(typeof(WindTurbine))]
-            [FeatureType(typeof(Wreck))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? thePositionProviderOfTextAssociation { get; set; }
+            public Int32? scaleMinimum { get; set; } = default;
             public override string Code => nameof(TextPlacement);
 
             public TextPlacement()
@@ -13064,20 +11161,20 @@ namespace S100Framework.DomainModel.S101
             }
         }
 
+
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
-        public partial class Chart1Feature : FeatureTypeBase
+        public partial class Chart1Feature : FeatureNode
         {
             public List<String> drawingInstruction { get; set; } = [];
-            public List<featureName> featureName { get; set; } = [];
 
-            [FeatureType(typeof(TextPlacement))]
-            public featureBinding<Associations.FeatureAssociations.TextAssociation>? theCartographicTextOfTextAssociation { get; set; }
+            public List<featureName> featureName { get; set; } = [];
             public override string Code => nameof(Chart1Feature);
 
             public Chart1Feature()
             {
             }
         }
+
     }
 }

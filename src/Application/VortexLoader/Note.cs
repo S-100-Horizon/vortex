@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
+﻿using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 
 [assembly: InternalsVisibleTo("TestNisImporter")]
 
@@ -31,7 +27,7 @@ namespace S100Framework.Applications
             }
         }
 
-        private static readonly Regex headerRegex = new Regex(@"^[A-Z0-9ÆØÅ\s\W]+$", RegexOptions.Compiled);
+        private static readonly Regex headerRegex = new(@"^[A-Z0-9ÆØÅ\s\W]+$", RegexOptions.Compiled);
 
         internal Note(string filePath) {
             var lines = File.ReadAllLines(filePath, Encoding.Latin1);

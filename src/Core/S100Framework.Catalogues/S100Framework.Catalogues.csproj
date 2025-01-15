@@ -8,6 +8,7 @@
 
   <ItemGroup>
     <Compile Remove="Dataset.cs" />
+    <Compile Remove="S-201_FC.g.cs" />
   </ItemGroup>
 
 </Project>

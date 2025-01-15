@@ -1,9 +1,7 @@
 ﻿//#define S124
 
-using S100Framework.DomainModel;
 using S100Framework.DomainModel.S124;
 using S100Framework.WPF.ViewModel;
-using S100Framework.WPF.ViewModel.S903;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Reflection;
@@ -24,7 +22,7 @@ namespace VortexConceptApplication
 
     //  https://github.com/RWS/Multiselect-ComboBox/tree/master/MultiSelectComboBox/MultiSelectComboBox.Example
 
-    public partial class MainWindow : Window, INotifyPropertyChanged, IViewModelHost
+    public partial class MainWindow : Window, INotifyPropertyChanged
     {
         public static object MockValue => new();
 
@@ -147,7 +145,7 @@ namespace VortexConceptApplication
             };
 
             viewModel.Load(domainModel);
-#else
+#elif S903
             var domainModel = new S100Framework.WPF.ViewModel.S903.S101_PileTest() {
 
             };
@@ -159,6 +157,14 @@ namespace VortexConceptApplication
             };
 
             viewModel.Load(domainModel);
+#else
+            //var viewModel = IslandAggregation.TestIslandGroup;
+
+            var viewModel101 = new S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel();
+
+            var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
+
+            var viewModel = viewModel131;
 #endif
 
             //this._propertyGrid.EditorDefinitions.Clear();
@@ -197,9 +203,9 @@ namespace VortexConceptApplication
 
             //var p = this._propertyGrid;
 
-            viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
-                Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
-            };
+            //viewModel.PropertyChanged += (object sender, PropertyChangedEventArgs e) => {
+            //    Logger.Current.Verbose("PropertyChanged = {propertyName}", e.PropertyName);
+            //};
 
             //viewModel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) => {
             //    ;
@@ -207,17 +213,42 @@ namespace VortexConceptApplication
 
             SelectedProperty = viewModel;
 
-            //SelectedProperty = new object[]{
-            //    viewModel,
-            //    viewModel,
-            //    viewModel
-            //};
-        }
+            var random = new Random();
 
-        public string[] Hello => new[] {
-            "Hello3",
-            "Hello4"
-        };
+            Handles.GetFeatures = (e) => {
+                var featureType = e?.FeatureType;
+                var featureTypes = e?.FeatureTypes;
+
+                //  featureTypes used in filter
+
+                var objectid = new List<string>();
+                for (int i = 0; i < random.Next(1, 8); i++) {
+                    var prefix = random.Next(0, 99) switch {
+                        < 30 => "P",
+                        < 60 => "C",
+                        _ => "S",
+                    };
+
+                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
+                }
+                return objectid.ToArray();
+            };
+
+            Handles.GetInformations = (e) => {
+                var informationType = e?.InformationType;
+                var informationTypes = e?.InformationTypes;
+
+                //  informationTypes used in filter
+
+                var objectid = new List<string>();
+                for (int i = 0; i < random.Next(1, 8); i++) {
+                    var prefix = "I";
+
+                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
+                }
+                return objectid.ToArray();
+            };
+        }
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
             Logger.Current.Verbose("PreparePropertyItem = {propertyName}", e.PropertyItem.Name);
@@ -246,27 +277,6 @@ namespace VortexConceptApplication
                     }
                 }
             }
-        }
-
-        object IViewModelHost.GetSource(PropertyItem propertyItem) {
-
-            //var type = propertyItem.Instance switch {
-            //    InformationBindingViewModel viewModel => viewModel.InformationType,
-            //    FeatureBindingViewModel viewModel => viewModel.FeatureType,
-            //    _ => throw new NotImplementedException(),
-            //};
-
-            return null;
-            //return {
-            //    //new {
-            //    //    refId = "P1000",
-            //    //    code = type!.Name,
-            //    //},
-            //    //new {
-            //    //    refId = "P1001",
-            //    //    code = type!.Name,
-            //    //},
-            //};
         }
     }
 
