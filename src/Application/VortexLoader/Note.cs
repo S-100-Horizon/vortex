@@ -27,7 +27,7 @@ namespace S100Framework.Applications
             }
         }
 
-        private static readonly Regex headerRegex = new Regex(@"^[A-Z0-9ÆØÅ\s\W]+$", RegexOptions.Compiled);
+        private static readonly Regex headerRegex = new(@"^[A-Z0-9ÆØÅ\s\W]+$", RegexOptions.Compiled);
 
         internal Note(string filePath) {
             var lines = File.ReadAllLines(filePath, Encoding.Latin1);

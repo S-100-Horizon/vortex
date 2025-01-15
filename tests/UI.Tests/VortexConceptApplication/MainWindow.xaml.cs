@@ -160,7 +160,11 @@ namespace VortexConceptApplication
 #else
             //var viewModel = IslandAggregation.TestIslandGroup;
 
-            var viewModel = new S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel();
+            var viewModel101 = new S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel();
+
+            var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
+
+            var viewModel = viewModel131;
 #endif
 
             //this._propertyGrid.EditorDefinitions.Clear();

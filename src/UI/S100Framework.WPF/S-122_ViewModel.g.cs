@@ -4645,12 +4645,26 @@ namespace S100Framework.WPF.ViewModel.S122
         }
         public override InformationAssociationConnector[] associationConnectorInformations => AssociatedRxNViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<FeatureType>() {
+                new InformationAssociationConnector<RestrictedArea>() {
                     roleType = roleType.association,
                     role = "theRxN",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(AbstractRxN)],
+                    AssociationTypes = [typeof(AbstractRxN),typeof(NauticalInformation),typeof(Regulations),typeof(Restrictions),typeof(Recommendations),typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<MarineProtectedArea>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AbstractRxN),typeof(NauticalInformation),typeof(Regulations),typeof(Restrictions),typeof(Recommendations),typeof(ContactDetails)],
+                },
+                new InformationAssociationConnector<VesselTrafficServiceArea>() {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AbstractRxN),typeof(NauticalInformation),typeof(Regulations),typeof(Restrictions),typeof(Recommendations),typeof(ContactDetails)],
                 },
             };
     }
@@ -4985,9 +4999,44 @@ namespace S100Framework.WPF.ViewModel.S122
                     role = "theInformation",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(AbstractRxN)],
+                    AssociationTypes = [typeof(AbstractRxN),typeof(NauticalInformation),typeof(Regulations),typeof(Restrictions),typeof(Recommendations),typeof(ContactDetails)],
                 },
                 new InformationAssociationConnector<AbstractRxN>() {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<NauticalInformation>() {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Regulations>() {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Restrictions>() {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<Recommendations>() {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                },
+                new InformationAssociationConnector<ContactDetails>() {
                     roleType = roleType.association,
                     role = "theOrganisation",
                     Lower = 0,
@@ -5404,7 +5453,21 @@ namespace S100Framework.WPF.ViewModel.S122
         }
         public override InformationAssociationConnector[] associationConnectorInformations => additionalInformationViewModel._associationConnectorInformations;
         public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<FeatureType>() {
+                new InformationAssociationConnector<RestrictedArea>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<MarineProtectedArea>() {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                },
+                new InformationAssociationConnector<VesselTrafficServiceArea>() {
                     roleType = roleType.association,
                     role = "providesInformation",
                     Lower = 0,
