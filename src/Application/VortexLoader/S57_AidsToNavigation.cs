@@ -12,6 +12,7 @@ using static System.Net.WebRequestMethods;
 using IO = System.IO;
 using VortexLoader.S57.esri;
 using static ArcGIS.Core.Data.NetworkDiagrams.AngleDirectedDiagramLayoutParameters;
+using System.Numerics;
 
 namespace S100Framework.Applications
 {
@@ -223,34 +224,108 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 65: { // LIGHTS_Light
-                            var catlit = current.CATLIT ?? default;
+                            var catlitVal = current.CATLIT ?? default;
+                            var sectr1Val = current.SECTR1 ?? default;
+                            var sectr2Val = current.SECTR2 ?? default;
+                            var coulour = current.COLOUR ?? default;
+                            var litchr = current.LITCHR ?? default;
+                            var marsys = current.MARSYS ?? default;
+                            var orient = current.ORIENT ?? default;
 
-                            if (catlit == default) {
+                            if (catlitVal == default) {
                                 Logger.Current.DataError(objectid, tableName, longname, "empty catlit");
                                 continue;
                             }
 
-                            //// directional function
-                            //if (!string.Equals(catlit, "1",StringComparison.InvariantCultureIgnoreCase)) {
-                            //    var instance = new LightAllAround();
-                            //    AddFeatureName(instance.featureName, feature);
-                            //    AddInformation(instance.information, feature);
-                            //    buffer["ps"] = ps;
-                            //    buffer["code"] = nameof(instance);
-                            //    buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
-                            //    buffer["shape"] = current.SHAPE;
-                            //    insert.Insert(buffer);
-                            //    Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
-                            //    convertedCount++;
-                            //}
+                            List<int> catlits = catlitVal
+                                                    .Split(',')                
+                                                    .Select(int.Parse)         
+                                                    .ToList();                 
 
-                            //// air obstruction light
+                            if ((sectr1Val == default || sectr2Val == default) && !(catlits.Contains(1) || catlits.Contains(6) || catlits.Contains(7) || catlits.Contains(16))) {
+                                // LIGHTS: Attributes SECTR1 and SECTR2 not present; and/or attribute catlits is not 1, 6, 7, 16
+                                // Build "Light All Around");
+                                var instance = new LightAllAround();
 
+                                if (plts_comp_scale != default) {
+                                    instance.scaleMinimum = plts_comp_scale;
+                                }
 
+                                AddFeatureName(instance.featureName, feature);
+                                AddInformation(instance.information, feature);
+                                buffer["ps"] = ps;
+                                buffer["code"] = nameof(instance);
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                                buffer["shape"] = current.SHAPE;
+                                insert.Insert(buffer);
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                                convertedCount++;
+                            }
+                            else if ((sectr1Val != default && sectr2Val != default) || (catlits.Contains(1) || catlits.Contains(16))) {
+                                // LIGHTS: Attributes SECTR1 and SECTR2 present; and/or attribute catlits = 1 (directional function) or 16 (moiré effect)
+                                // Build "Light Sectored");
+                                var instance = new LightSectored();
+                                if (plts_comp_scale != default) {
+                                    instance.scaleMinimum = plts_comp_scale;
+                                }
+
+                                AddFeatureName(instance.featureName, feature);
+                                AddInformation(instance.information, feature);
+                                buffer["ps"] = ps;
+                                buffer["code"] = nameof(instance);
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                                buffer["shape"] = current.SHAPE;
+                                insert.Insert(buffer);
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                                convertedCount++;
+                            }
+                            else if (catlits.Contains(6)) {
+                                // LIGHTS: Attribute catlits contains value 6 (air obstruction light)
+                                // Build "Light Air Obstruction");
+                                var instance = new LightAirObstruction();
+                                if (plts_comp_scale != default) {
+                                    instance.scaleMinimum = plts_comp_scale;
+                                }
+
+                                AddFeatureName(instance.featureName, feature);
+                                AddInformation(instance.information, feature);
+                                buffer["ps"] = ps;
+                                buffer["code"] = nameof(instance);
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                                buffer["shape"] = current.SHAPE;
+                                insert.Insert(buffer);
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                                convertedCount++;
+                            }
+                            else if (catlits.Contains(7)) {
+                                // LIGHTS: Attribute catlits contains value 7 (fog detector light)
+                                // Build "Light Fog Detector");
+                                var instance = new LightFogDetector();
+                                if (plts_comp_scale != default) {
+                                    instance.scaleMinimum = plts_comp_scale;
+                                }
+
+                                AddFeatureName(instance.featureName, feature);
+                                AddInformation(instance.information, feature);
+                                buffer["ps"] = ps;
+                                buffer["code"] = nameof(instance);
+                                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
+                                buffer["shape"] = current.SHAPE;
+                                insert.Insert(buffer);
+                                Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
+                                convertedCount++;
+                            }
+                            else {
+                                Logger.Current.DataError(objectid, tableName, longname, $"Unknown Light Type. Check catlit, sectr1, sectr2");
+                            }
                         }
                         break;
                     case 70: { // LITFLT_LightFloat
                             var instance = new LightFloat();
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps;
@@ -260,11 +335,14 @@ namespace S100Framework.Applications
                             insert.Insert(buffer);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(instance));
                             convertedCount++;
-
                         }
                         break;
                     case 75: { // LITVES_LightVessel
                             var instance = new LightVessel();
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps;
@@ -278,6 +356,10 @@ namespace S100Framework.Applications
                         break;
                     case 85: { // RADRFL_RadarReflector
                             var instance = new RadarReflector();
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             //AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps;
@@ -292,6 +374,10 @@ namespace S100Framework.Applications
                         break;
                     case 90: { // RADSTA_RadarStation
                             var instance = new RadarStation();
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps;
@@ -305,6 +391,10 @@ namespace S100Framework.Applications
                         break;
                     case 95: { // RDOSTA_RadioStation
                             var instance = new RadioStation();
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps;
@@ -318,6 +408,10 @@ namespace S100Framework.Applications
                         break;
                     case 100: { // RETRFL_RetroReflector
                             var instance = new Retroreflector();
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             //AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps;
@@ -331,6 +425,10 @@ namespace S100Framework.Applications
                         break;
                     case 105: { // RTPBCN_RadarTransponderBeacon
                             var instance = new RadarTransponderBeacon();
+                            if (plts_comp_scale != default) {
+                                instance.scaleMinimum = plts_comp_scale;
+                            }
+
                             AddFeatureName(instance.featureName, feature);
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps;
@@ -344,7 +442,6 @@ namespace S100Framework.Applications
                         break;
                     case 110: { // TOPMAR_Topmark
                             // TODO: TOPMAR
-                            
                             //System.Diagnostics.Debugger.Break();
                         }
                         break;
