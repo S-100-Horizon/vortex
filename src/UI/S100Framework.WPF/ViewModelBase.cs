@@ -1,4 +1,5 @@
 ﻿using S100Framework.DomainModel;
+using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.WPF.Editors;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -12,6 +13,10 @@ namespace S100Framework.WPF.ViewModel
         public static Func<InformationBindingViewModel?, string[]?> GetInformations { get; set; } = (e) => { return default; };
 
         public static Func<FeatureBindingViewModel?, string[]?> GetFeatures { get; set; } = (e) => { return default; };
+
+        public static Func<InformationRefIdViewModel?, string[]?> GetInformationsRefId { get; set; } = (e) => { return default; };
+
+        public static Func<FeatureRefIdViewModel?, string[]?> GetFeaturesRefId { get; set; } = (e) => { return default; };
     }
 
 
@@ -156,6 +161,71 @@ namespace S100Framework.WPF.ViewModel
         public string DisplayName => $"{typeof(T).Name}, {base.role}";
     }
 
+    public abstract class RefIdViewModel : INotifyPropertyChanged
+    {
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null) {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        protected void SetValue<T>(ref T backingFiled, T value, [CallerMemberName] string? propertyName = null) {
+            if (string.IsNullOrWhiteSpace(propertyName)) return;
+
+            if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
+            backingFiled = value;
+            OnPropertyChanged(propertyName);
+        }
+
+        private string _refId = string.Empty;
+
+        [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
+        public string RefId {
+            get { return _refId; }
+            set { this.SetValue(ref _refId, value); }
+        }
+    }
+
+    public class InformationRefIdViewModel : RefIdViewModel
+    {
+        private Type? _informationType = default;
+
+        [Editor(typeof(FeatureBindingEditor), typeof(FeatureBindingEditor))]
+        public Type? InformationType {
+            get { return _informationType; }
+            set {
+                this.SetValue(ref _informationType, value);
+
+                RefIds.Clear();
+                foreach (var e in Handles.GetInformationsRefId(this)!)
+                    RefIds.Add(e);
+            }
+        }
+
+        [Browsable(false)]
+        public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
+    }
+
+    public class FeatureRefIdViewModel : RefIdViewModel
+    {
+        private Type? _featureType = default;
+
+        [Editor(typeof(FeatureBindingEditor), typeof(FeatureBindingEditor))]
+        public Type? FeatureType {
+            get { return _featureType; }
+            set {
+                this.SetValue(ref _featureType, value);
+
+                RefIds.Clear();
+                foreach (var e in Handles.GetFeaturesRefId(this)!)
+                    RefIds.Add(e);
+            }
+        }
+
+        [Browsable(false)]
+        public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
+    }
+
     public abstract class InformationBindingViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -195,20 +265,30 @@ namespace S100Framework.WPF.ViewModel
 
     public class SingleInformationBindingViewModel : InformationBindingViewModel
     {
+        private InformationRefIdViewModel _refId = new InformationRefIdViewModel();
+
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public string RefId { get; set; } = string.Empty;
+        public InformationRefIdViewModel RefId {
+            get { return _refId; }
+            set { this.SetValue(ref _refId, value); }
+        }
     }
 
     public class OptionalInformationBindingViewModel : InformationBindingViewModel
     {
+        private InformationRefIdViewModel? _refId = default;
+
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public string? RefId { get; set; } = default;
+        public InformationRefIdViewModel? RefId {
+            get { return _refId; }
+            set { this.SetValue(ref _refId, value); }
+        }
     }
 
     public class MultiInformationBindingViewModel : InformationBindingViewModel
     {
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public ObservableCollection<string> RefId { get; set; } = new ObservableCollection<string>();
+        public ObservableCollection<InformationRefIdViewModel> RefId { get; set; } = new ObservableCollection<InformationRefIdViewModel>();
     }
 
     public abstract class FeatureBindingViewModel : INotifyPropertyChanged
@@ -227,19 +307,19 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        private Type? _featureType = default;
+        //private Type? _featureType = default;
 
-        [Editor(typeof(FeatureBindingEditor), typeof(FeatureBindingEditor))]
-        public Type? FeatureType {
-            get { return _featureType; }
-            set {
-                this.SetValue(ref _featureType, value);
+        //[Editor(typeof(FeatureBindingEditor), typeof(FeatureBindingEditor))]
+        //public Type? FeatureType {
+        //    get { return _featureType; }
+        //    set {
+        //        this.SetValue(ref _featureType, value);
 
-                RefIds.Clear();
-                foreach (var e in Handles.GetFeatures(this)!)
-                    RefIds.Add(e);
-            }
-        }
+        //        RefIds.Clear();
+        //        foreach (var e in Handles.GetFeatures(this)!)
+        //            RefIds.Add(e);
+        //    }
+        //}
 
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
@@ -250,10 +330,11 @@ namespace S100Framework.WPF.ViewModel
 
     public class SingleFeatureBindingViewModel : FeatureBindingViewModel
     {
-        private string _refId = string.Empty;
+        private FeatureRefIdViewModel _refId = new FeatureRefIdViewModel();
 
-        [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public string RefId {
+        //[Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
+        [ExpandableObject]
+        public FeatureRefIdViewModel RefId {
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
@@ -261,10 +342,11 @@ namespace S100Framework.WPF.ViewModel
 
     public class OptionalFeatureBindingViewModel : FeatureBindingViewModel
     {
-        private string? _refId = string.Empty;
+        private FeatureRefIdViewModel? _refId = default;
 
-        [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public string? RefId {
+        //[Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
+        [ExpandableObject]
+        public FeatureRefIdViewModel? RefId {
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
@@ -272,7 +354,7 @@ namespace S100Framework.WPF.ViewModel
 
     public class MultiFeatureBindingViewModel : FeatureBindingViewModel
     {
-        [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public ObservableCollection<string> RefId { get; set; } = new ObservableCollection<string>();
+        //[Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
+        public ObservableCollection<FeatureRefIdViewModel> RefId { get; set; } = new ObservableCollection<FeatureRefIdViewModel>();
     }
 }
