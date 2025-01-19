@@ -56,6 +56,8 @@ namespace S100Framework.WPF.Editors
             var source = propertyItem.Instance switch {
                 FeatureBindingViewModel e => e.RefIds,
                 InformationBindingViewModel e => e.RefIds,
+                FeatureRefIdViewModel e => e.RefIds,
+                InformationRefIdViewModel e => e.RefIds,
                 _ => throw new NotSupportedException()
             };
 
@@ -145,14 +147,16 @@ namespace S100Framework.WPF.Editors
     public sealed class FeatureBindingEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var viewModel = (FeatureBindingViewModel)propertyItem.Instance;
+            var viewModel = (FeatureRefIdViewModel)propertyItem.Instance;
+
+            var parentViewModel = propertyItem.FindRoot<FeatureBindingViewModel>();
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
                 DisplayMemberPath = "Name",
             };
 
-            var bindingItemsSourceProperty = new Binding() { Source = viewModel.FeatureTypes, Mode = BindingMode.OneWay };
+            var bindingItemsSourceProperty = new Binding() { Source = parentViewModel!.FeatureTypes, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
@@ -172,5 +176,14 @@ namespace S100Framework.WPF.Editors
                 return (PropertyGrid)propertyItem.ParentElement;
             return ((PropertyItemBase)propertyItem.ParentElement).FindRootPropertyGrid();
         }
+
+        public static T? FindRoot<T>(this PropertyItem propertyItem) where T : class {
+            if(propertyItem.Instance is T)
+                return (T)propertyItem.Instance;
+            if (propertyItem.ParentElement is null)
+                return default;
+            return ((PropertyItem)propertyItem.ParentElement).FindRoot<T>();
+        }
+
     }
 }

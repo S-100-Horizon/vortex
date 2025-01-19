@@ -160,7 +160,7 @@ namespace VortexConceptApplication
 #else
             //var viewModel = IslandAggregation.TestIslandGroup;
 
-            var viewModel101 = new S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel();
+            var viewModel101 = new VortexConceptApplication.UpdatedInformationViewModel();
 
             var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
 
@@ -278,6 +278,19 @@ namespace VortexConceptApplication
                     }
                 }
             }
+        }
+
+        private void _propertyGrid_SelectedObjectChanged(object sender, RoutedPropertyChangedEventArgs<object> e) {
+            //if (sender is PropertyGrid propertyGrid) {
+            //    //propertyGrid.EditorDefinitions.Clear();
+
+            //    var editorTemplateDefinition = new EditorTemplateDefinition() {
+            //        TargetProperties = new List<string>() { "RefId" },
+            //        EditingTemplate = this.Resources["RefIdEditingTemplate"] as DataTemplate
+            //    };
+
+            //    propertyGrid.EditorDefinitions.Add(editorTemplateDefinition);
+            //}
         }
     }
 

@@ -190,7 +190,7 @@ namespace S100Framework.WPF.ViewModel
     {
         private Type? _informationType = default;
 
-        [Editor(typeof(FeatureBindingEditor), typeof(FeatureBindingEditor))]
+        [Editor(typeof(InformationBindingEditor), typeof(InformationBindingEditor))]
         public Type? InformationType {
             get { return _informationType; }
             set {
