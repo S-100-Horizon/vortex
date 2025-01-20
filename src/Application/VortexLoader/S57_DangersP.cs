@@ -1,15 +1,6 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
-using CommandLine;
 using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S128.FeatureTypes;
-using VortexLoader;
-using System;
-using static S100Framework.Applications.VortexLoader;
-using static System.Net.WebRequestMethods;
-using IO = System.IO;
 using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
@@ -23,7 +14,7 @@ namespace S100Framework.Applications
 
             var dangersp = source.OpenDataset<FeatureClass>("DangersP");
 
-           // var dredged = source.OpenDataset<FeatureClass>("Depare");
+            // var dredged = source.OpenDataset<FeatureClass>("Depare");
 
             using var featureClass = target.OpenDataset<FeatureClass>("point");
             using var informationtype = target.OpenDataset<Table>("informationtype");
@@ -63,13 +54,13 @@ namespace S100Framework.Applications
                             // TODO: no instances in NIS
                             throw new NotImplementedException();
                         }
-                        //break;
+                    //break;
 
                     case 10: { // FSHFAC Fishing facilities
                             // TODO: no instances in NIS
                             throw new NotImplementedException();
                         }
-                        //break;
+                    //break;
 
                     case 20: { // OBSTRN
                             if (catObs == default) {
@@ -80,7 +71,7 @@ namespace S100Framework.Applications
                             // Foul ground
                             if (catObs == 7) {
                                 var foulGround = new FoulGround();
-                                
+
                                 //foulGround.verticalUncertainty = 
                                 AddFeatureName(foulGround.featureName, feature);
                                 AddInformation(foulGround.information, feature);
@@ -185,7 +176,7 @@ namespace S100Framework.Applications
                             convertedCount++;
                         }
                         break;
-                        
+
                     case 35: { // UWTROC
                             // TODO: surrounding depth, valueofsounding
                             var uwtroc = new S100Framework.DomainModel.S101.FeatureTypes.UnderwaterAwashRock {
@@ -279,7 +270,7 @@ namespace S100Framework.Applications
                         break;
                 }
 
-                
+
 
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);

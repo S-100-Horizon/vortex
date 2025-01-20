@@ -1,5 +1,4 @@
 ﻿using S100Framework.DomainModel;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using S100Framework.WPF.Editors;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -19,6 +18,11 @@ namespace S100Framework.WPF.ViewModel
         public static Func<FeatureRefIdViewModel?, string[]?> GetFeaturesRefId { get; set; } = (e) => { return default; };
     }
 
+    public interface iHandles
+    {
+        public abstract static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations { get; }
+        public abstract static IDictionary<Type, Func<FeatureAssociationConnector[]>> AssociationConnectorFeatures { get; }
+    }
 
     public abstract class ViewModelBase : INotifyPropertyChanged, IDisposable
     {
@@ -307,28 +311,19 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        //private Type? _featureType = default;
-
-        //[Editor(typeof(FeatureBindingEditor), typeof(FeatureBindingEditor))]
-        //public Type? FeatureType {
-        //    get { return _featureType; }
-        //    set {
-        //        this.SetValue(ref _featureType, value);
-
-        //        RefIds.Clear();
-        //        foreach (var e in Handles.GetFeatures(this)!)
-        //            RefIds.Add(e);
-        //    }
-        //}
-
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
 
         [Browsable(false)]
-        public Type[] FeatureTypes { get; set; } = [];
+        public abstract Type[] FeatureTypes { get; set; }
     }
 
-    public class SingleFeatureBindingViewModel : FeatureBindingViewModel
+    public abstract class FeatureBindingViewModel<T, THandles> : FeatureBindingViewModel where T : FeatureAssociationViewModel where THandles : iHandles
+    {
+        public override Type[] FeatureTypes { get; set; } = [];
+    }
+
+    public class SingleFeatureBindingViewModel<T, THandles> : FeatureBindingViewModel<T, THandles> where T : FeatureAssociationViewModel where THandles : iHandles
     {
         private FeatureRefIdViewModel _refId = new FeatureRefIdViewModel();
 
@@ -340,7 +335,7 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-    public class OptionalFeatureBindingViewModel : FeatureBindingViewModel
+    public class OptionalFeatureBindingViewModel<T, THandles> : FeatureBindingViewModel<T, THandles> where T : FeatureAssociationViewModel where THandles : iHandles
     {
         private FeatureRefIdViewModel? _refId = default;
 
@@ -352,7 +347,7 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-    public class MultiFeatureBindingViewModel : FeatureBindingViewModel
+    public class MultiFeatureBindingViewModel<T, THandles> : FeatureBindingViewModel<T, THandles> where T : FeatureAssociationViewModel where THandles : iHandles
     {
         //[Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
         public ObservableCollection<FeatureRefIdViewModel> RefId { get; set; } = new ObservableCollection<FeatureRefIdViewModel>();

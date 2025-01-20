@@ -1,11 +1,7 @@
 ﻿using S100Framework.WPF.ViewModel;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Globalization;
-using System.Windows;
 using System.Windows.Data;
-using Xceed.Wpf.Toolkit.PropertyGrid;
-using Xceed.Wpf.Toolkit.PropertyGrid.Editors;
 
 namespace VortexConceptApplication
 {
@@ -17,7 +13,8 @@ namespace VortexConceptApplication
 
     }
 
-    public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel {
+    public class UpdatedInformationViewModel : S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel
+    {
         //private string _refId = string.Empty;
 
         ////[Editor(typeof(RefIdEditor), typeof(RefIdEditor))]

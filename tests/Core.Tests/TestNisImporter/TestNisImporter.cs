@@ -1,15 +1,8 @@
-using S100Framework.Applications;
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
-using IO = System.IO;
-using ArcGIS.Core.Internal.CIM;
-using System.Security.Principal;
-using Xunit.Abstractions;
-using ArcGIS.Core.Geometry;
-using Microsoft.VisualBasic;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S101;
+using S100Framework.Applications;
 using System.Text;
+using IO = System.IO;
 
 namespace TestNisImporter
 {
@@ -47,7 +40,7 @@ namespace TestNisImporter
             var sortedDict = new SortedDictionary<int, string>();
 
             foreach (var subtype in subtypes) {
-                sortedDict.Add(subtype.GetCode(),subtype.GetName());
+                sortedDict.Add(subtype.GetCode(), subtype.GetName());
             }
 
             foreach (var keyValuePair in sortedDict) {
@@ -57,7 +50,7 @@ namespace TestNisImporter
             }
             Console.WriteLine(csSubtypes.ToString());
         }
-        
+
         [Fact]
         public void GenerateNisModel() {
             var featureclasses = new List<string> { "PLTS_SpatialAttributeL",
@@ -137,7 +130,7 @@ namespace TestNisImporter
                 csFile.AppendLine("{");
 
                 foreach (var dataset in datasets) {
-                
+
                     StringBuilder fields = new StringBuilder();
                     StringBuilder ctor = new StringBuilder();
                     StringBuilder objectClass = new StringBuilder();
@@ -158,7 +151,7 @@ namespace TestNisImporter
 
                     var fieldInfo = (Type: "Int32", Conversion: "Convert.ToInt32", DefaultValue: "default", Alias: string.Empty);
                     foreach (var field in datasetfields) {
-                        
+
                         fieldInfo = field.FieldType switch {
                             (FieldType)esriFieldType.esriFieldTypeBigInteger => (Type: "internal long?", Conversion: "Convert.ToLong", Default: "default", Alias: field.AliasName),
                             (FieldType)esriFieldType.esriFieldTypeInteger => (Type: "internal int?", Conversion: "Convert.ToInt32", Default: "default", Alias: field.AliasName),
@@ -199,7 +192,8 @@ namespace TestNisImporter
                         ctor.AppendLine($"\t\t\tif (DBNull.Value != feature[\"{field.Name.ToUpper()}\"] && feature[\"{field.Name.ToUpper()}\"] is not null) {{");
                         if (fieldInfo.Type.ToLower().Contains("guid")) {
                             ctor.AppendLine($"\t\t\t\t{fieldValue};");
-                        } else {
+                        }
+                        else {
                             ctor.AppendLine($"\t\t\t\t{field.Name.ToUpper()} = {fieldValue};");
                         }
                         ctor.AppendLine($"\t\t\t}}");
@@ -211,7 +205,7 @@ namespace TestNisImporter
                     objectClass.Append(fields);
                     objectClass.Append(ctor);
                     csFile.Append(objectClass);
-                    
+
                     //csFile.Append(@"}");
 
                 }
@@ -219,7 +213,7 @@ namespace TestNisImporter
                 csFile.AppendLine(@"}");
                 file.WriteLine(csFile.ToString());
             }
-            
+
 
         }
 

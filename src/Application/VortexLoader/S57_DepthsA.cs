@@ -1,6 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using VortexLoader;
 using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
@@ -10,7 +8,7 @@ namespace S100Framework.Applications
         private static void S57_DepthsA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsA";
 
-            
+
 
             using var s = source.OpenDataset<FeatureClass>("DepthsA");
             using var featureClass = target.OpenDataset<FeatureClass>("surface");
@@ -19,7 +17,7 @@ namespace S100Framework.Applications
             using var insert = featureClass.CreateInsertCursor();
 
             using var cursor = s.Search(filter, true);
-            
+
             var recordCount = 0;
             var convertedCount = 0;
 
@@ -31,7 +29,7 @@ namespace S100Framework.Applications
                 var objectid = current.OBJECTID ?? default;
                 var globalid = current.GLOBALID;
                 var subtype = current.FCSUBTYPE ?? default;
-                
+
                 var drval1 = current.DRVAL1 ?? default;
                 var drval2 = current.DRVAL2 ?? default(decimal?);
                 var sordat = current.SORDAT ?? default;
@@ -106,7 +104,7 @@ namespace S100Framework.Applications
                             }
 
                             if (!string.IsNullOrEmpty(quasou)) {
-                                
+
                                 dredgedarea.qualityOfVerticalMeasurement = quasou.ToLowerInvariant() switch {
                                     "1" => DomainModel.S101.qualityOfVerticalMeasurement.DepthKnown,
                                     "2" => DomainModel.S101.qualityOfVerticalMeasurement.DepthOrLeastDepthUnknown,

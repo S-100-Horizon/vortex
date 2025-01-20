@@ -178,7 +178,7 @@ namespace S100Framework.WPF.Editors
         }
 
         public static T? FindRoot<T>(this PropertyItem propertyItem) where T : class {
-            if(propertyItem.Instance is T)
+            if (propertyItem.Instance is T)
                 return (T)propertyItem.Instance;
             if (propertyItem.ParentElement is null)
                 return default;

@@ -1,17 +1,6 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
-using CommandLine;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S128.FeatureTypes;
-using VortexLoader;
-using System;
-using static S100Framework.Applications.VortexLoader;
-using static System.Net.WebRequestMethods;
-using IO = System.IO;
 using VortexLoader.S57.esri;
-using static ArcGIS.Core.Data.NetworkDiagrams.AngleDirectedDiagramLayoutParameters;
 
 namespace S100Framework.Applications
 {
@@ -33,7 +22,7 @@ namespace S100Framework.Applications
             using var cursor = aidstonavigation.Search(filter, true);
             int recordCount = 0;
             int convertedCount = 0;
-            
+
             while (cursor.MoveNext()) {
                 recordCount += 1;
 
@@ -343,8 +332,8 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 110: { // TOPMAR_Topmark
-                            // TODO: TOPMAR
-                            
+                                // TODO: TOPMAR
+
                             //System.Diagnostics.Debugger.Break();
                         }
                         break;

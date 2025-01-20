@@ -777,13 +777,18 @@ namespace S100Framework
             }
 
             var handlesBuilder = new StringBuilder();
-            handlesBuilder.AppendLine("\tpublic static class Handles {");
-            handlesBuilder.AppendLine("\t\tpublic static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations = new Dictionary<Type, Func<InformationAssociationConnector[]>> {");
+            handlesBuilder.AppendLine("\tpublic class Handles : iHandles {");
+            handlesBuilder.AppendLine("\t\tpublic static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations => new Dictionary<Type, Func<InformationAssociationConnector[]>> {");
             var handlesAssociationConnectorInformations = handlesBuilder.Length;
             handlesBuilder.AppendLine("\t\t};");
+            handlesBuilder.AppendLine("\t\tpublic static IDictionary<Type, Func<FeatureAssociationConnector[]>> AssociationConnectorFeatures => new Dictionary<Type, Func<FeatureAssociationConnector[]>> {");
+            var handlesAssociationConnectorFeatures = handlesBuilder.Length;
+            handlesBuilder.AppendLine("\t\t};");
+
+
             handlesBuilder.AppendLine("\t}");
 
-                        var informationBindingTypes = new List<string>();
+            var informationBindingTypes = new List<string>();
             var featureBindingTypes = new List<string>();
 
             //  S100_FC_InformationType
@@ -1083,8 +1088,6 @@ namespace S100Framework
 
             //  Associations
             {
-                //TODO: hierarchy                
-
                 var elements = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureAssociation", xmlNamespaceManager);
 
                 var featureTypes = productSpecification.XPathSelectElements("//S100FC:S100_FC_FeatureType", xmlNamespaceManager);
@@ -1114,6 +1117,7 @@ namespace S100Framework
                     var associations = bindings.Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals(code));
 
                     viewBuilder.AppendLine($"\t\tpublic class {code}ViewModel : FeatureAssociationViewModel {{");
+
                     viewBuilder.AppendLine($"\t\t\tpublic override string Code => \"{code}\";");
                     viewBuilder.AppendLine($"\t\t\tpublic override string[] Roles => [{string.Join(',', roles.Select(e => $"\"{e}\""))}];");
                     viewBuilder.AppendLine();
@@ -1145,16 +1149,16 @@ namespace S100Framework
                         viewBuilder.AppendLine($"\t\t\t\t\t{r} = value?.role switch {{");
 
                         foreach (var s in roles.Where(e => !e.Equals(r))) {
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel<{code}ViewModel, Handles> {{");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new SingleFeatureBindingViewModel {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new SingleFeatureBindingViewModel<{code}ViewModel, Handles> {{");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new OptionalFeatureBindingViewModel {{");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new OptionalFeatureBindingViewModel<{code}ViewModel, Handles> {{");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
                             viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
                         }
 
-                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new SingleFeatureBindingViewModel() {{");
+                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new SingleFeatureBindingViewModel<{code}ViewModel, Handles> {{");
                         viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = [value!.FeatureType],");
                         viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
 
@@ -1165,7 +1169,9 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\t}}");
 
                     viewBuilder.AppendLine($"\t\t\tpublic override FeatureAssociationConnector[] associationConnectorFeatures => {code}ViewModel._associationConnectorFeatures;");
-                    viewBuilder.AppendLine($"\t\t\tpublic static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {{");
+                    //viewBuilder.AppendLine($"\t\t\tpublic static FeatureAssociationConnector[] _associationConnectorFeatures => new FeatureAssociationConnector[] {{");
+
+                    var b = new StringBuilder();
 
                     foreach (var association in associations.OrderBy(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value).ThenBy(e => e.Parent!.Element(XName.Get("code", scope_S100))!.Value)) {
                         var featureType = association.Parent!.Element(XName.Get("code", scope_S100))!.Value;
@@ -1192,17 +1198,23 @@ namespace S100Framework
                         featureTypeRefs = featureTypeRefsHierarchy.Select(e => $"typeof({e})").ToArray();
 
                         foreach (var f in featureHierarchy.Hierarchy(featureType)) {
-                            viewBuilder.AppendLine($"\t\t\t\tnew FeatureAssociationConnector<{f}>() {{");
-                            viewBuilder.AppendLine($"\t\t\t\t\troleType = roleType.{roleType},");
-                            viewBuilder.AppendLine($"\t\t\t\t\trole = \"{role}\",");
-                            viewBuilder.AppendLine($"\t\t\t\t\tLower = {lower},");
-                            viewBuilder.AppendLine($"\t\t\t\t\tUpper = {u},");
-                            viewBuilder.AppendLine($"\t\t\t\t\tAssociationTypes = [{string.Join(',', featureTypeRefs)}],");
-                            viewBuilder.AppendLine($"\t\t\t\t}},");
+                            b.AppendLine($"new FeatureAssociationConnector<{f}>() {{");
+                            b.AppendLine($"\troleType = roleType.{roleType},");
+                            b.AppendLine($"\trole = \"{role}\",");
+                            b.AppendLine($"\tLower = {lower},");
+                            b.AppendLine($"\tUpper = {u},");
+                            b.AppendLine($"\tAssociationTypes = [{string.Join(',', featureTypeRefs)}],");
+                            b.AppendLine($"}},");
                         }
                     }
 
-                    viewBuilder.AppendLine($"\t\t\t}};");
+                    viewBuilder.AppendLine($"\t\t\tpublic static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof({code}ViewModel)]();");
+
+                    if (b.Length > 0) {
+                        handlesBuilder.Insert(handlesAssociationConnectorFeatures, $"\t\t\t{{ typeof({code}ViewModel), () => [{b.ToString().ReplaceLineEndings().TrimEnd().TrimEnd(',')}] }},");
+                    }
+
+                    //viewBuilder.AppendLine($"\t\t\t}};");
                     viewBuilder.AppendLine("\t\t}");
                 }
 
@@ -1274,7 +1286,7 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\t\t}}");
                     viewBuilder.AppendLine($"\t\t}}");
                     viewBuilder.AppendLine($"\t\t\tpublic override InformationAssociationConnector[] associationConnectorInformations => {code}ViewModel._associationConnectorInformations;");
-                    viewBuilder.AppendLine($"\t\t\tpublic static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {{");                    
+
 
                     var bindings = productSpecification.XPathSelectElements("//S100FC:informationBinding", xmlNamespaceManager).ToList();
 
@@ -1318,7 +1330,7 @@ namespace S100Framework
                             b.AppendLine($"\tLower = {lower},");
                             b.AppendLine($"\tUpper = {u},");
                             b.AppendLine($"\tAssociationTypes = [{string.Join(',', informationTypeRefs)}],");
-                            b.AppendLine($"}},");                                                       
+                            b.AppendLine($"}},");
 
                             //viewBuilder.AppendLine($"\t\t\t\tnew InformationAssociationConnector<{f}>() {{");
                             //viewBuilder.AppendLine($"\t\t\t\t\troleType = roleType.{roleType},");
@@ -1330,13 +1342,12 @@ namespace S100Framework
                         }
                     }
 
-                    viewBuilder.AppendLine(b.ToString());
+                    viewBuilder.AppendLine($"\t\t\tpublic static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof({code}ViewModel)]();");
 
                     if (b.Length > 0) {
                         handlesBuilder.Insert(handlesAssociationConnectorInformations, $"\t\t\t{{ typeof({code}ViewModel), () => [{b.ToString().ReplaceLineEndings().TrimEnd().TrimEnd(',')}] }},");
                     }
 
-                    viewBuilder.AppendLine($"\t\t\t}};");
                     viewBuilder.AppendLine("\t\t}");
                 }
             }
@@ -1459,7 +1470,8 @@ namespace S100Framework
             var options = workspace.Options
                 .WithChangedOption(FormattingOptions.IndentationSize, LanguageNames.CSharp, 4)
                 .WithChangedOption(FormattingOptions.TabSize, LanguageNames.CSharp, 4)
-                .WithChangedOption(FormattingOptions.UseTabs, LanguageNames.CSharp, false);
+                .WithChangedOption(FormattingOptions.UseTabs, LanguageNames.CSharp, false)
+                .WithChangedOption(FormattingOptions.SmartIndent, LanguageNames.CSharp, FormattingOptions.IndentStyle.Smart);
 
             var rootDomainSyntax = CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd());
             var rootDomain = rootDomainSyntax.GetRoot();
@@ -1477,9 +1489,9 @@ namespace S100Framework
             var rootCommonModified = rootCommon.EnsureOpeningBrace().EnsureNewline()!;
 
             return (
-                Formatter.Format(rootDomainModified, workspace, options).ToFullString(),
-                Formatter.Format(rootViewModelModified, workspace, options).ToFullString(),
-                Formatter.Format(rootCommonModified, workspace, options).ToFullString()
+                Formatter.Format(rootDomainModified, workspace, options)./*NormalizeWhitespace().*/ToFullString(),
+                Formatter.Format(rootViewModelModified, workspace, options).NormalizeWhitespace().ToFullString(),
+                Formatter.Format(rootCommonModified, workspace, options)./*NormalizeWhitespace().*/ToFullString()
             );
         }
 

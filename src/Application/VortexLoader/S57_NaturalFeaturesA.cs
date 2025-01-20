@@ -1,5 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork;
 using S100Framework.DomainModel.S101;
 using VortexLoader.S57.esri;
 
@@ -9,7 +8,7 @@ namespace S100Framework.Applications
     {
         private static void S57_NaturalFeaturesA(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "NaturalFeaturesA";
-            
+
             using var s = source.OpenDataset<FeatureClass>(tableName);
             using var surface = target.OpenDataset<FeatureClass>("surface");
 
@@ -49,21 +48,21 @@ namespace S100Framework.Applications
 
 
 
-                    switch (subtype) {
+                switch (subtype) {
                     case 1: { //  LAKARE
                             var lakare = new S100Framework.DomainModel.S101.FeatureTypes.Lake {
                                 elevation = null,
                                 status = null,
                                 scaleMinimum = null,
                             };
-                            if (elevat !=  default) {
+                            if (elevat != default) {
                                 lakare.elevation = elevat;
                             }
 
                             if (plts_comp_scale != default) {
                                 lakare.scaleMinimum = plts_comp_scale;
                             }
-                            
+
                             if (status != default) {
                                 if (!string.IsNullOrEmpty(status)) {
                                     //TODO: STATUS

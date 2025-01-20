@@ -4,7 +4,7 @@ using Serilog.Events;
 
 namespace S100Framework.Applications
 {
-    
+
 
     public enum LogLevel
     {
@@ -33,7 +33,7 @@ namespace S100Framework.Applications
         public void Emit(LogEvent logEvent) {
             var logFileName = logEvent.Properties.ContainsKey("TableName")
                 ? logEvent.Properties["TableName"].ToString().Trim('"')
-                : throw new Exception("TableName not supplied");  
+                : throw new Exception("TableName not supplied");
 
             var filePath = Path.Combine(_logDirectory, $"Loader_DataObject_{logFileName}.log");
 
@@ -46,7 +46,7 @@ namespace S100Framework.Applications
     public static class CustomLogLevels
     {
         public static void DataTotalCount(this ILogger logger, string tablename, int totalCount, int convertedCount) {
-            logger.Write(LogLevel.DataTotalCount.ToLogLevel(), "{tablename};{totalCount};{convertedCount}", tablename,totalCount,convertedCount);
+            logger.Write(LogLevel.DataTotalCount.ToLogLevel(), "{tablename};{totalCount};{convertedCount}", tablename, totalCount, convertedCount);
         }
 
         public static void DataObject(this ILogger logger, int objectId, string tableName, string longname, string destination) {
@@ -94,11 +94,11 @@ namespace S100Framework.Applications
 
         static Logger() {
             _logger = new LoggerConfiguration()
-                .MinimumLevel.Verbose()  
+                .MinimumLevel.Verbose()
                 .WriteTo.Logger(lc => lc
                     .Filter.ByIncludingOnly(e => e.Level < (LogEventLevel)6)
                     .Enrich.WithExceptionData()
-                    .WriteTo.File(System.IO.Path.Combine(_logDir, @"Vortex", "Loader",$"{_dateTimeString}", "Loader_System.log"),
+                    .WriteTo.File(System.IO.Path.Combine(_logDir, @"Vortex", "Loader", $"{_dateTimeString}", "Loader_System.log"),
                     rollingInterval: RollingInterval.Infinite,
                     shared: true,
                     outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}"))

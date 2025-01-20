@@ -9,78 +9,271 @@ using System.ComponentModel;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 #nullable enable
-
 namespace S100Framework.WPF.ViewModel.S122
 {
-
     internal static class Preamble
     {
-        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {
-            { typeof(DomainModel.S122.InformationTypes.InformationType).Name, ()=> {
-                return new InformationTypeViewModel();
-              }
+        public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S122.InformationTypes.InformationType).Name, () =>
+        {
+            return new InformationTypeViewModel();
+        } }, { typeof(DomainModel.S122.InformationTypes.AbstractRxN).Name, () =>
+        {
+            return new AbstractRxNViewModel();
+        } }, { typeof(DomainModel.S122.InformationTypes.NauticalInformation).Name, () =>
+        {
+            return new NauticalInformationViewModel();
+        } }, { typeof(DomainModel.S122.InformationTypes.Regulations).Name, () =>
+        {
+            return new RegulationsViewModel();
+        } }, { typeof(DomainModel.S122.InformationTypes.Restrictions).Name, () =>
+        {
+            return new RestrictionsViewModel();
+        } }, { typeof(DomainModel.S122.InformationTypes.Recommendations).Name, () =>
+        {
+            return new RecommendationsViewModel();
+        } }, { typeof(DomainModel.S122.InformationTypes.Authority).Name, () =>
+        {
+            return new AuthorityViewModel();
+        } }, { typeof(DomainModel.S122.InformationTypes.ContactDetails).Name, () =>
+        {
+            return new ContactDetailsViewModel();
+        } }, { typeof(DomainModel.S122.InformationTypes.NonStandardWorkingDay).Name, () =>
+        {
+            return new NonStandardWorkingDayViewModel();
+        } }, { typeof(DomainModel.S122.InformationTypes.ServiceHours).Name, () =>
+        {
+            return new ServiceHoursViewModel();
+        } }, { typeof(DomainModel.S122.InformationTypes.Applicability).Name, () =>
+        {
+            return new ApplicabilityViewModel();
+        } }, { typeof(DomainModel.S122.FeatureTypes.RestrictedArea).Name, () =>
+        {
+            return new RestrictedAreaViewModel();
+        } }, { typeof(DomainModel.S122.FeatureTypes.MarineProtectedArea).Name, () =>
+        {
+            return new MarineProtectedAreaViewModel();
+        } }, { typeof(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea).Name, () =>
+        {
+            return new VesselTrafficServiceAreaViewModel();
+        } }, { typeof(DomainModel.S122.FeatureTypes.DataCoverage).Name, () =>
+        {
+            return new DataCoverageViewModel();
+        } }, { typeof(DomainModel.S122.FeatureTypes.TextPlacement).Name, () =>
+        {
+            return new TextPlacementViewModel();
+        } }, });
+    }
+
+    public class Handles : iHandles
+    {
+        public static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations => new Dictionary<Type, Func<InformationAssociationConnector[]>>
+        {
+            {
+                typeof(additionalInformationViewModel),
+                () => [new InformationAssociationConnector<RestrictedArea>()
+                {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                }, new InformationAssociationConnector<MarineProtectedArea>()
+                {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                }, new InformationAssociationConnector<VesselTrafficServiceArea>()
+                {
+                    roleType = roleType.association,
+                    role = "providesInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NauticalInformation)],
+                }
+
+                ]
             },
-            { typeof(DomainModel.S122.InformationTypes.AbstractRxN).Name, ()=> {
-                return new AbstractRxNViewModel();
-              }
+            {
+                typeof(AuthorityHoursViewModel),
+                () => [new InformationAssociationConnector<ServiceHours>()
+                {
+                    roleType = roleType.association,
+                    role = "theAuthority_srvHrs",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                }, new InformationAssociationConnector<Authority>()
+                {
+                    roleType = roleType.association,
+                    role = "theServiceHours",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ServiceHours)],
+                }
+
+                ]
             },
-            { typeof(DomainModel.S122.InformationTypes.NauticalInformation).Name, ()=> {
-                return new NauticalInformationViewModel();
-              }
+            {
+                typeof(AuthorityContactViewModel),
+                () => [new InformationAssociationConnector<ContactDetails>()
+                {
+                    roleType = roleType.association,
+                    role = "theAuthority",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                }, new InformationAssociationConnector<Authority>()
+                {
+                    roleType = roleType.association,
+                    role = "theContactDetails",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ContactDetails)],
+                }
+
+                ]
             },
-            { typeof(DomainModel.S122.InformationTypes.Regulations).Name, ()=> {
-                return new RegulationsViewModel();
-              }
+            {
+                typeof(RelatedOrganisationViewModel),
+                () => [new InformationAssociationConnector<Authority>()
+                {
+                    roleType = roleType.association,
+                    role = "theInformation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)],
+                }, new InformationAssociationConnector<AbstractRxN>()
+                {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                }, new InformationAssociationConnector<NauticalInformation>()
+                {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                }, new InformationAssociationConnector<Regulations>()
+                {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                }, new InformationAssociationConnector<Restrictions>()
+                {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                }, new InformationAssociationConnector<Recommendations>()
+                {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                }, new InformationAssociationConnector<ContactDetails>()
+                {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                }, new InformationAssociationConnector<NauticalInformation>()
+                {
+                    roleType = roleType.association,
+                    role = "theOrganisation",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                }
+
+                ]
             },
-            { typeof(DomainModel.S122.InformationTypes.Restrictions).Name, ()=> {
-                return new RestrictionsViewModel();
-              }
+            {
+                typeof(ServiceControlViewModel),
+                () => [new InformationAssociationConnector<VesselTrafficServiceArea>()
+                {
+                    roleType = roleType.association,
+                    role = "controlAuthority",
+                    Lower = 0,
+                    Upper = 1,
+                    AssociationTypes = [typeof(Authority)],
+                }
+
+                ]
             },
-            { typeof(DomainModel.S122.InformationTypes.Recommendations).Name, ()=> {
-                return new RecommendationsViewModel();
-              }
+            {
+                typeof(ProtectedAreaAuthorityViewModel),
+                () => [new InformationAssociationConnector<MarineProtectedArea>()
+                {
+                    roleType = roleType.association,
+                    role = "responsibleAuthority",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(Authority)],
+                }
+
+                ]
             },
-            { typeof(DomainModel.S122.InformationTypes.Authority).Name, ()=> {
-                return new AuthorityViewModel();
-              }
+            {
+                typeof(ExceptionalWorkdayViewModel),
+                () => [new InformationAssociationConnector<ServiceHours>()
+                {
+                    roleType = roleType.association,
+                    role = "partialWorkingDay",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(NonStandardWorkingDay)],
+                }, new InformationAssociationConnector<NonStandardWorkingDay>()
+                {
+                    roleType = roleType.association,
+                    role = "theServiceHours_nsdy",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(ServiceHours)],
+                }
+
+                ]
             },
-            { typeof(DomainModel.S122.InformationTypes.ContactDetails).Name, ()=> {
-                return new ContactDetailsViewModel();
-              }
+            {
+                typeof(AssociatedRxNViewModel),
+                () => [new InformationAssociationConnector<RestrictedArea>()
+                {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)],
+                }, new InformationAssociationConnector<MarineProtectedArea>()
+                {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)],
+                }, new InformationAssociationConnector<VesselTrafficServiceArea>()
+                {
+                    roleType = roleType.association,
+                    role = "theRxN",
+                    Lower = 0,
+                    Upper = default,
+                    AssociationTypes = [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)],
+                }
+
+                ]
             },
-            { typeof(DomainModel.S122.InformationTypes.NonStandardWorkingDay).Name, ()=> {
-                return new NonStandardWorkingDayViewModel();
-              }
-            },
-            { typeof(DomainModel.S122.InformationTypes.ServiceHours).Name, ()=> {
-                return new ServiceHoursViewModel();
-              }
-            },
-            { typeof(DomainModel.S122.InformationTypes.Applicability).Name, ()=> {
-                return new ApplicabilityViewModel();
-              }
-            },
-            { typeof(DomainModel.S122.FeatureTypes.RestrictedArea).Name, ()=> {
-                return new RestrictedAreaViewModel();
-              }
-            },
-            { typeof(DomainModel.S122.FeatureTypes.MarineProtectedArea).Name, ()=> {
-                return new MarineProtectedAreaViewModel();
-              }
-            },
-            { typeof(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea).Name, ()=> {
-                return new VesselTrafficServiceAreaViewModel();
-              }
-            },
-            { typeof(DomainModel.S122.FeatureTypes.DataCoverage).Name, ()=> {
-                return new DataCoverageViewModel();
-              }
-            },
-            { typeof(DomainModel.S122.FeatureTypes.TextPlacement).Name, ()=> {
-                return new TextPlacementViewModel();
-              }
-            },
-        });
+        };
+        public static IDictionary<Type, Func<FeatureAssociationConnector[]>> AssociationConnectorFeatures => new Dictionary<Type, Func<FeatureAssociationConnector[]>>
+        {
+        };
     }
 
     [CategoryOrder("contactAddress", 0)]
@@ -88,13 +281,15 @@ namespace S100Framework.WPF.ViewModel.S122
     [CategoryOrder("FeatureBindings", 200)]
     public partial class contactAddressViewModel : ViewModelBase
     {
-
         private String _deliveryPoint = string.Empty;
-
         [Category("contactAddress")]
         public String deliveryPoint
         {
-            get { return _deliveryPoint; }
+            get
+            {
+                return _deliveryPoint;
+            }
+
             set
             {
                 SetValue(ref _deliveryPoint, value);
@@ -102,11 +297,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _cityName = string.Empty;
-
         [Category("contactAddress")]
         public String cityName
         {
-            get { return _cityName; }
+            get
+            {
+                return _cityName;
+            }
+
             set
             {
                 SetValue(ref _cityName, value);
@@ -114,11 +312,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _administrativeDivision = string.Empty;
-
         [Category("contactAddress")]
         public String administrativeDivision
         {
-            get { return _administrativeDivision; }
+            get
+            {
+                return _administrativeDivision;
+            }
+
             set
             {
                 SetValue(ref _administrativeDivision, value);
@@ -126,11 +327,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _countryName = string.Empty;
-
         [Category("contactAddress")]
         public String countryName
         {
-            get { return _countryName; }
+            get
+            {
+                return _countryName;
+            }
+
             set
             {
                 SetValue(ref _countryName, value);
@@ -138,11 +342,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _postalCode = string.Empty;
-
         [Category("contactAddress")]
         public String postalCode
         {
-            get { return _postalCode; }
+            get
+            {
+                return _postalCode;
+            }
+
             set
             {
                 SetValue(ref _postalCode, value);
@@ -170,6 +377,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.contactAddress Model => new()
         {
@@ -179,25 +387,26 @@ namespace S100Framework.WPF.ViewModel.S122
             countryName = this._countryName,
             postalCode = this._postalCode,
         };
+
         public contactAddressViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("featureName", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class featureNameViewModel : ViewModelBase
     {
-
         private Boolean? _displayName = default;
-
         [Category("featureName")]
         public Boolean? displayName
         {
-            get { return _displayName; }
+            get
+            {
+                return _displayName;
+            }
+
             set
             {
                 SetValue(ref _displayName, value);
@@ -205,11 +414,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _language = string.Empty;
-
         [Category("featureName")]
         public String language
         {
-            get { return _language; }
+            get
+            {
+                return _language;
+            }
+
             set
             {
                 SetValue(ref _language, value);
@@ -217,11 +429,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _name = string.Empty;
-
         [Category("featureName")]
         public String name
         {
-            get { return _name; }
+            get
+            {
+                return _name;
+            }
+
             set
             {
                 SetValue(ref _name, value);
@@ -245,6 +460,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.featureName Model => new()
         {
@@ -252,25 +468,26 @@ namespace S100Framework.WPF.ViewModel.S122
             language = this._language,
             name = this._name,
         };
+
         public featureNameViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("fixedDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class fixedDateRangeViewModel : ViewModelBase
     {
-
         private DateOnly? _dateStart = default;
-
         [Category("fixedDateRange")]
         public DateOnly? dateStart
         {
-            get { return _dateStart; }
+            get
+            {
+                return _dateStart;
+            }
+
             set
             {
                 SetValue(ref _dateStart, value);
@@ -278,11 +495,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _dateEnd = default;
-
         [Category("fixedDateRange")]
         public DateOnly? dateEnd
         {
-            get { return _dateEnd; }
+            get
+            {
+                return _dateEnd;
+            }
+
             set
             {
                 SetValue(ref _dateEnd, value);
@@ -304,31 +524,33 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.fixedDateRange Model => new()
         {
             dateStart = this._dateStart,
             dateEnd = this._dateEnd,
         };
+
         public fixedDateRangeViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("frequencyPair", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class frequencyPairViewModel : ViewModelBase
     {
-
         private Int32? _frequencyShoreStationReceives = default;
-
         [Category("frequencyPair")]
         public Int32? frequencyShoreStationReceives
         {
-            get { return _frequencyShoreStationReceives; }
+            get
+            {
+                return _frequencyShoreStationReceives;
+            }
+
             set
             {
                 SetValue(ref _frequencyShoreStationReceives, value);
@@ -336,11 +558,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private Int32? _frequencyShoreStationTransmits = default;
-
         [Category("frequencyPair")]
         public Int32? frequencyShoreStationTransmits
         {
-            get { return _frequencyShoreStationTransmits; }
+            get
+            {
+                return _frequencyShoreStationTransmits;
+            }
+
             set
             {
                 SetValue(ref _frequencyShoreStationTransmits, value);
@@ -362,33 +587,36 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.frequencyPair Model => new()
         {
             frequencyShoreStationReceives = this._frequencyShoreStationReceives,
             frequencyShoreStationTransmits = this._frequencyShoreStationTransmits,
         };
+
         public frequencyPairViewModel() : base()
         {
         }
-
     }
 
-
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
     [CategoryOrder("information", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class informationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
-
         private String _fileLocator = string.Empty;
-
         [Category("information")]
         public String fileLocator
         {
-            get { return _fileLocator; }
+            get
+            {
+                return _fileLocator;
+            }
+
             set
             {
                 SetValue(ref _fileLocator, value);
@@ -396,11 +624,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _fileReference = string.Empty;
-
         [Category("information")]
         public String fileReference
         {
-            get { return _fileReference; }
+            get
+            {
+                return _fileReference;
+            }
+
             set
             {
                 SetValue(ref _fileReference, value);
@@ -408,11 +639,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _headline = string.Empty;
-
         [Category("information")]
         public String headline
         {
-            get { return _headline; }
+            get
+            {
+                return _headline;
+            }
+
             set
             {
                 SetValue(ref _headline, value);
@@ -420,11 +654,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _language = string.Empty;
-
         [Category("information")]
         public String language
         {
-            get { return _language; }
+            get
+            {
+                return _language;
+            }
+
             set
             {
                 SetValue(ref _language, value);
@@ -432,11 +669,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _text = string.Empty;
-
         [Category("information")]
         public String text
         {
-            get { return _text; }
+            get
+            {
+                return _text;
+            }
+
             set
             {
                 SetValue(ref _text, value);
@@ -464,6 +704,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.information Model => new()
         {
@@ -473,25 +714,26 @@ namespace S100Framework.WPF.ViewModel.S122
             language = this._language,
             text = this._text,
         };
+
         public informationViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("onlineResource", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class onlineResourceViewModel : ViewModelBase
     {
-
         private String _onlineResourceLinkageURL = string.Empty;
-
         [Category("onlineResource")]
         public String onlineResourceLinkageURL
         {
-            get { return _onlineResourceLinkageURL; }
+            get
+            {
+                return _onlineResourceLinkageURL;
+            }
+
             set
             {
                 SetValue(ref _onlineResourceLinkageURL, value);
@@ -499,11 +741,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _protocol = string.Empty;
-
         [Category("onlineResource")]
         public String protocol
         {
-            get { return _protocol; }
+            get
+            {
+                return _protocol;
+            }
+
             set
             {
                 SetValue(ref _protocol, value);
@@ -511,11 +756,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _applicationProfile = string.Empty;
-
         [Category("onlineResource")]
         public String applicationProfile
         {
-            get { return _applicationProfile; }
+            get
+            {
+                return _applicationProfile;
+            }
+
             set
             {
                 SetValue(ref _applicationProfile, value);
@@ -523,11 +771,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _nameOfResource = string.Empty;
-
         [Category("onlineResource")]
         public String nameOfResource
         {
-            get { return _nameOfResource; }
+            get
+            {
+                return _nameOfResource;
+            }
+
             set
             {
                 SetValue(ref _nameOfResource, value);
@@ -535,11 +786,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _onlineResourceDescription = string.Empty;
-
         [Category("onlineResource")]
         public String onlineResourceDescription
         {
-            get { return _onlineResourceDescription; }
+            get
+            {
+                return _onlineResourceDescription;
+            }
+
             set
             {
                 SetValue(ref _onlineResourceDescription, value);
@@ -547,11 +801,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _protocolRequest = string.Empty;
-
         [Category("onlineResource")]
         public String protocolRequest
         {
-            get { return _protocolRequest; }
+            get
+            {
+                return _protocolRequest;
+            }
+
             set
             {
                 SetValue(ref _protocolRequest, value);
@@ -559,11 +816,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private onlineFunction? _onlineFunction = default;
-
         [Category("onlineResource")]
         public onlineFunction? onlineFunction
         {
-            get { return _onlineFunction; }
+            get
+            {
+                return _onlineFunction;
+            }
+
             set
             {
                 SetValue(ref _onlineFunction, value);
@@ -595,6 +855,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.onlineResource Model => new()
         {
@@ -606,27 +867,29 @@ namespace S100Framework.WPF.ViewModel.S122
             protocolRequest = this._protocolRequest,
             onlineFunction = this._onlineFunction,
         };
+
         public onlineResourceViewModel() : base()
         {
         }
-
     }
 
-
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
     [CategoryOrder("orientation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class orientationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
-
         private Decimal? _orientationUncertainty = default;
-
         [Category("orientation")]
         public Decimal? orientationUncertainty
         {
-            get { return _orientationUncertainty; }
+            get
+            {
+                return _orientationUncertainty;
+            }
+
             set
             {
                 SetValue(ref _orientationUncertainty, value);
@@ -634,11 +897,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private Decimal _orientationValue;
-
         [Category("orientation")]
         public Decimal orientationValue
         {
-            get { return _orientationValue; }
+            get
+            {
+                return _orientationValue;
+            }
+
             set
             {
                 SetValue(ref _orientationValue, value);
@@ -660,31 +926,33 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.orientation Model => new()
         {
             orientationUncertainty = this._orientationUncertainty,
             orientationValue = this._orientationValue,
         };
+
         public orientationViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("periodicDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class periodicDateRangeViewModel : ViewModelBase
     {
-
         private DateOnly _dateStart;
-
         [Category("periodicDateRange")]
         public DateOnly dateStart
         {
-            get { return _dateStart; }
+            get
+            {
+                return _dateStart;
+            }
+
             set
             {
                 SetValue(ref _dateStart, value);
@@ -692,11 +960,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly _dateEnd;
-
         [Category("periodicDateRange")]
         public DateOnly dateEnd
         {
-            get { return _dateEnd; }
+            get
+            {
+                return _dateEnd;
+            }
+
             set
             {
                 SetValue(ref _dateEnd, value);
@@ -718,33 +989,35 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.periodicDateRange Model => new()
         {
             dateStart = this._dateStart,
             dateEnd = this._dateEnd,
         };
+
         public periodicDateRangeViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("rxNCode", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class rxNCodeViewModel : ViewModelBase
     {
-
         private categoryOfRxN? _categoryOfRxN;
-
         [DomainModel.CodeList(nameof(categoryOfRxNList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public categoryOfRxN? categoryOfRxN
         {
-            get { return _categoryOfRxN; }
+            get
+            {
+                return _categoryOfRxN;
+            }
+
             set
             {
                 SetValue(ref _categoryOfRxN, value);
@@ -752,13 +1025,16 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private actionOrActivity? _actionOrActivity;
-
         [DomainModel.CodeList(nameof(actionOrActivityList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("rxNCode")]
         public actionOrActivity? actionOrActivity
         {
-            get { return _actionOrActivity; }
+            get
+            {
+                return _actionOrActivity;
+            }
+
             set
             {
                 SetValue(ref _actionOrActivity, value);
@@ -766,18 +1042,23 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _headline = string.Empty;
-
         [Category("rxNCode")]
         public String headline
         {
-            get { return _headline; }
+            get
+            {
+                return _headline;
+            }
+
             set
             {
                 SetValue(ref _headline, value);
             }
         }
+
         [Browsable(false)]
         public categoryOfRxN[] categoryOfRxNList => CodeList.categoryOfRxNS.ToArray();
+
         [Browsable(false)]
         public actionOrActivity[] actionOrActivityList => CodeList.actionOrActivities.ToArray();
 
@@ -798,6 +1079,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.rxNCode Model => new()
         {
@@ -805,25 +1087,26 @@ namespace S100Framework.WPF.ViewModel.S122
             actionOrActivity = this._actionOrActivity,
             headline = this._headline,
         };
+
         public rxNCodeViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("sectorLimitOne", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitOneViewModel : ViewModelBase
     {
-
         private Decimal _sectorBearing;
-
         [Category("sectorLimitOne")]
         public Decimal sectorBearing
         {
-            get { return _sectorBearing; }
+            get
+            {
+                return _sectorBearing;
+            }
+
             set
             {
                 SetValue(ref _sectorBearing, value);
@@ -831,11 +1114,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private Int32? _sectorLineLength = default;
-
         [Category("sectorLimitOne")]
         public Int32? sectorLineLength
         {
-            get { return _sectorLineLength; }
+            get
+            {
+                return _sectorLineLength;
+            }
+
             set
             {
                 SetValue(ref _sectorLineLength, value);
@@ -857,31 +1143,33 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.sectorLimitOne Model => new()
         {
             sectorBearing = this._sectorBearing,
             sectorLineLength = this._sectorLineLength,
         };
+
         public sectorLimitOneViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("sectorLimitTwo", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitTwoViewModel : ViewModelBase
     {
-
         private Decimal _sectorBearing;
-
         [Category("sectorLimitTwo")]
         public Decimal sectorBearing
         {
-            get { return _sectorBearing; }
+            get
+            {
+                return _sectorBearing;
+            }
+
             set
             {
                 SetValue(ref _sectorBearing, value);
@@ -889,11 +1177,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private Int32? _sectorLineLength = default;
-
         [Category("sectorLimitTwo")]
         public Int32? sectorLineLength
         {
-            get { return _sectorLineLength; }
+            get
+            {
+                return _sectorLineLength;
+            }
+
             set
             {
                 SetValue(ref _sectorLineLength, value);
@@ -915,31 +1206,33 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.sectorLimitTwo Model => new()
         {
             sectorBearing = this._sectorBearing,
             sectorLineLength = this._sectorLineLength,
         };
+
         public sectorLimitTwoViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("textContent", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class textContentViewModel : ViewModelBase
     {
-
         private categoryOfText? _categoryOfText = default;
-
         [Category("textContent")]
         public categoryOfText? categoryOfText
         {
-            get { return _categoryOfText; }
+            get
+            {
+                return _categoryOfText;
+            }
+
             set
             {
                 SetValue(ref _categoryOfText, value);
@@ -947,11 +1240,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _source = string.Empty;
-
         [Category("textContent")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -959,11 +1255,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("textContent")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -971,11 +1270,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("textContent")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
@@ -1001,6 +1303,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.textContent Model => new()
         {
@@ -1009,28 +1312,29 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public textContentViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("timeIntervalsByDayOfWeek", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase
     {
-
         [Category("timeIntervalsByDayOfWeek")]
         public ObservableCollection<dayOfWeek> dayOfWeek { get; set; } = new();
 
         private Boolean? _dayOfWeekIsRange = default;
-
         [Category("timeIntervalsByDayOfWeek")]
         public Boolean? dayOfWeekIsRange
         {
-            get { return _dayOfWeekIsRange; }
+            get
+            {
+                return _dayOfWeekIsRange;
+            }
+
             set
             {
                 SetValue(ref _dayOfWeekIsRange, value);
@@ -1071,6 +1375,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.timeIntervalsByDayOfWeek Model => new()
         {
@@ -1079,6 +1384,7 @@ namespace S100Framework.WPF.ViewModel.S122
             timeOfDayEnd = this.timeOfDayEnd.ToList(),
             timeOfDayStart = this.timeOfDayStart.ToList(),
         };
+
         public timeIntervalsByDayOfWeekViewModel() : base()
         {
             dayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -1094,22 +1400,22 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(timeOfDayStart));
             };
         }
-
     }
-
 
     [CategoryOrder("vesselsMeasurements", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class vesselsMeasurementsViewModel : ViewModelBase
     {
-
         private vesselsCharacteristics _vesselsCharacteristics;
-
         [Category("vesselsMeasurements")]
         public vesselsCharacteristics vesselsCharacteristics
         {
-            get { return _vesselsCharacteristics; }
+            get
+            {
+                return _vesselsCharacteristics;
+            }
+
             set
             {
                 SetValue(ref _vesselsCharacteristics, value);
@@ -1117,11 +1423,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private Decimal _vesselsCharacteristicsValue;
-
         [Category("vesselsMeasurements")]
         public Decimal vesselsCharacteristicsValue
         {
-            get { return _vesselsCharacteristicsValue; }
+            get
+            {
+                return _vesselsCharacteristicsValue;
+            }
+
             set
             {
                 SetValue(ref _vesselsCharacteristicsValue, value);
@@ -1129,11 +1438,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private vesselsCharacteristicsUnit _vesselsCharacteristicsUnit;
-
         [Category("vesselsMeasurements")]
         public vesselsCharacteristicsUnit vesselsCharacteristicsUnit
         {
-            get { return _vesselsCharacteristicsUnit; }
+            get
+            {
+                return _vesselsCharacteristicsUnit;
+            }
+
             set
             {
                 SetValue(ref _vesselsCharacteristicsUnit, value);
@@ -1141,11 +1453,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private comparisonOperator _comparisonOperator;
-
         [Category("vesselsMeasurements")]
         public comparisonOperator comparisonOperator
         {
-            get { return _comparisonOperator; }
+            get
+            {
+                return _comparisonOperator;
+            }
+
             set
             {
                 SetValue(ref _comparisonOperator, value);
@@ -1171,6 +1486,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.vesselsMeasurements Model => new()
         {
@@ -1179,27 +1495,29 @@ namespace S100Framework.WPF.ViewModel.S122
             vesselsCharacteristicsUnit = this._vesselsCharacteristicsUnit,
             comparisonOperator = this._comparisonOperator,
         };
+
         public vesselsMeasurementsViewModel() : base()
         {
         }
-
     }
 
-
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
     [CategoryOrder("designation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class designationViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
-
         private String _designationScheme = string.Empty;
-
         [Category("designation")]
         public String designationScheme
         {
-            get { return _designationScheme; }
+            get
+            {
+                return _designationScheme;
+            }
+
             set
             {
                 SetValue(ref _designationScheme, value);
@@ -1207,11 +1525,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _designationIdentifier = string.Empty;
-
         [Category("designation")]
         public String designationIdentifier
         {
-            get { return _designationIdentifier; }
+            get
+            {
+                return _designationIdentifier;
+            }
+
             set
             {
                 SetValue(ref _designationIdentifier, value);
@@ -1219,11 +1540,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private jurisdiction? _jurisdiction = default;
-
         [Category("designation")]
         public jurisdiction? jurisdiction
         {
-            get { return _jurisdiction; }
+            get
+            {
+                return _jurisdiction;
+            }
+
             set
             {
                 SetValue(ref _jurisdiction, value);
@@ -1231,11 +1555,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _text = string.Empty;
-
         [Category("designation")]
         public String text
         {
-            get { return _text; }
+            get
+            {
+                return _text;
+            }
+
             set
             {
                 SetValue(ref _text, value);
@@ -1261,6 +1588,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.designation Model => new()
         {
@@ -1269,25 +1597,26 @@ namespace S100Framework.WPF.ViewModel.S122
             jurisdiction = this._jurisdiction,
             text = this._text,
         };
+
         public designationViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("bearingInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class bearingInformationViewModel : ViewModelBase
     {
-
         private cardinalDirection? _cardinalDirection = default;
-
         [Category("bearingInformation")]
         public cardinalDirection? cardinalDirection
         {
-            get { return _cardinalDirection; }
+            get
+            {
+                return _cardinalDirection;
+            }
+
             set
             {
                 SetValue(ref _cardinalDirection, value);
@@ -1295,11 +1624,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private Decimal? _distance = default;
-
         [Category("bearingInformation")]
         public Decimal? distance
         {
-            get { return _distance; }
+            get
+            {
+                return _distance;
+            }
+
             set
             {
                 SetValue(ref _distance, value);
@@ -1313,12 +1645,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<information> information { get; set; } = new();
 
         private orientationViewModel? _orientation;
-
         [Category("bearingInformation")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public orientationViewModel? orientation
         {
-            get { return _orientation; }
+            get
+            {
+                return _orientation;
+            }
+
             set
             {
                 SetValue(ref _orientation, value);
@@ -1357,6 +1692,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.bearingInformation Model => new()
         {
@@ -1366,6 +1702,7 @@ namespace S100Framework.WPF.ViewModel.S122
             information = this.information.ToList(),
             orientation = this._orientation?.Model,
         };
+
         public bearingInformationViewModel() : base()
         {
             sectorBearing.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -1377,27 +1714,28 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(information));
             };
         }
-
     }
 
-
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
     [CategoryOrder("graphic", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class graphicViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
-
         [Category("graphic")]
         public ObservableCollection<String> pictorialRepresentation { get; set; } = new();
 
         private String _pictureCaption = string.Empty;
-
         [Category("graphic")]
         public String pictureCaption
         {
-            get { return _pictureCaption; }
+            get
+            {
+                return _pictureCaption;
+            }
+
             set
             {
                 SetValue(ref _pictureCaption, value);
@@ -1405,11 +1743,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateTime? _sourceDate = default;
-
         [Category("graphic")]
         public DateTime? sourceDate
         {
-            get { return _sourceDate; }
+            get
+            {
+                return _sourceDate;
+            }
+
             set
             {
                 SetValue(ref _sourceDate, value);
@@ -1417,11 +1758,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _pictureInformation = string.Empty;
-
         [Category("graphic")]
         public String pictureInformation
         {
-            get { return _pictureInformation; }
+            get
+            {
+                return _pictureInformation;
+            }
+
             set
             {
                 SetValue(ref _pictureInformation, value);
@@ -1429,12 +1773,15 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private bearingInformationViewModel? _bearingInformation;
-
         [Category("graphic")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public bearingInformationViewModel? bearingInformation
         {
-            get { return _bearingInformation; }
+            get
+            {
+                return _bearingInformation;
+            }
+
             set
             {
                 SetValue(ref _bearingInformation, value);
@@ -1470,6 +1817,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.graphic Model => new()
         {
@@ -1479,6 +1827,7 @@ namespace S100Framework.WPF.ViewModel.S122
             pictureInformation = this._pictureInformation,
             bearingInformation = this._bearingInformation?.Model,
         };
+
         public graphicViewModel() : base()
         {
             pictorialRepresentation.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -1486,22 +1835,22 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(pictorialRepresentation));
             };
         }
-
     }
-
 
     [CategoryOrder("scheduleByDayOfWeek", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class scheduleByDayOfWeekViewModel : ViewModelBase
     {
-
         private categoryOfSchedule? _categoryOfSchedule = default;
-
         [Category("scheduleByDayOfWeek")]
         public categoryOfSchedule? categoryOfSchedule
         {
-            get { return _categoryOfSchedule; }
+            get
+            {
+                return _categoryOfSchedule;
+            }
+
             set
             {
                 SetValue(ref _categoryOfSchedule, value);
@@ -1529,12 +1878,14 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.scheduleByDayOfWeek Model => new()
         {
             categoryOfSchedule = this._categoryOfSchedule,
             timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.ToList(),
         };
+
         public scheduleByDayOfWeekViewModel() : base()
         {
             timeIntervalsByDayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -1542,23 +1893,23 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(timeIntervalsByDayOfWeek));
             };
         }
-
     }
-
 
     [CategoryOrder("sectorLimit", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class sectorLimitViewModel : ViewModelBase
     {
-
         private sectorLimitOneViewModel _sectorLimitOne;
-
         [Category("sectorLimit")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public sectorLimitOneViewModel sectorLimitOne
         {
-            get { return _sectorLimitOne; }
+            get
+            {
+                return _sectorLimitOne;
+            }
+
             set
             {
                 SetValue(ref _sectorLimitOne, value);
@@ -1566,12 +1917,15 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sectorLimitTwoViewModel _sectorLimitTwo;
-
         [Category("sectorLimit")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public sectorLimitTwoViewModel sectorLimitTwo
         {
-            get { return _sectorLimitTwo; }
+            get
+            {
+                return _sectorLimitTwo;
+            }
+
             set
             {
                 SetValue(ref _sectorLimitTwo, value);
@@ -1586,6 +1940,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 sectorLimitOne = new();
                 sectorLimitOne.Load(instance.sectorLimitOne);
             }
+
             sectorLimitTwo = new();
             if (instance.sectorLimitTwo != null)
             {
@@ -1603,33 +1958,36 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.sectorLimit Model => new()
         {
             sectorLimitOne = this._sectorLimitOne?.Model,
             sectorLimitTwo = this._sectorLimitTwo?.Model,
         };
+
         public sectorLimitViewModel() : base()
         {
         }
-
     }
 
-
 #pragma warning disable CS8981 // The type name only contains lower-cased ascii characters. Such names may become reserved for the language.
+
     [CategoryOrder("telecommunications", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class telecommunicationsViewModel : ViewModelBase
 #pragma warning restore CS8981
     {
-
         private categoryOfCommunicationPreference? _categoryOfCommunicationPreference = default;
-
         [Category("telecommunications")]
         public categoryOfCommunicationPreference? categoryOfCommunicationPreference
         {
-            get { return _categoryOfCommunicationPreference; }
+            get
+            {
+                return _categoryOfCommunicationPreference;
+            }
+
             set
             {
                 SetValue(ref _categoryOfCommunicationPreference, value);
@@ -1637,11 +1995,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _contactInstructions = string.Empty;
-
         [Category("telecommunications")]
         public String contactInstructions
         {
-            get { return _contactInstructions; }
+            get
+            {
+                return _contactInstructions;
+            }
+
             set
             {
                 SetValue(ref _contactInstructions, value);
@@ -1649,11 +2010,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _telecomCarrier = string.Empty;
-
         [Category("telecommunications")]
         public String telecomCarrier
         {
-            get { return _telecomCarrier; }
+            get
+            {
+                return _telecomCarrier;
+            }
+
             set
             {
                 SetValue(ref _telecomCarrier, value);
@@ -1661,11 +2025,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _telecommunicationIdentifier = string.Empty;
-
         [Category("telecommunications")]
         public String telecommunicationIdentifier
         {
-            get { return _telecommunicationIdentifier; }
+            get
+            {
+                return _telecommunicationIdentifier;
+            }
+
             set
             {
                 SetValue(ref _telecommunicationIdentifier, value);
@@ -1673,11 +2040,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private telecommunicationService? _telecommunicationService = default;
-
         [Category("telecommunications")]
         public telecommunicationService? telecommunicationService
         {
-            get { return _telecommunicationService; }
+            get
+            {
+                return _telecommunicationService;
+            }
+
             set
             {
                 SetValue(ref _telecommunicationService, value);
@@ -1685,12 +2055,15 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private scheduleByDayOfWeekViewModel? _scheduleByDayOfWeek;
-
         [Category("telecommunications")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public scheduleByDayOfWeekViewModel? scheduleByDayOfWeek
         {
-            get { return _scheduleByDayOfWeek; }
+            get
+            {
+                return _scheduleByDayOfWeek;
+            }
+
             set
             {
                 SetValue(ref _scheduleByDayOfWeek, value);
@@ -1725,6 +2098,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.ComplexAttributes.telecommunications Model => new()
         {
@@ -1735,29 +2109,30 @@ namespace S100Framework.WPF.ViewModel.S122
             telecommunicationService = this._telecommunicationService,
             scheduleByDayOfWeek = this._scheduleByDayOfWeek?.Model,
         };
+
         public telecommunicationsViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("InformationType", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class InformationTypeViewModel : ViewModelBase
     {
-
         [Category("InformationType")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("InformationType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -1771,11 +2146,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<graphic> graphic { get; set; } = new();
 
         private String _source = string.Empty;
-
         [Category("InformationType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -1783,11 +2161,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("InformationType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -1795,17 +2176,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("InformationType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
 
         public void Load(DomainModel.S122.InformationTypes.InformationType instance)
         {
@@ -1819,6 +2202,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -1846,6 +2230,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.InformationType Model => new()
         {
@@ -1857,6 +2242,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public InformationTypeViewModel() : base()
         {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -1872,22 +2258,22 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
-
     }
-
 
     [CategoryOrder("AbstractRxN", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AbstractRxNViewModel : ViewModelBase
     {
-
         private categoryOfAuthority? _categoryOfAuthority = default;
-
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority
         {
-            get { return _categoryOfAuthority; }
+            get
+            {
+                return _categoryOfAuthority;
+            }
+
             set
             {
                 SetValue(ref _categoryOfAuthority, value);
@@ -1895,12 +2281,15 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private textContentViewModel? _textContent;
-
         [Category("AbstractRxN")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public textContentViewModel? textContent
         {
-            get { return _textContent; }
+            get
+            {
+                return _textContent;
+            }
+
             set
             {
                 SetValue(ref _textContent, value);
@@ -1914,12 +2303,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("InformationType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -1933,11 +2325,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<graphic> graphic { get; set; } = new();
 
         private String _source = string.Empty;
-
         [Category("InformationType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -1945,11 +2340,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("InformationType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -1957,17 +2355,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("InformationType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
 
         public void Load(DomainModel.S122.InformationTypes.AbstractRxN instance)
         {
@@ -1978,6 +2378,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 textContent = new();
                 textContent.Load(instance.textContent);
             }
+
             rxNCode.Clear();
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
@@ -1992,6 +2393,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -2022,6 +2424,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.AbstractRxN Model => new()
         {
@@ -2036,6 +2439,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public AbstractRxNViewModel() : base()
         {
             rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -2055,22 +2459,22 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
-
     }
-
 
     [CategoryOrder("NauticalInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NauticalInformationViewModel : ViewModelBase
     {
-
         private categoryOfAuthority? _categoryOfAuthority = default;
-
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority
         {
-            get { return _categoryOfAuthority; }
+            get
+            {
+                return _categoryOfAuthority;
+            }
+
             set
             {
                 SetValue(ref _categoryOfAuthority, value);
@@ -2078,12 +2482,15 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private textContentViewModel? _textContent;
-
         [Category("AbstractRxN")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public textContentViewModel? textContent
         {
-            get { return _textContent; }
+            get
+            {
+                return _textContent;
+            }
+
             set
             {
                 SetValue(ref _textContent, value);
@@ -2097,12 +2504,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("InformationType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -2116,11 +2526,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<graphic> graphic { get; set; } = new();
 
         private String _source = string.Empty;
-
         [Category("InformationType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -2128,11 +2541,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("InformationType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -2140,17 +2556,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("InformationType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
 
         public void Load(DomainModel.S122.InformationTypes.NauticalInformation instance)
         {
@@ -2161,6 +2579,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 textContent = new();
                 textContent.Load(instance.textContent);
             }
+
             rxNCode.Clear();
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
@@ -2175,6 +2594,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -2205,6 +2625,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.NauticalInformation Model => new()
         {
@@ -2219,6 +2640,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public NauticalInformationViewModel() : base()
         {
             rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -2238,22 +2660,22 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
-
     }
-
 
     [CategoryOrder("Regulations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RegulationsViewModel : ViewModelBase
     {
-
         private categoryOfAuthority? _categoryOfAuthority = default;
-
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority
         {
-            get { return _categoryOfAuthority; }
+            get
+            {
+                return _categoryOfAuthority;
+            }
+
             set
             {
                 SetValue(ref _categoryOfAuthority, value);
@@ -2261,12 +2683,15 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private textContentViewModel? _textContent;
-
         [Category("AbstractRxN")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public textContentViewModel? textContent
         {
-            get { return _textContent; }
+            get
+            {
+                return _textContent;
+            }
+
             set
             {
                 SetValue(ref _textContent, value);
@@ -2280,12 +2705,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("InformationType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -2299,11 +2727,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<graphic> graphic { get; set; } = new();
 
         private String _source = string.Empty;
-
         [Category("InformationType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -2311,11 +2742,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("InformationType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -2323,17 +2757,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("InformationType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
 
         public void Load(DomainModel.S122.InformationTypes.Regulations instance)
         {
@@ -2344,6 +2780,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 textContent = new();
                 textContent.Load(instance.textContent);
             }
+
             rxNCode.Clear();
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
@@ -2358,6 +2795,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -2388,6 +2826,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.Regulations Model => new()
         {
@@ -2402,6 +2841,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public RegulationsViewModel() : base()
         {
             rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -2421,22 +2861,22 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
-
     }
-
 
     [CategoryOrder("Restrictions", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RestrictionsViewModel : ViewModelBase
     {
-
         private categoryOfAuthority? _categoryOfAuthority = default;
-
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority
         {
-            get { return _categoryOfAuthority; }
+            get
+            {
+                return _categoryOfAuthority;
+            }
+
             set
             {
                 SetValue(ref _categoryOfAuthority, value);
@@ -2444,12 +2884,15 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private textContentViewModel? _textContent;
-
         [Category("AbstractRxN")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public textContentViewModel? textContent
         {
-            get { return _textContent; }
+            get
+            {
+                return _textContent;
+            }
+
             set
             {
                 SetValue(ref _textContent, value);
@@ -2463,12 +2906,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("InformationType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -2482,11 +2928,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<graphic> graphic { get; set; } = new();
 
         private String _source = string.Empty;
-
         [Category("InformationType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -2494,11 +2943,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("InformationType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -2506,17 +2958,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("InformationType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
 
         public void Load(DomainModel.S122.InformationTypes.Restrictions instance)
         {
@@ -2527,6 +2981,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 textContent = new();
                 textContent.Load(instance.textContent);
             }
+
             rxNCode.Clear();
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
@@ -2541,6 +2996,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -2571,6 +3027,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.Restrictions Model => new()
         {
@@ -2585,6 +3042,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public RestrictionsViewModel() : base()
         {
             rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -2604,22 +3062,22 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
-
     }
-
 
     [CategoryOrder("Recommendations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RecommendationsViewModel : ViewModelBase
     {
-
         private categoryOfAuthority? _categoryOfAuthority = default;
-
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority
         {
-            get { return _categoryOfAuthority; }
+            get
+            {
+                return _categoryOfAuthority;
+            }
+
             set
             {
                 SetValue(ref _categoryOfAuthority, value);
@@ -2627,12 +3085,15 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private textContentViewModel? _textContent;
-
         [Category("AbstractRxN")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public textContentViewModel? textContent
         {
-            get { return _textContent; }
+            get
+            {
+                return _textContent;
+            }
+
             set
             {
                 SetValue(ref _textContent, value);
@@ -2646,12 +3107,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("InformationType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -2665,11 +3129,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<graphic> graphic { get; set; } = new();
 
         private String _source = string.Empty;
-
         [Category("InformationType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -2677,11 +3144,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("InformationType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -2689,17 +3159,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("InformationType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
 
         public void Load(DomainModel.S122.InformationTypes.Recommendations instance)
         {
@@ -2710,6 +3182,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 textContent = new();
                 textContent.Load(instance.textContent);
             }
+
             rxNCode.Clear();
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
@@ -2724,6 +3197,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -2754,6 +3228,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.Recommendations Model => new()
         {
@@ -2768,6 +3243,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public RecommendationsViewModel() : base()
         {
             rxNCode.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -2787,22 +3263,22 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
-
     }
-
 
     [CategoryOrder("Authority", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class AuthorityViewModel : ViewModelBase
     {
-
         private categoryOfAuthority _categoryOfAuthority;
-
         [Category("Authority")]
         public categoryOfAuthority categoryOfAuthority
         {
-            get { return _categoryOfAuthority; }
+            get
+            {
+                return _categoryOfAuthority;
+            }
+
             set
             {
                 SetValue(ref _categoryOfAuthority, value);
@@ -2816,12 +3292,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("InformationType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -2835,11 +3314,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<graphic> graphic { get; set; } = new();
 
         private String _source = string.Empty;
-
         [Category("InformationType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -2847,11 +3329,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("InformationType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -2859,17 +3344,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("InformationType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
 
         public void Load(DomainModel.S122.InformationTypes.Authority instance)
         {
@@ -2888,6 +3375,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -2917,6 +3405,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.Authority Model => new()
         {
@@ -2930,6 +3419,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public AuthorityViewModel() : base()
         {
             textContent.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -2949,22 +3439,22 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
-
     }
-
 
     [CategoryOrder("ContactDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ContactDetailsViewModel : ViewModelBase
     {
-
         private String _callName = string.Empty;
-
         [Category("ContactDetails")]
         public String callName
         {
-            get { return _callName; }
+            get
+            {
+                return _callName;
+            }
+
             set
             {
                 SetValue(ref _callName, value);
@@ -2972,11 +3462,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _callSign = string.Empty;
-
         [Category("ContactDetails")]
         public String callSign
         {
-            get { return _callSign; }
+            get
+            {
+                return _callSign;
+            }
+
             set
             {
                 SetValue(ref _callSign, value);
@@ -2984,11 +3477,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private categoryOfCommunicationPreference? _categoryOfCommunicationPreference = default;
-
         [Category("ContactDetails")]
         public categoryOfCommunicationPreference? categoryOfCommunicationPreference
         {
-            get { return _categoryOfCommunicationPreference; }
+            get
+            {
+                return _categoryOfCommunicationPreference;
+            }
+
             set
             {
                 SetValue(ref _categoryOfCommunicationPreference, value);
@@ -2999,11 +3495,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<String> communicationChannel { get; set; } = new();
 
         private String _contactInstructions = string.Empty;
-
         [Category("ContactDetails")]
         public String contactInstructions
         {
-            get { return _contactInstructions; }
+            get
+            {
+                return _contactInstructions;
+            }
+
             set
             {
                 SetValue(ref _contactInstructions, value);
@@ -3011,11 +3510,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _mMSICode = string.Empty;
-
         [Category("ContactDetails")]
         public String mMSICode
         {
-            get { return _mMSICode; }
+            get
+            {
+                return _mMSICode;
+            }
+
             set
             {
                 SetValue(ref _mMSICode, value);
@@ -3041,11 +3543,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<information> information { get; set; } = new();
 
         private categoryOfAuthority? _categoryOfAuthority = default;
-
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority
         {
-            get { return _categoryOfAuthority; }
+            get
+            {
+                return _categoryOfAuthority;
+            }
+
             set
             {
                 SetValue(ref _categoryOfAuthority, value);
@@ -3053,12 +3558,15 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private textContentViewModel? _textContent;
-
         [Category("AbstractRxN")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public textContentViewModel? textContent
         {
-            get { return _textContent; }
+            get
+            {
+                return _textContent;
+            }
+
             set
             {
                 SetValue(ref _textContent, value);
@@ -3072,12 +3580,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("InformationType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -3091,11 +3602,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<graphic> graphic { get; set; } = new();
 
         private String _source = string.Empty;
-
         [Category("InformationType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -3103,11 +3617,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("InformationType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -3115,17 +3632,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("InformationType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
 
         public void Load(DomainModel.S122.InformationTypes.ContactDetails instance)
         {
@@ -3169,6 +3688,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 textContent = new();
                 textContent.Load(instance.textContent);
             }
+
             rxNCode.Clear();
             if (instance.rxNCode is not null)
                 foreach (var e in instance.rxNCode)
@@ -3183,6 +3703,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -3225,6 +3746,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.ContactDetails Model => new()
         {
@@ -3251,6 +3773,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public ContactDetailsViewModel() : base()
         {
             communicationChannel.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -3298,16 +3821,13 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
-
     }
-
 
     [CategoryOrder("NonStandardWorkingDay", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NonStandardWorkingDayViewModel : ViewModelBase
     {
-
         [Category("NonStandardWorkingDay")]
         public ObservableCollection<DateOnly> dateFixed { get; set; } = new();
 
@@ -3321,12 +3841,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("InformationType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -3340,11 +3863,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<graphic> graphic { get; set; } = new();
 
         private String _source = string.Empty;
-
         [Category("InformationType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -3352,11 +3878,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("InformationType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -3364,17 +3893,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("InformationType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
 
         public void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDay instance)
         {
@@ -3400,6 +3931,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -3430,6 +3962,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.NonStandardWorkingDay Model => new()
         {
@@ -3444,6 +3977,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public NonStandardWorkingDayViewModel() : base()
         {
             dateFixed.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -3471,26 +4005,26 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
-
     }
-
 
     [CategoryOrder("ServiceHours", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ServiceHoursViewModel : ViewModelBase
     {
-
         [Category("ServiceHours")]
         public ObservableCollection<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; } = new();
 
         private informationViewModel _information;
-
         [Category("ServiceHours")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public informationViewModel information
         {
-            get { return _information; }
+            get
+            {
+                return _information;
+            }
+
             set
             {
                 SetValue(ref _information, value);
@@ -3501,12 +4035,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("InformationType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -3520,11 +4057,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<graphic> graphic { get; set; } = new();
 
         private String _source = string.Empty;
-
         [Category("InformationType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -3532,11 +4072,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("InformationType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -3544,17 +4087,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("InformationType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
 
         public void Load(DomainModel.S122.InformationTypes.ServiceHours instance)
         {
@@ -3568,6 +4113,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 information = new();
                 information.Load(instance.information);
             }
+
             featureName.Clear();
             if (instance.featureName is not null)
                 foreach (var e in instance.featureName)
@@ -3578,6 +4124,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -3607,6 +4154,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.ServiceHours Model => new()
         {
@@ -3620,6 +4168,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public ServiceHoursViewModel() : base()
         {
             scheduleByDayOfWeek.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -3639,22 +4188,22 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
-
     }
-
 
     [CategoryOrder("Applicability", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class ApplicabilityViewModel : ViewModelBase
     {
-
         private Boolean? _inBallast = default;
-
         [Category("Applicability")]
         public Boolean? inBallast
         {
-            get { return _inBallast; }
+            get
+            {
+                return _inBallast;
+            }
+
             set
             {
                 SetValue(ref _inBallast, value);
@@ -3668,13 +4217,16 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<categoryOfDangerousOrHazardousCargo> categoryOfDangerousOrHazardousCargo { get; set; } = new();
 
         private categoryOfVessel? _categoryOfVessel;
-
         [DomainModel.CodeList(nameof(categoryOfVesselList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("Applicability")]
         public categoryOfVessel? categoryOfVessel
         {
-            get { return _categoryOfVessel; }
+            get
+            {
+                return _categoryOfVessel;
+            }
+
             set
             {
                 SetValue(ref _categoryOfVessel, value);
@@ -3682,11 +4234,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private categoryOfVesselRegistry? _categoryOfVesselRegistry = default;
-
         [Category("Applicability")]
         public categoryOfVesselRegistry? categoryOfVesselRegistry
         {
-            get { return _categoryOfVesselRegistry; }
+            get
+            {
+                return _categoryOfVesselRegistry;
+            }
+
             set
             {
                 SetValue(ref _categoryOfVesselRegistry, value);
@@ -3694,11 +4249,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private logicalConnectives? _logicalConnectives = default;
-
         [Category("Applicability")]
         public logicalConnectives? logicalConnectives
         {
-            get { return _logicalConnectives; }
+            get
+            {
+                return _logicalConnectives;
+            }
+
             set
             {
                 SetValue(ref _logicalConnectives, value);
@@ -3706,11 +4264,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private Int32? _thicknessOfIceCapability = default;
-
         [Category("Applicability")]
         public Int32? thicknessOfIceCapability
         {
-            get { return _thicknessOfIceCapability; }
+            get
+            {
+                return _thicknessOfIceCapability;
+            }
+
             set
             {
                 SetValue(ref _thicknessOfIceCapability, value);
@@ -3718,11 +4279,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _vesselPerformance = string.Empty;
-
         [Category("Applicability")]
         public String vesselPerformance
         {
-            get { return _vesselPerformance; }
+            get
+            {
+                return _vesselPerformance;
+            }
+
             set
             {
                 SetValue(ref _vesselPerformance, value);
@@ -3739,12 +4303,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("InformationType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -3758,11 +4325,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<graphic> graphic { get; set; } = new();
 
         private String _source = string.Empty;
-
         [Category("InformationType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -3770,11 +4340,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("InformationType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -3782,11 +4355,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("InformationType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
@@ -3830,6 +4406,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -3867,6 +4444,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.InformationTypes.Applicability Model => new()
         {
@@ -3888,6 +4466,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public ApplicabilityViewModel() : base()
         {
             categoryOfCargo.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -3919,16 +4498,13 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(graphic));
             };
         }
-
     }
-
 
     [CategoryOrder("RestrictedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class RestrictedAreaViewModel : ViewModelBase
     {
-
         [Category("RestrictedArea")]
         public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = new();
 
@@ -3942,12 +4518,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("FeatureType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -3961,11 +4540,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
         private String _interoperabilityIdentifier = string.Empty;
-
         [Category("FeatureType")]
         public String interoperabilityIdentifier
         {
-            get { return _interoperabilityIdentifier; }
+            get
+            {
+                return _interoperabilityIdentifier;
+            }
+
             set
             {
                 SetValue(ref _interoperabilityIdentifier, value);
@@ -3973,11 +4555,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _source = string.Empty;
-
         [Category("FeatureType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -3985,11 +4570,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("FeatureType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -3997,18 +4585,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("FeatureType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
-
 
         public void Load(DomainModel.S122.FeatureTypes.RestrictedArea instance)
         {
@@ -4034,6 +4623,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -4066,6 +4656,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.FeatureTypes.RestrictedArea Model => new()
         {
@@ -4081,6 +4672,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public RestrictedAreaViewModel() : base()
         {
             categoryOfRestrictedArea.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -4108,24 +4700,24 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(textContent));
             };
         }
-
     }
-
 
     [CategoryOrder("MarineProtectedArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class MarineProtectedAreaViewModel : ViewModelBase
     {
-
         private categoryOfMarineProtectedArea _categoryOfMarineProtectedArea;
-
         [DomainModel.CodeList(nameof(categoryOfMarineProtectedAreaList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
         [Category("MarineProtectedArea")]
         public categoryOfMarineProtectedArea categoryOfMarineProtectedArea
         {
-            get { return _categoryOfMarineProtectedArea; }
+            get
+            {
+                return _categoryOfMarineProtectedArea;
+            }
+
             set
             {
                 SetValue(ref _categoryOfMarineProtectedArea, value);
@@ -4136,11 +4728,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<categoryOfRestrictedArea> categoryOfRestrictedArea { get; set; } = new();
 
         private jurisdiction _jurisdiction;
-
         [Category("MarineProtectedArea")]
         public jurisdiction jurisdiction
         {
-            get { return _jurisdiction; }
+            get
+            {
+                return _jurisdiction;
+            }
+
             set
             {
                 SetValue(ref _jurisdiction, value);
@@ -4160,12 +4755,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("FeatureType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -4179,11 +4777,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
         private String _interoperabilityIdentifier = string.Empty;
-
         [Category("FeatureType")]
         public String interoperabilityIdentifier
         {
-            get { return _interoperabilityIdentifier; }
+            get
+            {
+                return _interoperabilityIdentifier;
+            }
+
             set
             {
                 SetValue(ref _interoperabilityIdentifier, value);
@@ -4191,11 +4792,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _source = string.Empty;
-
         [Category("FeatureType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -4203,11 +4807,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("FeatureType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -4215,17 +4822,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("FeatureType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
 
         [Browsable(false)]
         public categoryOfMarineProtectedArea[] categoryOfMarineProtectedAreaList => CodeList.categoryOfMarineProtectedAreas.ToArray();
@@ -4260,6 +4869,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -4295,6 +4905,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.FeatureTypes.MarineProtectedArea Model => new()
         {
@@ -4313,6 +4924,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public MarineProtectedAreaViewModel() : base()
         {
             categoryOfRestrictedArea.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -4344,22 +4956,22 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(textContent));
             };
         }
-
     }
-
 
     [CategoryOrder("VesselTrafficServiceArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class VesselTrafficServiceAreaViewModel : ViewModelBase
     {
-
         private categoryOfVesselTrafficService _categoryOfVesselTrafficService;
-
         [Category("VesselTrafficServiceArea")]
         public categoryOfVesselTrafficService categoryOfVesselTrafficService
         {
-            get { return _categoryOfVesselTrafficService; }
+            get
+            {
+                return _categoryOfVesselTrafficService;
+            }
+
             set
             {
                 SetValue(ref _categoryOfVesselTrafficService, value);
@@ -4370,12 +4982,15 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         private fixedDateRangeViewModel? _fixedDateRange;
-
         [Category("FeatureType")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
         public fixedDateRangeViewModel? fixedDateRange
         {
-            get { return _fixedDateRange; }
+            get
+            {
+                return _fixedDateRange;
+            }
+
             set
             {
                 SetValue(ref _fixedDateRange, value);
@@ -4389,11 +5004,14 @@ namespace S100Framework.WPF.ViewModel.S122
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
         private String _interoperabilityIdentifier = string.Empty;
-
         [Category("FeatureType")]
         public String interoperabilityIdentifier
         {
-            get { return _interoperabilityIdentifier; }
+            get
+            {
+                return _interoperabilityIdentifier;
+            }
+
             set
             {
                 SetValue(ref _interoperabilityIdentifier, value);
@@ -4401,11 +5019,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private String _source = string.Empty;
-
         [Category("FeatureType")]
         public String source
         {
-            get { return _source; }
+            get
+            {
+                return _source;
+            }
+
             set
             {
                 SetValue(ref _source, value);
@@ -4413,11 +5034,14 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private sourceType? _sourceType = default;
-
         [Category("FeatureType")]
         public sourceType? sourceType
         {
-            get { return _sourceType; }
+            get
+            {
+                return _sourceType;
+            }
+
             set
             {
                 SetValue(ref _sourceType, value);
@@ -4425,18 +5049,19 @@ namespace S100Framework.WPF.ViewModel.S122
         }
 
         private DateOnly? _reportedDate = default;
-
         [Category("FeatureType")]
         public DateOnly? reportedDate
         {
-            get { return _reportedDate; }
+            get
+            {
+                return _reportedDate;
+            }
+
             set
             {
                 SetValue(ref _reportedDate, value);
             }
         }
-
-
 
         public void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance)
         {
@@ -4451,6 +5076,7 @@ namespace S100Framework.WPF.ViewModel.S122
                 fixedDateRange = new();
                 fixedDateRange.Load(instance.fixedDateRange);
             }
+
             periodicDateRange.Clear();
             if (instance.periodicDateRange is not null)
                 foreach (var e in instance.periodicDateRange)
@@ -4481,6 +5107,7 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.FeatureTypes.VesselTrafficServiceArea Model => new()
         {
@@ -4494,6 +5121,7 @@ namespace S100Framework.WPF.ViewModel.S122
             sourceType = this._sourceType,
             reportedDate = this._reportedDate,
         };
+
         public VesselTrafficServiceAreaViewModel() : base()
         {
             featureName.CollectionChanged += (object? sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e) =>
@@ -4509,18 +5137,13 @@ namespace S100Framework.WPF.ViewModel.S122
                 OnPropertyChanged(nameof(textContent));
             };
         }
-
     }
-
 
     [CategoryOrder("DataCoverage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DataCoverageViewModel : ViewModelBase
     {
-
-
-
         public void Load(DomainModel.S122.FeatureTypes.DataCoverage instance)
         {
         }
@@ -4532,25 +5155,22 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.FeatureTypes.DataCoverage Model => new()
         {
         };
+
         public DataCoverageViewModel() : base()
         {
         }
-
     }
-
 
     [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TextPlacementViewModel : ViewModelBase
     {
-
-
-
         public void Load(DomainModel.S122.FeatureTypes.TextPlacement instance)
         {
         }
@@ -4562,16 +5182,16 @@ namespace S100Framework.WPF.ViewModel.S122
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
+
         [Browsable(false)]
         public DomainModel.S122.FeatureTypes.TextPlacement Model => new()
         {
         };
+
         public TextPlacementViewModel() : base()
         {
         }
-
     }
-
 
     public class AssociatedRxNViewModel : InformationAssociationViewModel
     {
@@ -4582,20 +5202,39 @@ namespace S100Framework.WPF.ViewModel.S122
         [ExpandableObject]
         public InformationBindingViewModel? theRxN
         {
-            get { return _theRxN; }
-            set { this.SetValue(ref _theRxN, value); }
+            get
+            {
+                return _theRxN;
+            }
+
+            set
+            {
+                this.SetValue(ref _theRxN, value);
+            }
         }
+
         private InformationBindingViewModel? _appliesInLocation;
         [ExpandableObject]
         public InformationBindingViewModel? appliesInLocation
         {
-            get { return _appliesInLocation; }
-            set { this.SetValue(ref _appliesInLocation, value); }
+            get
+            {
+                return _appliesInLocation;
+            }
+
+            set
+            {
+                this.SetValue(ref _appliesInLocation, value);
+            }
         }
 
         public override InformationAssociationConnector? associationConnector
         {
-            get { return _associationConnector; }
+            get
+            {
+                return _associationConnector;
+            }
+
             set
             {
                 this.SetValue(ref _associationConnector, value);
@@ -4607,10 +5246,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "appliesInLocation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -4620,6 +5263,7 @@ namespace S100Framework.WPF.ViewModel.S122
                         },
                     };
                 }
+
                 appliesInLocation = null;
                 if (value is not null)
                 {
@@ -4628,10 +5272,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "theRxN" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -4643,30 +5291,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 }
             }
         }
+
         public override InformationAssociationConnector[] associationConnectorInformations => AssociatedRxNViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<RestrictedArea>() {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(AbstractRxN),typeof(NauticalInformation),typeof(Regulations),typeof(Restrictions),typeof(Recommendations),typeof(ContactDetails)],
-                },
-                new InformationAssociationConnector<MarineProtectedArea>() {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(AbstractRxN),typeof(NauticalInformation),typeof(Regulations),typeof(Restrictions),typeof(Recommendations),typeof(ContactDetails)],
-                },
-                new InformationAssociationConnector<VesselTrafficServiceArea>() {
-                    roleType = roleType.association,
-                    role = "theRxN",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(AbstractRxN),typeof(NauticalInformation),typeof(Regulations),typeof(Restrictions),typeof(Recommendations),typeof(ContactDetails)],
-                },
-            };
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AssociatedRxNViewModel)]();
     }
 
     public class ExceptionalWorkdayViewModel : InformationAssociationViewModel
@@ -4678,20 +5305,39 @@ namespace S100Framework.WPF.ViewModel.S122
         [ExpandableObject]
         public InformationBindingViewModel? partialWorkingDay
         {
-            get { return _partialWorkingDay; }
-            set { this.SetValue(ref _partialWorkingDay, value); }
+            get
+            {
+                return _partialWorkingDay;
+            }
+
+            set
+            {
+                this.SetValue(ref _partialWorkingDay, value);
+            }
         }
+
         private InformationBindingViewModel? _theServiceHours_nsdy;
         [ExpandableObject]
         public InformationBindingViewModel? theServiceHours_nsdy
         {
-            get { return _theServiceHours_nsdy; }
-            set { this.SetValue(ref _theServiceHours_nsdy, value); }
+            get
+            {
+                return _theServiceHours_nsdy;
+            }
+
+            set
+            {
+                this.SetValue(ref _theServiceHours_nsdy, value);
+            }
         }
 
         public override InformationAssociationConnector? associationConnector
         {
-            get { return _associationConnector; }
+            get
+            {
+                return _associationConnector;
+            }
+
             set
             {
                 this.SetValue(ref _associationConnector, value);
@@ -4703,10 +5349,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "theServiceHours_nsdy" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -4716,6 +5366,7 @@ namespace S100Framework.WPF.ViewModel.S122
                         },
                     };
                 }
+
                 theServiceHours_nsdy = null;
                 if (value is not null)
                 {
@@ -4724,10 +5375,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "partialWorkingDay" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -4739,23 +5394,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 }
             }
         }
+
         public override InformationAssociationConnector[] associationConnectorInformations => ExceptionalWorkdayViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<ServiceHours>() {
-                    roleType = roleType.association,
-                    role = "partialWorkingDay",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(NonStandardWorkingDay)],
-                },
-                new InformationAssociationConnector<NonStandardWorkingDay>() {
-                    roleType = roleType.association,
-                    role = "theServiceHours_nsdy",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-            };
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ExceptionalWorkdayViewModel)]();
     }
 
     public class ProtectedAreaAuthorityViewModel : InformationAssociationViewModel
@@ -4767,20 +5408,39 @@ namespace S100Framework.WPF.ViewModel.S122
         [ExpandableObject]
         public InformationBindingViewModel? responsibleAuthority
         {
-            get { return _responsibleAuthority; }
-            set { this.SetValue(ref _responsibleAuthority, value); }
+            get
+            {
+                return _responsibleAuthority;
+            }
+
+            set
+            {
+                this.SetValue(ref _responsibleAuthority, value);
+            }
         }
+
         private InformationBindingViewModel? _theMarineProtectedArea;
         [ExpandableObject]
         public InformationBindingViewModel? theMarineProtectedArea
         {
-            get { return _theMarineProtectedArea; }
-            set { this.SetValue(ref _theMarineProtectedArea, value); }
+            get
+            {
+                return _theMarineProtectedArea;
+            }
+
+            set
+            {
+                this.SetValue(ref _theMarineProtectedArea, value);
+            }
         }
 
         public override InformationAssociationConnector? associationConnector
         {
-            get { return _associationConnector; }
+            get
+            {
+                return _associationConnector;
+            }
+
             set
             {
                 this.SetValue(ref _associationConnector, value);
@@ -4792,10 +5452,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "theMarineProtectedArea" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -4805,6 +5469,7 @@ namespace S100Framework.WPF.ViewModel.S122
                         },
                     };
                 }
+
                 theMarineProtectedArea = null;
                 if (value is not null)
                 {
@@ -4813,10 +5478,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "responsibleAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -4828,16 +5497,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 }
             }
         }
+
         public override InformationAssociationConnector[] associationConnectorInformations => ProtectedAreaAuthorityViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<MarineProtectedArea>() {
-                    roleType = roleType.association,
-                    role = "responsibleAuthority",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-            };
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProtectedAreaAuthorityViewModel)]();
     }
 
     public class ServiceControlViewModel : InformationAssociationViewModel
@@ -4849,20 +5511,39 @@ namespace S100Framework.WPF.ViewModel.S122
         [ExpandableObject]
         public InformationBindingViewModel? controlAuthority
         {
-            get { return _controlAuthority; }
-            set { this.SetValue(ref _controlAuthority, value); }
+            get
+            {
+                return _controlAuthority;
+            }
+
+            set
+            {
+                this.SetValue(ref _controlAuthority, value);
+            }
         }
+
         private InformationBindingViewModel? _controlledService;
         [ExpandableObject]
         public InformationBindingViewModel? controlledService
         {
-            get { return _controlledService; }
-            set { this.SetValue(ref _controlledService, value); }
+            get
+            {
+                return _controlledService;
+            }
+
+            set
+            {
+                this.SetValue(ref _controlledService, value);
+            }
         }
 
         public override InformationAssociationConnector? associationConnector
         {
-            get { return _associationConnector; }
+            get
+            {
+                return _associationConnector;
+            }
+
             set
             {
                 this.SetValue(ref _associationConnector, value);
@@ -4874,10 +5555,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "controlledService" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -4887,6 +5572,7 @@ namespace S100Framework.WPF.ViewModel.S122
                         },
                     };
                 }
+
                 controlledService = null;
                 if (value is not null)
                 {
@@ -4895,10 +5581,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "controlAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -4910,16 +5600,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 }
             }
         }
+
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceControlViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<VesselTrafficServiceArea>() {
-                    roleType = roleType.association,
-                    role = "controlAuthority",
-                    Lower = 0,
-                    Upper = 1,
-                    AssociationTypes = [typeof(Authority)],
-                },
-            };
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceControlViewModel)]();
     }
 
     public class RelatedOrganisationViewModel : InformationAssociationViewModel
@@ -4931,20 +5614,39 @@ namespace S100Framework.WPF.ViewModel.S122
         [ExpandableObject]
         public InformationBindingViewModel? theOrganisation
         {
-            get { return _theOrganisation; }
-            set { this.SetValue(ref _theOrganisation, value); }
+            get
+            {
+                return _theOrganisation;
+            }
+
+            set
+            {
+                this.SetValue(ref _theOrganisation, value);
+            }
         }
+
         private InformationBindingViewModel? _theInformation;
         [ExpandableObject]
         public InformationBindingViewModel? theInformation
         {
-            get { return _theInformation; }
-            set { this.SetValue(ref _theInformation, value); }
+            get
+            {
+                return _theInformation;
+            }
+
+            set
+            {
+                this.SetValue(ref _theInformation, value);
+            }
         }
 
         public override InformationAssociationConnector? associationConnector
         {
-            get { return _associationConnector; }
+            get
+            {
+                return _associationConnector;
+            }
+
             set
             {
                 this.SetValue(ref _associationConnector, value);
@@ -4956,10 +5658,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "theInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -4969,6 +5675,7 @@ namespace S100Framework.WPF.ViewModel.S122
                         },
                     };
                 }
+
                 theInformation = null;
                 if (value is not null)
                 {
@@ -4977,10 +5684,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "theOrganisation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -4992,65 +5703,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 }
             }
         }
+
         public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<Authority>() {
-                    roleType = roleType.association,
-                    role = "theInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(AbstractRxN),typeof(NauticalInformation),typeof(Regulations),typeof(Restrictions),typeof(Recommendations),typeof(ContactDetails)],
-                },
-                new InformationAssociationConnector<AbstractRxN>() {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-                new InformationAssociationConnector<NauticalInformation>() {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-                new InformationAssociationConnector<Regulations>() {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-                new InformationAssociationConnector<Restrictions>() {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-                new InformationAssociationConnector<Recommendations>() {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-                new InformationAssociationConnector<ContactDetails>() {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-                new InformationAssociationConnector<NauticalInformation>() {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-            };
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(RelatedOrganisationViewModel)]();
     }
 
     public class PermissionTypeViewModel : InformationAssociationViewModel
@@ -5062,20 +5717,39 @@ namespace S100Framework.WPF.ViewModel.S122
         [ExpandableObject]
         public InformationBindingViewModel? vslLocation
         {
-            get { return _vslLocation; }
-            set { this.SetValue(ref _vslLocation, value); }
+            get
+            {
+                return _vslLocation;
+            }
+
+            set
+            {
+                this.SetValue(ref _vslLocation, value);
+            }
         }
+
         private InformationBindingViewModel? _permission;
         [ExpandableObject]
         public InformationBindingViewModel? permission
         {
-            get { return _permission; }
-            set { this.SetValue(ref _permission, value); }
+            get
+            {
+                return _permission;
+            }
+
+            set
+            {
+                this.SetValue(ref _permission, value);
+            }
         }
 
         public override InformationAssociationConnector? associationConnector
         {
-            get { return _associationConnector; }
+            get
+            {
+                return _associationConnector;
+            }
+
             set
             {
                 this.SetValue(ref _associationConnector, value);
@@ -5087,10 +5761,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "permission" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -5100,6 +5778,7 @@ namespace S100Framework.WPF.ViewModel.S122
                         },
                     };
                 }
+
                 permission = null;
                 if (value is not null)
                 {
@@ -5108,10 +5787,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "vslLocation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -5123,9 +5806,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 }
             }
         }
+
         public override InformationAssociationConnector[] associationConnectorInformations => PermissionTypeViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-            };
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PermissionTypeViewModel)]();
     }
 
     public class InclusionTypeViewModel : InformationAssociationViewModel
@@ -5137,20 +5820,39 @@ namespace S100Framework.WPF.ViewModel.S122
         [ExpandableObject]
         public InformationBindingViewModel? theApplicationRXN
         {
-            get { return _theApplicationRXN; }
-            set { this.SetValue(ref _theApplicationRXN, value); }
+            get
+            {
+                return _theApplicationRXN;
+            }
+
+            set
+            {
+                this.SetValue(ref _theApplicationRXN, value);
+            }
         }
+
         private InformationBindingViewModel? _isApplicableTo;
         [ExpandableObject]
         public InformationBindingViewModel? isApplicableTo
         {
-            get { return _isApplicableTo; }
-            set { this.SetValue(ref _isApplicableTo, value); }
+            get
+            {
+                return _isApplicableTo;
+            }
+
+            set
+            {
+                this.SetValue(ref _isApplicableTo, value);
+            }
         }
 
         public override InformationAssociationConnector? associationConnector
         {
-            get { return _associationConnector; }
+            get
+            {
+                return _associationConnector;
+            }
+
             set
             {
                 this.SetValue(ref _associationConnector, value);
@@ -5162,10 +5864,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "isApplicableTo" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -5175,6 +5881,7 @@ namespace S100Framework.WPF.ViewModel.S122
                         },
                     };
                 }
+
                 isApplicableTo = null;
                 if (value is not null)
                 {
@@ -5183,10 +5890,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "theApplicationRXN" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -5198,9 +5909,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 }
             }
         }
+
         public override InformationAssociationConnector[] associationConnectorInformations => InclusionTypeViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-            };
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(InclusionTypeViewModel)]();
     }
 
     public class AuthorityContactViewModel : InformationAssociationViewModel
@@ -5212,20 +5923,39 @@ namespace S100Framework.WPF.ViewModel.S122
         [ExpandableObject]
         public InformationBindingViewModel? theAuthority
         {
-            get { return _theAuthority; }
-            set { this.SetValue(ref _theAuthority, value); }
+            get
+            {
+                return _theAuthority;
+            }
+
+            set
+            {
+                this.SetValue(ref _theAuthority, value);
+            }
         }
+
         private InformationBindingViewModel? _theContactDetails;
         [ExpandableObject]
         public InformationBindingViewModel? theContactDetails
         {
-            get { return _theContactDetails; }
-            set { this.SetValue(ref _theContactDetails, value); }
+            get
+            {
+                return _theContactDetails;
+            }
+
+            set
+            {
+                this.SetValue(ref _theContactDetails, value);
+            }
         }
 
         public override InformationAssociationConnector? associationConnector
         {
-            get { return _associationConnector; }
+            get
+            {
+                return _associationConnector;
+            }
+
             set
             {
                 this.SetValue(ref _associationConnector, value);
@@ -5237,10 +5967,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "theContactDetails" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -5250,6 +5984,7 @@ namespace S100Framework.WPF.ViewModel.S122
                         },
                     };
                 }
+
                 theContactDetails = null;
                 if (value is not null)
                 {
@@ -5258,10 +5993,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "theAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -5273,23 +6012,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 }
             }
         }
+
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<ContactDetails>() {
-                    roleType = roleType.association,
-                    role = "theAuthority",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-                new InformationAssociationConnector<Authority>() {
-                    roleType = roleType.association,
-                    role = "theContactDetails",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(ContactDetails)],
-                },
-            };
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityContactViewModel)]();
     }
 
     public class AuthorityHoursViewModel : InformationAssociationViewModel
@@ -5301,20 +6026,39 @@ namespace S100Framework.WPF.ViewModel.S122
         [ExpandableObject]
         public InformationBindingViewModel? theAuthority_srvHrs
         {
-            get { return _theAuthority_srvHrs; }
-            set { this.SetValue(ref _theAuthority_srvHrs, value); }
+            get
+            {
+                return _theAuthority_srvHrs;
+            }
+
+            set
+            {
+                this.SetValue(ref _theAuthority_srvHrs, value);
+            }
         }
+
         private InformationBindingViewModel? _theServiceHours;
         [ExpandableObject]
         public InformationBindingViewModel? theServiceHours
         {
-            get { return _theServiceHours; }
-            set { this.SetValue(ref _theServiceHours, value); }
+            get
+            {
+                return _theServiceHours;
+            }
+
+            set
+            {
+                this.SetValue(ref _theServiceHours, value);
+            }
         }
 
         public override InformationAssociationConnector? associationConnector
         {
-            get { return _associationConnector; }
+            get
+            {
+                return _associationConnector;
+            }
+
             set
             {
                 this.SetValue(ref _associationConnector, value);
@@ -5326,10 +6070,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "theServiceHours" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -5339,6 +6087,7 @@ namespace S100Framework.WPF.ViewModel.S122
                         },
                     };
                 }
+
                 theServiceHours = null;
                 if (value is not null)
                 {
@@ -5347,10 +6096,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "theAuthority_srvHrs" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -5362,23 +6115,9 @@ namespace S100Framework.WPF.ViewModel.S122
                 }
             }
         }
+
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<ServiceHours>() {
-                    roleType = roleType.association,
-                    role = "theAuthority_srvHrs",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
-                },
-                new InformationAssociationConnector<Authority>() {
-                    roleType = roleType.association,
-                    role = "theServiceHours",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(ServiceHours)],
-                },
-            };
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityHoursViewModel)]();
     }
 
     public class additionalInformationViewModel : InformationAssociationViewModel
@@ -5390,20 +6129,39 @@ namespace S100Framework.WPF.ViewModel.S122
         [ExpandableObject]
         public InformationBindingViewModel? informationProvidedFor
         {
-            get { return _informationProvidedFor; }
-            set { this.SetValue(ref _informationProvidedFor, value); }
+            get
+            {
+                return _informationProvidedFor;
+            }
+
+            set
+            {
+                this.SetValue(ref _informationProvidedFor, value);
+            }
         }
+
         private InformationBindingViewModel? _providesInformation;
         [ExpandableObject]
         public InformationBindingViewModel? providesInformation
         {
-            get { return _providesInformation; }
-            set { this.SetValue(ref _providesInformation, value); }
+            get
+            {
+                return _providesInformation;
+            }
+
+            set
+            {
+                this.SetValue(ref _providesInformation, value);
+            }
         }
 
         public override InformationAssociationConnector? associationConnector
         {
-            get { return _associationConnector; }
+            get
+            {
+                return _associationConnector;
+            }
+
             set
             {
                 this.SetValue(ref _associationConnector, value);
@@ -5415,10 +6173,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "providesInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -5428,6 +6190,7 @@ namespace S100Framework.WPF.ViewModel.S122
                         },
                     };
                 }
+
                 providesInformation = null;
                 if (value is not null)
                 {
@@ -5436,10 +6199,14 @@ namespace S100Framework.WPF.ViewModel.S122
                         "informationProvidedFor" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : value.Lower > 0 ? new SingleInformationBindingViewModel
+                        }
+
+                        : value.Lower > 0 ? new SingleInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
-                        } : new OptionalInformationBindingViewModel
+                        }
+
+                        : new OptionalInformationBindingViewModel
                         {
                             InformationTypes = value.AssociationTypes,
                         },
@@ -5451,29 +6218,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 }
             }
         }
+
         public override InformationAssociationConnector[] associationConnectorInformations => additionalInformationViewModel._associationConnectorInformations;
-        public static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {
-                new InformationAssociationConnector<RestrictedArea>() {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<MarineProtectedArea>() {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-                new InformationAssociationConnector<VesselTrafficServiceArea>() {
-                    roleType = roleType.association,
-                    role = "providesInformation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(NauticalInformation)],
-                },
-            };
+        public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(additionalInformationViewModel)]();
     }
 }
