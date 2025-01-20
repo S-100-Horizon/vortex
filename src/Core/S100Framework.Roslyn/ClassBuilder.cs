@@ -776,7 +776,14 @@ namespace S100Framework
                 classBuilder.AppendLine("\t}");
             }
 
-            var informationBindingTypes = new List<string>();
+            var handlesBuilder = new StringBuilder();
+            handlesBuilder.AppendLine("\tpublic static class Handles {");
+            handlesBuilder.AppendLine("\t\tpublic static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations = new Dictionary<Type, Func<InformationAssociationConnector[]>> {");
+            var handlesAssociationConnectorInformations = handlesBuilder.Length;
+            handlesBuilder.AppendLine("\t\t};");
+            handlesBuilder.AppendLine("\t}");
+
+                        var informationBindingTypes = new List<string>();
             var featureBindingTypes = new List<string>();
 
             //  S100_FC_InformationType
@@ -1267,11 +1274,13 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\t\t}}");
                     viewBuilder.AppendLine($"\t\t}}");
                     viewBuilder.AppendLine($"\t\t\tpublic override InformationAssociationConnector[] associationConnectorInformations => {code}ViewModel._associationConnectorInformations;");
-                    viewBuilder.AppendLine($"\t\t\tpublic static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {{");
+                    viewBuilder.AppendLine($"\t\t\tpublic static InformationAssociationConnector[] _associationConnectorInformations => new InformationAssociationConnector[] {{");                    
 
                     var bindings = productSpecification.XPathSelectElements("//S100FC:informationBinding", xmlNamespaceManager).ToList();
 
                     var associations = bindings.Where(e => e.Element(XName.Get("association", scope_S100))!.Attribute("ref")!.Value.Equals(code)).ToList();
+
+                    var b = new StringBuilder();
 
                     foreach (var association in associations.OrderBy(e => e.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value).ThenBy(e => e.Parent!.Element(XName.Get("code", scope_S100))!.Value)) {
                         var informationType = association.Parent!.Element(XName.Get("code", scope_S100))!.Value;
@@ -1303,14 +1312,28 @@ namespace S100Framework
                         };
 
                         foreach (var f in hierarchy) {
-                            viewBuilder.AppendLine($"\t\t\t\tnew InformationAssociationConnector<{f}>() {{");
-                            viewBuilder.AppendLine($"\t\t\t\t\troleType = roleType.{roleType},");
-                            viewBuilder.AppendLine($"\t\t\t\t\trole = \"{role}\",");
-                            viewBuilder.AppendLine($"\t\t\t\t\tLower = {lower},");
-                            viewBuilder.AppendLine($"\t\t\t\t\tUpper = {u},");
-                            viewBuilder.AppendLine($"\t\t\t\t\tAssociationTypes = [{string.Join(',', informationTypeRefs)}],");
-                            viewBuilder.AppendLine($"\t\t\t\t}},");
+                            b.AppendLine($"new InformationAssociationConnector<{f}>() {{");
+                            b.AppendLine($"\troleType = roleType.{roleType},");
+                            b.AppendLine($"\trole = \"{role}\",");
+                            b.AppendLine($"\tLower = {lower},");
+                            b.AppendLine($"\tUpper = {u},");
+                            b.AppendLine($"\tAssociationTypes = [{string.Join(',', informationTypeRefs)}],");
+                            b.AppendLine($"}},");                                                       
+
+                            //viewBuilder.AppendLine($"\t\t\t\tnew InformationAssociationConnector<{f}>() {{");
+                            //viewBuilder.AppendLine($"\t\t\t\t\troleType = roleType.{roleType},");
+                            //viewBuilder.AppendLine($"\t\t\t\t\trole = \"{role}\",");
+                            //viewBuilder.AppendLine($"\t\t\t\t\tLower = {lower},");
+                            //viewBuilder.AppendLine($"\t\t\t\t\tUpper = {u},");
+                            //viewBuilder.AppendLine($"\t\t\t\t\tAssociationTypes = [{string.Join(',', informationTypeRefs)}],");
+                            //viewBuilder.AppendLine($"\t\t\t\t}},");
                         }
+                    }
+
+                    viewBuilder.AppendLine(b.ToString());
+
+                    if (b.Length > 0) {
+                        handlesBuilder.Insert(handlesAssociationConnectorInformations, $"\t\t\t{{ typeof({code}ViewModel), () => [{b.ToString().ReplaceLineEndings().TrimEnd().TrimEnd(',')}] }},");
                     }
 
                     viewBuilder.AppendLine($"\t\t\t}};");
@@ -1318,6 +1341,8 @@ namespace S100Framework
                 }
             }
 
+
+            creatorBuilder.AppendLine(handlesBuilder.ToString());
 
             viewBuilder.Insert(creatorPosition, creatorBuilder.ToString());
 
