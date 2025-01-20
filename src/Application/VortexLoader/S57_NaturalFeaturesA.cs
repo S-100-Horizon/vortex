@@ -459,6 +459,11 @@ namespace S100Framework.Applications
 
                         }
                         break;
+                    default:
+                        // code block
+                        System.Diagnostics.Debugger.Break();
+                        break;
+
                 }
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);

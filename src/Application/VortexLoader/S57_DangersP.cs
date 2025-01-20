@@ -23,7 +23,7 @@ namespace S100Framework.Applications
 
             var dangersp = source.OpenDataset<FeatureClass>("DangersP");
 
-           // var dredged = source.OpenDataset<FeatureClass>("Depare");
+            //var dredged = source.OpenDataset<FeatureClass>("Depare");
 
             using var featureClass = target.OpenDataset<FeatureClass>("point");
             using var informationtype = target.OpenDataset<Table>("informationtype");
@@ -85,7 +85,7 @@ namespace S100Framework.Applications
                                 AddFeatureName(foulGround.featureName, feature);
                                 AddInformation(foulGround.information, feature);
                                 buffer["ps"] = ps;
-                                buffer["code"] = nameof(S100Framework.DomainModel.S101.FeatureTypes.FoulGround); ;
+                                buffer["code"] = nameof(foulGround);
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(foulGround);
                                 buffer["shape"] = feature.GetShape();
                                 insert.Insert(buffer);
@@ -233,7 +233,6 @@ namespace S100Framework.Applications
                             throw new NotImplementedException();
 
                         }
-
                     case 45: { // WRECKS
                             waterLevelEffect waterLeveleffectCurrent = default;
 
@@ -276,6 +275,10 @@ namespace S100Framework.Applications
 
                         }
 
+                        break;
+                    default:
+                        // code block
+                        System.Diagnostics.Debugger.Break();
                         break;
                 }
 

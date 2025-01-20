@@ -40,7 +40,7 @@ namespace TestNisImporter
 
             StringBuilder csSubtypes = new StringBuilder();
 
-            var featureClass = source.OpenDataset<FeatureClass>("AidsToNavigationP");
+            var featureClass = source.OpenDataset<FeatureClass>("NaturalFeaturesL");
 
             var subtypes = featureClass.GetDefinition().GetSubtypes();
 
@@ -144,19 +144,21 @@ namespace TestNisImporter
 
                     objectClass.AppendLine($"\tinternal class {dataset.GetName()} {{");
 
-                    ctor.AppendLine($"\t\tpublic {dataset.GetName()} (Feature feature) {{");
 
                     IReadOnlyList<ArcGIS.Core.Data.Field> datasetfields = new List<ArcGIS.Core.Data.Field>();
 
-                    if (dataset is Table) {
-                        datasetfields = ((Table)dataset).GetDefinition().GetFields();
-                    }
                     if (dataset is FeatureClass) {
                         datasetfields = ((FeatureClass)dataset).GetDefinition().GetFields();
+                        ctor.AppendLine($"\t\tpublic {dataset.GetName()} (Feature feature) {{");
+                    } else if (dataset is Table) {
+                            datasetfields = ((Table)dataset).GetDefinition().GetFields();
+                            ctor.AppendLine($"\t\tpublic {dataset.GetName()} (Row row) {{");
                     }
+
 
 
                     var fieldInfo = (Type: "Int32", Conversion: "Convert.ToInt32", DefaultValue: "default", Alias: string.Empty);
+
                     foreach (var field in datasetfields) {
                         
                         fieldInfo = field.FieldType switch {
@@ -178,16 +180,30 @@ namespace TestNisImporter
 
                         var fieldValue = "";
 
-                        if (string.IsNullOrEmpty(fieldInfo.Conversion)) {
-                            fieldValue = $@"feature[""{field.Name.ToUpper()}""];";
-                        }
-                        else {
-                            fieldValue = $@"{fieldInfo.Conversion}(feature[""{field.Name.ToUpper()}""])";
-                        }
-                        if (fieldInfo.Type.ToLower().Contains("guid")) {
-                            fieldValue = $@"Guid.TryParse(Convert.ToString(feature[""{field.Name.ToUpper()}""]), out {field.Name.ToUpper()})";
-                        }
+                        if (dataset is FeatureClass) {
+                            if (string.IsNullOrEmpty(fieldInfo.Conversion)) {
+                                fieldValue = $@"feature[""{field.Name.ToUpper()}""];";
+                            }
+                            else {
+                                fieldValue = $@"{fieldInfo.Conversion}(feature[""{field.Name.ToUpper()}""])";
+                            }
+                            if (fieldInfo.Type.ToLower().Contains("guid")) {
+                                fieldValue = $@"Guid.TryParse(Convert.ToString(feature[""{field.Name.ToUpper()}""]), out {field.Name.ToUpper()})";
+                            }
 
+                        }
+                        else if (dataset is Table) {
+                            if (string.IsNullOrEmpty(fieldInfo.Conversion)) {
+                                fieldValue = $@"row[""{field.Name.ToUpper()}""];";
+                            }
+                            else {
+                                fieldValue = $@"{fieldInfo.Conversion}(row[""{field.Name.ToUpper()}""])";
+                            }
+                            if (fieldInfo.Type.ToLower().Contains("guid")) {
+                                fieldValue = $@"Guid.TryParse(Convert.ToString(row[""{field.Name.ToUpper()}""]), out {field.Name.ToUpper()})";
+                            }
+
+                        }
 
                         fields.AppendLine($"");
                         fields.AppendLine($"\t\t/// <summary>");
@@ -196,7 +212,13 @@ namespace TestNisImporter
                         fields.AppendLine($"\t\t[Description(\"{fieldInfo.Alias}\")]");
                         fields.AppendLine($"\t\t{fieldInfo.Type} {field.Name.ToUpper()} = {fieldInfo.DefaultValue};");
 
-                        ctor.AppendLine($"\t\t\tif (DBNull.Value != feature[\"{field.Name.ToUpper()}\"] && feature[\"{field.Name.ToUpper()}\"] is not null) {{");
+                        if (dataset is FeatureClass) {
+                            ctor.AppendLine($"\t\t\tif (DBNull.Value != feature[\"{field.Name.ToUpper()}\"] && feature[\"{field.Name.ToUpper()}\"] is not null) {{");
+                        }
+                        else if (dataset is Table) {
+                            ctor.AppendLine($"\t\t\tif (DBNull.Value != row[\"{field.Name.ToUpper()}\"] && row[\"{field.Name.ToUpper()}\"] is not null) {{");
+                        }
+
                         if (fieldInfo.Type.ToLower().Contains("guid")) {
                             ctor.AppendLine($"\t\t\t\t{fieldValue};");
                         } else {

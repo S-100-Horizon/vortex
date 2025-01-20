@@ -7959,6 +7959,12 @@ namespace VortexLoader.S57.esri
         /// </summary>
         [Description("NIS editor comments")]
         internal string? NIS_EDITOR_COMMENT = default;
+
+        /// <summary>
+        /// Validation status
+        /// </summary>
+        [Description("Validation status")]
+        internal int? VALIDATIONSTATUS = default;
         public AidsToNavigationP(Feature feature) {
             if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
                 OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
@@ -8220,6 +8226,9 @@ namespace VortexLoader.S57.esri
             }
             if (DBNull.Value != feature["NIS_EDITOR_COMMENT"] && feature["NIS_EDITOR_COMMENT"] is not null) {
                 NIS_EDITOR_COMMENT = Convert.ToString(feature["NIS_EDITOR_COMMENT"]);
+            }
+            if (DBNull.Value != feature["VALIDATIONSTATUS"] && feature["VALIDATIONSTATUS"] is not null) {
+                VALIDATIONSTATUS = Convert.ToInt32(feature["VALIDATIONSTATUS"]);
             }
         }
     }
@@ -21994,111 +22003,111 @@ namespace VortexLoader.S57.esri
         /// </summary>
         [Description("NIS_LAST_MOD")]
         internal DateTime? NIS_LAST_MOD = default;
-        public ProductDefinitions(Feature feature) {
-            if (DBNull.Value != feature["OBJECTID"] && feature["OBJECTID"] is not null) {
-                OBJECTID = Convert.ToInt32(feature["OBJECTID"]);
+        public ProductDefinitions(Row row) {
+            if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
+                OBJECTID = Convert.ToInt32(row["OBJECTID"]);
             }
-            if (DBNull.Value != feature["GLOBALID"] && feature["GLOBALID"] is not null) {
-                Guid.TryParse(Convert.ToString(feature["GLOBALID"]), out GLOBALID);
+            if (DBNull.Value != row["GLOBALID"] && row["GLOBALID"] is not null) {
+                Guid.TryParse(Convert.ToString(row["GLOBALID"]), out GLOBALID);
             }
-            if (DBNull.Value != feature["EDITOR"] && feature["EDITOR"] is not null) {
-                EDITOR = Convert.ToString(feature["EDITOR"]);
+            if (DBNull.Value != row["EDITOR"] && row["EDITOR"] is not null) {
+                EDITOR = Convert.ToString(row["EDITOR"]);
             }
-            if (DBNull.Value != feature["LAST_MOD"] && feature["LAST_MOD"] is not null) {
-                LAST_MOD = Convert.ToDateTime(feature["LAST_MOD"]);
+            if (DBNull.Value != row["LAST_MOD"] && row["LAST_MOD"] is not null) {
+                LAST_MOD = Convert.ToDateTime(row["LAST_MOD"]);
             }
-            if (DBNull.Value != feature["CSCL"] && feature["CSCL"] is not null) {
-                CSCL = Convert.ToInt32(feature["CSCL"]);
+            if (DBNull.Value != row["CSCL"] && row["CSCL"] is not null) {
+                CSCL = Convert.ToInt32(row["CSCL"]);
             }
-            if (DBNull.Value != feature["DSNM"] && feature["DSNM"] is not null) {
-                DSNM = Convert.ToString(feature["DSNM"]);
+            if (DBNull.Value != row["DSNM"] && row["DSNM"] is not null) {
+                DSNM = Convert.ToString(row["DSNM"]);
             }
-            if (DBNull.Value != feature["EXPORTTYPE"] && feature["EXPORTTYPE"] is not null) {
-                EXPORTTYPE = Convert.ToString(feature["EXPORTTYPE"]);
+            if (DBNull.Value != row["EXPORTTYPE"] && row["EXPORTTYPE"] is not null) {
+                EXPORTTYPE = Convert.ToString(row["EXPORTTYPE"]);
             }
-            if (DBNull.Value != feature["EDTN"] && feature["EDTN"] is not null) {
-                EDTN = Convert.ToInt32(feature["EDTN"]);
+            if (DBNull.Value != row["EDTN"] && row["EDTN"] is not null) {
+                EDTN = Convert.ToInt32(row["EDTN"]);
             }
-            if (DBNull.Value != feature["UPDN"] && feature["UPDN"] is not null) {
-                UPDN = Convert.ToInt32(feature["UPDN"]);
+            if (DBNull.Value != row["UPDN"] && row["UPDN"] is not null) {
+                UPDN = Convert.ToInt32(row["UPDN"]);
             }
-            if (DBNull.Value != feature["PROF"] && feature["PROF"] is not null) {
-                PROF = Convert.ToInt32(feature["PROF"]);
+            if (DBNull.Value != row["PROF"] && row["PROF"] is not null) {
+                PROF = Convert.ToInt32(row["PROF"]);
             }
-            if (DBNull.Value != feature["INTU"] && feature["INTU"] is not null) {
-                INTU = Convert.ToInt32(feature["INTU"]);
+            if (DBNull.Value != row["INTU"] && row["INTU"] is not null) {
+                INTU = Convert.ToInt32(row["INTU"]);
             }
-            if (DBNull.Value != feature["UADT"] && feature["UADT"] is not null) {
-                UADT = Convert.ToDateTime(feature["UADT"]);
+            if (DBNull.Value != row["UADT"] && row["UADT"] is not null) {
+                UADT = Convert.ToDateTime(row["UADT"]);
             }
-            if (DBNull.Value != feature["ISDT"] && feature["ISDT"] is not null) {
-                ISDT = Convert.ToDateTime(feature["ISDT"]);
+            if (DBNull.Value != row["ISDT"] && row["ISDT"] is not null) {
+                ISDT = Convert.ToDateTime(row["ISDT"]);
             }
-            if (DBNull.Value != feature["STED"] && feature["STED"] is not null) {
-                STED = Convert.ToString(feature["STED"]);
+            if (DBNull.Value != row["STED"] && row["STED"] is not null) {
+                STED = Convert.ToString(row["STED"]);
             }
-            if (DBNull.Value != feature["PRSP"] && feature["PRSP"] is not null) {
-                PRSP = Convert.ToInt32(feature["PRSP"]);
+            if (DBNull.Value != row["PRSP"] && row["PRSP"] is not null) {
+                PRSP = Convert.ToInt32(row["PRSP"]);
             }
-            if (DBNull.Value != feature["PSDN"] && feature["PSDN"] is not null) {
-                PSDN = Convert.ToString(feature["PSDN"]);
+            if (DBNull.Value != row["PSDN"] && row["PSDN"] is not null) {
+                PSDN = Convert.ToString(row["PSDN"]);
             }
-            if (DBNull.Value != feature["PRED"] && feature["PRED"] is not null) {
-                PRED = Convert.ToString(feature["PRED"]);
+            if (DBNull.Value != row["PRED"] && row["PRED"] is not null) {
+                PRED = Convert.ToString(row["PRED"]);
             }
-            if (DBNull.Value != feature["AGEN"] && feature["AGEN"] is not null) {
-                AGEN = Convert.ToString(feature["AGEN"]);
+            if (DBNull.Value != row["AGEN"] && row["AGEN"] is not null) {
+                AGEN = Convert.ToString(row["AGEN"]);
             }
-            if (DBNull.Value != feature["COMT"] && feature["COMT"] is not null) {
-                COMT = Convert.ToString(feature["COMT"]);
+            if (DBNull.Value != row["COMT"] && row["COMT"] is not null) {
+                COMT = Convert.ToString(row["COMT"]);
             }
-            if (DBNull.Value != feature["AALL"] && feature["AALL"] is not null) {
-                AALL = Convert.ToInt32(feature["AALL"]);
+            if (DBNull.Value != row["AALL"] && row["AALL"] is not null) {
+                AALL = Convert.ToInt32(row["AALL"]);
             }
-            if (DBNull.Value != feature["NALL"] && feature["NALL"] is not null) {
-                NALL = Convert.ToInt32(feature["NALL"]);
+            if (DBNull.Value != row["NALL"] && row["NALL"] is not null) {
+                NALL = Convert.ToInt32(row["NALL"]);
             }
-            if (DBNull.Value != feature["HDAT"] && feature["HDAT"] is not null) {
-                HDAT = Convert.ToInt32(feature["HDAT"]);
+            if (DBNull.Value != row["HDAT"] && row["HDAT"] is not null) {
+                HDAT = Convert.ToInt32(row["HDAT"]);
             }
-            if (DBNull.Value != feature["VDAT"] && feature["VDAT"] is not null) {
-                VDAT = Convert.ToInt32(feature["VDAT"]);
+            if (DBNull.Value != row["VDAT"] && row["VDAT"] is not null) {
+                VDAT = Convert.ToInt32(row["VDAT"]);
             }
-            if (DBNull.Value != feature["SDAT"] && feature["SDAT"] is not null) {
-                SDAT = Convert.ToInt32(feature["SDAT"]);
+            if (DBNull.Value != row["SDAT"] && row["SDAT"] is not null) {
+                SDAT = Convert.ToInt32(row["SDAT"]);
             }
-            if (DBNull.Value != feature["DUNI"] && feature["DUNI"] is not null) {
-                DUNI = Convert.ToInt32(feature["DUNI"]);
+            if (DBNull.Value != row["DUNI"] && row["DUNI"] is not null) {
+                DUNI = Convert.ToInt32(row["DUNI"]);
             }
-            if (DBNull.Value != feature["HUNI"] && feature["HUNI"] is not null) {
-                HUNI = Convert.ToInt32(feature["HUNI"]);
+            if (DBNull.Value != row["HUNI"] && row["HUNI"] is not null) {
+                HUNI = Convert.ToInt32(row["HUNI"]);
             }
-            if (DBNull.Value != feature["PUNI"] && feature["PUNI"] is not null) {
-                PUNI = Convert.ToInt32(feature["PUNI"]);
+            if (DBNull.Value != row["PUNI"] && row["PUNI"] is not null) {
+                PUNI = Convert.ToInt32(row["PUNI"]);
             }
-            if (DBNull.Value != feature["COUN"] && feature["COUN"] is not null) {
-                COUN = Convert.ToInt32(feature["COUN"]);
+            if (DBNull.Value != row["COUN"] && row["COUN"] is not null) {
+                COUN = Convert.ToInt32(row["COUN"]);
             }
-            if (DBNull.Value != feature["COMF"] && feature["COMF"] is not null) {
-                COMF = Convert.ToInt32(feature["COMF"]);
+            if (DBNull.Value != row["COMF"] && row["COMF"] is not null) {
+                COMF = Convert.ToInt32(row["COMF"]);
             }
-            if (DBNull.Value != feature["SOMF"] && feature["SOMF"] is not null) {
-                SOMF = Convert.ToInt32(feature["SOMF"]);
+            if (DBNull.Value != row["SOMF"] && row["SOMF"] is not null) {
+                SOMF = Convert.ToInt32(row["SOMF"]);
             }
-            if (DBNull.Value != feature["DSPM_COMT"] && feature["DSPM_COMT"] is not null) {
-                DSPM_COMT = Convert.ToString(feature["DSPM_COMT"]);
+            if (DBNull.Value != row["DSPM_COMT"] && row["DSPM_COMT"] is not null) {
+                DSPM_COMT = Convert.ToString(row["DSPM_COMT"]);
             }
-            if (DBNull.Value != feature["SERIES"] && feature["SERIES"] is not null) {
-                SERIES = Convert.ToString(feature["SERIES"]);
+            if (DBNull.Value != row["SERIES"] && row["SERIES"] is not null) {
+                SERIES = Convert.ToString(row["SERIES"]);
             }
-            if (DBNull.Value != feature["WHERECLAUSE"] && feature["WHERECLAUSE"] is not null) {
-                WHERECLAUSE = Convert.ToString(feature["WHERECLAUSE"]);
+            if (DBNull.Value != row["WHERECLAUSE"] && row["WHERECLAUSE"] is not null) {
+                WHERECLAUSE = Convert.ToString(row["WHERECLAUSE"]);
             }
-            if (DBNull.Value != feature["NIS_EDITOR"] && feature["NIS_EDITOR"] is not null) {
-                NIS_EDITOR = Convert.ToString(feature["NIS_EDITOR"]);
+            if (DBNull.Value != row["NIS_EDITOR"] && row["NIS_EDITOR"] is not null) {
+                NIS_EDITOR = Convert.ToString(row["NIS_EDITOR"]);
             }
-            if (DBNull.Value != feature["NIS_LAST_MOD"] && feature["NIS_LAST_MOD"] is not null) {
-                NIS_LAST_MOD = Convert.ToDateTime(feature["NIS_LAST_MOD"]);
+            if (DBNull.Value != row["NIS_LAST_MOD"] && row["NIS_LAST_MOD"] is not null) {
+                NIS_LAST_MOD = Convert.ToDateTime(row["NIS_LAST_MOD"]);
             }
         }
     }

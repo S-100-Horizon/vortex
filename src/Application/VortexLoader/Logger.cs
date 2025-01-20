@@ -4,8 +4,6 @@ using Serilog.Events;
 
 namespace S100Framework.Applications
 {
-    
-
     public enum LogLevel
     {
         Verbose = 0,
@@ -37,7 +35,7 @@ namespace S100Framework.Applications
 
             var filePath = Path.Combine(_logDirectory, $"Loader_DataObject_{logFileName}.log");
 
-            using (var writer = new StreamWriter(filePath, true)) {
+            using (var writer = new StreamWriter(filePath, true, System.Text.Encoding.GetEncoding("ISO-8859-1"))) {
                 writer.WriteLine($"{logEvent.RenderMessage()}");
             }
         }
@@ -101,6 +99,7 @@ namespace S100Framework.Applications
                     .WriteTo.File(System.IO.Path.Combine(_logDir, @"Vortex", "Loader",$"{_dateTimeString}", "Loader_System.log"),
                     rollingInterval: RollingInterval.Infinite,
                     shared: true,
+                    encoding: System.Text.Encoding.GetEncoding("ISO-8859-1"),
                     outputTemplate: "{Timestamp:yyyy-MM-dd HH:mm:ss.fff}| [{Level:u3}] {Message:lj} {NewLine}{Exception}"))
 
                 .WriteTo.Logger(lc => lc
@@ -113,6 +112,7 @@ namespace S100Framework.Applications
                     .WriteTo.File(System.IO.Path.Combine(_logDir, @"Vortex", "Loader", $"{_dateTimeString}", $"Loader_DataTotalCount.log"),
                     rollingInterval: RollingInterval.Infinite,
                     shared: true,
+                    encoding: System.Text.Encoding.GetEncoding("ISO-8859-1"),
                     outputTemplate: "{Message:lj}{NewLine}"))
 
                 .WriteTo.Logger(lc => lc
@@ -120,6 +120,7 @@ namespace S100Framework.Applications
                     .WriteTo.File(System.IO.Path.Combine(_logDir, @"Vortex", "Loader", $"{_dateTimeString}", "Loader_DataError.log"),
                     rollingInterval: RollingInterval.Infinite,
                     shared: true,
+                    encoding: System.Text.Encoding.GetEncoding("ISO-8859-1"),
                     outputTemplate: "{Message:lj}{NewLine}"))
 
                 .CreateLogger();

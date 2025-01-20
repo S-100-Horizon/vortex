@@ -1,7 +1,11 @@
 ﻿using ArcGIS.Core.Data;
+using ArcGIS.Core.Data.UtilityNetwork.Trace;
+using ArcGIS.Core.Geometry;
 using CommandLine;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Logging;
 using S100Framework.DomainModel.S101.ComplexAttributes;
+using VortexLoader.S57.esri;
 using static S100Framework.Applications.VortexLoader;
 using IO = System.IO;
 
@@ -61,25 +65,55 @@ namespace S100Framework.Applications
                 informationtype.DeleteRows(query);
             }
 
-            //  DepthsA
+
+            //  ProductCoverage
+            S57_ProductCoverage(source, destination, filter);
+
+            //  S57_NaturalFeaturesL
+            S57_NaturalFeaturesL(source, destination, filter);
+
+            // DepthsL
+            S57_DepthsL(source, destination, filter);
+
+            //  AidsToNavigation
             S57_AidsToNavigationP(source, destination, filter);
 
             //  DepthsA
             S57_DepthsA(source, destination, filter);
 
-            //  DepthsA
+            //  S57_NaturalFeaturesA
             S57_NaturalFeaturesA(source, destination, filter);
+
 
             //  SoundingsP
             S57_SoundingsP(source, destination, filter);
 
-            //  SoundingsP
+            //  DangersP
             S57_DangersP(source, destination, filter);
 
-            //  ProductCoverage
-            NIS_ProductCoverage(source, destination, filter);
 
             return true;
+        }
+
+        public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass) where T : class {
+
+            SpatialQueryFilter spatialQueryFilter = new SpatialQueryFilter {
+                FilterGeometry = geometry,
+                SpatialRelationship = SpatialRelationship.Contains,
+            };
+
+            using (RowCursor spatialSearch = in_featureclass.Search(spatialQueryFilter, true)) {
+                var shape = spatialSearch.FindField("SHAPE");
+                while (spatialSearch.MoveNext()) {
+                    using (Row row = spatialSearch.Current) {
+                        Feature feature = (Feature)row;
+                        if (feature != null) {
+                            yield return Activator.CreateInstance(typeof(T), feature) as T;
+                        }
+                    }
+                }
+            }
+
         }
 
         private static void AddFeatureName(IList<featureName> featureName, Feature current) {
@@ -207,63 +241,6 @@ namespace S100Framework.Applications
                 }
             }
         }
-
-        private static void NIS_ProductCoverage(Geodatabase source, Geodatabase target, QueryFilter filter) {
-            Console.WriteLine("ProductCoverage");
-
-            using var productDefinitions = source.OpenDataset<Table>("ProductDefinitions");
-            using var productCoverage = source.OpenDataset<FeatureClass>("ProductCoverage");
-            using var featureClass = target.OpenDataset<FeatureClass>("surface");
-
-            featureClass.DeleteRows(new QueryFilter {
-                WhereClause = $"ps = 'S-128' AND code = 'ElectronicProduct'",
-            });
-
-            using var buffer = featureClass.CreateRowBuffer();
-            using var insert = featureClass.CreateInsertCursor();
-
-            using var cursorDefinitions = productDefinitions.Search(null, true);
-            while (cursorDefinitions.MoveNext()) {
-                var current = (Row)cursorDefinitions.Current;
-
-                var dsnm = Convert.ToString(current["DSNM"])!;
-                var edtn = Convert.ToInt32(current["EDTN"]);
-                var updn = Convert.ToInt32(current["UPDN"]);
-                var isdt = Convert.ToDateTime(current["ISDT"]);
-
-                var electronicproduct = new S100Framework.DomainModel.S128.FeatureTypes.ElectronicProduct {
-                    catalogueElementClassification = new List<S100Framework.DomainModel.S128.catalogueElementClassification> {
-                                S100Framework.DomainModel.S128.catalogueElementClassification.Enc,
-                            },
-                    editionNumber = edtn,
-                    issueDate = isdt,
-                    notForNavigation = true,
-                    typeOfProductFormat = S100Framework.DomainModel.S128.typeOfProductFormat.IsoIec8211,
-                    datasetName = dsnm,
-                };
-                if (updn > 0)
-                    electronicproduct.updateNumber = updn;
-
-                using var cursorCoverage = productCoverage.Search(new QueryFilter {
-                    WhereClause = $"Product_GUID = '{current.GetGlobalID():B}'",
-                }, true);
-
-                buffer["ps"] = "S-128";
-                buffer["code"] = "ElectronicProduct";
-                buffer["json"] = System.Text.Json.JsonSerializer.Serialize(electronicproduct);
-
-                while (cursorCoverage.MoveNext()) {
-                    var catcov = Convert.ToInt32(cursorCoverage.Current["CATCOV"]);
-
-                    switch (catcov) {
-                        case 1:
-                            buffer["shape"] = ((Feature)cursorCoverage.Current).GetShape();
-                            break;
-                    }
-                }
-
-                insert.Insert(buffer);
-            }
-        }
     }
 }
+

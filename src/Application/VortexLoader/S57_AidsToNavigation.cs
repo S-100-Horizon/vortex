@@ -47,6 +47,13 @@ namespace S100Framework.Applications
                 var subtype = current.FCSUBTYPE ?? default;
                 var plts_comp_scale = current.PLTS_COMP_SCALE ?? default;
                 var longname = current.LNAM ?? Strings.UNKNOWN;
+                var catlitVal = current.CATLIT ?? default;
+                var sectr1Val = current.SECTR1 ?? default;
+                var sectr2Val = current.SECTR2 ?? default;
+                var colour = current.COLOUR ?? default;
+                var litchr = current.LITCHR ?? default;
+                var marsys = current.MARSYS ?? default;
+                var orient = current.ORIENT ?? default;
 
 
 
@@ -224,13 +231,6 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 65: { // LIGHTS_Light
-                            var catlitVal = current.CATLIT ?? default;
-                            var sectr1Val = current.SECTR1 ?? default;
-                            var sectr2Val = current.SECTR2 ?? default;
-                            var coulour = current.COLOUR ?? default;
-                            var litchr = current.LITCHR ?? default;
-                            var marsys = current.MARSYS ?? default;
-                            var orient = current.ORIENT ?? default;
 
                             if (catlitVal == default) {
                                 Logger.Current.DataError(objectid, tableName, longname, "empty catlit");
@@ -246,6 +246,9 @@ namespace S100Framework.Applications
                                 // LIGHTS: Attributes SECTR1 and SECTR2 not present; and/or attribute catlits is not 1, 6, 7, 16
                                 // Build "Light All Around");
                                 var instance = new LightAllAround();
+
+
+
 
                                 if (plts_comp_scale != default) {
                                     instance.scaleMinimum = plts_comp_scale;
@@ -444,6 +447,10 @@ namespace S100Framework.Applications
                             // TODO: TOPMAR
                             //System.Diagnostics.Debugger.Break();
                         }
+                        break;
+                    default:
+                        // code block
+                        System.Diagnostics.Debugger.Break();
                         break;
 
                 }
