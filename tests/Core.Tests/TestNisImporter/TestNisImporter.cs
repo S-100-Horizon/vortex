@@ -109,7 +109,10 @@ namespace TestNisImporter
                                             //"ProductRestrictions"
             };
             var tables = new List<string> { //"ProductExports",
-                                            "ProductDefinitions"
+                                            "ProductDefinitions",
+                                            "PLTS_Collections",
+                                            "PLTS_Frel",
+                                            "PLTS_Master_Slaves"
                                           };
 
             var sourcePath = @$"{Environment.GetEnvironmentVariable("OneDrive")}\ArcGIS\Projects\Vortex\replica.gdb";
