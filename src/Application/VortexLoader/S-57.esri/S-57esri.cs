@@ -22111,5 +22111,578 @@ namespace VortexLoader.S57.esri
             }
         }
     }
+    internal class PLTS_Collections
+    {
+
+        /// <summary>
+        /// OBJECTID
+        /// </summary>
+        [Description("OBJECTID")]
+        internal int? OBJECTID = default;
+
+        /// <summary>
+        /// GlobalID
+        /// </summary>
+        [Description("GlobalID")]
+        internal Guid GLOBALID = Guid.Empty;
+
+        /// <summary>
+        /// Editor
+        /// </summary>
+        [Description("Editor")]
+        internal string? EDITOR = default;
+
+        /// <summary>
+        /// Last modified
+        /// </summary>
+        [Description("Last modified")]
+        internal DateTime? LAST_MOD = default;
+
+        /// <summary>
+        /// Editor comments
+        /// </summary>
+        [Description("Editor comments")]
+        internal string? EDITOR_COMMENT = default;
+
+        /// <summary>
+        /// Verified state
+        /// </summary>
+        [Description("Verified state")]
+        internal int? VERIFIED = default;
+
+        /// <summary>
+        /// Verifier
+        /// </summary>
+        [Description("Verifier")]
+        internal string? VERIFIER = default;
+
+        /// <summary>
+        /// Verified date
+        /// </summary>
+        [Description("Verified date")]
+        internal DateTime? VERIFIED_DATE = default;
+
+        /// <summary>
+        /// Delete comment
+        /// </summary>
+        [Description("Delete comment")]
+        internal string? DELETE_COMMENT = default;
+
+        /// <summary>
+        /// PLTS compilation scale
+        /// </summary>
+        [Description("PLTS compilation scale")]
+        internal int? PLTS_COMP_SCALE = default;
+
+        /// <summary>
+        /// NIS product type
+        /// </summary>
+        [Description("NIS product type")]
+        internal int? NIS_PRODUCTS = default;
+
+        /// <summary>
+        /// FCSubtype
+        /// </summary>
+        [Description("FCSubtype")]
+        internal int? FCSUBTYPE = default;
+
+        /// <summary>
+        /// Information
+        /// </summary>
+        [Description("Information")]
+        internal string? INFORM = default;
+
+        /// <summary>
+        /// Long name
+        /// </summary>
+        [Description("Long name")]
+        internal string? LNAM = default;
+
+        /// <summary>
+        /// Name
+        /// </summary>
+        [Description("Name")]
+        internal string? NAME = default;
+
+        /// <summary>
+        /// Data set name
+        /// </summary>
+        [Description("Data set name")]
+        internal string? DSNM = default;
+
+        /// <summary>
+        /// Nautical object ID
+        /// </summary>
+        [Description("Nautical object ID")]
+        internal string? NOID = default;
+
+        /// <summary>
+        /// Information in national language
+        /// </summary>
+        [Description("Information in national language")]
+        internal string? NINFOM = default;
+
+        /// <summary>
+        /// Object name in national language
+        /// </summary>
+        [Description("Object name in national language")]
+        internal string? NOBJNM = default;
+
+        /// <summary>
+        /// Textual description in national language
+        /// </summary>
+        [Description("Textual description in national language")]
+        internal string? NTXTDS = default;
+
+        /// <summary>
+        /// Object name
+        /// </summary>
+        [Description("Object name")]
+        internal string? OBJNAM = default;
+
+        /// <summary>
+        /// Pictorial representation
+        /// </summary>
+        [Description("Pictorial representation")]
+        internal string? PICREP = default;
+
+        /// <summary>
+        /// Source date
+        /// </summary>
+        [Description("Source date")]
+        internal string? SORDAT = default;
+
+        /// <summary>
+        /// Source indication
+        /// </summary>
+        [Description("Source indication")]
+        internal string? SORIND = default;
+
+        /// <summary>
+        /// Textual description
+        /// </summary>
+        [Description("Textual description")]
+        internal string? TXTDSC = default;
+
+        /// <summary>
+        /// Collection type
+        /// </summary>
+        [Description("Collection type")]
+        internal int? COLLECTION_TYPE = default;
+
+        /// <summary>
+        /// Is Conflate
+        /// </summary>
+        [Description("Is Conflate")]
+        internal int? IS_CONFLATE = default;
+
+        /// <summary>
+        /// SCAMIN step
+        /// </summary>
+        [Description("SCAMIN step")]
+        internal int? SCAMIN_STEP = default;
+
+        /// <summary>
+        /// NIS Verified state
+        /// </summary>
+        [Description("NIS Verified state")]
+        internal int? NIS_VERIFIED = default;
+
+        /// <summary>
+        /// NIS Verifier
+        /// </summary>
+        [Description("NIS Verifier")]
+        internal string? NIS_VERIFIER = default;
+
+        /// <summary>
+        /// NIS Verified date
+        /// </summary>
+        [Description("NIS Verified date")]
+        internal DateTime? NIS_VERIFY_DATE = default;
+
+        /// <summary>
+        /// NIS_EDITOR
+        /// </summary>
+        [Description("NIS_EDITOR")]
+        internal string? NIS_EDITOR = default;
+
+        /// <summary>
+        /// NIS_LAST_MOD
+        /// </summary>
+        [Description("NIS_LAST_MOD")]
+        internal DateTime? NIS_LAST_MOD = default;
+
+        /// <summary>
+        /// NIS editor comments
+        /// </summary>
+        [Description("NIS editor comments")]
+        internal string? NIS_EDITOR_COMMENT = default;
+        public PLTS_Collections(Row row) {
+            if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
+                OBJECTID = Convert.ToInt32(row["OBJECTID"]);
+            }
+            if (DBNull.Value != row["GLOBALID"] && row["GLOBALID"] is not null) {
+                Guid.TryParse(Convert.ToString(row["GLOBALID"]), out GLOBALID);
+            }
+            if (DBNull.Value != row["EDITOR"] && row["EDITOR"] is not null) {
+                EDITOR = Convert.ToString(row["EDITOR"]);
+            }
+            if (DBNull.Value != row["LAST_MOD"] && row["LAST_MOD"] is not null) {
+                LAST_MOD = Convert.ToDateTime(row["LAST_MOD"]);
+            }
+            if (DBNull.Value != row["EDITOR_COMMENT"] && row["EDITOR_COMMENT"] is not null) {
+                EDITOR_COMMENT = Convert.ToString(row["EDITOR_COMMENT"]);
+            }
+            if (DBNull.Value != row["VERIFIED"] && row["VERIFIED"] is not null) {
+                VERIFIED = Convert.ToInt32(row["VERIFIED"]);
+            }
+            if (DBNull.Value != row["VERIFIER"] && row["VERIFIER"] is not null) {
+                VERIFIER = Convert.ToString(row["VERIFIER"]);
+            }
+            if (DBNull.Value != row["VERIFIED_DATE"] && row["VERIFIED_DATE"] is not null) {
+                VERIFIED_DATE = Convert.ToDateTime(row["VERIFIED_DATE"]);
+            }
+            if (DBNull.Value != row["DELETE_COMMENT"] && row["DELETE_COMMENT"] is not null) {
+                DELETE_COMMENT = Convert.ToString(row["DELETE_COMMENT"]);
+            }
+            if (DBNull.Value != row["PLTS_COMP_SCALE"] && row["PLTS_COMP_SCALE"] is not null) {
+                PLTS_COMP_SCALE = Convert.ToInt32(row["PLTS_COMP_SCALE"]);
+            }
+            if (DBNull.Value != row["NIS_PRODUCTS"] && row["NIS_PRODUCTS"] is not null) {
+                NIS_PRODUCTS = Convert.ToInt32(row["NIS_PRODUCTS"]);
+            }
+            if (DBNull.Value != row["FCSUBTYPE"] && row["FCSUBTYPE"] is not null) {
+                FCSUBTYPE = Convert.ToInt32(row["FCSUBTYPE"]);
+            }
+            if (DBNull.Value != row["INFORM"] && row["INFORM"] is not null) {
+                INFORM = Convert.ToString(row["INFORM"]);
+            }
+            if (DBNull.Value != row["LNAM"] && row["LNAM"] is not null) {
+                LNAM = Convert.ToString(row["LNAM"]);
+            }
+            if (DBNull.Value != row["NAME"] && row["NAME"] is not null) {
+                NAME = Convert.ToString(row["NAME"]);
+            }
+            if (DBNull.Value != row["DSNM"] && row["DSNM"] is not null) {
+                DSNM = Convert.ToString(row["DSNM"]);
+            }
+            if (DBNull.Value != row["NOID"] && row["NOID"] is not null) {
+                NOID = Convert.ToString(row["NOID"]);
+            }
+            if (DBNull.Value != row["NINFOM"] && row["NINFOM"] is not null) {
+                NINFOM = Convert.ToString(row["NINFOM"]);
+            }
+            if (DBNull.Value != row["NOBJNM"] && row["NOBJNM"] is not null) {
+                NOBJNM = Convert.ToString(row["NOBJNM"]);
+            }
+            if (DBNull.Value != row["NTXTDS"] && row["NTXTDS"] is not null) {
+                NTXTDS = Convert.ToString(row["NTXTDS"]);
+            }
+            if (DBNull.Value != row["OBJNAM"] && row["OBJNAM"] is not null) {
+                OBJNAM = Convert.ToString(row["OBJNAM"]);
+            }
+            if (DBNull.Value != row["PICREP"] && row["PICREP"] is not null) {
+                PICREP = Convert.ToString(row["PICREP"]);
+            }
+            if (DBNull.Value != row["SORDAT"] && row["SORDAT"] is not null) {
+                SORDAT = Convert.ToString(row["SORDAT"]);
+            }
+            if (DBNull.Value != row["SORIND"] && row["SORIND"] is not null) {
+                SORIND = Convert.ToString(row["SORIND"]);
+            }
+            if (DBNull.Value != row["TXTDSC"] && row["TXTDSC"] is not null) {
+                TXTDSC = Convert.ToString(row["TXTDSC"]);
+            }
+            if (DBNull.Value != row["COLLECTION_TYPE"] && row["COLLECTION_TYPE"] is not null) {
+                COLLECTION_TYPE = Convert.ToInt32(row["COLLECTION_TYPE"]);
+            }
+            if (DBNull.Value != row["IS_CONFLATE"] && row["IS_CONFLATE"] is not null) {
+                IS_CONFLATE = Convert.ToInt32(row["IS_CONFLATE"]);
+            }
+            if (DBNull.Value != row["SCAMIN_STEP"] && row["SCAMIN_STEP"] is not null) {
+                SCAMIN_STEP = Convert.ToInt32(row["SCAMIN_STEP"]);
+            }
+            if (DBNull.Value != row["NIS_VERIFIED"] && row["NIS_VERIFIED"] is not null) {
+                NIS_VERIFIED = Convert.ToInt32(row["NIS_VERIFIED"]);
+            }
+            if (DBNull.Value != row["NIS_VERIFIER"] && row["NIS_VERIFIER"] is not null) {
+                NIS_VERIFIER = Convert.ToString(row["NIS_VERIFIER"]);
+            }
+            if (DBNull.Value != row["NIS_VERIFY_DATE"] && row["NIS_VERIFY_DATE"] is not null) {
+                NIS_VERIFY_DATE = Convert.ToDateTime(row["NIS_VERIFY_DATE"]);
+            }
+            if (DBNull.Value != row["NIS_EDITOR"] && row["NIS_EDITOR"] is not null) {
+                NIS_EDITOR = Convert.ToString(row["NIS_EDITOR"]);
+            }
+            if (DBNull.Value != row["NIS_LAST_MOD"] && row["NIS_LAST_MOD"] is not null) {
+                NIS_LAST_MOD = Convert.ToDateTime(row["NIS_LAST_MOD"]);
+            }
+            if (DBNull.Value != row["NIS_EDITOR_COMMENT"] && row["NIS_EDITOR_COMMENT"] is not null) {
+                NIS_EDITOR_COMMENT = Convert.ToString(row["NIS_EDITOR_COMMENT"]);
+            }
+        }
+    }
+    internal class PLTS_Frel
+    {
+
+        /// <summary>
+        /// OBJECTID
+        /// </summary>
+        [Description("OBJECTID")]
+        internal int? OBJECTID = default;
+
+        /// <summary>
+        /// GlobalID
+        /// </summary>
+        [Description("GlobalID")]
+        internal Guid GLOBALID = Guid.Empty;
+
+        /// <summary>
+        /// Relationship indicator
+        /// </summary>
+        [Description("Relationship indicator")]
+        internal int? RIND = default;
+
+        /// <summary>
+        /// data set name
+        /// </summary>
+        [Description("data set name")]
+        internal string? DSNM = default;
+
+        /// <summary>
+        /// Comment
+        /// </summary>
+        [Description("Comment")]
+        internal string? COMT = default;
+
+        /// <summary>
+        /// Destination universal ID
+        /// </summary>
+        [Description("Destination universal ID")]
+        internal string? DEST_UID = default;
+
+        /// <summary>
+        /// Entry date
+        /// </summary>
+        [Description("Entry date")]
+        internal decimal? ENTRY_DATE = default;
+
+        /// <summary>
+        /// Source universal ID
+        /// </summary>
+        [Description("Source universal ID")]
+        internal string? SRC_UID = default;
+
+        /// <summary>
+        /// Source feature class
+        /// </summary>
+        [Description("Source feature class")]
+        internal string? SRC_FC = default;
+
+        /// <summary>
+        /// Source subtype
+        /// </summary>
+        [Description("Source subtype")]
+        internal string? SRC_SUB = default;
+
+        /// <summary>
+        /// Destination feature class
+        /// </summary>
+        [Description("Destination feature class")]
+        internal string? DEST_FC = default;
+
+        /// <summary>
+        /// Destination subtype
+        /// </summary>
+        [Description("Destination subtype")]
+        internal string? DEST_SUB = default;
+
+        /// <summary>
+        /// Source long name
+        /// </summary>
+        [Description("Source long name")]
+        internal string? SRC_LNAM = default;
+
+        /// <summary>
+        /// Destination long name
+        /// </summary>
+        [Description("Destination long name")]
+        internal string? DEST_LNAM = default;
+
+        /// <summary>
+        /// PLTS compilation scale
+        /// </summary>
+        [Description("PLTS compilation scale")]
+        internal int? PLTS_COMP_SCALE = default;
+
+        /// <summary>
+        /// Is Conflate
+        /// </summary>
+        [Description("Is Conflate")]
+        internal int? IS_CONFLATE = default;
+
+        /// <summary>
+        /// NIS product type
+        /// </summary>
+        [Description("NIS product type")]
+        internal int? NIS_PRODUCTS = default;
+
+        /// <summary>
+        /// Editor
+        /// </summary>
+        [Description("Editor")]
+        internal string? EDITOR = default;
+
+        /// <summary>
+        /// Last Modified
+        /// </summary>
+        [Description("Last Modified")]
+        internal DateTime? LAST_MOD = default;
+
+        /// <summary>
+        /// NIS_EDITOR
+        /// </summary>
+        [Description("NIS_EDITOR")]
+        internal string? NIS_EDITOR = default;
+
+        /// <summary>
+        /// NIS_LAST_MOD
+        /// </summary>
+        [Description("NIS_LAST_MOD")]
+        internal DateTime? NIS_LAST_MOD = default;
+        public PLTS_Frel(Row row) {
+            if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
+                OBJECTID = Convert.ToInt32(row["OBJECTID"]);
+            }
+            if (DBNull.Value != row["GLOBALID"] && row["GLOBALID"] is not null) {
+                Guid.TryParse(Convert.ToString(row["GLOBALID"]), out GLOBALID);
+            }
+            if (DBNull.Value != row["RIND"] && row["RIND"] is not null) {
+                RIND = Convert.ToInt32(row["RIND"]);
+            }
+            if (DBNull.Value != row["DSNM"] && row["DSNM"] is not null) {
+                DSNM = Convert.ToString(row["DSNM"]);
+            }
+            if (DBNull.Value != row["COMT"] && row["COMT"] is not null) {
+                COMT = Convert.ToString(row["COMT"]);
+            }
+            if (DBNull.Value != row["DEST_UID"] && row["DEST_UID"] is not null) {
+                DEST_UID = Convert.ToString(row["DEST_UID"]);
+            }
+            if (DBNull.Value != row["ENTRY_DATE"] && row["ENTRY_DATE"] is not null) {
+                ENTRY_DATE = Convert.ToDecimal(row["ENTRY_DATE"]);
+            }
+            if (DBNull.Value != row["SRC_UID"] && row["SRC_UID"] is not null) {
+                SRC_UID = Convert.ToString(row["SRC_UID"]);
+            }
+            if (DBNull.Value != row["SRC_FC"] && row["SRC_FC"] is not null) {
+                SRC_FC = Convert.ToString(row["SRC_FC"]);
+            }
+            if (DBNull.Value != row["SRC_SUB"] && row["SRC_SUB"] is not null) {
+                SRC_SUB = Convert.ToString(row["SRC_SUB"]);
+            }
+            if (DBNull.Value != row["DEST_FC"] && row["DEST_FC"] is not null) {
+                DEST_FC = Convert.ToString(row["DEST_FC"]);
+            }
+            if (DBNull.Value != row["DEST_SUB"] && row["DEST_SUB"] is not null) {
+                DEST_SUB = Convert.ToString(row["DEST_SUB"]);
+            }
+            if (DBNull.Value != row["SRC_LNAM"] && row["SRC_LNAM"] is not null) {
+                SRC_LNAM = Convert.ToString(row["SRC_LNAM"]);
+            }
+            if (DBNull.Value != row["DEST_LNAM"] && row["DEST_LNAM"] is not null) {
+                DEST_LNAM = Convert.ToString(row["DEST_LNAM"]);
+            }
+            if (DBNull.Value != row["PLTS_COMP_SCALE"] && row["PLTS_COMP_SCALE"] is not null) {
+                PLTS_COMP_SCALE = Convert.ToInt32(row["PLTS_COMP_SCALE"]);
+            }
+            if (DBNull.Value != row["IS_CONFLATE"] && row["IS_CONFLATE"] is not null) {
+                IS_CONFLATE = Convert.ToInt32(row["IS_CONFLATE"]);
+            }
+            if (DBNull.Value != row["NIS_PRODUCTS"] && row["NIS_PRODUCTS"] is not null) {
+                NIS_PRODUCTS = Convert.ToInt32(row["NIS_PRODUCTS"]);
+            }
+            if (DBNull.Value != row["EDITOR"] && row["EDITOR"] is not null) {
+                EDITOR = Convert.ToString(row["EDITOR"]);
+            }
+            if (DBNull.Value != row["LAST_MOD"] && row["LAST_MOD"] is not null) {
+                LAST_MOD = Convert.ToDateTime(row["LAST_MOD"]);
+            }
+            if (DBNull.Value != row["NIS_EDITOR"] && row["NIS_EDITOR"] is not null) {
+                NIS_EDITOR = Convert.ToString(row["NIS_EDITOR"]);
+            }
+            if (DBNull.Value != row["NIS_LAST_MOD"] && row["NIS_LAST_MOD"] is not null) {
+                NIS_LAST_MOD = Convert.ToDateTime(row["NIS_LAST_MOD"]);
+            }
+        }
+    }
+    internal class PLTS_Master_Slaves
+    {
+
+        /// <summary>
+        /// ObjectID
+        /// </summary>
+        [Description("ObjectID")]
+        internal int? OBJECTID = default;
+
+        /// <summary>
+        /// FCSubtype
+        /// </summary>
+        [Description("FCSubtype")]
+        internal int? FCSUBTYPE = default;
+
+        /// <summary>
+        /// ObjectClass
+        /// </summary>
+        [Description("ObjectClass")]
+        internal string? OBJECTCLASS = default;
+
+        /// <summary>
+        /// RIND
+        /// </summary>
+        [Description("RIND")]
+        internal int? RIND = default;
+
+        /// <summary>
+        /// Priority
+        /// </summary>
+        [Description("Priority")]
+        internal int? PRIORITY = default;
+
+        /// <summary>
+        /// FEATURECLASS
+        /// </summary>
+        [Description("FEATURECLASS")]
+        internal string? FEATURECLASS = default;
+
+        /// <summary>
+        /// PRIM
+        /// </summary>
+        [Description("PRIM")]
+        internal int? PRIM = default;
+        public PLTS_Master_Slaves(Row row) {
+            if (DBNull.Value != row["OBJECTID"] && row["OBJECTID"] is not null) {
+                OBJECTID = Convert.ToInt32(row["OBJECTID"]);
+            }
+            if (DBNull.Value != row["FCSUBTYPE"] && row["FCSUBTYPE"] is not null) {
+                FCSUBTYPE = Convert.ToInt32(row["FCSUBTYPE"]);
+            }
+            if (DBNull.Value != row["OBJECTCLASS"] && row["OBJECTCLASS"] is not null) {
+                OBJECTCLASS = Convert.ToString(row["OBJECTCLASS"]);
+            }
+            if (DBNull.Value != row["RIND"] && row["RIND"] is not null) {
+                RIND = Convert.ToInt32(row["RIND"]);
+            }
+            if (DBNull.Value != row["PRIORITY"] && row["PRIORITY"] is not null) {
+                PRIORITY = Convert.ToInt32(row["PRIORITY"]);
+            }
+            if (DBNull.Value != row["FEATURECLASS"] && row["FEATURECLASS"] is not null) {
+                FEATURECLASS = Convert.ToString(row["FEATURECLASS"]);
+            }
+            if (DBNull.Value != row["PRIM"] && row["PRIM"] is not null) {
+                PRIM = Convert.ToInt32(row["PRIM"]);
+            }
+        }
+    }
 }
 
