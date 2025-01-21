@@ -50,7 +50,7 @@ namespace S100Framework.Applications
                             };
 
                             buffer["ps"] = "S-101";
-                            buffer["code"] = nameof(deptharea); 
+                            buffer["code"] = deptharea.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(deptharea);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
@@ -141,7 +141,7 @@ namespace S100Framework.Applications
                             AddInformation(dredgedarea.information, feature);
 
                             buffer["ps"] = "S-101";
-                            buffer["code"] = nameof(dredgedarea);
+                            buffer["code"] = dredgedarea.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(dredgedarea);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
@@ -163,7 +163,7 @@ namespace S100Framework.Applications
                             AddInformation(sweptarea.information, feature);
 
                             buffer["ps"] = "S-101";
-                            buffer["code"] = nameof(sweptarea);
+                            buffer["code"] = sweptarea.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(sweptarea);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
@@ -178,7 +178,7 @@ namespace S100Framework.Applications
                             AddInformation(unsurveyedarea.information, feature);
 
                             buffer["ps"] = "S-101";
-                            buffer["code"] = nameof(unsurveyedarea);
+                            buffer["code"] = unsurveyedarea.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(unsurveyedarea);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);

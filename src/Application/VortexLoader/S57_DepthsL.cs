@@ -1,20 +1,9 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
-using CommandLine;
 using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S128.FeatureTypes;
-using VortexLoader;
-using System;
-using static S100Framework.Applications.VortexLoader;
-using static System.Net.WebRequestMethods;
-using IO = System.IO;
 using VortexLoader.S57.esri;
-using static ArcGIS.Core.Data.NetworkDiagrams.AngleDirectedDiagramLayoutParameters;
-using System.Numerics;
 using S100Framework.DomainModel.S101.InformationTypes;
-using S100Framework.DomainModel.S131.ComplexAttributes;
+
 
 namespace S100Framework.Applications
 {
@@ -112,7 +101,7 @@ namespace S100Framework.Applications
 
                                         using var information = informationtype.CreateRowBuffer();
                                         information["ps"] = ps;
-                                        information["code"] = nameof(spatialQuality);
+                                        information["code"] = spatialQuality.GetType().Name;
                                         information["json"] = System.Text.Json.JsonSerializer.Serialize(spatialQuality);
                                         //information["shape"] = spatialAttributeL.SHAPE;
 
@@ -124,7 +113,7 @@ namespace S100Framework.Applications
                             
                             AddInformation(instance.information, feature);
                             buffer["ps"] = ps;
-                            buffer["code"] = nameof(instance);
+                            buffer["code"] = instance.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);

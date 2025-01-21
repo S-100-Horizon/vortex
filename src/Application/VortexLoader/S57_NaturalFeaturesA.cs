@@ -1,6 +1,7 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Data.UtilityNetwork;
 using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
 using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
@@ -73,7 +74,7 @@ namespace S100Framework.Applications
                             AddInformation(lakare.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = "Lake";
+                            bufferSurface["code"] =  lakare.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(lakare);
                             bufferSurface["shape"] = current.SHAPE;
                             var oid = insertSurface.Insert(bufferSurface);
@@ -125,7 +126,7 @@ namespace S100Framework.Applications
                             AddInformation(lndare.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = "LandArea";
+                            bufferSurface["code"] = lndare.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(lndare);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
@@ -172,7 +173,7 @@ namespace S100Framework.Applications
                             AddInformation(lndrgn.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = "LandRegion";
+                            bufferSurface["code"] = lndrgn.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(lndrgn);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
@@ -205,7 +206,7 @@ namespace S100Framework.Applications
                             AddInformation(river.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = "River";
+                            bufferSurface["code"] = river.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(river);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
@@ -301,7 +302,7 @@ namespace S100Framework.Applications
                             AddInformation(seaareanamedwaterarea.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = "SeaAreaNamedWaterArea";
+                            bufferSurface["code"] = seaareanamedwaterarea.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(seaareanamedwaterarea);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
@@ -395,7 +396,7 @@ namespace S100Framework.Applications
                             AddInformation(slopingground.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = "SlopingGround";
+                            bufferSurface["code"] = slopingground.GetType().Name; 
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(slopingground);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);
@@ -450,7 +451,7 @@ namespace S100Framework.Applications
                             AddInformation(vegetation.information, feature);
 
                             bufferSurface["ps"] = "S-101";
-                            bufferSurface["code"] = "Vegetation";
+                            bufferSurface["code"] = vegetation.GetType().Name;
                             bufferSurface["json"] = System.Text.Json.JsonSerializer.Serialize(vegetation);
                             bufferSurface["shape"] = current.SHAPE;
                             insertSurface.Insert(bufferSurface);

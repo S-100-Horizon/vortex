@@ -70,7 +70,7 @@ namespace S100Framework.Applications
                 }, true);
 
                 buffer["ps"] = "S-128";
-                buffer["code"] = nameof(instance);
+                buffer["code"] = instance.GetType().Name;
                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(instance);
 
                 while (cursorCoverage.MoveNext()) {

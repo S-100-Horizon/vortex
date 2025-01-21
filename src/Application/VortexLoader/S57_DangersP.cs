@@ -85,7 +85,7 @@ namespace S100Framework.Applications
                                 AddFeatureName(foulGround.featureName, feature);
                                 AddInformation(foulGround.information, feature);
                                 buffer["ps"] = ps;
-                                buffer["code"] = nameof(foulGround);
+                                buffer["code"] = foulGround.GetType().Name;
                                 buffer["json"] = System.Text.Json.JsonSerializer.Serialize(foulGround);
                                 buffer["shape"] = feature.GetShape();
                                 insert.Insert(buffer);
@@ -177,7 +177,7 @@ namespace S100Framework.Applications
                             AddInformation(obstruction.information, feature);
 
                             buffer["ps"] = ps;
-                            buffer["code"] = nameof(S100Framework.DomainModel.S101.FeatureTypes.Obstruction); ;
+                            buffer["code"] = obstruction.GetType().Name; 
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(obstruction);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
@@ -218,7 +218,7 @@ namespace S100Framework.Applications
                             AddInformation(uwtroc.information, feature);
 
                             buffer["ps"] = ps;
-                            buffer["code"] = nameof(S100Framework.DomainModel.S101.FeatureTypes.UnderwaterAwashRock);
+                            buffer["code"] = uwtroc.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(uwtroc);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);
@@ -266,7 +266,7 @@ namespace S100Framework.Applications
                             AddInformation(wreck.information, feature);
 
                             buffer["ps"] = ps;
-                            buffer["code"] = nameof(S100Framework.DomainModel.S101.FeatureTypes.Wreck);
+                            buffer["code"] = wreck.GetType().Name;
                             buffer["json"] = System.Text.Json.JsonSerializer.Serialize(wreck);
                             buffer["shape"] = current.SHAPE;
                             insert.Insert(buffer);

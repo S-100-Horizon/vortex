@@ -43,10 +43,6 @@ namespace S100Framework.Applications
 
                 switch (subtype) {
                     case 1:
-                        bufferPointset["ps"] = "S-101";
-                        bufferPointset["code"] = "Sounding";
-
-
                         var shape = current.SHAPE as MapPoint;
                         if (shape == default) {
                             Logger.Current.DataError(objectid, tableName, longname, Strings.ERR_NULL_SHAPE);
@@ -94,6 +90,9 @@ namespace S100Framework.Applications
                             AddInformation(sounding.information, feature);
 
                             bufferPointset["json"] = System.Text.Json.JsonSerializer.Serialize(sounding);
+                            bufferPointset["ps"] = "S-101";
+                            bufferPointset["code"] = sounding.GetType().Name;
+
                             var oid = insertPointset.Insert(bufferPointset);
                             Logger.Current.DataObject(objectid, tableName, longname, System.Text.Json.JsonSerializer.Serialize(sounding));
                             convertedCount++;
@@ -104,12 +103,13 @@ namespace S100Framework.Applications
                                     association Spatial Association. */
                                 using var information = informationtype.CreateRowBuffer();
 
-                                information["ps"] = "S-101";
-                                information["code"] = "SpatialQuality";
 
                                 var row = new S100Framework.DomainModel.S101.InformationTypes.SpatialQuality {
                                     qualityOfHorizontalMeasurement = DomainModel.S101.qualityOfHorizontalMeasurement.Approximate,
                                 };
+
+                                information["ps"] = "S-101";
+                                information["code"] = row.GetType().Name;
                                 information["json"] = System.Text.Json.JsonSerializer.Serialize(row);
                                 using var _ = informationtype.CreateRow(information);
                             }
