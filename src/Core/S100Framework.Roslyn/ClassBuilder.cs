@@ -451,8 +451,8 @@ namespace S100Framework
             classBuilder.AppendLine("\t}");
             classBuilder.AppendLine();
 
-            creatorBuilder.AppendLine("\tinternal static class Preamble {");
-            creatorBuilder.AppendLine("\t\tpublic static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {");
+            //creatorBuilder.AppendLine("\tinternal static class Preamble {");
+            //creatorBuilder.AppendLine("\t\tpublic static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> {");
 
             //  Bindings
             {
@@ -911,10 +911,10 @@ namespace S100Framework
                                 builder.AppendLine(viewModelBindingBuilder.ToString());
                             }));
 
-                            creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.InformationTypes.{code}).Name, ()=> {{");
-                            creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
-                            creatorBuilder.AppendLine("\t\t\t  }");
-                            creatorBuilder.AppendLine("\t\t\t},");
+                            //creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.InformationTypes.{code}).Name, ()=> {{");
+                            //creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
+                            //creatorBuilder.AppendLine("\t\t\t  }");
+                            //creatorBuilder.AppendLine("\t\t\t},");
                         }
                         else
                             superClassViewModels.Add(code, viewModelBindingBuilder.ToString());
@@ -1058,10 +1058,10 @@ namespace S100Framework
                                 builder.AppendLine(viewModelBindingBuilder.ToString());
                             }));
 
-                            creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.FeatureTypes.{code}).Name, ()=> {{");
-                            creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
-                            creatorBuilder.AppendLine("\t\t\t  }");
-                            creatorBuilder.AppendLine("\t\t\t},");
+                            //creatorBuilder.AppendLine($"\t\t\t{{ typeof(DomainModel.{productId}.FeatureTypes.{code}).Name, ()=> {{");
+                            //creatorBuilder.AppendLine($"\t\t\t\treturn new {code}ViewModel();");
+                            //creatorBuilder.AppendLine("\t\t\t  }");
+                            //creatorBuilder.AppendLine("\t\t\t},");
                         }
                         else
                             superClassViewModels.Add(code, viewModelBindingBuilder.ToString());
@@ -1081,8 +1081,8 @@ namespace S100Framework
 
             classBuilder.AppendLine("}");
 
-            creatorBuilder.AppendLine("\t\t});");
-            creatorBuilder.AppendLine("\t}");
+            //creatorBuilder.AppendLine("\t\t});");
+            //creatorBuilder.AppendLine("\t}");
 
             classBuilder.Insert(informationPosition, staticBuilder.ToString());
 
@@ -1149,18 +1149,22 @@ namespace S100Framework
                         viewBuilder.AppendLine($"\t\t\t\t\t{r} = value?.role switch {{");
 
                         foreach (var s in roles.Where(e => !e.Equals(r))) {
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel<{code}ViewModel, Handles> {{");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new SingleFeatureBindingViewModel<{code}ViewModel, Handles> {{");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new OptionalFeatureBindingViewModel<{code}ViewModel, Handles> {{");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
-                            viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
+                            viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => value.CreateForeign(),");
+
+                            //viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel {{");
+                            //viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
+                            //viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new SingleFeatureBindingViewModel {{");
+                            //viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
+                            //viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new OptionalFeatureBindingViewModel {{");
+                            //viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
+                            //viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
                         }
 
-                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new SingleFeatureBindingViewModel<{code}ViewModel, Handles> {{");
-                        viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = [value!.FeatureType],");
-                        viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
+                        viewBuilder.AppendLine($"\t\t\t\t\t\t_ => value.CreateLocal(),");
+
+                        //viewBuilder.AppendLine($"\t\t\t\t\t\t_ => new SingleFeatureBindingViewModel {{");
+                        //viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = [value!.FeatureType],");
+                        //viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
 
                         viewBuilder.AppendLine($"\t\t\t\t\t}};");
                         viewBuilder.AppendLine($"\t\t\t\t}}");
@@ -1180,9 +1184,9 @@ namespace S100Framework
                         var role = association.Element(XName.Get("role", scope_S100))!.Attribute("ref")!.Value;
                         var lower = int.Parse(association.XPathSelectElement("S100FC:multiplicity/S100Base:lower", xmlNamespaceManager)!.Value);
                         var upper = association.XPathSelectElement("S100FC:multiplicity/S100Base:upper", xmlNamespaceManager)!;
-                        var u = "default";
+                        int? u = default;    // "default";
                         if (!(upper.Attribute(XName.Get("infinite")) != default && upper.Attribute(XName.Get("infinite"))!.Value.Equals("true"))) {
-                            u = $"{int.Parse(upper!.Value)}";
+                            u = int.Parse(upper!.Value);    // $"{int.Parse(upper!.Value)}";
                         }
 
                         var featureTypeRefs = association.Elements(XName.Get("featureType", scope_S100)).Select(e => $"{e.Attribute("ref")!.Value}").ToArray();
@@ -1202,9 +1206,25 @@ namespace S100Framework
                             b.AppendLine($"\troleType = roleType.{roleType},");
                             b.AppendLine($"\trole = \"{role}\",");
                             b.AppendLine($"\tLower = {lower},");
-                            b.AppendLine($"\tUpper = {u},");
+                            if (u.HasValue)
+                                b.AppendLine($"\tUpper = {u.Value},");
+                            else
+                                b.AppendLine($"\tUpper = default,");
                             b.AppendLine($"\tAssociationTypes = [{string.Join(',', featureTypeRefs)}],");
+
+                            if (!u.HasValue || u.Value > 1)
+                                b.AppendLine($"\tCreateForeign = () => new MultiFeatureBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(),");
+                            else if (lower > 0)
+                                b.AppendLine($"\tCreateForeign = () => new SingleFeatureBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(),");
+                            else
+                                b.AppendLine($"\tCreateForeign = () => new OptionalFeatureBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(),");
+
+                            b.AppendLine($"\tCreateLocal = () => new SingleFeatureBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(),");
                             b.AppendLine($"}},");
+
+                            viewBuilder.AppendLine($"\t\t\tpublic class {role}{f}RefIdViewModel : FeatureRefIdViewModel {{");
+                            viewBuilder.AppendLine($"\t\t\t\tpublic Type[] AssociationTypes => [{string.Join(',', featureTypeRefs)}];");
+                            viewBuilder.AppendLine($"\t\t\t}}");
                         }
                     }
 
@@ -1332,13 +1352,9 @@ namespace S100Framework
                             b.AppendLine($"\tAssociationTypes = [{string.Join(',', informationTypeRefs)}],");
                             b.AppendLine($"}},");
 
-                            //viewBuilder.AppendLine($"\t\t\t\tnew InformationAssociationConnector<{f}>() {{");
-                            //viewBuilder.AppendLine($"\t\t\t\t\troleType = roleType.{roleType},");
-                            //viewBuilder.AppendLine($"\t\t\t\t\trole = \"{role}\",");
-                            //viewBuilder.AppendLine($"\t\t\t\t\tLower = {lower},");
-                            //viewBuilder.AppendLine($"\t\t\t\t\tUpper = {u},");
-                            //viewBuilder.AppendLine($"\t\t\t\t\tAssociationTypes = [{string.Join(',', informationTypeRefs)}],");
-                            //viewBuilder.AppendLine($"\t\t\t\t}},");
+                            viewBuilder.AppendLine($"\t\t\tpublic class {role}{f}RefIdViewModel : InformationRefIdViewModel {{");
+                            viewBuilder.AppendLine($"\t\t\t\tpublic Type[] AssociationTypes => [{string.Join(',', informationTypeRefs)}];");
+                            viewBuilder.AppendLine($"\t\t\t}}");
                         }
                     }
 

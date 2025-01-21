@@ -12,6 +12,7 @@ using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.InformationTypes;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
+using System.Linq.Expressions;
 
 #nullable enable
 namespace S100Framework.WPF.ViewModel.S101
@@ -608,6 +609,11 @@ namespace S100Framework.WPF.ViewModel.S101
 
     public class Handles : iHandles
     {
+        public static Dictionary<Type, Func<Type[]>> _test = new Dictionary<Type, Func<Type[]>>
+        {
+            { typeof(FeatureAssociationConnector<AdministrationArea>), () => new Type[0] }
+        };
+
         public static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations => new Dictionary<Type, Func<InformationAssociationConnector[]>>
         {
             {
