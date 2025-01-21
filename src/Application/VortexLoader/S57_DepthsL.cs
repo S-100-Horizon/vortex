@@ -17,7 +17,6 @@ namespace S100Framework.Applications
          *  
          */
 
-
         private static void S57_DepthsL(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "DepthsL";
 
@@ -50,6 +49,7 @@ namespace S100Framework.Applications
                 var longname = current.LNAM ?? Strings.UNKNOWN;
                 var drval1 = current.DRVAL1 ?? default;
                 var drval2 = current.DRVAL2 ?? default;
+                var valco = current.VALDCO ?? default;
                 var quasou = current.QUASOU ?? default;
                 var scamin_step = current.SCAMIN_STEP ?? default;
                 var sordata = current.SORDAT ?? default;
@@ -59,7 +59,7 @@ namespace S100Framework.Applications
                 switch (subtype) {
                     case 5: { // DEPCNT_DepthContour
                             var instance = new DepthContour() {
-                                valueOfDepthContour = drval1
+                                valueOfDepthContour = valco
                             };
 
                             if (plts_comp_scale != default) {
@@ -127,11 +127,7 @@ namespace S100Framework.Applications
                         System.Diagnostics.Debugger.Break();
                         break;
 
-
                 }
-
-
-
             }
             Logger.Current.DataTotalCount(tableName, recordCount, convertedCount);
         }
