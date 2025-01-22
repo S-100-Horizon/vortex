@@ -6,6 +6,7 @@ using ArcGIS.Core.Geometry;
 using System.ComponentModel;
 namespace VortexLoader.S57.esri
 {
+
     internal class PLTS_SpatialAttributeL
     {
 

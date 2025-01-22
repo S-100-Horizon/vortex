@@ -26,7 +26,7 @@ namespace S100Framework.Applications
             using var surfaceFeatureClass = target.OpenDataset<FeatureClass>("surface");
 
             surfaceFeatureClass.DeleteRows(new QueryFilter {
-                WhereClause = $"ps = 'S-128' AND code = 'ElectronicProduct'",
+                WhereClause = $"ps = 'S-128' AND (code = 'ElectronicProduct' or code = 'instance')",
             });
 
             int recordCount = 0;

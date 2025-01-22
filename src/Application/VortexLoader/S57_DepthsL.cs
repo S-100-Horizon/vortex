@@ -13,7 +13,7 @@ namespace S100Framework.Applications
          *  curve
          *  point
          *  pointset
-         *  curve
+         *  surface
          *  
          */
 

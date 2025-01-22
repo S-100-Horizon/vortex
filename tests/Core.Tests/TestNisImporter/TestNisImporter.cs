@@ -40,7 +40,7 @@ namespace TestNisImporter
 
             StringBuilder csSubtypes = new StringBuilder();
 
-            var featureClass = source.OpenDataset<FeatureClass>("NaturalFeaturesL");
+            var featureClass = source.OpenDataset<FeatureClass>("RegulatedAreasAndLimitsL");
 
             var subtypes = featureClass.GetDefinition().GetSubtypes();
 
@@ -55,6 +55,12 @@ namespace TestNisImporter
                 csSubtypes.AppendLine($"\t\t}}");
                 csSubtypes.AppendLine($"\t\tbreak;");
             }
+
+            csSubtypes.AppendLine($"\t\tdefault:");
+            csSubtypes.AppendLine($"\t\t\t// code block");
+            csSubtypes.AppendLine($"\t\t\tSystem.Diagnostics.Debugger.Break();");
+            csSubtypes.AppendLine($"\t\tbreak;");
+
             Console.WriteLine(csSubtypes.ToString());
         }
         
