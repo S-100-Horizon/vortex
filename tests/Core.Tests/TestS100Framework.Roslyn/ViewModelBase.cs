@@ -144,6 +144,17 @@ namespace S100Framework.WPF.ViewModel
     public abstract class InformationAssociationConnector : AssociationConnector
     {
         public abstract Type InformationType { get; }
+
+        public Func<InformationBindingViewModel?> CreateForeign { get; set; } = () => default;
+
+        public Func<InformationBindingViewModel?> CreateLocal { get; set; } = () => default;
+    }
+
+    public class InformationAssociationConnector<T> : InformationAssociationConnector where T : Node
+    {
+        public override Type InformationType => typeof(T);
+
+        public string DisplayName => $"{typeof(T).Name}, {base.role}";
     }
 
     public abstract class FeatureAssociationConnector : AssociationConnector
@@ -153,13 +164,6 @@ namespace S100Framework.WPF.ViewModel
         public Func<FeatureBindingViewModel?> CreateForeign { get; set; } = () => default;
 
         public Func<FeatureBindingViewModel?> CreateLocal { get; set; } = () => default;
-    }
-
-    public class InformationAssociationConnector<T> : InformationAssociationConnector where T : Node
-    {
-        public override Type InformationType => typeof(T);
-
-        public string DisplayName => $"{typeof(T).Name}, {base.role}";
     }
 
     public class FeatureAssociationConnector<T> : FeatureAssociationConnector where T : FeatureNode
@@ -194,7 +198,7 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-    public class InformationRefIdViewModel : RefIdViewModel
+    public abstract class InformationRefIdViewModel : RefIdViewModel
     {
         private Type? _informationType = default;
 
@@ -214,7 +218,7 @@ namespace S100Framework.WPF.ViewModel
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
     }
 
-    public class FeatureRefIdViewModel : RefIdViewModel
+    public abstract class FeatureRefIdViewModel : RefIdViewModel
     {
         private Type? _featureType = default;
 
@@ -271,32 +275,37 @@ namespace S100Framework.WPF.ViewModel
         public Type[] InformationTypes { get; set; } = [];
     }
 
-    public class SingleInformationBindingViewModel : InformationBindingViewModel
+    public abstract class InformationBindingViewModel<T> : InformationBindingViewModel where T : InformationRefIdViewModel
     {
-        private InformationRefIdViewModel _refId = new InformationRefIdViewModel();
 
-        [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public InformationRefIdViewModel RefId {
+    }
+
+    public class SingleInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
+    {
+        private T _refId = new T();
+
+        [ExpandableObject]
+        public T RefId {
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
     }
 
-    public class OptionalInformationBindingViewModel : InformationBindingViewModel
+    public class OptionalInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel
     {
-        private InformationRefIdViewModel? _refId = default;
+        private T? _refId = default;
 
-        [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public InformationRefIdViewModel? RefId {
+        [ExpandableObject]
+        public T? RefId {
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
     }
 
-    public class MultiInformationBindingViewModel : InformationBindingViewModel
+    public class MultiInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
     {
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
-        public ObservableCollection<InformationRefIdViewModel> RefId { get; set; } = new ObservableCollection<InformationRefIdViewModel>();
+        public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
     }
 
     public abstract class FeatureBindingViewModel : INotifyPropertyChanged
@@ -349,7 +358,7 @@ namespace S100Framework.WPF.ViewModel
         }
     }
 
-    public class MultiFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel
+    public class MultiFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel, new()
     {
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
     }
