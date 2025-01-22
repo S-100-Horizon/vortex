@@ -13,6 +13,8 @@ using IO = System.IO;
 using VortexLoader.S57.esri;
 using static ArcGIS.Core.Data.NetworkDiagrams.AngleDirectedDiagramLayoutParameters;
 using System.Numerics;
+using ArcGIS.Core.CIM;
+using System.Collections.Generic;
 
 namespace S100Framework.Applications
 {
@@ -20,6 +22,8 @@ namespace S100Framework.Applications
     {
         private static void S57_AidsToNavigationP(Geodatabase source, Geodatabase target, QueryFilter filter) {
             var tableName = "AidsToNavigation";
+
+            var plts_frels = LoadPltsFrels(source);
 
             var ps = "S-101";
 
@@ -50,13 +54,20 @@ namespace S100Framework.Applications
                 var catlitVal = current.CATLIT ?? default;
                 var sectr1Val = current.SECTR1 ?? default;
                 var sectr2Val = current.SECTR2 ?? default;
-                var colour = current.COLOUR ?? default;
+                var colour = current.COLOUR ?? default;   // list of integers
+                var boyshp = current.BOYSHP ?? default;   // domain value
+                var bcnshp = current.BCNSHP ?? default;   // domain value
+                var colpat = current.COLPAT ?? default; 
                 var litchr = current.LITCHR ?? default;
                 var marsys = current.MARSYS ?? default;
                 var orient = current.ORIENT ?? default;
 
 
-
+                // if slave continue - retrieve related slaves for structure in the relevant structure
+                if (plts_frels.ContainsKey(globalid)) {
+                    var plts_frel = plts_frels[globalid];
+                    continue;
+                }
 
                 switch (subtype) {
                     case 1: { // BCNCAR_BeaconCardinal
@@ -246,9 +257,6 @@ namespace S100Framework.Applications
                                 // LIGHTS: Attributes SECTR1 and SECTR2 not present; and/or attribute catlits is not 1, 6, 7, 16
                                 // Build "Light All Around");
                                 var instance = new LightAllAround();
-
-
-
 
                                 if (plts_comp_scale != default) {
                                     instance.scaleMinimum = plts_comp_scale;
@@ -446,6 +454,30 @@ namespace S100Framework.Applications
                     case 110: { // TOPMAR_Topmark
                             // TODO: TOPMAR
                             //System.Diagnostics.Debugger.Break();
+                            //GetCorrespondingAidsToNav
+                            /*
+
+                                The S-101 complex attribute topmark has been introduced in S-101 to encode topmarks on aids to
+                                navigation features. This information is encoded in S-57 using the Object class TOPMAR. All
+                                instances of TOPMAR will be converted to topmark for the corresponding aid to navigation structure
+                                feature during the automated conversion process. However, it must be noted that the TOPMAR
+                                attributes DATEND, DATSTA, PEREND, PERSTA and STATUS will not be converted. Additional
+                                topmark shape information populated in the S-57 attribute INFORM will be converted to the S-101
+                                complex attribute shape information. See also clause 12.6.
+
+                            */
+
+                            // TODO: INFORM
+                            var shapeInformation = new shapeInformation() {
+                                
+                            };
+
+                            var instance = new topmark() {
+                                
+                            };
+
+                            convertedCount++;
+
                         }
                         break;
                     default:

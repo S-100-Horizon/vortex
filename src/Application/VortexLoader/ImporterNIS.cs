@@ -65,6 +65,14 @@ namespace S100Framework.Applications
                 informationtype.DeleteRows(query);
             }
 
+            // RegulatedAreasAndLimitsL
+            S57_RegulatedAreasAndLimitsL(source, destination, filter);
+
+            // OffshoreInstallationsL
+            S57_OffshoreInstallationsL(source, destination, filter);
+            
+            // RegulatedAreasAndLimitsA
+            S57_RegulatedAreasAndLimitsA(source, destination, filter);
 
             //  ProductCoverage
             S57_ProductCoverage(source, destination, filter);
@@ -93,6 +101,27 @@ namespace S100Framework.Applications
 
             return true;
         }
+
+
+        private static Dictionary<Guid, PLTS_Frel> LoadPltsFrels(Geodatabase source) {
+            var result = new Dictionary<Guid, PLTS_Frel>();
+            var aidstonavigation = source.OpenDataset<Table>("PLTS_Frel");
+            var cursor = aidstonavigation.Search(null, true);
+            Guid uid;
+
+            while (cursor.MoveNext()) {
+                var plts_frel = new PLTS_Frel(cursor.Current);
+                Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out uid);
+                if (result.ContainsKey(uid)) {
+                    result[uid] = plts_frel;
+                }
+                else {
+                    result.Add(uid, plts_frel);
+                }
+            }
+            return result;
+        }
+
 
         public static IEnumerable<T> SelectIn<T>(Geometry geometry, FeatureClass in_featureclass) where T : class {
 
