@@ -145,9 +145,10 @@ namespace S100Framework.WPF.ViewModel
     {
         public abstract Type InformationType { get; }
 
-        public Func<InformationBindingViewModel?> CreateForeign { get; set; } = () => default;
+        public Func<InformationBindingViewModel?> CreateForeignInformationBinding { get; set; } = () => default;
 
-        public Func<InformationBindingViewModel?> CreateLocal { get; set; } = () => default;
+        public Func<InformationBindingViewModel?> CreateLocalInformationBinding { get; set; } = () => default;
+        public Func<FeatureBindingViewModel?> CreateLocalFeatureBinding { get; set; } = () => default;
     }
 
     public class InformationAssociationConnector<T> : InformationAssociationConnector where T : Node
@@ -161,9 +162,9 @@ namespace S100Framework.WPF.ViewModel
     {
         public abstract Type FeatureType { get; }
 
-        public Func<FeatureBindingViewModel?> CreateForeign { get; set; } = () => default;
+        public Func<FeatureBindingViewModel?> CreateForeignFeatureBinding { get; set; } = () => default;
 
-        public Func<FeatureBindingViewModel?> CreateLocal { get; set; } = () => default;
+        public Func<FeatureBindingViewModel?> CreateLocalFeatureBinding { get; set; } = () => default;
     }
 
     public class FeatureAssociationConnector<T> : FeatureAssociationConnector where T : FeatureNode
@@ -282,7 +283,7 @@ namespace S100Framework.WPF.ViewModel
 
     public class SingleInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
     {
-        private T _refId = new T();
+        private T _refId = new();
 
         [ExpandableObject]
         public T RefId {
@@ -338,7 +339,7 @@ namespace S100Framework.WPF.ViewModel
 
     public class SingleFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel, new()
     {
-        private T _refId = new T();
+        private T _refId = new();
 
         [ExpandableObject]
         public T RefId {

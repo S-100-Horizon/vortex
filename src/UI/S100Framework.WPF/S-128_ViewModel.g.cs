@@ -56,6 +56,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 1,
                     Upper = default,
                     AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerElectronicProductRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>(),
                 }, new InformationAssociationConnector<PhysicalProduct>()
                 {
                     roleType = roleType.association,
@@ -63,6 +65,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 1,
                     Upper = default,
                     AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerPhysicalProductRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>(),
                 }, new InformationAssociationConnector<S100Service>()
                 {
                     roleType = roleType.association,
@@ -70,6 +74,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 1,
                     Upper = default,
                     AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerS100ServiceRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>(),
                 }
 
                 ]
@@ -83,6 +89,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductionDetailsViewModel.catalogueHeaderProducerInformationRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ProducerInformationViewModel.ProducerInformationRefIdViewModel>(),
                 }, new InformationAssociationConnector<CatalogueSectionHeader>()
                 {
                     roleType = roleType.association,
@@ -90,6 +98,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ProducerInformation)],
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ProductionDetailsViewModel.theProducerCatalogueSectionHeaderRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<CatalogueSectionHeaderViewModel.CatalogueSectionHeaderRefIdViewModel>(),
                 }
 
                 ]
@@ -103,6 +113,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ContactDetails)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProducerContactViewModel.theContactDetailsProducerInformationRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ProducerInformationViewModel.ProducerInformationRefIdViewModel>(),
                 }, new InformationAssociationConnector<ContactDetails>()
                 {
                     roleType = roleType.association,
@@ -110,6 +122,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ProducerInformation)],
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ProducerContactViewModel.theProducerContactDetailsRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ContactDetailsViewModel.ContactDetailsRefIdViewModel>(),
                 }
 
                 ]
@@ -123,6 +137,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfNauticalProductViewModel.theCatalogueOfNauticalProductPriceInformationRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PriceInformationViewModel.PriceInformationRefIdViewModel>(),
                 }, new InformationAssociationConnector<CatalogueSectionHeader>()
                 {
                     roleType = roleType.association,
@@ -130,6 +146,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(PriceInformation)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfNauticalProductViewModel.thePriceInformationCatalogueSectionHeaderRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<CatalogueSectionHeaderViewModel.CatalogueSectionHeaderRefIdViewModel>(),
                 }
 
                 ]
@@ -143,6 +161,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(PriceInformation)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationElectronicProductRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>(),
                 }, new InformationAssociationConnector<PhysicalProduct>()
                 {
                     roleType = roleType.association,
@@ -150,6 +170,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(PriceInformation)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationPhysicalProductRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>(),
                 }, new InformationAssociationConnector<S100Service>()
                 {
                     roleType = roleType.association,
@@ -157,6 +179,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(PriceInformation)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationS100ServiceRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>(),
                 }
 
                 ]
@@ -170,6 +194,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ContactDetails)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<DistributorContactViewModel.theContactDetailsDistributorInformationRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DistributorInformationViewModel.DistributorInformationRefIdViewModel>(),
                 }, new InformationAssociationConnector<ContactDetails>()
                 {
                     roleType = roleType.association,
@@ -177,6 +203,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DistributorInformation)],
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<DistributorContactViewModel.theDistributorContactDetailsRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ContactDetailsViewModel.ContactDetailsRefIdViewModel>(),
                 }
 
                 ]
@@ -190,6 +218,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<DistributionDetailsViewModel.catalogueHeaderDistributorInformationRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DistributorInformationViewModel.DistributorInformationRefIdViewModel>(),
                 }, new InformationAssociationConnector<CatalogueSectionHeader>()
                 {
                     roleType = roleType.association,
@@ -197,6 +227,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(DistributorInformation)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<DistributionDetailsViewModel.theDistributorCatalogueSectionHeaderRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<CatalogueSectionHeaderViewModel.CatalogueSectionHeaderRefIdViewModel>(),
                 }
 
                 ]
@@ -210,6 +242,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(IndicationOfCarriageRequirement)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementElectronicProductRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>(),
                 }, new InformationAssociationConnector<PhysicalProduct>()
                 {
                     roleType = roleType.association,
@@ -217,6 +251,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(IndicationOfCarriageRequirement)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementPhysicalProductRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>(),
                 }, new InformationAssociationConnector<S100Service>()
                 {
                     roleType = roleType.association,
@@ -224,6 +260,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(IndicationOfCarriageRequirement)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementS100ServiceRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>(),
                 }
 
                 ]
@@ -240,6 +278,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 1,
                     Upper = 1,
                     AssociationTypes = [typeof(ElectronicProduct), typeof(PhysicalProduct)],
+                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<CorrelatedViewModel.mainElectronicProductRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>(),
                 }, new FeatureAssociationConnector<PhysicalProduct>()
                 {
                     roleType = roleType.association,
@@ -247,6 +287,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 1,
                     Upper = 1,
                     AssociationTypes = [typeof(ElectronicProduct), typeof(PhysicalProduct)],
+                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<CorrelatedViewModel.mainPhysicalProductRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>(),
                 }
 
                 ]
@@ -260,6 +302,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)],
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<ProductMappingViewModel.theReferenceElectronicProductRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>(),
                 }, new FeatureAssociationConnector<PhysicalProduct>()
                 {
                     roleType = roleType.association,
@@ -267,6 +311,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)],
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<ProductMappingViewModel.theReferencePhysicalProductRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>(),
                 }, new FeatureAssociationConnector<S100Service>()
                 {
                     roleType = roleType.association,
@@ -274,6 +320,8 @@ namespace S100Framework.WPF.ViewModel.S128
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)],
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<ProductMappingViewModel.theReferenceS100ServiceRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>(),
                 }
 
                 ]
@@ -2337,6 +2385,11 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        public class CatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+        }
+
         public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance)
         {
             catalogueSectionNumber = instance.catalogueSectionNumber;
@@ -2407,6 +2460,11 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("ContactDetails")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
+
+        public class ContactDetailsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ContactDetails)];
+        }
 
         public void Load(DomainModel.S128.InformationTypes.ContactDetails instance)
         {
@@ -2521,6 +2579,11 @@ namespace S100Framework.WPF.ViewModel.S128
         [Category("IndicationOfCarriageRequirement")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
+        public class IndicationOfCarriageRequirementRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+        }
+
         public void Load(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement instance)
         {
             domesticCarriageRequirements = instance.domesticCarriageRequirements;
@@ -2575,6 +2638,11 @@ namespace S100Framework.WPF.ViewModel.S128
 
         [Category("PriceInformation")]
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
+
+        public class PriceInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(PriceInformation)];
+        }
 
         public void Load(DomainModel.S128.InformationTypes.PriceInformation instance)
         {
@@ -2673,6 +2741,11 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        public class ProducerInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ProducerInformation)];
+        }
+
         public void Load(DomainModel.S128.InformationTypes.ProducerInformation instance)
         {
             agencyResponsibleForProduction = instance.agencyResponsibleForProduction;
@@ -2719,6 +2792,11 @@ namespace S100Framework.WPF.ViewModel.S128
             {
                 SetValue(ref _distributorName, value);
             }
+        }
+
+        public class DistributorInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(DistributorInformation)];
         }
 
         public void Load(DomainModel.S128.InformationTypes.DistributorInformation instance)
@@ -3169,6 +3247,11 @@ namespace S100Framework.WPF.ViewModel.S128
             {
                 SetValue(ref _timeIntervalOfProduct, value);
             }
+        }
+
+        public class ElectronicProductRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ElectronicProduct)];
         }
 
         [Browsable(false)]
@@ -3803,6 +3886,11 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        public class PhysicalProductRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(PhysicalProduct)];
+        }
+
         [Browsable(false)]
         public horizontalDatumEpsg[] horizontalDatumEpsgList => CodeList.horizontalDatumEpsgs.ToArray();
 
@@ -4235,6 +4323,11 @@ namespace S100Framework.WPF.ViewModel.S128
             }
         }
 
+        public class S100ServiceRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(S100Service)];
+        }
+
         public void Load(DomainModel.S128.FeatureTypes.S100Service instance)
         {
             compressionFlag = instance.compressionFlag;
@@ -4410,30 +4503,30 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theReference = value?.role switch
                     {
-                        "theSource" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel<ProductMappingViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleFeatureBindingViewModel<ProductMappingViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalFeatureBindingViewModel<ProductMappingViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel<ProductMappingViewModel, Handles>
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
+                        "theSource" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
                     };
                 }
             }
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => ProductMappingViewModel._associationConnectorFeatures;
+
+        public class theReferenceElectronicProductRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+        }
+
+        public class theReferencePhysicalProductRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+        }
+
+        public class theReferenceS100ServiceRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+        }
+
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(ProductMappingViewModel)]();
     }
 
@@ -4472,30 +4565,25 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     main = value?.role switch
                     {
-                        "panel" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel<CorrelatedViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleFeatureBindingViewModel<CorrelatedViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalFeatureBindingViewModel<CorrelatedViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel<CorrelatedViewModel, Handles>
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
+                        "panel" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
                     };
                 }
             }
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => CorrelatedViewModel._associationConnectorFeatures;
+
+        public class mainElectronicProductRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct)];
+        }
+
+        public class mainPhysicalProductRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct)];
+        }
+
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(CorrelatedViewModel)]();
     }
 
@@ -4549,24 +4637,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theElement = value?.role switch
                     {
-                        "theRequirement" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theRequirement" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -4575,30 +4647,30 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theRequirement = value?.role switch
                     {
-                        "theElement" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theElement" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => CarriageRequirementViewModel._associationConnectorInformations;
+
+        public class theRequirementElectronicProductRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+        }
+
+        public class theRequirementPhysicalProductRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+        }
+
+        public class theRequirementS100ServiceRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(CarriageRequirementViewModel)]();
     }
 
@@ -4652,24 +4724,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     catalogueHeader = value?.role switch
                     {
-                        "theDistributor" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theDistributor" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -4678,30 +4734,25 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theDistributor = value?.role switch
                     {
-                        "catalogueHeader" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "catalogueHeader" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => DistributionDetailsViewModel._associationConnectorInformations;
+
+        public class catalogueHeaderDistributorInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+        }
+
+        public class theDistributorCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(DistributorInformation)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(DistributionDetailsViewModel)]();
     }
 
@@ -4755,24 +4806,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theDistributor = value?.role switch
                     {
-                        "theContactDetails" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theContactDetails" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -4781,30 +4816,25 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theContactDetails = value?.role switch
                     {
-                        "theDistributor" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theDistributor" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => DistributorContactViewModel._associationConnectorInformations;
+
+        public class theContactDetailsDistributorInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ContactDetails)];
+        }
+
+        public class theDistributorContactDetailsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(DistributorInformation)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(DistributorContactViewModel)]();
     }
 
@@ -4858,24 +4888,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theCatalogueElement = value?.role switch
                     {
-                        "thePriceInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "thePriceInformation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -4884,30 +4898,30 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     thePriceInformation = value?.role switch
                     {
-                        "theCatalogueElement" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theCatalogueElement" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => PriceOfElementViewModel._associationConnectorInformations;
+
+        public class thePriceInformationElectronicProductRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(PriceInformation)];
+        }
+
+        public class thePriceInformationPhysicalProductRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(PriceInformation)];
+        }
+
+        public class thePriceInformationS100ServiceRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(PriceInformation)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PriceOfElementViewModel)]();
     }
 
@@ -4961,24 +4975,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theCatalogueOfNauticalProduct = value?.role switch
                     {
-                        "thePriceInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "thePriceInformation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -4987,30 +4985,25 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     thePriceInformation = value?.role switch
                     {
-                        "theCatalogueOfNauticalProduct" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theCatalogueOfNauticalProduct" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => PriceOfNauticalProductViewModel._associationConnectorInformations;
+
+        public class theCatalogueOfNauticalProductPriceInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+        }
+
+        public class thePriceInformationCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(PriceInformation)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PriceOfNauticalProductViewModel)]();
     }
 
@@ -5064,24 +5057,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theProducer = value?.role switch
                     {
-                        "theContactDetails" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theContactDetails" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -5090,30 +5067,25 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theContactDetails = value?.role switch
                     {
-                        "theProducer" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theProducer" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ProducerContactViewModel._associationConnectorInformations;
+
+        public class theContactDetailsProducerInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ContactDetails)];
+        }
+
+        public class theProducerContactDetailsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ProducerInformation)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProducerContactViewModel)]();
     }
 
@@ -5167,24 +5139,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     catalogueHeader = value?.role switch
                     {
-                        "theProducer" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theProducer" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -5193,30 +5149,25 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theProducer = value?.role switch
                     {
-                        "catalogueHeader" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "catalogueHeader" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ProductionDetailsViewModel._associationConnectorInformations;
+
+        public class catalogueHeaderProducerInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+        }
+
+        public class theProducerCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ProducerInformation)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProductionDetailsViewModel)]();
     }
 
@@ -5270,24 +5221,8 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     theCatalogueElement = value?.role switch
                     {
-                        "elementContainer" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "elementContainer" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -5296,30 +5231,30 @@ namespace S100Framework.WPF.ViewModel.S128
                 {
                     elementContainer = value?.role switch
                     {
-                        "theCatalogueElement" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theCatalogueElement" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ProductPackageViewModel._associationConnectorInformations;
+
+        public class elementContainerElectronicProductRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+        }
+
+        public class elementContainerPhysicalProductRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+        }
+
+        public class elementContainerS100ServiceRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProductPackageViewModel)]();
     }
 }

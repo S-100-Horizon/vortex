@@ -1,7 +1,3 @@
-using System;
-using System.Linq;
-using System.ComponentModel;
-
 namespace S100Framework.DomainModel
 {
 
@@ -12,8 +8,7 @@ namespace S100Framework.DomainModel
 
         public string PropertyName => _propertyName;
 
-        public CodeListAttribute(string propertyName)
-        {
+        public CodeListAttribute(string propertyName) {
             _propertyName = propertyName;
         }
     }
@@ -26,8 +21,7 @@ namespace S100Framework.DomainModel
 
         public string RoleName => _roleName;
 
-        public RoleAttribute(string roleName)
-        {
+        public RoleAttribute(string roleName) {
             _roleName = roleName;
         }
     }

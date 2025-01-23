@@ -44,6 +44,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(References)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<NWReferencesViewModel.theReferencesNAVWARNPreambleRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NAVWARNPreambleViewModel.NAVWARNPreambleRefIdViewModel>(),
                 }
 
                 ]
@@ -57,6 +59,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 1,
                     Upper = 1,
                     AssociationTypes = [typeof(NAVWARNPreamble)],
+                    CreateForeignInformationBinding = () => new SingleInformationBindingViewModel<NWPreambleContentViewModel.headerNAVWARNPartRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>(),
                 }
 
                 ]
@@ -73,6 +77,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NAVWARNPart)],
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.identifiesTextPlacementRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TextPlacementViewModel.TextPlacementRefIdViewModel>(),
                 }, new FeatureAssociationConnector<NAVWARNPart>()
                 {
                     roleType = roleType.association,
@@ -80,6 +86,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(TextPlacement)],
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.positionsNAVWARNPartRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>(),
                 }
 
                 ]
@@ -93,6 +101,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(NAVWARNAreaAffected)],
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AreaAffectedViewModel.affectsNAVWARNPartRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>(),
                 }, new FeatureAssociationConnector<NAVWARNAreaAffected>()
                 {
                     roleType = roleType.association,
@@ -100,6 +110,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 1,
                     Upper = 1,
                     AssociationTypes = [typeof(NAVWARNPart)],
+                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<AreaAffectedViewModel.impactsNAVWARNAreaAffectedRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNAreaAffectedViewModel.NAVWARNAreaAffectedRefIdViewModel>(),
                 }
 
                 ]
@@ -1405,6 +1417,11 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
+        public class NAVWARNPreambleRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NAVWARNPreamble)];
+        }
+
         [Browsable(false)]
         public navwarnTypeGeneral[] navwarnTypeGeneralList => CodeList.navwarnTypeGenerals.ToArray();
 
@@ -1529,6 +1546,11 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
+        public class ReferencesRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(References)];
+        }
+
         public void Load(DomainModel.S124.InformationTypes.References instance)
         {
             messageSeriesIdentifier.Clear();
@@ -1612,6 +1634,11 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
+        public class NAVWARNPartRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NAVWARNPart)];
+        }
+
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance)
         {
             featureName.Clear();
@@ -1681,6 +1708,11 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("FeatureBindings", 200)]
     public partial class NAVWARNAreaAffectedViewModel : ViewModelBase
     {
+        public class NAVWARNAreaAffectedRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NAVWARNAreaAffected)];
+        }
+
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected instance)
         {
         }
@@ -1798,6 +1830,11 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
+        public class TextPlacementRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(TextPlacement)];
+        }
+
         public void Load(DomainModel.S124.FeatureTypes.TextPlacement instance)
         {
             text = instance.text;
@@ -1888,24 +1925,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 {
                     affects = value?.role switch
                     {
-                        "impacts" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel<AreaAffectedViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleFeatureBindingViewModel<AreaAffectedViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalFeatureBindingViewModel<AreaAffectedViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel<AreaAffectedViewModel, Handles>
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
+                        "impacts" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
                     };
                 }
 
@@ -1914,30 +1935,25 @@ namespace S100Framework.WPF.ViewModel.S124
                 {
                     impacts = value?.role switch
                     {
-                        "affects" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel<AreaAffectedViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleFeatureBindingViewModel<AreaAffectedViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalFeatureBindingViewModel<AreaAffectedViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel<AreaAffectedViewModel, Handles>
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
+                        "affects" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
                     };
                 }
             }
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => AreaAffectedViewModel._associationConnectorFeatures;
+
+        public class affectsNAVWARNPartRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NAVWARNAreaAffected)];
+        }
+
+        public class impactsNAVWARNAreaAffectedRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NAVWARNPart)];
+        }
+
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(AreaAffectedViewModel)]();
     }
 
@@ -1991,24 +2007,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 {
                     identifies = value?.role switch
                     {
-                        "positions" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel<TextAssociationViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleFeatureBindingViewModel<TextAssociationViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalFeatureBindingViewModel<TextAssociationViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel<TextAssociationViewModel, Handles>
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
+                        "positions" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
                     };
                 }
 
@@ -2017,30 +2017,25 @@ namespace S100Framework.WPF.ViewModel.S124
                 {
                     positions = value?.role switch
                     {
-                        "identifies" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel<TextAssociationViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleFeatureBindingViewModel<TextAssociationViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalFeatureBindingViewModel<TextAssociationViewModel, Handles>
-                        {
-                            FeatureTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleFeatureBindingViewModel<TextAssociationViewModel, Handles>
-                        {
-                            FeatureTypes = [value!.FeatureType],
-                        },
+                        "identifies" => value.CreateForeignFeatureBinding(),
+                        _ => value.CreateLocalFeatureBinding(),
                     };
                 }
             }
         }
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
+
+        public class identifiesTextPlacementRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NAVWARNPart)];
+        }
+
+        public class positionsNAVWARNPartRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(TextPlacement)];
+        }
+
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(TextAssociationViewModel)]();
     }
 
@@ -2094,24 +2089,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 {
                     theWarningPart = value?.role switch
                     {
-                        "header" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "header" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -2120,30 +2099,20 @@ namespace S100Framework.WPF.ViewModel.S124
                 {
                     header = value?.role switch
                     {
-                        "theWarningPart" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theWarningPart" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => NWPreambleContentViewModel._associationConnectorInformations;
+
+        public class headerNAVWARNPartRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NAVWARNPreamble)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(NWPreambleContentViewModel)]();
     }
 
@@ -2197,24 +2166,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 {
                     theWarning = value?.role switch
                     {
-                        "theReferences" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theReferences" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -2223,30 +2176,20 @@ namespace S100Framework.WPF.ViewModel.S124
                 {
                     theReferences = value?.role switch
                     {
-                        "theWarning" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theWarning" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => NWReferencesViewModel._associationConnectorInformations;
+
+        public class theReferencesNAVWARNPreambleRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(References)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(NWReferencesViewModel)]();
     }
 }

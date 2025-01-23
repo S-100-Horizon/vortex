@@ -77,6 +77,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(NauticalInformation)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<additionalInformationViewModel.providesInformationRestrictedAreaRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>(),
                 }, new InformationAssociationConnector<MarineProtectedArea>()
                 {
                     roleType = roleType.association,
@@ -84,6 +86,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(NauticalInformation)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<additionalInformationViewModel.providesInformationMarineProtectedAreaRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineProtectedAreaViewModel.MarineProtectedAreaRefIdViewModel>(),
                 }, new InformationAssociationConnector<VesselTrafficServiceArea>()
                 {
                     roleType = roleType.association,
@@ -91,6 +95,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(NauticalInformation)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<additionalInformationViewModel.providesInformationVesselTrafficServiceAreaRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>(),
                 }
 
                 ]
@@ -104,6 +110,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AuthorityHoursViewModel.theAuthority_srvHrsServiceHoursRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ServiceHoursViewModel.ServiceHoursRefIdViewModel>(),
                 }, new InformationAssociationConnector<Authority>()
                 {
                     roleType = roleType.association,
@@ -111,6 +119,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ServiceHours)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AuthorityHoursViewModel.theServiceHoursAuthorityRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AuthorityViewModel.AuthorityRefIdViewModel>(),
                 }
 
                 ]
@@ -124,6 +134,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AuthorityContactViewModel.theAuthorityContactDetailsRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ContactDetailsViewModel.ContactDetailsRefIdViewModel>(),
                 }, new InformationAssociationConnector<Authority>()
                 {
                     roleType = roleType.association,
@@ -131,6 +143,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ContactDetails)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AuthorityContactViewModel.theContactDetailsAuthorityRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AuthorityViewModel.AuthorityRefIdViewModel>(),
                 }
 
                 ]
@@ -144,6 +158,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theInformationAuthorityRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AuthorityViewModel.AuthorityRefIdViewModel>(),
                 }, new InformationAssociationConnector<AbstractRxN>()
                 {
                     roleType = roleType.association,
@@ -151,6 +167,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theOrganisationAbstractRxNRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<AbstractRxNViewModel.AbstractRxNRefIdViewModel>(),
                 }, new InformationAssociationConnector<NauticalInformation>()
                 {
                     roleType = roleType.association,
@@ -158,6 +176,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theOrganisationNauticalInformationRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NauticalInformationViewModel.NauticalInformationRefIdViewModel>(),
                 }, new InformationAssociationConnector<Regulations>()
                 {
                     roleType = roleType.association,
@@ -165,6 +185,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theOrganisationRegulationsRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RegulationsViewModel.RegulationsRefIdViewModel>(),
                 }, new InformationAssociationConnector<Restrictions>()
                 {
                     roleType = roleType.association,
@@ -172,6 +194,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theOrganisationRestrictionsRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RestrictionsViewModel.RestrictionsRefIdViewModel>(),
                 }, new InformationAssociationConnector<Recommendations>()
                 {
                     roleType = roleType.association,
@@ -179,6 +203,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theOrganisationRecommendationsRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<RecommendationsViewModel.RecommendationsRefIdViewModel>(),
                 }, new InformationAssociationConnector<ContactDetails>()
                 {
                     roleType = roleType.association,
@@ -186,13 +212,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
-                }, new InformationAssociationConnector<NauticalInformation>()
-                {
-                    roleType = roleType.association,
-                    role = "theOrganisation",
-                    Lower = 0,
-                    Upper = default,
-                    AssociationTypes = [typeof(Authority)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<RelatedOrganisationViewModel.theOrganisationContactDetailsRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ContactDetailsViewModel.ContactDetailsRefIdViewModel>(),
                 }
 
                 ]
@@ -206,6 +227,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Authority)],
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ServiceControlViewModel.controlAuthorityVesselTrafficServiceAreaRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>(),
                 }
 
                 ]
@@ -219,6 +242,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Authority)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProtectedAreaAuthorityViewModel.responsibleAuthorityMarineProtectedAreaRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineProtectedAreaViewModel.MarineProtectedAreaRefIdViewModel>(),
                 }
 
                 ]
@@ -232,6 +257,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(NonStandardWorkingDay)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ExceptionalWorkdayViewModel.partialWorkingDayServiceHoursRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ServiceHoursViewModel.ServiceHoursRefIdViewModel>(),
                 }, new InformationAssociationConnector<NonStandardWorkingDay>()
                 {
                     roleType = roleType.association,
@@ -239,6 +266,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ServiceHours)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ExceptionalWorkdayViewModel.theServiceHours_nsdyNonStandardWorkingDayRefIdViewModel>(),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NonStandardWorkingDayViewModel.NonStandardWorkingDayRefIdViewModel>(),
                 }
 
                 ]
@@ -252,6 +281,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNRestrictedAreaRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>(),
                 }, new InformationAssociationConnector<MarineProtectedArea>()
                 {
                     roleType = roleType.association,
@@ -259,6 +290,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNMarineProtectedAreaRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineProtectedAreaViewModel.MarineProtectedAreaRefIdViewModel>(),
                 }, new InformationAssociationConnector<VesselTrafficServiceArea>()
                 {
                     roleType = roleType.association,
@@ -266,6 +299,8 @@ namespace S100Framework.WPF.ViewModel.S122
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)],
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<AssociatedRxNViewModel.theRxNVesselTrafficServiceAreaRefIdViewModel>(),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>(),
                 }
 
                 ]
@@ -2190,6 +2225,11 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        public class InformationTypeRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(InformationType)];
+        }
+
         public void Load(DomainModel.S122.InformationTypes.InformationType instance)
         {
             featureName.Clear();
@@ -2367,6 +2407,11 @@ namespace S100Framework.WPF.ViewModel.S122
             {
                 SetValue(ref _reportedDate, value);
             }
+        }
+
+        public class AbstractRxNRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(AbstractRxN)];
         }
 
         public void Load(DomainModel.S122.InformationTypes.AbstractRxN instance)
@@ -2570,6 +2615,11 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        public class NauticalInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+        }
+
         public void Load(DomainModel.S122.InformationTypes.NauticalInformation instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -2769,6 +2819,11 @@ namespace S100Framework.WPF.ViewModel.S122
             {
                 SetValue(ref _reportedDate, value);
             }
+        }
+
+        public class RegulationsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Regulations)];
         }
 
         public void Load(DomainModel.S122.InformationTypes.Regulations instance)
@@ -2972,6 +3027,11 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        public class RestrictionsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Restrictions)];
+        }
+
         public void Load(DomainModel.S122.InformationTypes.Restrictions instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -3173,6 +3233,11 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        public class RecommendationsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Recommendations)];
+        }
+
         public void Load(DomainModel.S122.InformationTypes.Recommendations instance)
         {
             categoryOfAuthority = instance.categoryOfAuthority;
@@ -3356,6 +3421,11 @@ namespace S100Framework.WPF.ViewModel.S122
             {
                 SetValue(ref _reportedDate, value);
             }
+        }
+
+        public class AuthorityRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Authority)];
         }
 
         public void Load(DomainModel.S122.InformationTypes.Authority instance)
@@ -3646,6 +3716,11 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        public class ContactDetailsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ContactDetails)];
+        }
+
         public void Load(DomainModel.S122.InformationTypes.ContactDetails instance)
         {
             callName = instance.callName;
@@ -3907,6 +3982,11 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        public class NonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NonStandardWorkingDay)];
+        }
+
         public void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDay instance)
         {
             dateFixed.Clear();
@@ -4099,6 +4179,11 @@ namespace S100Framework.WPF.ViewModel.S122
             {
                 SetValue(ref _reportedDate, value);
             }
+        }
+
+        public class ServiceHoursRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ServiceHours)];
         }
 
         public void Load(DomainModel.S122.InformationTypes.ServiceHours instance)
@@ -4369,6 +4454,11 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        public class ApplicabilityRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Applicability)];
+        }
+
         [Browsable(false)]
         public categoryOfVessel[] categoryOfVesselList => CodeList.categoryOfVessels.ToArray();
 
@@ -4597,6 +4687,11 @@ namespace S100Framework.WPF.ViewModel.S122
             {
                 SetValue(ref _reportedDate, value);
             }
+        }
+
+        public class RestrictedAreaRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(RestrictedArea)];
         }
 
         public void Load(DomainModel.S122.FeatureTypes.RestrictedArea instance)
@@ -4836,6 +4931,11 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        public class MarineProtectedAreaRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(MarineProtectedArea)];
+        }
+
         [Browsable(false)]
         public categoryOfMarineProtectedArea[] categoryOfMarineProtectedAreaList => CodeList.categoryOfMarineProtectedAreas.ToArray();
 
@@ -5063,6 +5163,11 @@ namespace S100Framework.WPF.ViewModel.S122
             }
         }
 
+        public class VesselTrafficServiceAreaRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(VesselTrafficServiceArea)];
+        }
+
         public void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance)
         {
             categoryOfVesselTrafficService = instance.categoryOfVesselTrafficService;
@@ -5144,6 +5249,11 @@ namespace S100Framework.WPF.ViewModel.S122
     [CategoryOrder("FeatureBindings", 200)]
     public partial class DataCoverageViewModel : ViewModelBase
     {
+        public class DataCoverageRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(DataCoverage)];
+        }
+
         public void Load(DomainModel.S122.FeatureTypes.DataCoverage instance)
         {
         }
@@ -5171,6 +5281,11 @@ namespace S100Framework.WPF.ViewModel.S122
     [CategoryOrder("FeatureBindings", 200)]
     public partial class TextPlacementViewModel : ViewModelBase
     {
+        public class TextPlacementRefIdViewModel : FeatureRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(TextPlacement)];
+        }
+
         public void Load(DomainModel.S122.FeatureTypes.TextPlacement instance)
         {
         }
@@ -5243,24 +5358,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     theRxN = value?.role switch
                     {
-                        "appliesInLocation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "appliesInLocation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -5269,30 +5368,30 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     appliesInLocation = value?.role switch
                     {
-                        "theRxN" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theRxN" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => AssociatedRxNViewModel._associationConnectorInformations;
+
+        public class theRxNRestrictedAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+        }
+
+        public class theRxNMarineProtectedAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+        }
+
+        public class theRxNVesselTrafficServiceAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AssociatedRxNViewModel)]();
     }
 
@@ -5346,24 +5445,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     partialWorkingDay = value?.role switch
                     {
-                        "theServiceHours_nsdy" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theServiceHours_nsdy" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -5372,30 +5455,25 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     theServiceHours_nsdy = value?.role switch
                     {
-                        "partialWorkingDay" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "partialWorkingDay" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ExceptionalWorkdayViewModel._associationConnectorInformations;
+
+        public class partialWorkingDayServiceHoursRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NonStandardWorkingDay)];
+        }
+
+        public class theServiceHours_nsdyNonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ServiceHours)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ExceptionalWorkdayViewModel)]();
     }
 
@@ -5449,24 +5527,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     responsibleAuthority = value?.role switch
                     {
-                        "theMarineProtectedArea" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theMarineProtectedArea" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -5475,30 +5537,20 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     theMarineProtectedArea = value?.role switch
                     {
-                        "responsibleAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "responsibleAuthority" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ProtectedAreaAuthorityViewModel._associationConnectorInformations;
+
+        public class responsibleAuthorityMarineProtectedAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Authority)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProtectedAreaAuthorityViewModel)]();
     }
 
@@ -5552,24 +5604,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     controlAuthority = value?.role switch
                     {
-                        "controlledService" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "controlledService" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -5578,30 +5614,20 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     controlledService = value?.role switch
                     {
-                        "controlAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "controlAuthority" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceControlViewModel._associationConnectorInformations;
+
+        public class controlAuthorityVesselTrafficServiceAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Authority)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceControlViewModel)]();
     }
 
@@ -5655,24 +5681,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     theOrganisation = value?.role switch
                     {
-                        "theInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theInformation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -5681,30 +5691,50 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     theInformation = value?.role switch
                     {
-                        "theOrganisation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theOrganisation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
+
+        public class theInformationAuthorityRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+        }
+
+        public class theOrganisationAbstractRxNRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Authority)];
+        }
+
+        public class theOrganisationNauticalInformationRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Authority)];
+        }
+
+        public class theOrganisationRegulationsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Authority)];
+        }
+
+        public class theOrganisationRestrictionsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Authority)];
+        }
+
+        public class theOrganisationRecommendationsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Authority)];
+        }
+
+        public class theOrganisationContactDetailsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Authority)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(RelatedOrganisationViewModel)]();
     }
 
@@ -5758,24 +5788,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     vslLocation = value?.role switch
                     {
-                        "permission" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "permission" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -5784,24 +5798,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     permission = value?.role switch
                     {
-                        "vslLocation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "vslLocation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
@@ -5861,24 +5859,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     theApplicationRXN = value?.role switch
                     {
-                        "isApplicableTo" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "isApplicableTo" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -5887,24 +5869,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     isApplicableTo = value?.role switch
                     {
-                        "theApplicationRXN" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theApplicationRXN" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
@@ -5964,24 +5930,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     theAuthority = value?.role switch
                     {
-                        "theContactDetails" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theContactDetails" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -5990,30 +5940,25 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     theContactDetails = value?.role switch
                     {
-                        "theAuthority" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theAuthority" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
+
+        public class theAuthorityContactDetailsRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Authority)];
+        }
+
+        public class theContactDetailsAuthorityRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ContactDetails)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityContactViewModel)]();
     }
 
@@ -6067,24 +6012,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     theAuthority_srvHrs = value?.role switch
                     {
-                        "theServiceHours" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theServiceHours" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -6093,30 +6022,25 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     theServiceHours = value?.role switch
                     {
-                        "theAuthority_srvHrs" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "theAuthority_srvHrs" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
+
+        public class theAuthority_srvHrsServiceHoursRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(Authority)];
+        }
+
+        public class theServiceHoursAuthorityRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(ServiceHours)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityHoursViewModel)]();
     }
 
@@ -6170,24 +6094,8 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     informationProvidedFor = value?.role switch
                     {
-                        "providesInformation" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "providesInformation" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
 
@@ -6196,30 +6104,30 @@ namespace S100Framework.WPF.ViewModel.S122
                 {
                     providesInformation = value?.role switch
                     {
-                        "informationProvidedFor" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : value.Lower > 0 ? new SingleInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        }
-
-                        : new OptionalInformationBindingViewModel
-                        {
-                            InformationTypes = value.AssociationTypes,
-                        },
-                        _ => new SingleInformationBindingViewModel()
-                        {
-                            InformationTypes = [value!.InformationType],
-                        },
+                        "informationProvidedFor" => value.CreateForeignInformationBinding(),
+                        _ => value.CreateLocalInformationBinding(),
                     };
                 }
             }
         }
 
         public override InformationAssociationConnector[] associationConnectorInformations => additionalInformationViewModel._associationConnectorInformations;
+
+        public class providesInformationRestrictedAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+        }
+
+        public class providesInformationMarineProtectedAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+        }
+
+        public class providesInformationVesselTrafficServiceAreaRefIdViewModel : InformationRefIdViewModel
+        {
+            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+        }
+
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(additionalInformationViewModel)]();
     }
 }
