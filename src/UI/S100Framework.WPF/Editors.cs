@@ -54,8 +54,8 @@ namespace S100Framework.WPF.Editors
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
             var source = propertyItem.Instance switch {
-                FeatureBindingViewModel e => e.RefIds,
-                InformationBindingViewModel e => e.RefIds,
+                //FeatureBindingViewModel e => e.RefIds,
+                //InformationBindingViewModel e => e.RefIds,
                 FeatureRefIdViewModel e => e.RefIds,
                 InformationRefIdViewModel e => e.RefIds,
                 _ => throw new NotSupportedException()
@@ -125,14 +125,14 @@ namespace S100Framework.WPF.Editors
     public sealed class InformationBindingEditor : Xceed.Wpf.Toolkit.PropertyGrid.Editors.ITypeEditor
     {
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
-            var viewModel = (InformationBindingViewModel)propertyItem.Instance;
+            var viewModel = (InformationRefIdViewModel)propertyItem.Instance;
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
                 DisplayMemberPath = "Name",
             };
 
-            var bindingItemsSourceProperty = new Binding() { Source = viewModel.InformationType, Mode = BindingMode.OneWay };
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.AssociationTypes, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
@@ -149,14 +149,12 @@ namespace S100Framework.WPF.Editors
         public FrameworkElement ResolveEditor(PropertyItem propertyItem) {
             var viewModel = (FeatureRefIdViewModel)propertyItem.Instance;
 
-            var parentViewModel = propertyItem.FindRoot<FeatureBindingViewModel>();
-
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
                 DisplayMemberPath = "Name",
             };
 
-            var bindingItemsSourceProperty = new Binding() { Source = parentViewModel!.FeatureTypes, Mode = BindingMode.OneWay };
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.AssociationTypes, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };

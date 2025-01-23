@@ -11,7 +11,7 @@ namespace S100Framework.WPF.ViewModel
     {
         public static Func<InformationBindingViewModel?, string[]?> GetInformations { get; set; } = (e) => { return default; };
 
-        public static Func<FeatureBindingViewModel?, string[]?> GetFeatures { get; set; } = (e) => { return default; };
+        //public static Func<FeatureBindingViewModel?, string[]?> GetFeatures { get; set; } = (e) => { return default; };
 
         public static Func<InformationRefIdViewModel?, string[]?> GetInformationsRefId { get; set; } = (e) => { return default; };
 
@@ -197,6 +197,9 @@ namespace S100Framework.WPF.ViewModel
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
+
+        [Browsable(false)]
+        public abstract Type[] AssociationTypes { get; }
     }
 
     public abstract class InformationRefIdViewModel : RefIdViewModel
@@ -217,6 +220,8 @@ namespace S100Framework.WPF.ViewModel
 
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
+
+        //public override Type[] AssociationTypes { get; } = new Type[0];
     }
 
     public abstract class FeatureRefIdViewModel : RefIdViewModel
@@ -237,6 +242,8 @@ namespace S100Framework.WPF.ViewModel
 
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
+
+        //public override Type[] AssociationTypes { get; } = new Type[0];
     }
 
     public abstract class InformationBindingViewModel : INotifyPropertyChanged
@@ -255,25 +262,11 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        private Type? _informationType = default;
+        //[Browsable(false)]
+        //public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
 
-        [Editor(typeof(InformationBindingEditor), typeof(InformationBindingEditor))]
-        public Type? InformationType {
-            get { return _informationType; }
-            set {
-                this.SetValue(ref _informationType, value);
-
-                RefIds.Clear();
-                foreach (var e in Handles.GetInformations(this)!)
-                    RefIds.Add(e);
-            }
-        }
-
-        [Browsable(false)]
-        public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
-
-        [Browsable(false)]
-        public Type[] InformationTypes { get; set; } = [];
+        //[Browsable(false)]
+        //public Type[] InformationTypes { get; set; } = [];
     }
 
     public abstract class InformationBindingViewModel<T> : InformationBindingViewModel where T : InformationRefIdViewModel
@@ -283,6 +276,8 @@ namespace S100Framework.WPF.ViewModel
 
     public class SingleInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
     {
+        public override string? ToString() => $"{typeof(T).Name.Replace("RefIdViewModel", "")}";
+
         private T _refId = new();
 
         [ExpandableObject]
@@ -294,6 +289,8 @@ namespace S100Framework.WPF.ViewModel
 
     public class OptionalInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel
     {
+        public override string? ToString() => $"{typeof(T).Name.Replace("RefIdViewModel", "")}";
+
         private T? _refId = default;
 
         [ExpandableObject]
@@ -305,6 +302,8 @@ namespace S100Framework.WPF.ViewModel
 
     public class MultiInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
     {
+        public override string? ToString() => $"{typeof(T).Name.Replace("RefIdViewModel", "")}";
+
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
     }
@@ -325,20 +324,21 @@ namespace S100Framework.WPF.ViewModel
             OnPropertyChanged(propertyName);
         }
 
-        [Browsable(false)]
-        public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
+        //[Browsable(false)]
+        //public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
 
-        [Browsable(false)]
-        public Type[] FeatureTypes { get; set; } = [];
+        //[Browsable(false)]
+        //public Type[] FeatureTypes { get; set; } = [];
     }
 
     public abstract class FeatureBindingViewModel<T> : FeatureBindingViewModel where T : FeatureRefIdViewModel
     {
-
     }
 
     public class SingleFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel, new()
     {
+        public override string? ToString() => $"{typeof(T).Name.Replace("RefIdViewModel", "")}";
+
         private T _refId = new();
 
         [ExpandableObject]
@@ -350,6 +350,8 @@ namespace S100Framework.WPF.ViewModel
 
     public class OptionalFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel
     {
+        public override string? ToString() => $"{typeof(T).Name.Replace("RefIdViewModel", "")}";
+
         private T? _refId = default;
 
         [ExpandableObject]
@@ -361,6 +363,8 @@ namespace S100Framework.WPF.ViewModel
 
     public class MultiFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel, new()
     {
+        public override string? ToString() => $"{typeof(T).Name.Replace("RefIdViewModel", "")}";
+
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
     }
 }

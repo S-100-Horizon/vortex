@@ -2387,7 +2387,9 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class CatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S128.InformationTypes.CatalogueSectionHeader instance)
@@ -2463,7 +2465,9 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class ContactDetailsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S128.InformationTypes.ContactDetails instance)
@@ -2581,7 +2585,9 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class IndicationOfCarriageRequirementRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+            public override Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S128.InformationTypes.IndicationOfCarriageRequirement instance)
@@ -2641,7 +2647,9 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class PriceInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(PriceInformation)];
+            public override Type[] AssociationTypes => [typeof(PriceInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S128.InformationTypes.PriceInformation instance)
@@ -2743,7 +2751,9 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class ProducerInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ProducerInformation)];
+            public override Type[] AssociationTypes => [typeof(ProducerInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S128.InformationTypes.ProducerInformation instance)
@@ -2796,7 +2806,9 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class DistributorInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(DistributorInformation)];
+            public override Type[] AssociationTypes => [typeof(DistributorInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S128.InformationTypes.DistributorInformation instance)
@@ -3251,7 +3263,9 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class ElectronicProductRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ElectronicProduct)];
+            public override Type[] AssociationTypes => [typeof(ElectronicProduct)];
+
+            public override string ToString() => "RefId";
         }
 
         [Browsable(false)]
@@ -3888,7 +3902,9 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class PhysicalProductRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(PhysicalProduct)];
+            public override Type[] AssociationTypes => [typeof(PhysicalProduct)];
+
+            public override string ToString() => "RefId";
         }
 
         [Browsable(false)]
@@ -4325,7 +4341,9 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class S100ServiceRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(S100Service)];
+            public override Type[] AssociationTypes => [typeof(S100Service)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S128.FeatureTypes.S100Service instance)
@@ -4514,17 +4532,23 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class theReferenceElectronicProductRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+            public override Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theReferencePhysicalProductRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+            public override Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theReferenceS100ServiceRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+            public override Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+
+            public override string ToString() => "RefId";
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(ProductMappingViewModel)]();
@@ -4576,12 +4600,16 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class mainElectronicProductRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct)];
+            public override Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct)];
+
+            public override string ToString() => "RefId";
         }
 
         public class mainPhysicalProductRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct)];
+            public override Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct)];
+
+            public override string ToString() => "RefId";
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(CorrelatedViewModel)]();
@@ -4658,17 +4686,23 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class theRequirementElectronicProductRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+            public override Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRequirementPhysicalProductRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+            public override Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRequirementS100ServiceRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+            public override Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(CarriageRequirementViewModel)]();
@@ -4745,12 +4779,16 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class catalogueHeaderDistributorInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theDistributorCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(DistributorInformation)];
+            public override Type[] AssociationTypes => [typeof(DistributorInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(DistributionDetailsViewModel)]();
@@ -4827,12 +4865,16 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class theContactDetailsDistributorInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theDistributorContactDetailsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(DistributorInformation)];
+            public override Type[] AssociationTypes => [typeof(DistributorInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(DistributorContactViewModel)]();
@@ -4909,17 +4951,23 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class thePriceInformationElectronicProductRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(PriceInformation)];
+            public override Type[] AssociationTypes => [typeof(PriceInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class thePriceInformationPhysicalProductRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(PriceInformation)];
+            public override Type[] AssociationTypes => [typeof(PriceInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class thePriceInformationS100ServiceRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(PriceInformation)];
+            public override Type[] AssociationTypes => [typeof(PriceInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PriceOfElementViewModel)]();
@@ -4996,12 +5044,16 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class theCatalogueOfNauticalProductPriceInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+
+            public override string ToString() => "RefId";
         }
 
         public class thePriceInformationCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(PriceInformation)];
+            public override Type[] AssociationTypes => [typeof(PriceInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PriceOfNauticalProductViewModel)]();
@@ -5078,12 +5130,16 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class theContactDetailsProducerInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theProducerContactDetailsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ProducerInformation)];
+            public override Type[] AssociationTypes => [typeof(ProducerInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProducerContactViewModel)]();
@@ -5160,12 +5216,16 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class catalogueHeaderProducerInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theProducerCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ProducerInformation)];
+            public override Type[] AssociationTypes => [typeof(ProducerInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProductionDetailsViewModel)]();
@@ -5242,17 +5302,23 @@ namespace S100Framework.WPF.ViewModel.S128
 
         public class elementContainerElectronicProductRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+
+            public override string ToString() => "RefId";
         }
 
         public class elementContainerPhysicalProductRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+
+            public override string ToString() => "RefId";
         }
 
         public class elementContainerS100ServiceRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProductPackageViewModel)]();

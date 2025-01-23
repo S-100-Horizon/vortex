@@ -4916,7 +4916,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class ApplicabilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         [Browsable(false)]
@@ -5158,7 +5160,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class AuthorityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.InformationTypes.Authority instance)
@@ -5375,7 +5379,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class AvailablePortServicesRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AvailablePortServices)];
+            public override Type[] AssociationTypes => [typeof(AvailablePortServices)];
+
+            public override string ToString() => "RefId";
         }
 
         [Browsable(false)]
@@ -5750,7 +5756,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class ContactDetailsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.InformationTypes.ContactDetails instance)
@@ -6051,7 +6059,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class EntranceRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Entrance)];
+            public override Type[] AssociationTypes => [typeof(Entrance)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.InformationTypes.Entrance instance)
@@ -6301,7 +6311,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class NauticalInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.InformationTypes.NauticalInformation instance)
@@ -6483,7 +6495,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class NonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NonStandardWorkingDay)];
+            public override Type[] AssociationTypes => [typeof(NonStandardWorkingDay)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.InformationTypes.NonStandardWorkingDay instance)
@@ -6684,7 +6698,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class RecommendationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Recommendations)];
+            public override Type[] AssociationTypes => [typeof(Recommendations)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.InformationTypes.Recommendations instance)
@@ -6878,7 +6894,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class RegulationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Regulations)];
+            public override Type[] AssociationTypes => [typeof(Regulations)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.InformationTypes.Regulations instance)
@@ -7072,7 +7090,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class RestrictionsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.InformationTypes.Restrictions instance)
@@ -7251,7 +7271,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class ServiceHoursRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.InformationTypes.ServiceHours instance)
@@ -7369,7 +7391,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class SpatialQualityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(SpatialQuality)];
+            public override Type[] AssociationTypes => [typeof(SpatialQuality)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.InformationTypes.SpatialQuality instance)
@@ -7520,7 +7544,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class AnchorBerthRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AnchorBerth)];
+            public override Type[] AssociationTypes => [typeof(AnchorBerth)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.AnchorBerth instance)
@@ -7794,7 +7820,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class AnchorageAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AnchorageArea)];
+            public override Type[] AssociationTypes => [typeof(AnchorageArea)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.AnchorageArea instance)
@@ -8249,7 +8277,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class BerthRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Berth)];
+            public override Type[] AssociationTypes => [typeof(Berth)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.Berth instance)
@@ -8632,7 +8662,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class BerthPositionRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(BerthPosition)];
+            public override Type[] AssociationTypes => [typeof(BerthPosition)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.BerthPosition instance)
@@ -8954,7 +8986,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class DockAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(DockArea)];
+            public override Type[] AssociationTypes => [typeof(DockArea)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.DockArea instance)
@@ -9220,7 +9254,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class DryDockRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(DryDock)];
+            public override Type[] AssociationTypes => [typeof(DryDock)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.DryDock instance)
@@ -9500,7 +9536,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class DumpingGroundRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(DumpingGround)];
+            public override Type[] AssociationTypes => [typeof(DumpingGround)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.DumpingGround instance)
@@ -9766,7 +9804,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class FloatingDockRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(FloatingDock)];
+            public override Type[] AssociationTypes => [typeof(FloatingDock)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.FloatingDock instance)
@@ -10014,7 +10054,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class GridironRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Gridiron)];
+            public override Type[] AssociationTypes => [typeof(Gridiron)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.Gridiron instance)
@@ -10311,7 +10353,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class HarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaAdministrative)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaAdministrative)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaAdministrative instance)
@@ -10603,7 +10647,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class HarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourAreaSection instance)
@@ -10902,7 +10948,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class HarbourBasinRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourBasin)];
+            public override Type[] AssociationTypes => [typeof(HarbourBasin)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourBasin instance)
@@ -11156,7 +11204,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class HarbourFacilityRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourFacility)];
+            public override Type[] AssociationTypes => [typeof(HarbourFacility)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.HarbourFacility instance)
@@ -11456,7 +11506,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class MooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(MooringWarpingFacility)];
+            public override Type[] AssociationTypes => [typeof(MooringWarpingFacility)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.MooringWarpingFacility instance)
@@ -11714,7 +11766,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class OuterLimitRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(OuterLimit)];
+            public override Type[] AssociationTypes => [typeof(OuterLimit)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.OuterLimit instance)
@@ -12047,7 +12101,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class PilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(PilotBoardingPlace)];
+            public override Type[] AssociationTypes => [typeof(PilotBoardingPlace)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.PilotBoardingPlace instance)
@@ -12345,7 +12401,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class SeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(SeaplaneLandingArea)];
+            public override Type[] AssociationTypes => [typeof(SeaplaneLandingArea)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.SeaplaneLandingArea instance)
@@ -12662,7 +12720,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class TerminalRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Terminal)];
+            public override Type[] AssociationTypes => [typeof(Terminal)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.Terminal instance)
@@ -12971,7 +13031,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class TurningBasinRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TurningBasin)];
+            public override Type[] AssociationTypes => [typeof(TurningBasin)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.TurningBasin instance)
@@ -13269,7 +13331,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class WaterwayAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(WaterwayArea)];
+            public override Type[] AssociationTypes => [typeof(WaterwayArea)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.WaterwayArea instance)
@@ -13429,7 +13493,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class DataCoverageRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(DataCoverage)];
+            public override Type[] AssociationTypes => [typeof(DataCoverage)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.DataCoverage instance)
@@ -13563,7 +13629,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class QualityOfNonBathymetricDataRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(QualityOfNonBathymetricData)];
+            public override Type[] AssociationTypes => [typeof(QualityOfNonBathymetricData)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData instance)
@@ -13659,7 +13727,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class SoundingDatumRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(SoundingDatum)];
+            public override Type[] AssociationTypes => [typeof(SoundingDatum)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.SoundingDatum instance)
@@ -13722,7 +13792,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class VerticalDatumOfDataRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(VerticalDatumOfData)];
+            public override Type[] AssociationTypes => [typeof(VerticalDatumOfData)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.VerticalDatumOfData instance)
@@ -13842,7 +13914,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class TextPlacementRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S131.FeatureTypes.TextPlacement instance)
@@ -13928,107 +14002,149 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class positionsDryDockRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsFloatingDockRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsGridironRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsHarbourFacilityRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsAnchorBerthRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsAnchorageAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsBerthRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsBerthPositionRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsDockAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsDumpingGroundRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsHarbourBasinRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsOuterLimitRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsTerminalRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsTurningBasinRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsWaterwayAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsTextPlacementRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(DryDock), typeof(FloatingDock), typeof(Gridiron), typeof(HarbourFacility), typeof(AnchorBerth), typeof(AnchorageArea), typeof(Berth), typeof(BerthPosition), typeof(DockArea), typeof(DumpingGround), typeof(HarbourAreaAdministrative), typeof(HarbourAreaSection), typeof(HarbourBasin), typeof(MooringWarpingFacility), typeof(OuterLimit), typeof(PilotBoardingPlace), typeof(SeaplaneLandingArea), typeof(Terminal), typeof(TurningBasin), typeof(WaterwayArea)];
+            public override Type[] AssociationTypes => [typeof(DryDock), typeof(FloatingDock), typeof(Gridiron), typeof(HarbourFacility), typeof(AnchorBerth), typeof(AnchorageArea), typeof(Berth), typeof(BerthPosition), typeof(DockArea), typeof(DumpingGround), typeof(HarbourAreaAdministrative), typeof(HarbourAreaSection), typeof(HarbourBasin), typeof(MooringWarpingFacility), typeof(OuterLimit), typeof(PilotBoardingPlace), typeof(SeaplaneLandingArea), typeof(Terminal), typeof(TurningBasin), typeof(WaterwayArea)];
+
+            public override string ToString() => "RefId";
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(TextAssociationViewModel)]();
@@ -14105,12 +14221,16 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class constituteHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public class subUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(SubsectionViewModel)]();
@@ -14187,32 +14307,44 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class hasInfrastructureHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(DryDock), typeof(FloatingDock), typeof(Gridiron), typeof(HarbourFacility)];
+            public override Type[] AssociationTypes => [typeof(DryDock), typeof(FloatingDock), typeof(Gridiron), typeof(HarbourFacility)];
+
+            public override string ToString() => "RefId";
         }
 
         public class hasInfrastructureTerminalRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(DryDock), typeof(FloatingDock), typeof(Gridiron), typeof(HarbourFacility)];
+            public override Type[] AssociationTypes => [typeof(DryDock), typeof(FloatingDock), typeof(Gridiron), typeof(HarbourFacility)];
+
+            public override string ToString() => "RefId";
         }
 
         public class infrastructureLocationDryDockRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+
+            public override string ToString() => "RefId";
         }
 
         public class infrastructureLocationFloatingDockRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+
+            public override string ToString() => "RefId";
         }
 
         public class infrastructureLocationGridironRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+
+            public override string ToString() => "RefId";
         }
 
         public class infrastructureLocationHarbourFacilityRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+
+            public override string ToString() => "RefId";
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(InfrastructureViewModel)]();
@@ -14289,17 +14421,23 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class auxiliaryFacilityAnchorBerthRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(MooringWarpingFacility)];
+            public override Type[] AssociationTypes => [typeof(MooringWarpingFacility)];
+
+            public override string ToString() => "RefId";
         }
 
         public class auxiliaryFacilityBerthPositionRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(MooringWarpingFacility)];
+            public override Type[] AssociationTypes => [typeof(MooringWarpingFacility)];
+
+            public override string ToString() => "RefId";
         }
 
         public class primaryFacilityMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AnchorBerth), typeof(BerthPosition)];
+            public override Type[] AssociationTypes => [typeof(AnchorBerth), typeof(BerthPosition)];
+
+            public override string ToString() => "RefId";
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(PrimaryAuxiliaryFacilityViewModel)]();
@@ -14376,12 +14514,16 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class demarcatedFeatureBerthPositionRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Berth)];
+            public override Type[] AssociationTypes => [typeof(Berth)];
+
+            public override string ToString() => "RefId";
         }
 
         public class demarcationIndicatorBerthRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(BerthPosition)];
+            public override Type[] AssociationTypes => [typeof(BerthPosition)];
+
+            public override string ToString() => "RefId";
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(DemarcationViewModel)]();
@@ -14458,12 +14600,16 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class limitExtentHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(OuterLimit)];
+            public override Type[] AssociationTypes => [typeof(OuterLimit)];
+
+            public override string ToString() => "RefId";
         }
 
         public class limitReferenceOuterLimitRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaAdministrative)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaAdministrative)];
+
+            public override string ToString() => "RefId";
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(JurisdictionalLimitViewModel)]();
@@ -14540,72 +14686,100 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class componentOfAnchorageAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public class componentOfBerthRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection), typeof(Terminal)];
+
+            public override string ToString() => "RefId";
         }
 
         public class componentOfDockAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public class componentOfDumpingGroundRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public class componentOfHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaAdministrative)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaAdministrative)];
+
+            public override string ToString() => "RefId";
         }
 
         public class componentOfHarbourBasinRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public class componentOfPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public class componentOfSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public class componentOfTerminalRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public class componentOfTurningBasinRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public class componentOfWaterwayAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public class layoutUnitHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+            public override Type[] AssociationTypes => [typeof(HarbourAreaSection)];
+
+            public override string ToString() => "RefId";
         }
 
         public class layoutUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AnchorageArea), typeof(Berth), typeof(DockArea), typeof(DumpingGround), typeof(HarbourBasin), typeof(PilotBoardingPlace), typeof(SeaplaneLandingArea), typeof(Terminal), typeof(TurningBasin), typeof(WaterwayArea)];
+            public override Type[] AssociationTypes => [typeof(AnchorageArea), typeof(Berth), typeof(DockArea), typeof(DumpingGround), typeof(HarbourBasin), typeof(PilotBoardingPlace), typeof(SeaplaneLandingArea), typeof(Terminal), typeof(TurningBasin), typeof(WaterwayArea)];
+
+            public override string ToString() => "RefId";
         }
 
         public class layoutUnitTerminalRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Berth)];
+            public override Type[] AssociationTypes => [typeof(Berth)];
+
+            public override string ToString() => "RefId";
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(LayoutDivisionViewModel)]();
@@ -14682,162 +14856,226 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class informationProvidedForNauticalInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions), typeof(Applicability), typeof(Authority), typeof(AvailablePortServices), typeof(ContactDetails), typeof(Entrance), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions), typeof(Applicability), typeof(Authority), typeof(AvailablePortServices), typeof(ContactDetails), typeof(Entrance), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationDryDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationFloatingDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationGridironRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationHarbourFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationAnchorBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationAnchorageAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationBerthPositionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationDockAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationDumpingGroundRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationHarbourBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationOuterLimitRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationTerminalRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationTurningBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationWaterwayAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationNauticalInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationRecommendationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationRegulationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationRestrictionsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationApplicabilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationAuthorityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationAvailablePortServicesRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationContactDetailsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationEntranceRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationNonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationServiceHoursRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AdditionalInformationViewModel)]();
@@ -14914,12 +15152,16 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class theAuthorityContactDetailsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsAuthorityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityContactViewModel)]();
@@ -14996,12 +15238,16 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class theAuthority_srvHrsServiceHoursRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theServiceHoursAuthorityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityHoursViewModel)]();
@@ -15078,102 +15324,142 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class theRxNDryDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNFloatingDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNGridironRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNHarbourFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNAnchorBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNAnchorageAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNBerthPositionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNDockAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNDumpingGroundRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNHarbourBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNOuterLimitRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNTerminalRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNTurningBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNWaterwayAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AssociatedRxNViewModel)]();
@@ -15250,7 +15536,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class partialWorkingDayServiceHoursRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NonStandardWorkingDay)];
+            public override Type[] AssociationTypes => [typeof(NonStandardWorkingDay)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ExceptionalWorkdayViewModel)]();
@@ -15327,102 +15615,142 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class controlAuthorityDryDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityFloatingDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityGridironRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityHarbourFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityAnchorBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityAnchorageAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityBerthPositionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityDockAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityDumpingGroundRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityHarbourBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityOuterLimitRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthoritySeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityTerminalRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityTurningBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class controlAuthorityWaterwayAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceControlViewModel)]();
@@ -15499,102 +15827,142 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class theContactDetailsDryDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsFloatingDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsGridironRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsHarbourFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsAnchorBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsAnchorageAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsBerthPositionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsDockAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsDumpingGroundRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsHarbourBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsOuterLimitRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsTerminalRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsTurningBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsWaterwayAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceContactViewModel)]();
@@ -15671,92 +16039,128 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class location_srvHrsAnchorageAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsAnchorBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsDockAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsDryDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsDumpingGroundRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsFloatingDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsGridironRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsHarbourBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsHarbourFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsTerminalRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsTurningBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public class location_srvHrsWaterwayAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(LocationHoursViewModel)]();
@@ -15833,27 +16237,37 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class theInformationAuthorityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theOrganisationNauticalInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theOrganisationRecommendationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theOrganisationRegulationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theOrganisationRestrictionsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(RelatedOrganisationViewModel)]();
@@ -15930,27 +16344,37 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class isApplicableToNauticalInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class isApplicableToRecommendationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class isApplicableToRegulationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class isApplicableToRestrictionsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theApplicableRxNApplicabilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(InclusionTypeViewModel)]();
@@ -16027,107 +16451,149 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class permissionDryDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionFloatingDockRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionGridironRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionHarbourFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionAnchorBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionAnchorageAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionBerthPositionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionDockAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionDumpingGroundRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionHarbourBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionOuterLimitRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionTerminalRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionTurningBasinRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class permissionWaterwayAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         public class vslLocationApplicabilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions), typeof(Applicability), typeof(Authority), typeof(AvailablePortServices), typeof(ContactDetails), typeof(Entrance), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation), typeof(Recommendations), typeof(Regulations), typeof(Restrictions), typeof(Applicability), typeof(Authority), typeof(AvailablePortServices), typeof(ContactDetails), typeof(Entrance), typeof(NonStandardWorkingDay), typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PermissionTypeViewModel)]();
@@ -16275,7 +16741,9 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class entranceReferenceOuterLimitRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Entrance)];
+            public override Type[] AssociationTypes => [typeof(Entrance)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(LimitEntranceViewModel)]();
@@ -16352,37 +16820,51 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public class serviceDescriptionReferenceAnchorBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AvailablePortServices)];
+            public override Type[] AssociationTypes => [typeof(AvailablePortServices)];
+
+            public override string ToString() => "RefId";
         }
 
         public class serviceDescriptionReferenceBerthRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AvailablePortServices)];
+            public override Type[] AssociationTypes => [typeof(AvailablePortServices)];
+
+            public override string ToString() => "RefId";
         }
 
         public class serviceDescriptionReferenceDockAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AvailablePortServices)];
+            public override Type[] AssociationTypes => [typeof(AvailablePortServices)];
+
+            public override string ToString() => "RefId";
         }
 
         public class serviceDescriptionReferenceHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AvailablePortServices)];
+            public override Type[] AssociationTypes => [typeof(AvailablePortServices)];
+
+            public override string ToString() => "RefId";
         }
 
         public class serviceDescriptionReferenceHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AvailablePortServices)];
+            public override Type[] AssociationTypes => [typeof(AvailablePortServices)];
+
+            public override string ToString() => "RefId";
         }
 
         public class serviceDescriptionReferenceMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AvailablePortServices)];
+            public override Type[] AssociationTypes => [typeof(AvailablePortServices)];
+
+            public override string ToString() => "RefId";
         }
 
         public class serviceDescriptionReferenceTerminalRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AvailablePortServices)];
+            public override Type[] AssociationTypes => [typeof(AvailablePortServices)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceAvailabilityViewModel)]();

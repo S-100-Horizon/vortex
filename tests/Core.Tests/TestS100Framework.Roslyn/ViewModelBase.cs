@@ -197,6 +197,8 @@ namespace S100Framework.WPF.ViewModel
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
+
+        public abstract Type[] AssociationTypes { get; }
     }
 
     public abstract class InformationRefIdViewModel : RefIdViewModel
@@ -217,6 +219,8 @@ namespace S100Framework.WPF.ViewModel
 
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
+
+        public override Type[] AssociationTypes { get; } = new Type[0];
     }
 
     public abstract class FeatureRefIdViewModel : RefIdViewModel
@@ -237,6 +241,8 @@ namespace S100Framework.WPF.ViewModel
 
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
+
+        public override Type[] AssociationTypes { get; } = new Type[0];
     }
 
     public abstract class InformationBindingViewModel : INotifyPropertyChanged

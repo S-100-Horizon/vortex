@@ -1419,7 +1419,9 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public class NAVWARNPreambleRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NAVWARNPreamble)];
+            public override Type[] AssociationTypes => [typeof(NAVWARNPreamble)];
+
+            public override string ToString() => "RefId";
         }
 
         [Browsable(false)]
@@ -1548,7 +1550,9 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public class ReferencesRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(References)];
+            public override Type[] AssociationTypes => [typeof(References)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S124.InformationTypes.References instance)
@@ -1636,7 +1640,9 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public class NAVWARNPartRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NAVWARNPart)];
+            public override Type[] AssociationTypes => [typeof(NAVWARNPart)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNPart instance)
@@ -1710,7 +1716,9 @@ namespace S100Framework.WPF.ViewModel.S124
     {
         public class NAVWARNAreaAffectedRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NAVWARNAreaAffected)];
+            public override Type[] AssociationTypes => [typeof(NAVWARNAreaAffected)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S124.FeatureTypes.NAVWARNAreaAffected instance)
@@ -1832,7 +1840,9 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public class TextPlacementRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S124.FeatureTypes.TextPlacement instance)
@@ -1946,12 +1956,16 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public class affectsNAVWARNPartRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NAVWARNAreaAffected)];
+            public override Type[] AssociationTypes => [typeof(NAVWARNAreaAffected)];
+
+            public override string ToString() => "RefId";
         }
 
         public class impactsNAVWARNAreaAffectedRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NAVWARNPart)];
+            public override Type[] AssociationTypes => [typeof(NAVWARNPart)];
+
+            public override string ToString() => "RefId";
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(AreaAffectedViewModel)]();
@@ -2028,12 +2042,16 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public class identifiesTextPlacementRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NAVWARNPart)];
+            public override Type[] AssociationTypes => [typeof(NAVWARNPart)];
+
+            public override string ToString() => "RefId";
         }
 
         public class positionsNAVWARNPartRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(TextAssociationViewModel)]();
@@ -2110,7 +2128,9 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public class headerNAVWARNPartRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NAVWARNPreamble)];
+            public override Type[] AssociationTypes => [typeof(NAVWARNPreamble)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(NWPreambleContentViewModel)]();
@@ -2187,7 +2207,9 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public class theReferencesNAVWARNPreambleRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(References)];
+            public override Type[] AssociationTypes => [typeof(References)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(NWReferencesViewModel)]();

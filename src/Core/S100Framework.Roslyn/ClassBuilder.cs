@@ -911,7 +911,8 @@ namespace S100Framework
                                 builder.AppendLine(viewModelBindingBuilder.ToString());
 
                                 builder.AppendLine($"\t\t\tpublic class {code}RefIdViewModel : InformationRefIdViewModel {{");
-                                builder.AppendLine($"\t\t\t\tpublic Type[] AssociationTypes => [typeof({code})];");
+                                builder.AppendLine($"\t\t\t\tpublic override Type[] AssociationTypes => [typeof({code})];");
+                                builder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                                 builder.AppendLine($"\t\t\t}}");
                             }));
 
@@ -1062,7 +1063,8 @@ namespace S100Framework
                                 builder.AppendLine(viewModelBindingBuilder.ToString());
 
                                 builder.AppendLine($"\t\t\tpublic class {code}RefIdViewModel : FeatureRefIdViewModel {{");
-                                builder.AppendLine($"\t\t\t\tpublic Type[] AssociationTypes => [typeof({code})];");
+                                builder.AppendLine($"\t\t\t\tpublic override Type[] AssociationTypes => [typeof({code})];");
+                                builder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                                 builder.AppendLine($"\t\t\t}}");
                             }));
 
@@ -1234,7 +1236,8 @@ namespace S100Framework
                             b.AppendLine($"}},");
 
                             viewBuilder.AppendLine($"\t\t\tpublic class {role}{f}RefIdViewModel : FeatureRefIdViewModel {{");
-                            viewBuilder.AppendLine($"\t\t\t\tpublic Type[] AssociationTypes => [{string.Join(',', featureTypeRefs)}];");
+                            viewBuilder.AppendLine($"\t\t\t\tpublic override Type[] AssociationTypes => [{string.Join(',', featureTypeRefs)}];");
+                            viewBuilder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                             viewBuilder.AppendLine($"\t\t\t}}");
                         }
                     }
@@ -1408,7 +1411,8 @@ namespace S100Framework
 
 
                             viewBuilder.AppendLine($"\t\t\tpublic class {role}{f}RefIdViewModel : InformationRefIdViewModel {{");
-                            viewBuilder.AppendLine($"\t\t\t\tpublic Type[] AssociationTypes => [{string.Join(',', informationTypeRefs)}];");
+                            viewBuilder.AppendLine($"\t\t\t\tpublic override Type[] AssociationTypes => [{string.Join(',', informationTypeRefs)}];");
+                            viewBuilder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                             viewBuilder.AppendLine($"\t\t\t}}");
                         }
                     }
@@ -2010,6 +2014,8 @@ namespace S100Framework
             return root.ReplaceNodes(
                 root.DescendantNodes().OfType<MethodDeclarationSyntax>(),
                 (original, rewritten) => {
+                    if (rewritten!.Body is null)
+                        return rewritten;
                     // Ensure the opening brace is on the same line as the method declaration
                     var openBraceToken = rewritten!.Body!.OpenBraceToken
                         .WithLeadingTrivia(SyntaxFactory.ElasticSpace);

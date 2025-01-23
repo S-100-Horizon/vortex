@@ -2227,7 +2227,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class InformationTypeRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(InformationType)];
+            public override Type[] AssociationTypes => [typeof(InformationType)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.InformationTypes.InformationType instance)
@@ -2411,7 +2413,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class AbstractRxNRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AbstractRxN)];
+            public override Type[] AssociationTypes => [typeof(AbstractRxN)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.InformationTypes.AbstractRxN instance)
@@ -2617,7 +2621,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class NauticalInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.InformationTypes.NauticalInformation instance)
@@ -2823,7 +2829,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class RegulationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Regulations)];
+            public override Type[] AssociationTypes => [typeof(Regulations)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.InformationTypes.Regulations instance)
@@ -3029,7 +3037,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class RestrictionsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Restrictions)];
+            public override Type[] AssociationTypes => [typeof(Restrictions)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.InformationTypes.Restrictions instance)
@@ -3235,7 +3245,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class RecommendationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Recommendations)];
+            public override Type[] AssociationTypes => [typeof(Recommendations)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.InformationTypes.Recommendations instance)
@@ -3425,7 +3437,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class AuthorityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.InformationTypes.Authority instance)
@@ -3718,7 +3732,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class ContactDetailsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.InformationTypes.ContactDetails instance)
@@ -3984,7 +4000,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class NonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NonStandardWorkingDay)];
+            public override Type[] AssociationTypes => [typeof(NonStandardWorkingDay)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.InformationTypes.NonStandardWorkingDay instance)
@@ -4183,7 +4201,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class ServiceHoursRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.InformationTypes.ServiceHours instance)
@@ -4456,7 +4476,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class ApplicabilityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Applicability)];
+            public override Type[] AssociationTypes => [typeof(Applicability)];
+
+            public override string ToString() => "RefId";
         }
 
         [Browsable(false)]
@@ -4691,7 +4713,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class RestrictedAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(RestrictedArea)];
+            public override Type[] AssociationTypes => [typeof(RestrictedArea)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.FeatureTypes.RestrictedArea instance)
@@ -4933,7 +4957,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class MarineProtectedAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(MarineProtectedArea)];
+            public override Type[] AssociationTypes => [typeof(MarineProtectedArea)];
+
+            public override string ToString() => "RefId";
         }
 
         [Browsable(false)]
@@ -5165,7 +5191,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class VesselTrafficServiceAreaRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(VesselTrafficServiceArea)];
+            public override Type[] AssociationTypes => [typeof(VesselTrafficServiceArea)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.FeatureTypes.VesselTrafficServiceArea instance)
@@ -5251,7 +5279,9 @@ namespace S100Framework.WPF.ViewModel.S122
     {
         public class DataCoverageRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(DataCoverage)];
+            public override Type[] AssociationTypes => [typeof(DataCoverage)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.FeatureTypes.DataCoverage instance)
@@ -5283,7 +5313,9 @@ namespace S100Framework.WPF.ViewModel.S122
     {
         public class TextPlacementRefIdViewModel : FeatureRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(TextPlacement)];
+            public override Type[] AssociationTypes => [typeof(TextPlacement)];
+
+            public override string ToString() => "RefId";
         }
 
         public void Load(DomainModel.S122.FeatureTypes.TextPlacement instance)
@@ -5379,17 +5411,23 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class theRxNRestrictedAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNMarineProtectedAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theRxNVesselTrafficServiceAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AssociatedRxNViewModel)]();
@@ -5466,12 +5504,16 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class partialWorkingDayServiceHoursRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NonStandardWorkingDay)];
+            public override Type[] AssociationTypes => [typeof(NonStandardWorkingDay)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theServiceHours_nsdyNonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ExceptionalWorkdayViewModel)]();
@@ -5548,7 +5590,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class responsibleAuthorityMarineProtectedAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ProtectedAreaAuthorityViewModel)]();
@@ -5625,7 +5669,9 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class controlAuthorityVesselTrafficServiceAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceControlViewModel)]();
@@ -5702,37 +5748,51 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class theInformationAuthorityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(AbstractRxN), typeof(NauticalInformation), typeof(Regulations), typeof(Restrictions), typeof(Recommendations), typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theOrganisationAbstractRxNRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theOrganisationNauticalInformationRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theOrganisationRegulationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theOrganisationRestrictionsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theOrganisationRecommendationsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theOrganisationContactDetailsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(RelatedOrganisationViewModel)]();
@@ -5951,12 +6011,16 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class theAuthorityContactDetailsRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theContactDetailsAuthorityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityContactViewModel)]();
@@ -6033,12 +6097,16 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class theAuthority_srvHrsServiceHoursRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(Authority)];
+            public override Type[] AssociationTypes => [typeof(Authority)];
+
+            public override string ToString() => "RefId";
         }
 
         public class theServiceHoursAuthorityRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(ServiceHours)];
+            public override Type[] AssociationTypes => [typeof(ServiceHours)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityHoursViewModel)]();
@@ -6115,17 +6183,23 @@ namespace S100Framework.WPF.ViewModel.S122
 
         public class providesInformationRestrictedAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationMarineProtectedAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public class providesInformationVesselTrafficServiceAreaRefIdViewModel : InformationRefIdViewModel
         {
-            public Type[] AssociationTypes => [typeof(NauticalInformation)];
+            public override Type[] AssociationTypes => [typeof(NauticalInformation)];
+
+            public override string ToString() => "RefId";
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(additionalInformationViewModel)]();
