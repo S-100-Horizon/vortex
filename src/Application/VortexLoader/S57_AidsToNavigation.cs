@@ -66,6 +66,7 @@ namespace S100Framework.Applications
                 // if slave continue - retrieve related slaves for structure in the relevant structure
                 if (plts_frels.ContainsKey(globalid)) {
                     var plts_frel = plts_frels[globalid];
+
                     continue;
                 }
 
