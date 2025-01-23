@@ -23,7 +23,7 @@ namespace VortexConceptApplication
         //    set { this.SetValue(ref _refId, value); }
         //}
 
-        public ObservableCollection<FeatureRefIdViewModel> TestRefId { get; set; } = new ObservableCollection<FeatureRefIdViewModel>();
+        //public ObservableCollection<FeatureRefIdViewModel> TestRefId { get; set; } = new ObservableCollection<FeatureRefIdViewModel>();
     }
 
     public class MyConverter : IMultiValueConverter

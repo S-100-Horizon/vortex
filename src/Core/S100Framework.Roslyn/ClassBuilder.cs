@@ -1,5 +1,6 @@
 ﻿using Microsoft.CodeAnalysis;
 using Microsoft.CodeAnalysis.CSharp;
+using Microsoft.CodeAnalysis.CSharp.Formatting;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Formatting;
 using Pluralize.NET.Core;
@@ -1226,11 +1227,11 @@ namespace S100Framework
                             b.AppendLine($"\tAssociationTypes = [{string.Join(',', featureTypeRefs)}],");
 
                             if (!u.HasValue || u.Value > 1)
-                                b.AppendLine($"\tCreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(),");
+                                b.AppendLine($"\tCreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(\"{code.Replace("ViewModel", string.Empty)}\"),");
                             else if (lower > 0)
-                                b.AppendLine($"\tCreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(),");
+                                b.AppendLine($"\tCreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(\"{code.Replace("ViewModel", string.Empty)}\"),");
                             else
-                                b.AppendLine($"\tCreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(),");
+                                b.AppendLine($"\tCreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(\"{code.Replace("ViewModel", string.Empty)}\"),");
 
                             b.AppendLine($"\tCreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(),");
                             b.AppendLine($"}},");
@@ -1548,6 +1549,30 @@ namespace S100Framework
                 .WithChangedOption(FormattingOptions.UseTabs, LanguageNames.CSharp, false)
                 .WithChangedOption(FormattingOptions.SmartIndent, LanguageNames.CSharp, FormattingOptions.IndentStyle.Smart);
 
+            // Configure the options to keep braces on the same line
+            options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInMethods, false);
+            options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInProperties, false);
+            options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInTypes, false);
+            options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInAccessors, false);
+            options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInControlBlocks, false);
+            options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInAnonymousMethods, false);
+            options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInAnonymousTypes, false);
+            options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInObjectCollectionArrayInitializers, false);
+            options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInLambdaExpressionBody, false);
+
+            // Configure indentation for complex object creation
+            options = options.WithChangedOption(CSharpFormattingOptions.IndentBraces, true); // Indent braces
+            options = options.WithChangedOption(CSharpFormattingOptions.IndentBlock, true); // Indent blocks within braces
+            options = options.WithChangedOption(CSharpFormattingOptions.IndentSwitchCaseSection, true); // Indent case sections
+            options = options.WithChangedOption(CSharpFormattingOptions.IndentSwitchSection, true); // Indent switch sections
+
+            // For wrapping and newlines in initializers
+            options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInObjectCollectionArrayInitializers, true);
+            options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInAnonymousTypes, true);
+
+            // Replace the workspace options with the updated options
+            workspace.TryApplyChanges(workspace.CurrentSolution.WithOptions(options));
+
             var rootDomainSyntax = CSharpSyntaxTree.ParseText(classBuilder.ToString().TrimEnd());
             var rootDomain = rootDomainSyntax.GetRoot();
 
@@ -1557,16 +1582,16 @@ namespace S100Framework
             var rootCommonSyntax = CSharpSyntaxTree.ParseText(common.ToString().TrimEnd());
             var rootCommon = rootCommonSyntax.GetRoot();
 
-            var rootDomainModified = rootDomain.EnsureOpeningBrace().EnsureNewline()!;
+            var rootDomainModified = rootDomain.EnsureOpeningBrace().EnsureNewline()!.NormalizeWhitespace();
 
-            var rootViewModelModified = rootViewModel.EnsureOpeningBrace().EnsureNewline()!;
+            var rootViewModelModified = rootViewModel.EnsureOpeningBrace().EnsureNewline()!.NormalizeWhitespace();
 
-            var rootCommonModified = rootCommon.EnsureOpeningBrace().EnsureNewline()!;
+            var rootCommonModified = rootCommon.EnsureOpeningBrace().EnsureNewline()!.NormalizeWhitespace();
 
             return (
-                Formatter.Format(rootDomainModified, workspace, options)./*NormalizeWhitespace().*/ToFullString(),
-                Formatter.Format(rootViewModelModified, workspace, options).NormalizeWhitespace().ToFullString(),
-                Formatter.Format(rootCommonModified, workspace, options)./*NormalizeWhitespace().*/ToFullString()
+                Formatter.Format(rootDomainModified, workspace).ToFullString(),
+                Formatter.Format(rootViewModelModified, workspace).ToFullString(),
+                Formatter.Format(rootCommonModified, workspace).ToFullString()
             );
         }
 
@@ -2009,6 +2034,7 @@ namespace S100Framework
         }
 
         public static SyntaxNode? EnsureOpeningBrace(this SyntaxNode? root) {
+            return root;
             if (root is null)
                 return root;
             return root.ReplaceNodes(
@@ -2025,6 +2051,7 @@ namespace S100Framework
         }
 
         public static SyntaxNode? EnsureNewline(this SyntaxNode? root) {
+            return root;
             if (root is null)
                 return root;
             return root.ReplaceNodes(
@@ -2061,6 +2088,6 @@ namespace S100Framework
             // Remove unused using directives
             var rootWithoutUnusedUsings = root.RemoveNodes(unusedUsings, SyntaxRemoveOptions.KeepNoTrivia);
             return rootWithoutUnusedUsings;
-        }
+        }       
     }
 }

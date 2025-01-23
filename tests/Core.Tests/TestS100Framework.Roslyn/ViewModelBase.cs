@@ -345,6 +345,12 @@ namespace S100Framework.WPF.ViewModel
 
     public class SingleFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel, new()
     {
+        private string _displayName;
+
+        public SingleFeatureBindingViewModel(string displayName) { _displayName = displayName; }
+
+        public override string ToString() => _displayName;
+
         private T _refId = new();
 
         [ExpandableObject]
@@ -356,6 +362,12 @@ namespace S100Framework.WPF.ViewModel
 
     public class OptionalFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel
     {
+        private string _displayName;
+
+        public OptionalFeatureBindingViewModel(string displayName) { _displayName = displayName; }
+
+        public override string ToString() => _displayName;
+
         private T? _refId = default;
 
         [ExpandableObject]
@@ -367,6 +379,11 @@ namespace S100Framework.WPF.ViewModel
 
     public class MultiFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel, new()
     {
+        private string _displayName;
+        public MultiFeatureBindingViewModel(string displayName) { _displayName = displayName; }
+
+        public override string ToString() => _displayName;
+
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
     }
 }
