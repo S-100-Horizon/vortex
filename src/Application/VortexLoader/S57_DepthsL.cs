@@ -1,8 +1,8 @@
 ﻿using ArcGIS.Core.Data;
 using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
 using VortexLoader.S57.esri;
 using S100Framework.DomainModel.S101.InformationTypes;
+using S100Framework.DomainModel.S101.FeatureTypes;
 
 
 namespace S100Framework.Applications
@@ -87,11 +87,11 @@ namespace S100Framework.Applications
                                     if (p_quapos != default && p_quapos == 4) {
                                         var spatialQuality = new SpatialQuality() {
                                             qualityOfHorizontalMeasurement = qualityOfHorizontalMeasurement.Approximate,
-                                            //spatialAccuracy = new List<DomainModel.S101.ComplexAttributes.spatialAccuracy>() {
-                                            //new DomainModel.S101.ComplexAttributes.spatialAccuracy() {
+                                            //spatialAccuracy = new List<DomainModel.ComplexAttributes.spatialAccuracy>() {
+                                            //new DomainModel.ComplexAttributes.spatialAccuracy() {
                                             //    horizontalPositionUncertainty = default,
                                             //    fixedDateRange = default,
-                                            //    verticalUncertainty = new DomainModel.S101.ComplexAttributes.verticalUncertainty() {
+                                            //    verticalUncertainty = new DomainModel.ComplexAttributes.verticalUncertainty() {
                                             //        uncertaintyFixed = default,
                                             //        uncertaintyVariableFactor = default
                                             //    }

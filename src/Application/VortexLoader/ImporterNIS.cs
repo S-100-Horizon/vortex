@@ -1,9 +1,7 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork.Trace;
 using ArcGIS.Core.Geometry;
 using CommandLine;
-using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Logging;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.ComplexAttributes;
 using VortexLoader.S57.esri;
 using static S100Framework.Applications.VortexLoader;
@@ -65,6 +63,15 @@ namespace S100Framework.Applications
                 informationtype.DeleteRows(query);
             }
 
+            //  PortsAndServicesP
+            S57_PortsAndServicesP(source, destination, filter);
+
+            //  DangersA
+            S57_DangersA(source, destination, filter);
+
+            //  AidsToNavigation
+            S57_AidsToNavigationP(source, destination, filter);
+
             // RegulatedAreasAndLimitsL
             S57_RegulatedAreasAndLimitsL(source, destination, filter);
 
@@ -77,19 +84,16 @@ namespace S100Framework.Applications
             //  ProductCoverage
             S57_ProductCoverage(source, destination, filter);
 
-            //  S57_NaturalFeaturesL
+            //  NaturalFeaturesL
             S57_NaturalFeaturesL(source, destination, filter);
 
             // DepthsL
             S57_DepthsL(source, destination, filter);
 
-            //  AidsToNavigation
-            S57_AidsToNavigationP(source, destination, filter);
-
             //  DepthsA
             S57_DepthsA(source, destination, filter);
 
-            //  S57_NaturalFeaturesA
+            //  NaturalFeaturesA
             S57_NaturalFeaturesA(source, destination, filter);
 
             //  SoundingsP
@@ -103,8 +107,8 @@ namespace S100Framework.Applications
         }
 
 
-        private static Dictionary<Guid, PLTS_Frel> LoadPltsFrels(Geodatabase source) {
-            var result = new Dictionary<Guid, PLTS_Frel>();
+        private static Dictionary<Guid, IList<PLTS_Frel>> LoadPltsFrels(Geodatabase source) {
+            var result = new Dictionary<Guid, IList<PLTS_Frel>>();
             var aidstonavigation = source.OpenDataset<Table>("PLTS_Frel");
             var cursor = aidstonavigation.Search(null, true);
             Guid uid;
@@ -112,11 +116,11 @@ namespace S100Framework.Applications
             while (cursor.MoveNext()) {
                 var plts_frel = new PLTS_Frel(cursor.Current);
                 Guid.TryParse(Convert.ToString(plts_frel.SRC_UID), out uid);
-                if (result.ContainsKey(uid)) {
-                    result[uid] = plts_frel;
+                if (!result.ContainsKey(uid)) {
+                    result[uid] = new List<PLTS_Frel>() { plts_frel };
                 }
                 else {
-                    result.Add(uid, plts_frel);
+                    result[uid].Add(plts_frel);
                 }
             }
             return result;
@@ -136,7 +140,10 @@ namespace S100Framework.Applications
                     using (Row row = spatialSearch.Current) {
                         Feature feature = (Feature)row;
                         if (feature != null) {
-                            yield return Activator.CreateInstance(typeof(T), feature) as T;
+                            var val = Activator.CreateInstance(typeof(T), feature) as T;
+                            if (val != null) {
+                                yield return val;
+                            }
                         }
                     }
                 }
@@ -144,11 +151,38 @@ namespace S100Framework.Applications
 
         }
 
+        private static void AddStatus(status? status, Feature current) {
+            if (DBNull.Value != current["STATUS"]) {
+                var featureStatus = Convert.ToString(current["OBJNAM"])?.Trim();
+                if (!string.IsNullOrEmpty(featureStatus)) {
+                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
+                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
+                       check any populated values for STATUS on LNDARE and amend appropriately. */
+
+                    //TODO: STATUS
+                }
+            }
+        }
+        private static void AddStatus(List<status> status, Feature current) {
+            if (DBNull.Value != current["STATUS"]) {
+                var featureStatus = Convert.ToString(current["OBJNAM"])?.Trim();
+                if (!string.IsNullOrEmpty(featureStatus)) {
+                    /* See S-101 DCEG clause 5.4 for the listing of allowable values. Values populated in S-57 for this attribute
+                       other than the allowable values will not be converted across to S-101. Data Producers are advised to
+                       check any populated values for STATUS on LNDARE and amend appropriately. */
+
+                    //TODO: STATUS
+                }
+            }
+
+
+        }
+
         private static void AddFeatureName(IList<featureName> featureName, Feature current) {
             if (DBNull.Value != current["OBJNAM"]) {
                 var objnam = Convert.ToString(current["OBJNAM"])?.Trim();
                 if (!string.IsNullOrEmpty(objnam)) {
-                    featureName.Add(new DomainModel.S101.ComplexAttributes.featureName {
+                    featureName.Add(new featureName {
                         language = "eng",
                         nameUsage = null,
                         name = objnam,
@@ -158,9 +192,9 @@ namespace S100Framework.Applications
             if (DBNull.Value != current["NOBJNM"]) {
                 var nobjnm = Convert.ToString(current["NOBJNM"])?.Trim();
                 if (!string.IsNullOrEmpty(nobjnm)) {
-                    featureName.Add(new DomainModel.S101.ComplexAttributes.featureName {
+                    featureName.Add(new featureName {
                         language = "dk",
-                        nameUsage = DomainModel.S101.nameUsage.AlternateNameDisplay,
+                        nameUsage = nameUsage.AlternateNameDisplay,
                         name = nobjnm,
                     });
                 }

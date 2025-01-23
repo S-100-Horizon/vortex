@@ -1,18 +1,5 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
-using CommandLine;
-using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S128.FeatureTypes;
-using VortexLoader;
-using System;
-using static S100Framework.Applications.VortexLoader;
-using static System.Net.WebRequestMethods;
-using IO = System.IO;
 using VortexLoader.S57.esri;
-using static ArcGIS.Core.Data.NetworkDiagrams.AngleDirectedDiagramLayoutParameters;
-using System.Numerics;
 
 namespace S100Framework.Applications
 {

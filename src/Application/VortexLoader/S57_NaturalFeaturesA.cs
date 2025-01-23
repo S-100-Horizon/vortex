@@ -1,8 +1,8 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork;
-using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
+using DomainModel = S100Framework.DomainModel;
 using VortexLoader.S57.esri;
+using S100Framework.DomainModel.S101;
 
 namespace S100Framework.Applications
 {
@@ -40,7 +40,7 @@ namespace S100Framework.Applications
                 var natsur = current.NATSUR ?? default;
                 var catsea = current.CATSEA ?? default;
                 var catslo = current.CATSLO ?? default;
-                var colour = current.COLOUR ?? default;
+                var color = current.COLOUR ?? default;
                 var conrad = current.CONRAD ?? default;
                 var convis = current.CONVIS ?? default;
                 var catveg = current.CATVEG ?? default;
@@ -52,7 +52,7 @@ namespace S100Framework.Applications
 
                     switch (subtype) {
                     case 1: { //  LAKARE
-                            var lakare = new S100Framework.DomainModel.S101.FeatureTypes.Lake {
+                            var lakare = new Lake {
                                 elevation = null,
                                 status = null,
                                 scaleMinimum = null,
@@ -94,7 +94,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 5: { //  LNDARE
-                            var lndare = new S100Framework.DomainModel.S101.FeatureTypes.LandArea {
+                            var lndare = new LandArea {
                                 condition = null,
                                 status = null,
                                 scaleMinimum = null,
@@ -136,7 +136,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 10: {    // LNDRGN
-                            var lndrgn = new S100Framework.DomainModel.S101.FeatureTypes.LandRegion {
+                            var lndrgn = new LandRegion {
                                 categoryOfLandRegion = null,
                                 natureOfSurface = null,
                                 waterLevelEffect = null,
@@ -189,7 +189,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 20: {    // RIVERS
-                            var river = new S100Framework.DomainModel.S101.FeatureTypes.River {
+                            var river = new River {
                                 status = null,
                                 scaleMinimum = null,
                             };
@@ -231,7 +231,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 25: {    // SEAARE
-                            var seaareanamedwaterarea = new S100Framework.DomainModel.S101.FeatureTypes.SeaAreaNamedWaterArea {
+                            var seaareanamedwaterarea = new SeaAreaNamedWaterArea {
                                 categoryOfSeaArea = null,
                                 scaleMinimum = null,
                             };
@@ -313,7 +313,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 30: {    // SLOGRD
-                            var slopingground = new S100Framework.DomainModel.S101.FeatureTypes.SlopingGround {
+                            var slopingground = new SlopingGround {
                                 categoryOfSlope = null,
                                 radarConspicuous = null,
                                 visualProminence = null,
@@ -332,19 +332,19 @@ namespace S100Framework.Applications
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
-                            if (colour != default) {
-                                if (!string.IsNullOrEmpty(colour)) {
-                                    foreach (var c in colour.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                                        DomainModel.S101.colour? e = c.ToLowerInvariant() switch {
-                                            "white" => DomainModel.S101.colour.White,
-                                            "black" => DomainModel.S101.colour.Black,
-                                            "Red" => DomainModel.S101.colour.Red,
-                                            "green" => DomainModel.S101.colour.Green,
-                                            "blue" => DomainModel.S101.colour.Blue,
-                                            "yellow" => DomainModel.S101.colour.Yellow,
-                                            "grey" => DomainModel.S101.colour.Grey,
-                                            "brown" => DomainModel.S101.colour.Brown,
-                                            "amber" => DomainModel.S101.colour.Grey,
+                            if (color != default) {
+                                if (!string.IsNullOrEmpty(color)) {
+                                    foreach (var c in color.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
+                                        colour? e = c.ToLowerInvariant() switch {
+                                            "white" => colour.White,
+                                            "black" => colour.Black,
+                                            "Red" => colour.Red,
+                                            "green" => colour.Green,
+                                            "blue" => colour.Blue,
+                                            "yellow" => colour.Yellow,
+                                            "grey" => colour.Grey,
+                                            "brown" => colour.Brown,
+                                            "amber" => colour.Grey,
                                             _ => throw new IndexOutOfRangeException(),
                                         };
                                         if (e.HasValue) {
@@ -356,13 +356,13 @@ namespace S100Framework.Applications
                             if (natsur != default) {
                                 if (!string.IsNullOrEmpty(natsur)) {
                                     foreach (var c in natsur.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                                        DomainModel.S101.natureOfSurface? e = c.ToLowerInvariant() switch {
-                                            "mud" => DomainModel.S101.natureOfSurface.Mud,
-                                            "clay" => DomainModel.S101.natureOfSurface.Clay,
-                                            "silt" => DomainModel.S101.natureOfSurface.Silt,
-                                            "sand" => DomainModel.S101.natureOfSurface.Sand,
-                                            "stone" => DomainModel.S101.natureOfSurface.Stone,
-                                            "gravel" => DomainModel.S101.natureOfSurface.Gravel,
+                                        natureOfSurface? e = c.ToLowerInvariant() switch {
+                                            "mud" => natureOfSurface.Mud,
+                                            "clay" => natureOfSurface.Clay,
+                                            "silt" => natureOfSurface.Silt,
+                                            "sand" => natureOfSurface.Sand,
+                                            "stone" => natureOfSurface.Stone,
+                                            "gravel" => natureOfSurface.Gravel,
                                             _ => throw new IndexOutOfRangeException(),
                                         };
                                         if (e.HasValue) {
@@ -382,8 +382,8 @@ namespace S100Framework.Applications
                             }
                             if (convis != default) {
                                 slopingground.visualProminence = convis switch {
-                                    1 => DomainModel.S101.visualProminence.VisuallyConspicuous,  // visually conspicuous
-                                    2 => DomainModel.S101.visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
+                                    1 => visualProminence.VisuallyConspicuous,  // visually conspicuous
+                                    2 => visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
                                     -32767 => null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
@@ -407,18 +407,18 @@ namespace S100Framework.Applications
                         break;
 
                     case 35: {    // VEGATN
-                            var categoryOfVegetation = catveg?.ToLowerInvariant() switch {
-                                "3" => DomainModel.S101.categoryOfVegetation.Bush,
-                                "4" => DomainModel.S101.categoryOfVegetation.DeciduousWood,
-                                "5" => DomainModel.S101.categoryOfVegetation.ConiferousWood,
-                                "6" => DomainModel.S101.categoryOfVegetation.WoodInGeneralIncMixedWood,
-                                "11" => DomainModel.S101.categoryOfVegetation.Reed,
-                                "13" => DomainModel.S101.categoryOfVegetation.TreeInGeneral,
-                                "14" => DomainModel.S101.categoryOfVegetation.EvergreenTree,
+                            var vegetationCategory = catveg?.ToLowerInvariant() switch {
+                                "3" => categoryOfVegetation.Bush,
+                                "4" => categoryOfVegetation.DeciduousWood,
+                                "5" => categoryOfVegetation.ConiferousWood,
+                                "6" => categoryOfVegetation.WoodInGeneralIncMixedWood,
+                                "11" => categoryOfVegetation.Reed,
+                                "13" => categoryOfVegetation.TreeInGeneral,
+                                "14" => categoryOfVegetation.EvergreenTree,
                                 _ => throw new IndexOutOfRangeException(),
                             };
-                            var vegetation = new S100Framework.DomainModel.S101.FeatureTypes.Vegetation {
-                                categoryOfVegetation = categoryOfVegetation,
+                            var vegetation = new Vegetation {
+                                categoryOfVegetation = vegetationCategory,
                                 visualProminence = null,
                                 elevation = null,
                                 height = null,
@@ -437,8 +437,8 @@ namespace S100Framework.Applications
 
                             if (convis != default) {
                                 vegetation.visualProminence = convis switch {
-                                    1 => DomainModel.S101.visualProminence.VisuallyConspicuous,  // visually conspicuous
-                                    2 => DomainModel.S101.visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
+                                    1 => visualProminence.VisuallyConspicuous,  // visually conspicuous
+                                    2 => visualProminence.NotVisuallyConspicuous,  // not visually conspicuous                                
                                     -32767 => null,
                                     _ => throw new IndexOutOfRangeException(),
                                 };

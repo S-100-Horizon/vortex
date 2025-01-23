@@ -1,5 +1,9 @@
 ﻿using ArcGIS.Core.Data;
 using ArcGIS.Core.Geometry;
+using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.ComplexAttributes;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.DomainModel.S101.InformationTypes;
 using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
@@ -53,22 +57,22 @@ namespace S100Framework.Applications
                         bufferPointset["shape"] = MultipointBuilderEx.CreateMultipoint(mappoint);
 
                         if (quasou == default || !string.Equals(quasou, "5", StringComparison.InvariantCultureIgnoreCase)) {
-                            var sounding = new S100Framework.DomainModel.S101.FeatureTypes.Sounding {
+                            var sounding = new Sounding {
                             };
                             if (quasou != default) {
-                                sounding.qualityOfVerticalMeasurement = new List<S100Framework.DomainModel.S101.qualityOfVerticalMeasurement> {
-                                            (S100Framework.DomainModel.S101.qualityOfVerticalMeasurement)Enum.Parse(typeof(S100Framework.DomainModel.S101.qualityOfVerticalMeasurement), quasou)
+                                sounding.qualityOfVerticalMeasurement = new List<qualityOfVerticalMeasurement> {
+                                            (qualityOfVerticalMeasurement)Enum.Parse(typeof(qualityOfVerticalMeasurement), quasou)
                                         };
                             }
                             if (tecsou != default && !string.IsNullOrEmpty(tecsou)) {
-                                sounding.techniqueOfVerticalMeasurement = new List<S100Framework.DomainModel.S101.techniqueOfVerticalMeasurement> {
-                                            (S100Framework.DomainModel.S101.techniqueOfVerticalMeasurement)Enum.Parse(typeof(S100Framework.DomainModel.S101.techniqueOfVerticalMeasurement), tecsou)
+                                sounding.techniqueOfVerticalMeasurement = new List<techniqueOfVerticalMeasurement> {
+                                            (techniqueOfVerticalMeasurement)Enum.Parse(typeof(techniqueOfVerticalMeasurement), tecsou)
                                         };
                             }
                             if (objnam != default) {
                                 
                                 if (!string.IsNullOrEmpty(objnam.Trim())) {
-                                    sounding.featureName.Add(new DomainModel.S101.ComplexAttributes.featureName {
+                                    sounding.featureName.Add(new featureName {
                                         language = "eng",
                                         nameUsage = null,
                                         name = objnam.Trim(),
@@ -78,9 +82,9 @@ namespace S100Framework.Applications
                             if (nobjnm != default) {
                                 
                                 if (!string.IsNullOrEmpty(nobjnm.Trim())) {
-                                    sounding.featureName.Add(new DomainModel.S101.ComplexAttributes.featureName {
+                                    sounding.featureName.Add(new featureName {
                                         language = "dk",
-                                        nameUsage = DomainModel.S101.nameUsage.AlternateNameDisplay,
+                                        nameUsage = nameUsage.AlternateNameDisplay,
                                         name = nobjnm.Trim(),
                                     });
                                 }
@@ -104,8 +108,8 @@ namespace S100Framework.Applications
                                 using var information = informationtype.CreateRowBuffer();
 
 
-                                var row = new S100Framework.DomainModel.S101.InformationTypes.SpatialQuality {
-                                    qualityOfHorizontalMeasurement = DomainModel.S101.qualityOfHorizontalMeasurement.Approximate,
+                                var row = new SpatialQuality {
+                                    qualityOfHorizontalMeasurement = qualityOfHorizontalMeasurement.Approximate,
                                 };
 
                                 information["ps"] = "S-101";
@@ -119,7 +123,7 @@ namespace S100Framework.Applications
                                 instance of the S-101 Feature type Depth – No Bottom Found. Where this is the case, the attributes
                                 EXPSOU, NOBJNM, OBJNAM, SOUACC and STATUS will not be converted. It is considered that
                                 these attributes are not relevant for Depth – No Bottom Found in S-101. */
-                            var instance = new S100Framework.DomainModel.S101.FeatureTypes.DepthNoBottomFound {
+                            var instance = new DepthNoBottomFound {
 
                             };
 

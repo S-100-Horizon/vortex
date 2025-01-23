@@ -1,6 +1,6 @@
 ﻿using ArcGIS.Core.Data;
+using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using VortexLoader;
 using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
@@ -44,7 +44,7 @@ namespace S100Framework.Applications
                 switch (subtype) {
                     case 1: {     // DEPARE
 
-                            var deptharea = new S100Framework.DomainModel.S101.FeatureTypes.DepthArea {
+                            var deptharea = new DepthArea {
                                 depthRangeMinimumValue = drval1,
                                 depthRangeMaximumValue = drval2.GetValueOrDefault(),
                             };
@@ -61,7 +61,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 5: {     // DRGARE
-                            var dredgedarea = new S100Framework.DomainModel.S101.FeatureTypes.DredgedArea {
+                            var dredgedarea = new DredgedArea {
                                 depthRangeMinimumValue = drval1,
                                 depthRangeMaximumValue = drval2,
                                 dredgedDate = null,
@@ -76,27 +76,27 @@ namespace S100Framework.Applications
 
                             if (!string.IsNullOrEmpty(restrn)) {
                                 foreach (var c in restrn.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                                    DomainModel.S101.restriction? e = c.ToLowerInvariant() switch {
-                                        "1" => DomainModel.S101.restriction.AnchoringProhibited,
-                                        "2" => DomainModel.S101.restriction.AnchoringRestricted,
-                                        "3" => DomainModel.S101.restriction.FishingProhibited,
-                                        "4" => DomainModel.S101.restriction.FishingRestricted,
-                                        "5" => DomainModel.S101.restriction.TrawlingProhibited,
-                                        "6" => DomainModel.S101.restriction.TrawlingRestricted,
-                                        "7" => DomainModel.S101.restriction.EntryProhibited,
-                                        "8" => DomainModel.S101.restriction.EntryRestricted,
-                                        "9" => DomainModel.S101.restriction.DredgingProhibited,
-                                        "10" => DomainModel.S101.restriction.DredgingRestricted,
-                                        "11" => DomainModel.S101.restriction.DischargingProhibited,
-                                        "12" => DomainModel.S101.restriction.DischargingRestricted,
-                                        "13" => DomainModel.S101.restriction.NoWake,
-                                        "14" => DomainModel.S101.restriction.AreaToBeAvoided,
-                                        "15" => DomainModel.S101.restriction.ConstructionProhibited,
-                                        "16" => DomainModel.S101.restriction.DischargingProhibited,
-                                        "17" => DomainModel.S101.restriction.DischargingRestricted,
-                                        "18" => DomainModel.S101.restriction.IndustrialOrMineralExplorationDevelopmentProhibited,
-                                        "19" => DomainModel.S101.restriction.IndustrialOrMineralExplorationDevelopmentRestricted,
-                                        "20" => DomainModel.S101.restriction.DrillingProhibited,
+                                    restriction? e = c.ToLowerInvariant() switch {
+                                        "1" => restriction.AnchoringProhibited,
+                                        "2" => restriction.AnchoringRestricted,
+                                        "3" => restriction.FishingProhibited,
+                                        "4" => restriction.FishingRestricted,
+                                        "5" => restriction.TrawlingProhibited,
+                                        "6" => restriction.TrawlingRestricted,
+                                        "7" => restriction.EntryProhibited,
+                                        "8" => restriction.EntryRestricted,
+                                        "9" => restriction.DredgingProhibited,
+                                        "10" => restriction.DredgingRestricted,
+                                        "11" => restriction.DischargingProhibited,
+                                        "12" => restriction.DischargingRestricted,
+                                        "13" => restriction.NoWake,
+                                        "14" => restriction.AreaToBeAvoided,
+                                        "15" => restriction.ConstructionProhibited,
+                                        "16" => restriction.DischargingProhibited,
+                                        "17" => restriction.DischargingRestricted,
+                                        "18" => restriction.IndustrialOrMineralExplorationDevelopmentProhibited,
+                                        "19" => restriction.IndustrialOrMineralExplorationDevelopmentRestricted,
+                                        "20" => restriction.DrillingProhibited,
                                         _ => throw new IndexOutOfRangeException(),
                                     };
                                     if (e.HasValue) {
@@ -108,23 +108,23 @@ namespace S100Framework.Applications
                             if (!string.IsNullOrEmpty(quasou)) {
                                 
                                 dredgedarea.qualityOfVerticalMeasurement = quasou.ToLowerInvariant() switch {
-                                    "1" => DomainModel.S101.qualityOfVerticalMeasurement.DepthKnown,
-                                    "2" => DomainModel.S101.qualityOfVerticalMeasurement.DepthOrLeastDepthUnknown,
+                                    "1" => qualityOfVerticalMeasurement.DepthKnown,
+                                    "2" => qualityOfVerticalMeasurement.DepthOrLeastDepthUnknown,
                                     _ => throw new IndexOutOfRangeException(),
                                 };
                             }
 
                             if (!string.IsNullOrEmpty(tecsou)) {
                                 foreach (var c in tecsou.Split(',', StringSplitOptions.RemoveEmptyEntries)) {
-                                    DomainModel.S101.techniqueOfVerticalMeasurement? e = c.ToLowerInvariant() switch {
-                                        "1" => DomainModel.S101.techniqueOfVerticalMeasurement.FoundByEchoSounder,
-                                        "2" => DomainModel.S101.techniqueOfVerticalMeasurement.FoundBySideScanSonar,
-                                        "3" => DomainModel.S101.techniqueOfVerticalMeasurement.FoundByMultiBeam,
-                                        "4" => DomainModel.S101.techniqueOfVerticalMeasurement.FoundByDiver,
-                                        "5" => DomainModel.S101.techniqueOfVerticalMeasurement.FoundByLeadLine,
-                                        "8" => DomainModel.S101.techniqueOfVerticalMeasurement.SweptByVerticalAcousticSystem,
-                                        "9" => DomainModel.S101.techniqueOfVerticalMeasurement.FoundByElectromagneticSensor,
-                                        "10" => DomainModel.S101.techniqueOfVerticalMeasurement.Photogrammetry,
+                                    techniqueOfVerticalMeasurement? e = c.ToLowerInvariant() switch {
+                                        "1" => techniqueOfVerticalMeasurement.FoundByEchoSounder,
+                                        "2" => techniqueOfVerticalMeasurement.FoundBySideScanSonar,
+                                        "3" => techniqueOfVerticalMeasurement.FoundByMultiBeam,
+                                        "4" => techniqueOfVerticalMeasurement.FoundByDiver,
+                                        "5" => techniqueOfVerticalMeasurement.FoundByLeadLine,
+                                        "8" => techniqueOfVerticalMeasurement.SweptByVerticalAcousticSystem,
+                                        "9" => techniqueOfVerticalMeasurement.FoundByElectromagneticSensor,
+                                        "10" => techniqueOfVerticalMeasurement.Photogrammetry,
                                         _ => throw new IndexOutOfRangeException(),
                                     };
                                     if (e.HasValue) {
@@ -151,7 +151,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 10: {    //SWPARE
-                            var sweptarea = new S100Framework.DomainModel.S101.FeatureTypes.SweptArea {
+                            var sweptarea = new SweptArea {
                                 depthRangeMinimumValue = drval1,
                                 scaleMinimum = null,
                                 sweptDate = null,
@@ -173,7 +173,7 @@ namespace S100Framework.Applications
                         break;
 
                     case 15: {    // UNSARE
-                            var unsurveyedarea = new S100Framework.DomainModel.S101.FeatureTypes.UnsurveyedArea {
+                            var unsurveyedarea = new UnsurveyedArea {
                             };
                             AddInformation(unsurveyedarea.information, feature);
 

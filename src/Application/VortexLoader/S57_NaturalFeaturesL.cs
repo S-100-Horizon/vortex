@@ -1,5 +1,4 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Data.UtilityNetwork;
 using S100Framework.DomainModel.S101;
 using S100Framework.DomainModel.S101.FeatureTypes;
 using VortexLoader.S57.esri;
@@ -47,7 +46,7 @@ namespace S100Framework.Applications
 
                 switch (subtype) {
                     case 1: { // LNDARE_LandArea
-                            var instance = new S100Framework.DomainModel.S101.FeatureTypes.LandArea {
+                            var instance = new LandArea {
                                 condition = null,
                                 status = null,
                                 scaleMinimum = null,
@@ -89,7 +88,7 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 5: { // LNDELV_LandElevation
-                            var instance = new S100Framework.DomainModel.S101.FeatureTypes.LandElevation {
+                            var instance = new LandElevation {
                                 scaleMinimum = null,
                             };
                             if (plts_comp_scale != default) {
@@ -118,7 +117,7 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 10: { // RAPIDS_Rapids
-                            var instance = new S100Framework.DomainModel.S101.FeatureTypes.Rapids {
+                            var instance = new Rapids {
                                 
                             };
                             if (plts_comp_scale != default) {
@@ -147,7 +146,7 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 15: { // RIVERS_River
-                            var instance = new S100Framework.DomainModel.S101.FeatureTypes.River {
+                            var instance = new River {
                                 
                             };
                             if (plts_comp_scale != default) {
@@ -176,7 +175,7 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 20: { // SLOTOP_SlopeTopline
-                            var instance = new S100Framework.DomainModel.S101.FeatureTypes.SlopeTopline {
+                            var instance = new SlopeTopline {
 
                             };
                             if (plts_comp_scale != default) {
@@ -205,7 +204,7 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 25: { // VEGATN_Vegetation
-                            var instance = new S100Framework.DomainModel.S101.FeatureTypes.Vegetation {
+                            var instance = new Vegetation {
 
                             };
                             if (plts_comp_scale != default) {
@@ -234,7 +233,7 @@ namespace S100Framework.Applications
                         }
                         break;
                     case 30: { // WATFAL_Waterfall
-                            var instance = new S100Framework.DomainModel.S101.FeatureTypes.Waterfall {
+                            var instance = new Waterfall {
 
                             };
                             if (plts_comp_scale != default) {

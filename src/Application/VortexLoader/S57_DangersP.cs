@@ -1,15 +1,6 @@
 ﻿using ArcGIS.Core.Data;
-using ArcGIS.Core.Geometry;
-using CommandLine;
 using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.ComplexAttributes;
 using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.DomainModel.S128.FeatureTypes;
-using VortexLoader;
-using System;
-using static S100Framework.Applications.VortexLoader;
-using static System.Net.WebRequestMethods;
-using IO = System.IO;
 using VortexLoader.S57.esri;
 
 namespace S100Framework.Applications
@@ -80,8 +71,9 @@ namespace S100Framework.Applications
                             // Foul ground
                             if (catObs == 7) {
                                 var foulGround = new FoulGround();
-                                
+
                                 //foulGround.verticalUncertainty = 
+                                AddStatus(foulGround.status, feature);
                                 AddFeatureName(foulGround.featureName, feature);
                                 AddInformation(foulGround.information, feature);
                                 buffer["ps"] = ps;
@@ -107,7 +99,7 @@ namespace S100Framework.Applications
 
                             waterLevelEffect waterLeveleffectCurrent = default;
 
-                            var obstruction = new S100Framework.DomainModel.S101.FeatureTypes.Obstruction {
+                            var obstruction = new Obstruction {
                                 surroundingDepth = valsou,
                                 waterLevelEffect = waterLeveleffectCurrent
                             };
@@ -173,6 +165,7 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue)
                                 obstruction.scaleMinimum = current.PLTS_COMP_SCALE;
 
+                            AddStatus(obstruction.status, feature);
                             AddFeatureName(obstruction.featureName, feature);
                             AddInformation(obstruction.information, feature);
 
@@ -188,7 +181,7 @@ namespace S100Framework.Applications
                         
                     case 35: { // UWTROC
                             // TODO: surrounding depth, valueofsounding
-                            var uwtroc = new S100Framework.DomainModel.S101.FeatureTypes.UnderwaterAwashRock {
+                            var uwtroc = new UnderwaterAwashRock {
                                 surroundingDepth = 0,
                                 valueOfSounding = 0,
                                 waterLevelEffect = waterLevelEffect.CoversAndUncovers
@@ -213,7 +206,7 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 uwtroc.scaleMinimum = current.PLTS_COMP_SCALE;
                             }
-
+                            AddStatus(uwtroc.status, feature);
                             AddFeatureName(uwtroc.featureName, feature);
                             AddInformation(uwtroc.information, feature);
 
@@ -236,7 +229,7 @@ namespace S100Framework.Applications
                     case 45: { // WRECKS
                             waterLevelEffect waterLeveleffectCurrent = default;
 
-                            var wreck = new S100Framework.DomainModel.S101.FeatureTypes.Wreck {
+                            var wreck = new Wreck {
                                 surroundingDepth = valsou,
                                 waterLevelEffect = waterLeveleffectCurrent
 
@@ -261,7 +254,7 @@ namespace S100Framework.Applications
                             if (current.PLTS_COMP_SCALE.HasValue) {
                                 wreck.scaleMinimum = current.PLTS_COMP_SCALE.Value;
                             }
-
+                            AddStatus(wreck.status, feature);
                             AddFeatureName(wreck.featureName, feature);
                             AddInformation(wreck.information, feature);
 
