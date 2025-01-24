@@ -1233,7 +1233,7 @@ namespace S100Framework
                             else
                                 b.AppendLine($"\tCreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(\"{code.Replace("ViewModel", string.Empty)}\"),");
 
-                            b.AppendLine($"\tCreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(),");
+                            b.AppendLine($"\tCreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(\"{f}\"),");
                             b.AppendLine($"}},");
 
                             viewBuilder.AppendLine($"\t\t\tpublic class {role}{f}RefIdViewModel : FeatureRefIdViewModel {{");
@@ -1394,15 +1394,15 @@ namespace S100Framework
                             b.AppendLine($"\tAssociationTypes = [{string.Join(',', informationTypeRefs)}],");
 
                             if (!u.HasValue || u.Value > 1)
-                                b.AppendLine($"\tCreateForeignInformationBinding = () => new MultiInformationBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(),");
+                                b.AppendLine($"\tCreateForeignInformationBinding = () => new MultiInformationBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(\"{code.Replace("ViewModel", string.Empty)}\"),");
                             else if (lower > 0)
-                                b.AppendLine($"\tCreateForeignInformationBinding = () => new SingleInformationBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(),");
+                                b.AppendLine($"\tCreateForeignInformationBinding = () => new SingleInformationBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(\"{code.Replace("ViewModel", string.Empty)}\"),");
                             else
-                                b.AppendLine($"\tCreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(),");
+                                b.AppendLine($"\tCreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<{code}ViewModel.{role}{f}RefIdViewModel>(\"{code.Replace("ViewModel", string.Empty)}\"),");
 
                             var createLocal = association.Parent!.Name.LocalName switch {
-                                "S100_FC_FeatureType" => $"\tCreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(),",
-                                _ or "S100_FC_InformationType" => $"\tCreateLocalInformationBinding = () => new SingleInformationBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(),",
+                                "S100_FC_FeatureType" => $"\tCreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(\"{f}\"),",
+                                _ or "S100_FC_InformationType" => $"\tCreateLocalInformationBinding = () => new SingleInformationBindingViewModel<{f}ViewModel.{f}RefIdViewModel>(\"{f}\"),",
                             };
                             b.AppendLine(createLocal);
                             b.AppendLine($"}},");

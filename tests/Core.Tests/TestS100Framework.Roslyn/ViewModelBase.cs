@@ -198,6 +198,7 @@ namespace S100Framework.WPF.ViewModel
             set { this.SetValue(ref _refId, value); }
         }
 
+        [Browsable(false)]
         public abstract Type[] AssociationTypes { get; }
     }
 
@@ -289,6 +290,12 @@ namespace S100Framework.WPF.ViewModel
 
     public class SingleInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
     {
+        private string _displayName;
+
+        public SingleInformationBindingViewModel(string displayName) { _displayName = displayName; }
+
+        public override string ToString() => _displayName;
+
         private T _refId = new();
 
         [ExpandableObject]
@@ -300,6 +307,13 @@ namespace S100Framework.WPF.ViewModel
 
     public class OptionalInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel
     {
+        private string _displayName;
+
+        public OptionalInformationBindingViewModel(string displayName) { _displayName = displayName; }
+
+        public override string ToString() => _displayName;
+
+
         private T? _refId = default;
 
         [ExpandableObject]
@@ -311,6 +325,13 @@ namespace S100Framework.WPF.ViewModel
 
     public class MultiInformationBindingViewModel<T> : InformationBindingViewModel<T> where T : InformationRefIdViewModel, new()
     {
+        private string _displayName;
+
+        public MultiInformationBindingViewModel(string displayName) { _displayName = displayName; }
+
+        public override string ToString() => _displayName;
+
+
         [Editor(typeof(RefIdEditor), typeof(RefIdEditor))]
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
     }

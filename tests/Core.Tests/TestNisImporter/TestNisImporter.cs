@@ -1,7 +1,10 @@
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
+using Microsoft.VisualStudio.TestPlatform.Utilities;
 using S100Framework.Applications;
 using System.Text;
+using System.Text.RegularExpressions;
+using Xunit.Abstractions;
 using IO = System.IO;
 
 namespace TestNisImporter
@@ -9,7 +12,10 @@ namespace TestNisImporter
     public class TestNisImporter
     {
 
-        public TestNisImporter() {
+        private readonly ITestOutputHelper _output;
+
+        public TestNisImporter(ITestOutputHelper output) {
+            this._output = output;
             ArcGIS.Core.Hosting.Host.Initialize();
         }
 
@@ -218,7 +224,47 @@ namespace TestNisImporter
         }
 
 
+        [Fact]
+        public void BuildImportS57ToGeodatabaseScripts() {
+            var root = new IO.DirectoryInfo(@"c:\temp\ENC\");
 
+            var python = new StringBuilder();
+
+            foreach (var enc in root.EnumerateDirectories()) {
+                var command = ImportS57ToGeodatabase(enc, "geodatabase.gdb", (e) => true);
+
+                python.AppendLine(command);
+            }
+
+            _output.WriteLine(python.ToString());
+        }
+
+        private static string ImportS57ToGeodatabase(DirectoryInfo folder, string connection, Func<string, bool> include) {
+            var tasks = new List<string>();
+
+            var regex = new Regex(@"\d{3}$");
+
+            foreach (var file in folder.GetFiles("*.000").OrderBy(e => IO.Path.GetFileNameWithoutExtension(e.FullName))) {
+                var name = IO.Path.GetFileNameWithoutExtension(file.FullName);
+
+                if (!include.Invoke(name))
+                    continue;
+
+                var updates = folder.GetFiles("*.*", SearchOption.TopDirectoryOnly).Where(e => !e.Extension.Equals(".000") && !e.Extension.Equals(".031") && regex.IsMatch(e.Name)).ToList();
+
+
+                tasks.Add($"arcpy.maritime.ImportS57ToGeodatabase(" + Environment.NewLine +
+                $"    in_base_cell = r\"{file.FullName}\"," + Environment.NewLine +
+                $"    target_workspace=r\"{connection}\"," + Environment.NewLine +
+                $"    in_update_cells=r\"{string.Join(';', updates)}\"," + Environment.NewLine +
+                 "    in_product_config=None" + Environment.NewLine +
+                ")" + Environment.NewLine);
+            }
+
+            var commands = string.Join(Environment.NewLine, tasks);
+
+            return commands;
+        }
 
     }
 }

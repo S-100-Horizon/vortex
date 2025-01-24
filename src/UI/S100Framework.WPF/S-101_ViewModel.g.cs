@@ -616,8 +616,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(SpatialQuality)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<QualityOfBathymetricDataCompositionViewModel.theQualityInformationQualityOfBathymetricDataRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<QualityOfBathymetricDataViewModel.QualityOfBathymetricDataRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<QualityOfBathymetricDataCompositionViewModel.theQualityInformationQualityOfBathymetricDataRefIdViewModel>("QualityOfBathymetricDataComposition"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<QualityOfBathymetricDataViewModel.QualityOfBathymetricDataRefIdViewModel>("QualityOfBathymetricData"),
                 }
 
                 ]
@@ -631,8 +631,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationAdministrationAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AdministrationAreaViewModel.AdministrationAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationAdministrationAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AdministrationAreaViewModel.AdministrationAreaRefIdViewModel>("AdministrationArea"),
                 }, new InformationAssociationConnector<AirportAirfield>()
                 {
                     roleType = roleType.association,
@@ -640,8 +640,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationAirportAirfieldRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AirportAirfieldViewModel.AirportAirfieldRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationAirportAirfieldRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AirportAirfieldViewModel.AirportAirfieldRefIdViewModel>("AirportAirfield"),
                 }, new InformationAssociationConnector<AnchorageArea>()
                 {
                     roleType = roleType.association,
@@ -649,8 +649,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationAnchorageAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationAnchorageAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>("AnchorageArea"),
                 }, new InformationAssociationConnector<AnchorBerth>()
                 {
                     roleType = roleType.association,
@@ -658,8 +658,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationAnchorBerthRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationAnchorBerthRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
                 }, new InformationAssociationConnector<ArchipelagicSeaLane>()
                 {
                     roleType = roleType.association,
@@ -667,8 +667,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationArchipelagicSeaLaneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationArchipelagicSeaLaneRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>("ArchipelagicSeaLane"),
                 }, new InformationAssociationConnector<ArchipelagicSeaLaneArea>()
                 {
                     roleType = roleType.association,
@@ -676,8 +676,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationArchipelagicSeaLaneAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAreaViewModel.ArchipelagicSeaLaneAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationArchipelagicSeaLaneAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAreaViewModel.ArchipelagicSeaLaneAreaRefIdViewModel>("ArchipelagicSeaLaneArea"),
                 }, new InformationAssociationConnector<ArchipelagicSeaLaneAxis>()
                 {
                     roleType = roleType.association,
@@ -685,8 +685,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationArchipelagicSeaLaneAxisRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAxisViewModel.ArchipelagicSeaLaneAxisRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationArchipelagicSeaLaneAxisRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAxisViewModel.ArchipelagicSeaLaneAxisRefIdViewModel>("ArchipelagicSeaLaneAxis"),
                 }, new InformationAssociationConnector<Berth>()
                 {
                     roleType = roleType.association,
@@ -694,8 +694,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationBerthRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthViewModel.BerthRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationBerthRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
                 }, new InformationAssociationConnector<Bollard>()
                 {
                     roleType = roleType.association,
@@ -703,8 +703,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationBollardRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BollardViewModel.BollardRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationBollardRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BollardViewModel.BollardRefIdViewModel>("Bollard"),
                 }, new InformationAssociationConnector<Bridge>()
                 {
                     roleType = roleType.association,
@@ -712,8 +712,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationBridgeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationBridgeRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>("Bridge"),
                 }, new InformationAssociationConnector<Building>()
                 {
                     roleType = roleType.association,
@@ -721,8 +721,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationBuildingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationBuildingRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>("Building"),
                 }, new InformationAssociationConnector<BuiltUpArea>()
                 {
                     roleType = roleType.association,
@@ -730,8 +730,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationBuiltUpAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuiltUpAreaViewModel.BuiltUpAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationBuiltUpAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuiltUpAreaViewModel.BuiltUpAreaRefIdViewModel>("BuiltUpArea"),
                 }, new InformationAssociationConnector<CableArea>()
                 {
                     roleType = roleType.association,
@@ -739,8 +739,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCableAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableAreaViewModel.CableAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCableAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableAreaViewModel.CableAreaRefIdViewModel>("CableArea"),
                 }, new InformationAssociationConnector<CableOverhead>()
                 {
                     roleType = roleType.association,
@@ -748,8 +748,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCableOverheadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableOverheadViewModel.CableOverheadRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCableOverheadRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableOverheadViewModel.CableOverheadRefIdViewModel>("CableOverhead"),
                 }, new InformationAssociationConnector<CableSubmarine>()
                 {
                     roleType = roleType.association,
@@ -757,8 +757,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCableSubmarineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableSubmarineViewModel.CableSubmarineRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCableSubmarineRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableSubmarineViewModel.CableSubmarineRefIdViewModel>("CableSubmarine"),
                 }, new InformationAssociationConnector<Canal>()
                 {
                     roleType = roleType.association,
@@ -766,8 +766,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCanalRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CanalViewModel.CanalRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCanalRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CanalViewModel.CanalRefIdViewModel>("Canal"),
                 }, new InformationAssociationConnector<CardinalBeacon>()
                 {
                     roleType = roleType.association,
@@ -775,8 +775,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCardinalBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCardinalBeaconRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>("CardinalBeacon"),
                 }, new InformationAssociationConnector<CardinalBuoy>()
                 {
                     roleType = roleType.association,
@@ -784,8 +784,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCardinalBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCardinalBuoyRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>("CardinalBuoy"),
                 }, new InformationAssociationConnector<CargoTranshipmentArea>()
                 {
                     roleType = roleType.association,
@@ -793,8 +793,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCargoTranshipmentAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CargoTranshipmentAreaViewModel.CargoTranshipmentAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCargoTranshipmentAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CargoTranshipmentAreaViewModel.CargoTranshipmentAreaRefIdViewModel>("CargoTranshipmentArea"),
                 }, new InformationAssociationConnector<Causeway>()
                 {
                     roleType = roleType.association,
@@ -802,8 +802,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCausewayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CausewayViewModel.CausewayRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCausewayRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CausewayViewModel.CausewayRefIdViewModel>("Causeway"),
                 }, new InformationAssociationConnector<CautionArea>()
                 {
                     roleType = roleType.association,
@@ -811,8 +811,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCautionAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CautionAreaViewModel.CautionAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCautionAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CautionAreaViewModel.CautionAreaRefIdViewModel>("CautionArea"),
                 }, new InformationAssociationConnector<Checkpoint>()
                 {
                     roleType = roleType.association,
@@ -820,8 +820,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCheckpointRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CheckpointViewModel.CheckpointRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCheckpointRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CheckpointViewModel.CheckpointRefIdViewModel>("Checkpoint"),
                 }, new InformationAssociationConnector<CoastGuardStation>()
                 {
                     roleType = roleType.association,
@@ -829,8 +829,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCoastGuardStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastGuardStationViewModel.CoastGuardStationRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCoastGuardStationRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastGuardStationViewModel.CoastGuardStationRefIdViewModel>("CoastGuardStation"),
                 }, new InformationAssociationConnector<Coastline>()
                 {
                     roleType = roleType.association,
@@ -838,8 +838,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCoastlineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastlineViewModel.CoastlineRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCoastlineRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastlineViewModel.CoastlineRefIdViewModel>("Coastline"),
                 }, new InformationAssociationConnector<CollisionRegulationsLimit>()
                 {
                     roleType = roleType.association,
@@ -847,8 +847,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCollisionRegulationsLimitRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CollisionRegulationsLimitViewModel.CollisionRegulationsLimitRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCollisionRegulationsLimitRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CollisionRegulationsLimitViewModel.CollisionRegulationsLimitRefIdViewModel>("CollisionRegulationsLimit"),
                 }, new InformationAssociationConnector<ContiguousZone>()
                 {
                     roleType = roleType.association,
@@ -856,8 +856,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationContiguousZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ContiguousZoneViewModel.ContiguousZoneRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationContiguousZoneRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ContiguousZoneViewModel.ContiguousZoneRefIdViewModel>("ContiguousZone"),
                 }, new InformationAssociationConnector<ContinentalShelfArea>()
                 {
                     roleType = roleType.association,
@@ -865,8 +865,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationContinentalShelfAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ContinentalShelfAreaViewModel.ContinentalShelfAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationContinentalShelfAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ContinentalShelfAreaViewModel.ContinentalShelfAreaRefIdViewModel>("ContinentalShelfArea"),
                 }, new InformationAssociationConnector<Conveyor>()
                 {
                     roleType = roleType.association,
@@ -874,8 +874,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationConveyorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ConveyorViewModel.ConveyorRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationConveyorRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ConveyorViewModel.ConveyorRefIdViewModel>("Conveyor"),
                 }, new InformationAssociationConnector<Crane>()
                 {
                     roleType = roleType.association,
@@ -883,8 +883,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCraneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CraneViewModel.CraneRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCraneRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CraneViewModel.CraneRefIdViewModel>("Crane"),
                 }, new InformationAssociationConnector<CurrentNonGravitational>()
                 {
                     roleType = roleType.association,
@@ -892,8 +892,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCurrentNonGravitationalRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CurrentNonGravitationalViewModel.CurrentNonGravitationalRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCurrentNonGravitationalRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CurrentNonGravitationalViewModel.CurrentNonGravitationalRefIdViewModel>("CurrentNonGravitational"),
                 }, new InformationAssociationConnector<CustomZone>()
                 {
                     roleType = roleType.association,
@@ -901,8 +901,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCustomZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CustomZoneViewModel.CustomZoneRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationCustomZoneRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CustomZoneViewModel.CustomZoneRefIdViewModel>("CustomZone"),
                 }, new InformationAssociationConnector<Dam>()
                 {
                     roleType = roleType.association,
@@ -910,8 +910,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDamRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DamViewModel.DamRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDamRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DamViewModel.DamRefIdViewModel>("Dam"),
                 }, new InformationAssociationConnector<Daymark>()
                 {
                     roleType = roleType.association,
@@ -919,8 +919,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDaymarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDaymarkRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>("Daymark"),
                 }, new InformationAssociationConnector<DeepWaterRoute>()
                 {
                     roleType = roleType.association,
@@ -928,8 +928,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDeepWaterRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDeepWaterRouteRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>("DeepWaterRoute"),
                 }, new InformationAssociationConnector<DeepWaterRouteCentreline>()
                 {
                     roleType = roleType.association,
@@ -937,8 +937,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDeepWaterRouteCentrelineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteCentrelineViewModel.DeepWaterRouteCentrelineRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDeepWaterRouteCentrelineRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteCentrelineViewModel.DeepWaterRouteCentrelineRefIdViewModel>("DeepWaterRouteCentreline"),
                 }, new InformationAssociationConnector<DeepWaterRoutePart>()
                 {
                     roleType = roleType.association,
@@ -946,8 +946,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDeepWaterRoutePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRoutePartViewModel.DeepWaterRoutePartRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDeepWaterRoutePartRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRoutePartViewModel.DeepWaterRoutePartRefIdViewModel>("DeepWaterRoutePart"),
                 }, new InformationAssociationConnector<DepthArea>()
                 {
                     roleType = roleType.association,
@@ -955,8 +955,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDepthAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthAreaViewModel.DepthAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDepthAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthAreaViewModel.DepthAreaRefIdViewModel>("DepthArea"),
                 }, new InformationAssociationConnector<DepthContour>()
                 {
                     roleType = roleType.association,
@@ -964,8 +964,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDepthContourRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthContourViewModel.DepthContourRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDepthContourRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthContourViewModel.DepthContourRefIdViewModel>("DepthContour"),
                 }, new InformationAssociationConnector<DepthNoBottomFound>()
                 {
                     roleType = roleType.association,
@@ -973,8 +973,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDepthNoBottomFoundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthNoBottomFoundViewModel.DepthNoBottomFoundRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDepthNoBottomFoundRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthNoBottomFoundViewModel.DepthNoBottomFoundRefIdViewModel>("DepthNoBottomFound"),
                 }, new InformationAssociationConnector<DiscolouredWater>()
                 {
                     roleType = roleType.association,
@@ -982,8 +982,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDiscolouredWaterRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DiscolouredWaterViewModel.DiscolouredWaterRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDiscolouredWaterRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DiscolouredWaterViewModel.DiscolouredWaterRefIdViewModel>("DiscolouredWater"),
                 }, new InformationAssociationConnector<DistanceMark>()
                 {
                     roleType = roleType.association,
@@ -991,8 +991,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDistanceMarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DistanceMarkViewModel.DistanceMarkRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDistanceMarkRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DistanceMarkViewModel.DistanceMarkRefIdViewModel>("DistanceMark"),
                 }, new InformationAssociationConnector<DockArea>()
                 {
                     roleType = roleType.association,
@@ -1000,8 +1000,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDockAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDockAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
                 }, new InformationAssociationConnector<Dolphin>()
                 {
                     roleType = roleType.association,
@@ -1009,8 +1009,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDolphinRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDolphinRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>("Dolphin"),
                 }, new InformationAssociationConnector<DredgedArea>()
                 {
                     roleType = roleType.association,
@@ -1018,8 +1018,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDredgedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DredgedAreaViewModel.DredgedAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDredgedAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DredgedAreaViewModel.DredgedAreaRefIdViewModel>("DredgedArea"),
                 }, new InformationAssociationConnector<DryDock>()
                 {
                     roleType = roleType.association,
@@ -1027,8 +1027,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDryDockRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDryDockRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>("DryDock"),
                 }, new InformationAssociationConnector<DumpingGround>()
                 {
                     roleType = roleType.association,
@@ -1036,8 +1036,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDumpingGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDumpingGroundRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>("DumpingGround"),
                 }, new InformationAssociationConnector<Dyke>()
                 {
                     roleType = roleType.association,
@@ -1045,8 +1045,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDykeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DykeViewModel.DykeRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationDykeRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DykeViewModel.DykeRefIdViewModel>("Dyke"),
                 }, new InformationAssociationConnector<EmergencyWreckMarkingBuoy>()
                 {
                     roleType = roleType.association,
@@ -1054,8 +1054,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationEmergencyWreckMarkingBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<EmergencyWreckMarkingBuoyViewModel.EmergencyWreckMarkingBuoyRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationEmergencyWreckMarkingBuoyRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<EmergencyWreckMarkingBuoyViewModel.EmergencyWreckMarkingBuoyRefIdViewModel>("EmergencyWreckMarkingBuoy"),
                 }, new InformationAssociationConnector<ExclusiveEconomicZone>()
                 {
                     roleType = roleType.association,
@@ -1063,8 +1063,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationExclusiveEconomicZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ExclusiveEconomicZoneViewModel.ExclusiveEconomicZoneRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationExclusiveEconomicZoneRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ExclusiveEconomicZoneViewModel.ExclusiveEconomicZoneRefIdViewModel>("ExclusiveEconomicZone"),
                 }, new InformationAssociationConnector<Fairway>()
                 {
                     roleType = roleType.association,
@@ -1072,8 +1072,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFairwayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwayViewModel.FairwayRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFairwayRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwayViewModel.FairwayRefIdViewModel>("Fairway"),
                 }, new InformationAssociationConnector<FairwaySystem>()
                 {
                     roleType = roleType.association,
@@ -1081,8 +1081,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFairwaySystemRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwaySystemViewModel.FairwaySystemRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFairwaySystemRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwaySystemViewModel.FairwaySystemRefIdViewModel>("FairwaySystem"),
                 }, new InformationAssociationConnector<FenceWall>()
                 {
                     roleType = roleType.association,
@@ -1090,8 +1090,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFenceWallRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FenceWallViewModel.FenceWallRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFenceWallRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FenceWallViewModel.FenceWallRefIdViewModel>("FenceWall"),
                 }, new InformationAssociationConnector<FerryRoute>()
                 {
                     roleType = roleType.association,
@@ -1099,8 +1099,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFerryRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FerryRouteViewModel.FerryRouteRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFerryRouteRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FerryRouteViewModel.FerryRouteRefIdViewModel>("FerryRoute"),
                 }, new InformationAssociationConnector<FisheryZone>()
                 {
                     roleType = roleType.association,
@@ -1108,8 +1108,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFisheryZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FisheryZoneViewModel.FisheryZoneRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFisheryZoneRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FisheryZoneViewModel.FisheryZoneRefIdViewModel>("FisheryZone"),
                 }, new InformationAssociationConnector<FishingFacility>()
                 {
                     roleType = roleType.association,
@@ -1117,8 +1117,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFishingFacilityRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingFacilityViewModel.FishingFacilityRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFishingFacilityRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingFacilityViewModel.FishingFacilityRefIdViewModel>("FishingFacility"),
                 }, new InformationAssociationConnector<FishingGround>()
                 {
                     roleType = roleType.association,
@@ -1126,8 +1126,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFishingGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingGroundViewModel.FishingGroundRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFishingGroundRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingGroundViewModel.FishingGroundRefIdViewModel>("FishingGround"),
                 }, new InformationAssociationConnector<FloatingDock>()
                 {
                     roleType = roleType.association,
@@ -1135,8 +1135,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFloatingDockRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFloatingDockRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
                 }, new InformationAssociationConnector<FogSignal>()
                 {
                     roleType = roleType.association,
@@ -1144,8 +1144,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFogSignalRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FogSignalViewModel.FogSignalRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFogSignalRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FogSignalViewModel.FogSignalRefIdViewModel>("FogSignal"),
                 }, new InformationAssociationConnector<FortifiedStructure>()
                 {
                     roleType = roleType.association,
@@ -1153,8 +1153,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFortifiedStructureRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFortifiedStructureRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>("FortifiedStructure"),
                 }, new InformationAssociationConnector<FoulGround>()
                 {
                     roleType = roleType.association,
@@ -1162,8 +1162,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFoulGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FoulGroundViewModel.FoulGroundRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFoulGroundRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FoulGroundViewModel.FoulGroundRefIdViewModel>("FoulGround"),
                 }, new InformationAssociationConnector<FreePortArea>()
                 {
                     roleType = roleType.association,
@@ -1171,8 +1171,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFreePortAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FreePortAreaViewModel.FreePortAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationFreePortAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FreePortAreaViewModel.FreePortAreaRefIdViewModel>("FreePortArea"),
                 }, new InformationAssociationConnector<Gate>()
                 {
                     roleType = roleType.association,
@@ -1180,8 +1180,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationGateRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GateViewModel.GateRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationGateRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GateViewModel.GateRefIdViewModel>("Gate"),
                 }, new InformationAssociationConnector<Gridiron>()
                 {
                     roleType = roleType.association,
@@ -1189,8 +1189,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationGridironRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GridironViewModel.GridironRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationGridironRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GridironViewModel.GridironRefIdViewModel>("Gridiron"),
                 }, new InformationAssociationConnector<HarbourAreaAdministrative>()
                 {
                     roleType = roleType.association,
@@ -1198,8 +1198,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationHarbourAreaAdministrativeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationHarbourAreaAdministrativeRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
                 }, new InformationAssociationConnector<HarbourFacility>()
                 {
                     roleType = roleType.association,
@@ -1207,8 +1207,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationHarbourFacilityRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationHarbourFacilityRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>("HarbourFacility"),
                 }, new InformationAssociationConnector<Helipad>()
                 {
                     roleType = roleType.association,
@@ -1216,8 +1216,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationHelipadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HelipadViewModel.HelipadRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationHelipadRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HelipadViewModel.HelipadRefIdViewModel>("Helipad"),
                 }, new InformationAssociationConnector<Hulk>()
                 {
                     roleType = roleType.association,
@@ -1225,8 +1225,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationHulkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HulkViewModel.HulkRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationHulkRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HulkViewModel.HulkRefIdViewModel>("Hulk"),
                 }, new InformationAssociationConnector<IceArea>()
                 {
                     roleType = roleType.association,
@@ -1234,8 +1234,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationIceAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IceAreaViewModel.IceAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationIceAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IceAreaViewModel.IceAreaRefIdViewModel>("IceArea"),
                 }, new InformationAssociationConnector<InformationArea>()
                 {
                     roleType = roleType.association,
@@ -1243,8 +1243,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationInformationAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InformationAreaViewModel.InformationAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationInformationAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InformationAreaViewModel.InformationAreaRefIdViewModel>("InformationArea"),
                 }, new InformationAssociationConnector<InshoreTrafficZone>()
                 {
                     roleType = roleType.association,
@@ -1252,8 +1252,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationInshoreTrafficZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InshoreTrafficZoneViewModel.InshoreTrafficZoneRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationInshoreTrafficZoneRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InshoreTrafficZoneViewModel.InshoreTrafficZoneRefIdViewModel>("InshoreTrafficZone"),
                 }, new InformationAssociationConnector<InstallationBuoy>()
                 {
                     roleType = roleType.association,
@@ -1261,8 +1261,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationInstallationBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InstallationBuoyViewModel.InstallationBuoyRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationInstallationBuoyRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InstallationBuoyViewModel.InstallationBuoyRefIdViewModel>("InstallationBuoy"),
                 }, new InformationAssociationConnector<IslandGroup>()
                 {
                     roleType = roleType.association,
@@ -1270,8 +1270,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationIslandGroupRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IslandGroupViewModel.IslandGroupRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationIslandGroupRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IslandGroupViewModel.IslandGroupRefIdViewModel>("IslandGroup"),
                 }, new InformationAssociationConnector<IsolatedDangerBeacon>()
                 {
                     roleType = roleType.association,
@@ -1279,8 +1279,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationIsolatedDangerBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationIsolatedDangerBeaconRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>("IsolatedDangerBeacon"),
                 }, new InformationAssociationConnector<IsolatedDangerBuoy>()
                 {
                     roleType = roleType.association,
@@ -1288,8 +1288,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationIsolatedDangerBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationIsolatedDangerBuoyRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>("IsolatedDangerBuoy"),
                 }, new InformationAssociationConnector<Lake>()
                 {
                     roleType = roleType.association,
@@ -1297,8 +1297,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLakeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LakeViewModel.LakeRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLakeRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LakeViewModel.LakeRefIdViewModel>("Lake"),
                 }, new InformationAssociationConnector<LandArea>()
                 {
                     roleType = roleType.association,
@@ -1306,8 +1306,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLandAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandAreaViewModel.LandAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLandAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandAreaViewModel.LandAreaRefIdViewModel>("LandArea"),
                 }, new InformationAssociationConnector<LandElevation>()
                 {
                     roleType = roleType.association,
@@ -1315,8 +1315,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLandElevationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandElevationViewModel.LandElevationRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLandElevationRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandElevationViewModel.LandElevationRefIdViewModel>("LandElevation"),
                 }, new InformationAssociationConnector<Landmark>()
                 {
                     roleType = roleType.association,
@@ -1324,8 +1324,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLandmarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLandmarkRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>("Landmark"),
                 }, new InformationAssociationConnector<LandRegion>()
                 {
                     roleType = roleType.association,
@@ -1333,8 +1333,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLandRegionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandRegionViewModel.LandRegionRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLandRegionRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandRegionViewModel.LandRegionRefIdViewModel>("LandRegion"),
                 }, new InformationAssociationConnector<LateralBeacon>()
                 {
                     roleType = roleType.association,
@@ -1342,8 +1342,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLateralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLateralBeaconRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>("LateralBeacon"),
                 }, new InformationAssociationConnector<LateralBuoy>()
                 {
                     roleType = roleType.association,
@@ -1351,8 +1351,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLateralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLateralBuoyRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>("LateralBuoy"),
                 }, new InformationAssociationConnector<LightAirObstruction>()
                 {
                     roleType = roleType.association,
@@ -1360,8 +1360,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightAirObstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAirObstructionViewModel.LightAirObstructionRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightAirObstructionRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAirObstructionViewModel.LightAirObstructionRefIdViewModel>("LightAirObstruction"),
                 }, new InformationAssociationConnector<LightAllAround>()
                 {
                     roleType = roleType.association,
@@ -1369,8 +1369,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightAllAroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightAllAroundRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>("LightAllAround"),
                 }, new InformationAssociationConnector<LightFloat>()
                 {
                     roleType = roleType.association,
@@ -1378,8 +1378,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightFloatRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightFloatRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>("LightFloat"),
                 }, new InformationAssociationConnector<LightFogDetector>()
                 {
                     roleType = roleType.association,
@@ -1387,8 +1387,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightFogDetectorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFogDetectorViewModel.LightFogDetectorRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightFogDetectorRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFogDetectorViewModel.LightFogDetectorRefIdViewModel>("LightFogDetector"),
                 }, new InformationAssociationConnector<LightSectored>()
                 {
                     roleType = roleType.association,
@@ -1396,8 +1396,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightSectoredRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightSectoredRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>("LightSectored"),
                 }, new InformationAssociationConnector<LightVessel>()
                 {
                     roleType = roleType.association,
@@ -1405,8 +1405,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightVesselRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLightVesselRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>("LightVessel"),
                 }, new InformationAssociationConnector<LocalMagneticAnomaly>()
                 {
                     roleType = roleType.association,
@@ -1414,8 +1414,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLocalMagneticAnomalyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LocalMagneticAnomalyViewModel.LocalMagneticAnomalyRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLocalMagneticAnomalyRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LocalMagneticAnomalyViewModel.LocalMagneticAnomalyRefIdViewModel>("LocalMagneticAnomaly"),
                 }, new InformationAssociationConnector<LockBasin>()
                 {
                     roleType = roleType.association,
@@ -1423,8 +1423,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLockBasinRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LockBasinViewModel.LockBasinRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLockBasinRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LockBasinViewModel.LockBasinRefIdViewModel>("LockBasin"),
                 }, new InformationAssociationConnector<LogPond>()
                 {
                     roleType = roleType.association,
@@ -1432,8 +1432,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLogPondRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LogPondViewModel.LogPondRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationLogPondRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LogPondViewModel.LogPondRefIdViewModel>("LogPond"),
                 }, new InformationAssociationConnector<MagneticVariation>()
                 {
                     roleType = roleType.association,
@@ -1441,8 +1441,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMagneticVariationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MagneticVariationViewModel.MagneticVariationRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMagneticVariationRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MagneticVariationViewModel.MagneticVariationRefIdViewModel>("MagneticVariation"),
                 }, new InformationAssociationConnector<MarineFarmCulture>()
                 {
                     roleType = roleType.association,
@@ -1450,8 +1450,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMarineFarmCultureRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineFarmCultureViewModel.MarineFarmCultureRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMarineFarmCultureRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineFarmCultureViewModel.MarineFarmCultureRefIdViewModel>("MarineFarmCulture"),
                 }, new InformationAssociationConnector<MarinePollutionRegulationsArea>()
                 {
                     roleType = roleType.association,
@@ -1459,8 +1459,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMarinePollutionRegulationsAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarinePollutionRegulationsAreaViewModel.MarinePollutionRegulationsAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMarinePollutionRegulationsAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarinePollutionRegulationsAreaViewModel.MarinePollutionRegulationsAreaRefIdViewModel>("MarinePollutionRegulationsArea"),
                 }, new InformationAssociationConnector<MilitaryPracticeArea>()
                 {
                     roleType = roleType.association,
@@ -1468,8 +1468,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMilitaryPracticeAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MilitaryPracticeAreaViewModel.MilitaryPracticeAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMilitaryPracticeAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MilitaryPracticeAreaViewModel.MilitaryPracticeAreaRefIdViewModel>("MilitaryPracticeArea"),
                 }, new InformationAssociationConnector<MooringArea>()
                 {
                     roleType = roleType.association,
@@ -1477,8 +1477,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMooringAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringAreaViewModel.MooringAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMooringAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringAreaViewModel.MooringAreaRefIdViewModel>("MooringArea"),
                 }, new InformationAssociationConnector<MooringBuoy>()
                 {
                     roleType = roleType.association,
@@ -1486,8 +1486,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMooringBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMooringBuoyRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>("MooringBuoy"),
                 }, new InformationAssociationConnector<MooringTrot>()
                 {
                     roleType = roleType.association,
@@ -1495,8 +1495,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMooringTrotRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringTrotViewModel.MooringTrotRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationMooringTrotRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringTrotViewModel.MooringTrotRefIdViewModel>("MooringTrot"),
                 }, new InformationAssociationConnector<NavigationLine>()
                 {
                     roleType = roleType.association,
@@ -1504,8 +1504,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationNavigationLineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NavigationLineViewModel.NavigationLineRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationNavigationLineRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NavigationLineViewModel.NavigationLineRefIdViewModel>("NavigationLine"),
                 }, new InformationAssociationConnector<Obstruction>()
                 {
                     roleType = roleType.association,
@@ -1513,8 +1513,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationObstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ObstructionViewModel.ObstructionRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationObstructionRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ObstructionViewModel.ObstructionRefIdViewModel>("Obstruction"),
                 }, new InformationAssociationConnector<OffshorePlatform>()
                 {
                     roleType = roleType.association,
@@ -1522,8 +1522,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationOffshorePlatformRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshorePlatformViewModel.OffshorePlatformRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationOffshorePlatformRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshorePlatformViewModel.OffshorePlatformRefIdViewModel>("OffshorePlatform"),
                 }, new InformationAssociationConnector<OffshoreProductionArea>()
                 {
                     roleType = roleType.association,
@@ -1531,8 +1531,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationOffshoreProductionAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshoreProductionAreaViewModel.OffshoreProductionAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationOffshoreProductionAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshoreProductionAreaViewModel.OffshoreProductionAreaRefIdViewModel>("OffshoreProductionArea"),
                 }, new InformationAssociationConnector<OilBarrier>()
                 {
                     roleType = roleType.association,
@@ -1540,8 +1540,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationOilBarrierRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OilBarrierViewModel.OilBarrierRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationOilBarrierRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OilBarrierViewModel.OilBarrierRefIdViewModel>("OilBarrier"),
                 }, new InformationAssociationConnector<PhysicalAISAidToNavigation>()
                 {
                     roleType = roleType.association,
@@ -1549,8 +1549,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPhysicalAISAidToNavigationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalAISAidToNavigationViewModel.PhysicalAISAidToNavigationRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPhysicalAISAidToNavigationRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalAISAidToNavigationViewModel.PhysicalAISAidToNavigationRefIdViewModel>("PhysicalAISAidToNavigation"),
                 }, new InformationAssociationConnector<Pile>()
                 {
                     roleType = roleType.association,
@@ -1558,8 +1558,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPileRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPileRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>("Pile"),
                 }, new InformationAssociationConnector<PilotageDistrict>()
                 {
                     roleType = roleType.association,
@@ -1567,8 +1567,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPilotageDistrictRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotageDistrictViewModel.PilotageDistrictRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPilotageDistrictRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotageDistrictViewModel.PilotageDistrictRefIdViewModel>("PilotageDistrict"),
                 }, new InformationAssociationConnector<PilotBoardingPlace>()
                 {
                     roleType = roleType.association,
@@ -1576,8 +1576,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPilotBoardingPlaceRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPilotBoardingPlaceRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
                 }, new InformationAssociationConnector<PipelineOverhead>()
                 {
                     roleType = roleType.association,
@@ -1585,8 +1585,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPipelineOverheadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineOverheadViewModel.PipelineOverheadRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPipelineOverheadRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineOverheadViewModel.PipelineOverheadRefIdViewModel>("PipelineOverhead"),
                 }, new InformationAssociationConnector<PipelineSubmarineOnLand>()
                 {
                     roleType = roleType.association,
@@ -1594,8 +1594,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPipelineSubmarineOnLandRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineSubmarineOnLandViewModel.PipelineSubmarineOnLandRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPipelineSubmarineOnLandRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineSubmarineOnLandViewModel.PipelineSubmarineOnLandRefIdViewModel>("PipelineSubmarineOnLand"),
                 }, new InformationAssociationConnector<Pontoon>()
                 {
                     roleType = roleType.association,
@@ -1603,8 +1603,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPontoonRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPontoonRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>("Pontoon"),
                 }, new InformationAssociationConnector<PrecautionaryArea>()
                 {
                     roleType = roleType.association,
@@ -1612,8 +1612,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPrecautionaryAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PrecautionaryAreaViewModel.PrecautionaryAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPrecautionaryAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PrecautionaryAreaViewModel.PrecautionaryAreaRefIdViewModel>("PrecautionaryArea"),
                 }, new InformationAssociationConnector<ProductionStorageArea>()
                 {
                     roleType = roleType.association,
@@ -1621,8 +1621,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationProductionStorageAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ProductionStorageAreaViewModel.ProductionStorageAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationProductionStorageAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ProductionStorageAreaViewModel.ProductionStorageAreaRefIdViewModel>("ProductionStorageArea"),
                 }, new InformationAssociationConnector<PylonBridgeSupport>()
                 {
                     roleType = roleType.association,
@@ -1630,8 +1630,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPylonBridgeSupportRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationPylonBridgeSupportRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>("PylonBridgeSupport"),
                 }, new InformationAssociationConnector<RadarLine>()
                 {
                     roleType = roleType.association,
@@ -1639,8 +1639,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadarLineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarLineViewModel.RadarLineRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadarLineRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarLineViewModel.RadarLineRefIdViewModel>("RadarLine"),
                 }, new InformationAssociationConnector<RadarRange>()
                 {
                     roleType = roleType.association,
@@ -1648,8 +1648,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadarRangeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarRangeViewModel.RadarRangeRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadarRangeRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarRangeViewModel.RadarRangeRefIdViewModel>("RadarRange"),
                 }, new InformationAssociationConnector<RadarReflector>()
                 {
                     roleType = roleType.association,
@@ -1657,8 +1657,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadarReflectorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarReflectorViewModel.RadarReflectorRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadarReflectorRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarReflectorViewModel.RadarReflectorRefIdViewModel>("RadarReflector"),
                 }, new InformationAssociationConnector<RadarStation>()
                 {
                     roleType = roleType.association,
@@ -1666,8 +1666,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadarStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarStationViewModel.RadarStationRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadarStationRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarStationViewModel.RadarStationRefIdViewModel>("RadarStation"),
                 }, new InformationAssociationConnector<RadarTransponderBeacon>()
                 {
                     roleType = roleType.association,
@@ -1675,8 +1675,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadarTransponderBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarTransponderBeaconViewModel.RadarTransponderBeaconRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadarTransponderBeaconRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarTransponderBeaconViewModel.RadarTransponderBeaconRefIdViewModel>("RadarTransponderBeacon"),
                 }, new InformationAssociationConnector<RadioCallingInPoint>()
                 {
                     roleType = roleType.association,
@@ -1684,8 +1684,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadioCallingInPointRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioCallingInPointViewModel.RadioCallingInPointRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadioCallingInPointRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioCallingInPointViewModel.RadioCallingInPointRefIdViewModel>("RadioCallingInPoint"),
                 }, new InformationAssociationConnector<RadioStation>()
                 {
                     roleType = roleType.association,
@@ -1693,8 +1693,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadioStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioStationViewModel.RadioStationRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRadioStationRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioStationViewModel.RadioStationRefIdViewModel>("RadioStation"),
                 }, new InformationAssociationConnector<Railway>()
                 {
                     roleType = roleType.association,
@@ -1702,8 +1702,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRailwayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RailwayViewModel.RailwayRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRailwayRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RailwayViewModel.RailwayRefIdViewModel>("Railway"),
                 }, new InformationAssociationConnector<RangeSystem>()
                 {
                     roleType = roleType.association,
@@ -1711,8 +1711,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRangeSystemRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRangeSystemRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>("RangeSystem"),
                 }, new InformationAssociationConnector<Rapids>()
                 {
                     roleType = roleType.association,
@@ -1720,8 +1720,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRapidsRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RapidsViewModel.RapidsRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRapidsRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RapidsViewModel.RapidsRefIdViewModel>("Rapids"),
                 }, new InformationAssociationConnector<RecommendedRouteCentreline>()
                 {
                     roleType = roleType.association,
@@ -1729,8 +1729,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRecommendedRouteCentrelineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedRouteCentrelineViewModel.RecommendedRouteCentrelineRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRecommendedRouteCentrelineRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedRouteCentrelineViewModel.RecommendedRouteCentrelineRefIdViewModel>("RecommendedRouteCentreline"),
                 }, new InformationAssociationConnector<RecommendedTrack>()
                 {
                     roleType = roleType.association,
@@ -1738,8 +1738,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRecommendedTrackRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrackViewModel.RecommendedTrackRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRecommendedTrackRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrackViewModel.RecommendedTrackRefIdViewModel>("RecommendedTrack"),
                 }, new InformationAssociationConnector<RecommendedTrafficLanePart>()
                 {
                     roleType = roleType.association,
@@ -1747,8 +1747,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRecommendedTrafficLanePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrafficLanePartViewModel.RecommendedTrafficLanePartRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRecommendedTrafficLanePartRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrafficLanePartViewModel.RecommendedTrafficLanePartRefIdViewModel>("RecommendedTrafficLanePart"),
                 }, new InformationAssociationConnector<RescueStation>()
                 {
                     roleType = roleType.association,
@@ -1756,8 +1756,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRescueStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RescueStationViewModel.RescueStationRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRescueStationRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RescueStationViewModel.RescueStationRefIdViewModel>("RescueStation"),
                 }, new InformationAssociationConnector<RestrictedArea>()
                 {
                     roleType = roleType.association,
@@ -1765,8 +1765,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRestrictedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRestrictedAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>("RestrictedArea"),
                 }, new InformationAssociationConnector<Retroreflector>()
                 {
                     roleType = roleType.association,
@@ -1774,8 +1774,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRetroreflectorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RetroreflectorViewModel.RetroreflectorRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRetroreflectorRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RetroreflectorViewModel.RetroreflectorRefIdViewModel>("Retroreflector"),
                 }, new InformationAssociationConnector<River>()
                 {
                     roleType = roleType.association,
@@ -1783,8 +1783,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRiverRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RiverViewModel.RiverRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRiverRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RiverViewModel.RiverRefIdViewModel>("River"),
                 }, new InformationAssociationConnector<Road>()
                 {
                     roleType = roleType.association,
@@ -1792,8 +1792,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRoadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RoadViewModel.RoadRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRoadRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RoadViewModel.RoadRefIdViewModel>("Road"),
                 }, new InformationAssociationConnector<Runway>()
                 {
                     roleType = roleType.association,
@@ -1801,8 +1801,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRunwayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RunwayViewModel.RunwayRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationRunwayRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RunwayViewModel.RunwayRefIdViewModel>("Runway"),
                 }, new InformationAssociationConnector<SafeWaterBeacon>()
                 {
                     roleType = roleType.association,
@@ -1810,8 +1810,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSafeWaterBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSafeWaterBeaconRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>("SafeWaterBeacon"),
                 }, new InformationAssociationConnector<SafeWaterBuoy>()
                 {
                     roleType = roleType.association,
@@ -1819,8 +1819,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSafeWaterBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSafeWaterBuoyRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>("SafeWaterBuoy"),
                 }, new InformationAssociationConnector<Sandwave>()
                 {
                     roleType = roleType.association,
@@ -1828,8 +1828,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSandwaveRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SandwaveViewModel.SandwaveRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSandwaveRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SandwaveViewModel.SandwaveRefIdViewModel>("Sandwave"),
                 }, new InformationAssociationConnector<SeaAreaNamedWaterArea>()
                 {
                     roleType = roleType.association,
@@ -1837,8 +1837,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSeaAreaNamedWaterAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaAreaNamedWaterAreaViewModel.SeaAreaNamedWaterAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSeaAreaNamedWaterAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaAreaNamedWaterAreaViewModel.SeaAreaNamedWaterAreaRefIdViewModel>("SeaAreaNamedWaterArea"),
                 }, new InformationAssociationConnector<SeabedArea>()
                 {
                     roleType = roleType.association,
@@ -1846,8 +1846,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSeabedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeabedAreaViewModel.SeabedAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSeabedAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeabedAreaViewModel.SeabedAreaRefIdViewModel>("SeabedArea"),
                 }, new InformationAssociationConnector<Seagrass>()
                 {
                     roleType = roleType.association,
@@ -1855,8 +1855,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSeagrassRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeagrassViewModel.SeagrassRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSeagrassRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeagrassViewModel.SeagrassRefIdViewModel>("Seagrass"),
                 }, new InformationAssociationConnector<SeaplaneLandingArea>()
                 {
                     roleType = roleType.association,
@@ -1864,8 +1864,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSeaplaneLandingAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSeaplaneLandingAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>("SeaplaneLandingArea"),
                 }, new InformationAssociationConnector<SeparationZoneOrLine>()
                 {
                     roleType = roleType.association,
@@ -1873,8 +1873,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSeparationZoneOrLineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeparationZoneOrLineViewModel.SeparationZoneOrLineRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSeparationZoneOrLineRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeparationZoneOrLineViewModel.SeparationZoneOrLineRefIdViewModel>("SeparationZoneOrLine"),
                 }, new InformationAssociationConnector<ShorelineConstruction>()
                 {
                     roleType = roleType.association,
@@ -1882,8 +1882,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationShorelineConstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ShorelineConstructionViewModel.ShorelineConstructionRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationShorelineConstructionRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ShorelineConstructionViewModel.ShorelineConstructionRefIdViewModel>("ShorelineConstruction"),
                 }, new InformationAssociationConnector<SignalStationTraffic>()
                 {
                     roleType = roleType.association,
@@ -1891,8 +1891,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSignalStationTrafficRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationTrafficViewModel.SignalStationTrafficRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSignalStationTrafficRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationTrafficViewModel.SignalStationTrafficRefIdViewModel>("SignalStationTraffic"),
                 }, new InformationAssociationConnector<SignalStationWarning>()
                 {
                     roleType = roleType.association,
@@ -1900,8 +1900,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSignalStationWarningRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationWarningViewModel.SignalStationWarningRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSignalStationWarningRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationWarningViewModel.SignalStationWarningRefIdViewModel>("SignalStationWarning"),
                 }, new InformationAssociationConnector<SiloTank>()
                 {
                     roleType = roleType.association,
@@ -1909,8 +1909,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSiloTankRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSiloTankRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>("SiloTank"),
                 }, new InformationAssociationConnector<SlopeTopline>()
                 {
                     roleType = roleType.association,
@@ -1918,8 +1918,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSlopeToplineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopeToplineViewModel.SlopeToplineRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSlopeToplineRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopeToplineViewModel.SlopeToplineRefIdViewModel>("SlopeTopline"),
                 }, new InformationAssociationConnector<SlopingGround>()
                 {
                     roleType = roleType.association,
@@ -1927,8 +1927,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSlopingGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopingGroundViewModel.SlopingGroundRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSlopingGroundRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopingGroundViewModel.SlopingGroundRefIdViewModel>("SlopingGround"),
                 }, new InformationAssociationConnector<SmallCraftFacility>()
                 {
                     roleType = roleType.association,
@@ -1936,8 +1936,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSmallCraftFacilityRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SmallCraftFacilityViewModel.SmallCraftFacilityRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSmallCraftFacilityRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SmallCraftFacilityViewModel.SmallCraftFacilityRefIdViewModel>("SmallCraftFacility"),
                 }, new InformationAssociationConnector<Sounding>()
                 {
                     roleType = roleType.association,
@@ -1945,8 +1945,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSoundingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SoundingViewModel.SoundingRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSoundingRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SoundingViewModel.SoundingRefIdViewModel>("Sounding"),
                 }, new InformationAssociationConnector<SpanFixed>()
                 {
                     roleType = roleType.association,
@@ -1954,8 +1954,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSpanFixedRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSpanFixedRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>("SpanFixed"),
                 }, new InformationAssociationConnector<SpanOpening>()
                 {
                     roleType = roleType.association,
@@ -1963,8 +1963,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation), typeof(NonStandardWorkingDay), typeof(ServiceHours)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSpanOpeningRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSpanOpeningRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>("SpanOpening"),
                 }, new InformationAssociationConnector<SpecialPurposeGeneralBeacon>()
                 {
                     roleType = roleType.association,
@@ -1972,8 +1972,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSpecialPurposeGeneralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSpecialPurposeGeneralBeaconRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>("SpecialPurposeGeneralBeacon"),
                 }, new InformationAssociationConnector<SpecialPurposeGeneralBuoy>()
                 {
                     roleType = roleType.association,
@@ -1981,8 +1981,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSpecialPurposeGeneralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSpecialPurposeGeneralBuoyRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>("SpecialPurposeGeneralBuoy"),
                 }, new InformationAssociationConnector<Spring>()
                 {
                     roleType = roleType.association,
@@ -1990,8 +1990,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSpringRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpringViewModel.SpringRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSpringRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpringViewModel.SpringRefIdViewModel>("Spring"),
                 }, new InformationAssociationConnector<StraightTerritorialSeaBaseline>()
                 {
                     roleType = roleType.association,
@@ -1999,8 +1999,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationStraightTerritorialSeaBaselineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StraightTerritorialSeaBaselineViewModel.StraightTerritorialSeaBaselineRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationStraightTerritorialSeaBaselineRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StraightTerritorialSeaBaselineViewModel.StraightTerritorialSeaBaselineRefIdViewModel>("StraightTerritorialSeaBaseline"),
                 }, new InformationAssociationConnector<StructureOverNavigableWater>()
                 {
                     roleType = roleType.association,
@@ -2008,8 +2008,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationStructureOverNavigableWaterRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationStructureOverNavigableWaterRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>("StructureOverNavigableWater"),
                 }, new InformationAssociationConnector<SubmarinePipelineArea>()
                 {
                     roleType = roleType.association,
@@ -2017,8 +2017,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSubmarinePipelineAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarinePipelineAreaViewModel.SubmarinePipelineAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSubmarinePipelineAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarinePipelineAreaViewModel.SubmarinePipelineAreaRefIdViewModel>("SubmarinePipelineArea"),
                 }, new InformationAssociationConnector<SubmarineTransitLane>()
                 {
                     roleType = roleType.association,
@@ -2026,8 +2026,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSubmarineTransitLaneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarineTransitLaneViewModel.SubmarineTransitLaneRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSubmarineTransitLaneRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarineTransitLaneViewModel.SubmarineTransitLaneRefIdViewModel>("SubmarineTransitLane"),
                 }, new InformationAssociationConnector<SweptArea>()
                 {
                     roleType = roleType.association,
@@ -2035,8 +2035,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSweptAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SweptAreaViewModel.SweptAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationSweptAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SweptAreaViewModel.SweptAreaRefIdViewModel>("SweptArea"),
                 }, new InformationAssociationConnector<TerritorialSeaArea>()
                 {
                     roleType = roleType.association,
@@ -2044,8 +2044,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTerritorialSeaAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TerritorialSeaAreaViewModel.TerritorialSeaAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTerritorialSeaAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TerritorialSeaAreaViewModel.TerritorialSeaAreaRefIdViewModel>("TerritorialSeaArea"),
                 }, new InformationAssociationConnector<TidalStreamFloodEbb>()
                 {
                     roleType = roleType.association,
@@ -2053,8 +2053,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTidalStreamFloodEbbRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamFloodEbbViewModel.TidalStreamFloodEbbRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTidalStreamFloodEbbRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamFloodEbbViewModel.TidalStreamFloodEbbRefIdViewModel>("TidalStreamFloodEbb"),
                 }, new InformationAssociationConnector<TidalStreamPanelData>()
                 {
                     roleType = roleType.association,
@@ -2062,8 +2062,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTidalStreamPanelDataRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamPanelDataViewModel.TidalStreamPanelDataRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTidalStreamPanelDataRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamPanelDataViewModel.TidalStreamPanelDataRefIdViewModel>("TidalStreamPanelData"),
                 }, new InformationAssociationConnector<Tideway>()
                 {
                     roleType = roleType.association,
@@ -2071,8 +2071,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTidewayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidewayViewModel.TidewayRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTidewayRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidewayViewModel.TidewayRefIdViewModel>("Tideway"),
                 }, new InformationAssociationConnector<TrafficSeparationScheme>()
                 {
                     roleType = roleType.association,
@@ -2080,8 +2080,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTrafficSeparationSchemeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTrafficSeparationSchemeRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>("TrafficSeparationScheme"),
                 }, new InformationAssociationConnector<TrafficSeparationSchemeBoundary>()
                 {
                     roleType = roleType.association,
@@ -2089,8 +2089,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTrafficSeparationSchemeBoundaryRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeBoundaryViewModel.TrafficSeparationSchemeBoundaryRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTrafficSeparationSchemeBoundaryRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeBoundaryViewModel.TrafficSeparationSchemeBoundaryRefIdViewModel>("TrafficSeparationSchemeBoundary"),
                 }, new InformationAssociationConnector<TrafficSeparationSchemeCrossing>()
                 {
                     roleType = roleType.association,
@@ -2098,8 +2098,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTrafficSeparationSchemeCrossingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeCrossingViewModel.TrafficSeparationSchemeCrossingRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTrafficSeparationSchemeCrossingRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeCrossingViewModel.TrafficSeparationSchemeCrossingRefIdViewModel>("TrafficSeparationSchemeCrossing"),
                 }, new InformationAssociationConnector<TrafficSeparationSchemeLanePart>()
                 {
                     roleType = roleType.association,
@@ -2107,8 +2107,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTrafficSeparationSchemeLanePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeLanePartViewModel.TrafficSeparationSchemeLanePartRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTrafficSeparationSchemeLanePartRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeLanePartViewModel.TrafficSeparationSchemeLanePartRefIdViewModel>("TrafficSeparationSchemeLanePart"),
                 }, new InformationAssociationConnector<TrafficSeparationSchemeRoundabout>()
                 {
                     roleType = roleType.association,
@@ -2116,8 +2116,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTrafficSeparationSchemeRoundaboutRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeRoundaboutViewModel.TrafficSeparationSchemeRoundaboutRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTrafficSeparationSchemeRoundaboutRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeRoundaboutViewModel.TrafficSeparationSchemeRoundaboutRefIdViewModel>("TrafficSeparationSchemeRoundabout"),
                 }, new InformationAssociationConnector<Tunnel>()
                 {
                     roleType = roleType.association,
@@ -2125,8 +2125,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTunnelRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TunnelViewModel.TunnelRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTunnelRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TunnelViewModel.TunnelRefIdViewModel>("Tunnel"),
                 }, new InformationAssociationConnector<TwoWayRoute>()
                 {
                     roleType = roleType.association,
@@ -2134,8 +2134,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTwoWayRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTwoWayRouteRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>("TwoWayRoute"),
                 }, new InformationAssociationConnector<TwoWayRoutePart>()
                 {
                     roleType = roleType.association,
@@ -2143,8 +2143,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTwoWayRoutePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRoutePartViewModel.TwoWayRoutePartRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationTwoWayRoutePartRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRoutePartViewModel.TwoWayRoutePartRefIdViewModel>("TwoWayRoutePart"),
                 }, new InformationAssociationConnector<UnderwaterAwashRock>()
                 {
                     roleType = roleType.association,
@@ -2152,8 +2152,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationUnderwaterAwashRockRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UnderwaterAwashRockViewModel.UnderwaterAwashRockRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationUnderwaterAwashRockRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UnderwaterAwashRockViewModel.UnderwaterAwashRockRefIdViewModel>("UnderwaterAwashRock"),
                 }, new InformationAssociationConnector<UnsurveyedArea>()
                 {
                     roleType = roleType.association,
@@ -2161,8 +2161,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationUnsurveyedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UnsurveyedAreaViewModel.UnsurveyedAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationUnsurveyedAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UnsurveyedAreaViewModel.UnsurveyedAreaRefIdViewModel>("UnsurveyedArea"),
                 }, new InformationAssociationConnector<Vegetation>()
                 {
                     roleType = roleType.association,
@@ -2170,8 +2170,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationVegetationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VegetationViewModel.VegetationRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationVegetationRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VegetationViewModel.VegetationRefIdViewModel>("Vegetation"),
                 }, new InformationAssociationConnector<VesselTrafficServiceArea>()
                 {
                     roleType = roleType.association,
@@ -2179,8 +2179,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationVesselTrafficServiceAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationVesselTrafficServiceAreaRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>("VesselTrafficServiceArea"),
                 }, new InformationAssociationConnector<VirtualAISAidToNavigation>()
                 {
                     roleType = roleType.association,
@@ -2188,8 +2188,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationVirtualAISAidToNavigationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VirtualAISAidToNavigationViewModel.VirtualAISAidToNavigationRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationVirtualAISAidToNavigationRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VirtualAISAidToNavigationViewModel.VirtualAISAidToNavigationRefIdViewModel>("VirtualAISAidToNavigation"),
                 }, new InformationAssociationConnector<Waterfall>()
                 {
                     roleType = roleType.association,
@@ -2197,8 +2197,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationWaterfallRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterfallViewModel.WaterfallRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationWaterfallRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterfallViewModel.WaterfallRefIdViewModel>("Waterfall"),
                 }, new InformationAssociationConnector<WaterTurbulence>()
                 {
                     roleType = roleType.association,
@@ -2206,8 +2206,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationWaterTurbulenceRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterTurbulenceViewModel.WaterTurbulenceRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationWaterTurbulenceRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterTurbulenceViewModel.WaterTurbulenceRefIdViewModel>("WaterTurbulence"),
                 }, new InformationAssociationConnector<WeedKelp>()
                 {
                     roleType = roleType.association,
@@ -2215,8 +2215,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationWeedKelpRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WeedKelpViewModel.WeedKelpRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationWeedKelpRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WeedKelpViewModel.WeedKelpRefIdViewModel>("WeedKelp"),
                 }, new InformationAssociationConnector<WindTurbine>()
                 {
                     roleType = roleType.association,
@@ -2224,8 +2224,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ContactDetails), typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationWindTurbineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WindTurbineViewModel.WindTurbineRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationWindTurbineRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WindTurbineViewModel.WindTurbineRefIdViewModel>("WindTurbine"),
                 }, new InformationAssociationConnector<Wreck>()
                 {
                     roleType = roleType.association,
@@ -2233,8 +2233,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NauticalInformation)],
-                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationWreckRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WreckViewModel.WreckRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<AdditionalInformationViewModel.theInformationWreckRefIdViewModel>("AdditionalInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WreckViewModel.WreckRefIdViewModel>("Wreck"),
                 }
 
                 ]
@@ -2251,8 +2251,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAdministrationAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AdministrationAreaViewModel.AdministrationAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAdministrationAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AdministrationAreaViewModel.AdministrationAreaRefIdViewModel>("AdministrationArea"),
                 }, new FeatureAssociationConnector<AirportAirfield>()
                 {
                     roleType = roleType.association,
@@ -2260,8 +2260,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAirportAirfieldRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AirportAirfieldViewModel.AirportAirfieldRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAirportAirfieldRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AirportAirfieldViewModel.AirportAirfieldRefIdViewModel>("AirportAirfield"),
                 }, new FeatureAssociationConnector<AnchorageArea>()
                 {
                     roleType = roleType.association,
@@ -2269,8 +2269,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAnchorageAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAnchorageAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>("AnchorageArea"),
                 }, new FeatureAssociationConnector<AnchorBerth>()
                 {
                     roleType = roleType.association,
@@ -2278,8 +2278,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAnchorBerthRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAnchorBerthRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
                 }, new FeatureAssociationConnector<ArchipelagicSeaLane>()
                 {
                     roleType = roleType.association,
@@ -2287,8 +2287,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateArchipelagicSeaLaneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateArchipelagicSeaLaneRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>("ArchipelagicSeaLane"),
                 }, new FeatureAssociationConnector<ArchipelagicSeaLaneArea>()
                 {
                     roleType = roleType.association,
@@ -2296,8 +2296,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateArchipelagicSeaLaneAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAreaViewModel.ArchipelagicSeaLaneAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateArchipelagicSeaLaneAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAreaViewModel.ArchipelagicSeaLaneAreaRefIdViewModel>("ArchipelagicSeaLaneArea"),
                 }, new FeatureAssociationConnector<ArchipelagicSeaLaneAxis>()
                 {
                     roleType = roleType.association,
@@ -2305,8 +2305,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateArchipelagicSeaLaneAxisRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAxisViewModel.ArchipelagicSeaLaneAxisRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateArchipelagicSeaLaneAxisRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAxisViewModel.ArchipelagicSeaLaneAxisRefIdViewModel>("ArchipelagicSeaLaneAxis"),
                 }, new FeatureAssociationConnector<Berth>()
                 {
                     roleType = roleType.association,
@@ -2314,8 +2314,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateBerthRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthViewModel.BerthRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateBerthRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
                 }, new FeatureAssociationConnector<Bollard>()
                 {
                     roleType = roleType.association,
@@ -2323,8 +2323,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateBollardRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BollardViewModel.BollardRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateBollardRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BollardViewModel.BollardRefIdViewModel>("Bollard"),
                 }, new FeatureAssociationConnector<Bridge>()
                 {
                     roleType = roleType.association,
@@ -2332,8 +2332,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateBridgeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateBridgeRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>("Bridge"),
                 }, new FeatureAssociationConnector<Building>()
                 {
                     roleType = roleType.association,
@@ -2341,8 +2341,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateBuildingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateBuildingRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>("Building"),
                 }, new FeatureAssociationConnector<BuiltUpArea>()
                 {
                     roleType = roleType.association,
@@ -2350,8 +2350,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateBuiltUpAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuiltUpAreaViewModel.BuiltUpAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateBuiltUpAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuiltUpAreaViewModel.BuiltUpAreaRefIdViewModel>("BuiltUpArea"),
                 }, new FeatureAssociationConnector<CableArea>()
                 {
                     roleType = roleType.association,
@@ -2359,8 +2359,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCableAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableAreaViewModel.CableAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCableAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableAreaViewModel.CableAreaRefIdViewModel>("CableArea"),
                 }, new FeatureAssociationConnector<CableOverhead>()
                 {
                     roleType = roleType.association,
@@ -2368,8 +2368,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCableOverheadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableOverheadViewModel.CableOverheadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCableOverheadRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableOverheadViewModel.CableOverheadRefIdViewModel>("CableOverhead"),
                 }, new FeatureAssociationConnector<CableSubmarine>()
                 {
                     roleType = roleType.association,
@@ -2377,8 +2377,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCableSubmarineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableSubmarineViewModel.CableSubmarineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCableSubmarineRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableSubmarineViewModel.CableSubmarineRefIdViewModel>("CableSubmarine"),
                 }, new FeatureAssociationConnector<Canal>()
                 {
                     roleType = roleType.association,
@@ -2386,8 +2386,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCanalRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CanalViewModel.CanalRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCanalRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CanalViewModel.CanalRefIdViewModel>("Canal"),
                 }, new FeatureAssociationConnector<CardinalBeacon>()
                 {
                     roleType = roleType.association,
@@ -2395,8 +2395,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCardinalBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCardinalBeaconRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>("CardinalBeacon"),
                 }, new FeatureAssociationConnector<CardinalBuoy>()
                 {
                     roleType = roleType.association,
@@ -2404,8 +2404,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCardinalBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCardinalBuoyRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>("CardinalBuoy"),
                 }, new FeatureAssociationConnector<CargoTranshipmentArea>()
                 {
                     roleType = roleType.association,
@@ -2413,8 +2413,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCargoTranshipmentAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CargoTranshipmentAreaViewModel.CargoTranshipmentAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCargoTranshipmentAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CargoTranshipmentAreaViewModel.CargoTranshipmentAreaRefIdViewModel>("CargoTranshipmentArea"),
                 }, new FeatureAssociationConnector<Causeway>()
                 {
                     roleType = roleType.association,
@@ -2422,8 +2422,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCausewayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CausewayViewModel.CausewayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCausewayRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CausewayViewModel.CausewayRefIdViewModel>("Causeway"),
                 }, new FeatureAssociationConnector<CautionArea>()
                 {
                     roleType = roleType.association,
@@ -2431,8 +2431,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCautionAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CautionAreaViewModel.CautionAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCautionAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CautionAreaViewModel.CautionAreaRefIdViewModel>("CautionArea"),
                 }, new FeatureAssociationConnector<Checkpoint>()
                 {
                     roleType = roleType.association,
@@ -2440,8 +2440,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCheckpointRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CheckpointViewModel.CheckpointRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCheckpointRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CheckpointViewModel.CheckpointRefIdViewModel>("Checkpoint"),
                 }, new FeatureAssociationConnector<CoastGuardStation>()
                 {
                     roleType = roleType.association,
@@ -2449,8 +2449,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCoastGuardStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastGuardStationViewModel.CoastGuardStationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCoastGuardStationRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastGuardStationViewModel.CoastGuardStationRefIdViewModel>("CoastGuardStation"),
                 }, new FeatureAssociationConnector<Coastline>()
                 {
                     roleType = roleType.association,
@@ -2458,8 +2458,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCoastlineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastlineViewModel.CoastlineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCoastlineRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastlineViewModel.CoastlineRefIdViewModel>("Coastline"),
                 }, new FeatureAssociationConnector<CollisionRegulationsLimit>()
                 {
                     roleType = roleType.association,
@@ -2467,8 +2467,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCollisionRegulationsLimitRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CollisionRegulationsLimitViewModel.CollisionRegulationsLimitRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCollisionRegulationsLimitRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CollisionRegulationsLimitViewModel.CollisionRegulationsLimitRefIdViewModel>("CollisionRegulationsLimit"),
                 }, new FeatureAssociationConnector<ContiguousZone>()
                 {
                     roleType = roleType.association,
@@ -2476,8 +2476,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateContiguousZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ContiguousZoneViewModel.ContiguousZoneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateContiguousZoneRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ContiguousZoneViewModel.ContiguousZoneRefIdViewModel>("ContiguousZone"),
                 }, new FeatureAssociationConnector<ContinentalShelfArea>()
                 {
                     roleType = roleType.association,
@@ -2485,8 +2485,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateContinentalShelfAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ContinentalShelfAreaViewModel.ContinentalShelfAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateContinentalShelfAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ContinentalShelfAreaViewModel.ContinentalShelfAreaRefIdViewModel>("ContinentalShelfArea"),
                 }, new FeatureAssociationConnector<Conveyor>()
                 {
                     roleType = roleType.association,
@@ -2494,8 +2494,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateConveyorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ConveyorViewModel.ConveyorRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateConveyorRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ConveyorViewModel.ConveyorRefIdViewModel>("Conveyor"),
                 }, new FeatureAssociationConnector<Crane>()
                 {
                     roleType = roleType.association,
@@ -2503,8 +2503,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCraneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CraneViewModel.CraneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCraneRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CraneViewModel.CraneRefIdViewModel>("Crane"),
                 }, new FeatureAssociationConnector<CurrentNonGravitational>()
                 {
                     roleType = roleType.association,
@@ -2512,8 +2512,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCurrentNonGravitationalRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CurrentNonGravitationalViewModel.CurrentNonGravitationalRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCurrentNonGravitationalRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CurrentNonGravitationalViewModel.CurrentNonGravitationalRefIdViewModel>("CurrentNonGravitational"),
                 }, new FeatureAssociationConnector<CustomZone>()
                 {
                     roleType = roleType.association,
@@ -2521,8 +2521,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCustomZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CustomZoneViewModel.CustomZoneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateCustomZoneRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CustomZoneViewModel.CustomZoneRefIdViewModel>("CustomZone"),
                 }, new FeatureAssociationConnector<Dam>()
                 {
                     roleType = roleType.association,
@@ -2530,8 +2530,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDamRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DamViewModel.DamRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDamRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DamViewModel.DamRefIdViewModel>("Dam"),
                 }, new FeatureAssociationConnector<Daymark>()
                 {
                     roleType = roleType.association,
@@ -2539,8 +2539,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDaymarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDaymarkRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>("Daymark"),
                 }, new FeatureAssociationConnector<DeepWaterRoute>()
                 {
                     roleType = roleType.association,
@@ -2548,8 +2548,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDeepWaterRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDeepWaterRouteRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>("DeepWaterRoute"),
                 }, new FeatureAssociationConnector<DeepWaterRouteCentreline>()
                 {
                     roleType = roleType.association,
@@ -2557,8 +2557,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDeepWaterRouteCentrelineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteCentrelineViewModel.DeepWaterRouteCentrelineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDeepWaterRouteCentrelineRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteCentrelineViewModel.DeepWaterRouteCentrelineRefIdViewModel>("DeepWaterRouteCentreline"),
                 }, new FeatureAssociationConnector<DeepWaterRoutePart>()
                 {
                     roleType = roleType.association,
@@ -2566,8 +2566,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDeepWaterRoutePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRoutePartViewModel.DeepWaterRoutePartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDeepWaterRoutePartRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRoutePartViewModel.DeepWaterRoutePartRefIdViewModel>("DeepWaterRoutePart"),
                 }, new FeatureAssociationConnector<DepthArea>()
                 {
                     roleType = roleType.association,
@@ -2575,8 +2575,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDepthAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthAreaViewModel.DepthAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDepthAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthAreaViewModel.DepthAreaRefIdViewModel>("DepthArea"),
                 }, new FeatureAssociationConnector<DepthContour>()
                 {
                     roleType = roleType.association,
@@ -2584,8 +2584,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDepthContourRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthContourViewModel.DepthContourRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDepthContourRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthContourViewModel.DepthContourRefIdViewModel>("DepthContour"),
                 }, new FeatureAssociationConnector<DepthNoBottomFound>()
                 {
                     roleType = roleType.association,
@@ -2593,8 +2593,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDepthNoBottomFoundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthNoBottomFoundViewModel.DepthNoBottomFoundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDepthNoBottomFoundRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DepthNoBottomFoundViewModel.DepthNoBottomFoundRefIdViewModel>("DepthNoBottomFound"),
                 }, new FeatureAssociationConnector<DiscolouredWater>()
                 {
                     roleType = roleType.association,
@@ -2602,8 +2602,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDiscolouredWaterRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DiscolouredWaterViewModel.DiscolouredWaterRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDiscolouredWaterRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DiscolouredWaterViewModel.DiscolouredWaterRefIdViewModel>("DiscolouredWater"),
                 }, new FeatureAssociationConnector<DistanceMark>()
                 {
                     roleType = roleType.association,
@@ -2611,8 +2611,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDistanceMarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DistanceMarkViewModel.DistanceMarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDistanceMarkRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DistanceMarkViewModel.DistanceMarkRefIdViewModel>("DistanceMark"),
                 }, new FeatureAssociationConnector<DockArea>()
                 {
                     roleType = roleType.association,
@@ -2620,8 +2620,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDockAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDockAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
                 }, new FeatureAssociationConnector<Dolphin>()
                 {
                     roleType = roleType.association,
@@ -2629,8 +2629,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDolphinRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDolphinRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>("Dolphin"),
                 }, new FeatureAssociationConnector<DredgedArea>()
                 {
                     roleType = roleType.association,
@@ -2638,8 +2638,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDredgedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DredgedAreaViewModel.DredgedAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDredgedAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DredgedAreaViewModel.DredgedAreaRefIdViewModel>("DredgedArea"),
                 }, new FeatureAssociationConnector<DryDock>()
                 {
                     roleType = roleType.association,
@@ -2647,8 +2647,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDryDockRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDryDockRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>("DryDock"),
                 }, new FeatureAssociationConnector<DumpingGround>()
                 {
                     roleType = roleType.association,
@@ -2656,8 +2656,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDumpingGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDumpingGroundRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>("DumpingGround"),
                 }, new FeatureAssociationConnector<Dyke>()
                 {
                     roleType = roleType.association,
@@ -2665,8 +2665,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDykeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DykeViewModel.DykeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateDykeRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DykeViewModel.DykeRefIdViewModel>("Dyke"),
                 }, new FeatureAssociationConnector<EmergencyWreckMarkingBuoy>()
                 {
                     roleType = roleType.association,
@@ -2674,8 +2674,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateEmergencyWreckMarkingBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<EmergencyWreckMarkingBuoyViewModel.EmergencyWreckMarkingBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateEmergencyWreckMarkingBuoyRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<EmergencyWreckMarkingBuoyViewModel.EmergencyWreckMarkingBuoyRefIdViewModel>("EmergencyWreckMarkingBuoy"),
                 }, new FeatureAssociationConnector<ExclusiveEconomicZone>()
                 {
                     roleType = roleType.association,
@@ -2683,8 +2683,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateExclusiveEconomicZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ExclusiveEconomicZoneViewModel.ExclusiveEconomicZoneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateExclusiveEconomicZoneRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ExclusiveEconomicZoneViewModel.ExclusiveEconomicZoneRefIdViewModel>("ExclusiveEconomicZone"),
                 }, new FeatureAssociationConnector<Fairway>()
                 {
                     roleType = roleType.association,
@@ -2692,8 +2692,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFairwayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwayViewModel.FairwayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFairwayRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwayViewModel.FairwayRefIdViewModel>("Fairway"),
                 }, new FeatureAssociationConnector<FairwaySystem>()
                 {
                     roleType = roleType.association,
@@ -2701,8 +2701,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFairwaySystemRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwaySystemViewModel.FairwaySystemRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFairwaySystemRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwaySystemViewModel.FairwaySystemRefIdViewModel>("FairwaySystem"),
                 }, new FeatureAssociationConnector<FenceWall>()
                 {
                     roleType = roleType.association,
@@ -2710,8 +2710,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFenceWallRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FenceWallViewModel.FenceWallRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFenceWallRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FenceWallViewModel.FenceWallRefIdViewModel>("FenceWall"),
                 }, new FeatureAssociationConnector<FerryRoute>()
                 {
                     roleType = roleType.association,
@@ -2719,8 +2719,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFerryRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FerryRouteViewModel.FerryRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFerryRouteRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FerryRouteViewModel.FerryRouteRefIdViewModel>("FerryRoute"),
                 }, new FeatureAssociationConnector<FisheryZone>()
                 {
                     roleType = roleType.association,
@@ -2728,8 +2728,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFisheryZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FisheryZoneViewModel.FisheryZoneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFisheryZoneRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FisheryZoneViewModel.FisheryZoneRefIdViewModel>("FisheryZone"),
                 }, new FeatureAssociationConnector<FishingFacility>()
                 {
                     roleType = roleType.association,
@@ -2737,8 +2737,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFishingFacilityRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingFacilityViewModel.FishingFacilityRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFishingFacilityRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingFacilityViewModel.FishingFacilityRefIdViewModel>("FishingFacility"),
                 }, new FeatureAssociationConnector<FishingGround>()
                 {
                     roleType = roleType.association,
@@ -2746,8 +2746,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFishingGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingGroundViewModel.FishingGroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFishingGroundRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingGroundViewModel.FishingGroundRefIdViewModel>("FishingGround"),
                 }, new FeatureAssociationConnector<FloatingDock>()
                 {
                     roleType = roleType.association,
@@ -2755,8 +2755,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFloatingDockRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFloatingDockRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
                 }, new FeatureAssociationConnector<FogSignal>()
                 {
                     roleType = roleType.association,
@@ -2764,8 +2764,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFogSignalRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FogSignalViewModel.FogSignalRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFogSignalRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FogSignalViewModel.FogSignalRefIdViewModel>("FogSignal"),
                 }, new FeatureAssociationConnector<FortifiedStructure>()
                 {
                     roleType = roleType.association,
@@ -2773,8 +2773,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFortifiedStructureRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFortifiedStructureRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>("FortifiedStructure"),
                 }, new FeatureAssociationConnector<FoulGround>()
                 {
                     roleType = roleType.association,
@@ -2782,8 +2782,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFoulGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FoulGroundViewModel.FoulGroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFoulGroundRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FoulGroundViewModel.FoulGroundRefIdViewModel>("FoulGround"),
                 }, new FeatureAssociationConnector<FreePortArea>()
                 {
                     roleType = roleType.association,
@@ -2791,8 +2791,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFreePortAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FreePortAreaViewModel.FreePortAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateFreePortAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FreePortAreaViewModel.FreePortAreaRefIdViewModel>("FreePortArea"),
                 }, new FeatureAssociationConnector<Gate>()
                 {
                     roleType = roleType.association,
@@ -2800,8 +2800,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateGateRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GateViewModel.GateRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateGateRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GateViewModel.GateRefIdViewModel>("Gate"),
                 }, new FeatureAssociationConnector<Gridiron>()
                 {
                     roleType = roleType.association,
@@ -2809,8 +2809,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateGridironRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GridironViewModel.GridironRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateGridironRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GridironViewModel.GridironRefIdViewModel>("Gridiron"),
                 }, new FeatureAssociationConnector<HarbourAreaAdministrative>()
                 {
                     roleType = roleType.association,
@@ -2818,8 +2818,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateHarbourAreaAdministrativeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateHarbourAreaAdministrativeRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
                 }, new FeatureAssociationConnector<HarbourFacility>()
                 {
                     roleType = roleType.association,
@@ -2827,8 +2827,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateHarbourFacilityRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateHarbourFacilityRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>("HarbourFacility"),
                 }, new FeatureAssociationConnector<Helipad>()
                 {
                     roleType = roleType.association,
@@ -2836,8 +2836,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateHelipadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HelipadViewModel.HelipadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateHelipadRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HelipadViewModel.HelipadRefIdViewModel>("Helipad"),
                 }, new FeatureAssociationConnector<Hulk>()
                 {
                     roleType = roleType.association,
@@ -2845,8 +2845,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateHulkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HulkViewModel.HulkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateHulkRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HulkViewModel.HulkRefIdViewModel>("Hulk"),
                 }, new FeatureAssociationConnector<IceArea>()
                 {
                     roleType = roleType.association,
@@ -2854,8 +2854,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateIceAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IceAreaViewModel.IceAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateIceAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IceAreaViewModel.IceAreaRefIdViewModel>("IceArea"),
                 }, new FeatureAssociationConnector<InformationArea>()
                 {
                     roleType = roleType.association,
@@ -2863,8 +2863,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateInformationAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InformationAreaViewModel.InformationAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateInformationAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InformationAreaViewModel.InformationAreaRefIdViewModel>("InformationArea"),
                 }, new FeatureAssociationConnector<InshoreTrafficZone>()
                 {
                     roleType = roleType.association,
@@ -2872,8 +2872,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateInshoreTrafficZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InshoreTrafficZoneViewModel.InshoreTrafficZoneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateInshoreTrafficZoneRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InshoreTrafficZoneViewModel.InshoreTrafficZoneRefIdViewModel>("InshoreTrafficZone"),
                 }, new FeatureAssociationConnector<InstallationBuoy>()
                 {
                     roleType = roleType.association,
@@ -2881,8 +2881,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateInstallationBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InstallationBuoyViewModel.InstallationBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateInstallationBuoyRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InstallationBuoyViewModel.InstallationBuoyRefIdViewModel>("InstallationBuoy"),
                 }, new FeatureAssociationConnector<IslandGroup>()
                 {
                     roleType = roleType.association,
@@ -2890,8 +2890,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateIslandGroupRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IslandGroupViewModel.IslandGroupRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateIslandGroupRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IslandGroupViewModel.IslandGroupRefIdViewModel>("IslandGroup"),
                 }, new FeatureAssociationConnector<IsolatedDangerBeacon>()
                 {
                     roleType = roleType.association,
@@ -2899,8 +2899,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateIsolatedDangerBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateIsolatedDangerBeaconRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>("IsolatedDangerBeacon"),
                 }, new FeatureAssociationConnector<IsolatedDangerBuoy>()
                 {
                     roleType = roleType.association,
@@ -2908,8 +2908,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateIsolatedDangerBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateIsolatedDangerBuoyRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>("IsolatedDangerBuoy"),
                 }, new FeatureAssociationConnector<Lake>()
                 {
                     roleType = roleType.association,
@@ -2917,8 +2917,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLakeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LakeViewModel.LakeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLakeRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LakeViewModel.LakeRefIdViewModel>("Lake"),
                 }, new FeatureAssociationConnector<LandArea>()
                 {
                     roleType = roleType.association,
@@ -2926,8 +2926,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLandAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandAreaViewModel.LandAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLandAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandAreaViewModel.LandAreaRefIdViewModel>("LandArea"),
                 }, new FeatureAssociationConnector<LandElevation>()
                 {
                     roleType = roleType.association,
@@ -2935,8 +2935,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLandElevationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandElevationViewModel.LandElevationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLandElevationRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandElevationViewModel.LandElevationRefIdViewModel>("LandElevation"),
                 }, new FeatureAssociationConnector<Landmark>()
                 {
                     roleType = roleType.association,
@@ -2944,8 +2944,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLandmarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLandmarkRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>("Landmark"),
                 }, new FeatureAssociationConnector<LandRegion>()
                 {
                     roleType = roleType.association,
@@ -2953,8 +2953,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLandRegionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandRegionViewModel.LandRegionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLandRegionRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandRegionViewModel.LandRegionRefIdViewModel>("LandRegion"),
                 }, new FeatureAssociationConnector<LateralBeacon>()
                 {
                     roleType = roleType.association,
@@ -2962,8 +2962,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLateralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLateralBeaconRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>("LateralBeacon"),
                 }, new FeatureAssociationConnector<LateralBuoy>()
                 {
                     roleType = roleType.association,
@@ -2971,8 +2971,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLateralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLateralBuoyRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>("LateralBuoy"),
                 }, new FeatureAssociationConnector<LightAirObstruction>()
                 {
                     roleType = roleType.association,
@@ -2980,8 +2980,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightAirObstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAirObstructionViewModel.LightAirObstructionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightAirObstructionRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAirObstructionViewModel.LightAirObstructionRefIdViewModel>("LightAirObstruction"),
                 }, new FeatureAssociationConnector<LightAllAround>()
                 {
                     roleType = roleType.association,
@@ -2989,8 +2989,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightAllAroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightAllAroundRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>("LightAllAround"),
                 }, new FeatureAssociationConnector<LightFloat>()
                 {
                     roleType = roleType.association,
@@ -2998,8 +2998,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightFloatRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightFloatRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>("LightFloat"),
                 }, new FeatureAssociationConnector<LightFogDetector>()
                 {
                     roleType = roleType.association,
@@ -3007,8 +3007,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightFogDetectorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFogDetectorViewModel.LightFogDetectorRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightFogDetectorRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFogDetectorViewModel.LightFogDetectorRefIdViewModel>("LightFogDetector"),
                 }, new FeatureAssociationConnector<LightSectored>()
                 {
                     roleType = roleType.association,
@@ -3016,8 +3016,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightSectoredRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightSectoredRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>("LightSectored"),
                 }, new FeatureAssociationConnector<LightVessel>()
                 {
                     roleType = roleType.association,
@@ -3025,8 +3025,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightVesselRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLightVesselRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>("LightVessel"),
                 }, new FeatureAssociationConnector<LocalDirectionOfBuoyage>()
                 {
                     roleType = roleType.association,
@@ -3034,8 +3034,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLocalDirectionOfBuoyageRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LocalDirectionOfBuoyageViewModel.LocalDirectionOfBuoyageRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLocalDirectionOfBuoyageRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LocalDirectionOfBuoyageViewModel.LocalDirectionOfBuoyageRefIdViewModel>("LocalDirectionOfBuoyage"),
                 }, new FeatureAssociationConnector<LocalMagneticAnomaly>()
                 {
                     roleType = roleType.association,
@@ -3043,8 +3043,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLocalMagneticAnomalyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LocalMagneticAnomalyViewModel.LocalMagneticAnomalyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLocalMagneticAnomalyRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LocalMagneticAnomalyViewModel.LocalMagneticAnomalyRefIdViewModel>("LocalMagneticAnomaly"),
                 }, new FeatureAssociationConnector<LockBasin>()
                 {
                     roleType = roleType.association,
@@ -3052,8 +3052,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLockBasinRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LockBasinViewModel.LockBasinRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLockBasinRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LockBasinViewModel.LockBasinRefIdViewModel>("LockBasin"),
                 }, new FeatureAssociationConnector<LogPond>()
                 {
                     roleType = roleType.association,
@@ -3061,8 +3061,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLogPondRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LogPondViewModel.LogPondRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateLogPondRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LogPondViewModel.LogPondRefIdViewModel>("LogPond"),
                 }, new FeatureAssociationConnector<MagneticVariation>()
                 {
                     roleType = roleType.association,
@@ -3070,8 +3070,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMagneticVariationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MagneticVariationViewModel.MagneticVariationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMagneticVariationRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MagneticVariationViewModel.MagneticVariationRefIdViewModel>("MagneticVariation"),
                 }, new FeatureAssociationConnector<MarineFarmCulture>()
                 {
                     roleType = roleType.association,
@@ -3079,8 +3079,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMarineFarmCultureRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineFarmCultureViewModel.MarineFarmCultureRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMarineFarmCultureRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineFarmCultureViewModel.MarineFarmCultureRefIdViewModel>("MarineFarmCulture"),
                 }, new FeatureAssociationConnector<MarinePollutionRegulationsArea>()
                 {
                     roleType = roleType.association,
@@ -3088,8 +3088,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMarinePollutionRegulationsAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarinePollutionRegulationsAreaViewModel.MarinePollutionRegulationsAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMarinePollutionRegulationsAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarinePollutionRegulationsAreaViewModel.MarinePollutionRegulationsAreaRefIdViewModel>("MarinePollutionRegulationsArea"),
                 }, new FeatureAssociationConnector<MilitaryPracticeArea>()
                 {
                     roleType = roleType.association,
@@ -3097,8 +3097,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMilitaryPracticeAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MilitaryPracticeAreaViewModel.MilitaryPracticeAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMilitaryPracticeAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MilitaryPracticeAreaViewModel.MilitaryPracticeAreaRefIdViewModel>("MilitaryPracticeArea"),
                 }, new FeatureAssociationConnector<MooringArea>()
                 {
                     roleType = roleType.association,
@@ -3106,8 +3106,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMooringAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringAreaViewModel.MooringAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMooringAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringAreaViewModel.MooringAreaRefIdViewModel>("MooringArea"),
                 }, new FeatureAssociationConnector<MooringBuoy>()
                 {
                     roleType = roleType.association,
@@ -3115,8 +3115,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMooringBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMooringBuoyRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>("MooringBuoy"),
                 }, new FeatureAssociationConnector<MooringTrot>()
                 {
                     roleType = roleType.association,
@@ -3124,8 +3124,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMooringTrotRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringTrotViewModel.MooringTrotRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateMooringTrotRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringTrotViewModel.MooringTrotRefIdViewModel>("MooringTrot"),
                 }, new FeatureAssociationConnector<NavigationalSystemOfMarks>()
                 {
                     roleType = roleType.association,
@@ -3133,8 +3133,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateNavigationalSystemOfMarksRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NavigationalSystemOfMarksViewModel.NavigationalSystemOfMarksRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateNavigationalSystemOfMarksRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NavigationalSystemOfMarksViewModel.NavigationalSystemOfMarksRefIdViewModel>("NavigationalSystemOfMarks"),
                 }, new FeatureAssociationConnector<NavigationLine>()
                 {
                     roleType = roleType.association,
@@ -3142,8 +3142,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateNavigationLineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NavigationLineViewModel.NavigationLineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateNavigationLineRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NavigationLineViewModel.NavigationLineRefIdViewModel>("NavigationLine"),
                 }, new FeatureAssociationConnector<Obstruction>()
                 {
                     roleType = roleType.association,
@@ -3151,8 +3151,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateObstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ObstructionViewModel.ObstructionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateObstructionRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ObstructionViewModel.ObstructionRefIdViewModel>("Obstruction"),
                 }, new FeatureAssociationConnector<OffshorePlatform>()
                 {
                     roleType = roleType.association,
@@ -3160,8 +3160,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateOffshorePlatformRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshorePlatformViewModel.OffshorePlatformRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateOffshorePlatformRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshorePlatformViewModel.OffshorePlatformRefIdViewModel>("OffshorePlatform"),
                 }, new FeatureAssociationConnector<OffshoreProductionArea>()
                 {
                     roleType = roleType.association,
@@ -3169,8 +3169,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateOffshoreProductionAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshoreProductionAreaViewModel.OffshoreProductionAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateOffshoreProductionAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshoreProductionAreaViewModel.OffshoreProductionAreaRefIdViewModel>("OffshoreProductionArea"),
                 }, new FeatureAssociationConnector<OilBarrier>()
                 {
                     roleType = roleType.association,
@@ -3178,8 +3178,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateOilBarrierRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OilBarrierViewModel.OilBarrierRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateOilBarrierRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OilBarrierViewModel.OilBarrierRefIdViewModel>("OilBarrier"),
                 }, new FeatureAssociationConnector<PhysicalAISAidToNavigation>()
                 {
                     roleType = roleType.association,
@@ -3187,8 +3187,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePhysicalAISAidToNavigationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalAISAidToNavigationViewModel.PhysicalAISAidToNavigationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePhysicalAISAidToNavigationRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalAISAidToNavigationViewModel.PhysicalAISAidToNavigationRefIdViewModel>("PhysicalAISAidToNavigation"),
                 }, new FeatureAssociationConnector<Pile>()
                 {
                     roleType = roleType.association,
@@ -3196,8 +3196,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePileRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePileRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>("Pile"),
                 }, new FeatureAssociationConnector<PilotageDistrict>()
                 {
                     roleType = roleType.association,
@@ -3205,8 +3205,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePilotageDistrictRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotageDistrictViewModel.PilotageDistrictRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePilotageDistrictRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotageDistrictViewModel.PilotageDistrictRefIdViewModel>("PilotageDistrict"),
                 }, new FeatureAssociationConnector<PilotBoardingPlace>()
                 {
                     roleType = roleType.association,
@@ -3214,8 +3214,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePilotBoardingPlaceRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePilotBoardingPlaceRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
                 }, new FeatureAssociationConnector<PipelineOverhead>()
                 {
                     roleType = roleType.association,
@@ -3223,8 +3223,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePipelineOverheadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineOverheadViewModel.PipelineOverheadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePipelineOverheadRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineOverheadViewModel.PipelineOverheadRefIdViewModel>("PipelineOverhead"),
                 }, new FeatureAssociationConnector<PipelineSubmarineOnLand>()
                 {
                     roleType = roleType.association,
@@ -3232,8 +3232,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePipelineSubmarineOnLandRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineSubmarineOnLandViewModel.PipelineSubmarineOnLandRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePipelineSubmarineOnLandRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineSubmarineOnLandViewModel.PipelineSubmarineOnLandRefIdViewModel>("PipelineSubmarineOnLand"),
                 }, new FeatureAssociationConnector<Pontoon>()
                 {
                     roleType = roleType.association,
@@ -3241,8 +3241,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePontoonRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePontoonRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>("Pontoon"),
                 }, new FeatureAssociationConnector<PrecautionaryArea>()
                 {
                     roleType = roleType.association,
@@ -3250,8 +3250,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePrecautionaryAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PrecautionaryAreaViewModel.PrecautionaryAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePrecautionaryAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PrecautionaryAreaViewModel.PrecautionaryAreaRefIdViewModel>("PrecautionaryArea"),
                 }, new FeatureAssociationConnector<ProductionStorageArea>()
                 {
                     roleType = roleType.association,
@@ -3259,8 +3259,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateProductionStorageAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ProductionStorageAreaViewModel.ProductionStorageAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateProductionStorageAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ProductionStorageAreaViewModel.ProductionStorageAreaRefIdViewModel>("ProductionStorageArea"),
                 }, new FeatureAssociationConnector<PylonBridgeSupport>()
                 {
                     roleType = roleType.association,
@@ -3268,8 +3268,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePylonBridgeSupportRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatePylonBridgeSupportRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>("PylonBridgeSupport"),
                 }, new FeatureAssociationConnector<QualityOfBathymetricData>()
                 {
                     roleType = roleType.association,
@@ -3277,8 +3277,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateQualityOfBathymetricDataRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<QualityOfBathymetricDataViewModel.QualityOfBathymetricDataRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateQualityOfBathymetricDataRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<QualityOfBathymetricDataViewModel.QualityOfBathymetricDataRefIdViewModel>("QualityOfBathymetricData"),
                 }, new FeatureAssociationConnector<QualityOfNonBathymetricData>()
                 {
                     roleType = roleType.association,
@@ -3286,8 +3286,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateQualityOfNonBathymetricDataRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<QualityOfNonBathymetricDataViewModel.QualityOfNonBathymetricDataRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateQualityOfNonBathymetricDataRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<QualityOfNonBathymetricDataViewModel.QualityOfNonBathymetricDataRefIdViewModel>("QualityOfNonBathymetricData"),
                 }, new FeatureAssociationConnector<QualityOfSurvey>()
                 {
                     roleType = roleType.association,
@@ -3295,8 +3295,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateQualityOfSurveyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<QualityOfSurveyViewModel.QualityOfSurveyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateQualityOfSurveyRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<QualityOfSurveyViewModel.QualityOfSurveyRefIdViewModel>("QualityOfSurvey"),
                 }, new FeatureAssociationConnector<RadarLine>()
                 {
                     roleType = roleType.association,
@@ -3304,8 +3304,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadarLineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarLineViewModel.RadarLineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadarLineRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarLineViewModel.RadarLineRefIdViewModel>("RadarLine"),
                 }, new FeatureAssociationConnector<RadarRange>()
                 {
                     roleType = roleType.association,
@@ -3313,8 +3313,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadarRangeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarRangeViewModel.RadarRangeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadarRangeRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarRangeViewModel.RadarRangeRefIdViewModel>("RadarRange"),
                 }, new FeatureAssociationConnector<RadarReflector>()
                 {
                     roleType = roleType.association,
@@ -3322,8 +3322,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadarReflectorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarReflectorViewModel.RadarReflectorRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadarReflectorRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarReflectorViewModel.RadarReflectorRefIdViewModel>("RadarReflector"),
                 }, new FeatureAssociationConnector<RadarStation>()
                 {
                     roleType = roleType.association,
@@ -3331,8 +3331,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadarStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarStationViewModel.RadarStationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadarStationRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarStationViewModel.RadarStationRefIdViewModel>("RadarStation"),
                 }, new FeatureAssociationConnector<RadarTransponderBeacon>()
                 {
                     roleType = roleType.association,
@@ -3340,8 +3340,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadarTransponderBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarTransponderBeaconViewModel.RadarTransponderBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadarTransponderBeaconRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarTransponderBeaconViewModel.RadarTransponderBeaconRefIdViewModel>("RadarTransponderBeacon"),
                 }, new FeatureAssociationConnector<RadioCallingInPoint>()
                 {
                     roleType = roleType.association,
@@ -3349,8 +3349,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadioCallingInPointRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioCallingInPointViewModel.RadioCallingInPointRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadioCallingInPointRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioCallingInPointViewModel.RadioCallingInPointRefIdViewModel>("RadioCallingInPoint"),
                 }, new FeatureAssociationConnector<RadioStation>()
                 {
                     roleType = roleType.association,
@@ -3358,8 +3358,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadioStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioStationViewModel.RadioStationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRadioStationRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioStationViewModel.RadioStationRefIdViewModel>("RadioStation"),
                 }, new FeatureAssociationConnector<Railway>()
                 {
                     roleType = roleType.association,
@@ -3367,8 +3367,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRailwayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RailwayViewModel.RailwayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRailwayRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RailwayViewModel.RailwayRefIdViewModel>("Railway"),
                 }, new FeatureAssociationConnector<RangeSystem>()
                 {
                     roleType = roleType.association,
@@ -3376,8 +3376,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRangeSystemRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRangeSystemRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>("RangeSystem"),
                 }, new FeatureAssociationConnector<Rapids>()
                 {
                     roleType = roleType.association,
@@ -3385,8 +3385,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRapidsRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RapidsViewModel.RapidsRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRapidsRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RapidsViewModel.RapidsRefIdViewModel>("Rapids"),
                 }, new FeatureAssociationConnector<RecommendedRouteCentreline>()
                 {
                     roleType = roleType.association,
@@ -3394,8 +3394,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRecommendedRouteCentrelineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedRouteCentrelineViewModel.RecommendedRouteCentrelineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRecommendedRouteCentrelineRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedRouteCentrelineViewModel.RecommendedRouteCentrelineRefIdViewModel>("RecommendedRouteCentreline"),
                 }, new FeatureAssociationConnector<RecommendedTrack>()
                 {
                     roleType = roleType.association,
@@ -3403,8 +3403,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRecommendedTrackRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrackViewModel.RecommendedTrackRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRecommendedTrackRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrackViewModel.RecommendedTrackRefIdViewModel>("RecommendedTrack"),
                 }, new FeatureAssociationConnector<RecommendedTrafficLanePart>()
                 {
                     roleType = roleType.association,
@@ -3412,8 +3412,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRecommendedTrafficLanePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrafficLanePartViewModel.RecommendedTrafficLanePartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRecommendedTrafficLanePartRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrafficLanePartViewModel.RecommendedTrafficLanePartRefIdViewModel>("RecommendedTrafficLanePart"),
                 }, new FeatureAssociationConnector<RescueStation>()
                 {
                     roleType = roleType.association,
@@ -3421,8 +3421,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRescueStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RescueStationViewModel.RescueStationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRescueStationRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RescueStationViewModel.RescueStationRefIdViewModel>("RescueStation"),
                 }, new FeatureAssociationConnector<RestrictedArea>()
                 {
                     roleType = roleType.association,
@@ -3430,8 +3430,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRestrictedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRestrictedAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>("RestrictedArea"),
                 }, new FeatureAssociationConnector<Retroreflector>()
                 {
                     roleType = roleType.association,
@@ -3439,8 +3439,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRetroreflectorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RetroreflectorViewModel.RetroreflectorRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRetroreflectorRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RetroreflectorViewModel.RetroreflectorRefIdViewModel>("Retroreflector"),
                 }, new FeatureAssociationConnector<River>()
                 {
                     roleType = roleType.association,
@@ -3448,8 +3448,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRiverRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RiverViewModel.RiverRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRiverRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RiverViewModel.RiverRefIdViewModel>("River"),
                 }, new FeatureAssociationConnector<Road>()
                 {
                     roleType = roleType.association,
@@ -3457,8 +3457,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRoadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RoadViewModel.RoadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRoadRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RoadViewModel.RoadRefIdViewModel>("Road"),
                 }, new FeatureAssociationConnector<Runway>()
                 {
                     roleType = roleType.association,
@@ -3466,8 +3466,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRunwayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RunwayViewModel.RunwayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateRunwayRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RunwayViewModel.RunwayRefIdViewModel>("Runway"),
                 }, new FeatureAssociationConnector<SafeWaterBeacon>()
                 {
                     roleType = roleType.association,
@@ -3475,8 +3475,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSafeWaterBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSafeWaterBeaconRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>("SafeWaterBeacon"),
                 }, new FeatureAssociationConnector<SafeWaterBuoy>()
                 {
                     roleType = roleType.association,
@@ -3484,8 +3484,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSafeWaterBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSafeWaterBuoyRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>("SafeWaterBuoy"),
                 }, new FeatureAssociationConnector<Sandwave>()
                 {
                     roleType = roleType.association,
@@ -3493,8 +3493,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSandwaveRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SandwaveViewModel.SandwaveRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSandwaveRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SandwaveViewModel.SandwaveRefIdViewModel>("Sandwave"),
                 }, new FeatureAssociationConnector<SeaAreaNamedWaterArea>()
                 {
                     roleType = roleType.association,
@@ -3502,8 +3502,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSeaAreaNamedWaterAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaAreaNamedWaterAreaViewModel.SeaAreaNamedWaterAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSeaAreaNamedWaterAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaAreaNamedWaterAreaViewModel.SeaAreaNamedWaterAreaRefIdViewModel>("SeaAreaNamedWaterArea"),
                 }, new FeatureAssociationConnector<SeabedArea>()
                 {
                     roleType = roleType.association,
@@ -3511,8 +3511,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSeabedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeabedAreaViewModel.SeabedAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSeabedAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeabedAreaViewModel.SeabedAreaRefIdViewModel>("SeabedArea"),
                 }, new FeatureAssociationConnector<Seagrass>()
                 {
                     roleType = roleType.association,
@@ -3520,8 +3520,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSeagrassRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeagrassViewModel.SeagrassRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSeagrassRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeagrassViewModel.SeagrassRefIdViewModel>("Seagrass"),
                 }, new FeatureAssociationConnector<SeaplaneLandingArea>()
                 {
                     roleType = roleType.association,
@@ -3529,8 +3529,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSeaplaneLandingAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSeaplaneLandingAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>("SeaplaneLandingArea"),
                 }, new FeatureAssociationConnector<SeparationZoneOrLine>()
                 {
                     roleType = roleType.association,
@@ -3538,8 +3538,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSeparationZoneOrLineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeparationZoneOrLineViewModel.SeparationZoneOrLineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSeparationZoneOrLineRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeparationZoneOrLineViewModel.SeparationZoneOrLineRefIdViewModel>("SeparationZoneOrLine"),
                 }, new FeatureAssociationConnector<ShorelineConstruction>()
                 {
                     roleType = roleType.association,
@@ -3547,8 +3547,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateShorelineConstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ShorelineConstructionViewModel.ShorelineConstructionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateShorelineConstructionRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ShorelineConstructionViewModel.ShorelineConstructionRefIdViewModel>("ShorelineConstruction"),
                 }, new FeatureAssociationConnector<SignalStationTraffic>()
                 {
                     roleType = roleType.association,
@@ -3556,8 +3556,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSignalStationTrafficRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationTrafficViewModel.SignalStationTrafficRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSignalStationTrafficRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationTrafficViewModel.SignalStationTrafficRefIdViewModel>("SignalStationTraffic"),
                 }, new FeatureAssociationConnector<SignalStationWarning>()
                 {
                     roleType = roleType.association,
@@ -3565,8 +3565,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSignalStationWarningRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationWarningViewModel.SignalStationWarningRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSignalStationWarningRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationWarningViewModel.SignalStationWarningRefIdViewModel>("SignalStationWarning"),
                 }, new FeatureAssociationConnector<SiloTank>()
                 {
                     roleType = roleType.association,
@@ -3574,8 +3574,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSiloTankRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSiloTankRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>("SiloTank"),
                 }, new FeatureAssociationConnector<SlopeTopline>()
                 {
                     roleType = roleType.association,
@@ -3583,8 +3583,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSlopeToplineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopeToplineViewModel.SlopeToplineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSlopeToplineRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopeToplineViewModel.SlopeToplineRefIdViewModel>("SlopeTopline"),
                 }, new FeatureAssociationConnector<SlopingGround>()
                 {
                     roleType = roleType.association,
@@ -3592,8 +3592,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSlopingGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopingGroundViewModel.SlopingGroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSlopingGroundRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopingGroundViewModel.SlopingGroundRefIdViewModel>("SlopingGround"),
                 }, new FeatureAssociationConnector<SmallCraftFacility>()
                 {
                     roleType = roleType.association,
@@ -3601,8 +3601,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSmallCraftFacilityRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SmallCraftFacilityViewModel.SmallCraftFacilityRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSmallCraftFacilityRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SmallCraftFacilityViewModel.SmallCraftFacilityRefIdViewModel>("SmallCraftFacility"),
                 }, new FeatureAssociationConnector<Sounding>()
                 {
                     roleType = roleType.association,
@@ -3610,8 +3610,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSoundingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SoundingViewModel.SoundingRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSoundingRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SoundingViewModel.SoundingRefIdViewModel>("Sounding"),
                 }, new FeatureAssociationConnector<SoundingDatum>()
                 {
                     roleType = roleType.association,
@@ -3619,8 +3619,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSoundingDatumRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SoundingDatumViewModel.SoundingDatumRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSoundingDatumRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SoundingDatumViewModel.SoundingDatumRefIdViewModel>("SoundingDatum"),
                 }, new FeatureAssociationConnector<SpanFixed>()
                 {
                     roleType = roleType.association,
@@ -3628,8 +3628,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSpanFixedRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSpanFixedRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>("SpanFixed"),
                 }, new FeatureAssociationConnector<SpanOpening>()
                 {
                     roleType = roleType.association,
@@ -3637,8 +3637,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSpanOpeningRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSpanOpeningRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>("SpanOpening"),
                 }, new FeatureAssociationConnector<SpecialPurposeGeneralBeacon>()
                 {
                     roleType = roleType.association,
@@ -3646,8 +3646,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSpecialPurposeGeneralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSpecialPurposeGeneralBeaconRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>("SpecialPurposeGeneralBeacon"),
                 }, new FeatureAssociationConnector<SpecialPurposeGeneralBuoy>()
                 {
                     roleType = roleType.association,
@@ -3655,8 +3655,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSpecialPurposeGeneralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSpecialPurposeGeneralBuoyRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>("SpecialPurposeGeneralBuoy"),
                 }, new FeatureAssociationConnector<Spring>()
                 {
                     roleType = roleType.association,
@@ -3664,8 +3664,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSpringRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpringViewModel.SpringRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSpringRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpringViewModel.SpringRefIdViewModel>("Spring"),
                 }, new FeatureAssociationConnector<StraightTerritorialSeaBaseline>()
                 {
                     roleType = roleType.association,
@@ -3673,8 +3673,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateStraightTerritorialSeaBaselineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StraightTerritorialSeaBaselineViewModel.StraightTerritorialSeaBaselineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateStraightTerritorialSeaBaselineRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StraightTerritorialSeaBaselineViewModel.StraightTerritorialSeaBaselineRefIdViewModel>("StraightTerritorialSeaBaseline"),
                 }, new FeatureAssociationConnector<StructureOverNavigableWater>()
                 {
                     roleType = roleType.association,
@@ -3682,8 +3682,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateStructureOverNavigableWaterRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateStructureOverNavigableWaterRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>("StructureOverNavigableWater"),
                 }, new FeatureAssociationConnector<SubmarinePipelineArea>()
                 {
                     roleType = roleType.association,
@@ -3691,8 +3691,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSubmarinePipelineAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarinePipelineAreaViewModel.SubmarinePipelineAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSubmarinePipelineAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarinePipelineAreaViewModel.SubmarinePipelineAreaRefIdViewModel>("SubmarinePipelineArea"),
                 }, new FeatureAssociationConnector<SubmarineTransitLane>()
                 {
                     roleType = roleType.association,
@@ -3700,8 +3700,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSubmarineTransitLaneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarineTransitLaneViewModel.SubmarineTransitLaneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSubmarineTransitLaneRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarineTransitLaneViewModel.SubmarineTransitLaneRefIdViewModel>("SubmarineTransitLane"),
                 }, new FeatureAssociationConnector<SweptArea>()
                 {
                     roleType = roleType.association,
@@ -3709,8 +3709,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSweptAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SweptAreaViewModel.SweptAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateSweptAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SweptAreaViewModel.SweptAreaRefIdViewModel>("SweptArea"),
                 }, new FeatureAssociationConnector<TerritorialSeaArea>()
                 {
                     roleType = roleType.association,
@@ -3718,8 +3718,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTerritorialSeaAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TerritorialSeaAreaViewModel.TerritorialSeaAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTerritorialSeaAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TerritorialSeaAreaViewModel.TerritorialSeaAreaRefIdViewModel>("TerritorialSeaArea"),
                 }, new FeatureAssociationConnector<TidalStreamFloodEbb>()
                 {
                     roleType = roleType.association,
@@ -3727,8 +3727,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTidalStreamFloodEbbRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamFloodEbbViewModel.TidalStreamFloodEbbRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTidalStreamFloodEbbRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamFloodEbbViewModel.TidalStreamFloodEbbRefIdViewModel>("TidalStreamFloodEbb"),
                 }, new FeatureAssociationConnector<TidalStreamPanelData>()
                 {
                     roleType = roleType.association,
@@ -3736,8 +3736,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTidalStreamPanelDataRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamPanelDataViewModel.TidalStreamPanelDataRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTidalStreamPanelDataRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamPanelDataViewModel.TidalStreamPanelDataRefIdViewModel>("TidalStreamPanelData"),
                 }, new FeatureAssociationConnector<Tideway>()
                 {
                     roleType = roleType.association,
@@ -3745,8 +3745,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTidewayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidewayViewModel.TidewayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTidewayRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidewayViewModel.TidewayRefIdViewModel>("Tideway"),
                 }, new FeatureAssociationConnector<TrafficSeparationScheme>()
                 {
                     roleType = roleType.association,
@@ -3754,8 +3754,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTrafficSeparationSchemeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTrafficSeparationSchemeRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>("TrafficSeparationScheme"),
                 }, new FeatureAssociationConnector<TrafficSeparationSchemeBoundary>()
                 {
                     roleType = roleType.association,
@@ -3763,8 +3763,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTrafficSeparationSchemeBoundaryRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeBoundaryViewModel.TrafficSeparationSchemeBoundaryRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTrafficSeparationSchemeBoundaryRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeBoundaryViewModel.TrafficSeparationSchemeBoundaryRefIdViewModel>("TrafficSeparationSchemeBoundary"),
                 }, new FeatureAssociationConnector<TrafficSeparationSchemeCrossing>()
                 {
                     roleType = roleType.association,
@@ -3772,8 +3772,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTrafficSeparationSchemeCrossingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeCrossingViewModel.TrafficSeparationSchemeCrossingRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTrafficSeparationSchemeCrossingRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeCrossingViewModel.TrafficSeparationSchemeCrossingRefIdViewModel>("TrafficSeparationSchemeCrossing"),
                 }, new FeatureAssociationConnector<TrafficSeparationSchemeLanePart>()
                 {
                     roleType = roleType.association,
@@ -3781,8 +3781,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTrafficSeparationSchemeLanePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeLanePartViewModel.TrafficSeparationSchemeLanePartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTrafficSeparationSchemeLanePartRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeLanePartViewModel.TrafficSeparationSchemeLanePartRefIdViewModel>("TrafficSeparationSchemeLanePart"),
                 }, new FeatureAssociationConnector<TrafficSeparationSchemeRoundabout>()
                 {
                     roleType = roleType.association,
@@ -3790,8 +3790,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTrafficSeparationSchemeRoundaboutRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeRoundaboutViewModel.TrafficSeparationSchemeRoundaboutRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTrafficSeparationSchemeRoundaboutRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeRoundaboutViewModel.TrafficSeparationSchemeRoundaboutRefIdViewModel>("TrafficSeparationSchemeRoundabout"),
                 }, new FeatureAssociationConnector<Tunnel>()
                 {
                     roleType = roleType.association,
@@ -3799,8 +3799,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTunnelRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TunnelViewModel.TunnelRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTunnelRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TunnelViewModel.TunnelRefIdViewModel>("Tunnel"),
                 }, new FeatureAssociationConnector<TwoWayRoute>()
                 {
                     roleType = roleType.association,
@@ -3808,8 +3808,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTwoWayRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTwoWayRouteRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>("TwoWayRoute"),
                 }, new FeatureAssociationConnector<TwoWayRoutePart>()
                 {
                     roleType = roleType.association,
@@ -3817,8 +3817,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTwoWayRoutePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRoutePartViewModel.TwoWayRoutePartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateTwoWayRoutePartRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRoutePartViewModel.TwoWayRoutePartRefIdViewModel>("TwoWayRoutePart"),
                 }, new FeatureAssociationConnector<UnderwaterAwashRock>()
                 {
                     roleType = roleType.association,
@@ -3826,8 +3826,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateUnderwaterAwashRockRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UnderwaterAwashRockViewModel.UnderwaterAwashRockRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateUnderwaterAwashRockRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UnderwaterAwashRockViewModel.UnderwaterAwashRockRefIdViewModel>("UnderwaterAwashRock"),
                 }, new FeatureAssociationConnector<UnsurveyedArea>()
                 {
                     roleType = roleType.association,
@@ -3835,8 +3835,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateUnsurveyedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UnsurveyedAreaViewModel.UnsurveyedAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateUnsurveyedAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UnsurveyedAreaViewModel.UnsurveyedAreaRefIdViewModel>("UnsurveyedArea"),
                 }, new FeatureAssociationConnector<UpdateInformation>()
                 {
                     roleType = roleType.association,
@@ -3844,8 +3844,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateUpdateInformationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UpdateInformationViewModel.UpdateInformationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateUpdateInformationRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UpdateInformationViewModel.UpdateInformationRefIdViewModel>("UpdateInformation"),
                 }, new FeatureAssociationConnector<Vegetation>()
                 {
                     roleType = roleType.association,
@@ -3853,8 +3853,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateVegetationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VegetationViewModel.VegetationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateVegetationRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VegetationViewModel.VegetationRefIdViewModel>("Vegetation"),
                 }, new FeatureAssociationConnector<VerticalDatumOfData>()
                 {
                     roleType = roleType.association,
@@ -3862,8 +3862,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateVerticalDatumOfDataRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VerticalDatumOfDataViewModel.VerticalDatumOfDataRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateVerticalDatumOfDataRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VerticalDatumOfDataViewModel.VerticalDatumOfDataRefIdViewModel>("VerticalDatumOfData"),
                 }, new FeatureAssociationConnector<VesselTrafficServiceArea>()
                 {
                     roleType = roleType.association,
@@ -3871,8 +3871,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateVesselTrafficServiceAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateVesselTrafficServiceAreaRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>("VesselTrafficServiceArea"),
                 }, new FeatureAssociationConnector<VirtualAISAidToNavigation>()
                 {
                     roleType = roleType.association,
@@ -3880,8 +3880,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateVirtualAISAidToNavigationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VirtualAISAidToNavigationViewModel.VirtualAISAidToNavigationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateVirtualAISAidToNavigationRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VirtualAISAidToNavigationViewModel.VirtualAISAidToNavigationRefIdViewModel>("VirtualAISAidToNavigation"),
                 }, new FeatureAssociationConnector<Waterfall>()
                 {
                     roleType = roleType.association,
@@ -3889,8 +3889,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateWaterfallRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterfallViewModel.WaterfallRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateWaterfallRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterfallViewModel.WaterfallRefIdViewModel>("Waterfall"),
                 }, new FeatureAssociationConnector<WaterTurbulence>()
                 {
                     roleType = roleType.association,
@@ -3898,8 +3898,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateWaterTurbulenceRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterTurbulenceViewModel.WaterTurbulenceRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateWaterTurbulenceRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterTurbulenceViewModel.WaterTurbulenceRefIdViewModel>("WaterTurbulence"),
                 }, new FeatureAssociationConnector<WeedKelp>()
                 {
                     roleType = roleType.association,
@@ -3907,8 +3907,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateWeedKelpRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WeedKelpViewModel.WeedKelpRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateWeedKelpRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WeedKelpViewModel.WeedKelpRefIdViewModel>("WeedKelp"),
                 }, new FeatureAssociationConnector<WindTurbine>()
                 {
                     roleType = roleType.association,
@@ -3916,8 +3916,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateWindTurbineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WindTurbineViewModel.WindTurbineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateWindTurbineRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WindTurbineViewModel.WindTurbineRefIdViewModel>("WindTurbine"),
                 }, new FeatureAssociationConnector<Wreck>()
                 {
                     roleType = roleType.association,
@@ -3925,8 +3925,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateWreckRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WreckViewModel.WreckRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateWreckRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WreckViewModel.WreckRefIdViewModel>("Wreck"),
                 }, new FeatureAssociationConnector<UpdateInformation>()
                 {
                     roleType = roleType.association,
@@ -3934,8 +3934,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(AdministrationArea), typeof(AirportAirfield), typeof(AnchorBerth), typeof(AnchorageArea), typeof(ArchipelagicSeaLane), typeof(ArchipelagicSeaLaneArea), typeof(ArchipelagicSeaLaneAxis), typeof(Berth), typeof(Bollard), typeof(Bridge), typeof(Building), typeof(BuiltUpArea), typeof(CableArea), typeof(CableOverhead), typeof(CableSubmarine), typeof(Canal), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(CargoTranshipmentArea), typeof(Causeway), typeof(CautionArea), typeof(Checkpoint), typeof(CoastGuardStation), typeof(Coastline), typeof(CollisionRegulationsLimit), typeof(ContiguousZone), typeof(ContinentalShelfArea), typeof(Conveyor), typeof(Crane), typeof(CurrentNonGravitational), typeof(CustomZone), typeof(Dam), typeof(Daymark), typeof(DeepWaterRoute), typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart), typeof(DepthArea), typeof(DepthContour), typeof(DepthNoBottomFound), typeof(DiscolouredWater), typeof(DistanceMark), typeof(DockArea), typeof(Dolphin), typeof(DredgedArea), typeof(DryDock), typeof(DumpingGround), typeof(Dyke), typeof(EmergencyWreckMarkingBuoy), typeof(ExclusiveEconomicZone), typeof(Fairway), typeof(FairwaySystem), typeof(FenceWall), typeof(FerryRoute), typeof(FisheryZone), typeof(FishingFacility), typeof(FishingGround), typeof(FloatingDock), typeof(FogSignal), typeof(FortifiedStructure), typeof(FoulGround), typeof(FreePortArea), typeof(Gate), typeof(Gridiron), typeof(HarbourAreaAdministrative), typeof(HarbourFacility), typeof(Helipad), typeof(Hulk), typeof(IceArea), typeof(InformationArea), typeof(InshoreTrafficZone), typeof(InstallationBuoy), typeof(IslandGroup), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Lake), typeof(LandArea), typeof(LandElevation), typeof(LandRegion), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFloat), typeof(LightFogDetector), typeof(LightSectored), typeof(LightVessel), typeof(LocalDirectionOfBuoyage), typeof(LocalMagneticAnomaly), typeof(LockBasin), typeof(LogPond), typeof(MagneticVariation), typeof(MarineFarmCulture), typeof(MarinePollutionRegulationsArea), typeof(MilitaryPracticeArea), typeof(MooringArea), typeof(MooringBuoy), typeof(MooringTrot), typeof(NavigationLine), typeof(NavigationalSystemOfMarks), typeof(Obstruction), typeof(OffshorePlatform), typeof(OffshoreProductionArea), typeof(OilBarrier), typeof(PhysicalAISAidToNavigation), typeof(Pile), typeof(PilotBoardingPlace), typeof(PilotageDistrict), typeof(PipelineOverhead), typeof(PipelineSubmarineOnLand), typeof(Pontoon), typeof(PrecautionaryArea), typeof(ProductionStorageArea), typeof(PylonBridgeSupport), typeof(QualityOfBathymetricData), typeof(QualityOfNonBathymetricData), typeof(QualityOfSurvey), typeof(RadarLine), typeof(RadarRange), typeof(RadarReflector), typeof(RadarStation), typeof(RadarTransponderBeacon), typeof(RadioCallingInPoint), typeof(RadioStation), typeof(Railway), typeof(RangeSystem), typeof(Rapids), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(RecommendedTrafficLanePart), typeof(RescueStation), typeof(RestrictedArea), typeof(Retroreflector), typeof(River), typeof(Road), typeof(Runway), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(Sandwave), typeof(SeaAreaNamedWaterArea), typeof(SeabedArea), typeof(Seagrass), typeof(SeaplaneLandingArea), typeof(SeparationZoneOrLine), typeof(ShorelineConstruction), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(SiloTank), typeof(SmallCraftFacility), typeof(SlopeTopline), typeof(SlopingGround), typeof(Sounding), typeof(SoundingDatum), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Spring), typeof(StraightTerritorialSeaBaseline), typeof(StructureOverNavigableWater), typeof(SubmarinePipelineArea), typeof(SubmarineTransitLane), typeof(SweptArea), typeof(TerritorialSeaArea), typeof(TidalStreamPanelData), typeof(TidalStreamFloodEbb), typeof(Tideway), typeof(TrafficSeparationScheme), typeof(TrafficSeparationSchemeBoundary), typeof(TrafficSeparationSchemeCrossing), typeof(TrafficSeparationSchemeLanePart), typeof(TrafficSeparationSchemeRoundabout), typeof(Tunnel), typeof(TwoWayRoute), typeof(TwoWayRoutePart), typeof(UnderwaterAwashRock), typeof(UnsurveyedArea), typeof(UpdateInformation), typeof(Vegetation), typeof(VerticalDatumOfData), typeof(VesselTrafficServiceArea), typeof(VirtualAISAidToNavigation), typeof(WaterTurbulence), typeof(Waterfall), typeof(WeedKelp), typeof(WindTurbine), typeof(Wreck)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatedObjectUpdateInformationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UpdateInformationViewModel.UpdateInformationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdatedObjectUpdateInformationRefIdViewModel>("UpdatedInformation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UpdateInformationViewModel.UpdateInformationRefIdViewModel>("UpdateInformation"),
                 }
 
                 ]
@@ -3949,8 +3949,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<UpdateAggregationViewModel.theCollectionUpdateInformationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UpdateInformationViewModel.UpdateInformationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<UpdateAggregationViewModel.theCollectionUpdateInformationRefIdViewModel>("UpdateAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UpdateInformationViewModel.UpdateInformationRefIdViewModel>("UpdateInformation"),
                 }, new FeatureAssociationConnector<UpdateInformation>()
                 {
                     roleType = roleType.association,
@@ -3958,8 +3958,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(UpdateInformation)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdateAggregationViewModel.theComponentUpdateInformationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UpdateInformationViewModel.UpdateInformationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<UpdateAggregationViewModel.theComponentUpdateInformationRefIdViewModel>("UpdateAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UpdateInformationViewModel.UpdateInformationRefIdViewModel>("UpdateInformation"),
                 }
 
                 ]
@@ -3973,8 +3973,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TwoWayRouteAggregationViewModel.theCollectionTwoWayRoutePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRoutePartViewModel.TwoWayRoutePartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TwoWayRouteAggregationViewModel.theCollectionTwoWayRoutePartRefIdViewModel>("TwoWayRouteAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRoutePartViewModel.TwoWayRoutePartRefIdViewModel>("TwoWayRoutePart"),
                 }, new FeatureAssociationConnector<TwoWayRoute>()
                 {
                     roleType = roleType.association,
@@ -3982,8 +3982,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(TwoWayRoutePart)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TwoWayRouteAggregationViewModel.theComponentTwoWayRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TwoWayRouteAggregationViewModel.theComponentTwoWayRouteRefIdViewModel>("TwoWayRouteAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>("TwoWayRoute"),
                 }
 
                 ]
@@ -3997,8 +3997,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionDeepWaterRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionDeepWaterRouteRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>("DeepWaterRoute"),
                 }, new FeatureAssociationConnector<DeepWaterRouteCentreline>()
                 {
                     roleType = roleType.aggregation,
@@ -4006,8 +4006,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionDeepWaterRouteCentrelineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteCentrelineViewModel.DeepWaterRouteCentrelineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionDeepWaterRouteCentrelineRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteCentrelineViewModel.DeepWaterRouteCentrelineRefIdViewModel>("DeepWaterRouteCentreline"),
                 }, new FeatureAssociationConnector<DeepWaterRoutePart>()
                 {
                     roleType = roleType.aggregation,
@@ -4015,8 +4015,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionDeepWaterRoutePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRoutePartViewModel.DeepWaterRoutePartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionDeepWaterRoutePartRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRoutePartViewModel.DeepWaterRoutePartRefIdViewModel>("DeepWaterRoutePart"),
                 }, new FeatureAssociationConnector<InshoreTrafficZone>()
                 {
                     roleType = roleType.aggregation,
@@ -4024,8 +4024,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionInshoreTrafficZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InshoreTrafficZoneViewModel.InshoreTrafficZoneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionInshoreTrafficZoneRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InshoreTrafficZoneViewModel.InshoreTrafficZoneRefIdViewModel>("InshoreTrafficZone"),
                 }, new FeatureAssociationConnector<PrecautionaryArea>()
                 {
                     roleType = roleType.aggregation,
@@ -4033,8 +4033,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionPrecautionaryAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PrecautionaryAreaViewModel.PrecautionaryAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionPrecautionaryAreaRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PrecautionaryAreaViewModel.PrecautionaryAreaRefIdViewModel>("PrecautionaryArea"),
                 }, new FeatureAssociationConnector<RestrictedArea>()
                 {
                     roleType = roleType.aggregation,
@@ -4042,8 +4042,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionRestrictedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionRestrictedAreaRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>("RestrictedArea"),
                 }, new FeatureAssociationConnector<SeparationZoneOrLine>()
                 {
                     roleType = roleType.aggregation,
@@ -4051,8 +4051,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionSeparationZoneOrLineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeparationZoneOrLineViewModel.SeparationZoneOrLineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionSeparationZoneOrLineRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeparationZoneOrLineViewModel.SeparationZoneOrLineRefIdViewModel>("SeparationZoneOrLine"),
                 }, new FeatureAssociationConnector<TrafficSeparationScheme>()
                 {
                     roleType = roleType.aggregation,
@@ -4060,8 +4060,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTrafficSeparationSchemeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTrafficSeparationSchemeRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>("TrafficSeparationScheme"),
                 }, new FeatureAssociationConnector<TrafficSeparationSchemeBoundary>()
                 {
                     roleType = roleType.aggregation,
@@ -4069,8 +4069,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTrafficSeparationSchemeBoundaryRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeBoundaryViewModel.TrafficSeparationSchemeBoundaryRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTrafficSeparationSchemeBoundaryRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeBoundaryViewModel.TrafficSeparationSchemeBoundaryRefIdViewModel>("TrafficSeparationSchemeBoundary"),
                 }, new FeatureAssociationConnector<TrafficSeparationSchemeCrossing>()
                 {
                     roleType = roleType.aggregation,
@@ -4078,8 +4078,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTrafficSeparationSchemeCrossingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeCrossingViewModel.TrafficSeparationSchemeCrossingRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTrafficSeparationSchemeCrossingRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeCrossingViewModel.TrafficSeparationSchemeCrossingRefIdViewModel>("TrafficSeparationSchemeCrossing"),
                 }, new FeatureAssociationConnector<TrafficSeparationSchemeLanePart>()
                 {
                     roleType = roleType.aggregation,
@@ -4087,8 +4087,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTrafficSeparationSchemeLanePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeLanePartViewModel.TrafficSeparationSchemeLanePartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTrafficSeparationSchemeLanePartRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeLanePartViewModel.TrafficSeparationSchemeLanePartRefIdViewModel>("TrafficSeparationSchemeLanePart"),
                 }, new FeatureAssociationConnector<TrafficSeparationSchemeRoundabout>()
                 {
                     roleType = roleType.aggregation,
@@ -4096,8 +4096,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTrafficSeparationSchemeRoundaboutRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeRoundaboutViewModel.TrafficSeparationSchemeRoundaboutRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTrafficSeparationSchemeRoundaboutRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeRoundaboutViewModel.TrafficSeparationSchemeRoundaboutRefIdViewModel>("TrafficSeparationSchemeRoundabout"),
                 }, new FeatureAssociationConnector<TwoWayRoute>()
                 {
                     roleType = roleType.aggregation,
@@ -4105,8 +4105,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTwoWayRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTwoWayRouteRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>("TwoWayRoute"),
                 }, new FeatureAssociationConnector<TwoWayRoutePart>()
                 {
                     roleType = roleType.aggregation,
@@ -4114,8 +4114,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTwoWayRoutePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRoutePartViewModel.TwoWayRoutePartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theCollectionTwoWayRoutePartRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRoutePartViewModel.TwoWayRoutePartRefIdViewModel>("TwoWayRoutePart"),
                 }, new FeatureAssociationConnector<TrafficSeparationScheme>()
                 {
                     roleType = roleType.association,
@@ -4123,8 +4123,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(DeepWaterRoute), typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart), typeof(InshoreTrafficZone), typeof(PrecautionaryArea), typeof(RestrictedArea), typeof(SeparationZoneOrLine), typeof(TrafficSeparationScheme), typeof(TrafficSeparationSchemeBoundary), typeof(TrafficSeparationSchemeCrossing), typeof(TrafficSeparationSchemeLanePart), typeof(TrafficSeparationSchemeRoundabout), typeof(TwoWayRoute), typeof(TwoWayRoutePart)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theComponentTrafficSeparationSchemeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TrafficSeparationSchemeAggregationViewModel.theComponentTrafficSeparationSchemeRefIdViewModel>("TrafficSeparationSchemeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>("TrafficSeparationScheme"),
                 }
 
                 ]
@@ -4138,8 +4138,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextAdministrationAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AdministrationAreaViewModel.AdministrationAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextAdministrationAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AdministrationAreaViewModel.AdministrationAreaRefIdViewModel>("AdministrationArea"),
                 }, new FeatureAssociationConnector<AirportAirfield>()
                 {
                     roleType = roleType.association,
@@ -4147,8 +4147,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextAirportAirfieldRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AirportAirfieldViewModel.AirportAirfieldRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextAirportAirfieldRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AirportAirfieldViewModel.AirportAirfieldRefIdViewModel>("AirportAirfield"),
                 }, new FeatureAssociationConnector<AnchorageArea>()
                 {
                     roleType = roleType.association,
@@ -4156,8 +4156,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextAnchorageAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextAnchorageAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorageAreaViewModel.AnchorageAreaRefIdViewModel>("AnchorageArea"),
                 }, new FeatureAssociationConnector<AnchorBerth>()
                 {
                     roleType = roleType.association,
@@ -4165,8 +4165,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextAnchorBerthRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextAnchorBerthRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<AnchorBerthViewModel.AnchorBerthRefIdViewModel>("AnchorBerth"),
                 }, new FeatureAssociationConnector<ArchipelagicSeaLane>()
                 {
                     roleType = roleType.association,
@@ -4174,8 +4174,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextArchipelagicSeaLaneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextArchipelagicSeaLaneRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>("ArchipelagicSeaLane"),
                 }, new FeatureAssociationConnector<ArchipelagicSeaLaneArea>()
                 {
                     roleType = roleType.association,
@@ -4183,8 +4183,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextArchipelagicSeaLaneAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAreaViewModel.ArchipelagicSeaLaneAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextArchipelagicSeaLaneAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAreaViewModel.ArchipelagicSeaLaneAreaRefIdViewModel>("ArchipelagicSeaLaneArea"),
                 }, new FeatureAssociationConnector<ArchipelagicSeaLaneAxis>()
                 {
                     roleType = roleType.association,
@@ -4192,8 +4192,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextArchipelagicSeaLaneAxisRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAxisViewModel.ArchipelagicSeaLaneAxisRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextArchipelagicSeaLaneAxisRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAxisViewModel.ArchipelagicSeaLaneAxisRefIdViewModel>("ArchipelagicSeaLaneAxis"),
                 }, new FeatureAssociationConnector<Berth>()
                 {
                     roleType = roleType.association,
@@ -4201,8 +4201,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextBerthRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthViewModel.BerthRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextBerthRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
                 }, new FeatureAssociationConnector<Bollard>()
                 {
                     roleType = roleType.association,
@@ -4210,8 +4210,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextBollardRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BollardViewModel.BollardRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextBollardRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BollardViewModel.BollardRefIdViewModel>("Bollard"),
                 }, new FeatureAssociationConnector<Bridge>()
                 {
                     roleType = roleType.association,
@@ -4219,8 +4219,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextBridgeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextBridgeRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>("Bridge"),
                 }, new FeatureAssociationConnector<Building>()
                 {
                     roleType = roleType.association,
@@ -4228,8 +4228,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextBuildingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextBuildingRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>("Building"),
                 }, new FeatureAssociationConnector<BuiltUpArea>()
                 {
                     roleType = roleType.association,
@@ -4237,8 +4237,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextBuiltUpAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuiltUpAreaViewModel.BuiltUpAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextBuiltUpAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuiltUpAreaViewModel.BuiltUpAreaRefIdViewModel>("BuiltUpArea"),
                 }, new FeatureAssociationConnector<CableArea>()
                 {
                     roleType = roleType.association,
@@ -4246,8 +4246,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCableAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableAreaViewModel.CableAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCableAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableAreaViewModel.CableAreaRefIdViewModel>("CableArea"),
                 }, new FeatureAssociationConnector<CableOverhead>()
                 {
                     roleType = roleType.association,
@@ -4255,8 +4255,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCableOverheadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableOverheadViewModel.CableOverheadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCableOverheadRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableOverheadViewModel.CableOverheadRefIdViewModel>("CableOverhead"),
                 }, new FeatureAssociationConnector<CableSubmarine>()
                 {
                     roleType = roleType.association,
@@ -4264,8 +4264,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCableSubmarineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableSubmarineViewModel.CableSubmarineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCableSubmarineRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableSubmarineViewModel.CableSubmarineRefIdViewModel>("CableSubmarine"),
                 }, new FeatureAssociationConnector<Canal>()
                 {
                     roleType = roleType.association,
@@ -4273,8 +4273,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCanalRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CanalViewModel.CanalRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCanalRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CanalViewModel.CanalRefIdViewModel>("Canal"),
                 }, new FeatureAssociationConnector<CardinalBeacon>()
                 {
                     roleType = roleType.association,
@@ -4282,8 +4282,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCardinalBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCardinalBeaconRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>("CardinalBeacon"),
                 }, new FeatureAssociationConnector<CardinalBuoy>()
                 {
                     roleType = roleType.association,
@@ -4291,8 +4291,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCardinalBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCardinalBuoyRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>("CardinalBuoy"),
                 }, new FeatureAssociationConnector<CargoTranshipmentArea>()
                 {
                     roleType = roleType.association,
@@ -4300,8 +4300,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCargoTranshipmentAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CargoTranshipmentAreaViewModel.CargoTranshipmentAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCargoTranshipmentAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CargoTranshipmentAreaViewModel.CargoTranshipmentAreaRefIdViewModel>("CargoTranshipmentArea"),
                 }, new FeatureAssociationConnector<Causeway>()
                 {
                     roleType = roleType.association,
@@ -4309,8 +4309,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCausewayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CausewayViewModel.CausewayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCausewayRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CausewayViewModel.CausewayRefIdViewModel>("Causeway"),
                 }, new FeatureAssociationConnector<Chart1Feature>()
                 {
                     roleType = roleType.association,
@@ -4318,8 +4318,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextChart1FeatureRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<Chart1FeatureViewModel.Chart1FeatureRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextChart1FeatureRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<Chart1FeatureViewModel.Chart1FeatureRefIdViewModel>("Chart1Feature"),
                 }, new FeatureAssociationConnector<Checkpoint>()
                 {
                     roleType = roleType.association,
@@ -4327,8 +4327,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCheckpointRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CheckpointViewModel.CheckpointRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCheckpointRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CheckpointViewModel.CheckpointRefIdViewModel>("Checkpoint"),
                 }, new FeatureAssociationConnector<CoastGuardStation>()
                 {
                     roleType = roleType.association,
@@ -4336,8 +4336,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCoastGuardStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastGuardStationViewModel.CoastGuardStationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCoastGuardStationRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastGuardStationViewModel.CoastGuardStationRefIdViewModel>("CoastGuardStation"),
                 }, new FeatureAssociationConnector<Coastline>()
                 {
                     roleType = roleType.association,
@@ -4345,8 +4345,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCoastlineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastlineViewModel.CoastlineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCoastlineRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CoastlineViewModel.CoastlineRefIdViewModel>("Coastline"),
                 }, new FeatureAssociationConnector<CollisionRegulationsLimit>()
                 {
                     roleType = roleType.association,
@@ -4354,8 +4354,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCollisionRegulationsLimitRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CollisionRegulationsLimitViewModel.CollisionRegulationsLimitRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCollisionRegulationsLimitRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CollisionRegulationsLimitViewModel.CollisionRegulationsLimitRefIdViewModel>("CollisionRegulationsLimit"),
                 }, new FeatureAssociationConnector<ContinentalShelfArea>()
                 {
                     roleType = roleType.association,
@@ -4363,8 +4363,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextContinentalShelfAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ContinentalShelfAreaViewModel.ContinentalShelfAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextContinentalShelfAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ContinentalShelfAreaViewModel.ContinentalShelfAreaRefIdViewModel>("ContinentalShelfArea"),
                 }, new FeatureAssociationConnector<Conveyor>()
                 {
                     roleType = roleType.association,
@@ -4372,8 +4372,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextConveyorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ConveyorViewModel.ConveyorRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextConveyorRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ConveyorViewModel.ConveyorRefIdViewModel>("Conveyor"),
                 }, new FeatureAssociationConnector<Crane>()
                 {
                     roleType = roleType.association,
@@ -4381,8 +4381,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCraneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CraneViewModel.CraneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCraneRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CraneViewModel.CraneRefIdViewModel>("Crane"),
                 }, new FeatureAssociationConnector<CurrentNonGravitational>()
                 {
                     roleType = roleType.association,
@@ -4390,8 +4390,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCurrentNonGravitationalRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CurrentNonGravitationalViewModel.CurrentNonGravitationalRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextCurrentNonGravitationalRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CurrentNonGravitationalViewModel.CurrentNonGravitationalRefIdViewModel>("CurrentNonGravitational"),
                 }, new FeatureAssociationConnector<Dam>()
                 {
                     roleType = roleType.association,
@@ -4399,8 +4399,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDamRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DamViewModel.DamRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDamRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DamViewModel.DamRefIdViewModel>("Dam"),
                 }, new FeatureAssociationConnector<Daymark>()
                 {
                     roleType = roleType.association,
@@ -4408,8 +4408,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDaymarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDaymarkRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>("Daymark"),
                 }, new FeatureAssociationConnector<DeepWaterRoute>()
                 {
                     roleType = roleType.association,
@@ -4417,8 +4417,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDeepWaterRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDeepWaterRouteRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>("DeepWaterRoute"),
                 }, new FeatureAssociationConnector<DeepWaterRouteCentreline>()
                 {
                     roleType = roleType.association,
@@ -4426,8 +4426,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDeepWaterRouteCentrelineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteCentrelineViewModel.DeepWaterRouteCentrelineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDeepWaterRouteCentrelineRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteCentrelineViewModel.DeepWaterRouteCentrelineRefIdViewModel>("DeepWaterRouteCentreline"),
                 }, new FeatureAssociationConnector<DeepWaterRoutePart>()
                 {
                     roleType = roleType.association,
@@ -4435,8 +4435,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDeepWaterRoutePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRoutePartViewModel.DeepWaterRoutePartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDeepWaterRoutePartRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRoutePartViewModel.DeepWaterRoutePartRefIdViewModel>("DeepWaterRoutePart"),
                 }, new FeatureAssociationConnector<DistanceMark>()
                 {
                     roleType = roleType.association,
@@ -4444,8 +4444,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDistanceMarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DistanceMarkViewModel.DistanceMarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDistanceMarkRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DistanceMarkViewModel.DistanceMarkRefIdViewModel>("DistanceMark"),
                 }, new FeatureAssociationConnector<DockArea>()
                 {
                     roleType = roleType.association,
@@ -4453,8 +4453,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDockAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDockAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DockAreaViewModel.DockAreaRefIdViewModel>("DockArea"),
                 }, new FeatureAssociationConnector<Dolphin>()
                 {
                     roleType = roleType.association,
@@ -4462,8 +4462,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDolphinRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDolphinRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>("Dolphin"),
                 }, new FeatureAssociationConnector<DredgedArea>()
                 {
                     roleType = roleType.association,
@@ -4471,8 +4471,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDredgedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DredgedAreaViewModel.DredgedAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDredgedAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DredgedAreaViewModel.DredgedAreaRefIdViewModel>("DredgedArea"),
                 }, new FeatureAssociationConnector<DryDock>()
                 {
                     roleType = roleType.association,
@@ -4480,8 +4480,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDryDockRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDryDockRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DryDockViewModel.DryDockRefIdViewModel>("DryDock"),
                 }, new FeatureAssociationConnector<DumpingGround>()
                 {
                     roleType = roleType.association,
@@ -4489,8 +4489,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDumpingGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDumpingGroundRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DumpingGroundViewModel.DumpingGroundRefIdViewModel>("DumpingGround"),
                 }, new FeatureAssociationConnector<Dyke>()
                 {
                     roleType = roleType.association,
@@ -4498,8 +4498,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDykeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DykeViewModel.DykeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextDykeRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DykeViewModel.DykeRefIdViewModel>("Dyke"),
                 }, new FeatureAssociationConnector<EmergencyWreckMarkingBuoy>()
                 {
                     roleType = roleType.association,
@@ -4507,8 +4507,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextEmergencyWreckMarkingBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<EmergencyWreckMarkingBuoyViewModel.EmergencyWreckMarkingBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextEmergencyWreckMarkingBuoyRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<EmergencyWreckMarkingBuoyViewModel.EmergencyWreckMarkingBuoyRefIdViewModel>("EmergencyWreckMarkingBuoy"),
                 }, new FeatureAssociationConnector<Fairway>()
                 {
                     roleType = roleType.association,
@@ -4516,8 +4516,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFairwayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwayViewModel.FairwayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFairwayRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwayViewModel.FairwayRefIdViewModel>("Fairway"),
                 }, new FeatureAssociationConnector<FairwaySystem>()
                 {
                     roleType = roleType.association,
@@ -4525,8 +4525,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFairwaySystemRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwaySystemViewModel.FairwaySystemRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFairwaySystemRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwaySystemViewModel.FairwaySystemRefIdViewModel>("FairwaySystem"),
                 }, new FeatureAssociationConnector<FenceWall>()
                 {
                     roleType = roleType.association,
@@ -4534,8 +4534,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFenceWallRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FenceWallViewModel.FenceWallRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFenceWallRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FenceWallViewModel.FenceWallRefIdViewModel>("FenceWall"),
                 }, new FeatureAssociationConnector<FerryRoute>()
                 {
                     roleType = roleType.association,
@@ -4543,8 +4543,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFerryRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FerryRouteViewModel.FerryRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFerryRouteRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FerryRouteViewModel.FerryRouteRefIdViewModel>("FerryRoute"),
                 }, new FeatureAssociationConnector<FisheryZone>()
                 {
                     roleType = roleType.association,
@@ -4552,8 +4552,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFisheryZoneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FisheryZoneViewModel.FisheryZoneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFisheryZoneRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FisheryZoneViewModel.FisheryZoneRefIdViewModel>("FisheryZone"),
                 }, new FeatureAssociationConnector<FishingFacility>()
                 {
                     roleType = roleType.association,
@@ -4561,8 +4561,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFishingFacilityRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingFacilityViewModel.FishingFacilityRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFishingFacilityRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingFacilityViewModel.FishingFacilityRefIdViewModel>("FishingFacility"),
                 }, new FeatureAssociationConnector<FishingGround>()
                 {
                     roleType = roleType.association,
@@ -4570,8 +4570,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFishingGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingGroundViewModel.FishingGroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFishingGroundRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingGroundViewModel.FishingGroundRefIdViewModel>("FishingGround"),
                 }, new FeatureAssociationConnector<FloatingDock>()
                 {
                     roleType = roleType.association,
@@ -4579,8 +4579,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFloatingDockRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFloatingDockRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
                 }, new FeatureAssociationConnector<FogSignal>()
                 {
                     roleType = roleType.association,
@@ -4588,8 +4588,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFogSignalRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FogSignalViewModel.FogSignalRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFogSignalRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FogSignalViewModel.FogSignalRefIdViewModel>("FogSignal"),
                 }, new FeatureAssociationConnector<FortifiedStructure>()
                 {
                     roleType = roleType.association,
@@ -4597,8 +4597,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFortifiedStructureRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFortifiedStructureRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>("FortifiedStructure"),
                 }, new FeatureAssociationConnector<FoulGround>()
                 {
                     roleType = roleType.association,
@@ -4606,8 +4606,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFoulGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FoulGroundViewModel.FoulGroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFoulGroundRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FoulGroundViewModel.FoulGroundRefIdViewModel>("FoulGround"),
                 }, new FeatureAssociationConnector<FreePortArea>()
                 {
                     roleType = roleType.association,
@@ -4615,8 +4615,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFreePortAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FreePortAreaViewModel.FreePortAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextFreePortAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FreePortAreaViewModel.FreePortAreaRefIdViewModel>("FreePortArea"),
                 }, new FeatureAssociationConnector<Gate>()
                 {
                     roleType = roleType.association,
@@ -4624,8 +4624,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextGateRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GateViewModel.GateRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextGateRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GateViewModel.GateRefIdViewModel>("Gate"),
                 }, new FeatureAssociationConnector<Gridiron>()
                 {
                     roleType = roleType.association,
@@ -4633,8 +4633,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextGridironRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GridironViewModel.GridironRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextGridironRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<GridironViewModel.GridironRefIdViewModel>("Gridiron"),
                 }, new FeatureAssociationConnector<HarbourAreaAdministrative>()
                 {
                     roleType = roleType.association,
@@ -4642,8 +4642,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextHarbourAreaAdministrativeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextHarbourAreaAdministrativeRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourAreaAdministrativeViewModel.HarbourAreaAdministrativeRefIdViewModel>("HarbourAreaAdministrative"),
                 }, new FeatureAssociationConnector<HarbourFacility>()
                 {
                     roleType = roleType.association,
@@ -4651,8 +4651,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextHarbourFacilityRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextHarbourFacilityRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HarbourFacilityViewModel.HarbourFacilityRefIdViewModel>("HarbourFacility"),
                 }, new FeatureAssociationConnector<Helipad>()
                 {
                     roleType = roleType.association,
@@ -4660,8 +4660,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextHelipadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HelipadViewModel.HelipadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextHelipadRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HelipadViewModel.HelipadRefIdViewModel>("Helipad"),
                 }, new FeatureAssociationConnector<Hulk>()
                 {
                     roleType = roleType.association,
@@ -4669,8 +4669,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextHulkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HulkViewModel.HulkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextHulkRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HulkViewModel.HulkRefIdViewModel>("Hulk"),
                 }, new FeatureAssociationConnector<IceArea>()
                 {
                     roleType = roleType.association,
@@ -4678,8 +4678,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextIceAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IceAreaViewModel.IceAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextIceAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IceAreaViewModel.IceAreaRefIdViewModel>("IceArea"),
                 }, new FeatureAssociationConnector<InformationArea>()
                 {
                     roleType = roleType.association,
@@ -4687,8 +4687,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextInformationAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InformationAreaViewModel.InformationAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextInformationAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InformationAreaViewModel.InformationAreaRefIdViewModel>("InformationArea"),
                 }, new FeatureAssociationConnector<InstallationBuoy>()
                 {
                     roleType = roleType.association,
@@ -4696,8 +4696,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextInstallationBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InstallationBuoyViewModel.InstallationBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextInstallationBuoyRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InstallationBuoyViewModel.InstallationBuoyRefIdViewModel>("InstallationBuoy"),
                 }, new FeatureAssociationConnector<IslandGroup>()
                 {
                     roleType = roleType.association,
@@ -4705,8 +4705,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextIslandGroupRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IslandGroupViewModel.IslandGroupRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextIslandGroupRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IslandGroupViewModel.IslandGroupRefIdViewModel>("IslandGroup"),
                 }, new FeatureAssociationConnector<IsolatedDangerBeacon>()
                 {
                     roleType = roleType.association,
@@ -4714,8 +4714,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextIsolatedDangerBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextIsolatedDangerBeaconRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>("IsolatedDangerBeacon"),
                 }, new FeatureAssociationConnector<IsolatedDangerBuoy>()
                 {
                     roleType = roleType.association,
@@ -4723,8 +4723,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextIsolatedDangerBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextIsolatedDangerBuoyRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>("IsolatedDangerBuoy"),
                 }, new FeatureAssociationConnector<Lake>()
                 {
                     roleType = roleType.association,
@@ -4732,8 +4732,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLakeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LakeViewModel.LakeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLakeRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LakeViewModel.LakeRefIdViewModel>("Lake"),
                 }, new FeatureAssociationConnector<LandArea>()
                 {
                     roleType = roleType.association,
@@ -4741,8 +4741,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLandAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandAreaViewModel.LandAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLandAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandAreaViewModel.LandAreaRefIdViewModel>("LandArea"),
                 }, new FeatureAssociationConnector<LandElevation>()
                 {
                     roleType = roleType.association,
@@ -4750,8 +4750,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLandElevationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandElevationViewModel.LandElevationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLandElevationRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandElevationViewModel.LandElevationRefIdViewModel>("LandElevation"),
                 }, new FeatureAssociationConnector<Landmark>()
                 {
                     roleType = roleType.association,
@@ -4759,8 +4759,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLandmarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLandmarkRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>("Landmark"),
                 }, new FeatureAssociationConnector<LandRegion>()
                 {
                     roleType = roleType.association,
@@ -4768,8 +4768,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLandRegionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandRegionViewModel.LandRegionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLandRegionRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandRegionViewModel.LandRegionRefIdViewModel>("LandRegion"),
                 }, new FeatureAssociationConnector<LateralBeacon>()
                 {
                     roleType = roleType.association,
@@ -4777,8 +4777,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLateralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLateralBeaconRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>("LateralBeacon"),
                 }, new FeatureAssociationConnector<LateralBuoy>()
                 {
                     roleType = roleType.association,
@@ -4786,8 +4786,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLateralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLateralBuoyRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>("LateralBuoy"),
                 }, new FeatureAssociationConnector<LightAirObstruction>()
                 {
                     roleType = roleType.association,
@@ -4795,8 +4795,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightAirObstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAirObstructionViewModel.LightAirObstructionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightAirObstructionRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAirObstructionViewModel.LightAirObstructionRefIdViewModel>("LightAirObstruction"),
                 }, new FeatureAssociationConnector<LightAllAround>()
                 {
                     roleType = roleType.association,
@@ -4804,8 +4804,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightAllAroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightAllAroundRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>("LightAllAround"),
                 }, new FeatureAssociationConnector<LightFloat>()
                 {
                     roleType = roleType.association,
@@ -4813,8 +4813,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightFloatRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightFloatRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>("LightFloat"),
                 }, new FeatureAssociationConnector<LightFogDetector>()
                 {
                     roleType = roleType.association,
@@ -4822,8 +4822,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightFogDetectorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFogDetectorViewModel.LightFogDetectorRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightFogDetectorRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFogDetectorViewModel.LightFogDetectorRefIdViewModel>("LightFogDetector"),
                 }, new FeatureAssociationConnector<LightSectored>()
                 {
                     roleType = roleType.association,
@@ -4831,8 +4831,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightSectoredRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightSectoredRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>("LightSectored"),
                 }, new FeatureAssociationConnector<LightVessel>()
                 {
                     roleType = roleType.association,
@@ -4840,8 +4840,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightVesselRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLightVesselRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>("LightVessel"),
                 }, new FeatureAssociationConnector<LocalMagneticAnomaly>()
                 {
                     roleType = roleType.association,
@@ -4849,8 +4849,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLocalMagneticAnomalyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LocalMagneticAnomalyViewModel.LocalMagneticAnomalyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLocalMagneticAnomalyRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LocalMagneticAnomalyViewModel.LocalMagneticAnomalyRefIdViewModel>("LocalMagneticAnomaly"),
                 }, new FeatureAssociationConnector<LockBasin>()
                 {
                     roleType = roleType.association,
@@ -4858,8 +4858,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLockBasinRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LockBasinViewModel.LockBasinRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLockBasinRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LockBasinViewModel.LockBasinRefIdViewModel>("LockBasin"),
                 }, new FeatureAssociationConnector<LogPond>()
                 {
                     roleType = roleType.association,
@@ -4867,8 +4867,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLogPondRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LogPondViewModel.LogPondRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextLogPondRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LogPondViewModel.LogPondRefIdViewModel>("LogPond"),
                 }, new FeatureAssociationConnector<MarineFarmCulture>()
                 {
                     roleType = roleType.association,
@@ -4876,8 +4876,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMarineFarmCultureRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineFarmCultureViewModel.MarineFarmCultureRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMarineFarmCultureRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarineFarmCultureViewModel.MarineFarmCultureRefIdViewModel>("MarineFarmCulture"),
                 }, new FeatureAssociationConnector<MarinePollutionRegulationsArea>()
                 {
                     roleType = roleType.association,
@@ -4885,8 +4885,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMarinePollutionRegulationsAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarinePollutionRegulationsAreaViewModel.MarinePollutionRegulationsAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMarinePollutionRegulationsAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MarinePollutionRegulationsAreaViewModel.MarinePollutionRegulationsAreaRefIdViewModel>("MarinePollutionRegulationsArea"),
                 }, new FeatureAssociationConnector<MilitaryPracticeArea>()
                 {
                     roleType = roleType.association,
@@ -4894,8 +4894,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMilitaryPracticeAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MilitaryPracticeAreaViewModel.MilitaryPracticeAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMilitaryPracticeAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MilitaryPracticeAreaViewModel.MilitaryPracticeAreaRefIdViewModel>("MilitaryPracticeArea"),
                 }, new FeatureAssociationConnector<MooringArea>()
                 {
                     roleType = roleType.association,
@@ -4903,8 +4903,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMooringAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringAreaViewModel.MooringAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMooringAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringAreaViewModel.MooringAreaRefIdViewModel>("MooringArea"),
                 }, new FeatureAssociationConnector<MooringBuoy>()
                 {
                     roleType = roleType.association,
@@ -4912,8 +4912,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMooringBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMooringBuoyRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>("MooringBuoy"),
                 }, new FeatureAssociationConnector<MooringTrot>()
                 {
                     roleType = roleType.association,
@@ -4921,8 +4921,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMooringTrotRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringTrotViewModel.MooringTrotRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextMooringTrotRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringTrotViewModel.MooringTrotRefIdViewModel>("MooringTrot"),
                 }, new FeatureAssociationConnector<Obstruction>()
                 {
                     roleType = roleType.association,
@@ -4930,8 +4930,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextObstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ObstructionViewModel.ObstructionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextObstructionRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ObstructionViewModel.ObstructionRefIdViewModel>("Obstruction"),
                 }, new FeatureAssociationConnector<OffshorePlatform>()
                 {
                     roleType = roleType.association,
@@ -4939,8 +4939,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextOffshorePlatformRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshorePlatformViewModel.OffshorePlatformRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextOffshorePlatformRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshorePlatformViewModel.OffshorePlatformRefIdViewModel>("OffshorePlatform"),
                 }, new FeatureAssociationConnector<OffshoreProductionArea>()
                 {
                     roleType = roleType.association,
@@ -4948,8 +4948,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextOffshoreProductionAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshoreProductionAreaViewModel.OffshoreProductionAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextOffshoreProductionAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshoreProductionAreaViewModel.OffshoreProductionAreaRefIdViewModel>("OffshoreProductionArea"),
                 }, new FeatureAssociationConnector<OilBarrier>()
                 {
                     roleType = roleType.association,
@@ -4957,8 +4957,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextOilBarrierRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OilBarrierViewModel.OilBarrierRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextOilBarrierRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OilBarrierViewModel.OilBarrierRefIdViewModel>("OilBarrier"),
                 }, new FeatureAssociationConnector<PhysicalAISAidToNavigation>()
                 {
                     roleType = roleType.association,
@@ -4966,8 +4966,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPhysicalAISAidToNavigationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalAISAidToNavigationViewModel.PhysicalAISAidToNavigationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPhysicalAISAidToNavigationRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalAISAidToNavigationViewModel.PhysicalAISAidToNavigationRefIdViewModel>("PhysicalAISAidToNavigation"),
                 }, new FeatureAssociationConnector<Pile>()
                 {
                     roleType = roleType.association,
@@ -4975,8 +4975,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPileRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPileRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>("Pile"),
                 }, new FeatureAssociationConnector<PilotageDistrict>()
                 {
                     roleType = roleType.association,
@@ -4984,8 +4984,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPilotageDistrictRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotageDistrictViewModel.PilotageDistrictRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPilotageDistrictRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotageDistrictViewModel.PilotageDistrictRefIdViewModel>("PilotageDistrict"),
                 }, new FeatureAssociationConnector<PilotBoardingPlace>()
                 {
                     roleType = roleType.association,
@@ -4993,8 +4993,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPilotBoardingPlaceRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPilotBoardingPlaceRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
                 }, new FeatureAssociationConnector<PipelineOverhead>()
                 {
                     roleType = roleType.association,
@@ -5002,8 +5002,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPipelineOverheadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineOverheadViewModel.PipelineOverheadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPipelineOverheadRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineOverheadViewModel.PipelineOverheadRefIdViewModel>("PipelineOverhead"),
                 }, new FeatureAssociationConnector<PipelineSubmarineOnLand>()
                 {
                     roleType = roleType.association,
@@ -5011,8 +5011,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPipelineSubmarineOnLandRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineSubmarineOnLandViewModel.PipelineSubmarineOnLandRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPipelineSubmarineOnLandRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineSubmarineOnLandViewModel.PipelineSubmarineOnLandRefIdViewModel>("PipelineSubmarineOnLand"),
                 }, new FeatureAssociationConnector<Pontoon>()
                 {
                     roleType = roleType.association,
@@ -5020,8 +5020,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPontoonRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPontoonRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>("Pontoon"),
                 }, new FeatureAssociationConnector<PrecautionaryArea>()
                 {
                     roleType = roleType.association,
@@ -5029,8 +5029,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPrecautionaryAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PrecautionaryAreaViewModel.PrecautionaryAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPrecautionaryAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PrecautionaryAreaViewModel.PrecautionaryAreaRefIdViewModel>("PrecautionaryArea"),
                 }, new FeatureAssociationConnector<ProductionStorageArea>()
                 {
                     roleType = roleType.association,
@@ -5038,8 +5038,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextProductionStorageAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ProductionStorageAreaViewModel.ProductionStorageAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextProductionStorageAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ProductionStorageAreaViewModel.ProductionStorageAreaRefIdViewModel>("ProductionStorageArea"),
                 }, new FeatureAssociationConnector<PylonBridgeSupport>()
                 {
                     roleType = roleType.association,
@@ -5047,8 +5047,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPylonBridgeSupportRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextPylonBridgeSupportRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>("PylonBridgeSupport"),
                 }, new FeatureAssociationConnector<RadarLine>()
                 {
                     roleType = roleType.association,
@@ -5056,8 +5056,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadarLineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarLineViewModel.RadarLineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadarLineRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarLineViewModel.RadarLineRefIdViewModel>("RadarLine"),
                 }, new FeatureAssociationConnector<RadarRange>()
                 {
                     roleType = roleType.association,
@@ -5065,8 +5065,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadarRangeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarRangeViewModel.RadarRangeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadarRangeRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarRangeViewModel.RadarRangeRefIdViewModel>("RadarRange"),
                 }, new FeatureAssociationConnector<RadarStation>()
                 {
                     roleType = roleType.association,
@@ -5074,8 +5074,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadarStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarStationViewModel.RadarStationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadarStationRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarStationViewModel.RadarStationRefIdViewModel>("RadarStation"),
                 }, new FeatureAssociationConnector<RadarTransponderBeacon>()
                 {
                     roleType = roleType.association,
@@ -5083,8 +5083,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadarTransponderBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarTransponderBeaconViewModel.RadarTransponderBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadarTransponderBeaconRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarTransponderBeaconViewModel.RadarTransponderBeaconRefIdViewModel>("RadarTransponderBeacon"),
                 }, new FeatureAssociationConnector<RadioCallingInPoint>()
                 {
                     roleType = roleType.association,
@@ -5092,8 +5092,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadioCallingInPointRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioCallingInPointViewModel.RadioCallingInPointRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadioCallingInPointRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioCallingInPointViewModel.RadioCallingInPointRefIdViewModel>("RadioCallingInPoint"),
                 }, new FeatureAssociationConnector<RadioStation>()
                 {
                     roleType = roleType.association,
@@ -5101,8 +5101,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadioStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioStationViewModel.RadioStationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRadioStationRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadioStationViewModel.RadioStationRefIdViewModel>("RadioStation"),
                 }, new FeatureAssociationConnector<Railway>()
                 {
                     roleType = roleType.association,
@@ -5110,8 +5110,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRailwayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RailwayViewModel.RailwayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRailwayRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RailwayViewModel.RailwayRefIdViewModel>("Railway"),
                 }, new FeatureAssociationConnector<RangeSystem>()
                 {
                     roleType = roleType.association,
@@ -5119,8 +5119,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRangeSystemRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRangeSystemRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>("RangeSystem"),
                 }, new FeatureAssociationConnector<Rapids>()
                 {
                     roleType = roleType.association,
@@ -5128,8 +5128,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRapidsRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RapidsViewModel.RapidsRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRapidsRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RapidsViewModel.RapidsRefIdViewModel>("Rapids"),
                 }, new FeatureAssociationConnector<RecommendedRouteCentreline>()
                 {
                     roleType = roleType.association,
@@ -5137,8 +5137,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRecommendedRouteCentrelineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedRouteCentrelineViewModel.RecommendedRouteCentrelineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRecommendedRouteCentrelineRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedRouteCentrelineViewModel.RecommendedRouteCentrelineRefIdViewModel>("RecommendedRouteCentreline"),
                 }, new FeatureAssociationConnector<RecommendedTrack>()
                 {
                     roleType = roleType.association,
@@ -5146,8 +5146,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRecommendedTrackRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrackViewModel.RecommendedTrackRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRecommendedTrackRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrackViewModel.RecommendedTrackRefIdViewModel>("RecommendedTrack"),
                 }, new FeatureAssociationConnector<RescueStation>()
                 {
                     roleType = roleType.association,
@@ -5155,8 +5155,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRescueStationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RescueStationViewModel.RescueStationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRescueStationRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RescueStationViewModel.RescueStationRefIdViewModel>("RescueStation"),
                 }, new FeatureAssociationConnector<RestrictedArea>()
                 {
                     roleType = roleType.association,
@@ -5164,8 +5164,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRestrictedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRestrictedAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>("RestrictedArea"),
                 }, new FeatureAssociationConnector<River>()
                 {
                     roleType = roleType.association,
@@ -5173,8 +5173,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRiverRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RiverViewModel.RiverRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRiverRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RiverViewModel.RiverRefIdViewModel>("River"),
                 }, new FeatureAssociationConnector<Road>()
                 {
                     roleType = roleType.association,
@@ -5182,8 +5182,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRoadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RoadViewModel.RoadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRoadRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RoadViewModel.RoadRefIdViewModel>("Road"),
                 }, new FeatureAssociationConnector<Runway>()
                 {
                     roleType = roleType.association,
@@ -5191,8 +5191,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRunwayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RunwayViewModel.RunwayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextRunwayRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RunwayViewModel.RunwayRefIdViewModel>("Runway"),
                 }, new FeatureAssociationConnector<SafeWaterBeacon>()
                 {
                     roleType = roleType.association,
@@ -5200,8 +5200,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSafeWaterBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSafeWaterBeaconRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>("SafeWaterBeacon"),
                 }, new FeatureAssociationConnector<SafeWaterBuoy>()
                 {
                     roleType = roleType.association,
@@ -5209,8 +5209,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSafeWaterBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSafeWaterBuoyRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>("SafeWaterBuoy"),
                 }, new FeatureAssociationConnector<SeaAreaNamedWaterArea>()
                 {
                     roleType = roleType.association,
@@ -5218,8 +5218,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSeaAreaNamedWaterAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaAreaNamedWaterAreaViewModel.SeaAreaNamedWaterAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSeaAreaNamedWaterAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaAreaNamedWaterAreaViewModel.SeaAreaNamedWaterAreaRefIdViewModel>("SeaAreaNamedWaterArea"),
                 }, new FeatureAssociationConnector<SeabedArea>()
                 {
                     roleType = roleType.association,
@@ -5227,8 +5227,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSeabedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeabedAreaViewModel.SeabedAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSeabedAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeabedAreaViewModel.SeabedAreaRefIdViewModel>("SeabedArea"),
                 }, new FeatureAssociationConnector<Seagrass>()
                 {
                     roleType = roleType.association,
@@ -5236,8 +5236,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSeagrassRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeagrassViewModel.SeagrassRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSeagrassRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeagrassViewModel.SeagrassRefIdViewModel>("Seagrass"),
                 }, new FeatureAssociationConnector<SeaplaneLandingArea>()
                 {
                     roleType = roleType.association,
@@ -5245,8 +5245,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSeaplaneLandingAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSeaplaneLandingAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SeaplaneLandingAreaViewModel.SeaplaneLandingAreaRefIdViewModel>("SeaplaneLandingArea"),
                 }, new FeatureAssociationConnector<ShorelineConstruction>()
                 {
                     roleType = roleType.association,
@@ -5254,8 +5254,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextShorelineConstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ShorelineConstructionViewModel.ShorelineConstructionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextShorelineConstructionRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ShorelineConstructionViewModel.ShorelineConstructionRefIdViewModel>("ShorelineConstruction"),
                 }, new FeatureAssociationConnector<SignalStationTraffic>()
                 {
                     roleType = roleType.association,
@@ -5263,8 +5263,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSignalStationTrafficRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationTrafficViewModel.SignalStationTrafficRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSignalStationTrafficRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationTrafficViewModel.SignalStationTrafficRefIdViewModel>("SignalStationTraffic"),
                 }, new FeatureAssociationConnector<SignalStationWarning>()
                 {
                     roleType = roleType.association,
@@ -5272,8 +5272,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSignalStationWarningRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationWarningViewModel.SignalStationWarningRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSignalStationWarningRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationWarningViewModel.SignalStationWarningRefIdViewModel>("SignalStationWarning"),
                 }, new FeatureAssociationConnector<SiloTank>()
                 {
                     roleType = roleType.association,
@@ -5281,8 +5281,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSiloTankRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSiloTankRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>("SiloTank"),
                 }, new FeatureAssociationConnector<SlopeTopline>()
                 {
                     roleType = roleType.association,
@@ -5290,8 +5290,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSlopeToplineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopeToplineViewModel.SlopeToplineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSlopeToplineRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopeToplineViewModel.SlopeToplineRefIdViewModel>("SlopeTopline"),
                 }, new FeatureAssociationConnector<SlopingGround>()
                 {
                     roleType = roleType.association,
@@ -5299,8 +5299,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSlopingGroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopingGroundViewModel.SlopingGroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSlopingGroundRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SlopingGroundViewModel.SlopingGroundRefIdViewModel>("SlopingGround"),
                 }, new FeatureAssociationConnector<SmallCraftFacility>()
                 {
                     roleType = roleType.association,
@@ -5308,8 +5308,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSmallCraftFacilityRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SmallCraftFacilityViewModel.SmallCraftFacilityRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSmallCraftFacilityRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SmallCraftFacilityViewModel.SmallCraftFacilityRefIdViewModel>("SmallCraftFacility"),
                 }, new FeatureAssociationConnector<Sounding>()
                 {
                     roleType = roleType.association,
@@ -5317,8 +5317,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSoundingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SoundingViewModel.SoundingRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSoundingRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SoundingViewModel.SoundingRefIdViewModel>("Sounding"),
                 }, new FeatureAssociationConnector<SpanFixed>()
                 {
                     roleType = roleType.association,
@@ -5326,8 +5326,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSpanFixedRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSpanFixedRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>("SpanFixed"),
                 }, new FeatureAssociationConnector<SpanOpening>()
                 {
                     roleType = roleType.association,
@@ -5335,8 +5335,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSpanOpeningRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSpanOpeningRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>("SpanOpening"),
                 }, new FeatureAssociationConnector<SpecialPurposeGeneralBeacon>()
                 {
                     roleType = roleType.association,
@@ -5344,8 +5344,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSpecialPurposeGeneralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSpecialPurposeGeneralBeaconRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>("SpecialPurposeGeneralBeacon"),
                 }, new FeatureAssociationConnector<SpecialPurposeGeneralBuoy>()
                 {
                     roleType = roleType.association,
@@ -5353,8 +5353,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSpecialPurposeGeneralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSpecialPurposeGeneralBuoyRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>("SpecialPurposeGeneralBuoy"),
                 }, new FeatureAssociationConnector<Spring>()
                 {
                     roleType = roleType.association,
@@ -5362,8 +5362,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSpringRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpringViewModel.SpringRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSpringRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpringViewModel.SpringRefIdViewModel>("Spring"),
                 }, new FeatureAssociationConnector<StructureOverNavigableWater>()
                 {
                     roleType = roleType.association,
@@ -5371,8 +5371,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextStructureOverNavigableWaterRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextStructureOverNavigableWaterRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>("StructureOverNavigableWater"),
                 }, new FeatureAssociationConnector<SubmarinePipelineArea>()
                 {
                     roleType = roleType.association,
@@ -5380,8 +5380,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSubmarinePipelineAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarinePipelineAreaViewModel.SubmarinePipelineAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSubmarinePipelineAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarinePipelineAreaViewModel.SubmarinePipelineAreaRefIdViewModel>("SubmarinePipelineArea"),
                 }, new FeatureAssociationConnector<SubmarineTransitLane>()
                 {
                     roleType = roleType.association,
@@ -5389,8 +5389,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSubmarineTransitLaneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarineTransitLaneViewModel.SubmarineTransitLaneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSubmarineTransitLaneRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SubmarineTransitLaneViewModel.SubmarineTransitLaneRefIdViewModel>("SubmarineTransitLane"),
                 }, new FeatureAssociationConnector<SweptArea>()
                 {
                     roleType = roleType.association,
@@ -5398,8 +5398,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSweptAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SweptAreaViewModel.SweptAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextSweptAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SweptAreaViewModel.SweptAreaRefIdViewModel>("SweptArea"),
                 }, new FeatureAssociationConnector<TidalStreamFloodEbb>()
                 {
                     roleType = roleType.association,
@@ -5407,8 +5407,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTidalStreamFloodEbbRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamFloodEbbViewModel.TidalStreamFloodEbbRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTidalStreamFloodEbbRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamFloodEbbViewModel.TidalStreamFloodEbbRefIdViewModel>("TidalStreamFloodEbb"),
                 }, new FeatureAssociationConnector<TidalStreamPanelData>()
                 {
                     roleType = roleType.association,
@@ -5416,8 +5416,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTidalStreamPanelDataRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamPanelDataViewModel.TidalStreamPanelDataRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTidalStreamPanelDataRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidalStreamPanelDataViewModel.TidalStreamPanelDataRefIdViewModel>("TidalStreamPanelData"),
                 }, new FeatureAssociationConnector<Tideway>()
                 {
                     roleType = roleType.association,
@@ -5425,8 +5425,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTidewayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidewayViewModel.TidewayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTidewayRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TidewayViewModel.TidewayRefIdViewModel>("Tideway"),
                 }, new FeatureAssociationConnector<TrafficSeparationScheme>()
                 {
                     roleType = roleType.association,
@@ -5434,8 +5434,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTrafficSeparationSchemeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTrafficSeparationSchemeRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>("TrafficSeparationScheme"),
                 }, new FeatureAssociationConnector<Tunnel>()
                 {
                     roleType = roleType.association,
@@ -5443,8 +5443,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTunnelRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TunnelViewModel.TunnelRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTunnelRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TunnelViewModel.TunnelRefIdViewModel>("Tunnel"),
                 }, new FeatureAssociationConnector<TwoWayRoute>()
                 {
                     roleType = roleType.association,
@@ -5452,8 +5452,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTwoWayRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextTwoWayRouteRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>("TwoWayRoute"),
                 }, new FeatureAssociationConnector<UnderwaterAwashRock>()
                 {
                     roleType = roleType.association,
@@ -5461,8 +5461,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextUnderwaterAwashRockRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UnderwaterAwashRockViewModel.UnderwaterAwashRockRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextUnderwaterAwashRockRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<UnderwaterAwashRockViewModel.UnderwaterAwashRockRefIdViewModel>("UnderwaterAwashRock"),
                 }, new FeatureAssociationConnector<Vegetation>()
                 {
                     roleType = roleType.association,
@@ -5470,8 +5470,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextVegetationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VegetationViewModel.VegetationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextVegetationRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VegetationViewModel.VegetationRefIdViewModel>("Vegetation"),
                 }, new FeatureAssociationConnector<VesselTrafficServiceArea>()
                 {
                     roleType = roleType.association,
@@ -5479,8 +5479,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextVesselTrafficServiceAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextVesselTrafficServiceAreaRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VesselTrafficServiceAreaViewModel.VesselTrafficServiceAreaRefIdViewModel>("VesselTrafficServiceArea"),
                 }, new FeatureAssociationConnector<VirtualAISAidToNavigation>()
                 {
                     roleType = roleType.association,
@@ -5488,8 +5488,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextVirtualAISAidToNavigationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VirtualAISAidToNavigationViewModel.VirtualAISAidToNavigationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextVirtualAISAidToNavigationRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<VirtualAISAidToNavigationViewModel.VirtualAISAidToNavigationRefIdViewModel>("VirtualAISAidToNavigation"),
                 }, new FeatureAssociationConnector<Waterfall>()
                 {
                     roleType = roleType.association,
@@ -5497,8 +5497,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextWaterfallRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterfallViewModel.WaterfallRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextWaterfallRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterfallViewModel.WaterfallRefIdViewModel>("Waterfall"),
                 }, new FeatureAssociationConnector<WaterTurbulence>()
                 {
                     roleType = roleType.association,
@@ -5506,8 +5506,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextWaterTurbulenceRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterTurbulenceViewModel.WaterTurbulenceRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextWaterTurbulenceRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WaterTurbulenceViewModel.WaterTurbulenceRefIdViewModel>("WaterTurbulence"),
                 }, new FeatureAssociationConnector<WeedKelp>()
                 {
                     roleType = roleType.association,
@@ -5515,8 +5515,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextWeedKelpRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WeedKelpViewModel.WeedKelpRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextWeedKelpRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WeedKelpViewModel.WeedKelpRefIdViewModel>("WeedKelp"),
                 }, new FeatureAssociationConnector<WindTurbine>()
                 {
                     roleType = roleType.association,
@@ -5524,8 +5524,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextWindTurbineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WindTurbineViewModel.WindTurbineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextWindTurbineRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WindTurbineViewModel.WindTurbineRefIdViewModel>("WindTurbine"),
                 }, new FeatureAssociationConnector<Wreck>()
                 {
                     roleType = roleType.association,
@@ -5533,8 +5533,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 2,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextWreckRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WreckViewModel.WreckRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.theCartographicTextWreckRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WreckViewModel.WreckRefIdViewModel>("Wreck"),
                 }, new FeatureAssociationConnector<TextPlacement>()
                 {
                     roleType = roleType.composition,
@@ -5542,8 +5542,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(AdministrationArea), typeof(AirportAirfield), typeof(AnchorBerth), typeof(AnchorageArea), typeof(ArchipelagicSeaLane), typeof(ArchipelagicSeaLaneArea), typeof(ArchipelagicSeaLaneAxis), typeof(Berth), typeof(Bollard), typeof(Bridge), typeof(Building), typeof(BuiltUpArea), typeof(CableArea), typeof(CableOverhead), typeof(CableSubmarine), typeof(Canal), typeof(CardinalBuoy), typeof(CardinalBeacon), typeof(CargoTranshipmentArea), typeof(Causeway), typeof(Chart1Feature), typeof(Checkpoint), typeof(CoastGuardStation), typeof(Coastline), typeof(CollisionRegulationsLimit), typeof(ContinentalShelfArea), typeof(Conveyor), typeof(Crane), typeof(CurrentNonGravitational), typeof(Dam), typeof(Daymark), typeof(DeepWaterRoute), typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart), typeof(DistanceMark), typeof(DockArea), typeof(Dolphin), typeof(DredgedArea), typeof(DryDock), typeof(DumpingGround), typeof(Dyke), typeof(EmergencyWreckMarkingBuoy), typeof(Fairway), typeof(FairwaySystem), typeof(FenceWall), typeof(FerryRoute), typeof(FisheryZone), typeof(FishingFacility), typeof(FishingGround), typeof(FloatingDock), typeof(FogSignal), typeof(FortifiedStructure), typeof(FoulGround), typeof(FreePortArea), typeof(Gate), typeof(Gridiron), typeof(HarbourAreaAdministrative), typeof(HarbourFacility), typeof(Helipad), typeof(Hulk), typeof(IceArea), typeof(InformationArea), typeof(InstallationBuoy), typeof(IslandGroup), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Lake), typeof(LandArea), typeof(LandElevation), typeof(LandRegion), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFloat), typeof(LightFogDetector), typeof(LightSectored), typeof(LightVessel), typeof(LocalMagneticAnomaly), typeof(LockBasin), typeof(LogPond), typeof(MarineFarmCulture), typeof(MarinePollutionRegulationsArea), typeof(MilitaryPracticeArea), typeof(MooringArea), typeof(MooringBuoy), typeof(MooringTrot), typeof(Obstruction), typeof(OffshorePlatform), typeof(OffshoreProductionArea), typeof(OilBarrier), typeof(PhysicalAISAidToNavigation), typeof(Pile), typeof(PilotBoardingPlace), typeof(PilotageDistrict), typeof(PipelineOverhead), typeof(PipelineSubmarineOnLand), typeof(Pontoon), typeof(PrecautionaryArea), typeof(ProductionStorageArea), typeof(PylonBridgeSupport), typeof(RadarLine), typeof(RadarRange), typeof(RadarStation), typeof(RadarTransponderBeacon), typeof(RadioCallingInPoint), typeof(RadioStation), typeof(Railway), typeof(RangeSystem), typeof(Rapids), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(RescueStation), typeof(RestrictedArea), typeof(River), typeof(Road), typeof(Runway), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SeaAreaNamedWaterArea), typeof(SeabedArea), typeof(Seagrass), typeof(SeaplaneLandingArea), typeof(ShorelineConstruction), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(SiloTank), typeof(SlopeTopline), typeof(SlopingGround), typeof(SmallCraftFacility), typeof(Sounding), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Spring), typeof(StructureOverNavigableWater), typeof(SubmarinePipelineArea), typeof(SubmarineTransitLane), typeof(SweptArea), typeof(TidalStreamFloodEbb), typeof(TidalStreamPanelData), typeof(Tideway), typeof(TrafficSeparationScheme), typeof(Tunnel), typeof(TwoWayRoute), typeof(UnderwaterAwashRock), typeof(Vegetation), typeof(VesselTrafficServiceArea), typeof(VirtualAISAidToNavigation), typeof(WaterTurbulence), typeof(Waterfall), typeof(WeedKelp), typeof(WindTurbine), typeof(Wreck)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.thePositionProviderTextPlacementRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TextPlacementViewModel.TextPlacementRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.thePositionProviderTextPlacementRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TextPlacementViewModel.TextPlacementRefIdViewModel>("TextPlacement"),
                 }
 
                 ]
@@ -5557,8 +5557,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentBridgeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentBridgeRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>("Bridge"),
                 }, new FeatureAssociationConnector<Building>()
                 {
                     roleType = roleType.association,
@@ -5566,8 +5566,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(Helipad), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentBuildingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentBuildingRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>("Building"),
                 }, new FeatureAssociationConnector<CableOverhead>()
                 {
                     roleType = roleType.association,
@@ -5575,8 +5575,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(RadarReflector)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentCableOverheadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableOverheadViewModel.CableOverheadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentCableOverheadRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableOverheadViewModel.CableOverheadRefIdViewModel>("CableOverhead"),
                 }, new FeatureAssociationConnector<CardinalBeacon>()
                 {
                     roleType = roleType.association,
@@ -5584,8 +5584,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentCardinalBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentCardinalBeaconRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>("CardinalBeacon"),
                 }, new FeatureAssociationConnector<CardinalBuoy>()
                 {
                     roleType = roleType.association,
@@ -5593,8 +5593,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentCardinalBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentCardinalBuoyRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>("CardinalBuoy"),
                 }, new FeatureAssociationConnector<Conveyor>()
                 {
                     roleType = roleType.association,
@@ -5602,8 +5602,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentConveyorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ConveyorViewModel.ConveyorRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentConveyorRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ConveyorViewModel.ConveyorRefIdViewModel>("Conveyor"),
                 }, new FeatureAssociationConnector<Crane>()
                 {
                     roleType = roleType.association,
@@ -5611,8 +5611,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentCraneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CraneViewModel.CraneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentCraneRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CraneViewModel.CraneRefIdViewModel>("Crane"),
                 }, new FeatureAssociationConnector<Daymark>()
                 {
                     roleType = roleType.association,
@@ -5620,8 +5620,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(LightSectored), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentDaymarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentDaymarkRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>("Daymark"),
                 }, new FeatureAssociationConnector<Dolphin>()
                 {
                     roleType = roleType.association,
@@ -5629,8 +5629,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentDolphinRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentDolphinRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>("Dolphin"),
                 }, new FeatureAssociationConnector<EmergencyWreckMarkingBuoy>()
                 {
                     roleType = roleType.association,
@@ -5638,8 +5638,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentEmergencyWreckMarkingBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<EmergencyWreckMarkingBuoyViewModel.EmergencyWreckMarkingBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentEmergencyWreckMarkingBuoyRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<EmergencyWreckMarkingBuoyViewModel.EmergencyWreckMarkingBuoyRefIdViewModel>("EmergencyWreckMarkingBuoy"),
                 }, new FeatureAssociationConnector<FishingFacility>()
                 {
                     roleType = roleType.association,
@@ -5647,8 +5647,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentFishingFacilityRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingFacilityViewModel.FishingFacilityRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentFishingFacilityRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingFacilityViewModel.FishingFacilityRefIdViewModel>("FishingFacility"),
                 }, new FeatureAssociationConnector<FloatingDock>()
                 {
                     roleType = roleType.association,
@@ -5656,8 +5656,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentFloatingDockRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentFloatingDockRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
                 }, new FeatureAssociationConnector<FortifiedStructure>()
                 {
                     roleType = roleType.association,
@@ -5665,8 +5665,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentFortifiedStructureRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentFortifiedStructureRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>("FortifiedStructure"),
                 }, new FeatureAssociationConnector<Hulk>()
                 {
                     roleType = roleType.association,
@@ -5674,8 +5674,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(Bollard)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentHulkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HulkViewModel.HulkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentHulkRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HulkViewModel.HulkRefIdViewModel>("Hulk"),
                 }, new FeatureAssociationConnector<InstallationBuoy>()
                 {
                     roleType = roleType.association,
@@ -5683,8 +5683,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentInstallationBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InstallationBuoyViewModel.InstallationBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentInstallationBuoyRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<InstallationBuoyViewModel.InstallationBuoyRefIdViewModel>("InstallationBuoy"),
                 }, new FeatureAssociationConnector<IsolatedDangerBeacon>()
                 {
                     roleType = roleType.association,
@@ -5692,8 +5692,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentIsolatedDangerBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentIsolatedDangerBeaconRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>("IsolatedDangerBeacon"),
                 }, new FeatureAssociationConnector<IsolatedDangerBuoy>()
                 {
                     roleType = roleType.association,
@@ -5701,8 +5701,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentIsolatedDangerBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentIsolatedDangerBuoyRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>("IsolatedDangerBuoy"),
                 }, new FeatureAssociationConnector<Landmark>()
                 {
                     roleType = roleType.association,
@@ -5710,8 +5710,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(Helipad), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard), typeof(LightAirObstruction)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLandmarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLandmarkRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>("Landmark"),
                 }, new FeatureAssociationConnector<LateralBeacon>()
                 {
                     roleType = roleType.association,
@@ -5719,8 +5719,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLateralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLateralBeaconRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>("LateralBeacon"),
                 }, new FeatureAssociationConnector<LateralBuoy>()
                 {
                     roleType = roleType.association,
@@ -5728,8 +5728,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLateralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLateralBuoyRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>("LateralBuoy"),
                 }, new FeatureAssociationConnector<LightAllAround>()
                 {
                     roleType = roleType.association,
@@ -5737,8 +5737,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(FogSignal), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFogDetector), typeof(LightSectored), typeof(RadarTransponderBeacon), typeof(Retroreflector)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLightAllAroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLightAllAroundRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>("LightAllAround"),
                 }, new FeatureAssociationConnector<LightFloat>()
                 {
                     roleType = roleType.association,
@@ -5746,8 +5746,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLightFloatRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLightFloatRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>("LightFloat"),
                 }, new FeatureAssociationConnector<LightSectored>()
                 {
                     roleType = roleType.association,
@@ -5755,8 +5755,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(FogSignal), typeof(LightAirObstruction), typeof(LightAllAround), typeof(LightFogDetector), typeof(LightSectored), typeof(RadarTransponderBeacon), typeof(Retroreflector)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLightSectoredRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLightSectoredRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>("LightSectored"),
                 }, new FeatureAssociationConnector<LightVessel>()
                 {
                     roleType = roleType.association,
@@ -5764,8 +5764,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLightVesselRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentLightVesselRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>("LightVessel"),
                 }, new FeatureAssociationConnector<MooringBuoy>()
                 {
                     roleType = roleType.association,
@@ -5773,8 +5773,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentMooringBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentMooringBuoyRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>("MooringBuoy"),
                 }, new FeatureAssociationConnector<OffshorePlatform>()
                 {
                     roleType = roleType.association,
@@ -5782,8 +5782,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(Helipad), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard), typeof(LightAirObstruction)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentOffshorePlatformRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshorePlatformViewModel.OffshorePlatformRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentOffshorePlatformRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshorePlatformViewModel.OffshorePlatformRefIdViewModel>("OffshorePlatform"),
                 }, new FeatureAssociationConnector<Pile>()
                 {
                     roleType = roleType.association,
@@ -5791,8 +5791,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentPileRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentPileRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>("Pile"),
                 }, new FeatureAssociationConnector<PipelineOverhead>()
                 {
                     roleType = roleType.association,
@@ -5800,8 +5800,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(RadarReflector)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentPipelineOverheadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineOverheadViewModel.PipelineOverheadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentPipelineOverheadRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineOverheadViewModel.PipelineOverheadRefIdViewModel>("PipelineOverhead"),
                 }, new FeatureAssociationConnector<Pontoon>()
                 {
                     roleType = roleType.association,
@@ -5809,8 +5809,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentPontoonRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentPontoonRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>("Pontoon"),
                 }, new FeatureAssociationConnector<PylonBridgeSupport>()
                 {
                     roleType = roleType.association,
@@ -5818,8 +5818,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard), typeof(LightAirObstruction)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentPylonBridgeSupportRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentPylonBridgeSupportRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>("PylonBridgeSupport"),
                 }, new FeatureAssociationConnector<SafeWaterBeacon>()
                 {
                     roleType = roleType.association,
@@ -5827,8 +5827,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSafeWaterBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSafeWaterBeaconRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>("SafeWaterBeacon"),
                 }, new FeatureAssociationConnector<SafeWaterBuoy>()
                 {
                     roleType = roleType.association,
@@ -5836,8 +5836,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSafeWaterBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSafeWaterBuoyRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>("SafeWaterBuoy"),
                 }, new FeatureAssociationConnector<ShorelineConstruction>()
                 {
                     roleType = roleType.association,
@@ -5845,8 +5845,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(Bollard)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentShorelineConstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ShorelineConstructionViewModel.ShorelineConstructionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentShorelineConstructionRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ShorelineConstructionViewModel.ShorelineConstructionRefIdViewModel>("ShorelineConstruction"),
                 }, new FeatureAssociationConnector<SiloTank>()
                 {
                     roleType = roleType.association,
@@ -5854,8 +5854,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSiloTankRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSiloTankRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>("SiloTank"),
                 }, new FeatureAssociationConnector<SpanFixed>()
                 {
                     roleType = roleType.association,
@@ -5863,8 +5863,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSpanFixedRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSpanFixedRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>("SpanFixed"),
                 }, new FeatureAssociationConnector<SpanOpening>()
                 {
                     roleType = roleType.association,
@@ -5872,8 +5872,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSpanOpeningRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSpanOpeningRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>("SpanOpening"),
                 }, new FeatureAssociationConnector<SpecialPurposeGeneralBeacon>()
                 {
                     roleType = roleType.association,
@@ -5881,8 +5881,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSpecialPurposeGeneralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSpecialPurposeGeneralBeaconRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>("SpecialPurposeGeneralBeacon"),
                 }, new FeatureAssociationConnector<SpecialPurposeGeneralBuoy>()
                 {
                     roleType = roleType.association,
@@ -5890,8 +5890,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSpecialPurposeGeneralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentSpecialPurposeGeneralBuoyRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>("SpecialPurposeGeneralBuoy"),
                 }, new FeatureAssociationConnector<StructureOverNavigableWater>()
                 {
                     roleType = roleType.association,
@@ -5899,8 +5899,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentStructureOverNavigableWaterRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentStructureOverNavigableWaterRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>("StructureOverNavigableWater"),
                 }, new FeatureAssociationConnector<WindTurbine>()
                 {
                     roleType = roleType.association,
@@ -5908,8 +5908,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored), typeof(LightAirObstruction)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentWindTurbineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WindTurbineViewModel.WindTurbineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentWindTurbineRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WindTurbineViewModel.WindTurbineRefIdViewModel>("WindTurbine"),
                 }, new FeatureAssociationConnector<Wreck>()
                 {
                     roleType = roleType.association,
@@ -5917,8 +5917,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Daymark), typeof(DistanceMark), typeof(FogSignal), typeof(LightAllAround), typeof(LightFogDetector), typeof(PhysicalAISAidToNavigation), typeof(RadarTransponderBeacon), typeof(Retroreflector), typeof(SignalStationTraffic), typeof(SignalStationWarning), typeof(LightSectored)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentWreckRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WreckViewModel.WreckRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<StructureEquipmentViewModel.theEquipmentWreckRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WreckViewModel.WreckRefIdViewModel>("Wreck"),
                 }, new FeatureAssociationConnector<Bollard>()
                 {
                     roleType = roleType.composition,
@@ -5926,8 +5926,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Dolphin), typeof(FortifiedStructure), typeof(Hulk), typeof(Landmark), typeof(OffshorePlatform), typeof(Pile), typeof(PylonBridgeSupport), typeof(ShorelineConstruction)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureBollardRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BollardViewModel.BollardRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureBollardRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BollardViewModel.BollardRefIdViewModel>("Bollard"),
                 }, new FeatureAssociationConnector<Daymark>()
                 {
                     roleType = roleType.composition,
@@ -5935,8 +5935,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureDaymarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureDaymarkRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>("Daymark"),
                 }, new FeatureAssociationConnector<DistanceMark>()
                 {
                     roleType = roleType.composition,
@@ -5944,8 +5944,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureDistanceMarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DistanceMarkViewModel.DistanceMarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureDistanceMarkRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DistanceMarkViewModel.DistanceMarkRefIdViewModel>("DistanceMark"),
                 }, new FeatureAssociationConnector<FogSignal>()
                 {
                     roleType = roleType.composition,
@@ -5953,8 +5953,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureFogSignalRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FogSignalViewModel.FogSignalRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureFogSignalRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FogSignalViewModel.FogSignalRefIdViewModel>("FogSignal"),
                 }, new FeatureAssociationConnector<Helipad>()
                 {
                     roleType = roleType.composition,
@@ -5962,8 +5962,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Building), typeof(Landmark), typeof(OffshorePlatform)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureHelipadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HelipadViewModel.HelipadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureHelipadRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HelipadViewModel.HelipadRefIdViewModel>("Helipad"),
                 }, new FeatureAssociationConnector<LightAirObstruction>()
                 {
                     roleType = roleType.composition,
@@ -5971,8 +5971,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(Conveyor), typeof(Landmark), typeof(OffshorePlatform), typeof(PylonBridgeSupport), typeof(SpanFixed), typeof(SpanOpening), typeof(WindTurbine), typeof(LightAllAround), typeof(LightSectored)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureLightAirObstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAirObstructionViewModel.LightAirObstructionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureLightAirObstructionRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAirObstructionViewModel.LightAirObstructionRefIdViewModel>("LightAirObstruction"),
                 }, new FeatureAssociationConnector<LightAllAround>()
                 {
                     roleType = roleType.composition,
@@ -5980,8 +5980,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureLightAllAroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureLightAllAroundRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>("LightAllAround"),
                 }, new FeatureAssociationConnector<LightFogDetector>()
                 {
                     roleType = roleType.composition,
@@ -5989,8 +5989,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureLightFogDetectorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFogDetectorViewModel.LightFogDetectorRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureLightFogDetectorRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFogDetectorViewModel.LightFogDetectorRefIdViewModel>("LightFogDetector"),
                 }, new FeatureAssociationConnector<LightSectored>()
                 {
                     roleType = roleType.composition,
@@ -5998,8 +5998,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(Conveyor), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(IsolatedDangerBeacon), typeof(Landmark), typeof(LateralBeacon), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureLightSectoredRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureLightSectoredRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>("LightSectored"),
                 }, new FeatureAssociationConnector<PhysicalAISAidToNavigation>()
                 {
                     roleType = roleType.composition,
@@ -6007,8 +6007,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructurePhysicalAISAidToNavigationRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalAISAidToNavigationViewModel.PhysicalAISAidToNavigationRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructurePhysicalAISAidToNavigationRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalAISAidToNavigationViewModel.PhysicalAISAidToNavigationRefIdViewModel>("PhysicalAISAidToNavigation"),
                 }, new FeatureAssociationConnector<RadarReflector>()
                 {
                     roleType = roleType.composition,
@@ -6016,8 +6016,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(CableOverhead), typeof(PipelineOverhead)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureRadarReflectorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarReflectorViewModel.RadarReflectorRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureRadarReflectorRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarReflectorViewModel.RadarReflectorRefIdViewModel>("RadarReflector"),
                 }, new FeatureAssociationConnector<RadarTransponderBeacon>()
                 {
                     roleType = roleType.composition,
@@ -6025,8 +6025,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureRadarTransponderBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarTransponderBeaconViewModel.RadarTransponderBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureRadarTransponderBeaconRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarTransponderBeaconViewModel.RadarTransponderBeaconRefIdViewModel>("RadarTransponderBeacon"),
                 }, new FeatureAssociationConnector<Retroreflector>()
                 {
                     roleType = roleType.composition,
@@ -6034,8 +6034,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(LightAllAround), typeof(LightSectored), typeof(Daymark)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureRetroreflectorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RetroreflectorViewModel.RetroreflectorRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureRetroreflectorRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RetroreflectorViewModel.RetroreflectorRefIdViewModel>("Retroreflector"),
                 }, new FeatureAssociationConnector<SignalStationTraffic>()
                 {
                     roleType = roleType.composition,
@@ -6043,8 +6043,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureSignalStationTrafficRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationTrafficViewModel.SignalStationTrafficRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureSignalStationTrafficRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationTrafficViewModel.SignalStationTrafficRefIdViewModel>("SignalStationTraffic"),
                 }, new FeatureAssociationConnector<SignalStationWarning>()
                 {
                     roleType = roleType.composition,
@@ -6052,8 +6052,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge), typeof(Building), typeof(Crane), typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Conveyor), typeof(Dolphin), typeof(EmergencyWreckMarkingBuoy), typeof(FishingFacility), typeof(FloatingDock), typeof(FortifiedStructure), typeof(Hulk), typeof(InstallationBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(Landmark), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(Pile), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(ShorelineConstruction), typeof(SiloTank), typeof(SpanFixed), typeof(SpanOpening), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(StructureOverNavigableWater), typeof(WindTurbine), typeof(Wreck), typeof(Daymark)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureSignalStationWarningRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationWarningViewModel.SignalStationWarningRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<StructureEquipmentViewModel.theStructureSignalStationWarningRefIdViewModel>("StructureEquipment"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SignalStationWarningViewModel.SignalStationWarningRefIdViewModel>("SignalStationWarning"),
                 }
 
                 ]
@@ -6067,8 +6067,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(StructureOverNavigableWater)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RoofedStructureAggregationViewModel.theRoofedStructurePylonBridgeSupportRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RoofedStructureAggregationViewModel.theRoofedStructurePylonBridgeSupportRefIdViewModel>("RoofedStructureAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>("PylonBridgeSupport"),
                 }, new FeatureAssociationConnector<StructureOverNavigableWater>()
                 {
                     roleType = roleType.association,
@@ -6076,8 +6076,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(PylonBridgeSupport)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<RoofedStructureAggregationViewModel.theSupportStructureOverNavigableWaterRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<RoofedStructureAggregationViewModel.theSupportStructureOverNavigableWaterRefIdViewModel>("RoofedStructureAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>("StructureOverNavigableWater"),
                 }
 
                 ]
@@ -6091,8 +6091,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionBuildingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionBuildingRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>("Building"),
                 }, new FeatureAssociationConnector<CardinalBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6100,8 +6100,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionCardinalBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionCardinalBeaconRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>("CardinalBeacon"),
                 }, new FeatureAssociationConnector<Daymark>()
                 {
                     roleType = roleType.aggregation,
@@ -6109,8 +6109,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionDaymarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionDaymarkRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>("Daymark"),
                 }, new FeatureAssociationConnector<Dolphin>()
                 {
                     roleType = roleType.aggregation,
@@ -6118,8 +6118,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionDolphinRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionDolphinRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>("Dolphin"),
                 }, new FeatureAssociationConnector<FortifiedStructure>()
                 {
                     roleType = roleType.aggregation,
@@ -6127,8 +6127,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionFortifiedStructureRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionFortifiedStructureRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>("FortifiedStructure"),
                 }, new FeatureAssociationConnector<IsolatedDangerBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6136,8 +6136,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionIsolatedDangerBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionIsolatedDangerBeaconRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>("IsolatedDangerBeacon"),
                 }, new FeatureAssociationConnector<Landmark>()
                 {
                     roleType = roleType.aggregation,
@@ -6145,8 +6145,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionLandmarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionLandmarkRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>("Landmark"),
                 }, new FeatureAssociationConnector<LateralBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6154,8 +6154,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionLateralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionLateralBeaconRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>("LateralBeacon"),
                 }, new FeatureAssociationConnector<LightAllAround>()
                 {
                     roleType = roleType.aggregation,
@@ -6163,8 +6163,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionLightAllAroundRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionLightAllAroundRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightAllAroundViewModel.LightAllAroundRefIdViewModel>("LightAllAround"),
                 }, new FeatureAssociationConnector<LightSectored>()
                 {
                     roleType = roleType.aggregation,
@@ -6172,8 +6172,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionLightSectoredRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionLightSectoredRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightSectoredViewModel.LightSectoredRefIdViewModel>("LightSectored"),
                 }, new FeatureAssociationConnector<NavigationLine>()
                 {
                     roleType = roleType.aggregation,
@@ -6181,8 +6181,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionNavigationLineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NavigationLineViewModel.NavigationLineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionNavigationLineRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NavigationLineViewModel.NavigationLineRefIdViewModel>("NavigationLine"),
                 }, new FeatureAssociationConnector<Pile>()
                 {
                     roleType = roleType.aggregation,
@@ -6190,8 +6190,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionPileRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionPileRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>("Pile"),
                 }, new FeatureAssociationConnector<RadarTransponderBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6199,8 +6199,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionRadarTransponderBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarTransponderBeaconViewModel.RadarTransponderBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionRadarTransponderBeaconRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RadarTransponderBeaconViewModel.RadarTransponderBeaconRefIdViewModel>("RadarTransponderBeacon"),
                 }, new FeatureAssociationConnector<RangeSystem>()
                 {
                     roleType = roleType.aggregation,
@@ -6208,8 +6208,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionRangeSystemRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionRangeSystemRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>("RangeSystem"),
                 }, new FeatureAssociationConnector<RecommendedRouteCentreline>()
                 {
                     roleType = roleType.aggregation,
@@ -6217,8 +6217,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionRecommendedRouteCentrelineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedRouteCentrelineViewModel.RecommendedRouteCentrelineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionRecommendedRouteCentrelineRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedRouteCentrelineViewModel.RecommendedRouteCentrelineRefIdViewModel>("RecommendedRouteCentreline"),
                 }, new FeatureAssociationConnector<RecommendedTrack>()
                 {
                     roleType = roleType.aggregation,
@@ -6226,8 +6226,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionRecommendedTrackRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrackViewModel.RecommendedTrackRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionRecommendedTrackRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrackViewModel.RecommendedTrackRefIdViewModel>("RecommendedTrack"),
                 }, new FeatureAssociationConnector<SafeWaterBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6235,8 +6235,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionSafeWaterBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionSafeWaterBeaconRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>("SafeWaterBeacon"),
                 }, new FeatureAssociationConnector<SiloTank>()
                 {
                     roleType = roleType.aggregation,
@@ -6244,8 +6244,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionSiloTankRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionSiloTankRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>("SiloTank"),
                 }, new FeatureAssociationConnector<SpecialPurposeGeneralBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6253,8 +6253,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(RangeSystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionSpecialPurposeGeneralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<RangeSystemAggregationViewModel.theCollectionSpecialPurposeGeneralBeaconRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>("SpecialPurposeGeneralBeacon"),
                 }, new FeatureAssociationConnector<RangeSystem>()
                 {
                     roleType = roleType.association,
@@ -6262,8 +6262,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CardinalBeacon), typeof(Building), typeof(Daymark), typeof(Dolphin), typeof(FortifiedStructure), typeof(IsolatedDangerBeacon), typeof(Landmark), typeof(LateralBeacon), typeof(LightAllAround), typeof(LightSectored), typeof(NavigationLine), typeof(Pile), typeof(RadarTransponderBeacon), typeof(RangeSystem), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(SafeWaterBeacon), typeof(SiloTank), typeof(SpecialPurposeGeneralBeacon)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<RangeSystemAggregationViewModel.theComponentRangeSystemRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<RangeSystemAggregationViewModel.theComponentRangeSystemRefIdViewModel>("RangeSystemAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>("RangeSystem"),
                 }
 
                 ]
@@ -6277,8 +6277,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(PilotageDistrict)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<PilotageDistrictAssociationViewModel.theCollectionPilotBoardingPlaceRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<PilotageDistrictAssociationViewModel.theCollectionPilotBoardingPlaceRefIdViewModel>("PilotageDistrictAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotBoardingPlaceViewModel.PilotBoardingPlaceRefIdViewModel>("PilotBoardingPlace"),
                 }, new FeatureAssociationConnector<PilotageDistrict>()
                 {
                     roleType = roleType.association,
@@ -6286,8 +6286,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(PilotBoardingPlace)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<PilotageDistrictAssociationViewModel.theComponentPilotageDistrictRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotageDistrictViewModel.PilotageDistrictRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<PilotageDistrictAssociationViewModel.theComponentPilotageDistrictRefIdViewModel>("PilotageDistrictAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PilotageDistrictViewModel.PilotageDistrictRefIdViewModel>("PilotageDistrict"),
                 }
 
                 ]
@@ -6301,8 +6301,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(MooringTrot)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<MooringTrotAggregationViewModel.theCollectionBerthRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthViewModel.BerthRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<MooringTrotAggregationViewModel.theCollectionBerthRefIdViewModel>("MooringTrotAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BerthViewModel.BerthRefIdViewModel>("Berth"),
                 }, new FeatureAssociationConnector<CableSubmarine>()
                 {
                     roleType = roleType.aggregation,
@@ -6310,8 +6310,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(MooringTrot)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<MooringTrotAggregationViewModel.theCollectionCableSubmarineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableSubmarineViewModel.CableSubmarineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<MooringTrotAggregationViewModel.theCollectionCableSubmarineRefIdViewModel>("MooringTrotAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CableSubmarineViewModel.CableSubmarineRefIdViewModel>("CableSubmarine"),
                 }, new FeatureAssociationConnector<MooringBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -6319,8 +6319,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(MooringTrot)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<MooringTrotAggregationViewModel.theCollectionMooringBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<MooringTrotAggregationViewModel.theCollectionMooringBuoyRefIdViewModel>("MooringTrotAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>("MooringBuoy"),
                 }, new FeatureAssociationConnector<Obstruction>()
                 {
                     roleType = roleType.aggregation,
@@ -6328,8 +6328,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(MooringTrot)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<MooringTrotAggregationViewModel.theCollectionObstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ObstructionViewModel.ObstructionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<MooringTrotAggregationViewModel.theCollectionObstructionRefIdViewModel>("MooringTrotAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ObstructionViewModel.ObstructionRefIdViewModel>("Obstruction"),
                 }, new FeatureAssociationConnector<MooringTrot>()
                 {
                     roleType = roleType.association,
@@ -6337,8 +6337,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Berth), typeof(CableSubmarine), typeof(MooringBuoy), typeof(Obstruction)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<MooringTrotAggregationViewModel.theComponentMooringTrotRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringTrotViewModel.MooringTrotRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<MooringTrotAggregationViewModel.theComponentMooringTrotRefIdViewModel>("MooringTrotAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringTrotViewModel.MooringTrotRefIdViewModel>("MooringTrot"),
                 }
 
                 ]
@@ -6352,8 +6352,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(IslandGroup)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<IslandAggregationViewModel.theCollectionIslandGroupRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IslandGroupViewModel.IslandGroupRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<IslandAggregationViewModel.theCollectionIslandGroupRefIdViewModel>("IslandAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IslandGroupViewModel.IslandGroupRefIdViewModel>("IslandGroup"),
                 }, new FeatureAssociationConnector<LandArea>()
                 {
                     roleType = roleType.aggregation,
@@ -6361,8 +6361,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(IslandGroup)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<IslandAggregationViewModel.theCollectionLandAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandAreaViewModel.LandAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<IslandAggregationViewModel.theCollectionLandAreaRefIdViewModel>("IslandAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandAreaViewModel.LandAreaRefIdViewModel>("LandArea"),
                 }, new FeatureAssociationConnector<IslandGroup>()
                 {
                     roleType = roleType.association,
@@ -6370,8 +6370,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(LandArea), typeof(IslandGroup)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<IslandAggregationViewModel.theComponentIslandGroupRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IslandGroupViewModel.IslandGroupRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<IslandAggregationViewModel.theComponentIslandGroupRefIdViewModel>("IslandAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IslandGroupViewModel.IslandGroupRefIdViewModel>("IslandGroup"),
                 }
 
                 ]
@@ -6385,8 +6385,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(CautionArea), typeof(Daymark), typeof(DredgedArea), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Landmark), typeof(Pile), typeof(RangeSystem), typeof(RecommendedRouteCentreline), typeof(RecommendedTrack), typeof(RestrictedArea), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(SweptArea)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<FairwayAuxiliaryViewModel.theAuxiliaryFeatureFairwayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwayViewModel.FairwayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<FairwayAuxiliaryViewModel.theAuxiliaryFeatureFairwayRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwayViewModel.FairwayRefIdViewModel>("Fairway"),
                 }, new FeatureAssociationConnector<CardinalBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6394,8 +6394,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureCardinalBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureCardinalBeaconRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>("CardinalBeacon"),
                 }, new FeatureAssociationConnector<CardinalBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -6403,8 +6403,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureCardinalBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureCardinalBuoyRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>("CardinalBuoy"),
                 }, new FeatureAssociationConnector<CautionArea>()
                 {
                     roleType = roleType.aggregation,
@@ -6412,8 +6412,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureCautionAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CautionAreaViewModel.CautionAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureCautionAreaRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CautionAreaViewModel.CautionAreaRefIdViewModel>("CautionArea"),
                 }, new FeatureAssociationConnector<Daymark>()
                 {
                     roleType = roleType.aggregation,
@@ -6421,8 +6421,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureDaymarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureDaymarkRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>("Daymark"),
                 }, new FeatureAssociationConnector<DredgedArea>()
                 {
                     roleType = roleType.aggregation,
@@ -6430,8 +6430,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureDredgedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DredgedAreaViewModel.DredgedAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureDredgedAreaRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DredgedAreaViewModel.DredgedAreaRefIdViewModel>("DredgedArea"),
                 }, new FeatureAssociationConnector<IsolatedDangerBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6439,8 +6439,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureIsolatedDangerBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureIsolatedDangerBeaconRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>("IsolatedDangerBeacon"),
                 }, new FeatureAssociationConnector<IsolatedDangerBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -6448,8 +6448,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureIsolatedDangerBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureIsolatedDangerBuoyRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>("IsolatedDangerBuoy"),
                 }, new FeatureAssociationConnector<Landmark>()
                 {
                     roleType = roleType.aggregation,
@@ -6457,8 +6457,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureLandmarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureLandmarkRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>("Landmark"),
                 }, new FeatureAssociationConnector<LateralBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6466,8 +6466,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureLateralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureLateralBeaconRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>("LateralBeacon"),
                 }, new FeatureAssociationConnector<LateralBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -6475,8 +6475,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureLateralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureLateralBuoyRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>("LateralBuoy"),
                 }, new FeatureAssociationConnector<LightFloat>()
                 {
                     roleType = roleType.aggregation,
@@ -6484,8 +6484,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureLightFloatRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureLightFloatRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>("LightFloat"),
                 }, new FeatureAssociationConnector<LightVessel>()
                 {
                     roleType = roleType.aggregation,
@@ -6493,8 +6493,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureLightVesselRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureLightVesselRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>("LightVessel"),
                 }, new FeatureAssociationConnector<Pile>()
                 {
                     roleType = roleType.aggregation,
@@ -6502,8 +6502,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeaturePileRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeaturePileRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>("Pile"),
                 }, new FeatureAssociationConnector<RangeSystem>()
                 {
                     roleType = roleType.aggregation,
@@ -6511,8 +6511,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureRangeSystemRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureRangeSystemRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RangeSystemViewModel.RangeSystemRefIdViewModel>("RangeSystem"),
                 }, new FeatureAssociationConnector<RecommendedRouteCentreline>()
                 {
                     roleType = roleType.aggregation,
@@ -6520,8 +6520,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureRecommendedRouteCentrelineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedRouteCentrelineViewModel.RecommendedRouteCentrelineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureRecommendedRouteCentrelineRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedRouteCentrelineViewModel.RecommendedRouteCentrelineRefIdViewModel>("RecommendedRouteCentreline"),
                 }, new FeatureAssociationConnector<RecommendedTrack>()
                 {
                     roleType = roleType.aggregation,
@@ -6529,8 +6529,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureRecommendedTrackRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrackViewModel.RecommendedTrackRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureRecommendedTrackRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RecommendedTrackViewModel.RecommendedTrackRefIdViewModel>("RecommendedTrack"),
                 }, new FeatureAssociationConnector<RestrictedArea>()
                 {
                     roleType = roleType.aggregation,
@@ -6538,8 +6538,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureRestrictedAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureRestrictedAreaRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<RestrictedAreaViewModel.RestrictedAreaRefIdViewModel>("RestrictedArea"),
                 }, new FeatureAssociationConnector<SafeWaterBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6547,8 +6547,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureSafeWaterBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureSafeWaterBeaconRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>("SafeWaterBeacon"),
                 }, new FeatureAssociationConnector<SafeWaterBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -6556,8 +6556,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureSafeWaterBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureSafeWaterBuoyRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>("SafeWaterBuoy"),
                 }, new FeatureAssociationConnector<SpecialPurposeGeneralBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6565,8 +6565,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureSpecialPurposeGeneralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureSpecialPurposeGeneralBeaconRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>("SpecialPurposeGeneralBeacon"),
                 }, new FeatureAssociationConnector<SpecialPurposeGeneralBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -6574,8 +6574,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureSpecialPurposeGeneralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureSpecialPurposeGeneralBuoyRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>("SpecialPurposeGeneralBuoy"),
                 }, new FeatureAssociationConnector<SweptArea>()
                 {
                     roleType = roleType.aggregation,
@@ -6583,8 +6583,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureSweptAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SweptAreaViewModel.SweptAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAuxiliaryViewModel.thePrimaryFeatureSweptAreaRefIdViewModel>("FairwayAuxiliary"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SweptAreaViewModel.SweptAreaRefIdViewModel>("SweptArea"),
                 }
 
                 ]
@@ -6598,8 +6598,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAggregationViewModel.theCollectionFairwayRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwayViewModel.FairwayRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<FairwayAggregationViewModel.theCollectionFairwayRefIdViewModel>("FairwayAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwayViewModel.FairwayRefIdViewModel>("Fairway"),
                 }, new FeatureAssociationConnector<FairwaySystem>()
                 {
                     roleType = roleType.association,
@@ -6607,8 +6607,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(Fairway)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<FairwayAggregationViewModel.theComponentFairwaySystemRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwaySystemViewModel.FairwaySystemRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<FairwayAggregationViewModel.theComponentFairwaySystemRefIdViewModel>("FairwayAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwaySystemViewModel.FairwaySystemRefIdViewModel>("FairwaySystem"),
                 }
 
                 ]
@@ -6622,8 +6622,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<DeepWaterRouteAggregationViewModel.theCollectionDeepWaterRouteCentrelineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteCentrelineViewModel.DeepWaterRouteCentrelineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<DeepWaterRouteAggregationViewModel.theCollectionDeepWaterRouteCentrelineRefIdViewModel>("DeepWaterRouteAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteCentrelineViewModel.DeepWaterRouteCentrelineRefIdViewModel>("DeepWaterRouteCentreline"),
                 }, new FeatureAssociationConnector<DeepWaterRoutePart>()
                 {
                     roleType = roleType.aggregation,
@@ -6631,8 +6631,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<DeepWaterRouteAggregationViewModel.theCollectionDeepWaterRoutePartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRoutePartViewModel.DeepWaterRoutePartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<DeepWaterRouteAggregationViewModel.theCollectionDeepWaterRoutePartRefIdViewModel>("DeepWaterRouteAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRoutePartViewModel.DeepWaterRoutePartRefIdViewModel>("DeepWaterRoutePart"),
                 }, new FeatureAssociationConnector<DeepWaterRoute>()
                 {
                     roleType = roleType.association,
@@ -6640,8 +6640,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(DeepWaterRouteCentreline), typeof(DeepWaterRoutePart)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<DeepWaterRouteAggregationViewModel.theComponentDeepWaterRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<DeepWaterRouteAggregationViewModel.theComponentDeepWaterRouteRefIdViewModel>("DeepWaterRouteAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>("DeepWaterRoute"),
                 }
 
                 ]
@@ -6655,8 +6655,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(CautionArea)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<CautionAreaAssociationViewModel.theCollectionArchipelagicSeaLaneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<CautionAreaAssociationViewModel.theCollectionArchipelagicSeaLaneRefIdViewModel>("CautionAreaAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>("ArchipelagicSeaLane"),
                 }, new FeatureAssociationConnector<TrafficSeparationScheme>()
                 {
                     roleType = roleType.aggregation,
@@ -6664,8 +6664,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(CautionArea)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<CautionAreaAssociationViewModel.theCollectionTrafficSeparationSchemeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<CautionAreaAssociationViewModel.theCollectionTrafficSeparationSchemeRefIdViewModel>("CautionAreaAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>("TrafficSeparationScheme"),
                 }, new FeatureAssociationConnector<CautionArea>()
                 {
                     roleType = roleType.association,
@@ -6673,8 +6673,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(TrafficSeparationScheme)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<CautionAreaAssociationViewModel.theComponentCautionAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CautionAreaViewModel.CautionAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<CautionAreaAssociationViewModel.theComponentCautionAreaRefIdViewModel>("CautionAreaAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CautionAreaViewModel.CautionAreaRefIdViewModel>("CautionArea"),
                 }
 
                 ]
@@ -6688,8 +6688,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<BridgeAggregationViewModel.theCollectionPontoonRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<BridgeAggregationViewModel.theCollectionPontoonRefIdViewModel>("BridgeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>("Pontoon"),
                 }, new FeatureAssociationConnector<PylonBridgeSupport>()
                 {
                     roleType = roleType.aggregation,
@@ -6697,8 +6697,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<BridgeAggregationViewModel.theCollectionPylonBridgeSupportRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<BridgeAggregationViewModel.theCollectionPylonBridgeSupportRefIdViewModel>("BridgeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>("PylonBridgeSupport"),
                 }, new FeatureAssociationConnector<SpanFixed>()
                 {
                     roleType = roleType.aggregation,
@@ -6706,8 +6706,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<BridgeAggregationViewModel.theCollectionSpanFixedRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<BridgeAggregationViewModel.theCollectionSpanFixedRefIdViewModel>("BridgeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>("SpanFixed"),
                 }, new FeatureAssociationConnector<SpanOpening>()
                 {
                     roleType = roleType.aggregation,
@@ -6715,8 +6715,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(Bridge)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<BridgeAggregationViewModel.theCollectionSpanOpeningRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<BridgeAggregationViewModel.theCollectionSpanOpeningRefIdViewModel>("BridgeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>("SpanOpening"),
                 }, new FeatureAssociationConnector<Bridge>()
                 {
                     roleType = roleType.association,
@@ -6724,8 +6724,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(SpanFixed), typeof(SpanOpening), typeof(Pontoon), typeof(PylonBridgeSupport)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<BridgeAggregationViewModel.theComponentBridgeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<BridgeAggregationViewModel.theComponentBridgeRefIdViewModel>("BridgeAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>("Bridge"),
                 }
 
                 ]
@@ -6739,8 +6739,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<ASLAggregationViewModel.theCollectionArchipelagicSeaLaneAreaRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAreaViewModel.ArchipelagicSeaLaneAreaRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<ASLAggregationViewModel.theCollectionArchipelagicSeaLaneAreaRefIdViewModel>("ASLAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAreaViewModel.ArchipelagicSeaLaneAreaRefIdViewModel>("ArchipelagicSeaLaneArea"),
                 }, new FeatureAssociationConnector<ArchipelagicSeaLaneAxis>()
                 {
                     roleType = roleType.aggregation,
@@ -6748,8 +6748,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<ASLAggregationViewModel.theCollectionArchipelagicSeaLaneAxisRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAxisViewModel.ArchipelagicSeaLaneAxisRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<ASLAggregationViewModel.theCollectionArchipelagicSeaLaneAxisRefIdViewModel>("ASLAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneAxisViewModel.ArchipelagicSeaLaneAxisRefIdViewModel>("ArchipelagicSeaLaneAxis"),
                 }, new FeatureAssociationConnector<ArchipelagicSeaLane>()
                 {
                     roleType = roleType.association,
@@ -6757,8 +6757,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(ArchipelagicSeaLaneArea), typeof(ArchipelagicSeaLaneAxis)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<ASLAggregationViewModel.theComponentArchipelagicSeaLaneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<ASLAggregationViewModel.theComponentArchipelagicSeaLaneRefIdViewModel>("ASLAggregation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>("ArchipelagicSeaLane"),
                 }
 
                 ]
@@ -6772,8 +6772,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionBridgeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionBridgeRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BridgeViewModel.BridgeRefIdViewModel>("Bridge"),
                 }, new FeatureAssociationConnector<Building>()
                 {
                     roleType = roleType.aggregation,
@@ -6781,8 +6781,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionBuildingRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionBuildingRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<BuildingViewModel.BuildingRefIdViewModel>("Building"),
                 }, new FeatureAssociationConnector<CardinalBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6790,8 +6790,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionCardinalBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionCardinalBeaconRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBeaconViewModel.CardinalBeaconRefIdViewModel>("CardinalBeacon"),
                 }, new FeatureAssociationConnector<CardinalBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -6799,8 +6799,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionCardinalBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionCardinalBuoyRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CardinalBuoyViewModel.CardinalBuoyRefIdViewModel>("CardinalBuoy"),
                 }, new FeatureAssociationConnector<Conveyor>()
                 {
                     roleType = roleType.aggregation,
@@ -6808,8 +6808,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionConveyorRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ConveyorViewModel.ConveyorRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionConveyorRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ConveyorViewModel.ConveyorRefIdViewModel>("Conveyor"),
                 }, new FeatureAssociationConnector<Crane>()
                 {
                     roleType = roleType.aggregation,
@@ -6817,8 +6817,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionCraneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CraneViewModel.CraneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionCraneRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<CraneViewModel.CraneRefIdViewModel>("Crane"),
                 }, new FeatureAssociationConnector<Daymark>()
                 {
                     roleType = roleType.aggregation,
@@ -6826,8 +6826,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionDaymarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionDaymarkRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DaymarkViewModel.DaymarkRefIdViewModel>("Daymark"),
                 }, new FeatureAssociationConnector<Dolphin>()
                 {
                     roleType = roleType.aggregation,
@@ -6835,8 +6835,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionDolphinRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionDolphinRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DolphinViewModel.DolphinRefIdViewModel>("Dolphin"),
                 }, new FeatureAssociationConnector<EmergencyWreckMarkingBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -6844,8 +6844,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionEmergencyWreckMarkingBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<EmergencyWreckMarkingBuoyViewModel.EmergencyWreckMarkingBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionEmergencyWreckMarkingBuoyRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<EmergencyWreckMarkingBuoyViewModel.EmergencyWreckMarkingBuoyRefIdViewModel>("EmergencyWreckMarkingBuoy"),
                 }, new FeatureAssociationConnector<FishingFacility>()
                 {
                     roleType = roleType.aggregation,
@@ -6853,8 +6853,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionFishingFacilityRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingFacilityViewModel.FishingFacilityRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionFishingFacilityRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FishingFacilityViewModel.FishingFacilityRefIdViewModel>("FishingFacility"),
                 }, new FeatureAssociationConnector<FloatingDock>()
                 {
                     roleType = roleType.aggregation,
@@ -6862,8 +6862,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionFloatingDockRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionFloatingDockRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FloatingDockViewModel.FloatingDockRefIdViewModel>("FloatingDock"),
                 }, new FeatureAssociationConnector<FortifiedStructure>()
                 {
                     roleType = roleType.aggregation,
@@ -6871,8 +6871,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionFortifiedStructureRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionFortifiedStructureRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FortifiedStructureViewModel.FortifiedStructureRefIdViewModel>("FortifiedStructure"),
                 }, new FeatureAssociationConnector<Hulk>()
                 {
                     roleType = roleType.aggregation,
@@ -6880,8 +6880,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionHulkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HulkViewModel.HulkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionHulkRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<HulkViewModel.HulkRefIdViewModel>("Hulk"),
                 }, new FeatureAssociationConnector<IsolatedDangerBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6889,8 +6889,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionIsolatedDangerBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionIsolatedDangerBeaconRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBeaconViewModel.IsolatedDangerBeaconRefIdViewModel>("IsolatedDangerBeacon"),
                 }, new FeatureAssociationConnector<IsolatedDangerBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -6898,8 +6898,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionIsolatedDangerBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionIsolatedDangerBuoyRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<IsolatedDangerBuoyViewModel.IsolatedDangerBuoyRefIdViewModel>("IsolatedDangerBuoy"),
                 }, new FeatureAssociationConnector<Landmark>()
                 {
                     roleType = roleType.aggregation,
@@ -6907,8 +6907,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionLandmarkRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionLandmarkRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LandmarkViewModel.LandmarkRefIdViewModel>("Landmark"),
                 }, new FeatureAssociationConnector<LateralBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -6916,8 +6916,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionLateralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionLateralBeaconRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBeaconViewModel.LateralBeaconRefIdViewModel>("LateralBeacon"),
                 }, new FeatureAssociationConnector<LateralBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -6925,8 +6925,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionLateralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionLateralBuoyRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LateralBuoyViewModel.LateralBuoyRefIdViewModel>("LateralBuoy"),
                 }, new FeatureAssociationConnector<LightFloat>()
                 {
                     roleType = roleType.aggregation,
@@ -6934,8 +6934,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionLightFloatRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionLightFloatRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightFloatViewModel.LightFloatRefIdViewModel>("LightFloat"),
                 }, new FeatureAssociationConnector<LightVessel>()
                 {
                     roleType = roleType.aggregation,
@@ -6943,8 +6943,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionLightVesselRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionLightVesselRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<LightVesselViewModel.LightVesselRefIdViewModel>("LightVessel"),
                 }, new FeatureAssociationConnector<MooringBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -6952,8 +6952,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionMooringBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionMooringBuoyRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<MooringBuoyViewModel.MooringBuoyRefIdViewModel>("MooringBuoy"),
                 }, new FeatureAssociationConnector<OffshorePlatform>()
                 {
                     roleType = roleType.aggregation,
@@ -6961,8 +6961,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionOffshorePlatformRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshorePlatformViewModel.OffshorePlatformRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionOffshorePlatformRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<OffshorePlatformViewModel.OffshorePlatformRefIdViewModel>("OffshorePlatform"),
                 }, new FeatureAssociationConnector<Pile>()
                 {
                     roleType = roleType.aggregation,
@@ -6970,8 +6970,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionPileRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionPileRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PileViewModel.PileRefIdViewModel>("Pile"),
                 }, new FeatureAssociationConnector<PipelineOverhead>()
                 {
                     roleType = roleType.aggregation,
@@ -6979,8 +6979,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionPipelineOverheadRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineOverheadViewModel.PipelineOverheadRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionPipelineOverheadRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PipelineOverheadViewModel.PipelineOverheadRefIdViewModel>("PipelineOverhead"),
                 }, new FeatureAssociationConnector<Pontoon>()
                 {
                     roleType = roleType.aggregation,
@@ -6988,8 +6988,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionPontoonRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionPontoonRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PontoonViewModel.PontoonRefIdViewModel>("Pontoon"),
                 }, new FeatureAssociationConnector<PylonBridgeSupport>()
                 {
                     roleType = roleType.aggregation,
@@ -6997,8 +6997,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionPylonBridgeSupportRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionPylonBridgeSupportRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PylonBridgeSupportViewModel.PylonBridgeSupportRefIdViewModel>("PylonBridgeSupport"),
                 }, new FeatureAssociationConnector<SafeWaterBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -7006,8 +7006,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSafeWaterBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSafeWaterBeaconRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBeaconViewModel.SafeWaterBeaconRefIdViewModel>("SafeWaterBeacon"),
                 }, new FeatureAssociationConnector<SafeWaterBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -7015,8 +7015,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSafeWaterBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSafeWaterBuoyRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SafeWaterBuoyViewModel.SafeWaterBuoyRefIdViewModel>("SafeWaterBuoy"),
                 }, new FeatureAssociationConnector<ShorelineConstruction>()
                 {
                     roleType = roleType.aggregation,
@@ -7024,8 +7024,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionShorelineConstructionRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ShorelineConstructionViewModel.ShorelineConstructionRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionShorelineConstructionRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ShorelineConstructionViewModel.ShorelineConstructionRefIdViewModel>("ShorelineConstruction"),
                 }, new FeatureAssociationConnector<SiloTank>()
                 {
                     roleType = roleType.aggregation,
@@ -7033,8 +7033,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSiloTankRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSiloTankRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SiloTankViewModel.SiloTankRefIdViewModel>("SiloTank"),
                 }, new FeatureAssociationConnector<SpanFixed>()
                 {
                     roleType = roleType.aggregation,
@@ -7042,8 +7042,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSpanFixedRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSpanFixedRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanFixedViewModel.SpanFixedRefIdViewModel>("SpanFixed"),
                 }, new FeatureAssociationConnector<SpanOpening>()
                 {
                     roleType = roleType.aggregation,
@@ -7051,8 +7051,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSpanOpeningRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSpanOpeningRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpanOpeningViewModel.SpanOpeningRefIdViewModel>("SpanOpening"),
                 }, new FeatureAssociationConnector<SpecialPurposeGeneralBeacon>()
                 {
                     roleType = roleType.aggregation,
@@ -7060,8 +7060,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSpecialPurposeGeneralBeaconRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSpecialPurposeGeneralBeaconRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBeaconViewModel.SpecialPurposeGeneralBeaconRefIdViewModel>("SpecialPurposeGeneralBeacon"),
                 }, new FeatureAssociationConnector<SpecialPurposeGeneralBuoy>()
                 {
                     roleType = roleType.aggregation,
@@ -7069,8 +7069,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(ArchipelagicSeaLane), typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSpecialPurposeGeneralBuoyRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionSpecialPurposeGeneralBuoyRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<SpecialPurposeGeneralBuoyViewModel.SpecialPurposeGeneralBuoyRefIdViewModel>("SpecialPurposeGeneralBuoy"),
                 }, new FeatureAssociationConnector<StructureOverNavigableWater>()
                 {
                     roleType = roleType.aggregation,
@@ -7078,8 +7078,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionStructureOverNavigableWaterRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionStructureOverNavigableWaterRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<StructureOverNavigableWaterViewModel.StructureOverNavigableWaterRefIdViewModel>("StructureOverNavigableWater"),
                 }, new FeatureAssociationConnector<WindTurbine>()
                 {
                     roleType = roleType.aggregation,
@@ -7087,8 +7087,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(DeepWaterRoute), typeof(FairwaySystem), typeof(TrafficSeparationScheme), typeof(TwoWayRoute)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionWindTurbineRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WindTurbineViewModel.WindTurbineRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theCollectionWindTurbineRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<WindTurbineViewModel.WindTurbineRefIdViewModel>("WindTurbine"),
                 }, new FeatureAssociationConnector<ArchipelagicSeaLane>()
                 {
                     roleType = roleType.association,
@@ -7096,8 +7096,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theComponentArchipelagicSeaLaneRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theComponentArchipelagicSeaLaneRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ArchipelagicSeaLaneViewModel.ArchipelagicSeaLaneRefIdViewModel>("ArchipelagicSeaLane"),
                 }, new FeatureAssociationConnector<DeepWaterRoute>()
                 {
                     roleType = roleType.association,
@@ -7105,8 +7105,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theComponentDeepWaterRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theComponentDeepWaterRouteRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<DeepWaterRouteViewModel.DeepWaterRouteRefIdViewModel>("DeepWaterRoute"),
                 }, new FeatureAssociationConnector<FairwaySystem>()
                 {
                     roleType = roleType.association,
@@ -7114,8 +7114,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine), typeof(Bridge), typeof(Conveyor), typeof(FloatingDock), typeof(Hulk), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(ShorelineConstruction), typeof(SpanFixed), typeof(SpanOpening), typeof(StructureOverNavigableWater)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theComponentFairwaySystemRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwaySystemViewModel.FairwaySystemRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theComponentFairwaySystemRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<FairwaySystemViewModel.FairwaySystemRefIdViewModel>("FairwaySystem"),
                 }, new FeatureAssociationConnector<TrafficSeparationScheme>()
                 {
                     roleType = roleType.association,
@@ -7123,8 +7123,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine), typeof(Bridge), typeof(Conveyor), typeof(FloatingDock), typeof(Hulk), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(ShorelineConstruction), typeof(SpanFixed), typeof(SpanOpening), typeof(StructureOverNavigableWater)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theComponentTrafficSeparationSchemeRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theComponentTrafficSeparationSchemeRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TrafficSeparationSchemeViewModel.TrafficSeparationSchemeRefIdViewModel>("TrafficSeparationScheme"),
                 }, new FeatureAssociationConnector<TwoWayRoute>()
                 {
                     roleType = roleType.association,
@@ -7132,8 +7132,8 @@ namespace S100Framework.WPF.ViewModel.S101 {
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(CardinalBeacon), typeof(CardinalBuoy), typeof(Daymark), typeof(EmergencyWreckMarkingBuoy), typeof(IsolatedDangerBeacon), typeof(IsolatedDangerBuoy), typeof(LateralBeacon), typeof(LateralBuoy), typeof(LightFloat), typeof(LightVessel), typeof(Pile), typeof(SafeWaterBeacon), typeof(SafeWaterBuoy), typeof(SpecialPurposeGeneralBeacon), typeof(SpecialPurposeGeneralBuoy), typeof(Building), typeof(Crane), typeof(Dolphin), typeof(FishingFacility), typeof(FortifiedStructure), typeof(Landmark), typeof(MooringBuoy), typeof(OffshorePlatform), typeof(SiloTank), typeof(WindTurbine), typeof(Bridge), typeof(Conveyor), typeof(FloatingDock), typeof(Hulk), typeof(PipelineOverhead), typeof(Pontoon), typeof(PylonBridgeSupport), typeof(ShorelineConstruction), typeof(SpanFixed), typeof(SpanOpening), typeof(StructureOverNavigableWater)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theComponentTwoWayRouteRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AidsToNavigationAssociationViewModel.theComponentTwoWayRouteRefIdViewModel>("AidsToNavigationAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TwoWayRouteViewModel.TwoWayRouteRefIdViewModel>("TwoWayRoute"),
                 }
 
                 ]

@@ -42,8 +42,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(References)],
-                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<NWReferencesViewModel.theReferencesNAVWARNPreambleRefIdViewModel>(),
-                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NAVWARNPreambleViewModel.NAVWARNPreambleRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<NWReferencesViewModel.theReferencesNAVWARNPreambleRefIdViewModel>("NWReferences"),
+                    CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<NAVWARNPreambleViewModel.NAVWARNPreambleRefIdViewModel>("NAVWARNPreamble"),
                 }
 
                 ]
@@ -57,8 +57,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 1,
                     Upper = 1,
                     AssociationTypes = [typeof(NAVWARNPreamble)],
-                    CreateForeignInformationBinding = () => new SingleInformationBindingViewModel<NWPreambleContentViewModel.headerNAVWARNPartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>(),
+                    CreateForeignInformationBinding = () => new SingleInformationBindingViewModel<NWPreambleContentViewModel.headerNAVWARNPartRefIdViewModel>("NWPreambleContent"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>("NAVWARNPart"),
                 }
 
                 ]
@@ -75,8 +75,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 0,
                     Upper = 1,
                     AssociationTypes = [typeof(NAVWARNPart)],
-                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.identifiesTextPlacementRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TextPlacementViewModel.TextPlacementRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new OptionalFeatureBindingViewModel<TextAssociationViewModel.identifiesTextPlacementRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<TextPlacementViewModel.TextPlacementRefIdViewModel>("TextPlacement"),
                 }, new FeatureAssociationConnector<NAVWARNPart>()
                 {
                     roleType = roleType.association,
@@ -84,8 +84,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(TextPlacement)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.positionsNAVWARNPartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<TextAssociationViewModel.positionsNAVWARNPartRefIdViewModel>("TextAssociation"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>("NAVWARNPart"),
                 }
 
                 ]
@@ -99,8 +99,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 0,
                     Upper = default,
                     AssociationTypes = [typeof(NAVWARNAreaAffected)],
-                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AreaAffectedViewModel.affectsNAVWARNPartRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<AreaAffectedViewModel.affectsNAVWARNPartRefIdViewModel>("AreaAffected"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNPartViewModel.NAVWARNPartRefIdViewModel>("NAVWARNPart"),
                 }, new FeatureAssociationConnector<NAVWARNAreaAffected>()
                 {
                     roleType = roleType.association,
@@ -108,8 +108,8 @@ namespace S100Framework.WPF.ViewModel.S124
                     Lower = 1,
                     Upper = 1,
                     AssociationTypes = [typeof(NAVWARNPart)],
-                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<AreaAffectedViewModel.impactsNAVWARNAreaAffectedRefIdViewModel>(),
-                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNAreaAffectedViewModel.NAVWARNAreaAffectedRefIdViewModel>(),
+                    CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<AreaAffectedViewModel.impactsNAVWARNAreaAffectedRefIdViewModel>("AreaAffected"),
+                    CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<NAVWARNAreaAffectedViewModel.NAVWARNAreaAffectedRefIdViewModel>("NAVWARNAreaAffected"),
                 }
 
                 ]
