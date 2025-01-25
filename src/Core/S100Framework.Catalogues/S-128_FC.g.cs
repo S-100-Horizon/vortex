@@ -9,7 +9,7 @@ namespace S100Framework.DomainModel.S128 {
         public static string[] ComplexTypes => ["contactAddress", "customPaperSize", "defaultLocale", "featureName", "information", "onlineResource", "periodicDateRange", "pricing", "printSize", "productSpecification", "supportFileSpecification", "serviceSpecification", "sourceIndication", "telecommunications", "timeIntervalOfCycle", "weekOfYear", "issuanceCycle", "printInformation", "supportFile", "timeIntervalOfProduct", "referenceToNM",];
         public static string[] InformationTypes => ["CatalogueSectionHeader", "ContactDetails", "IndicationOfCarriageRequirement", "PriceInformation", "ProducerInformation", "DistributorInformation",];
         public static string[] FeatureTypes => ["CatalogueElement", "NavigationalProduct", "ElectronicProduct", "PhysicalProduct", "S100Service",];
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -40,7 +40,7 @@ namespace S100Framework.DomainModel.S128 {
         NauticalPublication = 12,
         [System.ComponentModel.Description("Printed nautical chart.")]
         PrintedNauticalChart = 13,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -81,7 +81,7 @@ namespace S100Framework.DomainModel.S128 {
         Renc = 18,
         [System.ComponentModel.Description("Value Added Resellers (VARs), who are able to offer comprehensive end-use services that bring together various navigational products into one package.")]
         Vars = 19,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -92,7 +92,7 @@ namespace S100Framework.DomainModel.S128 {
         AlternateNameDisplay = 2,
         [System.ComponentModel.Description("The name or text is not intended to be displayed.")]
         NoChartDisplay = 3,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -101,7 +101,7 @@ namespace S100Framework.DomainModel.S128 {
         Production = 1,
         [System.ComponentModel.Description("The action to withdraw a time stamp (Used when a time stamp has been reported incorrectly).")]
         Withdrawn = 2,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -138,7 +138,7 @@ namespace S100Framework.DomainModel.S128 {
         RealTimeHydrographicAndEnvironmentalInformationServices = 15,
         [System.ComponentModel.Description("Search and Rescue Service")]
         SearchAndRescueService = 16,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -163,7 +163,7 @@ namespace S100Framework.DomainModel.S128 {
         A6 = 7,
         [System.ComponentModel.Description("The eighth size as output size on nautical paper chart.")]
         A7 = 8,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -176,14 +176,14 @@ namespace S100Framework.DomainModel.S128 {
         Recommendedenhancementprovider = 3,
         [System.ComponentModel.Description("A product or service, that is recommended to make use of added value provided by another product or service.")]
         Recommendedenhancementuser = 4,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
     public enum digitalSignatureReference : int {
         [System.ComponentModel.Description("Elliptic Curve Digital Signature Algorithm (ECDSA) that based upon the issuing certificate. It's signed with the issuer's key P-384.")]
         Ecdsa384Sha2 = 8,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -194,7 +194,7 @@ namespace S100Framework.DomainModel.S128 {
         Transit = 2,
         [System.ComponentModel.Description("For ocean crossing and planning purposes.")]
         Overview = 3,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -219,7 +219,7 @@ namespace S100Framework.DomainModel.S128 {
         Lua = 9,
         [System.ComponentModel.Description("Other format.")]
         Other = 100,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -230,7 +230,7 @@ namespace S100Framework.DomainModel.S128 {
         Replacement = 2,
         [System.ComponentModel.Description("Deletes an existing file.")]
         Deletion = 3,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -243,7 +243,7 @@ namespace S100Framework.DomainModel.S128 {
         Deprecated = 3,
         [System.ComponentModel.Description("Item that has been removed or deleted.")]
         Deleted = 4,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -270,7 +270,7 @@ namespace S100Framework.DomainModel.S128 {
         TrafficData = 14,
         [System.ComponentModel.Description("A national or regional authority charged with administration of maritime affairs.")]
         Maritime = 15,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -287,7 +287,7 @@ namespace S100Framework.DomainModel.S128 {
         NavigationalPurposeHarbour = 5,
         [System.ComponentModel.Description("For ships berthing. Scale > 1:4000.")]
         NavigationalPurposeBerthing = 6,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -308,7 +308,7 @@ namespace S100Framework.DomainModel.S128 {
         Telegraph = 7,
         [System.ComponentModel.Description("Messages and other data exchanged between individuals using computers in a network.")]
         Email = 8,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -337,7 +337,7 @@ namespace S100Framework.DomainModel.S128 {
         Xml = 11,
         [System.ComponentModel.Description("Portable Network Graphics format.")]
         Png = 12,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -350,7 +350,7 @@ namespace S100Framework.DomainModel.S128 {
         Month = 3,
         [System.ComponentModel.Description("A period of one year.")]
         Year = 4,
-        }
+    }
 
     [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     [System.Serializable()]
@@ -445,18 +445,18 @@ namespace S100Framework.DomainModel.S128 {
         DutchEstuaryLowWaterReferenceLevelOlw = 44,
         [System.ComponentModel.Description("The bottom of the ocean and seas where there is a generally smooth gentle gradient. Also referred to as sea bed (sometimes seabed or sea-bed), and sea bottom.")]
         SeaFloor = 45,
-        }
+    }
 
     [System.Serializable()]
     public class horizontalDatumEpsg {
         public string label { get; set; }
         public string definition { get; set; }
         public int code { get; set; }
-        }
+    }
 
     public static class CodeList {
         public static ImmutableArray<horizontalDatumEpsg> horizontalDatumEpsgs => ImmutableArray.Create<horizontalDatumEpsg>(new horizontalDatumEpsg[] { new() { code = 4326, definition = "World Geodetic System 1984, used globally for GPS and geographic coordinates. Specifies coordinates in latitude and longitude degrees.", label = "WGS 84 (EPSG:4326)", }, new() { code = 3857, definition = "A popular web mapping projection used by Google Maps, OpenStreetMap, and Bing Maps. Distorts at the poles but is widely used in online maps.", label = "WGS 84 / Pseudo-Mercator (EPSG:3857)", }, new() { code = 3395, definition = "A global Mercator projection commonly used for mapping applications requiring accurate distance measurements near the equator.", label = "WGS 84 / World Mercator (EPSG:3395)", }, });
-        }
+    }
 
     namespace ComplexAttributes {
         [System.Serializable()]
@@ -469,8 +469,8 @@ namespace S100Framework.DomainModel.S128 {
             public String postalCode { get; set; } = string.Empty;
 
             public contactAddress() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -482,8 +482,8 @@ namespace S100Framework.DomainModel.S128 {
             public Int32 y { get; set; }
 
             public customPaperSize() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -495,8 +495,8 @@ namespace S100Framework.DomainModel.S128 {
             public defaultLocale() {
                 characterEncoding = string.Empty;
                 countryName = string.Empty;
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -507,8 +507,8 @@ namespace S100Framework.DomainModel.S128 {
 
             public featureName() {
                 name = string.Empty;
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -524,8 +524,8 @@ namespace S100Framework.DomainModel.S128 {
             public List<String> text { get; set; } = [];
 
             public information() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -539,8 +539,8 @@ namespace S100Framework.DomainModel.S128 {
 
             public onlineResource() {
                 linkage = string.Empty;
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -552,8 +552,8 @@ namespace S100Framework.DomainModel.S128 {
             public DateOnly dateStart { get; set; }
 
             public periodicDateRange() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -570,8 +570,8 @@ namespace S100Framework.DomainModel.S128 {
 
             public pricing() {
                 currency = string.Empty;
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -580,8 +580,8 @@ namespace S100Framework.DomainModel.S128 {
             public customPaperSize? customPaperSize { get; set; }
 
             public printSize() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -595,8 +595,8 @@ namespace S100Framework.DomainModel.S128 {
             public productSpecification() {
                 name = string.Empty;
                 version = string.Empty;
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -609,8 +609,8 @@ namespace S100Framework.DomainModel.S128 {
             public supportFileSpecification() {
                 name = string.Empty;
                 version = string.Empty;
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -623,8 +623,8 @@ namespace S100Framework.DomainModel.S128 {
             public serviceSpecification() {
                 name = string.Empty;
                 version = string.Empty;
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -637,8 +637,8 @@ namespace S100Framework.DomainModel.S128 {
             public List<featureName> featureName { get; set; } = [];
 
             public sourceIndication() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -654,8 +654,8 @@ namespace S100Framework.DomainModel.S128 {
             public telecommunications() {
                 contactInstructions = string.Empty;
                 telecommunicationIdentifier = string.Empty;
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -668,8 +668,8 @@ namespace S100Framework.DomainModel.S128 {
 
             public timeIntervalOfCycle() {
                 typeOfTimeIntervalUnit = new();
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -681,8 +681,8 @@ namespace S100Framework.DomainModel.S128 {
             public Int32 yearNumber { get; set; }
 
             public weekOfYear() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -691,8 +691,8 @@ namespace S100Framework.DomainModel.S128 {
             public timeIntervalOfCycle? timeIntervalOfCycle { get; set; }
 
             public issuanceCycle() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -707,10 +707,10 @@ namespace S100Framework.DomainModel.S128 {
 
             public printInformation() {
                 printSize = new printSize()
-                    {
-                    };
-                }
+                {
+                };
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -742,18 +742,18 @@ namespace S100Framework.DomainModel.S128 {
                 fileLocator = string.Empty;
                 fileName = string.Empty;
                 defaultLocale = new defaultLocale()
-                    {
+                {
                     characterEncoding = string.Empty,
                     countryName = string.Empty,
-                    };
+                };
                 supportFileSpecification = new supportFileSpecification()
-                    {
+                {
                     date = default(DateTime),
                     name = string.Empty,
                     version = string.Empty,
-                    };
-                }
+                };
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -764,8 +764,8 @@ namespace S100Framework.DomainModel.S128 {
             public issuanceCycle? issuanceCycle { get; set; }
 
             public timeIntervalOfProduct() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -775,9 +775,9 @@ namespace S100Framework.DomainModel.S128 {
             public weekOfYear? weekOfYear { get; set; }
 
             public referenceToNM() {
-                }
             }
         }
+    }
 
     public enum Role {
         [System.ComponentModel.Description("the top section of a catalogue")]
@@ -808,19 +808,19 @@ namespace S100Framework.DomainModel.S128 {
         main,
         [System.ComponentModel.Description("")]
         panel,
-        }
+    }
 
     namespace Associations {
         namespace InformationAssociations {
-            }
+        }
 
         namespace FeatureAssociations {
             using S100Framework.DomainModel.S128.FeatureTypes;
-            }
         }
+    }
 
     namespace Bindings {
-        }
+    }
 
     namespace InformationTypes {
         using ComplexAttributes;
@@ -836,8 +836,8 @@ namespace S100Framework.DomainModel.S128 {
             public override string Code => nameof(CatalogueSectionHeader);
 
             public CatalogueSectionHeader() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -852,8 +852,8 @@ namespace S100Framework.DomainModel.S128 {
 
             public ContactDetails() {
                 contactInstructions = string.Empty;
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -864,8 +864,8 @@ namespace S100Framework.DomainModel.S128 {
             public override string Code => nameof(IndicationOfCarriageRequirement);
 
             public IndicationOfCarriageRequirement() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -877,8 +877,8 @@ namespace S100Framework.DomainModel.S128 {
             public override string Code => nameof(PriceInformation);
 
             public PriceInformation() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -889,8 +889,8 @@ namespace S100Framework.DomainModel.S128 {
 
             public ProducerInformation() {
                 agencyResponsibleForProduction = string.Empty;
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -900,9 +900,9 @@ namespace S100Framework.DomainModel.S128 {
 
             public DistributorInformation() {
                 distributorName = string.Empty;
-                }
             }
         }
+    }
 
     namespace FeatureTypes {
         using ComplexAttributes;
@@ -932,8 +932,8 @@ namespace S100Framework.DomainModel.S128 {
 
             public CatalogueElement() {
                 catalogueElementClassification = new();
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -957,8 +957,8 @@ namespace S100Framework.DomainModel.S128 {
             public override string Code => nameof(NavigationalProduct);
 
             public NavigationalProduct() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -976,8 +976,8 @@ namespace S100Framework.DomainModel.S128 {
             public override string Code => nameof(ElectronicProduct);
 
             public ElectronicProduct() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -992,8 +992,8 @@ namespace S100Framework.DomainModel.S128 {
             public override string Code => nameof(PhysicalProduct);
 
             public PhysicalProduct() {
-                }
             }
+        }
 
         [System.Serializable()]
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
@@ -1009,7 +1009,7 @@ namespace S100Framework.DomainModel.S128 {
             public override string Code => nameof(S100Service);
 
             public S100Service() {
-                }
             }
         }
     }
+}

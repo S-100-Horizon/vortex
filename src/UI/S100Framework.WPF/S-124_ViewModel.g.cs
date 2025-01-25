@@ -11,8 +11,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 #nullable enable
 namespace S100Framework.WPF.ViewModel.S124
 {
-    internal static class Preamble
-    {
+    internal static class Preamble {
         public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S124.InformationTypes.NAVWARNPreamble).Name, () =>
         {
             return new NAVWARNPreambleViewModel();
@@ -31,8 +30,7 @@ namespace S100Framework.WPF.ViewModel.S124
         } }, });
     }
 
-    public class Handles : iHandles
-    {
+    public class Handles : iHandles {
         public static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations => new Dictionary<Type, Func<InformationAssociationConnector[]>>
         {
             {
@@ -122,8 +120,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("featureName", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class featureNameViewModel : ViewModelBase
-    {
+    public partial class featureNameViewModel : ViewModelBase {
         private String _language = string.Empty;
         [Category("featureName")]
         public String language {
@@ -167,7 +164,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.featureName {
+            var instance = new DomainModel.S124.ComplexAttributes.featureName
+            {
                 language = this.language,
                 name = this.name,
                 nameUsage = this.nameUsage,
@@ -176,7 +174,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.featureName Model => new() {
+        public DomainModel.S124.ComplexAttributes.featureName Model => new()
+        {
             language = this._language,
             name = this._name,
             nameUsage = this._nameUsage,
@@ -189,8 +188,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("dateTimeRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class dateTimeRangeViewModel : ViewModelBase
-    {
+    public partial class dateTimeRangeViewModel : ViewModelBase {
         private DateTime _dateTimeEnd;
         [Category("dateTimeRange")]
         public DateTime dateTimeEnd {
@@ -221,7 +219,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.dateTimeRange {
+            var instance = new DomainModel.S124.ComplexAttributes.dateTimeRange
+            {
                 dateTimeEnd = this.dateTimeEnd,
                 dateTimeStart = this.dateTimeStart,
             };
@@ -229,7 +228,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.dateTimeRange Model => new() {
+        public DomainModel.S124.ComplexAttributes.dateTimeRange Model => new()
+        {
             dateTimeEnd = this._dateTimeEnd,
             dateTimeStart = this._dateTimeStart,
         };
@@ -241,8 +241,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("eNCFeatureReference", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class eNCFeatureReferenceViewModel : ViewModelBase
-    {
+    public partial class eNCFeatureReferenceViewModel : ViewModelBase {
         private String _editionNumber = string.Empty;
         [Category("eNCFeatureReference")]
         public String editionNumber {
@@ -293,7 +292,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.eNCFeatureReference {
+            var instance = new DomainModel.S124.ComplexAttributes.eNCFeatureReference
+            {
                 editionNumber = this.editionNumber,
                 eNCName = this.eNCName,
                 featureObjectIdentifier = this.featureObjectIdentifier.ToList(),
@@ -303,7 +303,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.eNCFeatureReference Model => new() {
+        public DomainModel.S124.ComplexAttributes.eNCFeatureReference Model => new()
+        {
             editionNumber = this._editionNumber,
             eNCName = this._eNCName,
             featureObjectIdentifier = this.featureObjectIdentifier.ToList(),
@@ -320,8 +321,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("featureReference", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class featureReferenceViewModel : ViewModelBase
-    {
+    public partial class featureReferenceViewModel : ViewModelBase {
         [Category("featureReference")]
         public ObservableCollection<String> featureIdentifier { get; set; } = new();
 
@@ -366,7 +366,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.featureReference {
+            var instance = new DomainModel.S124.ComplexAttributes.featureReference
+            {
                 featureIdentifier = this.featureIdentifier.ToList(),
                 dateTimeRange = this.dateTimeRange?.Model,
                 atoNNumber = this.atoNNumber.ToList(),
@@ -376,7 +377,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.featureReference Model => new() {
+        public DomainModel.S124.ComplexAttributes.featureReference Model => new()
+        {
             featureIdentifier = this.featureIdentifier.ToList(),
             dateTimeRange = this._dateTimeRange?.Model,
             atoNNumber = this.atoNNumber.ToList(),
@@ -399,8 +401,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("fixedDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class fixedDateRangeViewModel : ViewModelBase
-    {
+    public partial class fixedDateRangeViewModel : ViewModelBase {
         private DateOnly? _dateEnd = default;
         [Category("fixedDateRange")]
         public DateOnly? dateEnd {
@@ -431,7 +432,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.fixedDateRange {
+            var instance = new DomainModel.S124.ComplexAttributes.fixedDateRange
+            {
                 dateEnd = this.dateEnd,
                 dateStart = this.dateStart,
             };
@@ -439,7 +441,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.fixedDateRange Model => new() {
+        public DomainModel.S124.ComplexAttributes.fixedDateRange Model => new()
+        {
             dateEnd = this._dateEnd,
             dateStart = this._dateStart,
         };
@@ -525,7 +528,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.information {
+            var instance = new DomainModel.S124.ComplexAttributes.information
+            {
                 fileLocator = this.fileLocator,
                 fileReference = this.fileReference,
                 headline = this.headline,
@@ -536,7 +540,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.information Model => new() {
+        public DomainModel.S124.ComplexAttributes.information Model => new()
+        {
             fileLocator = this._fileLocator,
             fileReference = this._fileReference,
             headline = this._headline,
@@ -551,8 +556,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("warningInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class warningInformationViewModel : ViewModelBase
-    {
+    public partial class warningInformationViewModel : ViewModelBase {
         private informationViewModel? _information;
         [Category("warningInformation")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -588,7 +592,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.warningInformation {
+            var instance = new DomainModel.S124.ComplexAttributes.warningInformation
+            {
                 information = this.information?.Model,
                 navwarnTypeDetails = this.navwarnTypeDetails.ToList(),
             };
@@ -596,7 +601,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.warningInformation Model => new() {
+        public DomainModel.S124.ComplexAttributes.warningInformation Model => new()
+        {
             information = this._information?.Model,
             navwarnTypeDetails = this.navwarnTypeDetails.ToList(),
         };
@@ -611,8 +617,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("chartAffected", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class chartAffectedViewModel : ViewModelBase
-    {
+    public partial class chartAffectedViewModel : ViewModelBase {
         private String _chartNumber = string.Empty;
         [Category("chartAffected")]
         public String chartNumber {
@@ -669,7 +674,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.chartAffected {
+            var instance = new DomainModel.S124.ComplexAttributes.chartAffected
+            {
                 chartNumber = this.chartNumber,
                 chartPlanNumber = this.chartPlanNumber,
                 editionDate = this.editionDate,
@@ -679,7 +685,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.chartAffected Model => new() {
+        public DomainModel.S124.ComplexAttributes.chartAffected Model => new()
+        {
             chartNumber = this._chartNumber,
             chartPlanNumber = this._chartPlanNumber,
             editionDate = this._editionDate,
@@ -693,8 +700,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("affectedChartPublications", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class affectedChartPublicationsViewModel : ViewModelBase
-    {
+    public partial class affectedChartPublicationsViewModel : ViewModelBase {
         private chartAffectedViewModel? _chartAffected;
         [Category("affectedChartPublications")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -770,7 +776,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.affectedChartPublications {
+            var instance = new DomainModel.S124.ComplexAttributes.affectedChartPublications
+            {
                 chartAffected = this.chartAffected?.Model,
                 chartPublicationIdentifier = this.chartPublicationIdentifier,
                 internationalChartAffected = this.internationalChartAffected,
@@ -781,7 +788,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.affectedChartPublications Model => new() {
+        public DomainModel.S124.ComplexAttributes.affectedChartPublications Model => new()
+        {
             chartAffected = this._chartAffected?.Model,
             chartPublicationIdentifier = this._chartPublicationIdentifier,
             internationalChartAffected = this._internationalChartAffected,
@@ -796,8 +804,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("locationName", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class locationNameViewModel : ViewModelBase
-    {
+    public partial class locationNameViewModel : ViewModelBase {
         private String _language = string.Empty;
         [Category("locationName")]
         public String language {
@@ -828,7 +835,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.locationName {
+            var instance = new DomainModel.S124.ComplexAttributes.locationName
+            {
                 language = this.language,
                 text = this.text,
             };
@@ -836,7 +844,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.locationName Model => new() {
+        public DomainModel.S124.ComplexAttributes.locationName Model => new()
+        {
             language = this._language,
             text = this._text,
         };
@@ -848,8 +857,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("generalArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class generalAreaViewModel : ViewModelBase
-    {
+    public partial class generalAreaViewModel : ViewModelBase {
         private String _localityIdentifier = string.Empty;
         [Category("generalArea")]
         public String localityIdentifier {
@@ -874,7 +882,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.generalArea {
+            var instance = new DomainModel.S124.ComplexAttributes.generalArea
+            {
                 localityIdentifier = this.localityIdentifier,
                 locationName = this.locationName.ToList(),
             };
@@ -882,7 +891,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.generalArea Model => new() {
+        public DomainModel.S124.ComplexAttributes.generalArea Model => new()
+        {
             localityIdentifier = this._localityIdentifier,
             locationName = this.locationName.ToList(),
         };
@@ -926,7 +936,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.locality {
+            var instance = new DomainModel.S124.ComplexAttributes.locality
+            {
                 localityIdentifier = this.localityIdentifier,
                 locationName = this.locationName.ToList(),
             };
@@ -934,7 +945,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.locality Model => new() {
+        public DomainModel.S124.ComplexAttributes.locality Model => new()
+        {
             localityIdentifier = this._localityIdentifier,
             locationName = this.locationName.ToList(),
         };
@@ -949,8 +961,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("messageSeriesIdentifier", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class messageSeriesIdentifierViewModel : ViewModelBase
-    {
+    public partial class messageSeriesIdentifierViewModel : ViewModelBase {
         private String _agencyResponsibleForProduction = string.Empty;
         [Category("messageSeriesIdentifier")]
         public String agencyResponsibleForProduction {
@@ -1046,7 +1057,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.messageSeriesIdentifier {
+            var instance = new DomainModel.S124.ComplexAttributes.messageSeriesIdentifier
+            {
                 agencyResponsibleForProduction = this.agencyResponsibleForProduction,
                 countryName = this.countryName,
                 nameOfSeries = this.nameOfSeries,
@@ -1059,7 +1071,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.messageSeriesIdentifier Model => new() {
+        public DomainModel.S124.ComplexAttributes.messageSeriesIdentifier Model => new()
+        {
             agencyResponsibleForProduction = this._agencyResponsibleForProduction,
             countryName = this._countryName,
             nameOfSeries = this._nameOfSeries,
@@ -1076,8 +1089,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("nAVWARNTitle", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class nAVWARNTitleViewModel : ViewModelBase
-    {
+    public partial class nAVWARNTitleViewModel : ViewModelBase {
         private String _language = string.Empty;
         [Category("nAVWARNTitle")]
         public String language {
@@ -1108,7 +1120,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.ComplexAttributes.nAVWARNTitle {
+            var instance = new DomainModel.S124.ComplexAttributes.nAVWARNTitle
+            {
                 language = this.language,
                 text = this.text,
             };
@@ -1116,7 +1129,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.ComplexAttributes.nAVWARNTitle Model => new() {
+        public DomainModel.S124.ComplexAttributes.nAVWARNTitle Model => new()
+        {
             language = this._language,
             text = this._text,
         };
@@ -1128,8 +1142,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("NAVWARNPreamble", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NAVWARNPreambleViewModel : ViewModelBase
-    {
+    public partial class NAVWARNPreambleViewModel : ViewModelBase {
         [Category("NAVWARNPreamble")]
         public ObservableCollection<affectedChartPublications> affectedChartPublications { get; set; } = new();
 
@@ -1205,8 +1218,7 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        public class NAVWARNPreambleRefIdViewModel : InformationRefIdViewModel
-        {
+        public class NAVWARNPreambleRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NAVWARNPreamble"];
         }
 
@@ -1243,7 +1255,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.InformationTypes.NAVWARNPreamble {
+            var instance = new DomainModel.S124.InformationTypes.NAVWARNPreamble
+            {
                 affectedChartPublications = this.affectedChartPublications.ToList(),
                 generalArea = this.generalArea.ToList(),
                 locality = this.locality.ToList(),
@@ -1258,7 +1271,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.InformationTypes.NAVWARNPreamble Model => new() {
+        public DomainModel.S124.InformationTypes.NAVWARNPreamble Model => new()
+        {
             affectedChartPublications = this.affectedChartPublications.ToList(),
             generalArea = this.generalArea.ToList(),
             locality = this.locality.ToList(),
@@ -1289,8 +1303,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("References", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ReferencesViewModel : ViewModelBase
-    {
+    public partial class ReferencesViewModel : ViewModelBase {
         [Category("References")]
         public ObservableCollection<messageSeriesIdentifier> messageSeriesIdentifier { get; set; } = new();
 
@@ -1318,8 +1331,7 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        public class ReferencesRefIdViewModel : InformationRefIdViewModel
-        {
+        public class ReferencesRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["References"];
         }
 
@@ -1333,7 +1345,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.InformationTypes.References {
+            var instance = new DomainModel.S124.InformationTypes.References
+            {
                 messageSeriesIdentifier = this.messageSeriesIdentifier.ToList(),
                 noMessageOnHand = this.noMessageOnHand,
                 referenceCategory = this.referenceCategory,
@@ -1342,7 +1355,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.InformationTypes.References Model => new() {
+        public DomainModel.S124.InformationTypes.References Model => new()
+        {
             messageSeriesIdentifier = this.messageSeriesIdentifier.ToList(),
             noMessageOnHand = this._noMessageOnHand,
             referenceCategory = this._referenceCategory,
@@ -1358,8 +1372,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("NAVWARNPart", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NAVWARNPartViewModel : ViewModelBase
-    {
+    public partial class NAVWARNPartViewModel : ViewModelBase {
         [Category("NAVWARNPart")]
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
@@ -1394,8 +1407,7 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        public class NAVWARNPartRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class NAVWARNPartRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["NAVWARNPart"];
         }
 
@@ -1422,7 +1434,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.FeatureTypes.NAVWARNPart {
+            var instance = new DomainModel.S124.FeatureTypes.NAVWARNPart
+            {
                 featureName = this.featureName.ToList(),
                 featureReference = this.featureReference.ToList(),
                 fixedDateRange = this.fixedDateRange.ToList(),
@@ -1433,7 +1446,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.FeatureTypes.NAVWARNPart Model => new() {
+        public DomainModel.S124.FeatureTypes.NAVWARNPart Model => new()
+        {
             featureName = this.featureName.ToList(),
             featureReference = this.featureReference.ToList(),
             fixedDateRange = this.fixedDateRange.ToList(),
@@ -1457,10 +1471,8 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("NAVWARNAreaAffected", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NAVWARNAreaAffectedViewModel : ViewModelBase
-    {
-        public class NAVWARNAreaAffectedRefIdViewModel : FeatureRefIdViewModel
-        {
+    public partial class NAVWARNAreaAffectedViewModel : ViewModelBase {
+        public class NAVWARNAreaAffectedRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["NAVWARNAreaAffected"];
         }
 
@@ -1468,13 +1480,15 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.FeatureTypes.NAVWARNAreaAffected {
+            var instance = new DomainModel.S124.FeatureTypes.NAVWARNAreaAffected
+            {
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         [Browsable(false)]
-        public DomainModel.S124.FeatureTypes.NAVWARNAreaAffected Model => new() {
+        public DomainModel.S124.FeatureTypes.NAVWARNAreaAffected Model => new()
+        {
         };
 
         public NAVWARNAreaAffectedViewModel() : base() {
@@ -1484,8 +1498,7 @@ namespace S100Framework.WPF.ViewModel.S124
     [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TextPlacementViewModel : ViewModelBase
-    {
+    public partial class TextPlacementViewModel : ViewModelBase {
         private String _text = string.Empty;
         [Category("TextPlacement")]
         public String text {
@@ -1558,8 +1571,7 @@ namespace S100Framework.WPF.ViewModel.S124
             }
         }
 
-        public class TextPlacementRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class TextPlacementRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
@@ -1573,7 +1585,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S124.FeatureTypes.TextPlacement {
+            var instance = new DomainModel.S124.FeatureTypes.TextPlacement
+            {
                 text = this.text,
                 textOffsetBearing = this.textOffsetBearing,
                 textOffsetDistance = this.textOffsetDistance,
@@ -1585,7 +1598,8 @@ namespace S100Framework.WPF.ViewModel.S124
         }
 
         [Browsable(false)]
-        public DomainModel.S124.FeatureTypes.TextPlacement Model => new() {
+        public DomainModel.S124.FeatureTypes.TextPlacement Model => new()
+        {
             text = this._text,
             textOffsetBearing = this._textOffsetBearing,
             textOffsetDistance = this._textOffsetDistance,
@@ -1598,8 +1612,7 @@ namespace S100Framework.WPF.ViewModel.S124
         }
     }
 
-    public class AreaAffectedViewModel : FeatureAssociationViewModel
-    {
+    public class AreaAffectedViewModel : FeatureAssociationViewModel {
         public override string Code => "AreaAffected";
         public override string[] Roles => ["affects", "impacts"];
 
@@ -1636,7 +1649,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 this.SetValue(ref _associationConnector, value);
                 affects = null;
                 if (value is not null) {
-                    affects = value?.role switch {
+                    affects = value?.role switch
+                    {
                         "impacts" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -1644,7 +1658,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
                 impacts = null;
                 if (value is not null) {
-                    impacts = value?.role switch {
+                    impacts = value?.role switch
+                    {
                         "affects" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -1654,21 +1669,18 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => AreaAffectedViewModel._associationConnectorFeatures;
 
-        public class affectsNAVWARNPartRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class affectsNAVWARNPartRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["NAVWARNAreaAffected"];
         }
 
-        public class impactsNAVWARNAreaAffectedRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class impactsNAVWARNAreaAffectedRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["NAVWARNPart"];
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(AreaAffectedViewModel)]();
     }
 
-    public class TextAssociationViewModel : FeatureAssociationViewModel
-    {
+    public class TextAssociationViewModel : FeatureAssociationViewModel {
         public override string Code => "TextAssociation";
         public override string[] Roles => ["identifies", "positions"];
 
@@ -1705,7 +1717,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 this.SetValue(ref _associationConnector, value);
                 identifies = null;
                 if (value is not null) {
-                    identifies = value?.role switch {
+                    identifies = value?.role switch
+                    {
                         "positions" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -1713,7 +1726,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
                 positions = null;
                 if (value is not null) {
-                    positions = value?.role switch {
+                    positions = value?.role switch
+                    {
                         "identifies" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -1723,21 +1737,18 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
 
-        public class identifiesTextPlacementRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class identifiesTextPlacementRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["NAVWARNPart"];
         }
 
-        public class positionsNAVWARNPartRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsNAVWARNPartRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(TextAssociationViewModel)]();
     }
 
-    public class NWPreambleContentViewModel : InformationAssociationViewModel
-    {
+    public class NWPreambleContentViewModel : InformationAssociationViewModel {
         public override string Code => "NWPreambleContent";
         public override string[] Roles => ["theWarningPart", "header"];
 
@@ -1774,7 +1785,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 this.SetValue(ref _associationConnector, value);
                 theWarningPart = null;
                 if (value is not null) {
-                    theWarningPart = value?.role switch {
+                    theWarningPart = value?.role switch
+                    {
                         "header" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -1782,7 +1794,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
                 header = null;
                 if (value is not null) {
-                    header = value?.role switch {
+                    header = value?.role switch
+                    {
                         "theWarningPart" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -1792,16 +1805,14 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public override InformationAssociationConnector[] associationConnectorInformations => NWPreambleContentViewModel._associationConnectorInformations;
 
-        public class headerNAVWARNPartRefIdViewModel : InformationRefIdViewModel
-        {
+        public class headerNAVWARNPartRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NAVWARNPreamble"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(NWPreambleContentViewModel)]();
     }
 
-    public class NWReferencesViewModel : InformationAssociationViewModel
-    {
+    public class NWReferencesViewModel : InformationAssociationViewModel {
         public override string Code => "NWReferences";
         public override string[] Roles => ["theWarning", "theReferences"];
 
@@ -1838,7 +1849,8 @@ namespace S100Framework.WPF.ViewModel.S124
                 this.SetValue(ref _associationConnector, value);
                 theWarning = null;
                 if (value is not null) {
-                    theWarning = value?.role switch {
+                    theWarning = value?.role switch
+                    {
                         "theReferences" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -1846,7 +1858,8 @@ namespace S100Framework.WPF.ViewModel.S124
 
                 theReferences = null;
                 if (value is not null) {
-                    theReferences = value?.role switch {
+                    theReferences = value?.role switch
+                    {
                         "theWarning" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -1856,8 +1869,7 @@ namespace S100Framework.WPF.ViewModel.S124
 
         public override InformationAssociationConnector[] associationConnectorInformations => NWReferencesViewModel._associationConnectorInformations;
 
-        public class theReferencesNAVWARNPreambleRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theReferencesNAVWARNPreambleRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["References"];
         }
 

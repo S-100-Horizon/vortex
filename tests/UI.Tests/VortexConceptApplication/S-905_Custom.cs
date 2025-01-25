@@ -47,28 +47,11 @@ namespace VortexConceptApplication
                 },
             };
 
-            //var a = base.associationConnectorFeatures[typeof(S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel)]();
-
             associationConnector = base.associationConnectorFeatures.Single(e => e.FeatureType.Equals(fromJson.AssociationConnectorTypeName));
 
             base.theUpdate?.Load(fromJson.RefIds.Where(e => e.Role.Equals("theUpdate")).ToArray());
 
             base.theUpdatedObject?.Load(fromJson.RefIds.Where(e => e.Role.Equals("theUpdatedObject")).ToArray());
-
-            //var refId = new AdministrationAreaViewModel.AdministrationAreaRefIdViewModel();
-            //refId.FeatureType = refId.AssociationTypes[0];
-            //refId.RefId = "Hello";
-
-            //((SingleFeatureBindingViewModel<AdministrationAreaViewModel.AdministrationAreaRefIdViewModel>)base.theUpdate!).RefId = refId;
-
-            //var theUpdatedObject = ((MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAdministrationAreaRefIdViewModel>)base.theUpdatedObject!);
-
-            //for (var i = 0; i < 2; i++) {
-            //    var r = new UpdatedInformationViewModel.theUpdateAdministrationAreaRefIdViewModel();
-            //    r.FeatureType = typeof(UpdateInformation).Name;
-            //    r.RefId = $"World ({i})";
-            //    theUpdatedObject.RefId.Add(r);
-            //}
         }
     }
 

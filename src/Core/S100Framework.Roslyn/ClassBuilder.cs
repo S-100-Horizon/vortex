@@ -1238,7 +1238,7 @@ namespace S100Framework
                     viewBuilder.AppendLine($"\t\t\tpublic static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof({code}ViewModel)]();");
 
                     if (b.Length > 0) {
-                        handlesBuilder.Insert(handlesAssociationConnectorFeatures, $"\t\t\t{{ typeof({code}ViewModel), () => [{b.ToString().ReplaceLineEndings().TrimEnd().TrimEnd(',')}] }},");
+                        handlesBuilder.Insert(handlesAssociationConnectorFeatures, $"\t\t\t{{ typeof({code}ViewModel), () => [{b.ToString().ReplaceLineEndings().TrimEnd().TrimEnd(',').ReplaceLineEndings()}] }},");
                     }
 
                     //viewBuilder.AppendLine($"\t\t\t}};");
@@ -1513,29 +1513,7 @@ namespace S100Framework
             common.AppendLine("\t\t\taggregation,");
             common.AppendLine("\t\t\tcomposition,");
             common.AppendLine("\t\t}");
-
-            //common.AppendLine("\t\tpublic class informationBinding {");
-            //common.AppendLine("\t\t\tpublic string? RefId { get; set; }");
-            //common.AppendLine("\t\t\tpublic string? InformationType { get; set; }");
-            //common.AppendLine("\t\t}");
-            //common.AppendLine();
-            //common.AppendLine("\t\tpublic class informationBinding<TAssociation> where TAssociation : InformationAssociation {");
-            //common.AppendLine("\t\t\tpublic TAssociation? association { get; set; } = default;");
-            //common.AppendLine("\t\t}");
-            //common.AppendLine();
-
-            //common.AppendLine("\t\tpublic class featureBinding {");
-            //common.AppendLine("\t\t\tpublic string? RefId { get; set; }");
-            //common.AppendLine("\t\t\tpublic string? FeatureType { get; set; }");
-            //common.AppendLine("\t\t}");
-            //common.AppendLine();
-            //common.AppendLine("\t\tpublic class featureBinding<TAssociation> where TAssociation : FeatureAssociation {");
-            //common.AppendLine("\t\t\tpublic TAssociation? association { get; set; } = default;");
-            //common.AppendLine("\t\t}");
-            //common.AppendLine();
-
             common.AppendLine("\t}");
-
             common.AppendLine("}");
 
             // Create a workspace to apply formatting options
@@ -1549,16 +1527,6 @@ namespace S100Framework
                 .WithChangedOption(FormattingOptions.SmartIndent, LanguageNames.CSharp, FormattingOptions.IndentStyle.Smart);
 
 
-            /*
-# New line preferences
-csharp_new_line_before_catch = true
-csharp_new_line_before_else = true
-csharp_new_line_before_finally = true
-csharp_new_line_before_members_in_anonymous_types = true
-csharp_new_line_before_members_in_object_initializers = true
-csharp_new_line_before_open_brace = types
-csharp_new_line_between_query_expression_clauses = true
-             */
             // Configure the options to keep braces on the same line
             options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInMethods, false);
             options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInProperties, false);
@@ -1571,14 +1539,18 @@ csharp_new_line_between_query_expression_clauses = true
             options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInLambdaExpressionBody, false);
 
             // Configure indentation for complex object creation
-            options = options.WithChangedOption(CSharpFormattingOptions.IndentBraces, true); // Indent braces
+            options = options.WithChangedOption(CSharpFormattingOptions.IndentBraces, false); // Indent braces
             options = options.WithChangedOption(CSharpFormattingOptions.IndentBlock, true); // Indent blocks within braces
+            options = options.WithChangedOption(CSharpFormattingOptions.IndentSwitchCaseSectionWhenBlock, true);
             options = options.WithChangedOption(CSharpFormattingOptions.IndentSwitchCaseSection, true); // Indent case sections
             options = options.WithChangedOption(CSharpFormattingOptions.IndentSwitchSection, true); // Indent switch sections
 
             // For wrapping and newlines in initializers
             options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInObjectCollectionArrayInitializers, true);
             options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInAnonymousTypes, true);
+
+            options = options.WithChangedOption(CSharpFormattingOptions.WrappingPreserveSingleLine, true);
+            options = options.WithChangedOption(CSharpFormattingOptions.WrappingKeepStatementsOnSingleLine, true);
 
             // Replace the workspace options with the updated options
             workspace.TryApplyChanges(workspace.CurrentSolution.WithOptions(options));

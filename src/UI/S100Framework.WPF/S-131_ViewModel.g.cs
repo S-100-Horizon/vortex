@@ -11,8 +11,7 @@ using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 #nullable enable
 namespace S100Framework.WPF.ViewModel.S131
 {
-    internal static class Preamble
-    {
+    internal static class Preamble {
         public static ImmutableDictionary<string, Func<ViewModelBase>> _creators => ImmutableDictionary.Create<string, Func<ViewModelBase>>().AddRange(new Dictionary<string, Func<ViewModelBase>> { { typeof(DomainModel.S131.InformationTypes.Applicability).Name, () =>
         {
             return new ApplicabilityViewModel();
@@ -127,8 +126,7 @@ namespace S100Framework.WPF.ViewModel.S131
         } }, });
     }
 
-    public class Handles : iHandles
-    {
+    public class Handles : iHandles {
         public static IDictionary<Type, Func<InformationAssociationConnector[]>> AssociationConnectorInformations => new Dictionary<Type, Func<InformationAssociationConnector[]>>
         {
             {
@@ -2096,8 +2094,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("contactAddress", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class contactAddressViewModel : ViewModelBase
-    {
+    public partial class contactAddressViewModel : ViewModelBase {
         [Category("contactAddress")]
         public ObservableCollection<String> deliveryPoint { get; set; } = new();
 
@@ -2161,7 +2158,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.contactAddress {
+            var instance = new DomainModel.S131.ComplexAttributes.contactAddress
+            {
                 deliveryPoint = this.deliveryPoint.ToList(),
                 cityName = this.cityName,
                 administrativeDivision = this.administrativeDivision,
@@ -2172,7 +2170,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.contactAddress Model => new() {
+        public DomainModel.S131.ComplexAttributes.contactAddress Model => new()
+        {
             deliveryPoint = this.deliveryPoint.ToList(),
             cityName = this._cityName,
             administrativeDivision = this._administrativeDivision,
@@ -2190,8 +2189,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("featureName", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class featureNameViewModel : ViewModelBase
-    {
+    public partial class featureNameViewModel : ViewModelBase {
         private Boolean? _displayName = default;
         [Category("featureName")]
         public Boolean? displayName {
@@ -2235,7 +2233,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.featureName {
+            var instance = new DomainModel.S131.ComplexAttributes.featureName
+            {
                 displayName = this.displayName,
                 language = this.language,
                 name = this.name,
@@ -2244,7 +2243,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.featureName Model => new() {
+        public DomainModel.S131.ComplexAttributes.featureName Model => new()
+        {
             displayName = this._displayName,
             language = this._language,
             name = this._name,
@@ -2257,8 +2257,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("fixedDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class fixedDateRangeViewModel : ViewModelBase
-    {
+    public partial class fixedDateRangeViewModel : ViewModelBase {
         private DateOnly? _dateStart = default;
         [Category("fixedDateRange")]
         public DateOnly? dateStart {
@@ -2289,7 +2288,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.fixedDateRange {
+            var instance = new DomainModel.S131.ComplexAttributes.fixedDateRange
+            {
                 dateStart = this.dateStart,
                 dateEnd = this.dateEnd,
             };
@@ -2297,7 +2297,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.fixedDateRange Model => new() {
+        public DomainModel.S131.ComplexAttributes.fixedDateRange Model => new()
+        {
             dateStart = this._dateStart,
             dateEnd = this._dateEnd,
         };
@@ -2309,8 +2310,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("frequencyPair", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class frequencyPairViewModel : ViewModelBase
-    {
+    public partial class frequencyPairViewModel : ViewModelBase {
         [Category("frequencyPair")]
         public ObservableCollection<Int32> frequencyShoreStationTransmits { get; set; } = new();
 
@@ -2336,7 +2336,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.frequencyPair {
+            var instance = new DomainModel.S131.ComplexAttributes.frequencyPair
+            {
                 frequencyShoreStationTransmits = this.frequencyShoreStationTransmits.ToList(),
                 frequencyShoreStationReceives = this.frequencyShoreStationReceives.ToList(),
                 contactInstructions = this.contactInstructions.ToList(),
@@ -2345,7 +2346,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.frequencyPair Model => new() {
+        public DomainModel.S131.ComplexAttributes.frequencyPair Model => new()
+        {
             frequencyShoreStationTransmits = this.frequencyShoreStationTransmits.ToList(),
             frequencyShoreStationReceives = this.frequencyShoreStationReceives.ToList(),
             contactInstructions = this.contactInstructions.ToList(),
@@ -2367,8 +2369,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("horizontalPositionUncertainty", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class horizontalPositionUncertaintyViewModel : ViewModelBase
-    {
+    public partial class horizontalPositionUncertaintyViewModel : ViewModelBase {
         private Decimal _uncertaintyFixed;
         [Category("horizontalPositionUncertainty")]
         public Decimal uncertaintyFixed {
@@ -2399,7 +2400,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.horizontalPositionUncertainty {
+            var instance = new DomainModel.S131.ComplexAttributes.horizontalPositionUncertainty
+            {
                 uncertaintyFixed = this.uncertaintyFixed,
                 uncertaintyVariableFactor = this.uncertaintyVariableFactor,
             };
@@ -2407,7 +2409,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.horizontalPositionUncertainty Model => new() {
+        public DomainModel.S131.ComplexAttributes.horizontalPositionUncertainty Model => new()
+        {
             uncertaintyFixed = this._uncertaintyFixed,
             uncertaintyVariableFactor = this._uncertaintyVariableFactor,
         };
@@ -2487,7 +2490,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.information {
+            var instance = new DomainModel.S131.ComplexAttributes.information
+            {
                 fileLocator = this.fileLocator,
                 fileReference = this.fileReference,
                 headline = this.headline.ToList(),
@@ -2498,7 +2502,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.information Model => new() {
+        public DomainModel.S131.ComplexAttributes.information Model => new()
+        {
             fileLocator = this._fileLocator,
             fileReference = this._fileReference,
             headline = this.headline.ToList(),
@@ -2516,8 +2521,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("onlineResource", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class onlineResourceViewModel : ViewModelBase
-    {
+    public partial class onlineResourceViewModel : ViewModelBase {
         private String _onlineResourceLinkageURL = string.Empty;
         [Category("onlineResource")]
         public String onlineResourceLinkageURL {
@@ -2613,7 +2617,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.onlineResource {
+            var instance = new DomainModel.S131.ComplexAttributes.onlineResource
+            {
                 onlineResourceLinkageURL = this.onlineResourceLinkageURL,
                 protocol = this.protocol,
                 applicationProfile = this.applicationProfile,
@@ -2626,7 +2631,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.onlineResource Model => new() {
+        public DomainModel.S131.ComplexAttributes.onlineResource Model => new()
+        {
             onlineResourceLinkageURL = this._onlineResourceLinkageURL,
             protocol = this._protocol,
             applicationProfile = this._applicationProfile,
@@ -2678,7 +2684,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.orientation {
+            var instance = new DomainModel.S131.ComplexAttributes.orientation
+            {
                 orientationUncertainty = this.orientationUncertainty,
                 orientationValue = this.orientationValue,
             };
@@ -2686,7 +2693,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.orientation Model => new() {
+        public DomainModel.S131.ComplexAttributes.orientation Model => new()
+        {
             orientationUncertainty = this._orientationUncertainty,
             orientationValue = this._orientationValue,
         };
@@ -2698,8 +2706,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("periodicDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class periodicDateRangeViewModel : ViewModelBase
-    {
+    public partial class periodicDateRangeViewModel : ViewModelBase {
         private DateOnly _dateStart;
         [Category("periodicDateRange")]
         public DateOnly dateStart {
@@ -2730,7 +2737,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.periodicDateRange {
+            var instance = new DomainModel.S131.ComplexAttributes.periodicDateRange
+            {
                 dateStart = this.dateStart,
                 dateEnd = this.dateEnd,
             };
@@ -2738,7 +2746,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.periodicDateRange Model => new() {
+        public DomainModel.S131.ComplexAttributes.periodicDateRange Model => new()
+        {
             dateStart = this._dateStart,
             dateEnd = this._dateEnd,
         };
@@ -2750,8 +2759,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("rxNCode", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class rxNCodeViewModel : ViewModelBase
-    {
+    public partial class rxNCodeViewModel : ViewModelBase {
         private categoryOfRxN? _categoryOfRxN;
         [DomainModel.CodeList(nameof(categoryOfRxNList))]
         [Editor(typeof(Editors.CodeListComboEditor), typeof(Editors.CodeListComboEditor))]
@@ -2799,7 +2807,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.rxNCode {
+            var instance = new DomainModel.S131.ComplexAttributes.rxNCode
+            {
                 categoryOfRxN = this.categoryOfRxN,
                 actionOrActivity = this.actionOrActivity,
                 headline = this.headline.ToList(),
@@ -2808,7 +2817,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.rxNCode Model => new() {
+        public DomainModel.S131.ComplexAttributes.rxNCode Model => new()
+        {
             categoryOfRxN = this._categoryOfRxN,
             actionOrActivity = this._actionOrActivity,
             headline = this.headline.ToList(),
@@ -2824,8 +2834,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("surveyDateRange", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class surveyDateRangeViewModel : ViewModelBase
-    {
+    public partial class surveyDateRangeViewModel : ViewModelBase {
         private DateOnly? _dateStart = default;
         [Category("surveyDateRange")]
         public DateOnly? dateStart {
@@ -2856,7 +2865,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.surveyDateRange {
+            var instance = new DomainModel.S131.ComplexAttributes.surveyDateRange
+            {
                 dateStart = this.dateStart,
                 dateEnd = this.dateEnd,
             };
@@ -2864,7 +2874,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.surveyDateRange Model => new() {
+        public DomainModel.S131.ComplexAttributes.surveyDateRange Model => new()
+        {
             dateStart = this._dateStart,
             dateEnd = this._dateEnd,
         };
@@ -2876,8 +2887,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("textContent", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class textContentViewModel : ViewModelBase
-    {
+    public partial class textContentViewModel : ViewModelBase {
         private categoryOfText? _categoryOfText = default;
         [Category("textContent")]
         public categoryOfText? categoryOfText {
@@ -2960,7 +2970,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.textContent {
+            var instance = new DomainModel.S131.ComplexAttributes.textContent
+            {
                 categoryOfText = this.categoryOfText,
                 information = this.information.ToList(),
                 onlineResource = this.onlineResource?.Model,
@@ -2972,7 +2983,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.textContent Model => new() {
+        public DomainModel.S131.ComplexAttributes.textContent Model => new()
+        {
             categoryOfText = this._categoryOfText,
             information = this.information.ToList(),
             onlineResource = this._onlineResource?.Model,
@@ -2991,8 +3003,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("timeIntervalsByDayOfWeek", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase
-    {
+    public partial class timeIntervalsByDayOfWeekViewModel : ViewModelBase {
         [Category("timeIntervalsByDayOfWeek")]
         public ObservableCollection<dayOfWeek> dayOfWeek { get; set; } = new();
 
@@ -3031,7 +3042,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.timeIntervalsByDayOfWeek {
+            var instance = new DomainModel.S131.ComplexAttributes.timeIntervalsByDayOfWeek
+            {
                 dayOfWeek = this.dayOfWeek.ToList(),
                 dayOfWeekIsRange = this.dayOfWeekIsRange,
                 timeOfDayStart = this.timeOfDayStart.ToList(),
@@ -3041,7 +3053,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.timeIntervalsByDayOfWeek Model => new() {
+        public DomainModel.S131.ComplexAttributes.timeIntervalsByDayOfWeek Model => new()
+        {
             dayOfWeek = this.dayOfWeek.ToList(),
             dayOfWeekIsRange = this._dayOfWeekIsRange,
             timeOfDayStart = this.timeOfDayStart.ToList(),
@@ -3064,8 +3077,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("usefulMarkDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class usefulMarkDescriptionViewModel : ViewModelBase
-    {
+    public partial class usefulMarkDescriptionViewModel : ViewModelBase {
         [Category("usefulMarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3077,14 +3089,16 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.usefulMarkDescription {
+            var instance = new DomainModel.S131.ComplexAttributes.usefulMarkDescription
+            {
                 textContent = this.textContent.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.usefulMarkDescription Model => new() {
+        public DomainModel.S131.ComplexAttributes.usefulMarkDescription Model => new()
+        {
             textContent = this.textContent.ToList(),
         };
 
@@ -3098,8 +3112,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("verticalUncertainty", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class verticalUncertaintyViewModel : ViewModelBase
-    {
+    public partial class verticalUncertaintyViewModel : ViewModelBase {
         private Decimal _uncertaintyFixed;
         [Category("verticalUncertainty")]
         public Decimal uncertaintyFixed {
@@ -3130,7 +3143,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.verticalUncertainty {
+            var instance = new DomainModel.S131.ComplexAttributes.verticalUncertainty
+            {
                 uncertaintyFixed = this.uncertaintyFixed,
                 uncertaintyVariableFactor = this.uncertaintyVariableFactor,
             };
@@ -3138,7 +3152,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.verticalUncertainty Model => new() {
+        public DomainModel.S131.ComplexAttributes.verticalUncertainty Model => new()
+        {
             uncertaintyFixed = this._uncertaintyFixed,
             uncertaintyVariableFactor = this._uncertaintyVariableFactor,
         };
@@ -3150,8 +3165,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("vesselsMeasurements", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class vesselsMeasurementsViewModel : ViewModelBase
-    {
+    public partial class vesselsMeasurementsViewModel : ViewModelBase {
         private comparisonOperator _comparisonOperator;
         [Category("vesselsMeasurements")]
         public comparisonOperator comparisonOperator {
@@ -3208,7 +3222,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.vesselsMeasurements {
+            var instance = new DomainModel.S131.ComplexAttributes.vesselsMeasurements
+            {
                 comparisonOperator = this.comparisonOperator,
                 vesselsCharacteristics = this.vesselsCharacteristics,
                 vesselsCharacteristicsValue = this.vesselsCharacteristicsValue,
@@ -3218,7 +3233,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.vesselsMeasurements Model => new() {
+        public DomainModel.S131.ComplexAttributes.vesselsMeasurements Model => new()
+        {
             comparisonOperator = this._comparisonOperator,
             vesselsCharacteristics = this._vesselsCharacteristics,
             vesselsCharacteristicsValue = this._vesselsCharacteristicsValue,
@@ -3232,8 +3248,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("weatherResource", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class weatherResourceViewModel : ViewModelBase
-    {
+    public partial class weatherResourceViewModel : ViewModelBase {
         private onlineResourceViewModel? _onlineResource;
         [Category("weatherResource")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -3288,7 +3303,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.weatherResource {
+            var instance = new DomainModel.S131.ComplexAttributes.weatherResource
+            {
                 onlineResource = this.onlineResource?.Model,
                 dynamicResource = this.dynamicResource,
                 textContent = this.textContent?.Model,
@@ -3297,7 +3313,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.weatherResource Model => new() {
+        public DomainModel.S131.ComplexAttributes.weatherResource Model => new()
+        {
             onlineResource = this._onlineResource?.Model,
             dynamicResource = this._dynamicResource,
             textContent = this._textContent?.Model,
@@ -3310,8 +3327,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("bearingInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class bearingInformationViewModel : ViewModelBase
-    {
+    public partial class bearingInformationViewModel : ViewModelBase {
         private cardinalDirection? _cardinalDirection = default;
         [Category("bearingInformation")]
         public cardinalDirection? cardinalDirection {
@@ -3374,7 +3390,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.bearingInformation {
+            var instance = new DomainModel.S131.ComplexAttributes.bearingInformation
+            {
                 cardinalDirection = this.cardinalDirection,
                 distance = this.distance,
                 sectorBearing = this.sectorBearing.ToList(),
@@ -3385,7 +3402,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.bearingInformation Model => new() {
+        public DomainModel.S131.ComplexAttributes.bearingInformation Model => new()
+        {
             cardinalDirection = this._cardinalDirection,
             distance = this._distance,
             sectorBearing = this.sectorBearing.ToList(),
@@ -3406,8 +3424,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("cargoServicesDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class cargoServicesDescriptionViewModel : ViewModelBase
-    {
+    public partial class cargoServicesDescriptionViewModel : ViewModelBase {
         [Category("cargoServicesDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3419,14 +3436,16 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.cargoServicesDescription {
+            var instance = new DomainModel.S131.ComplexAttributes.cargoServicesDescription
+            {
                 textContent = this.textContent.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.cargoServicesDescription Model => new() {
+        public DomainModel.S131.ComplexAttributes.cargoServicesDescription Model => new()
+        {
             textContent = this.textContent.ToList(),
         };
 
@@ -3440,8 +3459,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("constructionInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class constructionInformationViewModel : ViewModelBase
-    {
+    public partial class constructionInformationViewModel : ViewModelBase {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("constructionInformation")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -3511,7 +3529,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.constructionInformation {
+            var instance = new DomainModel.S131.ComplexAttributes.constructionInformation
+            {
                 fixedDateRange = this.fixedDateRange?.Model,
                 condition = this.condition,
                 development = this.development,
@@ -3522,7 +3541,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.constructionInformation Model => new() {
+        public DomainModel.S131.ComplexAttributes.constructionInformation Model => new()
+        {
             fixedDateRange = this._fixedDateRange?.Model,
             condition = this._condition,
             development = this._development,
@@ -3540,8 +3560,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("depthsDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class depthsDescriptionViewModel : ViewModelBase
-    {
+    public partial class depthsDescriptionViewModel : ViewModelBase {
         private categoryOfDepthsDescription _categoryOfDepthsDescription;
         [Category("depthsDescription")]
         public categoryOfDepthsDescription categoryOfDepthsDescription {
@@ -3566,7 +3585,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.depthsDescription {
+            var instance = new DomainModel.S131.ComplexAttributes.depthsDescription
+            {
                 categoryOfDepthsDescription = this.categoryOfDepthsDescription,
                 textContent = this.textContent.ToList(),
             };
@@ -3574,7 +3594,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.depthsDescription Model => new() {
+        public DomainModel.S131.ComplexAttributes.depthsDescription Model => new()
+        {
             categoryOfDepthsDescription = this._categoryOfDepthsDescription,
             textContent = this.textContent.ToList(),
         };
@@ -3589,8 +3610,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("facilitiesLayoutDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class facilitiesLayoutDescriptionViewModel : ViewModelBase
-    {
+    public partial class facilitiesLayoutDescriptionViewModel : ViewModelBase {
         [Category("facilitiesLayoutDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3602,14 +3622,16 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.facilitiesLayoutDescription {
+            var instance = new DomainModel.S131.ComplexAttributes.facilitiesLayoutDescription
+            {
                 textContent = this.textContent.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.facilitiesLayoutDescription Model => new() {
+        public DomainModel.S131.ComplexAttributes.facilitiesLayoutDescription Model => new()
+        {
             textContent = this.textContent.ToList(),
         };
 
@@ -3623,8 +3645,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("generalPortDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class generalPortDescriptionViewModel : ViewModelBase
-    {
+    public partial class generalPortDescriptionViewModel : ViewModelBase {
         [Category("generalPortDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3636,14 +3657,16 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.generalPortDescription {
+            var instance = new DomainModel.S131.ComplexAttributes.generalPortDescription
+            {
                 textContent = this.textContent.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.generalPortDescription Model => new() {
+        public DomainModel.S131.ComplexAttributes.generalPortDescription Model => new()
+        {
             textContent = this.textContent.ToList(),
         };
 
@@ -3730,7 +3753,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.graphic {
+            var instance = new DomainModel.S131.ComplexAttributes.graphic
+            {
                 pictorialRepresentation = this.pictorialRepresentation.ToList(),
                 pictureCaption = this.pictureCaption,
                 sourceDate = this.sourceDate,
@@ -3741,7 +3765,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.graphic Model => new() {
+        public DomainModel.S131.ComplexAttributes.graphic Model => new()
+        {
             pictorialRepresentation = this.pictorialRepresentation.ToList(),
             pictureCaption = this._pictureCaption,
             sourceDate = this._sourceDate,
@@ -3759,8 +3784,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("landmarkDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class landmarkDescriptionViewModel : ViewModelBase
-    {
+    public partial class landmarkDescriptionViewModel : ViewModelBase {
         [Category("landmarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3772,14 +3796,16 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.landmarkDescription {
+            var instance = new DomainModel.S131.ComplexAttributes.landmarkDescription
+            {
                 textContent = this.textContent.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.landmarkDescription Model => new() {
+        public DomainModel.S131.ComplexAttributes.landmarkDescription Model => new()
+        {
             textContent = this.textContent.ToList(),
         };
 
@@ -3793,8 +3819,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("limitsDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class limitsDescriptionViewModel : ViewModelBase
-    {
+    public partial class limitsDescriptionViewModel : ViewModelBase {
         [Category("limitsDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3806,14 +3831,16 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.limitsDescription {
+            var instance = new DomainModel.S131.ComplexAttributes.limitsDescription
+            {
                 textContent = this.textContent.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.limitsDescription Model => new() {
+        public DomainModel.S131.ComplexAttributes.limitsDescription Model => new()
+        {
             textContent = this.textContent.ToList(),
         };
 
@@ -3827,8 +3854,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("majorLightDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class majorLightDescriptionViewModel : ViewModelBase
-    {
+    public partial class majorLightDescriptionViewModel : ViewModelBase {
         [Category("majorLightDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3840,14 +3866,16 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.majorLightDescription {
+            var instance = new DomainModel.S131.ComplexAttributes.majorLightDescription
+            {
                 textContent = this.textContent.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.majorLightDescription Model => new() {
+        public DomainModel.S131.ComplexAttributes.majorLightDescription Model => new()
+        {
             textContent = this.textContent.ToList(),
         };
 
@@ -3861,8 +3889,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("markedBy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class markedByViewModel : ViewModelBase
-    {
+    public partial class markedByViewModel : ViewModelBase {
         [Category("markedBy")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3874,14 +3901,16 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.markedBy {
+            var instance = new DomainModel.S131.ComplexAttributes.markedBy
+            {
                 textContent = this.textContent.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.markedBy Model => new() {
+        public DomainModel.S131.ComplexAttributes.markedBy Model => new()
+        {
             textContent = this.textContent.ToList(),
         };
 
@@ -3895,8 +3924,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("offshoreMarkDescription", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class offshoreMarkDescriptionViewModel : ViewModelBase
-    {
+    public partial class offshoreMarkDescriptionViewModel : ViewModelBase {
         [Category("offshoreMarkDescription")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
@@ -3908,14 +3936,16 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.offshoreMarkDescription {
+            var instance = new DomainModel.S131.ComplexAttributes.offshoreMarkDescription
+            {
                 textContent = this.textContent.ToList(),
             };
             return System.Text.Json.JsonSerializer.Serialize(instance);
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.offshoreMarkDescription Model => new() {
+        public DomainModel.S131.ComplexAttributes.offshoreMarkDescription Model => new()
+        {
             textContent = this.textContent.ToList(),
         };
 
@@ -3929,8 +3959,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("scheduleByDayOfWeek", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class scheduleByDayOfWeekViewModel : ViewModelBase
-    {
+    public partial class scheduleByDayOfWeekViewModel : ViewModelBase {
         private categoryOfSchedule? _categoryOfSchedule = default;
         [Category("scheduleByDayOfWeek")]
         public categoryOfSchedule? categoryOfSchedule {
@@ -3955,7 +3984,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.scheduleByDayOfWeek {
+            var instance = new DomainModel.S131.ComplexAttributes.scheduleByDayOfWeek
+            {
                 categoryOfSchedule = this.categoryOfSchedule,
                 timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.ToList(),
             };
@@ -3963,7 +3993,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.scheduleByDayOfWeek Model => new() {
+        public DomainModel.S131.ComplexAttributes.scheduleByDayOfWeek Model => new()
+        {
             categoryOfSchedule = this._categoryOfSchedule,
             timeIntervalsByDayOfWeek = this.timeIntervalsByDayOfWeek.ToList(),
         };
@@ -3978,8 +4009,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("spatialAccuracy", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class spatialAccuracyViewModel : ViewModelBase
-    {
+    public partial class spatialAccuracyViewModel : ViewModelBase {
         private fixedDateRangeViewModel? _fixedDateRange;
         [Category("spatialAccuracy")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -4040,7 +4070,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.spatialAccuracy {
+            var instance = new DomainModel.S131.ComplexAttributes.spatialAccuracy
+            {
                 fixedDateRange = this.fixedDateRange?.Model,
                 horizontalPositionUncertainty = this.horizontalPositionUncertainty?.Model,
                 verticalUncertainty = this.verticalUncertainty?.Model,
@@ -4049,7 +4080,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.spatialAccuracy Model => new() {
+        public DomainModel.S131.ComplexAttributes.spatialAccuracy Model => new()
+        {
             fixedDateRange = this._fixedDateRange?.Model,
             horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
             verticalUncertainty = this._verticalUncertainty?.Model,
@@ -4148,7 +4180,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.telecommunications {
+            var instance = new DomainModel.S131.ComplexAttributes.telecommunications
+            {
                 categoryOfCommunicationPreference = this.categoryOfCommunicationPreference,
                 telecommunicationIdentifier = this.telecommunicationIdentifier,
                 telecommunicationCarrier = this.telecommunicationCarrier,
@@ -4160,7 +4193,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.telecommunications Model => new() {
+        public DomainModel.S131.ComplexAttributes.telecommunications Model => new()
+        {
             categoryOfCommunicationPreference = this._categoryOfCommunicationPreference,
             telecommunicationIdentifier = this._telecommunicationIdentifier,
             telecommunicationCarrier = this._telecommunicationCarrier,
@@ -4179,8 +4213,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("generalHarbourInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class generalHarbourInformationViewModel : ViewModelBase
-    {
+    public partial class generalHarbourInformationViewModel : ViewModelBase {
         private generalPortDescriptionViewModel? _generalPortDescription;
         [Category("generalHarbourInformation")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -4287,7 +4320,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.ComplexAttributes.generalHarbourInformation {
+            var instance = new DomainModel.S131.ComplexAttributes.generalHarbourInformation
+            {
                 generalPortDescription = this.generalPortDescription?.Model,
                 facilitiesLayoutDescription = this.facilitiesLayoutDescription?.Model,
                 limitsDescription = this.limitsDescription?.Model,
@@ -4299,7 +4333,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.ComplexAttributes.generalHarbourInformation Model => new() {
+        public DomainModel.S131.ComplexAttributes.generalHarbourInformation Model => new()
+        {
             generalPortDescription = this._generalPortDescription?.Model,
             facilitiesLayoutDescription = this._facilitiesLayoutDescription?.Model,
             limitsDescription = this._limitsDescription?.Model,
@@ -4318,8 +4353,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("Applicability", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ApplicabilityViewModel : ViewModelBase
-    {
+    public partial class ApplicabilityViewModel : ViewModelBase {
         private Boolean? _inBallast = default;
         [Category("Applicability")]
         public Boolean? inBallast {
@@ -4464,8 +4498,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class ApplicabilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class ApplicabilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
@@ -4519,7 +4552,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Applicability {
+            var instance = new DomainModel.S131.InformationTypes.Applicability
+            {
                 inBallast = this.inBallast,
                 categoryOfCargo = this.categoryOfCargo.ToList(),
                 categoryOfDangerousOrHazardousCargo = this.categoryOfDangerousOrHazardousCargo.ToList(),
@@ -4542,7 +4576,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Applicability Model => new() {
+        public DomainModel.S131.InformationTypes.Applicability Model => new()
+        {
             inBallast = this._inBallast,
             categoryOfCargo = this.categoryOfCargo.ToList(),
             categoryOfDangerousOrHazardousCargo = this.categoryOfDangerousOrHazardousCargo.ToList(),
@@ -4590,8 +4625,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("Authority", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AuthorityViewModel : ViewModelBase
-    {
+    public partial class AuthorityViewModel : ViewModelBase {
         private categoryOfAuthority _categoryOfAuthority;
         [Category("Authority")]
         public categoryOfAuthority categoryOfAuthority {
@@ -4675,8 +4709,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class AuthorityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class AuthorityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
@@ -4712,7 +4745,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Authority {
+            var instance = new DomainModel.S131.InformationTypes.Authority
+            {
                 categoryOfAuthority = this.categoryOfAuthority,
                 textContent = this.textContent?.Model,
                 featureName = this.featureName.ToList(),
@@ -4727,7 +4761,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Authority Model => new() {
+        public DomainModel.S131.InformationTypes.Authority Model => new()
+        {
             categoryOfAuthority = this._categoryOfAuthority,
             textContent = this._textContent?.Model,
             featureName = this.featureName.ToList(),
@@ -4755,8 +4790,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("AvailablePortServices", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AvailablePortServicesViewModel : ViewModelBase
-    {
+    public partial class AvailablePortServicesViewModel : ViewModelBase {
         [Category("AvailablePortServices")]
         public ObservableCollection<firefightingService> firefightingService { get; set; } = new();
 
@@ -4867,8 +4901,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class AvailablePortServicesRefIdViewModel : InformationRefIdViewModel
-        {
+        public class AvailablePortServicesRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["AvailablePortServices"];
         }
 
@@ -4952,7 +4985,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.AvailablePortServices {
+            var instance = new DomainModel.S131.InformationTypes.AvailablePortServices
+            {
                 firefightingService = this.firefightingService.ToList(),
                 medicalService = this.medicalService.ToList(),
                 repairService = this.repairService.ToList(),
@@ -4978,7 +5012,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.AvailablePortServices Model => new() {
+        public DomainModel.S131.InformationTypes.AvailablePortServices Model => new()
+        {
             firefightingService = this.firefightingService.ToList(),
             medicalService = this.medicalService.ToList(),
             repairService = this.repairService.ToList(),
@@ -5053,8 +5088,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("ContactDetails", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ContactDetailsViewModel : ViewModelBase
-    {
+    public partial class ContactDetailsViewModel : ViewModelBase {
         private String _callName = string.Empty;
         [Category("ContactDetails")]
         public String callName {
@@ -5194,8 +5228,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class ContactDetailsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class ContactDetailsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
@@ -5257,7 +5290,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.ContactDetails {
+            var instance = new DomainModel.S131.InformationTypes.ContactDetails
+            {
                 callName = this.callName,
                 callSign = this.callSign,
                 categoryOfCommunicationPreference = this.categoryOfCommunicationPreference,
@@ -5282,7 +5316,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.ContactDetails Model => new() {
+        public DomainModel.S131.InformationTypes.ContactDetails Model => new()
+        {
             callName = this._callName,
             callSign = this._callSign,
             categoryOfCommunicationPreference = this._categoryOfCommunicationPreference,
@@ -5341,8 +5376,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("Entrance", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class EntranceViewModel : ViewModelBase
-    {
+    public partial class EntranceViewModel : ViewModelBase {
         private String _entranceDescription = string.Empty;
         [Category("Entrance")]
         public String entranceDescription {
@@ -5458,8 +5492,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class EntranceRefIdViewModel : InformationRefIdViewModel
-        {
+        public class EntranceRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Entrance"];
         }
 
@@ -5519,7 +5552,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Entrance {
+            var instance = new DomainModel.S131.InformationTypes.Entrance
+            {
                 entranceDescription = this.entranceDescription,
                 associatedFeatureName = this.associatedFeatureName.ToList(),
                 localKnowledgeDescription = this.localKnowledgeDescription,
@@ -5542,7 +5576,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Entrance Model => new() {
+        public DomainModel.S131.InformationTypes.Entrance Model => new()
+        {
             entranceDescription = this._entranceDescription,
             associatedFeatureName = this.associatedFeatureName.ToList(),
             localKnowledgeDescription = this._localKnowledgeDescription,
@@ -5599,8 +5634,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("NauticalInformation", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NauticalInformationViewModel : ViewModelBase
-    {
+    public partial class NauticalInformationViewModel : ViewModelBase {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
@@ -5677,8 +5711,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class NauticalInformationRefIdViewModel : InformationRefIdViewModel
-        {
+        public class NauticalInformationRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
@@ -5716,7 +5749,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.NauticalInformation {
+            var instance = new DomainModel.S131.InformationTypes.NauticalInformation
+            {
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
@@ -5732,7 +5766,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.NauticalInformation Model => new() {
+        public DomainModel.S131.InformationTypes.NauticalInformation Model => new()
+        {
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
@@ -5767,8 +5802,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("NonStandardWorkingDay", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class NonStandardWorkingDayViewModel : ViewModelBase
-    {
+    public partial class NonStandardWorkingDayViewModel : ViewModelBase {
         [Category("NonStandardWorkingDay")]
         public ObservableCollection<DateOnly> dateFixed { get; set; } = new();
 
@@ -5836,8 +5870,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class NonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel
-        {
+        public class NonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NonStandardWorkingDay"];
         }
 
@@ -5878,7 +5911,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.NonStandardWorkingDay {
+            var instance = new DomainModel.S131.InformationTypes.NonStandardWorkingDay
+            {
                 dateFixed = this.dateFixed.ToList(),
                 dateVariable = this.dateVariable.ToList(),
                 information = this.information.ToList(),
@@ -5894,7 +5928,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.NonStandardWorkingDay Model => new() {
+        public DomainModel.S131.InformationTypes.NonStandardWorkingDay Model => new()
+        {
             dateFixed = this.dateFixed.ToList(),
             dateVariable = this.dateVariable.ToList(),
             information = this.information.ToList(),
@@ -5932,8 +5967,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("Recommendations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RecommendationsViewModel : ViewModelBase
-    {
+    public partial class RecommendationsViewModel : ViewModelBase {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
@@ -6010,8 +6044,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class RecommendationsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class RecommendationsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Recommendations"];
         }
 
@@ -6049,7 +6082,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Recommendations {
+            var instance = new DomainModel.S131.InformationTypes.Recommendations
+            {
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
@@ -6065,7 +6099,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Recommendations Model => new() {
+        public DomainModel.S131.InformationTypes.Recommendations Model => new()
+        {
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
@@ -6100,8 +6135,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("Regulations", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RegulationsViewModel : ViewModelBase
-    {
+    public partial class RegulationsViewModel : ViewModelBase {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
@@ -6178,8 +6212,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class RegulationsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class RegulationsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Regulations"];
         }
 
@@ -6217,7 +6250,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Regulations {
+            var instance = new DomainModel.S131.InformationTypes.Regulations
+            {
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
@@ -6233,7 +6267,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Regulations Model => new() {
+        public DomainModel.S131.InformationTypes.Regulations Model => new()
+        {
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
@@ -6268,8 +6303,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("Restrictions", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class RestrictionsViewModel : ViewModelBase
-    {
+    public partial class RestrictionsViewModel : ViewModelBase {
         private categoryOfAuthority? _categoryOfAuthority = default;
         [Category("AbstractRxN")]
         public categoryOfAuthority? categoryOfAuthority {
@@ -6346,8 +6380,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class RestrictionsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class RestrictionsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Restrictions"];
         }
 
@@ -6385,7 +6418,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.Restrictions {
+            var instance = new DomainModel.S131.InformationTypes.Restrictions
+            {
                 categoryOfAuthority = this.categoryOfAuthority,
                 rxNCode = this.rxNCode.ToList(),
                 textContent = this.textContent.ToList(),
@@ -6401,7 +6435,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.Restrictions Model => new() {
+        public DomainModel.S131.InformationTypes.Restrictions Model => new()
+        {
             categoryOfAuthority = this._categoryOfAuthority,
             rxNCode = this.rxNCode.ToList(),
             textContent = this.textContent.ToList(),
@@ -6436,8 +6471,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("ServiceHours", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class ServiceHoursViewModel : ViewModelBase
-    {
+    public partial class ServiceHoursViewModel : ViewModelBase {
         [Category("ServiceHours")]
         public ObservableCollection<scheduleByDayOfWeek> scheduleByDayOfWeek { get; set; } = new();
 
@@ -6502,8 +6536,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class ServiceHoursRefIdViewModel : InformationRefIdViewModel
-        {
+        public class ServiceHoursRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
@@ -6540,7 +6573,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.ServiceHours {
+            var instance = new DomainModel.S131.InformationTypes.ServiceHours
+            {
                 scheduleByDayOfWeek = this.scheduleByDayOfWeek.ToList(),
                 information = this.information.ToList(),
                 featureName = this.featureName.ToList(),
@@ -6555,7 +6589,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.ServiceHours Model => new() {
+        public DomainModel.S131.InformationTypes.ServiceHours Model => new()
+        {
             scheduleByDayOfWeek = this.scheduleByDayOfWeek.ToList(),
             information = this.information.ToList(),
             featureName = this.featureName.ToList(),
@@ -6589,8 +6624,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("SpatialQuality", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SpatialQualityViewModel : ViewModelBase
-    {
+    public partial class SpatialQualityViewModel : ViewModelBase {
         private qualityOfHorizontalMeasurement? _qualityOfHorizontalMeasurement = default;
         [Category("SpatialQuality")]
         public qualityOfHorizontalMeasurement? qualityOfHorizontalMeasurement {
@@ -6606,8 +6640,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("SpatialQuality")]
         public ObservableCollection<spatialAccuracy> spatialAccuracy { get; set; } = new();
 
-        public class SpatialQualityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class SpatialQualityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["SpatialQuality"];
         }
 
@@ -6620,7 +6653,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.InformationTypes.SpatialQuality {
+            var instance = new DomainModel.S131.InformationTypes.SpatialQuality
+            {
                 qualityOfHorizontalMeasurement = this.qualityOfHorizontalMeasurement,
                 spatialAccuracy = this.spatialAccuracy.ToList(),
             };
@@ -6628,7 +6662,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.InformationTypes.SpatialQuality Model => new() {
+        public DomainModel.S131.InformationTypes.SpatialQuality Model => new()
+        {
             qualityOfHorizontalMeasurement = this._qualityOfHorizontalMeasurement,
             spatialAccuracy = this.spatialAccuracy.ToList(),
         };
@@ -6643,8 +6678,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("AnchorBerth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AnchorBerthViewModel : ViewModelBase
-    {
+    public partial class AnchorBerthViewModel : ViewModelBase {
         private String _locationMRN = string.Empty;
         [Category("FeatureType")]
         public String locationMRN {
@@ -6733,8 +6767,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class AnchorBerthRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class AnchorBerthRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["AnchorBerth"];
         }
 
@@ -6773,7 +6806,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.AnchorBerth {
+            var instance = new DomainModel.S131.FeatureTypes.AnchorBerth
+            {
                 locationMRN = this.locationMRN,
                 globalLocationNumber = this.globalLocationNumber,
                 featureName = this.featureName.ToList(),
@@ -6790,7 +6824,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.AnchorBerth Model => new() {
+        public DomainModel.S131.FeatureTypes.AnchorBerth Model => new()
+        {
             locationMRN = this._locationMRN,
             globalLocationNumber = this._globalLocationNumber,
             featureName = this.featureName.ToList(),
@@ -6826,8 +6861,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("AnchorageArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class AnchorageAreaViewModel : ViewModelBase
-    {
+    public partial class AnchorageAreaViewModel : ViewModelBase {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("AnchorageArea")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -6966,8 +7000,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class AnchorageAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class AnchorageAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["AnchorageArea"];
         }
 
@@ -7020,7 +7053,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.AnchorageArea {
+            var instance = new DomainModel.S131.FeatureTypes.AnchorageArea
+            {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -7041,7 +7075,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.AnchorageArea Model => new() {
+        public DomainModel.S131.FeatureTypes.AnchorageArea Model => new()
+        {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -7081,8 +7116,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("Berth", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BerthViewModel : ViewModelBase
-    {
+    public partial class BerthViewModel : ViewModelBase {
         private Decimal? _availableBerthingLength = default;
         [Category("Berth")]
         public Decimal? availableBerthingLength {
@@ -7348,8 +7382,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class BerthRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class BerthRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Berth"];
         }
 
@@ -7414,7 +7447,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.Berth {
+            var instance = new DomainModel.S131.FeatureTypes.Berth
+            {
                 availableBerthingLength = this.availableBerthingLength,
                 bollardDescription = this.bollardDescription,
                 bollardPull = this.bollardPull,
@@ -7448,7 +7482,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.Berth Model => new() {
+        public DomainModel.S131.FeatureTypes.Berth Model => new()
+        {
             availableBerthingLength = this._availableBerthingLength,
             bollardDescription = this._bollardDescription,
             bollardPull = this._bollardPull,
@@ -7510,8 +7545,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("BerthPosition", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class BerthPositionViewModel : ViewModelBase
-    {
+    public partial class BerthPositionViewModel : ViewModelBase {
         private Decimal? _availableBerthingLength = default;
         [Category("BerthPosition")]
         public Decimal? availableBerthingLength {
@@ -7681,8 +7715,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class BerthPositionRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class BerthPositionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["BerthPosition"];
         }
 
@@ -7739,7 +7772,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.BerthPosition {
+            var instance = new DomainModel.S131.FeatureTypes.BerthPosition
+            {
                 availableBerthingLength = this.availableBerthingLength,
                 bollardDescription = this.bollardDescription,
                 bollardPull = this.bollardPull,
@@ -7765,7 +7799,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.BerthPosition Model => new() {
+        public DomainModel.S131.FeatureTypes.BerthPosition Model => new()
+        {
             availableBerthingLength = this._availableBerthingLength,
             bollardDescription = this._bollardDescription,
             bollardPull = this._bollardPull,
@@ -7819,8 +7854,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("DockArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DockAreaViewModel : ViewModelBase
-    {
+    public partial class DockAreaViewModel : ViewModelBase {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("DockArea")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -7959,8 +7993,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class DockAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class DockAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DockArea"];
         }
 
@@ -8013,7 +8046,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.DockArea {
+            var instance = new DomainModel.S131.FeatureTypes.DockArea
+            {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -8034,7 +8068,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.DockArea Model => new() {
+        public DomainModel.S131.FeatureTypes.DockArea Model => new()
+        {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -8074,8 +8109,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("DryDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DryDockViewModel : ViewModelBase
-    {
+    public partial class DryDockViewModel : ViewModelBase {
         private Decimal? _sillDepth = default;
         [Category("DryDock")]
         public Decimal? sillDepth {
@@ -8188,8 +8222,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class DryDockRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class DryDockRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DryDock"];
         }
 
@@ -8230,7 +8263,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.DryDock {
+            var instance = new DomainModel.S131.FeatureTypes.DryDock
+            {
                 sillDepth = this.sillDepth,
                 verticalClearanceValue = this.verticalClearanceValue,
                 locationMRN = this.locationMRN,
@@ -8249,7 +8283,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.DryDock Model => new() {
+        public DomainModel.S131.FeatureTypes.DryDock Model => new()
+        {
             sillDepth = this._sillDepth,
             verticalClearanceValue = this._verticalClearanceValue,
             locationMRN = this._locationMRN,
@@ -8287,8 +8322,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("DumpingGround", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DumpingGroundViewModel : ViewModelBase
-    {
+    public partial class DumpingGroundViewModel : ViewModelBase {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("DumpingGround")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -8427,8 +8461,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class DumpingGroundRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class DumpingGroundRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DumpingGround"];
         }
 
@@ -8481,7 +8514,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.DumpingGround {
+            var instance = new DomainModel.S131.FeatureTypes.DumpingGround
+            {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -8502,7 +8536,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.DumpingGround Model => new() {
+        public DomainModel.S131.FeatureTypes.DumpingGround Model => new()
+        {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -8542,8 +8577,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("FloatingDock", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class FloatingDockViewModel : ViewModelBase
-    {
+    public partial class FloatingDockViewModel : ViewModelBase {
         private Decimal? _sillDepth = default;
         [Category("FloatingDock")]
         public Decimal? sillDepth {
@@ -8656,8 +8690,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class FloatingDockRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class FloatingDockRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["FloatingDock"];
         }
 
@@ -8698,7 +8731,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.FloatingDock {
+            var instance = new DomainModel.S131.FeatureTypes.FloatingDock
+            {
                 sillDepth = this.sillDepth,
                 verticalClearanceValue = this.verticalClearanceValue,
                 locationMRN = this.locationMRN,
@@ -8717,7 +8751,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.FloatingDock Model => new() {
+        public DomainModel.S131.FeatureTypes.FloatingDock Model => new()
+        {
             sillDepth = this._sillDepth,
             verticalClearanceValue = this._verticalClearanceValue,
             locationMRN = this._locationMRN,
@@ -8755,8 +8790,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("Gridiron", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class GridironViewModel : ViewModelBase
-    {
+    public partial class GridironViewModel : ViewModelBase {
         private Decimal? _sillDepth = default;
         [Category("Gridiron")]
         public Decimal? sillDepth {
@@ -8869,8 +8903,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class GridironRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class GridironRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Gridiron"];
         }
 
@@ -8911,7 +8944,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.Gridiron {
+            var instance = new DomainModel.S131.FeatureTypes.Gridiron
+            {
                 sillDepth = this.sillDepth,
                 verticalClearanceValue = this.verticalClearanceValue,
                 locationMRN = this.locationMRN,
@@ -8930,7 +8964,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.Gridiron Model => new() {
+        public DomainModel.S131.FeatureTypes.Gridiron Model => new()
+        {
             sillDepth = this._sillDepth,
             verticalClearanceValue = this._verticalClearanceValue,
             locationMRN = this._locationMRN,
@@ -8968,8 +9003,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("HarbourAreaAdministrative", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourAreaAdministrativeViewModel : ViewModelBase
-    {
+    public partial class HarbourAreaAdministrativeViewModel : ViewModelBase {
         private String _uNLocationCode = string.Empty;
         [Category("HarbourAreaAdministrative")]
         public String uNLocationCode {
@@ -9122,8 +9156,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class HarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class HarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
         }
 
@@ -9176,7 +9209,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.HarbourAreaAdministrative {
+            var instance = new DomainModel.S131.FeatureTypes.HarbourAreaAdministrative
+            {
                 uNLocationCode = this.uNLocationCode,
                 nationality = this.nationality,
                 applicableLoadLineZone = this.applicableLoadLineZone,
@@ -9199,7 +9233,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.HarbourAreaAdministrative Model => new() {
+        public DomainModel.S131.FeatureTypes.HarbourAreaAdministrative Model => new()
+        {
             uNLocationCode = this._uNLocationCode,
             nationality = this._nationality,
             applicableLoadLineZone = this._applicableLoadLineZone,
@@ -9244,8 +9279,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("HarbourAreaSection", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourAreaSectionViewModel : ViewModelBase
-    {
+    public partial class HarbourAreaSectionViewModel : ViewModelBase {
         private categoryOfPortSection? _categoryOfPortSection = default;
         [Category("HarbourAreaSection")]
         public categoryOfPortSection? categoryOfPortSection {
@@ -9374,8 +9408,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class HarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class HarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
@@ -9426,7 +9459,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.HarbourAreaSection {
+            var instance = new DomainModel.S131.FeatureTypes.HarbourAreaSection
+            {
                 categoryOfPortSection = this.categoryOfPortSection,
                 categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
                 iSPSLevel = this.iSPSLevel,
@@ -9447,7 +9481,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.HarbourAreaSection Model => new() {
+        public DomainModel.S131.FeatureTypes.HarbourAreaSection Model => new()
+        {
             categoryOfPortSection = this._categoryOfPortSection,
             categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
             iSPSLevel = this._iSPSLevel,
@@ -9490,8 +9525,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("HarbourBasin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourBasinViewModel : ViewModelBase
-    {
+    public partial class HarbourBasinViewModel : ViewModelBase {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("HarbourBasin")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -9630,8 +9664,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class HarbourBasinRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class HarbourBasinRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourBasin"];
         }
 
@@ -9684,7 +9717,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.HarbourBasin {
+            var instance = new DomainModel.S131.FeatureTypes.HarbourBasin
+            {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -9705,7 +9739,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.HarbourBasin Model => new() {
+        public DomainModel.S131.FeatureTypes.HarbourBasin Model => new()
+        {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -9745,8 +9780,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("HarbourFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class HarbourFacilityViewModel : ViewModelBase
-    {
+    public partial class HarbourFacilityViewModel : ViewModelBase {
         [Category("HarbourFacility")]
         public ObservableCollection<categoryOfHarbourFacility> categoryOfHarbourFacility { get; set; } = new();
 
@@ -9850,8 +9884,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class HarbourFacilityRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class HarbourFacilityRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourFacility"];
         }
 
@@ -9895,7 +9928,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.HarbourFacility {
+            var instance = new DomainModel.S131.FeatureTypes.HarbourFacility
+            {
                 categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
                 verticalClearanceValue = this.verticalClearanceValue,
                 locationMRN = this.locationMRN,
@@ -9914,7 +9948,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.HarbourFacility Model => new() {
+        public DomainModel.S131.FeatureTypes.HarbourFacility Model => new()
+        {
             categoryOfHarbourFacility = this.categoryOfHarbourFacility.ToList(),
             verticalClearanceValue = this._verticalClearanceValue,
             locationMRN = this._locationMRN,
@@ -9955,8 +9990,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("MooringWarpingFacility", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class MooringWarpingFacilityViewModel : ViewModelBase
-    {
+    public partial class MooringWarpingFacilityViewModel : ViewModelBase {
         private categoryOfMooringWarpingFacility _categoryOfMooringWarpingFacility;
         [Category("MooringWarpingFacility")]
         public categoryOfMooringWarpingFacility categoryOfMooringWarpingFacility {
@@ -10105,8 +10139,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class MooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class MooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["MooringWarpingFacility"];
         }
 
@@ -10150,7 +10183,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.MooringWarpingFacility {
+            var instance = new DomainModel.S131.FeatureTypes.MooringWarpingFacility
+            {
                 categoryOfMooringWarpingFacility = this.categoryOfMooringWarpingFacility,
                 iDCode = this.iDCode,
                 bollardDescription = this.bollardDescription,
@@ -10172,7 +10206,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.MooringWarpingFacility Model => new() {
+        public DomainModel.S131.FeatureTypes.MooringWarpingFacility Model => new()
+        {
             categoryOfMooringWarpingFacility = this._categoryOfMooringWarpingFacility,
             iDCode = this._iDCode,
             bollardDescription = this._bollardDescription,
@@ -10213,8 +10248,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("OuterLimit", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class OuterLimitViewModel : ViewModelBase
-    {
+    public partial class OuterLimitViewModel : ViewModelBase {
         private limitsDescriptionViewModel? _limitsDescription;
         [Category("OuterLimit")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -10331,8 +10365,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class OuterLimitRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class OuterLimitRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["OuterLimit"];
         }
 
@@ -10397,7 +10430,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.OuterLimit {
+            var instance = new DomainModel.S131.FeatureTypes.OuterLimit
+            {
                 limitsDescription = this.limitsDescription?.Model,
                 markedBy = this.markedBy.ToList(),
                 landmarkDescription = this.landmarkDescription.ToList(),
@@ -10420,7 +10454,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.OuterLimit Model => new() {
+        public DomainModel.S131.FeatureTypes.OuterLimit Model => new()
+        {
             limitsDescription = this._limitsDescription?.Model,
             markedBy = this.markedBy.ToList(),
             landmarkDescription = this.landmarkDescription.ToList(),
@@ -10477,8 +10512,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("PilotBoardingPlace", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class PilotBoardingPlaceViewModel : ViewModelBase
-    {
+    public partial class PilotBoardingPlaceViewModel : ViewModelBase {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("PilotBoardingPlace")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -10617,8 +10651,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class PilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class PilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["PilotBoardingPlace"];
         }
 
@@ -10671,7 +10704,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.PilotBoardingPlace {
+            var instance = new DomainModel.S131.FeatureTypes.PilotBoardingPlace
+            {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -10692,7 +10726,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.PilotBoardingPlace Model => new() {
+        public DomainModel.S131.FeatureTypes.PilotBoardingPlace Model => new()
+        {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -10732,8 +10767,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("SeaplaneLandingArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SeaplaneLandingAreaViewModel : ViewModelBase
-    {
+    public partial class SeaplaneLandingAreaViewModel : ViewModelBase {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("SeaplaneLandingArea")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -10872,8 +10906,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class SeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class SeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SeaplaneLandingArea"];
         }
 
@@ -10926,7 +10959,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.SeaplaneLandingArea {
+            var instance = new DomainModel.S131.FeatureTypes.SeaplaneLandingArea
+            {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -10947,7 +10981,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.SeaplaneLandingArea Model => new() {
+        public DomainModel.S131.FeatureTypes.SeaplaneLandingArea Model => new()
+        {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -10987,8 +11022,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("Terminal", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TerminalViewModel : ViewModelBase
-    {
+    public partial class TerminalViewModel : ViewModelBase {
         private String _portFacilityNumber = string.Empty;
         [Category("Terminal")]
         public String portFacilityNumber {
@@ -11143,8 +11177,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class TerminalRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class TerminalRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Terminal"];
         }
 
@@ -11196,7 +11229,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.Terminal {
+            var instance = new DomainModel.S131.FeatureTypes.Terminal
+            {
                 portFacilityNumber = this.portFacilityNumber,
                 categoryOfHarbourFacility = this.categoryOfHarbourFacility,
                 categoryOfCargo = this.categoryOfCargo.ToList(),
@@ -11220,7 +11254,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.Terminal Model => new() {
+        public DomainModel.S131.FeatureTypes.Terminal Model => new()
+        {
             portFacilityNumber = this._portFacilityNumber,
             categoryOfHarbourFacility = this._categoryOfHarbourFacility,
             categoryOfCargo = this.categoryOfCargo.ToList(),
@@ -11269,8 +11304,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("TurningBasin", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TurningBasinViewModel : ViewModelBase
-    {
+    public partial class TurningBasinViewModel : ViewModelBase {
         private depthsDescriptionViewModel? _depthsDescription;
         [Category("TurningBasin")]
         [Xceed.Wpf.Toolkit.PropertyGrid.Attributes.ExpandableObject]
@@ -11409,8 +11443,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class TurningBasinRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class TurningBasinRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TurningBasin"];
         }
 
@@ -11463,7 +11496,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.TurningBasin {
+            var instance = new DomainModel.S131.FeatureTypes.TurningBasin
+            {
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
                 markedBy = this.markedBy?.Model,
@@ -11484,7 +11518,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.TurningBasin Model => new() {
+        public DomainModel.S131.FeatureTypes.TurningBasin Model => new()
+        {
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
             markedBy = this._markedBy?.Model,
@@ -11524,8 +11559,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("WaterwayArea", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class WaterwayAreaViewModel : ViewModelBase
-    {
+    public partial class WaterwayAreaViewModel : ViewModelBase {
         private categoryOfPortSection _categoryOfPortSection;
         [Category("WaterwayArea")]
         public categoryOfPortSection categoryOfPortSection {
@@ -11664,8 +11698,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("FeatureType")]
         public ObservableCollection<textContent> textContent { get; set; } = new();
 
-        public class WaterwayAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class WaterwayAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["WaterwayArea"];
         }
 
@@ -11718,7 +11751,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.WaterwayArea {
+            var instance = new DomainModel.S131.FeatureTypes.WaterwayArea
+            {
                 categoryOfPortSection = this.categoryOfPortSection,
                 depthsDescription = this.depthsDescription?.Model,
                 locationByText = this.locationByText,
@@ -11739,7 +11773,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.WaterwayArea Model => new() {
+        public DomainModel.S131.FeatureTypes.WaterwayArea Model => new()
+        {
             categoryOfPortSection = this._categoryOfPortSection,
             depthsDescription = this._depthsDescription?.Model,
             locationByText = this._locationByText,
@@ -11779,8 +11814,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("DataCoverage", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class DataCoverageViewModel : ViewModelBase
-    {
+    public partial class DataCoverageViewModel : ViewModelBase {
         private Int32 _maximumDisplayScale;
         [Category("DataCoverage")]
         public Int32 maximumDisplayScale {
@@ -11805,8 +11839,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class DataCoverageRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class DataCoverageRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DataCoverage"];
         }
 
@@ -11816,7 +11849,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.DataCoverage {
+            var instance = new DomainModel.S131.FeatureTypes.DataCoverage
+            {
                 maximumDisplayScale = this.maximumDisplayScale,
                 minimumDisplayScale = this.minimumDisplayScale,
             };
@@ -11824,7 +11858,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.DataCoverage Model => new() {
+        public DomainModel.S131.FeatureTypes.DataCoverage Model => new()
+        {
             maximumDisplayScale = this._maximumDisplayScale,
             minimumDisplayScale = this._minimumDisplayScale,
         };
@@ -11836,8 +11871,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("QualityOfNonBathymetricData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class QualityOfNonBathymetricDataViewModel : ViewModelBase
-    {
+    public partial class QualityOfNonBathymetricDataViewModel : ViewModelBase {
         private categoryOfTemporalVariation? _categoryOfTemporalVariation = default;
         [Category("QualityOfNonBathymetricData")]
         public categoryOfTemporalVariation? categoryOfTemporalVariation {
@@ -11916,8 +11950,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("QualityOfNonBathymetricData")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        public class QualityOfNonBathymetricDataRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class QualityOfNonBathymetricDataRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["QualityOfNonBathymetricData"];
         }
 
@@ -11950,7 +11983,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData {
+            var instance = new DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData
+            {
                 categoryOfTemporalVariation = this.categoryOfTemporalVariation,
                 horizontalDistanceUncertainty = this.horizontalDistanceUncertainty,
                 horizontalPositionUncertainty = this.horizontalPositionUncertainty?.Model,
@@ -11963,7 +11997,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData Model => new() {
+        public DomainModel.S131.FeatureTypes.QualityOfNonBathymetricData Model => new()
+        {
             categoryOfTemporalVariation = this._categoryOfTemporalVariation,
             horizontalDistanceUncertainty = this._horizontalDistanceUncertainty,
             horizontalPositionUncertainty = this._horizontalPositionUncertainty?.Model,
@@ -11983,8 +12018,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("SoundingDatum", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class SoundingDatumViewModel : ViewModelBase
-    {
+    public partial class SoundingDatumViewModel : ViewModelBase {
         private verticalDatum _verticalDatum;
         [Category("SoundingDatum")]
         public verticalDatum verticalDatum {
@@ -12000,8 +12034,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("SoundingDatum")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        public class SoundingDatumRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class SoundingDatumRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["SoundingDatum"];
         }
 
@@ -12014,7 +12047,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.SoundingDatum {
+            var instance = new DomainModel.S131.FeatureTypes.SoundingDatum
+            {
                 verticalDatum = this.verticalDatum,
                 information = this.information.ToList(),
             };
@@ -12022,7 +12056,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.SoundingDatum Model => new() {
+        public DomainModel.S131.FeatureTypes.SoundingDatum Model => new()
+        {
             verticalDatum = this._verticalDatum,
             information = this.information.ToList(),
         };
@@ -12037,8 +12072,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("VerticalDatumOfData", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class VerticalDatumOfDataViewModel : ViewModelBase
-    {
+    public partial class VerticalDatumOfDataViewModel : ViewModelBase {
         private verticalDatum _verticalDatum;
         [Category("VerticalDatumOfData")]
         public verticalDatum verticalDatum {
@@ -12054,8 +12088,7 @@ namespace S100Framework.WPF.ViewModel.S131
         [Category("VerticalDatumOfData")]
         public ObservableCollection<information> information { get; set; } = new();
 
-        public class VerticalDatumOfDataRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class VerticalDatumOfDataRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["VerticalDatumOfData"];
         }
 
@@ -12068,7 +12101,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.VerticalDatumOfData {
+            var instance = new DomainModel.S131.FeatureTypes.VerticalDatumOfData
+            {
                 verticalDatum = this.verticalDatum,
                 information = this.information.ToList(),
             };
@@ -12076,7 +12110,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.VerticalDatumOfData Model => new() {
+        public DomainModel.S131.FeatureTypes.VerticalDatumOfData Model => new()
+        {
             verticalDatum = this._verticalDatum,
             information = this.information.ToList(),
         };
@@ -12091,8 +12126,7 @@ namespace S100Framework.WPF.ViewModel.S131
     [CategoryOrder("TextPlacement", 0)]
     [CategoryOrder("InformationBindings", 100)]
     [CategoryOrder("FeatureBindings", 200)]
-    public partial class TextPlacementViewModel : ViewModelBase
-    {
+    public partial class TextPlacementViewModel : ViewModelBase {
         private Decimal _orientationValue;
         [Category("TextPlacement")]
         public Decimal orientationValue {
@@ -12153,8 +12187,7 @@ namespace S100Framework.WPF.ViewModel.S131
             }
         }
 
-        public class TextPlacementRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class TextPlacementRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
@@ -12167,7 +12200,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         public override string Serialize() {
-            var instance = new DomainModel.S131.FeatureTypes.TextPlacement {
+            var instance = new DomainModel.S131.FeatureTypes.TextPlacement
+            {
                 orientationValue = this.orientationValue,
                 text = this.text,
                 textOffsetMm = this.textOffsetMm,
@@ -12178,7 +12212,8 @@ namespace S100Framework.WPF.ViewModel.S131
         }
 
         [Browsable(false)]
-        public DomainModel.S131.FeatureTypes.TextPlacement Model => new() {
+        public DomainModel.S131.FeatureTypes.TextPlacement Model => new()
+        {
             orientationValue = this._orientationValue,
             text = this._text,
             textOffsetMm = this._textOffsetMm,
@@ -12190,8 +12225,7 @@ namespace S100Framework.WPF.ViewModel.S131
         }
     }
 
-    public class TextAssociationViewModel : FeatureAssociationViewModel
-    {
+    public class TextAssociationViewModel : FeatureAssociationViewModel {
         public override string Code => "TextAssociation";
         public override string[] Roles => ["identifies", "positions"];
 
@@ -12216,7 +12250,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 positions = null;
                 if (value is not null) {
-                    positions = value?.role switch {
+                    positions = value?.role switch
+                    {
                         "identifies" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12226,116 +12261,94 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => TextAssociationViewModel._associationConnectorFeatures;
 
-        public class positionsDryDockRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsDryDockRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsFloatingDockRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsFloatingDockRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsGridironRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsGridironRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsHarbourFacilityRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsHarbourFacilityRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsAnchorBerthRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsAnchorBerthRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsAnchorageAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsAnchorageAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsBerthRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsBerthRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsBerthPositionRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsBerthPositionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsDockAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsDockAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsDumpingGroundRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsDumpingGroundRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsHarbourBasinRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsHarbourBasinRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsOuterLimitRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsOuterLimitRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsTerminalRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsTerminalRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsTurningBasinRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsTurningBasinRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsWaterwayAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsWaterwayAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["TextPlacement"];
         }
 
-        public class positionsTextPlacementRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class positionsTextPlacementRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility", "AnchorBerth", "AnchorageArea", "Berth", "BerthPosition", "DockArea", "DumpingGround", "HarbourAreaAdministrative", "HarbourAreaSection", "HarbourBasin", "MooringWarpingFacility", "OuterLimit", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(TextAssociationViewModel)]();
     }
 
-    public class SubsectionViewModel : FeatureAssociationViewModel
-    {
+    public class SubsectionViewModel : FeatureAssociationViewModel {
         public override string Code => "Subsection";
         public override string[] Roles => ["subUnit", "constitute"];
 
@@ -12372,7 +12385,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 subUnit = null;
                 if (value is not null) {
-                    subUnit = value?.role switch {
+                    subUnit = value?.role switch
+                    {
                         "constitute" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12380,7 +12394,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 constitute = null;
                 if (value is not null) {
-                    constitute = value?.role switch {
+                    constitute = value?.role switch
+                    {
                         "subUnit" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12390,21 +12405,18 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => SubsectionViewModel._associationConnectorFeatures;
 
-        public class constituteHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class constituteHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
-        public class subUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class subUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(SubsectionViewModel)]();
     }
 
-    public class InfrastructureViewModel : FeatureAssociationViewModel
-    {
+    public class InfrastructureViewModel : FeatureAssociationViewModel {
         public override string Code => "Infrastructure";
         public override string[] Roles => ["infrastructureLocation", "hasInfrastructure"];
 
@@ -12441,7 +12453,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 infrastructureLocation = null;
                 if (value is not null) {
-                    infrastructureLocation = value?.role switch {
+                    infrastructureLocation = value?.role switch
+                    {
                         "hasInfrastructure" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12449,7 +12462,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 hasInfrastructure = null;
                 if (value is not null) {
-                    hasInfrastructure = value?.role switch {
+                    hasInfrastructure = value?.role switch
+                    {
                         "infrastructureLocation" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12459,41 +12473,34 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => InfrastructureViewModel._associationConnectorFeatures;
 
-        public class hasInfrastructureHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class hasInfrastructureHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility"];
         }
 
-        public class hasInfrastructureTerminalRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class hasInfrastructureTerminalRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["DryDock", "FloatingDock", "Gridiron", "HarbourFacility"];
         }
 
-        public class infrastructureLocationDryDockRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class infrastructureLocationDryDockRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
         }
 
-        public class infrastructureLocationFloatingDockRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class infrastructureLocationFloatingDockRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
         }
 
-        public class infrastructureLocationGridironRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class infrastructureLocationGridironRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
         }
 
-        public class infrastructureLocationHarbourFacilityRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class infrastructureLocationHarbourFacilityRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(InfrastructureViewModel)]();
     }
 
-    public class PrimaryAuxiliaryFacilityViewModel : FeatureAssociationViewModel
-    {
+    public class PrimaryAuxiliaryFacilityViewModel : FeatureAssociationViewModel {
         public override string Code => "PrimaryAuxiliaryFacility";
         public override string[] Roles => ["primaryFacility", "auxiliaryFacility"];
 
@@ -12530,7 +12537,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 primaryFacility = null;
                 if (value is not null) {
-                    primaryFacility = value?.role switch {
+                    primaryFacility = value?.role switch
+                    {
                         "auxiliaryFacility" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12538,7 +12546,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 auxiliaryFacility = null;
                 if (value is not null) {
-                    auxiliaryFacility = value?.role switch {
+                    auxiliaryFacility = value?.role switch
+                    {
                         "primaryFacility" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12548,26 +12557,22 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => PrimaryAuxiliaryFacilityViewModel._associationConnectorFeatures;
 
-        public class auxiliaryFacilityAnchorBerthRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class auxiliaryFacilityAnchorBerthRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["MooringWarpingFacility"];
         }
 
-        public class auxiliaryFacilityBerthPositionRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class auxiliaryFacilityBerthPositionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["MooringWarpingFacility"];
         }
 
-        public class primaryFacilityMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class primaryFacilityMooringWarpingFacilityRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["AnchorBerth", "BerthPosition"];
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(PrimaryAuxiliaryFacilityViewModel)]();
     }
 
-    public class DemarcationViewModel : FeatureAssociationViewModel
-    {
+    public class DemarcationViewModel : FeatureAssociationViewModel {
         public override string Code => "Demarcation";
         public override string[] Roles => ["demarcationIndicator", "demarcatedFeature"];
 
@@ -12604,7 +12609,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 demarcationIndicator = null;
                 if (value is not null) {
-                    demarcationIndicator = value?.role switch {
+                    demarcationIndicator = value?.role switch
+                    {
                         "demarcatedFeature" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12612,7 +12618,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 demarcatedFeature = null;
                 if (value is not null) {
-                    demarcatedFeature = value?.role switch {
+                    demarcatedFeature = value?.role switch
+                    {
                         "demarcationIndicator" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12622,21 +12629,18 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => DemarcationViewModel._associationConnectorFeatures;
 
-        public class demarcatedFeatureBerthPositionRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class demarcatedFeatureBerthPositionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Berth"];
         }
 
-        public class demarcationIndicatorBerthRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class demarcationIndicatorBerthRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["BerthPosition"];
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(DemarcationViewModel)]();
     }
 
-    public class JurisdictionalLimitViewModel : FeatureAssociationViewModel
-    {
+    public class JurisdictionalLimitViewModel : FeatureAssociationViewModel {
         public override string Code => "JurisdictionalLimit";
         public override string[] Roles => ["limitReference", "limitExtent"];
 
@@ -12673,7 +12677,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 limitReference = null;
                 if (value is not null) {
-                    limitReference = value?.role switch {
+                    limitReference = value?.role switch
+                    {
                         "limitExtent" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12681,7 +12686,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 limitExtent = null;
                 if (value is not null) {
-                    limitExtent = value?.role switch {
+                    limitExtent = value?.role switch
+                    {
                         "limitReference" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12691,21 +12697,18 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => JurisdictionalLimitViewModel._associationConnectorFeatures;
 
-        public class limitExtentHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class limitExtentHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["OuterLimit"];
         }
 
-        public class limitReferenceOuterLimitRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class limitReferenceOuterLimitRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(JurisdictionalLimitViewModel)]();
     }
 
-    public class LayoutDivisionViewModel : FeatureAssociationViewModel
-    {
+    public class LayoutDivisionViewModel : FeatureAssociationViewModel {
         public override string Code => "LayoutDivision";
         public override string[] Roles => ["layoutUnit", "componentOf"];
 
@@ -12742,7 +12745,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 layoutUnit = null;
                 if (value is not null) {
-                    layoutUnit = value?.role switch {
+                    layoutUnit = value?.role switch
+                    {
                         "componentOf" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12750,7 +12754,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 componentOf = null;
                 if (value is not null) {
-                    componentOf = value?.role switch {
+                    componentOf = value?.role switch
+                    {
                         "layoutUnit" => value.CreateForeignFeatureBinding(),
                         _ => value.CreateLocalFeatureBinding(),
                     };
@@ -12760,81 +12765,66 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override FeatureAssociationConnector[] associationConnectorFeatures => LayoutDivisionViewModel._associationConnectorFeatures;
 
-        public class componentOfAnchorageAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class componentOfAnchorageAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
-        public class componentOfBerthRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class componentOfBerthRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection", "Terminal"];
         }
 
-        public class componentOfDockAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class componentOfDockAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
-        public class componentOfDumpingGroundRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class componentOfDumpingGroundRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
-        public class componentOfHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class componentOfHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaAdministrative"];
         }
 
-        public class componentOfHarbourBasinRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class componentOfHarbourBasinRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
-        public class componentOfPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class componentOfPilotBoardingPlaceRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
-        public class componentOfSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class componentOfSeaplaneLandingAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
-        public class componentOfTerminalRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class componentOfTerminalRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
-        public class componentOfTurningBasinRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class componentOfTurningBasinRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
-        public class componentOfWaterwayAreaRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class componentOfWaterwayAreaRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
-        public class layoutUnitHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class layoutUnitHarbourAreaAdministrativeRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["HarbourAreaSection"];
         }
 
-        public class layoutUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class layoutUnitHarbourAreaSectionRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["AnchorageArea", "Berth", "DockArea", "DumpingGround", "HarbourBasin", "PilotBoardingPlace", "SeaplaneLandingArea", "Terminal", "TurningBasin", "WaterwayArea"];
         }
 
-        public class layoutUnitTerminalRefIdViewModel : FeatureRefIdViewModel
-        {
+        public class layoutUnitTerminalRefIdViewModel : FeatureRefIdViewModel {
             public override string[] AssociationTypes => ["Berth"];
         }
 
         public static FeatureAssociationConnector[] _associationConnectorFeatures => Handles.AssociationConnectorFeatures[typeof(LayoutDivisionViewModel)]();
     }
 
-    public class AdditionalInformationViewModel : InformationAssociationViewModel
-    {
+    public class AdditionalInformationViewModel : InformationAssociationViewModel {
         public override string Code => "AdditionalInformation";
         public override string[] Roles => ["providesInformation", "informationProvidedFor"];
 
@@ -12871,7 +12861,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 providesInformation = null;
                 if (value is not null) {
-                    providesInformation = value?.role switch {
+                    providesInformation = value?.role switch
+                    {
                         "informationProvidedFor" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -12879,7 +12870,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 informationProvidedFor = null;
                 if (value is not null) {
-                    informationProvidedFor = value?.role switch {
+                    informationProvidedFor = value?.role switch
+                    {
                         "providesInformation" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -12889,171 +12881,138 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => AdditionalInformationViewModel._associationConnectorInformations;
 
-        public class informationProvidedForNauticalInformationRefIdViewModel : InformationRefIdViewModel
-        {
+        public class informationProvidedForNauticalInformationRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions", "Applicability", "Authority", "AvailablePortServices", "ContactDetails", "Entrance", "NonStandardWorkingDay", "ServiceHours"];
         }
 
-        public class providesInformationDryDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationDryDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationFloatingDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationFloatingDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationGridironRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationGridironRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationHarbourFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationAnchorBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationAnchorBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationAnchorageAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationBerthPositionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationBerthPositionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationDockAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationDockAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationDumpingGroundRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationDumpingGroundRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationHarbourBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationHarbourBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationOuterLimitRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationOuterLimitRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationTerminalRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationTerminalRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationTurningBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationTurningBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationWaterwayAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationNauticalInformationRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationNauticalInformationRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationRecommendationsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationRecommendationsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationRegulationsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationRegulationsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationRestrictionsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationRestrictionsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationApplicabilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationApplicabilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationAuthorityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationAuthorityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationAvailablePortServicesRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationAvailablePortServicesRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationContactDetailsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationContactDetailsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationEntranceRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationEntranceRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationNonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationNonStandardWorkingDayRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
-        public class providesInformationServiceHoursRefIdViewModel : InformationRefIdViewModel
-        {
+        public class providesInformationServiceHoursRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AdditionalInformationViewModel)]();
     }
 
-    public class AuthorityContactViewModel : InformationAssociationViewModel
-    {
+    public class AuthorityContactViewModel : InformationAssociationViewModel {
         public override string Code => "AuthorityContact";
         public override string[] Roles => ["theAuthority", "theContactDetails"];
 
@@ -13090,7 +13049,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 theAuthority = null;
                 if (value is not null) {
-                    theAuthority = value?.role switch {
+                    theAuthority = value?.role switch
+                    {
                         "theContactDetails" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13098,7 +13058,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 theContactDetails = null;
                 if (value is not null) {
-                    theContactDetails = value?.role switch {
+                    theContactDetails = value?.role switch
+                    {
                         "theAuthority" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13108,21 +13069,18 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityContactViewModel._associationConnectorInformations;
 
-        public class theAuthorityContactDetailsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theAuthorityContactDetailsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class theContactDetailsAuthorityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsAuthorityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityContactViewModel)]();
     }
 
-    public class AuthorityHoursViewModel : InformationAssociationViewModel
-    {
+    public class AuthorityHoursViewModel : InformationAssociationViewModel {
         public override string Code => "AuthorityHours";
         public override string[] Roles => ["theAuthority_srvHrs", "theServiceHours"];
 
@@ -13159,7 +13117,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 theAuthority_srvHrs = null;
                 if (value is not null) {
-                    theAuthority_srvHrs = value?.role switch {
+                    theAuthority_srvHrs = value?.role switch
+                    {
                         "theServiceHours" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13167,7 +13126,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 theServiceHours = null;
                 if (value is not null) {
-                    theServiceHours = value?.role switch {
+                    theServiceHours = value?.role switch
+                    {
                         "theAuthority_srvHrs" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13177,21 +13137,18 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => AuthorityHoursViewModel._associationConnectorInformations;
 
-        public class theAuthority_srvHrsServiceHoursRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theAuthority_srvHrsServiceHoursRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class theServiceHoursAuthorityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theServiceHoursAuthorityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AuthorityHoursViewModel)]();
     }
 
-    public class AssociatedRxNViewModel : InformationAssociationViewModel
-    {
+    public class AssociatedRxNViewModel : InformationAssociationViewModel {
         public override string Code => "AssociatedRxN";
         public override string[] Roles => ["appliesInLocation", "theRxN"];
 
@@ -13228,7 +13185,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 appliesInLocation = null;
                 if (value is not null) {
-                    appliesInLocation = value?.role switch {
+                    appliesInLocation = value?.role switch
+                    {
                         "theRxN" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13236,7 +13194,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 theRxN = null;
                 if (value is not null) {
-                    theRxN = value?.role switch {
+                    theRxN = value?.role switch
+                    {
                         "appliesInLocation" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13246,111 +13205,90 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => AssociatedRxNViewModel._associationConnectorInformations;
 
-        public class theRxNDryDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNDryDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNFloatingDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNFloatingDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNGridironRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNGridironRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNHarbourFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNAnchorBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNAnchorBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNAnchorageAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNBerthPositionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNBerthPositionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNDockAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNDockAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNDumpingGroundRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNDumpingGroundRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNHarbourBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNHarbourBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNOuterLimitRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNOuterLimitRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNTerminalRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNTerminalRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNTurningBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNTurningBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theRxNWaterwayAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theRxNWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(AssociatedRxNViewModel)]();
     }
 
-    public class ExceptionalWorkdayViewModel : InformationAssociationViewModel
-    {
+    public class ExceptionalWorkdayViewModel : InformationAssociationViewModel {
         public override string Code => "ExceptionalWorkday";
         public override string[] Roles => ["theServiceHours_nsdy", "partialWorkingDay"];
 
@@ -13387,7 +13325,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 theServiceHours_nsdy = null;
                 if (value is not null) {
-                    theServiceHours_nsdy = value?.role switch {
+                    theServiceHours_nsdy = value?.role switch
+                    {
                         "partialWorkingDay" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13395,7 +13334,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 partialWorkingDay = null;
                 if (value is not null) {
-                    partialWorkingDay = value?.role switch {
+                    partialWorkingDay = value?.role switch
+                    {
                         "theServiceHours_nsdy" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13405,16 +13345,14 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => ExceptionalWorkdayViewModel._associationConnectorInformations;
 
-        public class partialWorkingDayServiceHoursRefIdViewModel : InformationRefIdViewModel
-        {
+        public class partialWorkingDayServiceHoursRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NonStandardWorkingDay"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ExceptionalWorkdayViewModel)]();
     }
 
-    public class ServiceControlViewModel : InformationAssociationViewModel
-    {
+    public class ServiceControlViewModel : InformationAssociationViewModel {
         public override string Code => "ServiceControl";
         public override string[] Roles => ["controlledService", "controlAuthority"];
 
@@ -13451,7 +13389,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 controlledService = null;
                 if (value is not null) {
-                    controlledService = value?.role switch {
+                    controlledService = value?.role switch
+                    {
                         "controlAuthority" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13459,7 +13398,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 controlAuthority = null;
                 if (value is not null) {
-                    controlAuthority = value?.role switch {
+                    controlAuthority = value?.role switch
+                    {
                         "controlledService" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13469,111 +13409,90 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceControlViewModel._associationConnectorInformations;
 
-        public class controlAuthorityDryDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityDryDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityFloatingDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityFloatingDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityGridironRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityGridironRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityHarbourFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityAnchorBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityAnchorBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityAnchorageAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityBerthPositionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityBerthPositionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityDockAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityDockAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityDumpingGroundRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityDumpingGroundRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityHarbourBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityHarbourBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityOuterLimitRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityOuterLimitRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthoritySeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthoritySeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityTerminalRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityTerminalRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityTurningBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityTurningBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class controlAuthorityWaterwayAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class controlAuthorityWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceControlViewModel)]();
     }
 
-    public class ServiceContactViewModel : InformationAssociationViewModel
-    {
+    public class ServiceContactViewModel : InformationAssociationViewModel {
         public override string Code => "ServiceContact";
         public override string[] Roles => ["servicePlace", "theContactDetails"];
 
@@ -13610,7 +13529,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 servicePlace = null;
                 if (value is not null) {
-                    servicePlace = value?.role switch {
+                    servicePlace = value?.role switch
+                    {
                         "theContactDetails" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13618,7 +13538,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 theContactDetails = null;
                 if (value is not null) {
-                    theContactDetails = value?.role switch {
+                    theContactDetails = value?.role switch
+                    {
                         "servicePlace" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13628,111 +13549,90 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceContactViewModel._associationConnectorInformations;
 
-        public class theContactDetailsDryDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsDryDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsFloatingDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsFloatingDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsGridironRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsGridironRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsHarbourFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsAnchorBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsAnchorBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsAnchorageAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsBerthPositionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsBerthPositionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsDockAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsDockAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsDumpingGroundRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsDumpingGroundRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsHarbourBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsHarbourBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsOuterLimitRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsOuterLimitRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsTerminalRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsTerminalRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsTurningBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsTurningBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
-        public class theContactDetailsWaterwayAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theContactDetailsWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ContactDetails"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(ServiceContactViewModel)]();
     }
 
-    public class LocationHoursViewModel : InformationAssociationViewModel
-    {
+    public class LocationHoursViewModel : InformationAssociationViewModel {
         public override string Code => "LocationHours";
         public override string[] Roles => ["location_srvHrs", "facilityOperatingHours"];
 
@@ -13769,7 +13669,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 location_srvHrs = null;
                 if (value is not null) {
-                    location_srvHrs = value?.role switch {
+                    location_srvHrs = value?.role switch
+                    {
                         "facilityOperatingHours" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13777,7 +13678,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 facilityOperatingHours = null;
                 if (value is not null) {
-                    facilityOperatingHours = value?.role switch {
+                    facilityOperatingHours = value?.role switch
+                    {
                         "location_srvHrs" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13787,101 +13689,82 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => LocationHoursViewModel._associationConnectorInformations;
 
-        public class location_srvHrsAnchorageAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsAnchorBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsAnchorBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsDockAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsDockAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsDryDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsDryDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsDumpingGroundRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsDumpingGroundRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsFloatingDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsFloatingDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsGridironRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsGridironRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsHarbourBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsHarbourBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsHarbourFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsTerminalRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsTerminalRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsTurningBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsTurningBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
-        public class location_srvHrsWaterwayAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class location_srvHrsWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["ServiceHours"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(LocationHoursViewModel)]();
     }
 
-    public class RelatedOrganisationViewModel : InformationAssociationViewModel
-    {
+    public class RelatedOrganisationViewModel : InformationAssociationViewModel {
         public override string Code => "RelatedOrganisation";
         public override string[] Roles => ["theInformation", "theOrganisation"];
 
@@ -13918,7 +13801,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 theInformation = null;
                 if (value is not null) {
-                    theInformation = value?.role switch {
+                    theInformation = value?.role switch
+                    {
                         "theOrganisation" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13926,7 +13810,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 theOrganisation = null;
                 if (value is not null) {
-                    theOrganisation = value?.role switch {
+                    theOrganisation = value?.role switch
+                    {
                         "theInformation" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -13936,36 +13821,30 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => RelatedOrganisationViewModel._associationConnectorInformations;
 
-        public class theInformationAuthorityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theInformationAuthorityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
-        public class theOrganisationNauticalInformationRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theOrganisationNauticalInformationRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class theOrganisationRecommendationsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theOrganisationRecommendationsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class theOrganisationRegulationsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theOrganisationRegulationsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
-        public class theOrganisationRestrictionsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theOrganisationRestrictionsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Authority"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(RelatedOrganisationViewModel)]();
     }
 
-    public class InclusionTypeViewModel : InformationAssociationViewModel
-    {
+    public class InclusionTypeViewModel : InformationAssociationViewModel {
         public override string Code => "InclusionType";
         public override string[] Roles => ["theApplicableRxN", "isApplicableTo"];
 
@@ -14002,7 +13881,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 theApplicableRxN = null;
                 if (value is not null) {
-                    theApplicableRxN = value?.role switch {
+                    theApplicableRxN = value?.role switch
+                    {
                         "isApplicableTo" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -14010,7 +13890,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 isApplicableTo = null;
                 if (value is not null) {
-                    isApplicableTo = value?.role switch {
+                    isApplicableTo = value?.role switch
+                    {
                         "theApplicableRxN" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -14020,36 +13901,30 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => InclusionTypeViewModel._associationConnectorInformations;
 
-        public class isApplicableToNauticalInformationRefIdViewModel : InformationRefIdViewModel
-        {
+        public class isApplicableToNauticalInformationRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class isApplicableToRecommendationsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class isApplicableToRecommendationsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class isApplicableToRegulationsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class isApplicableToRegulationsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class isApplicableToRestrictionsRefIdViewModel : InformationRefIdViewModel
-        {
+        public class isApplicableToRestrictionsRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class theApplicableRxNApplicabilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class theApplicableRxNApplicabilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(InclusionTypeViewModel)]();
     }
 
-    public class PermissionTypeViewModel : InformationAssociationViewModel
-    {
+    public class PermissionTypeViewModel : InformationAssociationViewModel {
         public override string Code => "PermissionType";
         public override string[] Roles => ["vslLocation", "permission"];
 
@@ -14086,7 +13961,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 vslLocation = null;
                 if (value is not null) {
-                    vslLocation = value?.role switch {
+                    vslLocation = value?.role switch
+                    {
                         "permission" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -14094,7 +13970,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 permission = null;
                 if (value is not null) {
-                    permission = value?.role switch {
+                    permission = value?.role switch
+                    {
                         "vslLocation" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -14104,116 +13981,94 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => PermissionTypeViewModel._associationConnectorInformations;
 
-        public class permissionDryDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionDryDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionFloatingDockRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionFloatingDockRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionGridironRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionGridironRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionHarbourFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionHarbourFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionAnchorBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionAnchorBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionAnchorageAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionAnchorageAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionBerthPositionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionBerthPositionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionDockAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionDockAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionDumpingGroundRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionDumpingGroundRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionHarbourBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionHarbourBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionOuterLimitRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionOuterLimitRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionPilotBoardingPlaceRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionSeaplaneLandingAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionTerminalRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionTerminalRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionTurningBasinRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionTurningBasinRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class permissionWaterwayAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class permissionWaterwayAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Applicability"];
         }
 
-        public class vslLocationApplicabilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class vslLocationApplicabilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["NauticalInformation", "Recommendations", "Regulations", "Restrictions", "Applicability", "Authority", "AvailablePortServices", "ContactDetails", "Entrance", "NonStandardWorkingDay", "ServiceHours"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(PermissionTypeViewModel)]();
     }
 
-    public class SpatialAssociationViewModel : InformationAssociationViewModel
-    {
+    public class SpatialAssociationViewModel : InformationAssociationViewModel {
         public override string Code => "SpatialAssociation";
         public override string[] Roles => ["defines", "definedFor"];
 
@@ -14250,7 +14105,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 defines = null;
                 if (value is not null) {
-                    defines = value?.role switch {
+                    defines = value?.role switch
+                    {
                         "definedFor" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -14258,7 +14114,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 definedFor = null;
                 if (value is not null) {
-                    definedFor = value?.role switch {
+                    definedFor = value?.role switch
+                    {
                         "defines" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -14270,8 +14127,7 @@ namespace S100Framework.WPF.ViewModel.S131
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(SpatialAssociationViewModel)]();
     }
 
-    public class LimitEntranceViewModel : InformationAssociationViewModel
-    {
+    public class LimitEntranceViewModel : InformationAssociationViewModel {
         public override string Code => "LimitEntrance";
         public override string[] Roles => ["entranceTo", "entranceReference"];
 
@@ -14308,7 +14164,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 entranceTo = null;
                 if (value is not null) {
-                    entranceTo = value?.role switch {
+                    entranceTo = value?.role switch
+                    {
                         "entranceReference" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -14316,7 +14173,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 entranceReference = null;
                 if (value is not null) {
-                    entranceReference = value?.role switch {
+                    entranceReference = value?.role switch
+                    {
                         "entranceTo" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -14326,16 +14184,14 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => LimitEntranceViewModel._associationConnectorInformations;
 
-        public class entranceReferenceOuterLimitRefIdViewModel : InformationRefIdViewModel
-        {
+        public class entranceReferenceOuterLimitRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["Entrance"];
         }
 
         public static InformationAssociationConnector[] _associationConnectorInformations => Handles.AssociationConnectorInformations[typeof(LimitEntranceViewModel)]();
     }
 
-    public class ServiceAvailabilityViewModel : InformationAssociationViewModel
-    {
+    public class ServiceAvailabilityViewModel : InformationAssociationViewModel {
         public override string Code => "ServiceAvailability";
         public override string[] Roles => ["locationServed", "serviceDescriptionReference"];
 
@@ -14372,7 +14228,8 @@ namespace S100Framework.WPF.ViewModel.S131
                 this.SetValue(ref _associationConnector, value);
                 locationServed = null;
                 if (value is not null) {
-                    locationServed = value?.role switch {
+                    locationServed = value?.role switch
+                    {
                         "serviceDescriptionReference" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -14380,7 +14237,8 @@ namespace S100Framework.WPF.ViewModel.S131
 
                 serviceDescriptionReference = null;
                 if (value is not null) {
-                    serviceDescriptionReference = value?.role switch {
+                    serviceDescriptionReference = value?.role switch
+                    {
                         "locationServed" => value.CreateForeignInformationBinding(),
                         _ => value.CreateLocalInformationBinding(),
                     };
@@ -14390,38 +14248,31 @@ namespace S100Framework.WPF.ViewModel.S131
 
         public override InformationAssociationConnector[] associationConnectorInformations => ServiceAvailabilityViewModel._associationConnectorInformations;
 
-        public class serviceDescriptionReferenceAnchorBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class serviceDescriptionReferenceAnchorBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["AvailablePortServices"];
         }
 
-        public class serviceDescriptionReferenceBerthRefIdViewModel : InformationRefIdViewModel
-        {
+        public class serviceDescriptionReferenceBerthRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["AvailablePortServices"];
         }
 
-        public class serviceDescriptionReferenceDockAreaRefIdViewModel : InformationRefIdViewModel
-        {
+        public class serviceDescriptionReferenceDockAreaRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["AvailablePortServices"];
         }
 
-        public class serviceDescriptionReferenceHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel
-        {
+        public class serviceDescriptionReferenceHarbourAreaAdministrativeRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["AvailablePortServices"];
         }
 
-        public class serviceDescriptionReferenceHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel
-        {
+        public class serviceDescriptionReferenceHarbourAreaSectionRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["AvailablePortServices"];
         }
 
-        public class serviceDescriptionReferenceMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel
-        {
+        public class serviceDescriptionReferenceMooringWarpingFacilityRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["AvailablePortServices"];
         }
 
-        public class serviceDescriptionReferenceTerminalRefIdViewModel : InformationRefIdViewModel
-        {
+        public class serviceDescriptionReferenceTerminalRefIdViewModel : InformationRefIdViewModel {
             public override string[] AssociationTypes => ["AvailablePortServices"];
         }
 
