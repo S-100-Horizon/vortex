@@ -133,7 +133,7 @@ namespace S100Framework.WPF.ViewModel
         public string role { get; set; } = string.Empty;
 
         [Browsable(false)]
-        public Type[] AssociationTypes { get; set; } = [];
+        public string[] AssociationTypes { get; set; } = [];
 
         [PropertyOrder(1)]
         public int Lower { get; set; } = 0;
@@ -144,7 +144,7 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class InformationAssociationConnector : AssociationConnector
     {
-        public abstract Type InformationType { get; }
+        public abstract string InformationType { get; }
 
         public Func<InformationBindingViewModel?> CreateForeignInformationBinding { get; set; } = () => default;
 
@@ -154,7 +154,7 @@ namespace S100Framework.WPF.ViewModel
 
     public class InformationAssociationConnector<T> : InformationAssociationConnector where T : Node
     {
-        public override Type InformationType => typeof(T);
+        public override string InformationType => typeof(T).Name;
 
         public string DisplayName => $"{typeof(T).Name}, {base.role}";
 
@@ -162,17 +162,17 @@ namespace S100Framework.WPF.ViewModel
             if (obj == null || GetType() != obj.GetType())
                 return false;
             var other = (InformationAssociationConnector<T>)obj;
-            return this.InformationType.Name.Equals(other.InformationType.Name);
+            return this.InformationType.Equals(other.InformationType, StringComparison.InvariantCultureIgnoreCase);
         }
 
         public override int GetHashCode() {
-            return this.InformationType.Name.GetHashCode();
+            return this.InformationType.GetHashCode();
         }
     }
 
     public abstract class FeatureAssociationConnector : AssociationConnector
     {
-        public abstract Type FeatureType { get; }
+        public abstract string FeatureType { get; }
 
         public Func<FeatureBindingViewModel?> CreateForeignFeatureBinding { get; set; } = () => default;
 
@@ -181,7 +181,7 @@ namespace S100Framework.WPF.ViewModel
 
     public class FeatureAssociationConnector<T> : FeatureAssociationConnector where T : FeatureNode
     {
-        public override Type FeatureType => typeof(T);
+        public override string FeatureType => typeof(T).Name;
 
         public string DisplayName => $"{typeof(T).Name}, {base.role}";
 
@@ -189,11 +189,11 @@ namespace S100Framework.WPF.ViewModel
             if (obj == null || GetType() != obj.GetType())
                 return false;
             var other = (FeatureAssociationConnector<T>)obj;
-            return this.FeatureType.Name.Equals(other.FeatureType.Name);
+            return this.FeatureType.Equals(other.FeatureType, StringComparison.InvariantCultureIgnoreCase);
         }
 
         public override int GetHashCode() {
-            return this.FeatureType.Name.GetHashCode();
+            return this.FeatureType.GetHashCode();
         }
     }
 
@@ -244,7 +244,7 @@ namespace S100Framework.WPF.ViewModel
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
 
-        public override string[] AssociationTypes { get; } = new string[0];
+        public override string[] AssociationTypes { get; } = [];
     }
 
     public abstract class FeatureRefIdViewModel : RefIdViewModel
@@ -266,7 +266,7 @@ namespace S100Framework.WPF.ViewModel
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
 
-        public override string[] AssociationTypes { get; } = new string[0];
+        public override string[] AssociationTypes { get; } = [];
     }
 
     public abstract class InformationBindingViewModel : INotifyPropertyChanged
@@ -283,20 +283,6 @@ namespace S100Framework.WPF.ViewModel
             if (EqualityComparer<T>.Default.Equals(backingFiled, value)) return;
             backingFiled = value;
             OnPropertyChanged(propertyName);
-        }
-
-        private Type? _informationType = default;
-
-        [Editor(typeof(InformationBindingEditor), typeof(InformationBindingEditor))]
-        public Type? InformationType {
-            get { return _informationType; }
-            set {
-                this.SetValue(ref _informationType, value);
-
-                RefIds.Clear();
-                foreach (var e in Handles.GetInformations(this)!)
-                    RefIds.Add(e);
-            }
         }
 
         [Browsable(false)]

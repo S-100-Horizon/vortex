@@ -130,7 +130,7 @@ namespace S100Framework.WPF.Editors
                 DisplayMemberPath = "Name",
             };
 
-            var bindingItemsSourceProperty = new Binding() { Source = viewModel.InformationType, Mode = BindingMode.OneWay };
+            var bindingItemsSourceProperty = new Binding() { Source = viewModel.InformationTypes, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
 
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };

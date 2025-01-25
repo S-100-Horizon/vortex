@@ -912,7 +912,7 @@ namespace S100Framework
                                 builder.AppendLine(viewModelBindingBuilder.ToString());
 
                                 builder.AppendLine($"\t\t\tpublic class {code}RefIdViewModel : InformationRefIdViewModel {{");
-                                builder.AppendLine($"\t\t\t\tpublic override Type[] AssociationTypes => [typeof({code})];");
+                                builder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [\"{code}\"];");
                                 builder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                                 builder.AppendLine($"\t\t\t}}");
                             }));
@@ -1064,7 +1064,7 @@ namespace S100Framework
                                 builder.AppendLine(viewModelBindingBuilder.ToString());
 
                                 builder.AppendLine($"\t\t\tpublic class {code}RefIdViewModel : FeatureRefIdViewModel {{");
-                                builder.AppendLine($"\t\t\t\tpublic override Type[] AssociationTypes => [typeof({code})];");
+                                builder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [\"{code}\"];");
                                 builder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                                 builder.AppendLine($"\t\t\t}}");
                             }));
@@ -1161,14 +1161,6 @@ namespace S100Framework
 
                         foreach (var s in roles.Where(e => !e.Equals(r))) {
                             viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => value.CreateForeignFeatureBinding(),");
-
-                            //viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiFeatureBindingViewModel {{");
-                            //viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
-                            //viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new SingleFeatureBindingViewModel {{");
-                            //viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
-                            //viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new OptionalFeatureBindingViewModel {{");
-                            //viewBuilder.AppendLine($"\t\t\t\t\t\t\tFeatureTypes = value.AssociationTypes,");
-                            //viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
                         }
 
                         viewBuilder.AppendLine($"\t\t\t\t\t\t_ => value.CreateLocalFeatureBinding(),");
@@ -1209,7 +1201,7 @@ namespace S100Framework
                             }
                         }
 
-                        featureTypeRefs = featureTypeRefsHierarchy.Select(e => $"typeof({e})").ToArray();
+                        featureTypeRefs = featureTypeRefsHierarchy.Select(e => $"\"{e}\"").ToArray();
 
                         foreach (var f in featureHierarchy.Hierarchy(featureType)) {
                             var refName = $"{role}{f}RefIdViewModel";
@@ -1237,7 +1229,7 @@ namespace S100Framework
                             b.AppendLine($"}},");
 
                             viewBuilder.AppendLine($"\t\t\tpublic class {role}{f}RefIdViewModel : FeatureRefIdViewModel {{");
-                            viewBuilder.AppendLine($"\t\t\t\tpublic override Type[] AssociationTypes => [{string.Join(',', featureTypeRefs)}];");
+                            viewBuilder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [{string.Join(',', featureTypeRefs)}];");
                             viewBuilder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                             viewBuilder.AppendLine($"\t\t\t}}");
                         }
@@ -1321,14 +1313,6 @@ namespace S100Framework
 
                             foreach (var s in roles.Where(e => !e.Equals(r))) {
                                 viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => value.CreateForeignInformationBinding(),");
-
-                                //viewBuilder.AppendLine($"\t\t\t\t\t\t\"{s}\" => (!value.Upper.HasValue || value.Upper.Value > 1) ? new MultiInformationBindingViewModel {{");
-                                //viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = value.AssociationTypes,");
-                                //viewBuilder.AppendLine($"\t\t\t\t\t\t}} : value.Lower > 0 ? new SingleInformationBindingViewModel {{");
-                                //viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = value.AssociationTypes,");
-                                //viewBuilder.AppendLine($"\t\t\t\t\t\t}} : new OptionalInformationBindingViewModel {{");
-                                //viewBuilder.AppendLine($"\t\t\t\t\t\t\tInformationTypes = value.AssociationTypes,");
-                                //viewBuilder.AppendLine($"\t\t\t\t\t\t}},");
                             }
 
                             viewBuilder.AppendLine($"\t\t\t\t\t\t_ => value.CreateLocalInformationBinding(),");
@@ -1371,7 +1355,7 @@ namespace S100Framework
                         }
                         //if (informationTypeRefs.Count() != informationTypeRefsHierarchy.Count())
                         //    System.Diagnostics.Debugger.Break();
-                        informationTypeRefs = informationTypeRefsHierarchy.Select(e => $"typeof({e})").ToArray();
+                        informationTypeRefs = informationTypeRefsHierarchy.Select(e => $"\"{e}\"").ToArray();
 
                         var hierarchy = association.Parent!.Name.LocalName switch {
                             "S100_FC_FeatureType" => featureHierarchy.Hierarchy(informationType),
@@ -1412,7 +1396,7 @@ namespace S100Framework
 
 
                             viewBuilder.AppendLine($"\t\t\tpublic class {role}{f}RefIdViewModel : InformationRefIdViewModel {{");
-                            viewBuilder.AppendLine($"\t\t\t\tpublic override Type[] AssociationTypes => [{string.Join(',', informationTypeRefs)}];");
+                            viewBuilder.AppendLine($"\t\t\t\tpublic override string[] AssociationTypes => [{string.Join(',', informationTypeRefs)}];");
                             viewBuilder.AppendLine("\t\t\t\tpublic override string ToString() => \"RefId\";");
                             viewBuilder.AppendLine($"\t\t\t}}");
                         }
