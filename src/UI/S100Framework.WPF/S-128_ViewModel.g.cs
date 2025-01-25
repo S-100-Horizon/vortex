@@ -53,7 +53,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "elementContainer",
                     Lower = 1,
                     Upper = default,
-                    AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerElectronicProductRefIdViewModel>("ProductPackage"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
                 }, new InformationAssociationConnector<PhysicalProduct>()
@@ -62,7 +62,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "elementContainer",
                     Lower = 1,
                     Upper = default,
-                    AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerPhysicalProductRefIdViewModel>("ProductPackage"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
                 }, new InformationAssociationConnector<S100Service>()
@@ -71,7 +71,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "elementContainer",
                     Lower = 1,
                     Upper = default,
-                    AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductPackageViewModel.elementContainerS100ServiceRefIdViewModel>("ProductPackage"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
                 }
@@ -86,7 +86,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "catalogueHeader",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProductionDetailsViewModel.catalogueHeaderProducerInformationRefIdViewModel>("ProductionDetails"),
                     CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ProducerInformationViewModel.ProducerInformationRefIdViewModel>("ProducerInformation"),
                 }, new InformationAssociationConnector<CatalogueSectionHeader>()
@@ -95,7 +95,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theProducer",
                     Lower = 0,
                     Upper = 1,
-                    AssociationTypes = [typeof(ProducerInformation)],
+                    AssociationTypes = ["ProducerInformation"],
                     CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ProductionDetailsViewModel.theProducerCatalogueSectionHeaderRefIdViewModel>("ProductionDetails"),
                     CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<CatalogueSectionHeaderViewModel.CatalogueSectionHeaderRefIdViewModel>("CatalogueSectionHeader"),
                 }
@@ -110,7 +110,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theContactDetails",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(ContactDetails)],
+                    AssociationTypes = ["ContactDetails"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<ProducerContactViewModel.theContactDetailsProducerInformationRefIdViewModel>("ProducerContact"),
                     CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ProducerInformationViewModel.ProducerInformationRefIdViewModel>("ProducerInformation"),
                 }, new InformationAssociationConnector<ContactDetails>()
@@ -119,7 +119,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theProducer",
                     Lower = 0,
                     Upper = 1,
-                    AssociationTypes = [typeof(ProducerInformation)],
+                    AssociationTypes = ["ProducerInformation"],
                     CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<ProducerContactViewModel.theProducerContactDetailsRefIdViewModel>("ProducerContact"),
                     CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ContactDetailsViewModel.ContactDetailsRefIdViewModel>("ContactDetails"),
                 }
@@ -134,7 +134,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theCatalogueOfNauticalProduct",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfNauticalProductViewModel.theCatalogueOfNauticalProductPriceInformationRefIdViewModel>("PriceOfNauticalProduct"),
                     CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<PriceInformationViewModel.PriceInformationRefIdViewModel>("PriceInformation"),
                 }, new InformationAssociationConnector<CatalogueSectionHeader>()
@@ -143,7 +143,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "thePriceInformation",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(PriceInformation)],
+                    AssociationTypes = ["PriceInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfNauticalProductViewModel.thePriceInformationCatalogueSectionHeaderRefIdViewModel>("PriceOfNauticalProduct"),
                     CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<CatalogueSectionHeaderViewModel.CatalogueSectionHeaderRefIdViewModel>("CatalogueSectionHeader"),
                 }
@@ -158,7 +158,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "thePriceInformation",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(PriceInformation)],
+                    AssociationTypes = ["PriceInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationElectronicProductRefIdViewModel>("PriceOfElement"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
                 }, new InformationAssociationConnector<PhysicalProduct>()
@@ -167,7 +167,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "thePriceInformation",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(PriceInformation)],
+                    AssociationTypes = ["PriceInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationPhysicalProductRefIdViewModel>("PriceOfElement"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
                 }, new InformationAssociationConnector<S100Service>()
@@ -176,7 +176,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "thePriceInformation",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(PriceInformation)],
+                    AssociationTypes = ["PriceInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<PriceOfElementViewModel.thePriceInformationS100ServiceRefIdViewModel>("PriceOfElement"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
                 }
@@ -191,7 +191,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theContactDetails",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(ContactDetails)],
+                    AssociationTypes = ["ContactDetails"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<DistributorContactViewModel.theContactDetailsDistributorInformationRefIdViewModel>("DistributorContact"),
                     CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DistributorInformationViewModel.DistributorInformationRefIdViewModel>("DistributorInformation"),
                 }, new InformationAssociationConnector<ContactDetails>()
@@ -200,7 +200,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theDistributor",
                     Lower = 0,
                     Upper = 1,
-                    AssociationTypes = [typeof(DistributorInformation)],
+                    AssociationTypes = ["DistributorInformation"],
                     CreateForeignInformationBinding = () => new OptionalInformationBindingViewModel<DistributorContactViewModel.theDistributorContactDetailsRefIdViewModel>("DistributorContact"),
                     CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<ContactDetailsViewModel.ContactDetailsRefIdViewModel>("ContactDetails"),
                 }
@@ -215,7 +215,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "catalogueHeader",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(CatalogueSectionHeader)],
+                    AssociationTypes = ["CatalogueSectionHeader"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<DistributionDetailsViewModel.catalogueHeaderDistributorInformationRefIdViewModel>("DistributionDetails"),
                     CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<DistributorInformationViewModel.DistributorInformationRefIdViewModel>("DistributorInformation"),
                 }, new InformationAssociationConnector<CatalogueSectionHeader>()
@@ -224,7 +224,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theDistributor",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(DistributorInformation)],
+                    AssociationTypes = ["DistributorInformation"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<DistributionDetailsViewModel.theDistributorCatalogueSectionHeaderRefIdViewModel>("DistributionDetails"),
                     CreateLocalInformationBinding = () => new SingleInformationBindingViewModel<CatalogueSectionHeaderViewModel.CatalogueSectionHeaderRefIdViewModel>("CatalogueSectionHeader"),
                 }
@@ -239,7 +239,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theRequirement",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(IndicationOfCarriageRequirement)],
+                    AssociationTypes = ["IndicationOfCarriageRequirement"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementElectronicProductRefIdViewModel>("CarriageRequirement"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
                 }, new InformationAssociationConnector<PhysicalProduct>()
@@ -248,7 +248,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theRequirement",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(IndicationOfCarriageRequirement)],
+                    AssociationTypes = ["IndicationOfCarriageRequirement"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementPhysicalProductRefIdViewModel>("CarriageRequirement"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
                 }, new InformationAssociationConnector<S100Service>()
@@ -257,7 +257,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theRequirement",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(IndicationOfCarriageRequirement)],
+                    AssociationTypes = ["IndicationOfCarriageRequirement"],
                     CreateForeignInformationBinding = () => new MultiInformationBindingViewModel<CarriageRequirementViewModel.theRequirementS100ServiceRefIdViewModel>("CarriageRequirement"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
                 }
@@ -275,7 +275,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "main",
                     Lower = 1,
                     Upper = 1,
-                    AssociationTypes = [typeof(ElectronicProduct), typeof(PhysicalProduct)],
+                    AssociationTypes = ["ElectronicProduct", "PhysicalProduct"],
                     CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<CorrelatedViewModel.mainElectronicProductRefIdViewModel>("Correlated"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
                 }, new FeatureAssociationConnector<PhysicalProduct>()
@@ -284,7 +284,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "main",
                     Lower = 1,
                     Upper = 1,
-                    AssociationTypes = [typeof(ElectronicProduct), typeof(PhysicalProduct)],
+                    AssociationTypes = ["ElectronicProduct", "PhysicalProduct"],
                     CreateForeignFeatureBinding = () => new SingleFeatureBindingViewModel<CorrelatedViewModel.mainPhysicalProductRefIdViewModel>("Correlated"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
                 }
@@ -299,7 +299,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theReference",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)],
+                    AssociationTypes = ["ElectronicProduct", "PhysicalProduct", "S100Service"],
                     CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<ProductMappingViewModel.theReferenceElectronicProductRefIdViewModel>("ProductMapping"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<ElectronicProductViewModel.ElectronicProductRefIdViewModel>("ElectronicProduct"),
                 }, new FeatureAssociationConnector<PhysicalProduct>()
@@ -308,7 +308,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theReference",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)],
+                    AssociationTypes = ["ElectronicProduct", "PhysicalProduct", "S100Service"],
                     CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<ProductMappingViewModel.theReferencePhysicalProductRefIdViewModel>("ProductMapping"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<PhysicalProductViewModel.PhysicalProductRefIdViewModel>("PhysicalProduct"),
                 }, new FeatureAssociationConnector<S100Service>()
@@ -317,7 +317,7 @@ namespace S100Framework.WPF.ViewModel.S128
                     role = "theReference",
                     Lower = 0,
                     Upper = default,
-                    AssociationTypes = [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)],
+                    AssociationTypes = ["ElectronicProduct", "PhysicalProduct", "S100Service"],
                     CreateForeignFeatureBinding = () => new MultiFeatureBindingViewModel<ProductMappingViewModel.theReferenceS100ServiceRefIdViewModel>("ProductMapping"),
                     CreateLocalFeatureBinding = () => new SingleFeatureBindingViewModel<S100ServiceViewModel.S100ServiceRefIdViewModel>("S100Service"),
                 }
@@ -2061,7 +2061,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
 
         public class CatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
 
             public override string ToString() => "RefId";
             }
@@ -2130,7 +2130,7 @@ namespace S100Framework.WPF.ViewModel.S128
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
 
         public class ContactDetailsRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override string[] AssociationTypes => ["ContactDetails"];
 
             public override string ToString() => "RefId";
             }
@@ -2234,7 +2234,7 @@ namespace S100Framework.WPF.ViewModel.S128
         public ObservableCollection<featureName> featureName { get; set; } = new();
 
         public class IndicationOfCarriageRequirementRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+            public override string[] AssociationTypes => ["IndicationOfCarriageRequirement"];
 
             public override string ToString() => "RefId";
             }
@@ -2290,7 +2290,7 @@ namespace S100Framework.WPF.ViewModel.S128
         public ObservableCollection<sourceIndication> sourceIndication { get; set; } = new();
 
         public class PriceInformationRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(PriceInformation)];
+            public override string[] AssociationTypes => ["PriceInformation"];
 
             public override string ToString() => "RefId";
             }
@@ -2379,7 +2379,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
 
         public class ProducerInformationRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ProducerInformation)];
+            public override string[] AssociationTypes => ["ProducerInformation"];
 
             public override string ToString() => "RefId";
             }
@@ -2426,7 +2426,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
 
         public class DistributorInformationRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(DistributorInformation)];
+            public override string[] AssociationTypes => ["DistributorInformation"];
 
             public override string ToString() => "RefId";
             }
@@ -2800,7 +2800,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
 
         public class ElectronicProductRefIdViewModel : FeatureRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ElectronicProduct)];
+            public override string[] AssociationTypes => ["ElectronicProduct"];
 
             public override string ToString() => "RefId";
             }
@@ -3344,7 +3344,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
 
         public class PhysicalProductRefIdViewModel : FeatureRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(PhysicalProduct)];
+            public override string[] AssociationTypes => ["PhysicalProduct"];
 
             public override string ToString() => "RefId";
             }
@@ -3726,7 +3726,7 @@ namespace S100Framework.WPF.ViewModel.S128
             }
 
         public class S100ServiceRefIdViewModel : FeatureRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(S100Service)];
+            public override string[] AssociationTypes => ["S100Service"];
 
             public override string ToString() => "RefId";
             }
@@ -3895,19 +3895,19 @@ namespace S100Framework.WPF.ViewModel.S128
         public override FeatureAssociationConnector[] associationConnectorFeatures => ProductMappingViewModel._associationConnectorFeatures;
 
         public class theReferenceElectronicProductRefIdViewModel : FeatureRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+            public override string[] AssociationTypes => ["ElectronicProduct", "PhysicalProduct", "S100Service"];
 
             public override string ToString() => "RefId";
             }
 
         public class theReferencePhysicalProductRefIdViewModel : FeatureRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+            public override string[] AssociationTypes => ["ElectronicProduct", "PhysicalProduct", "S100Service"];
 
             public override string ToString() => "RefId";
             }
 
         public class theReferenceS100ServiceRefIdViewModel : FeatureRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct), typeof(S100Service)];
+            public override string[] AssociationTypes => ["ElectronicProduct", "PhysicalProduct", "S100Service"];
 
             public override string ToString() => "RefId";
             }
@@ -3952,13 +3952,13 @@ namespace S100Framework.WPF.ViewModel.S128
         public override FeatureAssociationConnector[] associationConnectorFeatures => CorrelatedViewModel._associationConnectorFeatures;
 
         public class mainElectronicProductRefIdViewModel : FeatureRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct)];
+            public override string[] AssociationTypes => ["ElectronicProduct", "PhysicalProduct"];
 
             public override string ToString() => "RefId";
             }
 
         public class mainPhysicalProductRefIdViewModel : FeatureRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ElectronicProduct), typeof(PhysicalProduct)];
+            public override string[] AssociationTypes => ["ElectronicProduct", "PhysicalProduct"];
 
             public override string ToString() => "RefId";
             }
@@ -4024,19 +4024,19 @@ namespace S100Framework.WPF.ViewModel.S128
         public override InformationAssociationConnector[] associationConnectorInformations => CarriageRequirementViewModel._associationConnectorInformations;
 
         public class theRequirementElectronicProductRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+            public override string[] AssociationTypes => ["IndicationOfCarriageRequirement"];
 
             public override string ToString() => "RefId";
             }
 
         public class theRequirementPhysicalProductRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+            public override string[] AssociationTypes => ["IndicationOfCarriageRequirement"];
 
             public override string ToString() => "RefId";
             }
 
         public class theRequirementS100ServiceRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(IndicationOfCarriageRequirement)];
+            public override string[] AssociationTypes => ["IndicationOfCarriageRequirement"];
 
             public override string ToString() => "RefId";
             }
@@ -4102,13 +4102,13 @@ namespace S100Framework.WPF.ViewModel.S128
         public override InformationAssociationConnector[] associationConnectorInformations => DistributionDetailsViewModel._associationConnectorInformations;
 
         public class catalogueHeaderDistributorInformationRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
 
             public override string ToString() => "RefId";
             }
 
         public class theDistributorCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(DistributorInformation)];
+            public override string[] AssociationTypes => ["DistributorInformation"];
 
             public override string ToString() => "RefId";
             }
@@ -4174,13 +4174,13 @@ namespace S100Framework.WPF.ViewModel.S128
         public override InformationAssociationConnector[] associationConnectorInformations => DistributorContactViewModel._associationConnectorInformations;
 
         public class theContactDetailsDistributorInformationRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override string[] AssociationTypes => ["ContactDetails"];
 
             public override string ToString() => "RefId";
             }
 
         public class theDistributorContactDetailsRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(DistributorInformation)];
+            public override string[] AssociationTypes => ["DistributorInformation"];
 
             public override string ToString() => "RefId";
             }
@@ -4246,19 +4246,19 @@ namespace S100Framework.WPF.ViewModel.S128
         public override InformationAssociationConnector[] associationConnectorInformations => PriceOfElementViewModel._associationConnectorInformations;
 
         public class thePriceInformationElectronicProductRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(PriceInformation)];
+            public override string[] AssociationTypes => ["PriceInformation"];
 
             public override string ToString() => "RefId";
             }
 
         public class thePriceInformationPhysicalProductRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(PriceInformation)];
+            public override string[] AssociationTypes => ["PriceInformation"];
 
             public override string ToString() => "RefId";
             }
 
         public class thePriceInformationS100ServiceRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(PriceInformation)];
+            public override string[] AssociationTypes => ["PriceInformation"];
 
             public override string ToString() => "RefId";
             }
@@ -4324,13 +4324,13 @@ namespace S100Framework.WPF.ViewModel.S128
         public override InformationAssociationConnector[] associationConnectorInformations => PriceOfNauticalProductViewModel._associationConnectorInformations;
 
         public class theCatalogueOfNauticalProductPriceInformationRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
 
             public override string ToString() => "RefId";
             }
 
         public class thePriceInformationCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(PriceInformation)];
+            public override string[] AssociationTypes => ["PriceInformation"];
 
             public override string ToString() => "RefId";
             }
@@ -4396,13 +4396,13 @@ namespace S100Framework.WPF.ViewModel.S128
         public override InformationAssociationConnector[] associationConnectorInformations => ProducerContactViewModel._associationConnectorInformations;
 
         public class theContactDetailsProducerInformationRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ContactDetails)];
+            public override string[] AssociationTypes => ["ContactDetails"];
 
             public override string ToString() => "RefId";
             }
 
         public class theProducerContactDetailsRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ProducerInformation)];
+            public override string[] AssociationTypes => ["ProducerInformation"];
 
             public override string ToString() => "RefId";
             }
@@ -4468,13 +4468,13 @@ namespace S100Framework.WPF.ViewModel.S128
         public override InformationAssociationConnector[] associationConnectorInformations => ProductionDetailsViewModel._associationConnectorInformations;
 
         public class catalogueHeaderProducerInformationRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
 
             public override string ToString() => "RefId";
             }
 
         public class theProducerCatalogueSectionHeaderRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(ProducerInformation)];
+            public override string[] AssociationTypes => ["ProducerInformation"];
 
             public override string ToString() => "RefId";
             }
@@ -4540,19 +4540,19 @@ namespace S100Framework.WPF.ViewModel.S128
         public override InformationAssociationConnector[] associationConnectorInformations => ProductPackageViewModel._associationConnectorInformations;
 
         public class elementContainerElectronicProductRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
 
             public override string ToString() => "RefId";
             }
 
         public class elementContainerPhysicalProductRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
 
             public override string ToString() => "RefId";
             }
 
         public class elementContainerS100ServiceRefIdViewModel : InformationRefIdViewModel {
-            public override Type[] AssociationTypes => [typeof(CatalogueSectionHeader)];
+            public override string[] AssociationTypes => ["CatalogueSectionHeader"];
 
             public override string ToString() => "RefId";
             }

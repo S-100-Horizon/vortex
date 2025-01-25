@@ -1,9 +1,4 @@
-﻿using S100Framework.DomainModel.S101;
-using S100Framework.DomainModel.S101.FeatureTypes;
-using S100Framework.WPF.ViewModel;
-using S100Framework.WPF.ViewModel.S101;
-using System.Collections.ObjectModel;
-using System.Globalization;
+﻿using System.Globalization;
 using System.Windows.Data;
 
 namespace VortexConceptApplication
@@ -30,46 +25,46 @@ namespace VortexConceptApplication
 
         public UpdatedInformationViewModel() : base() {
 
-            var fromJson = new S100Framework.DomainModel.FeatureAssociation {
-                Code = "UpdatedInformation",
-                AssociationConnectorTypeName = "AdministrationArea",
-                RefIds = new[] {
-                    new S100Framework.DomainModel.RefId {
-                        Type = "",
-                        Role = "theUpdate",
-                        Value = "Hello",
-                    },
-                    new S100Framework.DomainModel.RefId {
-                        Type = "UpdateInformation",
-                        Role = "theUpdatedObject",
-                        Value = "World (1)",
-                    },
-                    new S100Framework.DomainModel.RefId {
-                        Type = "UpdateInformation",
-                        Role = "theUpdatedObject",
-                        Value = "World (2)",
-                    }
-                },
-            };
+            //var fromJson = new S100Framework.DomainModel.FeatureAssociation {
+            //    Code = "UpdatedInformation",
+            //    AssociationConnectorTypeName = "AdministrationArea",
+            //    RefIds = new[] {
+            //        new S100Framework.DomainModel.RefId {
+            //            Type = "",
+            //            Role = "theUpdate",
+            //            Value = "Hello",
+            //        },
+            //        new S100Framework.DomainModel.RefId {
+            //            Type = "UpdateInformation",
+            //            Role = "theUpdatedObject",
+            //            Value = "World (1)",
+            //        },
+            //        new S100Framework.DomainModel.RefId {
+            //            Type = "UpdateInformation",
+            //            Role = "theUpdatedObject",
+            //            Value = "World (2)",
+            //        }
+            //    },
+            //};
 
-            //var a = base.associationConnectorFeatures[typeof(S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel)]();
+            ////var a = base.associationConnectorFeatures[typeof(S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel)]();
 
-            associationConnector = base.associationConnectorFeatures.Single(e => e.FeatureType.Name.Equals(fromJson.AssociationConnectorTypeName));
+            //associationConnector = base.associationConnectorFeatures.Single(e => e.FeatureType.Equals(fromJson.AssociationConnectorTypeName));
 
-            var refId = new AdministrationAreaViewModel.AdministrationAreaRefIdViewModel();
-            refId.FeatureType = refId.AssociationTypes[0];
-            refId.RefId = "Hello";
+            //var refId = new AdministrationAreaViewModel.AdministrationAreaRefIdViewModel();
+            //refId.FeatureType = refId.AssociationTypes[0];
+            //refId.RefId = "Hello";
 
-            ((SingleFeatureBindingViewModel<AdministrationAreaViewModel.AdministrationAreaRefIdViewModel>)base.theUpdate!).RefId = refId;
+            //((SingleFeatureBindingViewModel<AdministrationAreaViewModel.AdministrationAreaRefIdViewModel>)base.theUpdate!).RefId = refId;
 
-            var theUpdatedObject = ((MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAdministrationAreaRefIdViewModel>)base.theUpdatedObject!);
+            //var theUpdatedObject = ((MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAdministrationAreaRefIdViewModel>)base.theUpdatedObject!);
 
-            for (var i = 0; i < 2; i++) {
-                var r = new UpdatedInformationViewModel.theUpdateAdministrationAreaRefIdViewModel();
-                r.FeatureType = typeof(UpdateInformation);
-                r.RefId = $"World ({i})";
-                theUpdatedObject.RefId.Add(r);
-            }
+            //for (var i = 0; i < 2; i++) {
+            //    var r = new UpdatedInformationViewModel.theUpdateAdministrationAreaRefIdViewModel();
+            //    r.FeatureType = typeof(UpdateInformation).Name;
+            //    r.RefId = $"World ({i})";
+            //    theUpdatedObject.RefId.Add(r);
+            //}
         }
     }
 

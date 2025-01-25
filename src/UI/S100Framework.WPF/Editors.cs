@@ -68,7 +68,7 @@ namespace S100Framework.WPF.Editors
                 //DisplayMemberPath = "refId",
             };
 
-            if(!string.IsNullOrEmpty(viewModel.RefId))
+            if (!string.IsNullOrEmpty(viewModel.RefId))
                 source.Add(viewModel.RefId);
 
             var bindingItemsSourceProperty = new Binding() { Source = source, Mode = BindingMode.OneWay };
@@ -123,7 +123,7 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            if(viewModel.associationConnector is not null) {                
+            if (viewModel.associationConnector is not null) {
                 comboBox.SelectedValue = viewModel.associationConnector;
             }
             return comboBox;
@@ -137,7 +137,7 @@ namespace S100Framework.WPF.Editors
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                DisplayMemberPath = "Name",
+                //DisplayMemberPath = "Name",
             };
 
             var bindingItemsSourceProperty = new Binding() { Source = viewModel.AssociationTypes, Mode = BindingMode.OneWay };
@@ -159,7 +159,7 @@ namespace S100Framework.WPF.Editors
 
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
-                DisplayMemberPath = "Name",
+                //DisplayMemberPath = "Name",
             };
 
             var bindingItemsSourceProperty = new Binding() { Source = viewModel.AssociationTypes, Mode = BindingMode.OneWay };
@@ -170,6 +170,9 @@ namespace S100Framework.WPF.Editors
 
             //TODO: Dynamic read value from instance!!!!
             //comboBox.SelectedIndex = 0;
+            if (viewModel.FeatureType is not null) {
+                comboBox.SelectedValue = viewModel.FeatureType;
+            }
             return comboBox;
         }
     }

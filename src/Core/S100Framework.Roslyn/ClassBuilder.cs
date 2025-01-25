@@ -1456,21 +1456,21 @@ namespace S100Framework
             common.AppendLine("\t{");
             common.AppendLine("\t}");
             common.AppendLine();
-           
+
             common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class Node {");
             common.AppendLine("\t\tpublic virtual string Code => string.Empty;");
             common.AppendLine("\t}");
             common.AppendLine();
-            common.AppendLine("\t[System.SerializableAttribute()]");            
+            common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class InformationNode : Node {");
             common.AppendLine("\t}");
             common.AppendLine();
-            common.AppendLine("\t[System.SerializableAttribute()]");            
+            common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic abstract class FeatureNode : Node {");
             common.AppendLine("\t}");
 
-            common.AppendLine("\t[System.SerializableAttribute()]");            
+            common.AppendLine("\t[System.SerializableAttribute()]");
             common.AppendLine("\tpublic class RefId {");
             common.AppendLine("\t\tpublic required string Value { get; set; }");
             common.AppendLine("\t\tpublic required string Type { get; set; }");
@@ -2101,6 +2101,6 @@ namespace S100Framework
             // Remove unused using directives
             var rootWithoutUnusedUsings = root.RemoveNodes(unusedUsings, SyntaxRemoveOptions.KeepNoTrivia);
             return rootWithoutUnusedUsings;
-        }       
+        }
     }
 }

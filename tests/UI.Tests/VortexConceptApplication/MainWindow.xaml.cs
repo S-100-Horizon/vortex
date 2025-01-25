@@ -192,8 +192,8 @@ namespace VortexConceptApplication
             //var viewModel = IslandAggregation.TestIslandGroup;
 
             var viewModel101 = new VortexConceptApplication.UpdatedInformationViewModel();
-            
-            
+
+
 
 
             var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();

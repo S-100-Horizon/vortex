@@ -1,6 +1,5 @@
 using ArcGIS.Core.CIM;
 using ArcGIS.Core.Data;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
 using S100Framework.Applications;
 using System.Text;
 using System.Text.RegularExpressions;
