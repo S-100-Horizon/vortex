@@ -3,19 +3,20 @@ using S100Framework.WPF.Editors;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Controls;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel
 {
     public static class Handles
     {
-        public static Func<InformationBindingViewModel?, string[]?> GetInformations { get; set; } = (e) => { return default; };
+        public static Func<InformationBindingViewModel?, string[]> GetInformations { get; set; } = (e) => { return []; };
 
-        public static Func<FeatureBindingViewModel?, string[]?> GetFeatures { get; set; } = (e) => { return default; };
+        public static Func<FeatureBindingViewModel?, string[]> GetFeatures { get; set; } = (e) => { return []; };
 
-        public static Func<InformationRefIdViewModel?, string[]?> GetInformationsRefId { get; set; } = (e) => { return default; };
+        public static Func<InformationRefIdViewModel?, string[]> GetInformationsRefId { get; set; } = (e) => { return []; };
 
-        public static Func<FeatureRefIdViewModel?, string[]?> GetFeaturesRefId { get; set; } = (e) => { return default; };
+        public static Func<FeatureRefIdViewModel?, string[]> GetFeaturesRefId { get; set; } = (e) => { return []; };
     }
 
     public interface iHandles
@@ -156,6 +157,17 @@ namespace S100Framework.WPF.ViewModel
         public override Type InformationType => typeof(T);
 
         public string DisplayName => $"{typeof(T).Name}, {base.role}";
+
+        public override bool Equals(object? obj) {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+            var other = (InformationAssociationConnector<T>)obj;
+            return this.InformationType.Name.Equals(other.InformationType.Name);
+        }
+
+        public override int GetHashCode() {
+            return this.InformationType.Name.GetHashCode();
+        }
     }
 
     public abstract class FeatureAssociationConnector : AssociationConnector
@@ -172,6 +184,17 @@ namespace S100Framework.WPF.ViewModel
         public override Type FeatureType => typeof(T);
 
         public string DisplayName => $"{typeof(T).Name}, {base.role}";
+
+        public override bool Equals(object? obj) {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+            var other = (FeatureAssociationConnector<T>)obj;
+            return this.FeatureType.Name.Equals(other.FeatureType.Name);
+        }
+
+        public override int GetHashCode() {
+            return this.FeatureType.Name.GetHashCode();
+        }
     }
 
     public abstract class RefIdViewModel : INotifyPropertyChanged
@@ -235,7 +258,7 @@ namespace S100Framework.WPF.ViewModel
                 this.SetValue(ref _featureType, value);
 
                 RefIds.Clear();
-                foreach (var e in Handles.GetFeaturesRefId(this)!)
+                foreach (var e in Handles.GetFeaturesRefId(this))
                     RefIds.Add(e);
             }
         }
@@ -361,7 +384,6 @@ namespace S100Framework.WPF.ViewModel
 
     public abstract class FeatureBindingViewModel<T> : FeatureBindingViewModel where T : FeatureRefIdViewModel
     {
-
     }
 
     public class SingleFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel, new()

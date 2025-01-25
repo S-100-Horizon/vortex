@@ -1,4 +1,7 @@
-﻿using S100Framework.WPF.ViewModel;
+﻿using S100Framework.DomainModel.S101;
+using S100Framework.DomainModel.S101.FeatureTypes;
+using S100Framework.WPF.ViewModel;
+using S100Framework.WPF.ViewModel.S101;
 using System.Collections.ObjectModel;
 using System.Globalization;
 using System.Windows.Data;
@@ -24,7 +27,52 @@ namespace VortexConceptApplication
         //}
 
         //public ObservableCollection<FeatureRefIdViewModel> TestRefId { get; set; } = new ObservableCollection<FeatureRefIdViewModel>();
+
+        public UpdatedInformationViewModel() : base() {
+
+            var fromJson = new S100Framework.DomainModel.FeatureAssociation {
+                Code = "UpdatedInformation",
+                AssociationConnectorTypeName = "AdministrationArea",
+                RefIds = new[] {
+                    new S100Framework.DomainModel.RefId {
+                        Type = "",
+                        Role = "theUpdate",
+                        Value = "Hello",
+                    },
+                    new S100Framework.DomainModel.RefId {
+                        Type = "UpdateInformation",
+                        Role = "theUpdatedObject",
+                        Value = "World (1)",
+                    },
+                    new S100Framework.DomainModel.RefId {
+                        Type = "UpdateInformation",
+                        Role = "theUpdatedObject",
+                        Value = "World (2)",
+                    }
+                },
+            };
+
+            //var a = base.associationConnectorFeatures[typeof(S100Framework.WPF.ViewModel.S101.UpdatedInformationViewModel)]();
+
+            associationConnector = base.associationConnectorFeatures.Single(e => e.FeatureType.Name.Equals(fromJson.AssociationConnectorTypeName));
+
+            var refId = new AdministrationAreaViewModel.AdministrationAreaRefIdViewModel();
+            refId.FeatureType = refId.AssociationTypes[0];
+            refId.RefId = "Hello";
+
+            ((SingleFeatureBindingViewModel<AdministrationAreaViewModel.AdministrationAreaRefIdViewModel>)base.theUpdate!).RefId = refId;
+
+            var theUpdatedObject = ((MultiFeatureBindingViewModel<UpdatedInformationViewModel.theUpdateAdministrationAreaRefIdViewModel>)base.theUpdatedObject!);
+
+            for (var i = 0; i < 2; i++) {
+                var r = new UpdatedInformationViewModel.theUpdateAdministrationAreaRefIdViewModel();
+                r.FeatureType = typeof(UpdateInformation);
+                r.RefId = $"World ({i})";
+                theUpdatedObject.RefId.Add(r);
+            }
+        }
     }
+
 
     public class MyConverter : IMultiValueConverter
     {
@@ -39,5 +87,29 @@ namespace VortexConceptApplication
         public object[] ConvertBack(object value, Type[] targetTypes, object parameter, CultureInfo culture) {
             return new object[] { value };
         }
+    }
+}
+
+namespace S100Framework.DomainModel
+{
+    [System.SerializableAttribute()]
+    public class RefId
+    {
+        public required string Value { get; set; }
+        public required string Type { get; set; }
+        public required string Role { get; set; }
+    }
+
+    [System.SerializableAttribute()]
+    public class FeatureAssociation
+    {
+        public required string Code { get; set; }
+        public required string AssociationConnectorTypeName { get; set; }
+        public RefId[] RefIds { get; set; } = new RefId[0];
+    }
+
+    public class UpdatedInformation : FeatureAssociation
+    {
+
     }
 }

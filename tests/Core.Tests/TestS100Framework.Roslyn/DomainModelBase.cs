@@ -28,19 +28,30 @@ namespace S100Framework.DomainModel {
         }
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class Node {
         public virtual string Code => string.Empty;
         }
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class InformationNode : Node {
         }
 
     [System.SerializableAttribute()]
-    [System.Diagnostics.CodeAnalysis.SuppressMessage("Style", "IDE1006:Naming Styles", Justification = "<Pending>")]
     public abstract class FeatureNode : Node {
+        }
+
+    [System.SerializableAttribute()]
+    public class RefId {
+        public required string Value { get; set; }
+        public required string Type { get; set; }
+        public required string Role { get; set; }
+        }
+
+    [System.SerializableAttribute()]
+    public class FeatureAssociation {
+        public required string Code { get; set; }
+        public required string AssociationConnectorTypeName { get; set; }
+        public RefId[] RefIds { get; set; } = new RefId[0];
         }
 
     namespace Bindings {

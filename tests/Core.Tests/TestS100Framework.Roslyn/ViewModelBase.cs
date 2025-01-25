@@ -3,19 +3,20 @@ using S100Framework.WPF.Editors;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Windows.Controls;
 using Xceed.Wpf.Toolkit.PropertyGrid.Attributes;
 
 namespace S100Framework.WPF.ViewModel
 {
     public static class Handles
     {
-        public static Func<InformationBindingViewModel?, string[]?> GetInformations { get; set; } = (e) => { return default; };
+        public static Func<InformationBindingViewModel?, string[]> GetInformations { get; set; } = (e) => { return []; };
 
-        public static Func<FeatureBindingViewModel?, string[]?> GetFeatures { get; set; } = (e) => { return default; };
+        public static Func<FeatureBindingViewModel?, string[]> GetFeatures { get; set; } = (e) => { return []; };
 
-        public static Func<InformationRefIdViewModel?, string[]?> GetInformationsRefId { get; set; } = (e) => { return default; };
+        public static Func<InformationRefIdViewModel?, string[]> GetInformationsRefId { get; set; } = (e) => { return []; };
 
-        public static Func<FeatureRefIdViewModel?, string[]?> GetFeaturesRefId { get; set; } = (e) => { return default; };
+        public static Func<FeatureRefIdViewModel?, string[]> GetFeaturesRefId { get; set; } = (e) => { return []; };
     }
 
     public interface iHandles
@@ -156,6 +157,17 @@ namespace S100Framework.WPF.ViewModel
         public override Type InformationType => typeof(T);
 
         public string DisplayName => $"{typeof(T).Name}, {base.role}";
+
+        public override bool Equals(object? obj) {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+            var other = (InformationAssociationConnector<T>)obj;
+            return this.InformationType.Name.Equals(other.InformationType.Name);
+        }
+
+        public override int GetHashCode() {
+            return this.InformationType.Name.GetHashCode();
+        }
     }
 
     public abstract class FeatureAssociationConnector : AssociationConnector
@@ -172,6 +184,17 @@ namespace S100Framework.WPF.ViewModel
         public override Type FeatureType => typeof(T);
 
         public string DisplayName => $"{typeof(T).Name}, {base.role}";
+
+        public override bool Equals(object? obj) {
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+            var other = (FeatureAssociationConnector<T>)obj;
+            return this.FeatureType.Name.Equals(other.FeatureType.Name);
+        }
+
+        public override int GetHashCode() {
+            return this.FeatureType.Name.GetHashCode();
+        }
     }
 
     public abstract class RefIdViewModel : INotifyPropertyChanged
@@ -199,15 +222,15 @@ namespace S100Framework.WPF.ViewModel
         }
 
         [Browsable(false)]
-        public abstract Type[] AssociationTypes { get; }
+        public abstract string[] AssociationTypes { get; }
     }
 
     public abstract class InformationRefIdViewModel : RefIdViewModel
     {
-        private Type? _informationType = default;
+        private string? _informationType = default;
 
         [Editor(typeof(InformationBindingEditor), typeof(InformationBindingEditor))]
-        public Type? InformationType {
+        public string? InformationType {
             get { return _informationType; }
             set {
                 this.SetValue(ref _informationType, value);
@@ -221,21 +244,21 @@ namespace S100Framework.WPF.ViewModel
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
 
-        public override Type[] AssociationTypes { get; } = new Type[0];
+        public override string[] AssociationTypes { get; } = new string[0];
     }
 
     public abstract class FeatureRefIdViewModel : RefIdViewModel
     {
-        private Type? _featureType = default;
+        private string? _featureType = default;
 
         [Editor(typeof(FeatureBindingEditor), typeof(FeatureBindingEditor))]
-        public Type? FeatureType {
+        public string? FeatureType {
             get { return _featureType; }
             set {
                 this.SetValue(ref _featureType, value);
 
                 RefIds.Clear();
-                foreach (var e in Handles.GetFeaturesRefId(this)!)
+                foreach (var e in Handles.GetFeaturesRefId(this))
                     RefIds.Add(e);
             }
         }
@@ -243,7 +266,7 @@ namespace S100Framework.WPF.ViewModel
         [Browsable(false)]
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
 
-        public override Type[] AssociationTypes { get; } = new Type[0];
+        public override string[] AssociationTypes { get; } = new string[0];
     }
 
     public abstract class InformationBindingViewModel : INotifyPropertyChanged
@@ -280,7 +303,7 @@ namespace S100Framework.WPF.ViewModel
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
 
         [Browsable(false)]
-        public Type[] InformationTypes { get; set; } = [];
+        public string[] InformationTypes { get; set; } = [];
     }
 
     public abstract class InformationBindingViewModel<T> : InformationBindingViewModel where T : InformationRefIdViewModel
@@ -356,12 +379,12 @@ namespace S100Framework.WPF.ViewModel
         public ObservableCollection<string> RefIds { get; set; } = new ObservableCollection<string>();
 
         [Browsable(false)]
-        public Type[] FeatureTypes { get; set; } = [];
+        public string[] FeatureTypes { get; set; } = [];
     }
 
     public abstract class FeatureBindingViewModel<T> : FeatureBindingViewModel where T : FeatureRefIdViewModel
     {
-
+        public abstract void Load(S100Framework.DomainModel.RefId[] refIds);
     }
 
     public class SingleFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel, new()
@@ -378,6 +401,12 @@ namespace S100Framework.WPF.ViewModel
         public T RefId {
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
+        }
+
+        public override void Load(S100Framework.DomainModel.RefId[] refIds) {
+            var v = refIds.FirstOrDefault();
+            this.RefId.RefId = v?.Value!;
+            //this.RefId.FeatureType = ???
         }
     }
 
@@ -396,6 +425,11 @@ namespace S100Framework.WPF.ViewModel
             get { return _refId; }
             set { this.SetValue(ref _refId, value); }
         }
+
+        public override void Load(S100Framework.DomainModel.RefId[] refIds) {
+            var v = refIds.FirstOrDefault();
+            //this.RefId.RefId = v?.Value!;
+        }
     }
 
     public class MultiFeatureBindingViewModel<T> : FeatureBindingViewModel<T> where T : FeatureRefIdViewModel, new()
@@ -406,5 +440,9 @@ namespace S100Framework.WPF.ViewModel
         public override string ToString() => _displayName;
 
         public ObservableCollection<T> RefId { get; set; } = new ObservableCollection<T>();
+
+        public override void Load(S100Framework.DomainModel.RefId[] refIds) {
+
+        }
     }
 }

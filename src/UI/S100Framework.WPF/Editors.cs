@@ -61,10 +61,15 @@ namespace S100Framework.WPF.Editors
                 _ => throw new NotSupportedException()
             };
 
+            var viewModel = (RefIdViewModel)propertyItem.Instance;
+
             var comboBox = new ComboBox {
                 Name = $"_comboBox{Guid.NewGuid():N}",
                 //DisplayMemberPath = "refId",
             };
+
+            if(!string.IsNullOrEmpty(viewModel.RefId))
+                source.Add(viewModel.RefId);
 
             var bindingItemsSourceProperty = new Binding() { Source = source, Mode = BindingMode.OneWay };
             BindingOperations.SetBinding(comboBox, ComboBox.ItemsSourceProperty, bindingItemsSourceProperty);
@@ -72,8 +77,9 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding("RefId") { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            //TODO: Dynamic read value from instance!!!!
-            //comboBox.SelectedIndex = 0;
+            if (!string.IsNullOrEmpty(viewModel.RefId)) {
+                comboBox.SelectedValue = viewModel.RefId;
+            }
             return comboBox;
         }
     }
@@ -94,8 +100,9 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            //TODO: Dynamic read value from instance!!!!
-            //comboBox.SelectedIndex = 0;
+            if (viewModel.associationConnector is not null) {
+                comboBox.SelectedValue = viewModel.associationConnector;
+            }
             return comboBox;
         }
     }
@@ -116,8 +123,9 @@ namespace S100Framework.WPF.Editors
             var bindingSelectedItemProperty = new Binding(propertyItem.DisplayName) { Source = propertyItem.Instance, Mode = propertyItem.IsReadOnly ? BindingMode.OneWay : BindingMode.TwoWay };
             BindingOperations.SetBinding(comboBox, ComboBox.SelectedItemProperty, bindingSelectedItemProperty);
 
-            //TODO: Dynamic read value from instance!!!!
-            //comboBox.SelectedIndex = 0;
+            if(viewModel.associationConnector is not null) {                
+                comboBox.SelectedValue = viewModel.associationConnector;
+            }
             return comboBox;
         }
     }

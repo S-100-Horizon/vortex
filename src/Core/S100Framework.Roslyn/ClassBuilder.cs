@@ -1472,36 +1472,54 @@ namespace S100Framework
             common.AppendLine("\t{");
             common.AppendLine("\t}");
             common.AppendLine();
-
-            //common.AppendLine("\t[System.SerializableAttribute()]");
-            //common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
-            //common.AppendLine("\tpublic abstract class InformationAssociation {");
-            //common.AppendLine("\t\tpublic abstract string Code { get; }");
-            //common.AppendLine("\t\tpublic abstract string[] Roles { get; }");
-            //common.AppendLine("\t}");
-            //common.AppendLine();
-            //common.AppendLine("\t[System.SerializableAttribute()]");
-            //common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
-            //common.AppendLine("\tpublic abstract class FeatureAssociation {");
-            //common.AppendLine("\t\tpublic abstract string Code { get; }");
-            //common.AppendLine("\t\tpublic abstract string[] Roles { get; }");
-            //common.AppendLine("\t}");
-            //common.AppendLine();
+           
             common.AppendLine("\t[System.SerializableAttribute()]");
-            common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
             common.AppendLine("\tpublic abstract class Node {");
             common.AppendLine("\t\tpublic virtual string Code => string.Empty;");
             common.AppendLine("\t}");
             common.AppendLine();
-            common.AppendLine("\t[System.SerializableAttribute()]");
-            common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\t[System.SerializableAttribute()]");            
             common.AppendLine("\tpublic abstract class InformationNode : Node {");
             common.AppendLine("\t}");
             common.AppendLine();
-            common.AppendLine("\t[System.SerializableAttribute()]");
-            common.AppendLine("\t[System.Diagnostics.CodeAnalysis.SuppressMessage(\"Style\", \"IDE1006:Naming Styles\", Justification = \"<Pending>\")]");
+            common.AppendLine("\t[System.SerializableAttribute()]");            
             common.AppendLine("\tpublic abstract class FeatureNode : Node {");
             common.AppendLine("\t}");
+
+            common.AppendLine("\t[System.SerializableAttribute()]");            
+            common.AppendLine("\tpublic class RefId {");
+            common.AppendLine("\t\tpublic required string Value { get; set; }");
+            common.AppendLine("\t\tpublic required string Type { get; set; }");
+            common.AppendLine("\t\tpublic required string Role { get; set; }");
+            common.AppendLine("\t}");
+
+            common.AppendLine("\t[System.SerializableAttribute()]");
+            common.AppendLine("\tpublic class FeatureAssociation {");
+            common.AppendLine("\t\tpublic required string Code {get; set; }");
+            common.AppendLine("\t\tpublic required string AssociationConnectorTypeName { get; set; }");
+            common.AppendLine("\t\tpublic RefId[] RefIds { get; set; } = new RefId[0];");
+            common.AppendLine("\t}");
+
+
+            /*
+                public class RefId
+                {
+                    public required string Value { get; set; }
+
+                    public required string Type { get; set; }
+
+                    public required string Role { get; set; }
+                }
+
+                public class FeatureAssociation
+                {
+                    public required string AssociationConnectorTypeName { get; set; }
+
+                    public RefId[] RefIds { get; set; } = new RefId[0];
+                }
+             */
+
+
             common.AppendLine();
 
 
@@ -1549,6 +1567,17 @@ namespace S100Framework
                 .WithChangedOption(FormattingOptions.UseTabs, LanguageNames.CSharp, false)
                 .WithChangedOption(FormattingOptions.SmartIndent, LanguageNames.CSharp, FormattingOptions.IndentStyle.Smart);
 
+
+            /*
+# New line preferences
+csharp_new_line_before_catch = true
+csharp_new_line_before_else = true
+csharp_new_line_before_finally = true
+csharp_new_line_before_members_in_anonymous_types = true
+csharp_new_line_before_members_in_object_initializers = true
+csharp_new_line_before_open_brace = types
+csharp_new_line_between_query_expression_clauses = true
+             */
             // Configure the options to keep braces on the same line
             options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInMethods, false);
             options = options.WithChangedOption(CSharpFormattingOptions.NewLinesForBracesInProperties, false);

@@ -39,13 +39,16 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
 
-        <xctk:CheckComboBox Grid.Row="0" x:Name="_checkListBox"
+        <StackPanel Orientation="Horizontal" Grid.Row="0" >
+            <xctk:CheckComboBox x:Name="_checkListBox"
                             IsDropDownOpen="False"
                             IsEditable="False"
                             IsSelectAllActive="True"
                             DisplayMemberPath="label"
                            ItemsSource="{Binding Items}">
-        </xctk:CheckComboBox>
+            </xctk:CheckComboBox>
+            <Button x:Name="SAVE" MinWidth="100" Padding="10 0 10 0" Click="SAVE_Click">Save</Button>
+        </StackPanel>
 
         <xctk:PropertyGrid Grid.Row="1" x:Name="_propertyGrid" 
                SelectedObject="{Binding SelectedProperty}"

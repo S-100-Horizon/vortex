@@ -77,7 +77,38 @@ namespace VortexConceptApplication
 
             this._propertyGrid.EditorDefinitions.Add(editorTemplateDefinition);
 
-            //this._propertyGrid.EditorDefinitions.Add(new edit)
+            var random = new Random();
+
+            Handles.GetFeaturesRefId = (e) => {
+                var featureType = e.FeatureType;
+                var associationTypes = e.AssociationTypes;
+
+                var objectid = new List<string>();
+                for (int i = 0; i < random.Next(1, 8); i++) {
+                    var prefix = random.Next(0, 99) switch {
+                        < 30 => "P",
+                        < 60 => "C",
+                        _ => "S",
+                    };
+
+                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
+                }
+                return objectid.ToArray();
+            };
+
+            Handles.GetInformationsRefId = (e) => {
+                var informationType = e.InformationType;
+                var associationTypes = e.AssociationTypes;
+
+                var objectid = new List<string>();
+                for (int i = 0; i < random.Next(1, 8); i++) {
+                    var prefix = "I";
+
+                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
+                }
+                return objectid.ToArray();
+            };
+
 
 #if S124
             var viewModel = new S100Framework.WPF.ViewModel.S924.NAVWARNPartViewModel {
@@ -161,6 +192,9 @@ namespace VortexConceptApplication
             //var viewModel = IslandAggregation.TestIslandGroup;
 
             var viewModel101 = new VortexConceptApplication.UpdatedInformationViewModel();
+            
+            
+
 
             var viewModel131 = new S100Framework.WPF.ViewModel.S131.TextAssociationViewModel();
 
@@ -212,72 +246,6 @@ namespace VortexConceptApplication
             //};
 
             SelectedProperty = viewModel;
-
-            var random = new Random();
-
-            //Handles.GetFeatures = (e) => {
-            //    var featureType = e?.FeatureType;
-            //    var featureTypes = e?.FeatureTypes;
-
-            //    //  featureTypes used in filter
-
-            //    var objectid = new List<string>();
-            //    for (int i = 0; i < random.Next(1, 8); i++) {
-            //        var prefix = random.Next(0, 99) switch {
-            //            < 30 => "P",
-            //            < 60 => "C",
-            //            _ => "S",
-            //        };
-
-            //        objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
-            //    }
-            //    return objectid.ToArray();
-            //};
-
-            //Handles.GetInformations = (e) => {
-            //    var informationType = e?.InformationType;
-            //    var informationTypes = e?.InformationTypes;
-
-            //    //  informationTypes used in filter
-
-            //    var objectid = new List<string>();
-            //    for (int i = 0; i < random.Next(1, 8); i++) {
-            //        var prefix = "I";
-
-            //        objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
-            //    }
-            //    return objectid.ToArray();
-            //};
-
-            Handles.GetFeaturesRefId = (e) => {
-                var featureType = e.FeatureType;
-                var associationTypes = e.AssociationTypes;
-
-                var objectid = new List<string>();
-                for (int i = 0; i < random.Next(1, 8); i++) {
-                    var prefix = random.Next(0, 99) switch {
-                        < 30 => "P",
-                        < 60 => "C",
-                        _ => "S",
-                    };
-
-                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
-                }
-                return objectid.ToArray();
-            };
-
-            Handles.GetInformationsRefId = (e) => {
-                var informationType = e.InformationType;
-                var associationTypes = e.AssociationTypes;
-
-                var objectid = new List<string>();
-                for (int i = 0; i < random.Next(1, 8); i++) {
-                    var prefix = "I";
-
-                    objectid.Add($"{prefix}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}{random.Next(0, 9)}");
-                }
-                return objectid.ToArray();
-            };
         }
 
         private void _propertyGrid_PreparePropertyItem(object sender, PropertyItemEventArgs e) {
@@ -320,6 +288,12 @@ namespace VortexConceptApplication
 
             //    propertyGrid.EditorDefinitions.Add(editorTemplateDefinition);
             //}
+        }
+
+        private void SAVE_Click(object sender, RoutedEventArgs e) {
+            var json = System.Text.Json.JsonSerializer.Serialize(SelectedProperty);
+
+            System.Diagnostics.Debugger.Break();
         }
     }
 
